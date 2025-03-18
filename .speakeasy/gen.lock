@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: ef1163442622e4e5d32de07e596b9b3a
+  docChecksum: 6bf246e65dd64b142b21153e2322b172
   docVersion: v1
   speakeasyVersion: 1.517.3
   generationVersion: 2.548.6
-  releaseVersion: 0.0.1
-  configChecksum: dacc444e2d01dae5f9ae9debf1641e7b
+  releaseVersion: 0.1.0
+  configChecksum: 809df16500924b60a07d2b500f12a71c
 features:
   java:
     additionalDependencies: 0.1.0
@@ -17,6 +17,8 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.1
+    groups: 2.81.2
+    nameOverrides: 2.81.3
     nullables: 0.1.0
     retries: 0.1.1
     sdkHooks: 0.1.0
@@ -54,7 +56,7 @@ generatedFiles:
   - gradlew.bat
   - settings.gradle
   - src/main/java/com/thetradedesk/workflows/Campaign.java
-  - src/main/java/com/thetradedesk/workflows/GraphQL.java
+  - src/main/java/com/thetradedesk/workflows/Graphql.java
   - src/main/java/com/thetradedesk/workflows/SDKConfiguration.java
   - src/main/java/com/thetradedesk/workflows/SecuritySource.java
   - src/main/java/com/thetradedesk/workflows/Seed.java
@@ -152,7 +154,7 @@ examples:
     speakeasy-default-post-/graphql:
       responses:
         "200":
-          application/json: {"key": {}, "key1": {}}
+          application/json: {"key": {}}
         "400":
           application/json: {"key": "<value>"}
   post_/seed:

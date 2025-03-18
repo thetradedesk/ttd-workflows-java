@@ -1,13 +1,13 @@
-# GraphQL
-(*graphQL()*)
+# Graphql
+(*graphql()*)
 
 ## Overview
 
 ### Available Operations
 
-* [postGraphql](#postgraphql) - An endpoint that executes valid GraphQL queries.
+* [execute](#execute) - An endpoint that executes valid GraphQL queries.
 
-## postGraphql
+## execute
 
 An endpoint that executes valid GraphQL queries.
 
@@ -34,7 +34,7 @@ public class Application {
                 .query("<value>")
                 .build();
 
-        PostGraphqlResponse res = sdk.graphQL().postGraphql()
+        PostGraphqlResponse res = sdk.graphql().execute()
                 .request(req)
                 .call();
 

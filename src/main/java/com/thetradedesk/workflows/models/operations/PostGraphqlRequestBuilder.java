@@ -48,7 +48,7 @@ public class PostGraphqlRequestBuilder {
         Optional<Options> options = Optional.of(Options.builder()
                                                     .retryConfig(retryConfig)
                                                     .build());
-        return sdk.postGraphql(
+        return sdk.execute(
             request,
             options);
     }

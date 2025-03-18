@@ -50,7 +50,7 @@ public class Seed implements
      * Create a new seed with required fields
      * @return The call builder
      */
-    public PostSeedRequestBuilder postSeed() {
+    public PostSeedRequestBuilder create() {
         return new PostSeedRequestBuilder(this);
     }
 
@@ -59,8 +59,8 @@ public class Seed implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostSeedResponse postSeedDirect() throws Exception {
-        return postSeed(Optional.empty(), Optional.empty());
+    public PostSeedResponse createDirect() throws Exception {
+        return create(Optional.empty(), Optional.empty());
     }
     
     /**
@@ -70,7 +70,7 @@ public class Seed implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostSeedResponse postSeed(
+    public PostSeedResponse create(
             Optional<? extends SeedCreationInput> request,
             Optional<Options> options) throws Exception {
 

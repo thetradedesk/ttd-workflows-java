@@ -48,7 +48,7 @@ public class PostSeedRequestBuilder {
         Optional<Options> options = Optional.of(Options.builder()
                                                     .retryConfig(retryConfig)
                                                     .build());
-        return sdk.postSeed(
+        return sdk.create(
             request,
             options);
     }

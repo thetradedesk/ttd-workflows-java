@@ -42,7 +42,7 @@ public class GetCampaignIdVersionRequestBuilder {
         Optional<Options> options = Optional.of(Options.builder()
                                                     .retryConfig(retryConfig)
                                                     .build());
-        return sdk.getCampaignIdVersion(
+        return sdk.getVersion(
             id,
             options);
     }

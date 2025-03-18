@@ -16,28 +16,28 @@ public class SDKMethodInterfaces {
 
 
     public interface MethodCallPostCampaign {
-        PostCampaignResponse postCampaign(
+        PostCampaignResponse create(
             Optional<? extends CampaignCreationInput> request,
             Optional<Options> options) throws Exception;
     }
 
 
     public interface MethodCallGetCampaignIdVersion {
-        GetCampaignIdVersionResponse getCampaignIdVersion(
+        GetCampaignIdVersionResponse getVersion(
             String id,
             Optional<Options> options) throws Exception;
     }
 
 
     public interface MethodCallPostGraphql {
-        PostGraphqlResponse postGraphql(
+        PostGraphqlResponse execute(
             Optional<? extends GraphQLQueryInput> request,
             Optional<Options> options) throws Exception;
     }
 
 
     public interface MethodCallPostSeed {
-        PostSeedResponse postSeed(
+        PostSeedResponse create(
             Optional<? extends SeedCreationInput> request,
             Optional<Options> options) throws Exception;
     }

@@ -1,0 +1,43 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Speakeasy Modifications
+  version: 0.0.1
+  x-speakeasy-metadata:
+    type: speakeasy-modifications
+    before: ""
+    after: ""
+actions:
+  - target: $["paths"]["/graphql"]["post"]
+    update:
+      x-speakeasy-group: graphql
+      x-speakeasy-name-override: execute
+    x-speakeasy-metadata:
+      after: sdk.graphql.execute()
+      before: sdk.GraphQL.post_/graphql()
+      created_at: 1742310268030
+      type: method-name
+  - target: $["paths"]["/seed"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.seed.create()
+      before: sdk.Seed.post_/seed()
+      created_at: 1742310268030
+      type: method-name
+  - target: $["paths"]["/campaign"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.campaign.create()
+      before: sdk.Campaign.post_/campaign()
+      created_at: 1742310268030
+      type: method-name
+  - target: $["paths"]["/campaign/{id}/version"]["get"]
+    update:
+      x-speakeasy-name-override: getVersion
+    x-speakeasy-metadata:
+      after: sdk.campaign.getVersion()
+      before: sdk.Campaign.get_/campaign/{id}/version()
+      created_at: 1742310268030
+      type: method-name
