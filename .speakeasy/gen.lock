@@ -1,0 +1,166 @@
+lockVersion: 2.0.0
+id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
+management:
+  docChecksum: ef1163442622e4e5d32de07e596b9b3a
+  docVersion: v1
+  speakeasyVersion: 1.517.3
+  generationVersion: 2.548.6
+  releaseVersion: 0.0.1
+  configChecksum: dacc444e2d01dae5f9ae9debf1641e7b
+features:
+  java:
+    additionalDependencies: 0.1.0
+    additionalProperties: 0.0.1
+    core: 3.34.0
+    flattening: 2.81.1
+    globalSecurity: 2.82.8
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.1
+    nullables: 0.1.0
+    retries: 0.1.1
+    sdkHooks: 0.1.0
+generatedFiles:
+  - .gitattributes
+  - USAGE.md
+  - build.gradle
+  - docs/models/components/Campaign.md
+  - docs/models/components/CampaignChannel.md
+  - docs/models/components/CampaignCreateROIGoalInput.md
+  - docs/models/components/CampaignCreationInput.md
+  - docs/models/components/CampaignFlightCreationInput.md
+  - docs/models/components/CampaignVersionResponse.md
+  - docs/models/components/ContextualDataInput.md
+  - docs/models/components/GraphQLQueryInput.md
+  - docs/models/components/Security.md
+  - docs/models/components/Seed.md
+  - docs/models/components/SeedCreationInput.md
+  - docs/models/components/SeedTargetingDataInput.md
+  - docs/models/components/ThirdPartyDataInput.md
+  - docs/models/errors/ProblemDetailsException.md
+  - docs/models/operations/GetCampaignIdVersionRequest.md
+  - docs/models/operations/GetCampaignIdVersionResponse.md
+  - docs/models/operations/PostCampaignResponse.md
+  - docs/models/operations/PostGraphqlResponse.md
+  - docs/models/operations/PostSeedResponse.md
+  - docs/models/operations/ResponseBody.md
+  - docs/sdks/campaign/README.md
+  - docs/sdks/graphql/README.md
+  - docs/sdks/seed/README.md
+  - docs/sdks/ttdworkflows/README.md
+  - gradle/wrapper/gradle-wrapper.jar
+  - gradle/wrapper/gradle-wrapper.properties
+  - gradlew
+  - gradlew.bat
+  - settings.gradle
+  - src/main/java/com/thetradedesk/workflows/Campaign.java
+  - src/main/java/com/thetradedesk/workflows/GraphQL.java
+  - src/main/java/com/thetradedesk/workflows/SDKConfiguration.java
+  - src/main/java/com/thetradedesk/workflows/SecuritySource.java
+  - src/main/java/com/thetradedesk/workflows/Seed.java
+  - src/main/java/com/thetradedesk/workflows/TtdWorkflows.java
+  - src/main/java/com/thetradedesk/workflows/models/components/Campaign.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignChannel.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreateROIGoalInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreationInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignFlightCreationInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignVersionResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/components/ContextualDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/GraphQLQueryInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/Security.java
+  - src/main/java/com/thetradedesk/workflows/models/components/Seed.java
+  - src/main/java/com/thetradedesk/workflows/models/components/SeedCreationInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/SeedTargetingDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/ThirdPartyDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/errors/APIException.java
+  - src/main/java/com/thetradedesk/workflows/models/errors/AuthException.java
+  - src/main/java/com/thetradedesk/workflows/models/errors/ProblemDetailsException.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionRequest.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostSeedRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostSeedResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/ResponseBody.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/SDKMethodInterfaces.java
+  - src/main/java/com/thetradedesk/workflows/utils/BackoffStrategy.java
+  - src/main/java/com/thetradedesk/workflows/utils/BigDecimalString.java
+  - src/main/java/com/thetradedesk/workflows/utils/BigIntegerString.java
+  - src/main/java/com/thetradedesk/workflows/utils/Deserializers.java
+  - src/main/java/com/thetradedesk/workflows/utils/EventStream.java
+  - src/main/java/com/thetradedesk/workflows/utils/EventStreamLineReader.java
+  - src/main/java/com/thetradedesk/workflows/utils/EventStreamMessage.java
+  - src/main/java/com/thetradedesk/workflows/utils/EventStreamReader.java
+  - src/main/java/com/thetradedesk/workflows/utils/FormMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/HTTPClient.java
+  - src/main/java/com/thetradedesk/workflows/utils/HTTPRequest.java
+  - src/main/java/com/thetradedesk/workflows/utils/HeaderMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/Helpers.java
+  - src/main/java/com/thetradedesk/workflows/utils/Hook.java
+  - src/main/java/com/thetradedesk/workflows/utils/Hooks.java
+  - src/main/java/com/thetradedesk/workflows/utils/JSON.java
+  - src/main/java/com/thetradedesk/workflows/utils/LazySingletonValue.java
+  - src/main/java/com/thetradedesk/workflows/utils/Metadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/Multipart.java
+  - src/main/java/com/thetradedesk/workflows/utils/MultipartFormMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/NameValue.java
+  - src/main/java/com/thetradedesk/workflows/utils/OneOfDeserializer.java
+  - src/main/java/com/thetradedesk/workflows/utils/Options.java
+  - src/main/java/com/thetradedesk/workflows/utils/PathParamsMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/QueryEncoding.java
+  - src/main/java/com/thetradedesk/workflows/utils/QueryParameter.java
+  - src/main/java/com/thetradedesk/workflows/utils/QueryParameters.java
+  - src/main/java/com/thetradedesk/workflows/utils/QueryParamsMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/RecordingClient.java
+  - src/main/java/com/thetradedesk/workflows/utils/RequestBody.java
+  - src/main/java/com/thetradedesk/workflows/utils/RequestMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/Response.java
+  - src/main/java/com/thetradedesk/workflows/utils/Retries.java
+  - src/main/java/com/thetradedesk/workflows/utils/RetryConfig.java
+  - src/main/java/com/thetradedesk/workflows/utils/Security.java
+  - src/main/java/com/thetradedesk/workflows/utils/SecurityMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/SerializedBody.java
+  - src/main/java/com/thetradedesk/workflows/utils/SessionManager.java
+  - src/main/java/com/thetradedesk/workflows/utils/SpeakeasyHTTPClient.java
+  - src/main/java/com/thetradedesk/workflows/utils/SpeakeasyMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/TypedObject.java
+  - src/main/java/com/thetradedesk/workflows/utils/Types.java
+  - src/main/java/com/thetradedesk/workflows/utils/Utf8UrlEncoder.java
+  - src/main/java/com/thetradedesk/workflows/utils/Utils.java
+examples:
+  post_/campaign:
+    speakeasy-default-post-/campaign:
+      responses:
+        "201":
+          application/json: {"advertiserId": "<id>", "campaignName": "<value>"}
+        "400":
+          application/json: {"key": "<value>"}
+  get_/campaign/{id}/version:
+    speakeasy-default-get-/campaign/{id}/version:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"key": "<value>", "key1": "<value>", "key2": "<value>"}
+  post_/graphql:
+    speakeasy-default-post-/graphql:
+      responses:
+        "200":
+          application/json: {"key": {}, "key1": {}}
+        "400":
+          application/json: {"key": "<value>"}
+  post_/seed:
+    speakeasy-default-post-/seed:
+      responses:
+        "201":
+          application/json: {"id": 18556, "seedName": "<value>", "advertiserId": "<id>"}
+        "400":
+          application/json: {"key": "<value>"}
+examplesVersion: 1.0.0
+generatedTests: {}

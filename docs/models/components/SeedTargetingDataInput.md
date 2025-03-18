@@ -1,0 +1,12 @@
+# SeedTargetingDataInput
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `firstPartyDataInclusionIds`                                                     | List\<*long*>                                                                    | :heavy_minus_sign:                                                               | These are the AdvertiserTargetingDataIds for first party data.                   |
+| `retailDataInclusion`                                                            | List\<[ThirdPartyDataInput](../../models/components/ThirdPartyDataInput.md)>     | :heavy_minus_sign:                                                               | RetailDataInclusion                                                              |
+| `thirdPartyDataInclusion`                                                        | List\<[ThirdPartyDataInput](../../models/components/ThirdPartyDataInput.md)>     | :heavy_minus_sign:                                                               | ThirdPartyDataInclusion                                                          |
+| `contextualInclusion`                                                            | [Optional\<ContextualDataInput>](../../models/components/ContextualDataInput.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `countryFilterIds`                                                               | List\<*String*>                                                                  | :heavy_minus_sign:                                                               | CountryFilterIds                                                                 |

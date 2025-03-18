@@ -1,0 +1,18 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Workflows API:
+        inputs:
+            - location: ./api_spec.yaml
+        registry:
+            location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api
+targets:
+    ttd-workflows:
+        target: java
+        source: Workflows API
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api-java-code-samples
+            labelOverride:
+                fixedValue: Java (SDK)
+            blocking: false

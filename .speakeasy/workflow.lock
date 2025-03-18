@@ -1,0 +1,36 @@
+speakeasyVersion: 1.517.3
+sources:
+    Workflows API:
+        sourceNamespace: workflows-api
+        sourceRevisionDigest: sha256:cf79c33336595b1a4ac514dad72ebfc5d21faee639e29874370ca4e77fc6fae7
+        sourceBlobDigest: sha256:f1bf7121572656479f7b6bc4d735cc5d1b9091510e603880d2f02e84268abf58
+        tags:
+            - latest
+            - v1
+targets:
+    ttd-workflows:
+        source: Workflows API
+        sourceNamespace: workflows-api
+        sourceRevisionDigest: sha256:cf79c33336595b1a4ac514dad72ebfc5d21faee639e29874370ca4e77fc6fae7
+        sourceBlobDigest: sha256:f1bf7121572656479f7b6bc4d735cc5d1b9091510e603880d2f02e84268abf58
+        codeSamplesNamespace: workflows-api-java-code-samples
+        codeSamplesRevisionDigest: sha256:dcb015042ab2a10ffd0138df46a48cb8e6f1ba718cc351b8507a2b14e5593cf8
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Workflows API:
+            inputs:
+                - location: ./api_spec.yaml
+            registry:
+                location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api
+    targets:
+        ttd-workflows:
+            target: java
+            source: Workflows API
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api-java-code-samples
+                labelOverride:
+                    fixedValue: Java (SDK)
+                blocking: false
