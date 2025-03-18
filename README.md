@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.0.1'
+implementation 'com.thetradedesk:workflows:0.1.0'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 
@@ -105,17 +105,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
@@ -164,17 +164,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
@@ -194,16 +194,16 @@ public class Application {
 
 ### [campaign()](docs/sdks/campaign/README.md)
 
-* [postCampaign](docs/sdks/campaign/README.md#postcampaign) - Create a new campaign with required fields
-* [getCampaignIdVersion](docs/sdks/campaign/README.md#getcampaignidversion) - GET a campaign's version
+* [create](docs/sdks/campaign/README.md#create) - Create a new campaign with required fields
+* [getVersion](docs/sdks/campaign/README.md#getversion) - GET a campaign's version
 
-### [graphQL()](docs/sdks/graphql/README.md)
+### [graphql()](docs/sdks/graphql/README.md)
 
-* [postGraphql](docs/sdks/graphql/README.md#postgraphql) - An endpoint that executes valid GraphQL queries.
+* [execute](docs/sdks/graphql/README.md#execute) - An endpoint that executes valid GraphQL queries.
 
 ### [seed()](docs/sdks/seed/README.md)
 
-* [postSeed](docs/sdks/seed/README.md#postseed) - Create a new seed with required fields
+* [create](docs/sdks/seed/README.md#create) - Create a new seed with required fields
 
 
 </details>
@@ -243,17 +243,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .retryConfig(RetryConfig.builder()
                     .backoff(BackoffStrategy.builder()
@@ -313,17 +313,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
@@ -340,7 +340,7 @@ public class Application {
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-By default, an API error will throw a `models/errors/APIException` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `postCampaign` method throws the following exceptions:
+By default, an API error will throw a `models/errors/APIException` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `create` method throws the following exceptions:
 
 | Error Type                            | Status Code | Content Type     |
 | ------------------------------------- | ----------- | ---------------- |
@@ -374,17 +374,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
@@ -428,17 +428,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 

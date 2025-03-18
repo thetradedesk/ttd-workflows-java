@@ -61,7 +61,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "com.thetradedesk"
-version = "0.0.1"
+version = "0.1.0"
 
 sourcesJar {
     archiveBaseName = "workflows"
@@ -78,7 +78,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.thetradedesk'
             artifactId = 'workflows'
-            version = '0.0.1'
+            version = '0.1.0'
 
             from components.java
 

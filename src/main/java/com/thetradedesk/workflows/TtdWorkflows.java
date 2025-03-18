@@ -31,7 +31,7 @@ public class TtdWorkflows {
 
     private final Campaign campaign;
 
-    private final GraphQL graphQL;
+    private final Graphql graphql;
 
     private final Seed seed;
 
@@ -39,8 +39,8 @@ public class TtdWorkflows {
         return campaign;
     }
 
-    public GraphQL graphQL() {
-        return graphQL;
+    public Graphql graphql() {
+        return graphql;
     }
 
     public Seed seed() {
@@ -182,7 +182,7 @@ public class TtdWorkflows {
     private TtdWorkflows(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.campaign = new Campaign(sdkConfiguration);
-        this.graphQL = new GraphQL(sdkConfiguration);
+        this.graphql = new Graphql(sdkConfiguration);
         this.seed = new Seed(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }}

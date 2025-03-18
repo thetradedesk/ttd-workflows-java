@@ -55,7 +55,7 @@ public class Campaign implements
      * Create a new campaign with required fields
      * @return The call builder
      */
-    public PostCampaignRequestBuilder postCampaign() {
+    public PostCampaignRequestBuilder create() {
         return new PostCampaignRequestBuilder(this);
     }
 
@@ -64,8 +64,8 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignResponse postCampaignDirect() throws Exception {
-        return postCampaign(Optional.empty(), Optional.empty());
+    public PostCampaignResponse createDirect() throws Exception {
+        return create(Optional.empty(), Optional.empty());
     }
     
     /**
@@ -75,7 +75,7 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignResponse postCampaign(
+    public PostCampaignResponse create(
             Optional<? extends CampaignCreationInput> request,
             Optional<Options> options) throws Exception {
 
@@ -233,7 +233,7 @@ public class Campaign implements
      * GET a campaign's version
      * @return The call builder
      */
-    public GetCampaignIdVersionRequestBuilder getCampaignIdVersion() {
+    public GetCampaignIdVersionRequestBuilder getVersion() {
         return new GetCampaignIdVersionRequestBuilder(this);
     }
 
@@ -243,9 +243,9 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetCampaignIdVersionResponse getCampaignIdVersion(
+    public GetCampaignIdVersionResponse getVersion(
             String id) throws Exception {
-        return getCampaignIdVersion(id, Optional.empty());
+        return getVersion(id, Optional.empty());
     }
     
     /**
@@ -255,7 +255,7 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetCampaignIdVersionResponse getCampaignIdVersion(
+    public GetCampaignIdVersionResponse getVersion(
             String id,
             Optional<Options> options) throws Exception {
 

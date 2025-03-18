@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [postSeed](#postseed) - Create a new seed with required fields
+* [create](#create) - Create a new seed with required fields
 
-## postSeed
+## create
 
 Create a new seed with required fields
 
@@ -39,7 +39,7 @@ public class Application {
                     .build())
                 .build();
 
-        PostSeedResponse res = sdk.seed().postSeed()
+        PostSeedResponse res = sdk.seed().create()
                 .request(req)
                 .call();
 

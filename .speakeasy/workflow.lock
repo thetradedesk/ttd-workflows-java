@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:cf79c33336595b1a4ac514dad72ebfc5d21faee639e29874370ca4e77fc6fae7
         sourceBlobDigest: sha256:f1bf7121572656479f7b6bc4d735cc5d1b9091510e603880d2f02e84268abf58
         codeSamplesNamespace: workflows-api-java-code-samples
-        codeSamplesRevisionDigest: sha256:dcb015042ab2a10ffd0138df46a48cb8e6f1ba718cc351b8507a2b14e5593cf8
+        codeSamplesRevisionDigest: sha256:58489965f6fd2b61f062d423f4a838d0f9680d538ad662f9b84b9a0a53b23af5
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -22,6 +22,8 @@ workflow:
         Workflows API:
             inputs:
                 - location: ./api_spec.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
             registry:
                 location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api
     targets:

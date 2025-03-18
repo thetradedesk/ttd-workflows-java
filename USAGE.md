@@ -24,17 +24,17 @@ public class Application {
         CampaignCreationInput req = CampaignCreationInput.builder()
                 .advertiserId("<id>")
                 .campaignName("<value>")
-                .primaryChannel(CampaignChannel.DISPLAY)
+                .primaryChannel(CampaignChannel.VIDEO)
                 .primaryGoal(CampaignCreateROIGoalInput.builder()
                     .build())
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2025-02-22T16:53:04.116Z"))
-                        .budgetInAdvertiserCurrency(9541.89d)
+                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
+                        .budgetInAdvertiserCurrency(4174.58d)
                         .build()))
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().postCampaign()
+        PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 

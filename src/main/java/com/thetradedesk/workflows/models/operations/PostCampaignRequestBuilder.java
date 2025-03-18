@@ -48,7 +48,7 @@ public class PostCampaignRequestBuilder {
         Optional<Options> options = Optional.of(Options.builder()
                                                     .retryConfig(retryConfig)
                                                     .build());
-        return sdk.postCampaign(
+        return sdk.create(
             request,
             options);
     }
