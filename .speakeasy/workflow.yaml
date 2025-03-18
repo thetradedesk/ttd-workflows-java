@@ -12,6 +12,12 @@ targets:
     ttd-workflows:
         target: java
         source: Workflows API
+        publish:
+            java:
+                ossrhUsername: $ossrh_username
+                ossrhPassword: $ossrh_password
+                gpgSecretKey: $java_gpg_secret_key
+                gpgPassPhrase: $java_gpg_passphrase
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api-java-code-samples
