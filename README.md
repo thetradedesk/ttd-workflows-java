@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.1.0'
+implementation 'com.thetradedesk:workflows:0.2.0'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
@@ -111,7 +111,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 
@@ -170,7 +170,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 
@@ -249,7 +249,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 
@@ -319,7 +319,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 
@@ -380,7 +380,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 
@@ -434,7 +434,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 

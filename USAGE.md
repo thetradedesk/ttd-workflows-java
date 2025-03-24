@@ -30,7 +30,7 @@ public class Application {
                 .campaignFlights(List.of(
                     CampaignFlightCreationInput.builder()
                         .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58d)
+                        .budgetInAdvertiserCurrency(4174.58)
                         .build()))
                 .build();
 
