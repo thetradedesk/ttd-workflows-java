@@ -6,13 +6,14 @@
 package com.thetradedesk.workflows.models.components;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thetradedesk.workflows.utils.HasSecurity;
 import com.thetradedesk.workflows.utils.SpeakeasyMetadata;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
 
-public class Security {
+public class Security implements HasSecurity {
 
     @SpeakeasyMetadata("security:scheme=true,type=apiKey,subtype=header,name=TTD-Auth")
     private String ttdAuth;

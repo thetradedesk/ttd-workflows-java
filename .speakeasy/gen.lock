@@ -3,15 +3,16 @@ id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
   docChecksum: 6bf246e65dd64b142b21153e2322b172
   docVersion: v1
-  speakeasyVersion: 1.517.3
-  generationVersion: 2.548.6
-  releaseVersion: 0.1.0
-  configChecksum: 809df16500924b60a07d2b500f12a71c
+  speakeasyVersion: 1.523.1
+  generationVersion: 2.559.0
+  releaseVersion: 0.2.0
+  configChecksum: 052a4b646116e99059e5fab6d3f8819f
+  published: true
 features:
   java:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
-    core: 3.34.0
+    core: 3.35.2
     flattening: 2.81.1
     globalSecurity: 2.82.8
     globalSecurityCallbacks: 0.1.0
@@ -21,7 +22,7 @@ features:
     nameOverrides: 2.81.3
     nullables: 0.1.0
     retries: 0.1.1
-    sdkHooks: 0.1.0
+    sdkHooks: 1.0.0
 generatedFiles:
   - .gitattributes
   - USAGE.md
@@ -50,6 +51,7 @@ generatedFiles:
   - docs/sdks/graphql/README.md
   - docs/sdks/seed/README.md
   - docs/sdks/ttdworkflows/README.md
+  - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
@@ -99,6 +101,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/utils/FormMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/HTTPClient.java
   - src/main/java/com/thetradedesk/workflows/utils/HTTPRequest.java
+  - src/main/java/com/thetradedesk/workflows/utils/HasSecurity.java
   - src/main/java/com/thetradedesk/workflows/utils/HeaderMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/Helpers.java
   - src/main/java/com/thetradedesk/workflows/utils/Hook.java
