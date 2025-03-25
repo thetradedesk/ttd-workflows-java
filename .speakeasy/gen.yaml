@@ -20,12 +20,12 @@ java:
   additionalPlugins: []
   artifactID: workflows
   clientServerStatusCodesAsErrors: true
-  companyEmail: info@mycompany.com
-  companyName: My Company
-  companyURL: www.mycompany.com
+  companyEmail: dl-platform-sdk@thetradedesk.com
+  companyName: The Trade Desk
+  companyURL: https://www.thetradedesk.com/
   defaultErrorName: APIException
   flattenGlobalSecurity: true
-  githubURL: github.com/owner/repo
+  githubURL: github.com/thetradedesk/ttd-workflows-java
   groupID: com.thetradedesk
   imports:
     option: openapi
