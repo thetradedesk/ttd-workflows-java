@@ -3,10 +3,7 @@
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
