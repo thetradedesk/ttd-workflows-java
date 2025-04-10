@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.2.0'
+implementation 'com.thetradedesk:workflows:0.3.0'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
@@ -84,10 +84,7 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
@@ -143,10 +140,7 @@ To authenticate with the API the `ttdAuth` parameter must be set when initializi
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
@@ -219,10 +213,7 @@ To change the default retry strategy for a single API call, you can provide a `R
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
@@ -279,10 +270,7 @@ If you'd like to override the default retry strategy for all operations that sup
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
@@ -353,10 +341,7 @@ By default, an API error will throw a `models/errors/APIException` exception. Wh
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
@@ -406,10 +391,7 @@ The default server can be overridden globally using the `.serverURL(String serve
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignChannel;
-import com.thetradedesk.workflows.models.components.CampaignCreateROIGoalInput;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignFlightCreationInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
