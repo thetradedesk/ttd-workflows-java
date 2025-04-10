@@ -3,16 +3,17 @@ id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
   docChecksum: 6bf246e65dd64b142b21153e2322b172
   docVersion: v1
-  speakeasyVersion: 1.523.1
-  generationVersion: 2.559.0
-  releaseVersion: 0.2.0
-  configChecksum: 052a4b646116e99059e5fab6d3f8819f
+  speakeasyVersion: 1.531.0
+  generationVersion: 2.568.2
+  releaseVersion: 0.3.0
+  configChecksum: 0b2316805a1e7e8d8d5a505885545b79
+  repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
-    core: 3.35.2
+    core: 3.36.3
     flattening: 2.81.1
     globalSecurity: 2.82.8
     globalSecurityCallbacks: 0.1.0
@@ -93,6 +94,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/utils/BackoffStrategy.java
   - src/main/java/com/thetradedesk/workflows/utils/BigDecimalString.java
   - src/main/java/com/thetradedesk/workflows/utils/BigIntegerString.java
+  - src/main/java/com/thetradedesk/workflows/utils/Constants.java
   - src/main/java/com/thetradedesk/workflows/utils/Deserializers.java
   - src/main/java/com/thetradedesk/workflows/utils/EventStream.java
   - src/main/java/com/thetradedesk/workflows/utils/EventStreamLineReader.java
@@ -142,7 +144,7 @@ examples:
         "201":
           application/json: {"advertiserId": "<id>", "campaignName": "<value>"}
         "400":
-          application/json: {"key": "<value>"}
+          application/json: {"key": "<value>", "key1": "<value>"}
   get_/campaign/{id}/version:
     speakeasy-default-get-/campaign/{id}/version:
       parameters:
@@ -152,7 +154,7 @@ examples:
         "200":
           application/json: {}
         "400":
-          application/json: {"key": "<value>", "key1": "<value>", "key2": "<value>"}
+          application/json: {"key": "<value>", "key1": "<value>"}
   post_/graphql:
     speakeasy-default-post-/graphql:
       responses:
@@ -164,8 +166,8 @@ examples:
     speakeasy-default-post-/seed:
       responses:
         "201":
-          application/json: {"id": 18556, "seedName": "<value>", "advertiserId": "<id>"}
+          application/json: {"id": 486589, "seedName": "<value>", "advertiserId": "<id>"}
         "400":
-          application/json: {"key": "<value>"}
-examplesVersion: 1.0.0
+          application/json: {"key": "<value>", "key1": "<value>"}
+examplesVersion: 1.0.1
 generatedTests: {}
