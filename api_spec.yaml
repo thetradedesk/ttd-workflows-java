@@ -26,14 +26,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CampaignCreationInput'
+              $ref: '#/components/schemas/CampaignCreateWorkflowInput'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Campaign'
+                $ref: '#/components/schemas/CampaignPayload'
         '400':
           description: Bad Request
           content:
@@ -57,7 +57,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CampaignVersionResponse'
+                $ref: '#/components/schemas/CampaignVersionWorkflow'
         '400':
           description: Bad Request
           content:
@@ -101,8 +101,6 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties:
-                  type: object
         '400':
           description: Bad Request
           content:
@@ -156,99 +154,747 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
 components:
   schemas:
-    Campaign:
-      required:
-        - advertiserId
-        - campaignName
+    AdGroupAdvancedSettingsInput:
       type: object
       properties:
-        id:
-          type: integer
-          description: This is a campaign ID
-          format: int32
-        advertiserId:
-          minLength: 1
-          type: string
-          description: The platform ID of the advertiser that owns this Campaign.
-        campaignName:
-          minLength: 1
-          type: string
-          description: The name of the Campaign.
+        flights:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupFlightInput'
+          nullable: true
+        koaOptimizationSettings:
+          $ref: '#/components/schemas/AdGroupKoaOptimizationSettingsInput'
+        comscoreSettings:
+          $ref: '#/components/schemas/AdGroupComscoreSettingsInput'
+        contractTargeting:
+          $ref: '#/components/schemas/AdGroupContractTargetingInput'
+        dimensionalBiddingAutoOptimizationSettings:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/DimensionalBiddingDimensions'
+          nullable: true
+        isUseClicksAsConversionsEnabled:
+          type: boolean
+          nullable: true
+        isUseSecondaryConversionsEnabled:
+          type: boolean
+          nullable: true
+        nielsenTrackingAttributes:
+          $ref: '#/components/schemas/AdGroupNielsenTrackingAttributesInput'
+        newFrequencyConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupNewFrequencyConfigInput'
+          nullable: true
       additionalProperties: false
-      description: This is a campaign response
-    CampaignChannel:
+    AdGroupAssociateBidList:
+      required:
+        - bidListId
+        - isDefaultForDimension
+        - isEnabled
+      type: object
+      properties:
+        bidListId:
+          minLength: 1
+          type: string
+        isEnabled:
+          type: boolean
+        isDefaultForDimension:
+          type: boolean
+      additionalProperties: false
+    AdGroupAssociateBidListInput:
+      required:
+        - bidListId
+      type: object
+      properties:
+        bidListId:
+          minLength: 1
+          type: string
+        isEnabled:
+          type: boolean
+          nullable: true
+        isDefaultForDimension:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    AdGroupAudienceTargeting:
+      required:
+        - audienceAcceleratorExclusionsEnabled
+        - audienceBoosterEnabled
+        - audienceExcluderEnabled
+        - audiencePredictorEnabled
+        - crossDeviceVendorListForAudience
+        - recencyExclusionWindowInMinutes
+        - targetTrackableUsersEnabled
+        - useMcIdAsPrimary
+      type: object
+      properties:
+        audienceId:
+          type: string
+          nullable: true
+        audienceAcceleratorExclusionsEnabled:
+          type: boolean
+        audienceBoosterEnabled:
+          type: boolean
+        audienceExcluderEnabled:
+          type: boolean
+        audiencePredictorEnabled:
+          type: boolean
+        crossDeviceVendorListForAudience:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        recencyExclusionWindowInMinutes:
+          type: integer
+          format: int32
+        targetTrackableUsersEnabled:
+          type: boolean
+        useMcIdAsPrimary:
+          type: boolean
+      additionalProperties: false
+    AdGroupAudienceTargetingInput:
+      type: object
+      properties:
+        audienceId:
+          type: string
+          nullable: true
+        audienceAcceleratorExclusionsEnabled:
+          type: boolean
+          nullable: true
+        audienceBoosterEnabled:
+          type: boolean
+          nullable: true
+        audienceExcluderEnabled:
+          type: boolean
+          nullable: true
+        audiencePredictorEnabled:
+          type: boolean
+          nullable: true
+        crossDeviceVendorListForAudience:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        recencyExclusionWindowInMinutes:
+          type: integer
+          format: int32
+          nullable: true
+        targetTrackableUsersEnabled:
+          type: boolean
+          nullable: true
+        useMcIdAsPrimary:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    AdGroupBudget:
+      required:
+        - budgetInAdvertiserCurrency
+      type: object
+      properties:
+        allocationType:
+          $ref: '#/components/schemas/AllocationType'
+        budgetInAdvertiserCurrency:
+          type: number
+          format: double
+        budgetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        dailyTargetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        dailyTargetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    AdGroupBudgetInput:
+      type: object
+      properties:
+        allocationType:
+          $ref: '#/components/schemas/AllocationType'
+        budgetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        budgetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        dailyTargetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        dailyTargetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    AdGroupChannel:
+      enum:
+        - Other
+        - Display
+        - Video
+        - Audio
+        - Native
+        - NativeDisplay
+        - NativeVideo
+        - TV
+        - OutOfHome
+      type: string
+    AdGroupComscoreSettings:
+      required:
+        - demographicMemberIds
+        - isEnabled
+        - mobileDemographicMemberIds
+      type: object
+      properties:
+        isEnabled:
+          type: boolean
+        populationId:
+          type: integer
+          format: int32
+          nullable: true
+        demographicMemberIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        mobileDemographicMemberIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+      additionalProperties: false
+    AdGroupComscoreSettingsInput:
+      required:
+        - isEnabled
+      type: object
+      properties:
+        isEnabled:
+          type: boolean
+        populationId:
+          type: integer
+          format: int32
+          nullable: true
+        demographicMemberIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        mobileDemographicMemberIds:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+      additionalProperties: false
+    AdGroupContractTargeting:
+      required:
+        - allowOpenMarketBiddingWhenTargetingContracts
+      type: object
+      properties:
+        allowOpenMarketBiddingWhenTargetingContracts:
+          type: boolean
+      additionalProperties: false
+    AdGroupContractTargetingInput:
+      type: object
+      properties:
+        allowOpenMarketBiddingWhenTargetingContracts:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    AdGroupFlight:
+      required:
+        - adGroupId
+        - budgetInAdvertiserCurrency
+        - campaignFlightId
+      type: object
+      properties:
+        allocationType:
+          $ref: '#/components/schemas/AllocationType'
+        budgetInAdvertiserCurrency:
+          type: number
+          format: double
+        budgetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        dailyTargetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        dailyTargetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        campaignFlightId:
+          type: integer
+          format: int64
+        adGroupId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AdGroupFlightInput:
+      type: object
+      properties:
+        allocationType:
+          $ref: '#/components/schemas/AllocationType'
+        budgetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        budgetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        dailyTargetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        dailyTargetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    AdGroupFunnelLocation:
       enum:
         - None
-        - Display
-        - Audio
-        - Video
-        - TV
-        - NativeVideo
-        - NativeDisplay
-        - DOOH
+        - Awareness
+        - Consideration
+        - Conversion
       type: string
-    CampaignCreateROIGoalInput:
+    AdGroupKoaOptimizationSettings:
+      type: object
+      properties:
+        areFutureKoaFeaturesEnabled:
+          type: boolean
+        predictiveClearingEnabled:
+          type: boolean
+      additionalProperties: false
+    AdGroupKoaOptimizationSettingsInput:
+      type: object
+      properties:
+        areFutureKoaFeaturesEnabled:
+          type: boolean
+          nullable: true
+        predictiveClearingEnabled:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    AdGroupNewFrequencyConfigInput:
+      required:
+        - counterName
+      type: object
+      properties:
+        counterName:
+          type: string
+          nullable: true
+        frequencyCap:
+          type: integer
+          format: int32
+          nullable: true
+        frequencyGoal:
+          type: integer
+          format: int32
+          nullable: true
+        resetIntervalInMinutes:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AdGroupNielsenTrackingAttributes:
+      required:
+        - countries
+        - endAge
+        - enhancedReportingOption
+        - gender
+        - startAge
+      type: object
+      properties:
+        enhancedReportingOption:
+          $ref: '#/components/schemas/EnhancedNielsenReportingOptions'
+        gender:
+          $ref: '#/components/schemas/TargetingGender'
+        startAge:
+          $ref: '#/components/schemas/TargetingStartAge'
+        endAge:
+          $ref: '#/components/schemas/TargetingEndAge'
+        countries:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    AdGroupNielsenTrackingAttributesInput:
+      required:
+        - countries
+        - endAge
+        - gender
+        - startAge
+      type: object
+      properties:
+        enhancedReportingOption:
+          $ref: '#/components/schemas/EnhancedNielsenReportingOptions'
+        gender:
+          $ref: '#/components/schemas/TargetingGender'
+        startAge:
+          $ref: '#/components/schemas/TargetingStartAge'
+        endAge:
+          $ref: '#/components/schemas/TargetingEndAge'
+        countries:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    AdGroupRoiGoal:
       type: object
       properties:
         maximizeReach:
           type: boolean
-          description: Reach as many unique users as possible in your intended audience.
           nullable: true
         maximizeLtvIncrementalReach:
           type: boolean
-          description: The goal is to reach as many users as possible beyond those who have already reached on Linear TV.
           nullable: true
         cpcInAdvertiserCurrency:
           type: number
-          description: The Cost Per Click goal (in the Advertiser currency).
           format: double
           nullable: true
         ctrInPercent:
           type: number
-          description: 'The Click Through Rate goal (in percent), for example, 1 = 1% (1 in 100).'
           format: double
           nullable: true
         nielsenOTPInPercent:
           type: number
-          description: 'The Nielsen On Target Percentage goal (in percent), for example, 1 = 1% (1 in 100).'
           format: double
           nullable: true
         cpaInAdvertiserCurrency:
           type: number
-          description: The Cost Per Acquisition goal (in the Advertiser currency).
           format: double
           nullable: true
         returnOnAdSpendPercent:
           type: number
-          description: The Return on Ad Spend goal (in percent of ad spend).
           format: double
           nullable: true
         vcrInPercent:
           type: number
-          description: 'The Video Completion Rate goal (in percent), for example, 1 = 1% (1 in 100).'
           format: double
           nullable: true
         viewabilityInPercent:
           type: number
-          description: 'The Viewability goal (in percent), for example, 1 = 1% (1 in 100).'
           format: double
           nullable: true
         vcpmInAdvertiserCurrency:
           type: number
-          description: The Estimated Viewable Cost Per Mille (thousand) goal (in the Advertiser currency).
           format: double
           nullable: true
         cpcvInAdvertiserCurrency:
           type: number
-          description: Cost Per Completed View goal (in the Advertiser currency).
+          format: double
+          nullable: true
+        miaozhenOTPInPercent:
+          type: number
           format: double
           nullable: true
       additionalProperties: false
-    CampaignCreationInput:
+    AdGroupRoiGoalInput:
+      type: object
+      properties:
+        maximizeReach:
+          type: boolean
+          nullable: true
+        maximizeLtvIncrementalReach:
+          type: boolean
+          nullable: true
+        cpcInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        ctrInPercent:
+          type: number
+          format: double
+          nullable: true
+        nielsenOTPInPercent:
+          type: number
+          format: double
+          nullable: true
+        cpaInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        returnOnAdSpendPercent:
+          type: number
+          format: double
+          nullable: true
+        vcrInPercent:
+          type: number
+          format: double
+          nullable: true
+        viewabilityInPercent:
+          type: number
+          format: double
+          nullable: true
+        vcpmInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        cpcvInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        miaozhenOTPInPercent:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    AdGroupWorkflow:
+      required:
+        - associatedBidLists
+        - budget
+        - campaignId
+        - channel
+        - comscoreSettings
+        - contractTargeting
+        - creativeIds
+        - dimensionalBiddingAutoOptimizationSettings
+        - flights
+        - funnelLocation
+        - id
+        - isEnabled
+        - isUseClicksAsConversionsEnabled
+        - isUseSecondaryConversionsEnabled
+        - name
+        - roiGoal
+      type: object
+      properties:
+        id:
+          minLength: 1
+          type: string
+        name:
+          minLength: 1
+          type: string
+        campaignId:
+          minLength: 1
+          type: string
+        isEnabled:
+          type: boolean
+        description:
+          type: string
+          nullable: true
+        programmaticGuaranteedPrivateContractId:
+          type: string
+          nullable: true
+        channel:
+          $ref: '#/components/schemas/AdGroupChannel'
+        funnelLocation:
+          $ref: '#/components/schemas/AdGroupFunnelLocation'
+        budget:
+          $ref: '#/components/schemas/AdGroupBudget'
+        baseBidCpmInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        maxBidCpmInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        audienceTargeting:
+          $ref: '#/components/schemas/AdGroupAudienceTargeting'
+        roiGoal:
+          $ref: '#/components/schemas/AdGroupRoiGoal'
+        creativeIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+        associatedBidLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupAssociateBidList'
+          nullable: true
+        flights:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupFlight'
+          nullable: true
+        koaOptimizationSettings:
+          $ref: '#/components/schemas/AdGroupKoaOptimizationSettings'
+        comscoreSettings:
+          $ref: '#/components/schemas/AdGroupComscoreSettings'
+        contractTargeting:
+          $ref: '#/components/schemas/AdGroupContractTargeting'
+        dimensionalBiddingAutoOptimizationSettings:
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/DimensionalBiddingDimensions'
+          nullable: true
+        isUseClicksAsConversionsEnabled:
+          type: boolean
+        isUseSecondaryConversionsEnabled:
+          type: boolean
+        nielsenTrackingAttributes:
+          $ref: '#/components/schemas/AdGroupNielsenTrackingAttributes'
+      additionalProperties: false
+    AllocationType:
+      enum:
+        - Minimum
+        - Maximum
+        - Fixed
+      type: string
+    BudgetWorkflow:
+      required:
+        - budgetInAdvertiserCurrency
+      type: object
+      properties:
+        pacingMode:
+          $ref: '#/components/schemas/CampaignPacingMode'
+        budgetInAdvertiserCurrency:
+          type: number
+          format: double
+        budgetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        dailyTargetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        dailyTargetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    CampaignChannelType:
+      enum:
+        - None
+        - Display
+        - Video
+        - Audio
+        - TV
+        - NativeDisplay
+        - NativeVideo
+        - DOOH
+      type: string
+    CampaignConversionReportingColumnWorkflow:
+      required:
+        - includeInCustomCPA
+        - reportingColumnId
+        - trackingTagId
+      type: object
+      properties:
+        trackingTagId:
+          minLength: 1
+          type: string
+        includeInCustomCPA:
+          type: boolean
+        reportingColumnId:
+          type: integer
+          format: int32
+        roasConfig:
+          $ref: '#/components/schemas/CustomROASConfig'
+        weight:
+          type: number
+          format: double
+          nullable: true
+        crossDeviceAttributionModelId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CampaignCreateROIGoalWorkflow:
+      type: object
+      properties:
+        maximizeReach:
+          type: boolean
+          nullable: true
+        maximizeLtvIncrementalReach:
+          type: boolean
+          nullable: true
+        cpcInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        ctrInPercent:
+          type: number
+          format: double
+          nullable: true
+        nielsenOTPInPercent:
+          type: number
+          format: double
+          nullable: true
+        cpaInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        returnOnAdSpendPercent:
+          type: number
+          format: double
+          nullable: true
+        vcrInPercent:
+          type: number
+          format: double
+          nullable: true
+        viewabilityInPercent:
+          type: number
+          format: double
+          nullable: true
+        vcpmInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        cpcvInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        miaozhenOTPInPercent:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    CampaignCreateWorkflowAdvancedInput:
+      type: object
+      properties:
+        flights:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignFlightWorkflowInput'
+          nullable: true
+        purchaseOrderNumber:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CampaignCreateWorkflowInput:
+      required:
+        - campaignCreateWorkflowPrimaryInput
+      type: object
+      properties:
+        campaignCreateWorkflowPrimaryInput:
+          $ref: '#/components/schemas/CampaignCreateWorkflowPrimaryInput'
+        campaignCreateAdvancedInput:
+          $ref: '#/components/schemas/CampaignCreateWorkflowAdvancedInput'
+        adGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignCreationAdGroupInput'
+          nullable: true
+        validationOnly:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    CampaignCreateWorkflowPrimaryInput:
       required:
         - advertiserId
-        - campaignFlights
-        - campaignName
+        - name
         - primaryChannel
         - primaryGoal
       type: object
@@ -256,23 +902,136 @@ components:
         advertiserId:
           minLength: 1
           type: string
-          description: The platform ID of the advertiser that owns this Campaign.
-        campaignName:
+        name:
           minLength: 1
           type: string
-          description: The name of the Campaign.
+        description:
+          type: string
+          nullable: true
+        timeZone:
+          type: string
+          nullable: true
+        customCPAClickWeight:
+          type: number
+          format: double
+          nullable: true
+        customCPAViewthroughWeight:
+          type: number
+          format: double
+          nullable: true
+        customCPAType:
+          $ref: '#/components/schemas/CustomCPAType'
+        impressionsOnlyBudgetingCpm:
+          type: number
+          format: double
+          nullable: true
         primaryChannel:
-          $ref: '#/components/schemas/CampaignChannel'
+          $ref: '#/components/schemas/CampaignChannelType'
+        budget:
+          $ref: '#/components/schemas/BudgetWorkflow'
         primaryGoal:
-          $ref: '#/components/schemas/CampaignCreateROIGoalInput'
-        campaignFlights:
+          $ref: '#/components/schemas/CampaignCreateROIGoalWorkflow'
+        startDateInUtc:
+          type: string
+          format: date-time
+          nullable: true
+        endDateInUtc:
+          type: string
+          format: date-time
+          nullable: true
+        seedId:
+          type: string
+          nullable: true
+        campaignConversionReportingColumns:
           type: array
           items:
-            $ref: '#/components/schemas/CampaignFlightCreationInput'
-          description: The List of flights associated with the Campaign.
+            $ref: '#/components/schemas/CampaignConversionReportingColumnWorkflow'
+          nullable: true
       additionalProperties: false
-      description: Schema with required fields for creating a new campaign
-    CampaignFlightCreationInput:
+    CampaignCreationAdGroupInput:
+      required:
+        - channel
+        - funnelLocation
+        - name
+      type: object
+      properties:
+        name:
+          minLength: 1
+          type: string
+        isEnabled:
+          type: boolean
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        programmaticGuaranteedPrivateContractId:
+          type: string
+          nullable: true
+        channel:
+          $ref: '#/components/schemas/AdGroupChannel'
+        funnelLocation:
+          $ref: '#/components/schemas/AdGroupFunnelLocation'
+        budget:
+          $ref: '#/components/schemas/AdGroupBudgetInput'
+        baseBidCpmInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        maxBidCpmInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        audienceTargeting:
+          $ref: '#/components/schemas/AdGroupAudienceTargetingInput'
+        roiGoal:
+          $ref: '#/components/schemas/AdGroupRoiGoalInput'
+        creativeIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+        associatedBidLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupAssociateBidListInput'
+          nullable: true
+        advancedSettings:
+          $ref: '#/components/schemas/AdGroupAdvancedSettingsInput'
+      additionalProperties: false
+    CampaignFlightWorkflow:
+      required:
+        - budgetInAdvertiserCurrency
+        - id
+        - startDateInclusiveUTC
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        startDateInclusiveUTC:
+          type: string
+          format: date-time
+        endDateExclusiveUTC:
+          type: string
+          format: date-time
+          nullable: true
+        budgetInAdvertiserCurrency:
+          type: number
+          format: double
+        budgetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+        dailyTargetInAdvertiserCurrency:
+          type: number
+          format: double
+          nullable: true
+        dailyTargetInImpressions:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    CampaignFlightWorkflowInput:
       required:
         - budgetInAdvertiserCurrency
         - startDateInclusiveUTC
@@ -280,44 +1039,120 @@ components:
       properties:
         startDateInclusiveUTC:
           type: string
-          description: The date and time (in UTC) when the campaign flight is to start spending.
           format: date-time
         endDateExclusiveUTC:
           type: string
-          description: 'The date and time (in UTC) when the campaign flight is to stop spending if it has not yet exhausted its budget. To create or update a campaign flight, you may not set this property value to a date in the past.'
           format: date-time
           nullable: true
         budgetInAdvertiserCurrency:
           type: number
-          description: The maximum amount the campaign flight may spend. This must be in the currency of the advertiser that owns the campaign.
           format: double
         budgetInImpressions:
           type: integer
-          description: The maximum amount of impressions the campaign flight should buy.
           format: int64
           nullable: true
         dailyTargetInAdvertiserCurrency:
           type: number
-          description: 'The total amount the campaign flight should spend in a single day, if possible. If you do not want to limit the daily spend, you may set it to null. This must be in the currency of the advertiser that owns the campaign.'
           format: double
           nullable: true
         dailyTargetInImpressions:
           type: integer
-          description: 'The total amount of impressions the campaign flight should buy in a single day, if possible. If you do not want to limit the daily impressions, you may set it to null.'
           format: int64
           nullable: true
       additionalProperties: false
-    CampaignVersionResponse:
+    CampaignPacingMode:
+      enum:
+        - PaceAhead
+        - PaceEvenly
+        - PaceToDailyCap
+        - PaceAsSoonAsPossible
+      type: string
+    CampaignPayload:
+      type: object
+      properties:
+        campaign:
+          $ref: '#/components/schemas/CampaignWorkflow'
+        adGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdGroupWorkflow'
+          nullable: true
+        userErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserError'
+          nullable: true
+      additionalProperties: false
+    CampaignVersionWorkflow:
+      required:
+        - id
       type: object
       properties:
         id:
+          minLength: 1
           type: string
-          nullable: true
         version:
           type: string
           nullable: true
         budgetingVersion:
           type: string
+          nullable: true
+      additionalProperties: false
+    CampaignWorkflow:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        startDate:
+          type: string
+          format: date-time
+          nullable: true
+        endDate:
+          type: string
+          format: date-time
+          nullable: true
+        timeZone:
+          type: string
+          nullable: true
+        customCPAClickWeight:
+          type: number
+          format: double
+          nullable: true
+        customCPAViewthroughWeight:
+          type: number
+          format: double
+          nullable: true
+        customCPAType:
+          $ref: '#/components/schemas/CustomCPAType'
+        impressionsOnlyBudgetingCpm:
+          type: number
+          format: double
+          nullable: true
+        primaryChannel:
+          $ref: '#/components/schemas/CampaignChannelType'
+        primaryGoal:
+          type: string
+          nullable: true
+        seedId:
+          type: string
+          nullable: true
+        conversionReportingColumnsCount:
+          type: integer
+          format: int32
+          nullable: true
+        flights:
+          type: array
+          items:
+            $ref: '#/components/schemas/CampaignFlightWorkflow'
           nullable: true
       additionalProperties: false
     ContextualDataInput:
@@ -336,6 +1171,131 @@ components:
           description: Urls
           nullable: true
       additionalProperties: false
+    CustomCPAType:
+      enum:
+        - Disabled
+        - PixelWeighting
+        - ClickViewthroughWeighting
+      type: string
+    CustomROASConfig:
+      required:
+        - includeInCustomROAS
+      type: object
+      properties:
+        includeInCustomROAS:
+          type: boolean
+        customROASWeight:
+          type: number
+          format: double
+          nullable: true
+        customROASClickWeight:
+          type: number
+          format: double
+          nullable: true
+        customROASViewthroughWeight:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    DimensionalBiddingDimensions:
+      enum:
+        - UnknownDimension
+        - HasAdFormatId
+        - HasDomainFragmentId
+        - HasUniversalCategoryTaxonomyId
+        - HasPlacementPositionRelativeToFoldId
+        - HasAdvertiserTargetingDataId
+        - HasBrowserId
+        - HasCarrierId
+        - HasDeviceModelId
+        - HasDeviceTypeId
+        - HasGeoSegmentId
+        - HasHourOfWeek
+        - HasLanguageId
+        - HasOsId
+        - HasPrivateContractId
+        - HasRecencyWindowInMinutes
+        - HasRenderingContextId
+        - HasFactualGeostoreTargetingDataId
+        - HasSupplyVendorId
+        - HasTemperatureBucketInCelsius
+        - HasThirdPartyData
+        - HasAdsTxtSellerTypeId
+        - HasVideoMutedStateId
+        - HasVideoPlaybackTypeId
+        - HasVideoPlayerSizeId
+        - HasVideoQualityId
+        - HasVideoSkippabilityId
+        - HasFactualProximityDataId
+        - HasImpressionPlacementId
+        - HasVideoTruthScoreRange
+        - HasVideoViewabilityScoreRange
+        - HasDisplayViewabilityScoreRange
+        - HasPeer39LanguageId
+        - HasIntegralContextualCategoryId
+        - HasPeer39ContextualCategoryId
+        - HasDoubleVerifyContextualCategoryId
+        - HasIntegralBrandSafetyCategoryId
+        - HasIntegralVideoBrandSafetyCategoryId
+        - HasPeer39BrandSafetyCategoryId
+        - HasDoubleVerifyBrandSafetyCategoryId
+        - HasIntegralPageQualityCategoryId
+        - HasIntegralVideoPageQualityCategoryId
+        - HasPeer39PageQualityCategoryId
+        - HasDoubleVerifyBotAvoidanceCategoryId
+        - HasContextualAppCategoryId
+        - HasPublisherId
+        - HasIntegralViewabilityCategoryId
+        - HasIntegralVideoViewabilityCategoryId
+        - HasDoubleVerifyViewabilityCategoryId
+        - HasDoubleVerifyVideoViewabilityCategoryId
+        - HasFrequencyAdjustmentId
+        - HasPeer39ViewabilityCategoryId
+        - HasVideoCompletionRateScoreRange
+        - HasInternetConnectionTypeId
+        - HasAdBugPageQualityCategoryId
+        - HasAdBugVideoPageQualityCategoryId
+        - HasRTBAsiaPageQualityCategoryId
+        - HasRTBAsiaVideoPageQualityCategoryId
+        - HasTTDContextualCategoryId
+        - HasSupplyPathOptimizationListId
+        - HasMarketTypeId
+        - HasContextualSupplyVendorGenreId
+        - HasContextualSupplyVendorCategoryId
+        - HasWeatherConditionId
+        - HasFrequencyV2AdjustmentId
+        - HasSemasioContextualCategoryId
+        - HasSellerId
+        - HasDigitalOutOfHomeVenueTypeId
+        - HasNativePlacementTypeId
+        - HasTTDNativeContextTypeId
+        - HasDomainClassId
+        - HasGeofenceThirdPartyDataAndBrand
+        - HasPreBidContextualCategoryId
+        - HasMiaozhenPageQualityCategoryId
+        - HasMiaozhenVideoPageQualityCategoryId
+        - HasTencentPageQualityCategoryId
+        - HasContentGenre
+        - HasContentLivestream
+        - HasContentProductionQuality
+        - HasContentRating
+        - HasContentDuration
+        - HasTVQualityIndexRange
+        - HasAtmosphericCondition
+        - HasMarketplaceId
+        - HasAudienceReachPercentageTierId
+        - HasAdLoadCategory
+        - HasFullReferrerUrl
+        - HasLikelyRefreshRate
+        - HasContentTransparency
+        - HasIdiosyncraticSegmentId
+      type: string
+    EnhancedNielsenReportingOptions:
+      enum:
+        - None
+        - Audience
+        - Site
+      type: string
     GraphQLQueryInput:
       required:
         - query
@@ -346,6 +1306,7 @@ components:
           type: string
           description: The GraphQL query to execute.
         variables:
+          type: object
           description: Variables to substitute into the query.
           nullable: true
       additionalProperties: false
@@ -369,7 +1330,8 @@ components:
         instance:
           type: string
           nullable: true
-      additionalProperties: { }
+      additionalProperties:
+        type: object
     Seed:
       required:
         - advertiserId
@@ -445,6 +1407,41 @@ components:
           description: CountryFilterIds
           nullable: true
       additionalProperties: false
+    TargetingEndAge:
+      enum:
+        - Seventeen
+        - Twenty
+        - TwentyFour
+        - TwentyNine
+        - ThirtyFour
+        - ThirtyNine
+        - FortyFour
+        - FortyNine
+        - FiftyFour
+        - SixtyFour
+        - SixtyFourPlus
+      type: string
+    TargetingGender:
+      enum:
+        - Male
+        - Female
+        - Both
+      type: string
+    TargetingStartAge:
+      enum:
+        - Two
+        - Thirteen
+        - Eighteen
+        - TwentyOne
+        - TwentyFive
+        - Thirty
+        - ThirtyFive
+        - Forty
+        - FortyFive
+        - Fifty
+        - FiftyFive
+        - SixtyFive
+      type: string
     ThirdPartyDataInput:
       required:
         - thirdPartyDataBrandId
@@ -460,6 +1457,21 @@ components:
           type: string
           description: ThirdPartyDataBrandId
       additionalProperties: false
+    UserError:
+      required:
+        - field
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+        field:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
   securitySchemes:
     TTD-Auth:
       type: apiKey
@@ -467,4 +1479,4 @@ components:
       name: TTD-Auth
       in: header
 security:
-- TTD-Auth: []
+  - TTD-Auth: [ ]
