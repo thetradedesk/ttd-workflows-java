@@ -5,7 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.thetradedesk.workflows.models.components.CampaignVersionResponse;
+import com.thetradedesk.workflows.models.components.CampaignVersionWorkflow;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -37,22 +37,22 @@ public class GetCampaignIdVersionResponse implements Response {
     /**
      * OK
      */
-    private Optional<? extends CampaignVersionResponse> campaignVersionResponse;
+    private Optional<? extends CampaignVersionWorkflow> campaignVersionWorkflow;
 
     @JsonCreator
     public GetCampaignIdVersionResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends CampaignVersionResponse> campaignVersionResponse) {
+            Optional<? extends CampaignVersionWorkflow> campaignVersionWorkflow) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(campaignVersionResponse, "campaignVersionResponse");
+        Utils.checkNotNull(campaignVersionWorkflow, "campaignVersionWorkflow");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.campaignVersionResponse = campaignVersionResponse;
+        this.campaignVersionWorkflow = campaignVersionWorkflow;
     }
     
     public GetCampaignIdVersionResponse(
@@ -91,8 +91,8 @@ public class GetCampaignIdVersionResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CampaignVersionResponse> campaignVersionResponse() {
-        return (Optional<CampaignVersionResponse>) campaignVersionResponse;
+    public Optional<CampaignVersionWorkflow> campaignVersionWorkflow() {
+        return (Optional<CampaignVersionWorkflow>) campaignVersionWorkflow;
     }
 
     public final static Builder builder() {
@@ -129,18 +129,18 @@ public class GetCampaignIdVersionResponse implements Response {
     /**
      * OK
      */
-    public GetCampaignIdVersionResponse withCampaignVersionResponse(CampaignVersionResponse campaignVersionResponse) {
-        Utils.checkNotNull(campaignVersionResponse, "campaignVersionResponse");
-        this.campaignVersionResponse = Optional.ofNullable(campaignVersionResponse);
+    public GetCampaignIdVersionResponse withCampaignVersionWorkflow(CampaignVersionWorkflow campaignVersionWorkflow) {
+        Utils.checkNotNull(campaignVersionWorkflow, "campaignVersionWorkflow");
+        this.campaignVersionWorkflow = Optional.ofNullable(campaignVersionWorkflow);
         return this;
     }
 
     /**
      * OK
      */
-    public GetCampaignIdVersionResponse withCampaignVersionResponse(Optional<? extends CampaignVersionResponse> campaignVersionResponse) {
-        Utils.checkNotNull(campaignVersionResponse, "campaignVersionResponse");
-        this.campaignVersionResponse = campaignVersionResponse;
+    public GetCampaignIdVersionResponse withCampaignVersionWorkflow(Optional<? extends CampaignVersionWorkflow> campaignVersionWorkflow) {
+        Utils.checkNotNull(campaignVersionWorkflow, "campaignVersionWorkflow");
+        this.campaignVersionWorkflow = campaignVersionWorkflow;
         return this;
     }
 
@@ -158,7 +158,7 @@ public class GetCampaignIdVersionResponse implements Response {
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.campaignVersionResponse, other.campaignVersionResponse);
+            Objects.deepEquals(this.campaignVersionWorkflow, other.campaignVersionWorkflow);
     }
     
     @Override
@@ -167,7 +167,7 @@ public class GetCampaignIdVersionResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            campaignVersionResponse);
+            campaignVersionWorkflow);
     }
     
     @Override
@@ -176,7 +176,7 @@ public class GetCampaignIdVersionResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "campaignVersionResponse", campaignVersionResponse);
+                "campaignVersionWorkflow", campaignVersionWorkflow);
     }
     
     public final static class Builder {
@@ -187,7 +187,7 @@ public class GetCampaignIdVersionResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends CampaignVersionResponse> campaignVersionResponse = Optional.empty();
+        private Optional<? extends CampaignVersionWorkflow> campaignVersionWorkflow = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -223,18 +223,18 @@ public class GetCampaignIdVersionResponse implements Response {
         /**
          * OK
          */
-        public Builder campaignVersionResponse(CampaignVersionResponse campaignVersionResponse) {
-            Utils.checkNotNull(campaignVersionResponse, "campaignVersionResponse");
-            this.campaignVersionResponse = Optional.ofNullable(campaignVersionResponse);
+        public Builder campaignVersionWorkflow(CampaignVersionWorkflow campaignVersionWorkflow) {
+            Utils.checkNotNull(campaignVersionWorkflow, "campaignVersionWorkflow");
+            this.campaignVersionWorkflow = Optional.ofNullable(campaignVersionWorkflow);
             return this;
         }
 
         /**
          * OK
          */
-        public Builder campaignVersionResponse(Optional<? extends CampaignVersionResponse> campaignVersionResponse) {
-            Utils.checkNotNull(campaignVersionResponse, "campaignVersionResponse");
-            this.campaignVersionResponse = campaignVersionResponse;
+        public Builder campaignVersionWorkflow(Optional<? extends CampaignVersionWorkflow> campaignVersionWorkflow) {
+            Utils.checkNotNull(campaignVersionWorkflow, "campaignVersionWorkflow");
+            this.campaignVersionWorkflow = campaignVersionWorkflow;
             return this;
         }
         
@@ -243,7 +243,7 @@ public class GetCampaignIdVersionResponse implements Response {
                 contentType,
                 statusCode,
                 rawResponse,
-                campaignVersionResponse);
+                campaignVersionWorkflow);
         }
     }
 }

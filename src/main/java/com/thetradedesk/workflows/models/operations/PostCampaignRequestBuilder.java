@@ -3,7 +3,7 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
+import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class PostCampaignRequestBuilder {
 
-    private Optional<? extends CampaignCreationInput> request = Optional.empty();
+    private Optional<? extends CampaignCreateWorkflowInput> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallPostCampaign sdk;
 
@@ -20,13 +20,13 @@ public class PostCampaignRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public PostCampaignRequestBuilder request(CampaignCreationInput request) {
+    public PostCampaignRequestBuilder request(CampaignCreateWorkflowInput request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public PostCampaignRequestBuilder request(Optional<? extends CampaignCreationInput> request) {
+    public PostCampaignRequestBuilder request(Optional<? extends CampaignCreateWorkflowInput> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

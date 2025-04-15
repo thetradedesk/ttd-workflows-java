@@ -3,7 +3,7 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
+import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
 import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
 import com.thetradedesk.workflows.models.components.SeedCreationInput;
 import com.thetradedesk.workflows.utils.Options;
@@ -15,7 +15,7 @@ public class SDKMethodInterfaces {
 
     public interface MethodCallPostCampaign {
         PostCampaignResponse create(
-            Optional<? extends CampaignCreationInput> request,
+            Optional<? extends CampaignCreateWorkflowInput> request,
             Optional<Options> options) throws Exception;
     }
 

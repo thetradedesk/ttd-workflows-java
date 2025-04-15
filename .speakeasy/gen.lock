@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: 6bf246e65dd64b142b21153e2322b172
+  docChecksum: 1caa85cfb9e407b31ab2b91e2fc27643
   docVersion: v1
   speakeasyVersion: 1.531.0
   generationVersion: 2.568.2
-  releaseVersion: 0.3.0
-  configChecksum: 0b2316805a1e7e8d8d5a505885545b79
+  releaseVersion: 0.2.0
+  configChecksum: 9fa001207b9178ec7e2291bbca0ef8dc
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -28,26 +28,68 @@ generatedFiles:
   - .gitattributes
   - USAGE.md
   - build.gradle
-  - docs/models/components/Campaign.md
-  - docs/models/components/CampaignChannel.md
-  - docs/models/components/CampaignCreateROIGoalInput.md
-  - docs/models/components/CampaignCreationInput.md
-  - docs/models/components/CampaignFlightCreationInput.md
-  - docs/models/components/CampaignVersionResponse.md
+  - docs/models/components/AdGroupAdvancedSettingsInput.md
+  - docs/models/components/AdGroupAssociateBidList.md
+  - docs/models/components/AdGroupAssociateBidListInput.md
+  - docs/models/components/AdGroupAudienceTargeting.md
+  - docs/models/components/AdGroupAudienceTargetingInput.md
+  - docs/models/components/AdGroupBudget.md
+  - docs/models/components/AdGroupBudgetInput.md
+  - docs/models/components/AdGroupChannel.md
+  - docs/models/components/AdGroupComscoreSettings.md
+  - docs/models/components/AdGroupComscoreSettingsInput.md
+  - docs/models/components/AdGroupContractTargeting.md
+  - docs/models/components/AdGroupContractTargetingInput.md
+  - docs/models/components/AdGroupFlight.md
+  - docs/models/components/AdGroupFlightInput.md
+  - docs/models/components/AdGroupFunnelLocation.md
+  - docs/models/components/AdGroupKoaOptimizationSettings.md
+  - docs/models/components/AdGroupKoaOptimizationSettingsInput.md
+  - docs/models/components/AdGroupNewFrequencyConfigInput.md
+  - docs/models/components/AdGroupNielsenTrackingAttributes.md
+  - docs/models/components/AdGroupNielsenTrackingAttributesInput.md
+  - docs/models/components/AdGroupRoiGoal.md
+  - docs/models/components/AdGroupRoiGoalInput.md
+  - docs/models/components/AdGroupWorkflow.md
+  - docs/models/components/AllocationType.md
+  - docs/models/components/BudgetWorkflow.md
+  - docs/models/components/CampaignChannelType.md
+  - docs/models/components/CampaignConversionReportingColumnWorkflow.md
+  - docs/models/components/CampaignCreateROIGoalWorkflow.md
+  - docs/models/components/CampaignCreateWorkflowAdvancedInput.md
+  - docs/models/components/CampaignCreateWorkflowInput.md
+  - docs/models/components/CampaignCreateWorkflowPrimaryInput.md
+  - docs/models/components/CampaignCreationAdGroupInput.md
+  - docs/models/components/CampaignFlightWorkflow.md
+  - docs/models/components/CampaignFlightWorkflowInput.md
+  - docs/models/components/CampaignPacingMode.md
+  - docs/models/components/CampaignPayload.md
+  - docs/models/components/CampaignVersionWorkflow.md
+  - docs/models/components/CampaignWorkflow.md
   - docs/models/components/ContextualDataInput.md
+  - docs/models/components/CustomCPAType.md
+  - docs/models/components/CustomROASConfig.md
+  - docs/models/components/DimensionalBiddingDimensions.md
+  - docs/models/components/EnhancedNielsenReportingOptions.md
   - docs/models/components/GraphQLQueryInput.md
+  - docs/models/components/ProblemDetails.md
   - docs/models/components/Security.md
   - docs/models/components/Seed.md
   - docs/models/components/SeedCreationInput.md
   - docs/models/components/SeedTargetingDataInput.md
+  - docs/models/components/TargetingEndAge.md
+  - docs/models/components/TargetingGender.md
+  - docs/models/components/TargetingStartAge.md
   - docs/models/components/ThirdPartyDataInput.md
+  - docs/models/components/UserError.md
+  - docs/models/components/Variables.md
   - docs/models/errors/ProblemDetailsException.md
   - docs/models/operations/GetCampaignIdVersionRequest.md
   - docs/models/operations/GetCampaignIdVersionResponse.md
   - docs/models/operations/PostCampaignResponse.md
   - docs/models/operations/PostGraphqlResponse.md
+  - docs/models/operations/PostGraphqlResponseBody.md
   - docs/models/operations/PostSeedResponse.md
-  - docs/models/operations/ResponseBody.md
   - docs/sdks/campaign/README.md
   - docs/sdks/graphql/README.md
   - docs/sdks/seed/README.md
@@ -64,19 +106,61 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/SecuritySource.java
   - src/main/java/com/thetradedesk/workflows/Seed.java
   - src/main/java/com/thetradedesk/workflows/TtdWorkflows.java
-  - src/main/java/com/thetradedesk/workflows/models/components/Campaign.java
-  - src/main/java/com/thetradedesk/workflows/models/components/CampaignChannel.java
-  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreateROIGoalInput.java
-  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreationInput.java
-  - src/main/java/com/thetradedesk/workflows/models/components/CampaignFlightCreationInput.java
-  - src/main/java/com/thetradedesk/workflows/models/components/CampaignVersionResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAdvancedSettingsInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAssociateBidList.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAssociateBidListInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAudienceTargeting.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAudienceTargetingInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupBudget.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupBudgetInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupChannel.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupComscoreSettings.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupComscoreSettingsInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupContractTargeting.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupContractTargetingInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupFlight.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupFlightInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupFunnelLocation.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupKoaOptimizationSettings.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupKoaOptimizationSettingsInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupNewFrequencyConfigInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupNielsenTrackingAttributes.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupNielsenTrackingAttributesInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupRoiGoal.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupRoiGoalInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/AllocationType.java
+  - src/main/java/com/thetradedesk/workflows/models/components/BudgetWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignChannelType.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignConversionReportingColumnWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreateROIGoalWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreateWorkflowAdvancedInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreateWorkflowInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreateWorkflowPrimaryInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignCreationAdGroupInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignFlightWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignFlightWorkflowInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignPacingMode.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignPayload.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignVersionWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CampaignWorkflow.java
   - src/main/java/com/thetradedesk/workflows/models/components/ContextualDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CustomCPAType.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CustomROASConfig.java
+  - src/main/java/com/thetradedesk/workflows/models/components/DimensionalBiddingDimensions.java
+  - src/main/java/com/thetradedesk/workflows/models/components/EnhancedNielsenReportingOptions.java
   - src/main/java/com/thetradedesk/workflows/models/components/GraphQLQueryInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/ProblemDetails.java
   - src/main/java/com/thetradedesk/workflows/models/components/Security.java
   - src/main/java/com/thetradedesk/workflows/models/components/Seed.java
   - src/main/java/com/thetradedesk/workflows/models/components/SeedCreationInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/SeedTargetingDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/TargetingEndAge.java
+  - src/main/java/com/thetradedesk/workflows/models/components/TargetingGender.java
+  - src/main/java/com/thetradedesk/workflows/models/components/TargetingStartAge.java
   - src/main/java/com/thetradedesk/workflows/models/components/ThirdPartyDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/UserError.java
+  - src/main/java/com/thetradedesk/workflows/models/components/Variables.java
   - src/main/java/com/thetradedesk/workflows/models/errors/APIException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/AuthException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/ProblemDetailsException.java
@@ -87,9 +171,9 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlResponseBody.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostSeedRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostSeedResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/ResponseBody.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SDKMethodInterfaces.java
   - src/main/java/com/thetradedesk/workflows/utils/BackoffStrategy.java
   - src/main/java/com/thetradedesk/workflows/utils/BigDecimalString.java
@@ -142,9 +226,9 @@ examples:
     speakeasy-default-post-/campaign:
       responses:
         "201":
-          application/json: {"advertiserId": "<id>", "campaignName": "<value>"}
+          application/json: {}
         "400":
-          application/json: {"key": "<value>", "key1": "<value>"}
+          application/json: {"key": {}, "key1": {}}
   get_/campaign/{id}/version:
     speakeasy-default-get-/campaign/{id}/version:
       parameters:
@@ -154,20 +238,20 @@ examples:
         "200":
           application/json: {}
         "400":
-          application/json: {"key": "<value>", "key1": "<value>"}
+          application/json: {"key": {}, "key1": {}}
   post_/graphql:
     speakeasy-default-post-/graphql:
       responses:
         "200":
-          application/json: {"key": {}}
+          application/json: {}
         "400":
-          application/json: {"key": "<value>"}
+          application/json: {"key": {}}
   post_/seed:
     speakeasy-default-post-/seed:
       responses:
         "201":
           application/json: {"id": 486589, "seedName": "<value>", "advertiserId": "<id>"}
         "400":
-          application/json: {"key": "<value>", "key1": "<value>"}
+          application/json: {"key": {}, "key1": {}}
 examplesVersion: 1.0.1
 generatedTests: {}
