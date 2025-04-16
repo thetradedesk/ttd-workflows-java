@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.thetradedesk.workflows.models.components.ProblemDetails;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.Override;
 import java.lang.RuntimeException;
 import java.lang.String;
@@ -46,7 +46,7 @@ public class ProblemDetailsException extends RuntimeException {
     private JsonNullable<String> instance;
 
     @JsonIgnore
-    private Map<String, Object> additionalProperties;
+    private Map<String, ProblemDetails> additionalProperties;
 
     @JsonCreator
     public ProblemDetailsException(
@@ -98,7 +98,7 @@ public class ProblemDetailsException extends RuntimeException {
     }
 
     @JsonAnyGetter
-    public Map<String, Object> additionalProperties() {
+    public Map<String, ProblemDetails> additionalProperties() {
         return additionalProperties;
     }
 
@@ -167,14 +167,14 @@ public class ProblemDetailsException extends RuntimeException {
     }
 
     @JsonAnySetter
-    public ProblemDetailsException withAdditionalProperty(String key, Object value) {
+    public ProblemDetailsException withAdditionalProperty(String key, ProblemDetails value) {
         // note that value can be null because of the way JsonAnySetter works
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
     }    
 
-    public ProblemDetailsException withAdditionalProperties(Map<String, Object> additionalProperties) {
+    public ProblemDetailsException withAdditionalProperties(Map<String, ProblemDetails> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
         return this;
@@ -233,7 +233,7 @@ public class ProblemDetailsException extends RuntimeException {
  
         private JsonNullable<String> instance = JsonNullable.undefined();
  
-        private Map<String, Object> additionalProperties = new HashMap<>();
+        private Map<String, ProblemDetails> additionalProperties = new HashMap<>();
         
         private Builder() {
           // force use of static builder() method
@@ -299,7 +299,7 @@ public class ProblemDetailsException extends RuntimeException {
             return this;
         }
 
-        public Builder additionalProperty(String key, Object value) {
+        public Builder additionalProperty(String key, ProblemDetails value) {
             Utils.checkNotNull(key, "key");
             // we could be strict about null values (force the user
             // to pass `JsonNullable.of(null)`) but likely to be a bit 
@@ -309,7 +309,7 @@ public class ProblemDetailsException extends RuntimeException {
             return this;
         }
 
-        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+        public Builder additionalProperties(Map<String, ProblemDetails> additionalProperties) {
             Utils.checkNotNull(additionalProperties, "additionalProperties");
             this.additionalProperties = additionalProperties;
             return this;

@@ -4,8 +4,9 @@
 package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.CampaignCreationInput;
-import com.thetradedesk.workflows.models.components.CampaignVersionResponse;
+import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CampaignPayload;
+import com.thetradedesk.workflows.models.components.CampaignVersionWorkflow;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequest;
@@ -78,7 +79,7 @@ public class Campaign implements
      * @throws Exception if the API call fails
      */
     public PostCampaignResponse create(
-            Optional<? extends CampaignCreationInput> request,
+            Optional<? extends CampaignCreateWorkflowInput> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -93,7 +94,7 @@ public class Campaign implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignCreationInput>>() {});
+                new TypeReference<Optional<? extends CampaignCreateWorkflowInput>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -182,10 +183,10 @@ public class Campaign implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "201")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                com.thetradedesk.workflows.models.components.Campaign _out = Utils.mapper().readValue(
+                CampaignPayload _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<com.thetradedesk.workflows.models.components.Campaign>() {});
-                _res.withCampaign(Optional.ofNullable(_out));
+                    new TypeReference<CampaignPayload>() {});
+                _res.withCampaignPayload(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -366,10 +367,10 @@ public class Campaign implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                CampaignVersionResponse _out = Utils.mapper().readValue(
+                CampaignVersionWorkflow _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<CampaignVersionResponse>() {});
-                _res.withCampaignVersionResponse(Optional.ofNullable(_out));
+                    new TypeReference<CampaignVersionWorkflow>() {});
+                _res.withCampaignVersionWorkflow(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(

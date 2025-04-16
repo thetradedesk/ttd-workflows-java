@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.3.0'
+implementation 'com.thetradedesk:workflows:0.2.0'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.3.0</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
@@ -88,8 +88,6 @@ import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
 
 public class Application {
 
@@ -99,24 +97,21 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CampaignCreationInput req = CampaignCreationInput.builder()
-                .advertiserId("<id>")
-                .campaignName("<value>")
-                .primaryChannel(CampaignChannel.VIDEO)
-                .primaryGoal(CampaignCreateROIGoalInput.builder()
+        CampaignCreateWorkflowInput req = CampaignCreateWorkflowInput.builder()
+                .campaignCreateWorkflowPrimaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .advertiserId("<id>")
+                    .name("<value>")
+                    .primaryChannel(CampaignChannelType.AUDIO)
+                    .primaryGoal(CampaignCreateROIGoalWorkflow.builder()
+                        .build())
                     .build())
-                .campaignFlights(List.of(
-                    CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58)
-                        .build()))
                 .build();
 
         PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
-        if (res.campaign().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }
@@ -144,8 +139,6 @@ import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
 
 public class Application {
 
@@ -155,24 +148,21 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CampaignCreationInput req = CampaignCreationInput.builder()
-                .advertiserId("<id>")
-                .campaignName("<value>")
-                .primaryChannel(CampaignChannel.VIDEO)
-                .primaryGoal(CampaignCreateROIGoalInput.builder()
+        CampaignCreateWorkflowInput req = CampaignCreateWorkflowInput.builder()
+                .campaignCreateWorkflowPrimaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .advertiserId("<id>")
+                    .name("<value>")
+                    .primaryChannel(CampaignChannelType.AUDIO)
+                    .primaryGoal(CampaignCreateROIGoalWorkflow.builder()
+                        .build())
                     .build())
-                .campaignFlights(List.of(
-                    CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58)
-                        .build()))
                 .build();
 
         PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
-        if (res.campaign().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }
@@ -219,8 +209,6 @@ import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
@@ -231,17 +219,14 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CampaignCreationInput req = CampaignCreationInput.builder()
-                .advertiserId("<id>")
-                .campaignName("<value>")
-                .primaryChannel(CampaignChannel.VIDEO)
-                .primaryGoal(CampaignCreateROIGoalInput.builder()
+        CampaignCreateWorkflowInput req = CampaignCreateWorkflowInput.builder()
+                .campaignCreateWorkflowPrimaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .advertiserId("<id>")
+                    .name("<value>")
+                    .primaryChannel(CampaignChannelType.AUDIO)
+                    .primaryGoal(CampaignCreateROIGoalWorkflow.builder()
+                        .build())
                     .build())
-                .campaignFlights(List.of(
-                    CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58)
-                        .build()))
                 .build();
 
         PostCampaignResponse res = sdk.campaign().create()
@@ -258,7 +243,7 @@ public class Application {
                     .build())
                 .call();
 
-        if (res.campaign().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }
@@ -276,8 +261,6 @@ import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
@@ -298,24 +281,21 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CampaignCreationInput req = CampaignCreationInput.builder()
-                .advertiserId("<id>")
-                .campaignName("<value>")
-                .primaryChannel(CampaignChannel.VIDEO)
-                .primaryGoal(CampaignCreateROIGoalInput.builder()
+        CampaignCreateWorkflowInput req = CampaignCreateWorkflowInput.builder()
+                .campaignCreateWorkflowPrimaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .advertiserId("<id>")
+                    .name("<value>")
+                    .primaryChannel(CampaignChannelType.AUDIO)
+                    .primaryGoal(CampaignCreateROIGoalWorkflow.builder()
+                        .build())
                     .build())
-                .campaignFlights(List.of(
-                    CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58)
-                        .build()))
                 .build();
 
         PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
-        if (res.campaign().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }
@@ -345,8 +325,6 @@ import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
 
 public class Application {
 
@@ -356,24 +334,21 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CampaignCreationInput req = CampaignCreationInput.builder()
-                .advertiserId("<id>")
-                .campaignName("<value>")
-                .primaryChannel(CampaignChannel.VIDEO)
-                .primaryGoal(CampaignCreateROIGoalInput.builder()
+        CampaignCreateWorkflowInput req = CampaignCreateWorkflowInput.builder()
+                .campaignCreateWorkflowPrimaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .advertiserId("<id>")
+                    .name("<value>")
+                    .primaryChannel(CampaignChannelType.AUDIO)
+                    .primaryGoal(CampaignCreateROIGoalWorkflow.builder()
+                        .build())
                     .build())
-                .campaignFlights(List.of(
-                    CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58)
-                        .build()))
                 .build();
 
         PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
-        if (res.campaign().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }
@@ -395,8 +370,6 @@ import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
-import java.util.List;
 
 public class Application {
 
@@ -407,24 +380,21 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CampaignCreationInput req = CampaignCreationInput.builder()
-                .advertiserId("<id>")
-                .campaignName("<value>")
-                .primaryChannel(CampaignChannel.VIDEO)
-                .primaryGoal(CampaignCreateROIGoalInput.builder()
+        CampaignCreateWorkflowInput req = CampaignCreateWorkflowInput.builder()
+                .campaignCreateWorkflowPrimaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .advertiserId("<id>")
+                    .name("<value>")
+                    .primaryChannel(CampaignChannelType.AUDIO)
+                    .primaryGoal(CampaignCreateROIGoalWorkflow.builder()
+                        .build())
                     .build())
-                .campaignFlights(List.of(
-                    CampaignFlightCreationInput.builder()
-                        .startDateInclusiveUTC(OffsetDateTime.parse("2024-11-30T17:06:07.804Z"))
-                        .budgetInAdvertiserCurrency(4174.58)
-                        .build()))
                 .build();
 
         PostCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
-        if (res.campaign().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }

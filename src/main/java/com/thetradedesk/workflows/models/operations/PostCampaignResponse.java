@@ -5,7 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.thetradedesk.workflows.models.components.Campaign;
+import com.thetradedesk.workflows.models.components.CampaignPayload;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -37,22 +37,22 @@ public class PostCampaignResponse implements Response {
     /**
      * Created
      */
-    private Optional<? extends Campaign> campaign;
+    private Optional<? extends CampaignPayload> campaignPayload;
 
     @JsonCreator
     public PostCampaignResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends Campaign> campaign) {
+            Optional<? extends CampaignPayload> campaignPayload) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(campaign, "campaign");
+        Utils.checkNotNull(campaignPayload, "campaignPayload");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.campaign = campaign;
+        this.campaignPayload = campaignPayload;
     }
     
     public PostCampaignResponse(
@@ -91,8 +91,8 @@ public class PostCampaignResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Campaign> campaign() {
-        return (Optional<Campaign>) campaign;
+    public Optional<CampaignPayload> campaignPayload() {
+        return (Optional<CampaignPayload>) campaignPayload;
     }
 
     public final static Builder builder() {
@@ -129,18 +129,18 @@ public class PostCampaignResponse implements Response {
     /**
      * Created
      */
-    public PostCampaignResponse withCampaign(Campaign campaign) {
-        Utils.checkNotNull(campaign, "campaign");
-        this.campaign = Optional.ofNullable(campaign);
+    public PostCampaignResponse withCampaignPayload(CampaignPayload campaignPayload) {
+        Utils.checkNotNull(campaignPayload, "campaignPayload");
+        this.campaignPayload = Optional.ofNullable(campaignPayload);
         return this;
     }
 
     /**
      * Created
      */
-    public PostCampaignResponse withCampaign(Optional<? extends Campaign> campaign) {
-        Utils.checkNotNull(campaign, "campaign");
-        this.campaign = campaign;
+    public PostCampaignResponse withCampaignPayload(Optional<? extends CampaignPayload> campaignPayload) {
+        Utils.checkNotNull(campaignPayload, "campaignPayload");
+        this.campaignPayload = campaignPayload;
         return this;
     }
 
@@ -158,7 +158,7 @@ public class PostCampaignResponse implements Response {
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.campaign, other.campaign);
+            Objects.deepEquals(this.campaignPayload, other.campaignPayload);
     }
     
     @Override
@@ -167,7 +167,7 @@ public class PostCampaignResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            campaign);
+            campaignPayload);
     }
     
     @Override
@@ -176,7 +176,7 @@ public class PostCampaignResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "campaign", campaign);
+                "campaignPayload", campaignPayload);
     }
     
     public final static class Builder {
@@ -187,7 +187,7 @@ public class PostCampaignResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends Campaign> campaign = Optional.empty();
+        private Optional<? extends CampaignPayload> campaignPayload = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -223,18 +223,18 @@ public class PostCampaignResponse implements Response {
         /**
          * Created
          */
-        public Builder campaign(Campaign campaign) {
-            Utils.checkNotNull(campaign, "campaign");
-            this.campaign = Optional.ofNullable(campaign);
+        public Builder campaignPayload(CampaignPayload campaignPayload) {
+            Utils.checkNotNull(campaignPayload, "campaignPayload");
+            this.campaignPayload = Optional.ofNullable(campaignPayload);
             return this;
         }
 
         /**
          * Created
          */
-        public Builder campaign(Optional<? extends Campaign> campaign) {
-            Utils.checkNotNull(campaign, "campaign");
-            this.campaign = campaign;
+        public Builder campaignPayload(Optional<? extends CampaignPayload> campaignPayload) {
+            Utils.checkNotNull(campaignPayload, "campaignPayload");
+            this.campaignPayload = campaignPayload;
             return this;
         }
         
@@ -243,7 +243,7 @@ public class PostCampaignResponse implements Response {
                 contentType,
                 statusCode,
                 rawResponse,
-                campaign);
+                campaignPayload);
         }
     }
 }
