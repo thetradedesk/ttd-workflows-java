@@ -18,6 +18,7 @@ package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
+import com.thetradedesk.workflows.models.components.Variables;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostGraphqlResponse;
 import java.lang.Exception;
@@ -32,6 +33,8 @@ public class Application {
 
         GraphQLQueryInput req = GraphQLQueryInput.builder()
                 .query("<value>")
+                .variables(Variables.builder()
+                    .build())
                 .build();
 
         PostGraphqlResponse res = sdk.graphql().execute()

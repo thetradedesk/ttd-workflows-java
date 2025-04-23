@@ -9,10 +9,12 @@ import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -36,14 +38,14 @@ public class PostGraphqlResponse implements Response {
     /**
      * OK
      */
-    private Optional<? extends PostGraphqlResponseBody> object;
+    private Optional<? extends Map<String, Object>> object;
 
     @JsonCreator
     public PostGraphqlResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends PostGraphqlResponseBody> object) {
+            Optional<? extends Map<String, Object>> object) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
@@ -90,8 +92,8 @@ public class PostGraphqlResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<PostGraphqlResponseBody> object() {
-        return (Optional<PostGraphqlResponseBody>) object;
+    public Optional<Map<String, Object>> object() {
+        return (Optional<Map<String, Object>>) object;
     }
 
     public final static Builder builder() {
@@ -128,7 +130,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * OK
      */
-    public PostGraphqlResponse withObject(PostGraphqlResponseBody object) {
+    public PostGraphqlResponse withObject(Map<String, Object> object) {
         Utils.checkNotNull(object, "object");
         this.object = Optional.ofNullable(object);
         return this;
@@ -137,7 +139,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * OK
      */
-    public PostGraphqlResponse withObject(Optional<? extends PostGraphqlResponseBody> object) {
+    public PostGraphqlResponse withObject(Optional<? extends Map<String, Object>> object) {
         Utils.checkNotNull(object, "object");
         this.object = object;
         return this;
@@ -186,7 +188,7 @@ public class PostGraphqlResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends PostGraphqlResponseBody> object = Optional.empty();
+        private Optional<? extends Map<String, Object>> object = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -222,7 +224,7 @@ public class PostGraphqlResponse implements Response {
         /**
          * OK
          */
-        public Builder object(PostGraphqlResponseBody object) {
+        public Builder object(Map<String, Object> object) {
             Utils.checkNotNull(object, "object");
             this.object = Optional.ofNullable(object);
             return this;
@@ -231,7 +233,7 @@ public class PostGraphqlResponse implements Response {
         /**
          * OK
          */
-        public Builder object(Optional<? extends PostGraphqlResponseBody> object) {
+        public Builder object(Optional<? extends Map<String, Object>> object) {
             Utils.checkNotNull(object, "object");
             this.object = object;
             return this;

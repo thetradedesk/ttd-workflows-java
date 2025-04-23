@@ -13,16 +13,14 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AdGroupFlight {
 
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("allocationType")
-    private Optional<? extends AllocationType> allocationType;
+    private AllocationType allocationType;
 
     @JsonProperty("budgetInAdvertiserCurrency")
     private double budgetInAdvertiserCurrency;
@@ -48,7 +46,7 @@ public class AdGroupFlight {
 
     @JsonCreator
     public AdGroupFlight(
-            @JsonProperty("allocationType") Optional<? extends AllocationType> allocationType,
+            @JsonProperty("allocationType") AllocationType allocationType,
             @JsonProperty("budgetInAdvertiserCurrency") double budgetInAdvertiserCurrency,
             @JsonProperty("budgetInImpressions") JsonNullable<Long> budgetInImpressions,
             @JsonProperty("dailyTargetInAdvertiserCurrency") JsonNullable<Double> dailyTargetInAdvertiserCurrency,
@@ -72,15 +70,15 @@ public class AdGroupFlight {
     }
     
     public AdGroupFlight(
+            AllocationType allocationType,
             double budgetInAdvertiserCurrency,
             long campaignFlightId) {
-        this(Optional.empty(), budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId, Optional.empty());
+        this(allocationType, budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId, Optional.empty());
     }
 
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<AllocationType> allocationType() {
-        return (Optional<AllocationType>) allocationType;
+    public AllocationType allocationType() {
+        return allocationType;
     }
 
     @JsonIgnore
@@ -118,12 +116,6 @@ public class AdGroupFlight {
     }    
 
     public AdGroupFlight withAllocationType(AllocationType allocationType) {
-        Utils.checkNotNull(allocationType, "allocationType");
-        this.allocationType = Optional.ofNullable(allocationType);
-        return this;
-    }
-
-    public AdGroupFlight withAllocationType(Optional<? extends AllocationType> allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
         this.allocationType = allocationType;
         return this;
@@ -235,7 +227,7 @@ public class AdGroupFlight {
     
     public final static class Builder {
  
-        private Optional<? extends AllocationType> allocationType = Optional.empty();
+        private AllocationType allocationType;
  
         private Double budgetInAdvertiserCurrency;
  
@@ -254,12 +246,6 @@ public class AdGroupFlight {
         }
 
         public Builder allocationType(AllocationType allocationType) {
-            Utils.checkNotNull(allocationType, "allocationType");
-            this.allocationType = Optional.ofNullable(allocationType);
-            return this;
-        }
-
-        public Builder allocationType(Optional<? extends AllocationType> allocationType) {
             Utils.checkNotNull(allocationType, "allocationType");
             this.allocationType = allocationType;
             return this;

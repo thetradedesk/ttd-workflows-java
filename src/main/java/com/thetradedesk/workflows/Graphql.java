@@ -9,7 +9,6 @@ import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostGraphqlRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostGraphqlResponse;
-import com.thetradedesk.workflows.models.operations.PostGraphqlResponseBody;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.HTTPClient;
@@ -33,6 +32,7 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -178,9 +178,9 @@ public class Graphql implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                PostGraphqlResponseBody _out = Utils.mapper().readValue(
+                Map<String, Object> _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<PostGraphqlResponseBody>() {});
+                    new TypeReference<Map<String, Object>>() {});
                 _res.withObject(Optional.ofNullable(_out));
                 return _res;
             } else {

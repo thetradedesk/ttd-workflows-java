@@ -21,14 +21,17 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AdGroupWorkflow {
 
+    @JsonInclude(Include.ALWAYS)
     @JsonProperty("id")
-    private String id;
+    private Optional<String> id;
 
+    @JsonInclude(Include.ALWAYS)
     @JsonProperty("name")
-    private String name;
+    private Optional<String> name;
 
+    @JsonInclude(Include.ALWAYS)
     @JsonProperty("campaignId")
-    private String campaignId;
+    private Optional<String> campaignId;
 
     @JsonProperty("isEnabled")
     private boolean isEnabled;
@@ -51,12 +54,12 @@ public class AdGroupWorkflow {
     private AdGroupBudget budget;
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("baseBidCpmInAdvertiserCurrency")
-    private JsonNullable<Double> baseBidCpmInAdvertiserCurrency;
+    @JsonProperty("baseBidCPMInAdvertiserCurrency")
+    private JsonNullable<Double> baseBidCPMInAdvertiserCurrency;
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("maxBidCpmInAdvertiserCurrency")
-    private JsonNullable<Double> maxBidCpmInAdvertiserCurrency;
+    @JsonProperty("maxBidCPMInAdvertiserCurrency")
+    private JsonNullable<Double> maxBidCPMInAdvertiserCurrency;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceTargeting")
@@ -103,17 +106,17 @@ public class AdGroupWorkflow {
 
     @JsonCreator
     public AdGroupWorkflow(
-            @JsonProperty("id") String id,
-            @JsonProperty("name") String name,
-            @JsonProperty("campaignId") String campaignId,
+            @JsonProperty("id") Optional<String> id,
+            @JsonProperty("name") Optional<String> name,
+            @JsonProperty("campaignId") Optional<String> campaignId,
             @JsonProperty("isEnabled") boolean isEnabled,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("programmaticGuaranteedPrivateContractId") JsonNullable<String> programmaticGuaranteedPrivateContractId,
             @JsonProperty("channel") AdGroupChannel channel,
             @JsonProperty("funnelLocation") AdGroupFunnelLocation funnelLocation,
             @JsonProperty("budget") AdGroupBudget budget,
-            @JsonProperty("baseBidCpmInAdvertiserCurrency") JsonNullable<Double> baseBidCpmInAdvertiserCurrency,
-            @JsonProperty("maxBidCpmInAdvertiserCurrency") JsonNullable<Double> maxBidCpmInAdvertiserCurrency,
+            @JsonProperty("baseBidCPMInAdvertiserCurrency") JsonNullable<Double> baseBidCPMInAdvertiserCurrency,
+            @JsonProperty("maxBidCPMInAdvertiserCurrency") JsonNullable<Double> maxBidCPMInAdvertiserCurrency,
             @JsonProperty("audienceTargeting") Optional<? extends AdGroupAudienceTargeting> audienceTargeting,
             @JsonProperty("roiGoal") AdGroupRoiGoal roiGoal,
             @JsonProperty("creativeIds") Optional<? extends List<String>> creativeIds,
@@ -135,8 +138,8 @@ public class AdGroupWorkflow {
         Utils.checkNotNull(channel, "channel");
         Utils.checkNotNull(funnelLocation, "funnelLocation");
         Utils.checkNotNull(budget, "budget");
-        Utils.checkNotNull(baseBidCpmInAdvertiserCurrency, "baseBidCpmInAdvertiserCurrency");
-        Utils.checkNotNull(maxBidCpmInAdvertiserCurrency, "maxBidCpmInAdvertiserCurrency");
+        Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
+        Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
         Utils.checkNotNull(audienceTargeting, "audienceTargeting");
         Utils.checkNotNull(roiGoal, "roiGoal");
         Utils.checkNotNull(creativeIds, "creativeIds");
@@ -158,8 +161,8 @@ public class AdGroupWorkflow {
         this.channel = channel;
         this.funnelLocation = funnelLocation;
         this.budget = budget;
-        this.baseBidCpmInAdvertiserCurrency = baseBidCpmInAdvertiserCurrency;
-        this.maxBidCpmInAdvertiserCurrency = maxBidCpmInAdvertiserCurrency;
+        this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
+        this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
         this.audienceTargeting = audienceTargeting;
         this.roiGoal = roiGoal;
         this.creativeIds = creativeIds;
@@ -175,9 +178,6 @@ public class AdGroupWorkflow {
     }
     
     public AdGroupWorkflow(
-            String id,
-            String name,
-            String campaignId,
             boolean isEnabled,
             AdGroupChannel channel,
             AdGroupFunnelLocation funnelLocation,
@@ -187,21 +187,21 @@ public class AdGroupWorkflow {
             AdGroupContractTargeting contractTargeting,
             boolean isUseClicksAsConversionsEnabled,
             boolean isUseSecondaryConversionsEnabled) {
-        this(id, name, campaignId, isEnabled, JsonNullable.undefined(), JsonNullable.undefined(), channel, funnelLocation, budget, JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), roiGoal, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), comscoreSettings, contractTargeting, Optional.empty(), isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), isEnabled, JsonNullable.undefined(), JsonNullable.undefined(), channel, funnelLocation, budget, JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), roiGoal, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), comscoreSettings, contractTargeting, Optional.empty(), isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled, Optional.empty());
     }
 
     @JsonIgnore
-    public String id() {
+    public Optional<String> id() {
         return id;
     }
 
     @JsonIgnore
-    public String name() {
+    public Optional<String> name() {
         return name;
     }
 
     @JsonIgnore
-    public String campaignId() {
+    public Optional<String> campaignId() {
         return campaignId;
     }
 
@@ -236,13 +236,13 @@ public class AdGroupWorkflow {
     }
 
     @JsonIgnore
-    public JsonNullable<Double> baseBidCpmInAdvertiserCurrency() {
-        return baseBidCpmInAdvertiserCurrency;
+    public JsonNullable<Double> baseBidCPMInAdvertiserCurrency() {
+        return baseBidCPMInAdvertiserCurrency;
     }
 
     @JsonIgnore
-    public JsonNullable<Double> maxBidCpmInAdvertiserCurrency() {
-        return maxBidCpmInAdvertiserCurrency;
+    public JsonNullable<Double> maxBidCPMInAdvertiserCurrency() {
+        return maxBidCPMInAdvertiserCurrency;
     }
 
     @SuppressWarnings("unchecked")
@@ -318,17 +318,35 @@ public class AdGroupWorkflow {
 
     public AdGroupWorkflow withId(String id) {
         Utils.checkNotNull(id, "id");
+        this.id = Optional.ofNullable(id);
+        return this;
+    }
+
+    public AdGroupWorkflow withId(Optional<String> id) {
+        Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
     }
 
     public AdGroupWorkflow withName(String name) {
         Utils.checkNotNull(name, "name");
+        this.name = Optional.ofNullable(name);
+        return this;
+    }
+
+    public AdGroupWorkflow withName(Optional<String> name) {
+        Utils.checkNotNull(name, "name");
         this.name = name;
         return this;
     }
 
     public AdGroupWorkflow withCampaignId(String campaignId) {
+        Utils.checkNotNull(campaignId, "campaignId");
+        this.campaignId = Optional.ofNullable(campaignId);
+        return this;
+    }
+
+    public AdGroupWorkflow withCampaignId(Optional<String> campaignId) {
         Utils.checkNotNull(campaignId, "campaignId");
         this.campaignId = campaignId;
         return this;
@@ -382,27 +400,27 @@ public class AdGroupWorkflow {
         return this;
     }
 
-    public AdGroupWorkflow withBaseBidCpmInAdvertiserCurrency(double baseBidCpmInAdvertiserCurrency) {
-        Utils.checkNotNull(baseBidCpmInAdvertiserCurrency, "baseBidCpmInAdvertiserCurrency");
-        this.baseBidCpmInAdvertiserCurrency = JsonNullable.of(baseBidCpmInAdvertiserCurrency);
+    public AdGroupWorkflow withBaseBidCPMInAdvertiserCurrency(double baseBidCPMInAdvertiserCurrency) {
+        Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
+        this.baseBidCPMInAdvertiserCurrency = JsonNullable.of(baseBidCPMInAdvertiserCurrency);
         return this;
     }
 
-    public AdGroupWorkflow withBaseBidCpmInAdvertiserCurrency(JsonNullable<Double> baseBidCpmInAdvertiserCurrency) {
-        Utils.checkNotNull(baseBidCpmInAdvertiserCurrency, "baseBidCpmInAdvertiserCurrency");
-        this.baseBidCpmInAdvertiserCurrency = baseBidCpmInAdvertiserCurrency;
+    public AdGroupWorkflow withBaseBidCPMInAdvertiserCurrency(JsonNullable<Double> baseBidCPMInAdvertiserCurrency) {
+        Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
+        this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
         return this;
     }
 
-    public AdGroupWorkflow withMaxBidCpmInAdvertiserCurrency(double maxBidCpmInAdvertiserCurrency) {
-        Utils.checkNotNull(maxBidCpmInAdvertiserCurrency, "maxBidCpmInAdvertiserCurrency");
-        this.maxBidCpmInAdvertiserCurrency = JsonNullable.of(maxBidCpmInAdvertiserCurrency);
+    public AdGroupWorkflow withMaxBidCPMInAdvertiserCurrency(double maxBidCPMInAdvertiserCurrency) {
+        Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
+        this.maxBidCPMInAdvertiserCurrency = JsonNullable.of(maxBidCPMInAdvertiserCurrency);
         return this;
     }
 
-    public AdGroupWorkflow withMaxBidCpmInAdvertiserCurrency(JsonNullable<Double> maxBidCpmInAdvertiserCurrency) {
-        Utils.checkNotNull(maxBidCpmInAdvertiserCurrency, "maxBidCpmInAdvertiserCurrency");
-        this.maxBidCpmInAdvertiserCurrency = maxBidCpmInAdvertiserCurrency;
+    public AdGroupWorkflow withMaxBidCPMInAdvertiserCurrency(JsonNullable<Double> maxBidCPMInAdvertiserCurrency) {
+        Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
+        this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
         return this;
     }
 
@@ -540,8 +558,8 @@ public class AdGroupWorkflow {
             Objects.deepEquals(this.channel, other.channel) &&
             Objects.deepEquals(this.funnelLocation, other.funnelLocation) &&
             Objects.deepEquals(this.budget, other.budget) &&
-            Objects.deepEquals(this.baseBidCpmInAdvertiserCurrency, other.baseBidCpmInAdvertiserCurrency) &&
-            Objects.deepEquals(this.maxBidCpmInAdvertiserCurrency, other.maxBidCpmInAdvertiserCurrency) &&
+            Objects.deepEquals(this.baseBidCPMInAdvertiserCurrency, other.baseBidCPMInAdvertiserCurrency) &&
+            Objects.deepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
             Objects.deepEquals(this.audienceTargeting, other.audienceTargeting) &&
             Objects.deepEquals(this.roiGoal, other.roiGoal) &&
             Objects.deepEquals(this.creativeIds, other.creativeIds) &&
@@ -568,8 +586,8 @@ public class AdGroupWorkflow {
             channel,
             funnelLocation,
             budget,
-            baseBidCpmInAdvertiserCurrency,
-            maxBidCpmInAdvertiserCurrency,
+            baseBidCPMInAdvertiserCurrency,
+            maxBidCPMInAdvertiserCurrency,
             audienceTargeting,
             roiGoal,
             creativeIds,
@@ -596,8 +614,8 @@ public class AdGroupWorkflow {
                 "channel", channel,
                 "funnelLocation", funnelLocation,
                 "budget", budget,
-                "baseBidCpmInAdvertiserCurrency", baseBidCpmInAdvertiserCurrency,
-                "maxBidCpmInAdvertiserCurrency", maxBidCpmInAdvertiserCurrency,
+                "baseBidCPMInAdvertiserCurrency", baseBidCPMInAdvertiserCurrency,
+                "maxBidCPMInAdvertiserCurrency", maxBidCPMInAdvertiserCurrency,
                 "audienceTargeting", audienceTargeting,
                 "roiGoal", roiGoal,
                 "creativeIds", creativeIds,
@@ -614,11 +632,11 @@ public class AdGroupWorkflow {
     
     public final static class Builder {
  
-        private String id;
+        private Optional<String> id = Optional.empty();
  
-        private String name;
+        private Optional<String> name = Optional.empty();
  
-        private String campaignId;
+        private Optional<String> campaignId = Optional.empty();
  
         private Boolean isEnabled;
  
@@ -632,9 +650,9 @@ public class AdGroupWorkflow {
  
         private AdGroupBudget budget;
  
-        private JsonNullable<Double> baseBidCpmInAdvertiserCurrency = JsonNullable.undefined();
+        private JsonNullable<Double> baseBidCPMInAdvertiserCurrency = JsonNullable.undefined();
  
-        private JsonNullable<Double> maxBidCpmInAdvertiserCurrency = JsonNullable.undefined();
+        private JsonNullable<Double> maxBidCPMInAdvertiserCurrency = JsonNullable.undefined();
  
         private Optional<? extends AdGroupAudienceTargeting> audienceTargeting = Optional.empty();
  
@@ -666,17 +684,35 @@ public class AdGroupWorkflow {
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
+            this.id = Optional.ofNullable(id);
+            return this;
+        }
+
+        public Builder id(Optional<String> id) {
+            Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
 
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
+            this.name = Optional.ofNullable(name);
+            return this;
+        }
+
+        public Builder name(Optional<String> name) {
+            Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
 
         public Builder campaignId(String campaignId) {
+            Utils.checkNotNull(campaignId, "campaignId");
+            this.campaignId = Optional.ofNullable(campaignId);
+            return this;
+        }
+
+        public Builder campaignId(Optional<String> campaignId) {
             Utils.checkNotNull(campaignId, "campaignId");
             this.campaignId = campaignId;
             return this;
@@ -730,27 +766,27 @@ public class AdGroupWorkflow {
             return this;
         }
 
-        public Builder baseBidCpmInAdvertiserCurrency(double baseBidCpmInAdvertiserCurrency) {
-            Utils.checkNotNull(baseBidCpmInAdvertiserCurrency, "baseBidCpmInAdvertiserCurrency");
-            this.baseBidCpmInAdvertiserCurrency = JsonNullable.of(baseBidCpmInAdvertiserCurrency);
+        public Builder baseBidCPMInAdvertiserCurrency(double baseBidCPMInAdvertiserCurrency) {
+            Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
+            this.baseBidCPMInAdvertiserCurrency = JsonNullable.of(baseBidCPMInAdvertiserCurrency);
             return this;
         }
 
-        public Builder baseBidCpmInAdvertiserCurrency(JsonNullable<Double> baseBidCpmInAdvertiserCurrency) {
-            Utils.checkNotNull(baseBidCpmInAdvertiserCurrency, "baseBidCpmInAdvertiserCurrency");
-            this.baseBidCpmInAdvertiserCurrency = baseBidCpmInAdvertiserCurrency;
+        public Builder baseBidCPMInAdvertiserCurrency(JsonNullable<Double> baseBidCPMInAdvertiserCurrency) {
+            Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
+            this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
             return this;
         }
 
-        public Builder maxBidCpmInAdvertiserCurrency(double maxBidCpmInAdvertiserCurrency) {
-            Utils.checkNotNull(maxBidCpmInAdvertiserCurrency, "maxBidCpmInAdvertiserCurrency");
-            this.maxBidCpmInAdvertiserCurrency = JsonNullable.of(maxBidCpmInAdvertiserCurrency);
+        public Builder maxBidCPMInAdvertiserCurrency(double maxBidCPMInAdvertiserCurrency) {
+            Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
+            this.maxBidCPMInAdvertiserCurrency = JsonNullable.of(maxBidCPMInAdvertiserCurrency);
             return this;
         }
 
-        public Builder maxBidCpmInAdvertiserCurrency(JsonNullable<Double> maxBidCpmInAdvertiserCurrency) {
-            Utils.checkNotNull(maxBidCpmInAdvertiserCurrency, "maxBidCpmInAdvertiserCurrency");
-            this.maxBidCpmInAdvertiserCurrency = maxBidCpmInAdvertiserCurrency;
+        public Builder maxBidCPMInAdvertiserCurrency(JsonNullable<Double> maxBidCPMInAdvertiserCurrency) {
+            Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
+            this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
             return this;
         }
 
@@ -879,8 +915,8 @@ public class AdGroupWorkflow {
                 channel,
                 funnelLocation,
                 budget,
-                baseBidCpmInAdvertiserCurrency,
-                maxBidCpmInAdvertiserCurrency,
+                baseBidCPMInAdvertiserCurrency,
+                maxBidCPMInAdvertiserCurrency,
                 audienceTargeting,
                 roiGoal,
                 creativeIds,
