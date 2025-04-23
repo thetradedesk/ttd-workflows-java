@@ -3,19 +3,45 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
+import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInput;
+import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
 import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
-import com.thetradedesk.workflows.models.components.SeedCreationInput;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 
 public class SDKMethodInterfaces {
 
+    public interface MethodCallPostAdgroup {
+        PostAdgroupResponse postAdgroup(
+            Optional<? extends AdGroupCreateWorkflowInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPatchAdgroup {
+        PatchAdgroupResponse patchAdgroup(
+            Optional<? extends AdGroupUpdateWorkflowInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
     public interface MethodCallPostCampaign {
         PostCampaignResponse create(
             Optional<? extends CampaignCreateWorkflowInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostCampaignBulk {
+        PostCampaignBulkResponse postCampaignBulk(
+            Optional<? extends List<CampaignCreateWorkflowInput>> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostCampaignArchive {
+        PostCampaignArchiveResponse postCampaignArchive(
+            Optional<? extends List<String>> request,
             Optional<Options> options) throws Exception;
     }
 
@@ -28,12 +54,6 @@ public class SDKMethodInterfaces {
     public interface MethodCallPostGraphql {
         PostGraphqlResponse execute(
             Optional<? extends GraphQLQueryInput> request,
-            Optional<Options> options) throws Exception;
-    }
-
-    public interface MethodCallPostSeed {
-        PostSeedResponse create(
-            Optional<? extends SeedCreationInput> request,
             Optional<Options> options) throws Exception;
     }
 }

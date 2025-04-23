@@ -12,12 +12,14 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CampaignVersionWorkflow {
 
-    @JsonProperty("id")
-    private String id;
+    @JsonInclude(Include.ALWAYS)
+    @JsonProperty("Id")
+    private Optional<String> id;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("version")
@@ -29,7 +31,7 @@ public class CampaignVersionWorkflow {
 
     @JsonCreator
     public CampaignVersionWorkflow(
-            @JsonProperty("id") String id,
+            @JsonProperty("Id") Optional<String> id,
             @JsonProperty("version") JsonNullable<String> version,
             @JsonProperty("budgetingVersion") JsonNullable<String> budgetingVersion) {
         Utils.checkNotNull(id, "id");
@@ -40,13 +42,12 @@ public class CampaignVersionWorkflow {
         this.budgetingVersion = budgetingVersion;
     }
     
-    public CampaignVersionWorkflow(
-            String id) {
-        this(id, JsonNullable.undefined(), JsonNullable.undefined());
+    public CampaignVersionWorkflow() {
+        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
-    public String id() {
+    public Optional<String> id() {
         return id;
     }
 
@@ -65,6 +66,12 @@ public class CampaignVersionWorkflow {
     }    
 
     public CampaignVersionWorkflow withId(String id) {
+        Utils.checkNotNull(id, "id");
+        this.id = Optional.ofNullable(id);
+        return this;
+    }
+
+    public CampaignVersionWorkflow withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
@@ -128,7 +135,7 @@ public class CampaignVersionWorkflow {
     
     public final static class Builder {
  
-        private String id;
+        private Optional<String> id = Optional.empty();
  
         private JsonNullable<String> version = JsonNullable.undefined();
  
@@ -139,6 +146,12 @@ public class CampaignVersionWorkflow {
         }
 
         public Builder id(String id) {
+            Utils.checkNotNull(id, "id");
+            this.id = Optional.ofNullable(id);
+            return this;
+        }
+
+        public Builder id(Optional<String> id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;

@@ -13,16 +13,13 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class BudgetWorkflow {
 
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("pacingMode")
-    private Optional<? extends CampaignPacingMode> pacingMode;
+    private CampaignPacingMode pacingMode;
 
     @JsonProperty("budgetInAdvertiserCurrency")
     private double budgetInAdvertiserCurrency;
@@ -41,7 +38,7 @@ public class BudgetWorkflow {
 
     @JsonCreator
     public BudgetWorkflow(
-            @JsonProperty("pacingMode") Optional<? extends CampaignPacingMode> pacingMode,
+            @JsonProperty("pacingMode") CampaignPacingMode pacingMode,
             @JsonProperty("budgetInAdvertiserCurrency") double budgetInAdvertiserCurrency,
             @JsonProperty("budgetInImpressions") JsonNullable<Long> budgetInImpressions,
             @JsonProperty("dailyTargetInAdvertiserCurrency") JsonNullable<Double> dailyTargetInAdvertiserCurrency,
@@ -59,14 +56,14 @@ public class BudgetWorkflow {
     }
     
     public BudgetWorkflow(
+            CampaignPacingMode pacingMode,
             double budgetInAdvertiserCurrency) {
-        this(Optional.empty(), budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(pacingMode, budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CampaignPacingMode> pacingMode() {
-        return (Optional<CampaignPacingMode>) pacingMode;
+    public CampaignPacingMode pacingMode() {
+        return pacingMode;
     }
 
     @JsonIgnore
@@ -94,12 +91,6 @@ public class BudgetWorkflow {
     }    
 
     public BudgetWorkflow withPacingMode(CampaignPacingMode pacingMode) {
-        Utils.checkNotNull(pacingMode, "pacingMode");
-        this.pacingMode = Optional.ofNullable(pacingMode);
-        return this;
-    }
-
-    public BudgetWorkflow withPacingMode(Optional<? extends CampaignPacingMode> pacingMode) {
         Utils.checkNotNull(pacingMode, "pacingMode");
         this.pacingMode = pacingMode;
         return this;
@@ -187,7 +178,7 @@ public class BudgetWorkflow {
     
     public final static class Builder {
  
-        private Optional<? extends CampaignPacingMode> pacingMode = Optional.empty();
+        private CampaignPacingMode pacingMode;
  
         private Double budgetInAdvertiserCurrency;
  
@@ -202,12 +193,6 @@ public class BudgetWorkflow {
         }
 
         public Builder pacingMode(CampaignPacingMode pacingMode) {
-            Utils.checkNotNull(pacingMode, "pacingMode");
-            this.pacingMode = Optional.ofNullable(pacingMode);
-            return this;
-        }
-
-        public Builder pacingMode(Optional<? extends CampaignPacingMode> pacingMode) {
             Utils.checkNotNull(pacingMode, "pacingMode");
             this.pacingMode = pacingMode;
             return this;
