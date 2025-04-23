@@ -3,7 +3,7 @@ generation:
   sdkClassName: TtdWorkflows
   maintainOpenAPIOrder: true
   usageSnippets:
-    optionalPropertyRendering: withExample
+    optionalPropertyRendering: always
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
