@@ -5,7 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.thetradedesk.workflows.models.components.CampaignPayload;
+import com.thetradedesk.workflows.models.components.CampaignSinglePayload;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -37,22 +37,22 @@ public class PostCampaignResponse implements Response {
     /**
      * Created
      */
-    private Optional<? extends CampaignPayload> campaignPayload;
+    private Optional<? extends CampaignSinglePayload> campaignSinglePayload;
 
     @JsonCreator
     public PostCampaignResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends CampaignPayload> campaignPayload) {
+            Optional<? extends CampaignSinglePayload> campaignSinglePayload) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(campaignPayload, "campaignPayload");
+        Utils.checkNotNull(campaignSinglePayload, "campaignSinglePayload");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.campaignPayload = campaignPayload;
+        this.campaignSinglePayload = campaignSinglePayload;
     }
     
     public PostCampaignResponse(
@@ -91,8 +91,8 @@ public class PostCampaignResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CampaignPayload> campaignPayload() {
-        return (Optional<CampaignPayload>) campaignPayload;
+    public Optional<CampaignSinglePayload> campaignSinglePayload() {
+        return (Optional<CampaignSinglePayload>) campaignSinglePayload;
     }
 
     public final static Builder builder() {
@@ -129,18 +129,18 @@ public class PostCampaignResponse implements Response {
     /**
      * Created
      */
-    public PostCampaignResponse withCampaignPayload(CampaignPayload campaignPayload) {
-        Utils.checkNotNull(campaignPayload, "campaignPayload");
-        this.campaignPayload = Optional.ofNullable(campaignPayload);
+    public PostCampaignResponse withCampaignSinglePayload(CampaignSinglePayload campaignSinglePayload) {
+        Utils.checkNotNull(campaignSinglePayload, "campaignSinglePayload");
+        this.campaignSinglePayload = Optional.ofNullable(campaignSinglePayload);
         return this;
     }
 
     /**
      * Created
      */
-    public PostCampaignResponse withCampaignPayload(Optional<? extends CampaignPayload> campaignPayload) {
-        Utils.checkNotNull(campaignPayload, "campaignPayload");
-        this.campaignPayload = campaignPayload;
+    public PostCampaignResponse withCampaignSinglePayload(Optional<? extends CampaignSinglePayload> campaignSinglePayload) {
+        Utils.checkNotNull(campaignSinglePayload, "campaignSinglePayload");
+        this.campaignSinglePayload = campaignSinglePayload;
         return this;
     }
 
@@ -158,7 +158,7 @@ public class PostCampaignResponse implements Response {
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.campaignPayload, other.campaignPayload);
+            Objects.deepEquals(this.campaignSinglePayload, other.campaignSinglePayload);
     }
     
     @Override
@@ -167,7 +167,7 @@ public class PostCampaignResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            campaignPayload);
+            campaignSinglePayload);
     }
     
     @Override
@@ -176,7 +176,7 @@ public class PostCampaignResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "campaignPayload", campaignPayload);
+                "campaignSinglePayload", campaignSinglePayload);
     }
     
     public final static class Builder {
@@ -187,7 +187,7 @@ public class PostCampaignResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends CampaignPayload> campaignPayload = Optional.empty();
+        private Optional<? extends CampaignSinglePayload> campaignSinglePayload = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -223,18 +223,18 @@ public class PostCampaignResponse implements Response {
         /**
          * Created
          */
-        public Builder campaignPayload(CampaignPayload campaignPayload) {
-            Utils.checkNotNull(campaignPayload, "campaignPayload");
-            this.campaignPayload = Optional.ofNullable(campaignPayload);
+        public Builder campaignSinglePayload(CampaignSinglePayload campaignSinglePayload) {
+            Utils.checkNotNull(campaignSinglePayload, "campaignSinglePayload");
+            this.campaignSinglePayload = Optional.ofNullable(campaignSinglePayload);
             return this;
         }
 
         /**
          * Created
          */
-        public Builder campaignPayload(Optional<? extends CampaignPayload> campaignPayload) {
-            Utils.checkNotNull(campaignPayload, "campaignPayload");
-            this.campaignPayload = campaignPayload;
+        public Builder campaignSinglePayload(Optional<? extends CampaignSinglePayload> campaignSinglePayload) {
+            Utils.checkNotNull(campaignSinglePayload, "campaignSinglePayload");
+            this.campaignSinglePayload = campaignSinglePayload;
             return this;
         }
         
@@ -243,7 +243,7 @@ public class PostCampaignResponse implements Response {
                 contentType,
                 statusCode,
                 rawResponse,
-                campaignPayload);
+                campaignSinglePayload);
         }
     }
 }

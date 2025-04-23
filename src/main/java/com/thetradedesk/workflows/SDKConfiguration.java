@@ -28,7 +28,7 @@ class SDKConfiguration {
     public int serverIdx = 0;
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "v1";
-    public static final String SDK_VERSION = "0.2.0";
+    public static final String SDK_VERSION = "0.2.3";
     public static final String GEN_VERSION = "2.568.2";
     private static final String BASE_PACKAGE = "com.thetradedesk.workflows";
     public static final String USER_AGENT = 

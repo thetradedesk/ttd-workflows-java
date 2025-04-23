@@ -28,11 +28,15 @@ public class TtdWorkflows {
         "https://api.thetradedesk.com/workflows",
     };
 
+    private final AdGroup adGroup;
+
     private final Campaign campaign;
 
     private final Graphql graphql;
 
-    private final Seed seed;
+    public AdGroup adGroup() {
+        return adGroup;
+    }
 
     public Campaign campaign() {
         return campaign;
@@ -40,10 +44,6 @@ public class TtdWorkflows {
 
     public Graphql graphql() {
         return graphql;
-    }
-
-    public Seed seed() {
-        return seed;
     }
 
     private final SDKConfiguration sdkConfiguration;
@@ -183,9 +183,9 @@ public class TtdWorkflows {
 
     private TtdWorkflows(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.adGroup = new AdGroup(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);
         this.graphql = new Graphql(sdkConfiguration);
-        this.seed = new Seed(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }
 }

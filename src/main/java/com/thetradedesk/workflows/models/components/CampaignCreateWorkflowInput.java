@@ -29,7 +29,7 @@ public class CampaignCreateWorkflowInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("adGroups")
-    private JsonNullable<? extends List<CampaignCreationAdGroupInput>> adGroups;
+    private JsonNullable<? extends List<CampaignCreateAdGroupInput>> adGroups;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("validationOnly")
@@ -39,7 +39,7 @@ public class CampaignCreateWorkflowInput {
     public CampaignCreateWorkflowInput(
             @JsonProperty("campaignCreateWorkflowPrimaryInput") CampaignCreateWorkflowPrimaryInput campaignCreateWorkflowPrimaryInput,
             @JsonProperty("campaignCreateAdvancedInput") Optional<? extends CampaignCreateWorkflowAdvancedInput> campaignCreateAdvancedInput,
-            @JsonProperty("adGroups") JsonNullable<? extends List<CampaignCreationAdGroupInput>> adGroups,
+            @JsonProperty("adGroups") JsonNullable<? extends List<CampaignCreateAdGroupInput>> adGroups,
             @JsonProperty("validationOnly") JsonNullable<Boolean> validationOnly) {
         Utils.checkNotNull(campaignCreateWorkflowPrimaryInput, "campaignCreateWorkflowPrimaryInput");
         Utils.checkNotNull(campaignCreateAdvancedInput, "campaignCreateAdvancedInput");
@@ -69,8 +69,8 @@ public class CampaignCreateWorkflowInput {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<CampaignCreationAdGroupInput>> adGroups() {
-        return (JsonNullable<List<CampaignCreationAdGroupInput>>) adGroups;
+    public JsonNullable<List<CampaignCreateAdGroupInput>> adGroups() {
+        return (JsonNullable<List<CampaignCreateAdGroupInput>>) adGroups;
     }
 
     @JsonIgnore
@@ -100,13 +100,13 @@ public class CampaignCreateWorkflowInput {
         return this;
     }
 
-    public CampaignCreateWorkflowInput withAdGroups(List<CampaignCreationAdGroupInput> adGroups) {
+    public CampaignCreateWorkflowInput withAdGroups(List<CampaignCreateAdGroupInput> adGroups) {
         Utils.checkNotNull(adGroups, "adGroups");
         this.adGroups = JsonNullable.of(adGroups);
         return this;
     }
 
-    public CampaignCreateWorkflowInput withAdGroups(JsonNullable<? extends List<CampaignCreationAdGroupInput>> adGroups) {
+    public CampaignCreateWorkflowInput withAdGroups(JsonNullable<? extends List<CampaignCreateAdGroupInput>> adGroups) {
         Utils.checkNotNull(adGroups, "adGroups");
         this.adGroups = adGroups;
         return this;
@@ -165,7 +165,7 @@ public class CampaignCreateWorkflowInput {
  
         private Optional<? extends CampaignCreateWorkflowAdvancedInput> campaignCreateAdvancedInput = Optional.empty();
  
-        private JsonNullable<? extends List<CampaignCreationAdGroupInput>> adGroups = JsonNullable.undefined();
+        private JsonNullable<? extends List<CampaignCreateAdGroupInput>> adGroups = JsonNullable.undefined();
  
         private JsonNullable<Boolean> validationOnly = JsonNullable.undefined();
         
@@ -191,13 +191,13 @@ public class CampaignCreateWorkflowInput {
             return this;
         }
 
-        public Builder adGroups(List<CampaignCreationAdGroupInput> adGroups) {
+        public Builder adGroups(List<CampaignCreateAdGroupInput> adGroups) {
             Utils.checkNotNull(adGroups, "adGroups");
             this.adGroups = JsonNullable.of(adGroups);
             return this;
         }
 
-        public Builder adGroups(JsonNullable<? extends List<CampaignCreationAdGroupInput>> adGroups) {
+        public Builder adGroups(JsonNullable<? extends List<CampaignCreateAdGroupInput>> adGroups) {
             Utils.checkNotNull(adGroups, "adGroups");
             this.adGroups = adGroups;
             return this;

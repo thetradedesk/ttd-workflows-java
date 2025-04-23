@@ -5,17 +5,21 @@ package com.thetradedesk.workflows.models.components;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
 
 public class AdGroupAssociateBidList {
 
+    @JsonInclude(Include.ALWAYS)
     @JsonProperty("bidListId")
-    private String bidListId;
+    private Optional<String> bidListId;
 
     @JsonProperty("isEnabled")
     private boolean isEnabled;
@@ -25,7 +29,7 @@ public class AdGroupAssociateBidList {
 
     @JsonCreator
     public AdGroupAssociateBidList(
-            @JsonProperty("bidListId") String bidListId,
+            @JsonProperty("bidListId") Optional<String> bidListId,
             @JsonProperty("isEnabled") boolean isEnabled,
             @JsonProperty("isDefaultForDimension") boolean isDefaultForDimension) {
         Utils.checkNotNull(bidListId, "bidListId");
@@ -35,9 +39,15 @@ public class AdGroupAssociateBidList {
         this.isEnabled = isEnabled;
         this.isDefaultForDimension = isDefaultForDimension;
     }
+    
+    public AdGroupAssociateBidList(
+            boolean isEnabled,
+            boolean isDefaultForDimension) {
+        this(Optional.empty(), isEnabled, isDefaultForDimension);
+    }
 
     @JsonIgnore
-    public String bidListId() {
+    public Optional<String> bidListId() {
         return bidListId;
     }
 
@@ -56,6 +66,12 @@ public class AdGroupAssociateBidList {
     }    
 
     public AdGroupAssociateBidList withBidListId(String bidListId) {
+        Utils.checkNotNull(bidListId, "bidListId");
+        this.bidListId = Optional.ofNullable(bidListId);
+        return this;
+    }
+
+    public AdGroupAssociateBidList withBidListId(Optional<String> bidListId) {
         Utils.checkNotNull(bidListId, "bidListId");
         this.bidListId = bidListId;
         return this;
@@ -107,7 +123,7 @@ public class AdGroupAssociateBidList {
     
     public final static class Builder {
  
-        private String bidListId;
+        private Optional<String> bidListId = Optional.empty();
  
         private Boolean isEnabled;
  
@@ -118,6 +134,12 @@ public class AdGroupAssociateBidList {
         }
 
         public Builder bidListId(String bidListId) {
+            Utils.checkNotNull(bidListId, "bidListId");
+            this.bidListId = Optional.ofNullable(bidListId);
+            return this;
+        }
+
+        public Builder bidListId(Optional<String> bidListId) {
             Utils.checkNotNull(bidListId, "bidListId");
             this.bidListId = bidListId;
             return this;

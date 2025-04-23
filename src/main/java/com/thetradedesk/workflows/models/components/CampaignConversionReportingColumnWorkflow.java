@@ -31,7 +31,7 @@ public class CampaignConversionReportingColumnWorkflow {
     private int reportingColumnId;
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("roasConfig")
+    @JsonProperty("ROASConfig")
     private Optional<? extends CustomROASConfig> roasConfig;
 
     @JsonInclude(Include.NON_ABSENT)
@@ -47,7 +47,7 @@ public class CampaignConversionReportingColumnWorkflow {
             @JsonProperty("trackingTagId") String trackingTagId,
             @JsonProperty("includeInCustomCPA") boolean includeInCustomCPA,
             @JsonProperty("reportingColumnId") int reportingColumnId,
-            @JsonProperty("roasConfig") Optional<? extends CustomROASConfig> roasConfig,
+            @JsonProperty("ROASConfig") Optional<? extends CustomROASConfig> roasConfig,
             @JsonProperty("weight") JsonNullable<Double> weight,
             @JsonProperty("crossDeviceAttributionModelId") JsonNullable<String> crossDeviceAttributionModelId) {
         Utils.checkNotNull(trackingTagId, "trackingTagId");
@@ -124,13 +124,13 @@ public class CampaignConversionReportingColumnWorkflow {
         return this;
     }
 
-    public CampaignConversionReportingColumnWorkflow withRoasConfig(CustomROASConfig roasConfig) {
+    public CampaignConversionReportingColumnWorkflow withROASConfig(CustomROASConfig roasConfig) {
         Utils.checkNotNull(roasConfig, "roasConfig");
         this.roasConfig = Optional.ofNullable(roasConfig);
         return this;
     }
 
-    public CampaignConversionReportingColumnWorkflow withRoasConfig(Optional<? extends CustomROASConfig> roasConfig) {
+    public CampaignConversionReportingColumnWorkflow withROASConfig(Optional<? extends CustomROASConfig> roasConfig) {
         Utils.checkNotNull(roasConfig, "roasConfig");
         this.roasConfig = roasConfig;
         return this;
