@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class PostCampaignArchiveResponse implements Response {
+public class PostAdgroupArchiveResponse implements Response {
 
     /**
      * HTTP response content type for this operation
@@ -40,7 +40,7 @@ public class PostCampaignArchiveResponse implements Response {
     private Optional<? extends List<String>> strings;
 
     @JsonCreator
-    public PostCampaignArchiveResponse(
+    public PostAdgroupArchiveResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
@@ -55,7 +55,7 @@ public class PostCampaignArchiveResponse implements Response {
         this.strings = strings;
     }
     
-    public PostCampaignArchiveResponse(
+    public PostAdgroupArchiveResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
@@ -102,7 +102,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
-    public PostCampaignArchiveResponse withContentType(String contentType) {
+    public PostAdgroupArchiveResponse withContentType(String contentType) {
         Utils.checkNotNull(contentType, "contentType");
         this.contentType = contentType;
         return this;
@@ -111,7 +111,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * HTTP response status code for this operation
      */
-    public PostCampaignArchiveResponse withStatusCode(int statusCode) {
+    public PostAdgroupArchiveResponse withStatusCode(int statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
         this.statusCode = statusCode;
         return this;
@@ -120,7 +120,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
-    public PostCampaignArchiveResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
+    public PostAdgroupArchiveResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.rawResponse = rawResponse;
         return this;
@@ -129,7 +129,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * OK
      */
-    public PostCampaignArchiveResponse withStrings(List<String> strings) {
+    public PostAdgroupArchiveResponse withStrings(List<String> strings) {
         Utils.checkNotNull(strings, "strings");
         this.strings = Optional.ofNullable(strings);
         return this;
@@ -138,7 +138,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * OK
      */
-    public PostCampaignArchiveResponse withStrings(Optional<? extends List<String>> strings) {
+    public PostAdgroupArchiveResponse withStrings(Optional<? extends List<String>> strings) {
         Utils.checkNotNull(strings, "strings");
         this.strings = strings;
         return this;
@@ -153,7 +153,7 @@ public class PostCampaignArchiveResponse implements Response {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PostCampaignArchiveResponse other = (PostCampaignArchiveResponse) o;
+        PostAdgroupArchiveResponse other = (PostAdgroupArchiveResponse) o;
         return 
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
@@ -172,7 +172,7 @@ public class PostCampaignArchiveResponse implements Response {
     
     @Override
     public String toString() {
-        return Utils.toString(PostCampaignArchiveResponse.class,
+        return Utils.toString(PostAdgroupArchiveResponse.class,
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
@@ -238,8 +238,8 @@ public class PostCampaignArchiveResponse implements Response {
             return this;
         }
         
-        public PostCampaignArchiveResponse build() {
-            return new PostCampaignArchiveResponse(
+        public PostAdgroupArchiveResponse build() {
+            return new PostAdgroupArchiveResponse(
                 contentType,
                 statusCode,
                 rawResponse,

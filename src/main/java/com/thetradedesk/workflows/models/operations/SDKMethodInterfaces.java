@@ -6,8 +6,10 @@ package com.thetradedesk.workflows.models.operations;
 import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInput;
 import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
-import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
+import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
+import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.utils.Options;
+import java.lang.Boolean;
 import java.lang.Exception;
 import java.lang.String;
 import java.util.List;
@@ -27,6 +29,25 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
+    public interface MethodCallPostAdgroupArchive {
+        PostAdgroupArchiveResponse postAdgroupArchive(
+            Optional<Boolean> forceArchive,
+            Optional<? extends List<String>> requestBody,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostBulkjobFirstpartydata {
+        PostBulkjobFirstpartydataResponse postBulkjobFirstpartydata(
+            Optional<? extends FirstPartyDataInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallGetBulkjobIdStatus {
+        GetBulkjobIdStatusResponse getBulkjobIdStatus(
+            long id,
+            Optional<Options> options) throws Exception;
+    }
+
     public interface MethodCallPostCampaign {
         PostCampaignResponse create(
             Optional<? extends CampaignCreateWorkflowInput> request,
@@ -41,7 +62,8 @@ public class SDKMethodInterfaces {
 
     public interface MethodCallPostCampaignArchive {
         PostCampaignArchiveResponse postCampaignArchive(
-            Optional<? extends List<String>> request,
+            Optional<Boolean> forceArchive,
+            Optional<? extends List<String>> requestBody,
             Optional<Options> options) throws Exception;
     }
 
@@ -51,9 +73,9 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostGraphql {
-        PostGraphqlResponse execute(
-            Optional<? extends GraphQLQueryInput> request,
+    public interface MethodCallPostGraphqlRequest {
+        PostGraphqlRequestResponse postGraphqlRequest(
+            Optional<? extends GraphQLRequestInput> request,
             Optional<Options> options) throws Exception;
     }
 }

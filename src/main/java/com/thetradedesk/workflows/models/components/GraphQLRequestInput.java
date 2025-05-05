@@ -16,17 +16,17 @@ import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
- * GraphQLQueryInput
+ * GraphQLRequestInput
  * 
  * <p>Required fields for executing a GraphQL query
  */
-public class GraphQLQueryInput {
+public class GraphQLRequestInput {
 
     /**
      * The GraphQL query to execute.
      */
-    @JsonProperty("query")
-    private String query;
+    @JsonProperty("request")
+    private String request;
 
     /**
      * Variables to substitute into the query.
@@ -36,26 +36,26 @@ public class GraphQLQueryInput {
     private JsonNullable<? extends Variables> variables;
 
     @JsonCreator
-    public GraphQLQueryInput(
-            @JsonProperty("query") String query,
+    public GraphQLRequestInput(
+            @JsonProperty("request") String request,
             @JsonProperty("variables") JsonNullable<? extends Variables> variables) {
-        Utils.checkNotNull(query, "query");
+        Utils.checkNotNull(request, "request");
         Utils.checkNotNull(variables, "variables");
-        this.query = query;
+        this.request = request;
         this.variables = variables;
     }
     
-    public GraphQLQueryInput(
-            String query) {
-        this(query, JsonNullable.undefined());
+    public GraphQLRequestInput(
+            String request) {
+        this(request, JsonNullable.undefined());
     }
 
     /**
      * The GraphQL query to execute.
      */
     @JsonIgnore
-    public String query() {
-        return query;
+    public String request() {
+        return request;
     }
 
     /**
@@ -74,16 +74,16 @@ public class GraphQLQueryInput {
     /**
      * The GraphQL query to execute.
      */
-    public GraphQLQueryInput withQuery(String query) {
-        Utils.checkNotNull(query, "query");
-        this.query = query;
+    public GraphQLRequestInput withRequest(String request) {
+        Utils.checkNotNull(request, "request");
+        this.request = request;
         return this;
     }
 
     /**
      * Variables to substitute into the query.
      */
-    public GraphQLQueryInput withVariables(Variables variables) {
+    public GraphQLRequestInput withVariables(Variables variables) {
         Utils.checkNotNull(variables, "variables");
         this.variables = JsonNullable.of(variables);
         return this;
@@ -92,7 +92,7 @@ public class GraphQLQueryInput {
     /**
      * Variables to substitute into the query.
      */
-    public GraphQLQueryInput withVariables(JsonNullable<? extends Variables> variables) {
+    public GraphQLRequestInput withVariables(JsonNullable<? extends Variables> variables) {
         Utils.checkNotNull(variables, "variables");
         this.variables = variables;
         return this;
@@ -107,29 +107,29 @@ public class GraphQLQueryInput {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        GraphQLQueryInput other = (GraphQLQueryInput) o;
+        GraphQLRequestInput other = (GraphQLRequestInput) o;
         return 
-            Objects.deepEquals(this.query, other.query) &&
+            Objects.deepEquals(this.request, other.request) &&
             Objects.deepEquals(this.variables, other.variables);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
-            query,
+            request,
             variables);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(GraphQLQueryInput.class,
-                "query", query,
+        return Utils.toString(GraphQLRequestInput.class,
+                "request", request,
                 "variables", variables);
     }
     
     public final static class Builder {
  
-        private String query;
+        private String request;
  
         private JsonNullable<? extends Variables> variables = JsonNullable.undefined();
         
@@ -140,9 +140,9 @@ public class GraphQLQueryInput {
         /**
          * The GraphQL query to execute.
          */
-        public Builder query(String query) {
-            Utils.checkNotNull(query, "query");
-            this.query = query;
+        public Builder request(String request) {
+            Utils.checkNotNull(request, "request");
+            this.request = request;
             return this;
         }
 
@@ -164,9 +164,9 @@ public class GraphQLQueryInput {
             return this;
         }
         
-        public GraphQLQueryInput build() {
-            return new GraphQLQueryInput(
-                query,
+        public GraphQLRequestInput build() {
+            return new GraphQLRequestInput(
+                request,
                 variables);
         }
     }

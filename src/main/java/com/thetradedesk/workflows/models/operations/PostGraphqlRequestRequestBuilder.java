@@ -3,52 +3,52 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
-import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
+import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Exception;
 import java.util.Optional;
 
-public class PostGraphqlRequestBuilder {
+public class PostGraphqlRequestRequestBuilder {
 
-    private Optional<? extends GraphQLQueryInput> request = Optional.empty();
+    private Optional<? extends GraphQLRequestInput> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallPostGraphql sdk;
+    private final SDKMethodInterfaces.MethodCallPostGraphqlRequest sdk;
 
-    public PostGraphqlRequestBuilder(SDKMethodInterfaces.MethodCallPostGraphql sdk) {
+    public PostGraphqlRequestRequestBuilder(SDKMethodInterfaces.MethodCallPostGraphqlRequest sdk) {
         this.sdk = sdk;
     }
                 
-    public PostGraphqlRequestBuilder request(GraphQLQueryInput request) {
+    public PostGraphqlRequestRequestBuilder request(GraphQLRequestInput request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public PostGraphqlRequestBuilder request(Optional<? extends GraphQLQueryInput> request) {
+    public PostGraphqlRequestRequestBuilder request(Optional<? extends GraphQLRequestInput> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;
     }
                 
-    public PostGraphqlRequestBuilder retryConfig(RetryConfig retryConfig) {
+    public PostGraphqlRequestRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
         return this;
     }
 
-    public PostGraphqlRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
+    public PostGraphqlRequestRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = retryConfig;
         return this;
     }
 
-    public PostGraphqlResponse call() throws Exception {
+    public PostGraphqlRequestResponse call() throws Exception {
         Optional<Options> options = Optional.of(Options.builder()
                                                     .retryConfig(retryConfig)
                                                     .build());
-        return sdk.execute(
+        return sdk.postGraphqlRequest(
             request,
             options);
     }

@@ -886,7 +886,6 @@ import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveResponse;
 import java.lang.Exception;
-import java.lang.String;
 import java.util.List;
 
 public class Application {
@@ -897,13 +896,11 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        List<String> req = List.of(
-                "<value>",
-                "<value>",
-                "<value>");
-
         PostCampaignArchiveResponse res = sdk.campaign().postCampaignArchive()
-                .request(req)
+                .requestBody(List.of(
+                    "<value>",
+                    "<value>",
+                    "<value>"))
                 .call();
 
         if (res.strings().isPresent()) {
@@ -915,9 +912,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [List<String>](../../models//.md)          | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `forceArchive`       | *Optional\<Boolean>* | :heavy_minus_sign:   | N/A                  |
+| `requestBody`        | List\<*String*>      | :heavy_minus_sign:   | N/A                  |
 
 ### Response
 

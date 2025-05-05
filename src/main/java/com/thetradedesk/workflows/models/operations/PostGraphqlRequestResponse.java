@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class PostGraphqlResponse implements Response {
+public class PostGraphqlRequestResponse implements Response {
 
     /**
      * HTTP response content type for this operation
@@ -41,7 +41,7 @@ public class PostGraphqlResponse implements Response {
     private Optional<? extends Map<String, Object>> object;
 
     @JsonCreator
-    public PostGraphqlResponse(
+    public PostGraphqlRequestResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
@@ -56,7 +56,7 @@ public class PostGraphqlResponse implements Response {
         this.object = object;
     }
     
-    public PostGraphqlResponse(
+    public PostGraphqlRequestResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
@@ -103,7 +103,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
-    public PostGraphqlResponse withContentType(String contentType) {
+    public PostGraphqlRequestResponse withContentType(String contentType) {
         Utils.checkNotNull(contentType, "contentType");
         this.contentType = contentType;
         return this;
@@ -112,7 +112,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * HTTP response status code for this operation
      */
-    public PostGraphqlResponse withStatusCode(int statusCode) {
+    public PostGraphqlRequestResponse withStatusCode(int statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
         this.statusCode = statusCode;
         return this;
@@ -121,7 +121,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
-    public PostGraphqlResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
+    public PostGraphqlRequestResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.rawResponse = rawResponse;
         return this;
@@ -130,7 +130,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * OK
      */
-    public PostGraphqlResponse withObject(Map<String, Object> object) {
+    public PostGraphqlRequestResponse withObject(Map<String, Object> object) {
         Utils.checkNotNull(object, "object");
         this.object = Optional.ofNullable(object);
         return this;
@@ -139,7 +139,7 @@ public class PostGraphqlResponse implements Response {
     /**
      * OK
      */
-    public PostGraphqlResponse withObject(Optional<? extends Map<String, Object>> object) {
+    public PostGraphqlRequestResponse withObject(Optional<? extends Map<String, Object>> object) {
         Utils.checkNotNull(object, "object");
         this.object = object;
         return this;
@@ -154,7 +154,7 @@ public class PostGraphqlResponse implements Response {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PostGraphqlResponse other = (PostGraphqlResponse) o;
+        PostGraphqlRequestResponse other = (PostGraphqlRequestResponse) o;
         return 
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
@@ -173,7 +173,7 @@ public class PostGraphqlResponse implements Response {
     
     @Override
     public String toString() {
-        return Utils.toString(PostGraphqlResponse.class,
+        return Utils.toString(PostGraphqlRequestResponse.class,
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
@@ -239,8 +239,8 @@ public class PostGraphqlResponse implements Response {
             return this;
         }
         
-        public PostGraphqlResponse build() {
-            return new PostGraphqlResponse(
+        public PostGraphqlRequestResponse build() {
+            return new PostGraphqlRequestResponse(
                 contentType,
                 statusCode,
                 rawResponse,

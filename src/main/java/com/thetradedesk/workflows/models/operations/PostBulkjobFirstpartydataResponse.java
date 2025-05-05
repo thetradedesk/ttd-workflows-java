@@ -5,6 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -13,11 +14,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class PostCampaignArchiveResponse implements Response {
+public class PostBulkjobFirstpartydataResponse implements Response {
 
     /**
      * HTTP response content type for this operation
@@ -35,27 +35,27 @@ public class PostCampaignArchiveResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * OK
+     * Accepted
      */
-    private Optional<? extends List<String>> strings;
+    private Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse;
 
     @JsonCreator
-    public PostCampaignArchiveResponse(
+    public PostBulkjobFirstpartydataResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends List<String>> strings) {
+            Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(strings, "strings");
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.strings = strings;
+        this.bulkJobSubmitResponse = bulkJobSubmitResponse;
     }
     
-    public PostCampaignArchiveResponse(
+    public PostBulkjobFirstpartydataResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
@@ -87,12 +87,12 @@ public class PostCampaignArchiveResponse implements Response {
     }
 
     /**
-     * OK
+     * Accepted
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<List<String>> strings() {
-        return (Optional<List<String>>) strings;
+    public Optional<BulkJobSubmitResponse> bulkJobSubmitResponse() {
+        return (Optional<BulkJobSubmitResponse>) bulkJobSubmitResponse;
     }
 
     public final static Builder builder() {
@@ -102,7 +102,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
-    public PostCampaignArchiveResponse withContentType(String contentType) {
+    public PostBulkjobFirstpartydataResponse withContentType(String contentType) {
         Utils.checkNotNull(contentType, "contentType");
         this.contentType = contentType;
         return this;
@@ -111,7 +111,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * HTTP response status code for this operation
      */
-    public PostCampaignArchiveResponse withStatusCode(int statusCode) {
+    public PostBulkjobFirstpartydataResponse withStatusCode(int statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
         this.statusCode = statusCode;
         return this;
@@ -120,27 +120,27 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
-    public PostCampaignArchiveResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
+    public PostBulkjobFirstpartydataResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.rawResponse = rawResponse;
         return this;
     }
 
     /**
-     * OK
+     * Accepted
      */
-    public PostCampaignArchiveResponse withStrings(List<String> strings) {
-        Utils.checkNotNull(strings, "strings");
-        this.strings = Optional.ofNullable(strings);
+    public PostBulkjobFirstpartydataResponse withBulkJobSubmitResponse(BulkJobSubmitResponse bulkJobSubmitResponse) {
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+        this.bulkJobSubmitResponse = Optional.ofNullable(bulkJobSubmitResponse);
         return this;
     }
 
     /**
-     * OK
+     * Accepted
      */
-    public PostCampaignArchiveResponse withStrings(Optional<? extends List<String>> strings) {
-        Utils.checkNotNull(strings, "strings");
-        this.strings = strings;
+    public PostBulkjobFirstpartydataResponse withBulkJobSubmitResponse(Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+        this.bulkJobSubmitResponse = bulkJobSubmitResponse;
         return this;
     }
 
@@ -153,12 +153,12 @@ public class PostCampaignArchiveResponse implements Response {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PostCampaignArchiveResponse other = (PostCampaignArchiveResponse) o;
+        PostBulkjobFirstpartydataResponse other = (PostBulkjobFirstpartydataResponse) o;
         return 
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.strings, other.strings);
+            Objects.deepEquals(this.bulkJobSubmitResponse, other.bulkJobSubmitResponse);
     }
     
     @Override
@@ -167,16 +167,16 @@ public class PostCampaignArchiveResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            strings);
+            bulkJobSubmitResponse);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(PostCampaignArchiveResponse.class,
+        return Utils.toString(PostBulkjobFirstpartydataResponse.class,
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "strings", strings);
+                "bulkJobSubmitResponse", bulkJobSubmitResponse);
     }
     
     public final static class Builder {
@@ -187,7 +187,7 @@ public class PostCampaignArchiveResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends List<String>> strings = Optional.empty();
+        private Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -221,29 +221,29 @@ public class PostCampaignArchiveResponse implements Response {
         }
 
         /**
-         * OK
+         * Accepted
          */
-        public Builder strings(List<String> strings) {
-            Utils.checkNotNull(strings, "strings");
-            this.strings = Optional.ofNullable(strings);
+        public Builder bulkJobSubmitResponse(BulkJobSubmitResponse bulkJobSubmitResponse) {
+            Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+            this.bulkJobSubmitResponse = Optional.ofNullable(bulkJobSubmitResponse);
             return this;
         }
 
         /**
-         * OK
+         * Accepted
          */
-        public Builder strings(Optional<? extends List<String>> strings) {
-            Utils.checkNotNull(strings, "strings");
-            this.strings = strings;
+        public Builder bulkJobSubmitResponse(Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
+            Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+            this.bulkJobSubmitResponse = bulkJobSubmitResponse;
             return this;
         }
         
-        public PostCampaignArchiveResponse build() {
-            return new PostCampaignArchiveResponse(
+        public PostBulkjobFirstpartydataResponse build() {
+            return new PostBulkjobFirstpartydataResponse(
                 contentType,
                 statusCode,
                 rawResponse,
-                strings);
+                bulkJobSubmitResponse);
         }
     }
 }
