@@ -14,7 +14,7 @@ import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 
-public class PostCampaignArchiveRequestBuilder {
+public class PostAdgroupArchiveRequestBuilder {
 
     private Optional<Boolean> forceArchive = Utils.readDefaultOrConstValue(
                             "forceArchive",
@@ -22,55 +22,55 @@ public class PostCampaignArchiveRequestBuilder {
                             new TypeReference<Optional<Boolean>>() {});
     private Optional<? extends List<String>> requestBody = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
-    private final SDKMethodInterfaces.MethodCallPostCampaignArchive sdk;
+    private final SDKMethodInterfaces.MethodCallPostAdgroupArchive sdk;
 
-    public PostCampaignArchiveRequestBuilder(SDKMethodInterfaces.MethodCallPostCampaignArchive sdk) {
+    public PostAdgroupArchiveRequestBuilder(SDKMethodInterfaces.MethodCallPostAdgroupArchive sdk) {
         this.sdk = sdk;
     }
                 
-    public PostCampaignArchiveRequestBuilder forceArchive(boolean forceArchive) {
+    public PostAdgroupArchiveRequestBuilder forceArchive(boolean forceArchive) {
         Utils.checkNotNull(forceArchive, "forceArchive");
         this.forceArchive = Optional.of(forceArchive);
         return this;
     }
 
-    public PostCampaignArchiveRequestBuilder forceArchive(Optional<Boolean> forceArchive) {
+    public PostAdgroupArchiveRequestBuilder forceArchive(Optional<Boolean> forceArchive) {
         Utils.checkNotNull(forceArchive, "forceArchive");
         this.forceArchive = forceArchive;
         return this;
     }
                 
-    public PostCampaignArchiveRequestBuilder requestBody(List<String> requestBody) {
+    public PostAdgroupArchiveRequestBuilder requestBody(List<String> requestBody) {
         Utils.checkNotNull(requestBody, "requestBody");
         this.requestBody = Optional.of(requestBody);
         return this;
     }
 
-    public PostCampaignArchiveRequestBuilder requestBody(Optional<? extends List<String>> requestBody) {
+    public PostAdgroupArchiveRequestBuilder requestBody(Optional<? extends List<String>> requestBody) {
         Utils.checkNotNull(requestBody, "requestBody");
         this.requestBody = requestBody;
         return this;
     }
                 
-    public PostCampaignArchiveRequestBuilder retryConfig(RetryConfig retryConfig) {
+    public PostAdgroupArchiveRequestBuilder retryConfig(RetryConfig retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = Optional.of(retryConfig);
         return this;
     }
 
-    public PostCampaignArchiveRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
+    public PostAdgroupArchiveRequestBuilder retryConfig(Optional<RetryConfig> retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = retryConfig;
         return this;
     }
 
-    public PostCampaignArchiveResponse call() throws Exception {
+    public PostAdgroupArchiveResponse call() throws Exception {
         if (forceArchive == null) {
             forceArchive = _SINGLETON_VALUE_ForceArchive.value();
         }        Optional<Options> options = Optional.of(Options.builder()
                                                     .retryConfig(retryConfig)
                                                     .build());
-        return sdk.postCampaignArchive(
+        return sdk.postAdgroupArchive(
             forceArchive,
             requestBody,
             options);

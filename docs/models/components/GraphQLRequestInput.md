@@ -1,4 +1,4 @@
-# GraphQLQueryInput
+# GraphQLRequestInput
 
 Required fields for executing a GraphQL query
 
@@ -7,5 +7,5 @@ Required fields for executing a GraphQL query
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `query`                                                          | *String*                                                         | :heavy_check_mark:                                               | The GraphQL query to execute.                                    |
+| `request`                                                        | *String*                                                         | :heavy_check_mark:                                               | The GraphQL query to execute.                                    |
 | `variables`                                                      | [JsonNullable\<Variables>](../../models/components/Variables.md) | :heavy_minus_sign:                                               | Variables to substitute into the query.                          |

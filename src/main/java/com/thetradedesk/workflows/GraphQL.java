@@ -4,11 +4,11 @@
 package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
+import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostGraphqlRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostGraphqlResponse;
+import com.thetradedesk.workflows.models.operations.PostGraphqlRequestRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PostGraphqlRequestResponse;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.HTTPClient;
@@ -36,45 +36,45 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-public class Graphql implements
-            MethodCallPostGraphql {
+public class GraphQL implements
+            MethodCallPostGraphqlRequest {
 
     private final SDKConfiguration sdkConfiguration;
 
-    Graphql(SDKConfiguration sdkConfiguration) {
+    GraphQL(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
 
 
     /**
-     * An endpoint that executes valid GraphQL queries.
+     * An endpoint that executes valid GraphQL queries or mutations.
      * 
      * @return The call builder
      */
-    public PostGraphqlRequestBuilder execute() {
-        return new PostGraphqlRequestBuilder(this);
+    public PostGraphqlRequestRequestBuilder postGraphqlRequest() {
+        return new PostGraphqlRequestRequestBuilder(this);
     }
 
     /**
-     * An endpoint that executes valid GraphQL queries.
+     * An endpoint that executes valid GraphQL queries or mutations.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostGraphqlResponse executeDirect() throws Exception {
-        return execute(Optional.empty(), Optional.empty());
+    public PostGraphqlRequestResponse postGraphqlRequestDirect() throws Exception {
+        return postGraphqlRequest(Optional.empty(), Optional.empty());
     }
     
     /**
-     * An endpoint that executes valid GraphQL queries.
+     * An endpoint that executes valid GraphQL queries or mutations.
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostGraphqlResponse execute(
-            Optional<? extends GraphQLQueryInput> request,
+    public PostGraphqlRequestResponse postGraphqlRequest(
+            Optional<? extends GraphQLRequestInput> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -83,13 +83,13 @@ public class Graphql implements
         String _baseUrl = this.sdkConfiguration.serverUrl;
         String _url = Utils.generateURL(
                 _baseUrl,
-                "/graphql");
+                "/graphql-request");
         
         HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends GraphQLQueryInput>>() {});
+                new TypeReference<Optional<? extends GraphQLRequestInput>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -131,7 +131,7 @@ public class Graphql implements
                         .beforeRequest(
                             new BeforeRequestContextImpl(
                                 _baseUrl,
-                                "post_/graphql", 
+                                "post_/graphql-request", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -145,7 +145,7 @@ public class Graphql implements
                         .afterError(
                             new AfterErrorContextImpl(
                                 _baseUrl,
-                                "post_/graphql",
+                                "post_/graphql-request",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -159,7 +159,7 @@ public class Graphql implements
                  .afterSuccess(
                      new AfterSuccessContextImpl(
                           _baseUrl,
-                         "post_/graphql", 
+                         "post_/graphql-request", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -167,14 +167,14 @@ public class Graphql implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PostGraphqlResponse.Builder _resBuilder = 
-            PostGraphqlResponse
+        PostGraphqlRequestResponse.Builder _resBuilder = 
+            PostGraphqlRequestResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PostGraphqlResponse _res = _resBuilder.build();
+        PostGraphqlRequestResponse _res = _resBuilder.build();
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {

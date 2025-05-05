@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.2.3'
+implementation 'com.thetradedesk:workflows:0.3.2'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.2.3</version>
+    <version>0.3.2</version>
 </dependency>
 ```
 
@@ -438,6 +438,12 @@ public class Application {
 
 * [postAdgroup](docs/sdks/adgroup/README.md#postadgroup)
 * [patchAdgroup](docs/sdks/adgroup/README.md#patchadgroup)
+* [postAdgroupArchive](docs/sdks/adgroup/README.md#postadgrouparchive) - Archive a list of AdGroups
+
+### [bulkJob()](docs/sdks/bulkjob/README.md)
+
+* [postBulkjobFirstpartydata](docs/sdks/bulkjob/README.md#postbulkjobfirstpartydata) - Submits a query for First Party Data to Hydra
+* [getBulkjobIdStatus](docs/sdks/bulkjob/README.md#getbulkjobidstatus) - Get the status of a bulk job you submitted earlier
 
 ### [campaign()](docs/sdks/campaign/README.md)
 
@@ -446,9 +452,9 @@ public class Application {
 * [postCampaignArchive](docs/sdks/campaign/README.md#postcampaignarchive) - Archive a list of campaigns
 * [getVersion](docs/sdks/campaign/README.md#getversion) - GET a campaign's version
 
-### [graphql()](docs/sdks/graphql/README.md)
+### [graphQL()](docs/sdks/graphql/README.md)
 
-* [execute](docs/sdks/graphql/README.md#execute) - An endpoint that executes valid GraphQL queries.
+* [postGraphqlRequest](docs/sdks/graphql/README.md#postgraphqlrequest) - An endpoint that executes valid GraphQL queries or mutations.
 
 
 </details>

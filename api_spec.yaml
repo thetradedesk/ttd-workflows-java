@@ -60,6 +60,164 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+  /adgroup/archive:
+    post:
+      tags:
+        - AdGroup
+      summary: Archive a list of AdGroups
+      parameters:
+        - name: forceArchive
+          in: query
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /bulkjob/firstpartydata:
+    post:
+      tags:
+        - BulkJob
+      summary: Submits a query for First Party Data to Hydra
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FirstPartyDataInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FirstPartyDataInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FirstPartyDataInput'
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkJobSubmitResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '503':
+          description: Service Unavailable
+  '/bulkjob/{id}/status':
+    get:
+      tags:
+        - BulkJob
+      summary: Get the status of a bulk job you submitted earlier
+      # The following section is for automatically retrying on a 202 status code
+      # x-speakeasy-retries:
+      #  strategy: backoff
+      #  backoff:
+      #    initialInterval: 500 # 500 milliseconds
+      #    maxInterval: 60000 # 60 seconds
+      #    maxElapsedTime: 3600000 # 1 hour
+      #    exponent: 1.5
+      #  statusCodes:
+      #    - 202
+      #  retryConnectionErrors: true
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkJobStatusResponse'
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkJobStatusResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '503':
+          description: Service Unavailable
   /campaign:
     post:
       tags:
@@ -115,6 +273,12 @@ paths:
       tags:
         - Campaign
       summary: Archive a list of campaigns
+      parameters:
+        - name: forceArchive
+          in: query
+          schema:
+            type: boolean
+            default: false
       requestBody:
         content:
           application/json:
@@ -123,8 +287,8 @@ paths:
               items:
                 type: string
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -181,16 +345,16 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '500':
           description: Internal Server Error
-  /graphql:
+  /graphql-request:
     post:
       tags:
         - GraphQL
-      summary: An endpoint that executes valid GraphQL queries.
+      summary: An endpoint that executes valid GraphQL queries or mutations.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GraphQLQueryInput'
+              $ref: '#/components/schemas/GraphQLRequestInput'
       responses:
         '200':
           description: OK
@@ -1124,6 +1288,58 @@ components:
           format: int64
           nullable: true
       additionalProperties: false
+    BulkJobStatusResponse:
+      required:
+        - createdAtUtc
+        - id
+        - status
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the bulk job.
+          format: int64
+        completedAtUtc:
+          type: string
+          description: Time of completion for this bulk job in UTC.
+          format: date-time
+          nullable: true
+        completionPercentage:
+          type: number
+          description: Completion percentage for that bulk job.
+          format: double
+          nullable: true
+        createdAtUtc:
+          type: string
+          description: Time of creation for that bulk job in UTC.
+          format: date-time
+        status:
+          minLength: 1
+          type: string
+          description: Status of that bulk job.
+        url:
+          type: string
+          description: The url where the result can be picked up
+          nullable: true
+        rawResult:
+          type: string
+          description: The raw result if the response is less than 5MB in size
+          nullable: true
+        gqlErrors:
+          type: string
+          description: Any GraphQl errors
+          nullable: true
+      additionalProperties: false
+    BulkJobSubmitResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the bulk job.
+          format: int64
+      additionalProperties: false
     CampaignBulkPayload:
       required:
         - name
@@ -1705,12 +1921,31 @@ components:
         - Audience
         - Site
       type: string
-    GraphQLQueryInput:
+    FirstPartyDataInput:
       required:
-        - query
+        - advertiserId
       type: object
       properties:
-        query:
+        advertiserId:
+          minLength: 1
+          type: string
+          description: The advertiser id to query for.
+        nameFilter:
+          type: string
+          description: "The name to filter by in the query. This filter will be applied to the results for the advertiser.\r\nIf there are no nodes which match the filter, a response with empty nodes with no first party data will be returned."
+          nullable: true
+        queryShape:
+          type: string
+          description: "The shape of the query with the fields being asked for, which is sent downstream.\r\nThis determines how the response will look like.\r\nIf this is not provided the default query shape will be used:\r\n            \r\nnodes {\r\n   name\r\n   id\r\n   activeUniques {\r\n      householdCount\r\n      idsConnectedTvCount\r\n      idsCount\r\n      idsInAppCount\r\n      idsWebCount\r\n      personsCount\r\n   }\r\n}"
+          nullable: true
+      additionalProperties: false
+      description: Required fields for submitting a bulk job for first party data
+    GraphQLRequestInput:
+      required:
+        - request
+      type: object
+      properties:
+        request:
           minLength: 1
           type: string
           description: The GraphQL query to execute.

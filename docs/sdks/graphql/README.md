@@ -1,15 +1,15 @@
-# Graphql
-(*graphql()*)
+# GraphQL
+(*graphQL()*)
 
 ## Overview
 
 ### Available Operations
 
-* [execute](#execute) - An endpoint that executes valid GraphQL queries.
+* [postGraphqlRequest](#postgraphqlrequest) - An endpoint that executes valid GraphQL queries or mutations.
 
-## execute
+## postGraphqlRequest
 
-An endpoint that executes valid GraphQL queries.
+An endpoint that executes valid GraphQL queries or mutations.
 
 ### Example Usage
 
@@ -17,10 +17,10 @@ An endpoint that executes valid GraphQL queries.
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.GraphQLQueryInput;
+import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.models.components.Variables;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostGraphqlResponse;
+import com.thetradedesk.workflows.models.operations.PostGraphqlRequestResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -31,13 +31,13 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        GraphQLQueryInput req = GraphQLQueryInput.builder()
-                .query("<value>")
+        GraphQLRequestInput req = GraphQLRequestInput.builder()
+                .request("<value>")
                 .variables(Variables.builder()
                     .build())
                 .build();
 
-        PostGraphqlResponse res = sdk.graphql().execute()
+        PostGraphqlRequestResponse res = sdk.graphQL().postGraphqlRequest()
                 .request(req)
                 .call();
 
@@ -50,13 +50,13 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [GraphQLQueryInput](../../models/shared/GraphQLQueryInput.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [GraphQLRequestInput](../../models/shared/GraphQLRequestInput.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
-**[PostGraphqlResponse](../../models/operations/PostGraphqlResponse.md)**
+**[PostGraphqlRequestResponse](../../models/operations/PostGraphqlRequestResponse.md)**
 
 ### Errors
 

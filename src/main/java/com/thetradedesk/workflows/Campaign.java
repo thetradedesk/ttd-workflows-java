@@ -13,6 +13,7 @@ import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequest;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionResponse;
+import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequest;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveResponse;
 import com.thetradedesk.workflows.models.operations.PostCampaignBulkRequestBuilder;
@@ -34,6 +35,7 @@ import com.thetradedesk.workflows.utils.SerializedBody;
 import com.thetradedesk.workflows.utils.Utils.JsonShape;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
+import java.lang.Boolean;
 import java.lang.Exception;
 import java.lang.Object;
 import java.lang.String;
@@ -442,24 +444,33 @@ public class Campaign implements
      * @throws Exception if the API call fails
      */
     public PostCampaignArchiveResponse postCampaignArchiveDirect() throws Exception {
-        return postCampaignArchive(Optional.empty(), Optional.empty());
+        return postCampaignArchive(Optional.empty(), Optional.empty(), Optional.empty());
     }
     
     /**
      * Archive a list of campaigns
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param forceArchive 
+     * @param requestBody 
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
     public PostCampaignArchiveResponse postCampaignArchive(
-            Optional<? extends List<String>> request,
+            Optional<Boolean> forceArchive,
+            Optional<? extends List<String>> requestBody,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
+        PostCampaignArchiveRequest request =
+            PostCampaignArchiveRequest
+                .builder()
+                .forceArchive(forceArchive)
+                .requestBody(requestBody)
+                .build();
+        
         String _baseUrl = this.sdkConfiguration.serverUrl;
         String _url = Utils.generateURL(
                 _baseUrl,
@@ -469,16 +480,21 @@ public class Campaign implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends List<String>>>() {});
+                new TypeReference<Object>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
-                "request",
+                "requestBody",
                 "json",
                 false);
         _req.setBody(Optional.ofNullable(_serializedRequestBody));
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
+
+        _req.addQueryParams(Utils.getQueryParams(
+                PostCampaignArchiveRequest.class,
+                request, 
+                null));
         
         Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
@@ -556,7 +572,7 @@ public class Campaign implements
 
         PostCampaignArchiveResponse _res = _resBuilder.build();
         
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "204")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 List<String> _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),

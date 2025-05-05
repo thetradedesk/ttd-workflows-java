@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: 245b53018cae95667e33fbb9a6905be5
+  docChecksum: bee0b2780ef793b7772cb042b9282d57
   docVersion: v1
   speakeasyVersion: 1.531.0
   generationVersion: 2.568.2
-  releaseVersion: 0.2.3
-  configChecksum: 13e374b479c41f13bfdc3be643bd5be3
+  releaseVersion: 0.3.2
+  configChecksum: 848acafcc873f2c3dc5a448edba9487d
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
+    constsAndDefaults: 0.1.1
     core: 3.36.3
     flattening: 2.81.1
     globalSecurity: 2.82.8
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.1
-    groups: 2.81.2
     inputOutputModels: 2.83.0
     nameOverrides: 2.81.3
     nullables: 0.1.0
@@ -64,6 +64,8 @@ generatedFiles:
   - docs/models/components/AdGroupWorkflow.md
   - docs/models/components/AllocationType.md
   - docs/models/components/BudgetWorkflow.md
+  - docs/models/components/BulkJobStatusResponse.md
+  - docs/models/components/BulkJobSubmitResponse.md
   - docs/models/components/CampaignBulkPayload.md
   - docs/models/components/CampaignChannelType.md
   - docs/models/components/CampaignConversionReportingColumnWorkflow.md
@@ -85,7 +87,8 @@ generatedFiles:
   - docs/models/components/DecimalNullableWorkflowsOptional.md
   - docs/models/components/DimensionalBiddingDimensions.md
   - docs/models/components/EnhancedNielsenReportingOptions.md
-  - docs/models/components/GraphQLQueryInput.md
+  - docs/models/components/FirstPartyDataInput.md
+  - docs/models/components/GraphQLRequestInput.md
   - docs/models/components/Int64NullableWorkflowsOptional.md
   - docs/models/components/ProblemDetails.md
   - docs/models/components/Security.md
@@ -95,15 +98,22 @@ generatedFiles:
   - docs/models/components/TargetingStartAge.md
   - docs/models/components/Variables.md
   - docs/models/errors/ProblemDetailsException.md
+  - docs/models/operations/GetBulkjobIdStatusRequest.md
+  - docs/models/operations/GetBulkjobIdStatusResponse.md
   - docs/models/operations/GetCampaignIdVersionRequest.md
   - docs/models/operations/GetCampaignIdVersionResponse.md
   - docs/models/operations/PatchAdgroupResponse.md
+  - docs/models/operations/PostAdgroupArchiveRequest.md
+  - docs/models/operations/PostAdgroupArchiveResponse.md
   - docs/models/operations/PostAdgroupResponse.md
+  - docs/models/operations/PostBulkjobFirstpartydataResponse.md
+  - docs/models/operations/PostCampaignArchiveRequest.md
   - docs/models/operations/PostCampaignArchiveResponse.md
   - docs/models/operations/PostCampaignBulkResponse.md
   - docs/models/operations/PostCampaignResponse.md
-  - docs/models/operations/PostGraphqlResponse.md
+  - docs/models/operations/PostGraphqlRequestResponse.md
   - docs/sdks/adgroup/README.md
+  - docs/sdks/bulkjob/README.md
   - docs/sdks/campaign/README.md
   - docs/sdks/graphql/README.md
   - docs/sdks/ttdworkflows/README.md
@@ -114,8 +124,9 @@ generatedFiles:
   - gradlew.bat
   - settings.gradle
   - src/main/java/com/thetradedesk/workflows/AdGroup.java
+  - src/main/java/com/thetradedesk/workflows/BulkJob.java
   - src/main/java/com/thetradedesk/workflows/Campaign.java
-  - src/main/java/com/thetradedesk/workflows/Graphql.java
+  - src/main/java/com/thetradedesk/workflows/GraphQL.java
   - src/main/java/com/thetradedesk/workflows/SDKConfiguration.java
   - src/main/java/com/thetradedesk/workflows/SecuritySource.java
   - src/main/java/com/thetradedesk/workflows/TtdWorkflows.java
@@ -154,6 +165,8 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflow.java
   - src/main/java/com/thetradedesk/workflows/models/components/AllocationType.java
   - src/main/java/com/thetradedesk/workflows/models/components/BudgetWorkflow.java
+  - src/main/java/com/thetradedesk/workflows/models/components/BulkJobStatusResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/components/BulkJobSubmitResponse.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignBulkPayload.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignChannelType.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignConversionReportingColumnWorkflow.java
@@ -175,7 +188,8 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/DecimalNullableWorkflowsOptional.java
   - src/main/java/com/thetradedesk/workflows/models/components/DimensionalBiddingDimensions.java
   - src/main/java/com/thetradedesk/workflows/models/components/EnhancedNielsenReportingOptions.java
-  - src/main/java/com/thetradedesk/workflows/models/components/GraphQLQueryInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/FirstPartyDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/GraphQLRequestInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/Int64NullableWorkflowsOptional.java
   - src/main/java/com/thetradedesk/workflows/models/components/ProblemDetails.java
   - src/main/java/com/thetradedesk/workflows/models/components/Security.java
@@ -187,21 +201,30 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/errors/APIException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/AuthException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/ProblemDetailsException.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetBulkjobIdStatusRequest.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetBulkjobIdStatusRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetBulkjobIdStatusResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionRequest.java
   - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PatchAdgroupRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PatchAdgroupResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupArchiveRequest.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupArchiveRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupArchiveResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostBulkjobFirstpartydataRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostBulkjobFirstpartydataResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignArchiveRequest.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignArchiveRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignArchiveResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignBulkRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignBulkResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SDKMethodInterfaces.java
   - src/main/java/com/thetradedesk/workflows/utils/BackoffStrategy.java
   - src/main/java/com/thetradedesk/workflows/utils/BigDecimalString.java
@@ -314,6 +337,9 @@ examples:
           application/json: {"type": "<value>", "title": "<value>", "status": 274788, "detail": "<value>", "instance": "<value>", "key": {}}
   post_/campaign/archive:
     speakeasy-default-post-/campaign/archive:
+      parameters:
+        query:
+          forceArchive: false
       requestBody:
         application/json: ["<value>", "<value>", "<value>"]
       responses:
@@ -321,5 +347,49 @@ examples:
           application/json: ["<value>"]
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 17623, "detail": "<value>", "instance": "<value>", "key": {}, "key1": {}}
+        "200":
+          application/json: ["<value>", "<value>", "<value>"]
+  post_/adgroup/archive:
+    speakeasy-default-post-/adgroup/archive:
+      parameters:
+        query:
+          forceArchive: false
+      requestBody:
+        application/json: ["<value>"]
+      responses:
+        "200":
+          application/json: ["<value>"]
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 386932, "detail": "<value>", "instance": "<value>", "key": {}, "key1": {}}
+  post_/bulkjob/firstpartydata:
+    speakeasy-default-post-/bulkjob/firstpartydata:
+      requestBody:
+        application/json: {"advertiserId": "<id>", "nameFilter": "<value>", "queryShape": "<value>"}
+        text/json: {"advertiserId": "<id>", "nameFilter": "<value>", "queryShape": "<value>"}
+        application/*+json: {"advertiserId": "<id>", "nameFilter": "<value>", "queryShape": "<value>"}
+      responses:
+        "202":
+          application/json: {"id": 40494}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 14172, "detail": "<value>", "instance": "<value>", "key": {}, "key1": {}, "key2": {}}
+  get_/bulkjob/{id}/status:
+    speakeasy-default-get-/bulkjob/{id}/status:
+      parameters:
+        path:
+          id: 887039
+      responses:
+        "200":
+          application/json: {"id": 264149, "completedAtUtc": "2024-02-05T16:14:18.626Z", "completionPercentage": 397.57, "createdAtUtc": "2023-07-22T19:09:38.014Z", "status": "<value>", "url": "https://soupy-subsidy.org", "rawResult": "<value>", "gqlErrors": "<value>"}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 977493, "detail": "<value>", "instance": "<value>", "key": {}, "key1": {}, "key2": {}}
+  post_/graphql-request:
+    speakeasy-default-post-/graphql-request:
+      requestBody:
+        application/json: {"request": "<value>"}
+      responses:
+        "200":
+          application/json: {"key": "<value>", "key1": "<value>", "key2": "<value>"}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 124367, "detail": "<value>", "instance": "<value>", "key": {}, "key1": {}}
 examplesVersion: 1.0.1
 generatedTests: {}
