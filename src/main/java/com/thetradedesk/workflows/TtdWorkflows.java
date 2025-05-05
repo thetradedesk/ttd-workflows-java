@@ -30,20 +30,26 @@ public class TtdWorkflows {
 
     private final AdGroup adGroup;
 
+    private final BulkJob bulkJob;
+
     private final Campaign campaign;
 
-    private final Graphql graphql;
+    private final GraphQL graphQL;
 
     public AdGroup adGroup() {
         return adGroup;
+    }
+
+    public BulkJob bulkJob() {
+        return bulkJob;
     }
 
     public Campaign campaign() {
         return campaign;
     }
 
-    public Graphql graphql() {
-        return graphql;
+    public GraphQL graphQL() {
+        return graphQL;
     }
 
     private final SDKConfiguration sdkConfiguration;
@@ -184,8 +190,9 @@ public class TtdWorkflows {
     private TtdWorkflows(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.adGroup = new AdGroup(sdkConfiguration);
+        this.bulkJob = new BulkJob(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);
-        this.graphql = new Graphql(sdkConfiguration);
+        this.graphQL = new GraphQL(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }
 }

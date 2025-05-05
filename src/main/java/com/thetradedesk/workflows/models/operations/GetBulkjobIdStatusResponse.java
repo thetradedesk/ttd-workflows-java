@@ -5,6 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thetradedesk.workflows.models.components.BulkJobStatusResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -13,11 +14,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class PostCampaignArchiveResponse implements Response {
+public class GetBulkjobIdStatusResponse implements Response {
 
     /**
      * HTTP response content type for this operation
@@ -37,25 +37,25 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * OK
      */
-    private Optional<? extends List<String>> strings;
+    private Optional<? extends BulkJobStatusResponse> bulkJobStatusResponse;
 
     @JsonCreator
-    public PostCampaignArchiveResponse(
+    public GetBulkjobIdStatusResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends List<String>> strings) {
+            Optional<? extends BulkJobStatusResponse> bulkJobStatusResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(strings, "strings");
+        Utils.checkNotNull(bulkJobStatusResponse, "bulkJobStatusResponse");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.strings = strings;
+        this.bulkJobStatusResponse = bulkJobStatusResponse;
     }
     
-    public PostCampaignArchiveResponse(
+    public GetBulkjobIdStatusResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
@@ -91,8 +91,8 @@ public class PostCampaignArchiveResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<List<String>> strings() {
-        return (Optional<List<String>>) strings;
+    public Optional<BulkJobStatusResponse> bulkJobStatusResponse() {
+        return (Optional<BulkJobStatusResponse>) bulkJobStatusResponse;
     }
 
     public final static Builder builder() {
@@ -102,7 +102,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
-    public PostCampaignArchiveResponse withContentType(String contentType) {
+    public GetBulkjobIdStatusResponse withContentType(String contentType) {
         Utils.checkNotNull(contentType, "contentType");
         this.contentType = contentType;
         return this;
@@ -111,7 +111,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * HTTP response status code for this operation
      */
-    public PostCampaignArchiveResponse withStatusCode(int statusCode) {
+    public GetBulkjobIdStatusResponse withStatusCode(int statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
         this.statusCode = statusCode;
         return this;
@@ -120,7 +120,7 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
-    public PostCampaignArchiveResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
+    public GetBulkjobIdStatusResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.rawResponse = rawResponse;
         return this;
@@ -129,18 +129,18 @@ public class PostCampaignArchiveResponse implements Response {
     /**
      * OK
      */
-    public PostCampaignArchiveResponse withStrings(List<String> strings) {
-        Utils.checkNotNull(strings, "strings");
-        this.strings = Optional.ofNullable(strings);
+    public GetBulkjobIdStatusResponse withBulkJobStatusResponse(BulkJobStatusResponse bulkJobStatusResponse) {
+        Utils.checkNotNull(bulkJobStatusResponse, "bulkJobStatusResponse");
+        this.bulkJobStatusResponse = Optional.ofNullable(bulkJobStatusResponse);
         return this;
     }
 
     /**
      * OK
      */
-    public PostCampaignArchiveResponse withStrings(Optional<? extends List<String>> strings) {
-        Utils.checkNotNull(strings, "strings");
-        this.strings = strings;
+    public GetBulkjobIdStatusResponse withBulkJobStatusResponse(Optional<? extends BulkJobStatusResponse> bulkJobStatusResponse) {
+        Utils.checkNotNull(bulkJobStatusResponse, "bulkJobStatusResponse");
+        this.bulkJobStatusResponse = bulkJobStatusResponse;
         return this;
     }
 
@@ -153,12 +153,12 @@ public class PostCampaignArchiveResponse implements Response {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PostCampaignArchiveResponse other = (PostCampaignArchiveResponse) o;
+        GetBulkjobIdStatusResponse other = (GetBulkjobIdStatusResponse) o;
         return 
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.strings, other.strings);
+            Objects.deepEquals(this.bulkJobStatusResponse, other.bulkJobStatusResponse);
     }
     
     @Override
@@ -167,16 +167,16 @@ public class PostCampaignArchiveResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            strings);
+            bulkJobStatusResponse);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(PostCampaignArchiveResponse.class,
+        return Utils.toString(GetBulkjobIdStatusResponse.class,
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "strings", strings);
+                "bulkJobStatusResponse", bulkJobStatusResponse);
     }
     
     public final static class Builder {
@@ -187,7 +187,7 @@ public class PostCampaignArchiveResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends List<String>> strings = Optional.empty();
+        private Optional<? extends BulkJobStatusResponse> bulkJobStatusResponse = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -223,27 +223,27 @@ public class PostCampaignArchiveResponse implements Response {
         /**
          * OK
          */
-        public Builder strings(List<String> strings) {
-            Utils.checkNotNull(strings, "strings");
-            this.strings = Optional.ofNullable(strings);
+        public Builder bulkJobStatusResponse(BulkJobStatusResponse bulkJobStatusResponse) {
+            Utils.checkNotNull(bulkJobStatusResponse, "bulkJobStatusResponse");
+            this.bulkJobStatusResponse = Optional.ofNullable(bulkJobStatusResponse);
             return this;
         }
 
         /**
          * OK
          */
-        public Builder strings(Optional<? extends List<String>> strings) {
-            Utils.checkNotNull(strings, "strings");
-            this.strings = strings;
+        public Builder bulkJobStatusResponse(Optional<? extends BulkJobStatusResponse> bulkJobStatusResponse) {
+            Utils.checkNotNull(bulkJobStatusResponse, "bulkJobStatusResponse");
+            this.bulkJobStatusResponse = bulkJobStatusResponse;
             return this;
         }
         
-        public PostCampaignArchiveResponse build() {
-            return new PostCampaignArchiveResponse(
+        public GetBulkjobIdStatusResponse build() {
+            return new GetBulkjobIdStatusResponse(
                 contentType,
                 statusCode,
                 rawResponse,
-                strings);
+                bulkJobStatusResponse);
         }
     }
 }

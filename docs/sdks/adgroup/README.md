@@ -7,6 +7,7 @@
 
 * [postAdgroup](#postadgroup)
 * [patchAdgroup](#patchadgroup)
+* [postAdgroupArchive](#postadgrouparchive) - Archive a list of AdGroups
 
 ## postAdgroup
 
@@ -372,6 +373,59 @@ public class Application {
 ### Response
 
 **[PatchAdgroupResponse](../../models/operations/PatchAdgroupResponse.md)**
+
+### Errors
+
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models/errors/ProblemDetailsException | 400                                   | application/json                      |
+| models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
+
+## postAdgroupArchive
+
+Archive a list of AdGroups
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveResponse;
+import java.lang.Exception;
+import java.util.List;
+
+public class Application {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        TtdWorkflows sdk = TtdWorkflows.builder()
+                .ttdAuth("<YOUR_API_KEY_HERE>")
+            .build();
+
+        PostAdgroupArchiveResponse res = sdk.adGroup().postAdgroupArchive()
+                .requestBody(List.of(
+                    "<value>"))
+                .call();
+
+        if (res.strings().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter            | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `forceArchive`       | *Optional\<Boolean>* | :heavy_minus_sign:   | N/A                  |
+| `requestBody`        | List\<*String*>      | :heavy_minus_sign:   | N/A                  |
+
+### Response
+
+**[PostAdgroupArchiveResponse](../../models/operations/PostAdgroupArchiveResponse.md)**
 
 ### Errors
 

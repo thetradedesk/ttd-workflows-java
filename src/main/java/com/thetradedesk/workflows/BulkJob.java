@@ -4,18 +4,16 @@
 package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInput;
-import com.thetradedesk.workflows.models.components.AdGroupPayload;
-import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.BulkJobStatusResponse;
+import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
+import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PatchAdgroupRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PatchAdgroupResponse;
-import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveRequest;
-import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveResponse;
-import com.thetradedesk.workflows.models.operations.PostAdgroupRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusRequest;
+import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusRequestBuilder;
+import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusResponse;
+import com.thetradedesk.workflows.models.operations.PostBulkjobFirstpartydataRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PostBulkjobFirstpartydataResponse;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.HTTPClient;
@@ -31,7 +29,6 @@ import com.thetradedesk.workflows.utils.SerializedBody;
 import com.thetradedesk.workflows.utils.Utils.JsonShape;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
-import java.lang.Boolean;
 import java.lang.Exception;
 import java.lang.Object;
 import java.lang.String;
@@ -43,47 +40,46 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-public class AdGroup implements
-            MethodCallPostAdgroup,
-            MethodCallPatchAdgroup,
-            MethodCallPostAdgroupArchive {
+public class BulkJob implements
+            MethodCallPostBulkjobFirstpartydata,
+            MethodCallGetBulkjobIdStatus {
 
     private final SDKConfiguration sdkConfiguration;
 
-    AdGroup(SDKConfiguration sdkConfiguration) {
+    BulkJob(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
 
 
     /**
-     * Returns a builder to make a request.
+     * Submits a query for First Party Data to Hydra
      * 
      * @return The call builder
      */
-    public PostAdgroupRequestBuilder postAdgroup() {
-        return new PostAdgroupRequestBuilder(this);
+    public PostBulkjobFirstpartydataRequestBuilder postBulkjobFirstpartydata() {
+        return new PostBulkjobFirstpartydataRequestBuilder(this);
     }
 
     /**
-     * Makes a request (required parameters only).
+     * Submits a query for First Party Data to Hydra
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostAdgroupResponse postAdgroupDirect() throws Exception {
-        return postAdgroup(Optional.empty(), Optional.empty());
+    public PostBulkjobFirstpartydataResponse postBulkjobFirstpartydataDirect() throws Exception {
+        return postBulkjobFirstpartydata(Optional.empty(), Optional.empty());
     }
     
     /**
-     * Makes a request.
+     * Submits a query for First Party Data to Hydra
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostAdgroupResponse postAdgroup(
-            Optional<? extends AdGroupCreateWorkflowInput> request,
+    public PostBulkjobFirstpartydataResponse postBulkjobFirstpartydata(
+            Optional<? extends FirstPartyDataInput> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
@@ -92,13 +88,13 @@ public class AdGroup implements
         String _baseUrl = this.sdkConfiguration.serverUrl;
         String _url = Utils.generateURL(
                 _baseUrl,
-                "/adgroup");
+                "/bulkjob/firstpartydata");
         
         HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends AdGroupCreateWorkflowInput>>() {});
+                new TypeReference<Optional<? extends FirstPartyDataInput>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -140,7 +136,7 @@ public class AdGroup implements
                         .beforeRequest(
                             new BeforeRequestContextImpl(
                                 _baseUrl,
-                                "post_/adgroup", 
+                                "post_/bulkjob/firstpartydata", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -154,7 +150,7 @@ public class AdGroup implements
                         .afterError(
                             new AfterErrorContextImpl(
                                 _baseUrl,
-                                "post_/adgroup",
+                                "post_/bulkjob/firstpartydata",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -168,7 +164,7 @@ public class AdGroup implements
                  .afterSuccess(
                      new AfterSuccessContextImpl(
                           _baseUrl,
-                         "post_/adgroup", 
+                         "post_/bulkjob/firstpartydata", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -176,21 +172,21 @@ public class AdGroup implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PostAdgroupResponse.Builder _resBuilder = 
-            PostAdgroupResponse
+        PostBulkjobFirstpartydataResponse.Builder _resBuilder = 
+            PostBulkjobFirstpartydataResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PostAdgroupResponse _res = _resBuilder.build();
+        PostBulkjobFirstpartydataResponse _res = _resBuilder.build();
         
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "201")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                AdGroupPayload _out = Utils.mapper().readValue(
+                BulkJobSubmitResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<AdGroupPayload>() {});
-                _res.withAdGroupPayload(Optional.ofNullable(_out));
+                    new TypeReference<BulkJobSubmitResponse>() {});
+                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -200,7 +196,7 @@ public class AdGroup implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "401", "403", "404")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
@@ -222,7 +218,7 @@ public class AdGroup implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
             // no content 
             throw new APIException(
                     _httpRes, 
@@ -240,55 +236,55 @@ public class AdGroup implements
 
 
     /**
-     * Returns a builder to make a request.
+     * Get the status of a bulk job you submitted earlier
      * 
      * @return The call builder
      */
-    public PatchAdgroupRequestBuilder patchAdgroup() {
-        return new PatchAdgroupRequestBuilder(this);
+    public GetBulkjobIdStatusRequestBuilder getBulkjobIdStatus() {
+        return new GetBulkjobIdStatusRequestBuilder(this);
     }
 
     /**
-     * Makes a request (required parameters only).
+     * Get the status of a bulk job you submitted earlier
      * 
+     * @param id 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchAdgroupResponse patchAdgroupDirect() throws Exception {
-        return patchAdgroup(Optional.empty(), Optional.empty());
+    public GetBulkjobIdStatusResponse getBulkjobIdStatus(
+            long id) throws Exception {
+        return getBulkjobIdStatus(id, Optional.empty());
     }
     
     /**
-     * Makes a request.
+     * Get the status of a bulk job you submitted earlier
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param id 
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchAdgroupResponse patchAdgroup(
-            Optional<? extends AdGroupUpdateWorkflowInput> request,
+    public GetBulkjobIdStatusResponse getBulkjobIdStatus(
+            long id,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
+        GetBulkjobIdStatusRequest request =
+            GetBulkjobIdStatusRequest
+                .builder()
+                .id(id)
+                .build();
+        
         String _baseUrl = this.sdkConfiguration.serverUrl;
         String _url = Utils.generateURL(
+                GetBulkjobIdStatusRequest.class,
                 _baseUrl,
-                "/adgroup");
+                "/bulkjob/{id}/status",
+                request, null);
         
-        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends AdGroupUpdateWorkflowInput>>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
@@ -324,7 +320,7 @@ public class AdGroup implements
                         .beforeRequest(
                             new BeforeRequestContextImpl(
                                 _baseUrl,
-                                "patch_/adgroup", 
+                                "get_/bulkjob/{id}/status", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -338,7 +334,7 @@ public class AdGroup implements
                         .afterError(
                             new AfterErrorContextImpl(
                                 _baseUrl,
-                                "patch_/adgroup",
+                                "get_/bulkjob/{id}/status",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -352,7 +348,7 @@ public class AdGroup implements
                  .afterSuccess(
                      new AfterSuccessContextImpl(
                           _baseUrl,
-                         "patch_/adgroup", 
+                         "get_/bulkjob/{id}/status", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -360,21 +356,21 @@ public class AdGroup implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PatchAdgroupResponse.Builder _resBuilder = 
-            PatchAdgroupResponse
+        GetBulkjobIdStatusResponse.Builder _resBuilder = 
+            GetBulkjobIdStatusResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PatchAdgroupResponse _res = _resBuilder.build();
+        GetBulkjobIdStatusResponse _res = _resBuilder.build();
         
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200", "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                AdGroupPayload _out = Utils.mapper().readValue(
+                BulkJobStatusResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<AdGroupPayload>() {});
-                _res.withAdGroupPayload(Optional.ofNullable(_out));
+                    new TypeReference<BulkJobStatusResponse>() {});
+                _res.withBulkJobStatusResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -384,7 +380,7 @@ public class AdGroup implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "401", "403", "404")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
@@ -406,205 +402,7 @@ public class AdGroup implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
-    }
-
-
-
-    /**
-     * Archive a list of AdGroups
-     * 
-     * @return The call builder
-     */
-    public PostAdgroupArchiveRequestBuilder postAdgroupArchive() {
-        return new PostAdgroupArchiveRequestBuilder(this);
-    }
-
-    /**
-     * Archive a list of AdGroups
-     * 
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public PostAdgroupArchiveResponse postAdgroupArchiveDirect() throws Exception {
-        return postAdgroupArchive(Optional.empty(), Optional.empty(), Optional.empty());
-    }
-    
-    /**
-     * Archive a list of AdGroups
-     * 
-     * @param forceArchive 
-     * @param requestBody 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public PostAdgroupArchiveResponse postAdgroupArchive(
-            Optional<Boolean> forceArchive,
-            Optional<? extends List<String>> requestBody,
-            Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        PostAdgroupArchiveRequest request =
-            PostAdgroupArchiveRequest
-                .builder()
-                .forceArchive(forceArchive)
-                .requestBody(requestBody)
-                .build();
-        
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/adgroup/archive");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Object>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "requestBody",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                PostAdgroupArchiveRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                _baseUrl,
-                                "post_/adgroup/archive", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                _baseUrl,
-                                "post_/adgroup/archive",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                          _baseUrl,
-                         "post_/adgroup/archive", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PostAdgroupArchiveResponse.Builder _resBuilder = 
-            PostAdgroupArchiveResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PostAdgroupArchiveResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                List<String> _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<List<String>>() {});
-                _res.withStrings(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
             // no content 
             throw new APIException(
                     _httpRes, 

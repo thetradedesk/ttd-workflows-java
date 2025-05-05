@@ -1,4 +1,4 @@
-# PostCampaignArchiveResponse
+# PostAdgroupArchiveResponse
 
 
 ## Fields
