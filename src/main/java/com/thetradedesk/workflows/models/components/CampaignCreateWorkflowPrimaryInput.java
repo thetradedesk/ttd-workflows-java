@@ -21,12 +21,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 public class CampaignCreateWorkflowPrimaryInput {
 
-    @JsonProperty("advertiserId")
-    private String advertiserId;
-
-    @JsonProperty("name")
-    private String name;
-
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
@@ -51,19 +45,9 @@ public class CampaignCreateWorkflowPrimaryInput {
     @JsonProperty("impressionsOnlyBudgetingCpm")
     private JsonNullable<Double> impressionsOnlyBudgetingCpm;
 
-    @JsonProperty("primaryChannel")
-    private CampaignChannelType primaryChannel;
-
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budget")
-    private Optional<? extends BudgetWorkflow> budget;
-
-    @JsonProperty("primaryGoal")
-    private CampaignCreateROIGoalWorkflow primaryGoal;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("startDateInUtc")
-    private JsonNullable<OffsetDateTime> startDateInUtc;
+    private Optional<? extends CampaignWorkflowBudgetInput> budget;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endDateInUtc")
@@ -75,73 +59,79 @@ public class CampaignCreateWorkflowPrimaryInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaignConversionReportingColumns")
-    private JsonNullable<? extends List<CampaignConversionReportingColumnWorkflow>> campaignConversionReportingColumns;
+    private JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns;
+
+    @JsonProperty("advertiserId")
+    private String advertiserId;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("primaryChannel")
+    private CampaignChannelType primaryChannel;
+
+    @JsonProperty("primaryGoal")
+    private CampaignWorkflowROIGoalInput primaryGoal;
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("startDateInUtc")
+    private JsonNullable<OffsetDateTime> startDateInUtc;
 
     @JsonCreator
     public CampaignCreateWorkflowPrimaryInput(
-            @JsonProperty("advertiserId") String advertiserId,
-            @JsonProperty("name") String name,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("timeZone") JsonNullable<String> timeZone,
             @JsonProperty("customCPAClickWeight") JsonNullable<Double> customCPAClickWeight,
             @JsonProperty("customCPAViewthroughWeight") JsonNullable<Double> customCPAViewthroughWeight,
             @JsonProperty("customCPAType") Optional<? extends CustomCPAType> customCPAType,
             @JsonProperty("impressionsOnlyBudgetingCpm") JsonNullable<Double> impressionsOnlyBudgetingCpm,
-            @JsonProperty("primaryChannel") CampaignChannelType primaryChannel,
-            @JsonProperty("budget") Optional<? extends BudgetWorkflow> budget,
-            @JsonProperty("primaryGoal") CampaignCreateROIGoalWorkflow primaryGoal,
-            @JsonProperty("startDateInUtc") JsonNullable<OffsetDateTime> startDateInUtc,
+            @JsonProperty("budget") Optional<? extends CampaignWorkflowBudgetInput> budget,
             @JsonProperty("endDateInUtc") JsonNullable<OffsetDateTime> endDateInUtc,
             @JsonProperty("seedId") JsonNullable<String> seedId,
-            @JsonProperty("campaignConversionReportingColumns") JsonNullable<? extends List<CampaignConversionReportingColumnWorkflow>> campaignConversionReportingColumns) {
-        Utils.checkNotNull(advertiserId, "advertiserId");
-        Utils.checkNotNull(name, "name");
+            @JsonProperty("campaignConversionReportingColumns") JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns,
+            @JsonProperty("advertiserId") String advertiserId,
+            @JsonProperty("name") String name,
+            @JsonProperty("primaryChannel") CampaignChannelType primaryChannel,
+            @JsonProperty("primaryGoal") CampaignWorkflowROIGoalInput primaryGoal,
+            @JsonProperty("startDateInUtc") JsonNullable<OffsetDateTime> startDateInUtc) {
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(timeZone, "timeZone");
         Utils.checkNotNull(customCPAClickWeight, "customCPAClickWeight");
         Utils.checkNotNull(customCPAViewthroughWeight, "customCPAViewthroughWeight");
         Utils.checkNotNull(customCPAType, "customCPAType");
         Utils.checkNotNull(impressionsOnlyBudgetingCpm, "impressionsOnlyBudgetingCpm");
-        Utils.checkNotNull(primaryChannel, "primaryChannel");
         Utils.checkNotNull(budget, "budget");
-        Utils.checkNotNull(primaryGoal, "primaryGoal");
-        Utils.checkNotNull(startDateInUtc, "startDateInUtc");
         Utils.checkNotNull(endDateInUtc, "endDateInUtc");
         Utils.checkNotNull(seedId, "seedId");
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
-        this.advertiserId = advertiserId;
-        this.name = name;
+        Utils.checkNotNull(advertiserId, "advertiserId");
+        Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(primaryChannel, "primaryChannel");
+        Utils.checkNotNull(primaryGoal, "primaryGoal");
+        Utils.checkNotNull(startDateInUtc, "startDateInUtc");
         this.description = description;
         this.timeZone = timeZone;
         this.customCPAClickWeight = customCPAClickWeight;
         this.customCPAViewthroughWeight = customCPAViewthroughWeight;
         this.customCPAType = customCPAType;
         this.impressionsOnlyBudgetingCpm = impressionsOnlyBudgetingCpm;
-        this.primaryChannel = primaryChannel;
         this.budget = budget;
-        this.primaryGoal = primaryGoal;
-        this.startDateInUtc = startDateInUtc;
         this.endDateInUtc = endDateInUtc;
         this.seedId = seedId;
         this.campaignConversionReportingColumns = campaignConversionReportingColumns;
+        this.advertiserId = advertiserId;
+        this.name = name;
+        this.primaryChannel = primaryChannel;
+        this.primaryGoal = primaryGoal;
+        this.startDateInUtc = startDateInUtc;
     }
     
     public CampaignCreateWorkflowPrimaryInput(
             String advertiserId,
             String name,
             CampaignChannelType primaryChannel,
-            CampaignCreateROIGoalWorkflow primaryGoal) {
-        this(advertiserId, name, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), primaryChannel, Optional.empty(), primaryGoal, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
-    }
-
-    @JsonIgnore
-    public String advertiserId() {
-        return advertiserId;
-    }
-
-    @JsonIgnore
-    public String name() {
-        return name;
+            CampaignWorkflowROIGoalInput primaryGoal) {
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), advertiserId, name, primaryChannel, primaryGoal, JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -175,25 +165,10 @@ public class CampaignCreateWorkflowPrimaryInput {
         return impressionsOnlyBudgetingCpm;
     }
 
-    @JsonIgnore
-    public CampaignChannelType primaryChannel() {
-        return primaryChannel;
-    }
-
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<BudgetWorkflow> budget() {
-        return (Optional<BudgetWorkflow>) budget;
-    }
-
-    @JsonIgnore
-    public CampaignCreateROIGoalWorkflow primaryGoal() {
-        return primaryGoal;
-    }
-
-    @JsonIgnore
-    public JsonNullable<OffsetDateTime> startDateInUtc() {
-        return startDateInUtc;
+    public Optional<CampaignWorkflowBudgetInput> budget() {
+        return (Optional<CampaignWorkflowBudgetInput>) budget;
     }
 
     @JsonIgnore
@@ -208,25 +183,38 @@ public class CampaignCreateWorkflowPrimaryInput {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<CampaignConversionReportingColumnWorkflow>> campaignConversionReportingColumns() {
-        return (JsonNullable<List<CampaignConversionReportingColumnWorkflow>>) campaignConversionReportingColumns;
+    public JsonNullable<List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns() {
+        return (JsonNullable<List<CampaignWorkflowConversionReportingColumnInput>>) campaignConversionReportingColumns;
+    }
+
+    @JsonIgnore
+    public String advertiserId() {
+        return advertiserId;
+    }
+
+    @JsonIgnore
+    public String name() {
+        return name;
+    }
+
+    @JsonIgnore
+    public CampaignChannelType primaryChannel() {
+        return primaryChannel;
+    }
+
+    @JsonIgnore
+    public CampaignWorkflowROIGoalInput primaryGoal() {
+        return primaryGoal;
+    }
+
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> startDateInUtc() {
+        return startDateInUtc;
     }
 
     public final static Builder builder() {
         return new Builder();
     }    
-
-    public CampaignCreateWorkflowPrimaryInput withAdvertiserId(String advertiserId) {
-        Utils.checkNotNull(advertiserId, "advertiserId");
-        this.advertiserId = advertiserId;
-        return this;
-    }
-
-    public CampaignCreateWorkflowPrimaryInput withName(String name) {
-        Utils.checkNotNull(name, "name");
-        this.name = name;
-        return this;
-    }
 
     public CampaignCreateWorkflowPrimaryInput withDescription(String description) {
         Utils.checkNotNull(description, "description");
@@ -300,39 +288,15 @@ public class CampaignCreateWorkflowPrimaryInput {
         return this;
     }
 
-    public CampaignCreateWorkflowPrimaryInput withPrimaryChannel(CampaignChannelType primaryChannel) {
-        Utils.checkNotNull(primaryChannel, "primaryChannel");
-        this.primaryChannel = primaryChannel;
-        return this;
-    }
-
-    public CampaignCreateWorkflowPrimaryInput withBudget(BudgetWorkflow budget) {
+    public CampaignCreateWorkflowPrimaryInput withBudget(CampaignWorkflowBudgetInput budget) {
         Utils.checkNotNull(budget, "budget");
         this.budget = Optional.ofNullable(budget);
         return this;
     }
 
-    public CampaignCreateWorkflowPrimaryInput withBudget(Optional<? extends BudgetWorkflow> budget) {
+    public CampaignCreateWorkflowPrimaryInput withBudget(Optional<? extends CampaignWorkflowBudgetInput> budget) {
         Utils.checkNotNull(budget, "budget");
         this.budget = budget;
-        return this;
-    }
-
-    public CampaignCreateWorkflowPrimaryInput withPrimaryGoal(CampaignCreateROIGoalWorkflow primaryGoal) {
-        Utils.checkNotNull(primaryGoal, "primaryGoal");
-        this.primaryGoal = primaryGoal;
-        return this;
-    }
-
-    public CampaignCreateWorkflowPrimaryInput withStartDateInUtc(OffsetDateTime startDateInUtc) {
-        Utils.checkNotNull(startDateInUtc, "startDateInUtc");
-        this.startDateInUtc = JsonNullable.of(startDateInUtc);
-        return this;
-    }
-
-    public CampaignCreateWorkflowPrimaryInput withStartDateInUtc(JsonNullable<OffsetDateTime> startDateInUtc) {
-        Utils.checkNotNull(startDateInUtc, "startDateInUtc");
-        this.startDateInUtc = startDateInUtc;
         return this;
     }
 
@@ -360,15 +324,51 @@ public class CampaignCreateWorkflowPrimaryInput {
         return this;
     }
 
-    public CampaignCreateWorkflowPrimaryInput withCampaignConversionReportingColumns(List<CampaignConversionReportingColumnWorkflow> campaignConversionReportingColumns) {
+    public CampaignCreateWorkflowPrimaryInput withCampaignConversionReportingColumns(List<CampaignWorkflowConversionReportingColumnInput> campaignConversionReportingColumns) {
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
         this.campaignConversionReportingColumns = JsonNullable.of(campaignConversionReportingColumns);
         return this;
     }
 
-    public CampaignCreateWorkflowPrimaryInput withCampaignConversionReportingColumns(JsonNullable<? extends List<CampaignConversionReportingColumnWorkflow>> campaignConversionReportingColumns) {
+    public CampaignCreateWorkflowPrimaryInput withCampaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns) {
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
         this.campaignConversionReportingColumns = campaignConversionReportingColumns;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withAdvertiserId(String advertiserId) {
+        Utils.checkNotNull(advertiserId, "advertiserId");
+        this.advertiserId = advertiserId;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withName(String name) {
+        Utils.checkNotNull(name, "name");
+        this.name = name;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withPrimaryChannel(CampaignChannelType primaryChannel) {
+        Utils.checkNotNull(primaryChannel, "primaryChannel");
+        this.primaryChannel = primaryChannel;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withPrimaryGoal(CampaignWorkflowROIGoalInput primaryGoal) {
+        Utils.checkNotNull(primaryGoal, "primaryGoal");
+        this.primaryGoal = primaryGoal;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withStartDateInUtc(OffsetDateTime startDateInUtc) {
+        Utils.checkNotNull(startDateInUtc, "startDateInUtc");
+        this.startDateInUtc = JsonNullable.of(startDateInUtc);
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withStartDateInUtc(JsonNullable<OffsetDateTime> startDateInUtc) {
+        Utils.checkNotNull(startDateInUtc, "startDateInUtc");
+        this.startDateInUtc = startDateInUtc;
         return this;
     }
 
@@ -383,68 +383,64 @@ public class CampaignCreateWorkflowPrimaryInput {
         }
         CampaignCreateWorkflowPrimaryInput other = (CampaignCreateWorkflowPrimaryInput) o;
         return 
-            Objects.deepEquals(this.advertiserId, other.advertiserId) &&
-            Objects.deepEquals(this.name, other.name) &&
             Objects.deepEquals(this.description, other.description) &&
             Objects.deepEquals(this.timeZone, other.timeZone) &&
             Objects.deepEquals(this.customCPAClickWeight, other.customCPAClickWeight) &&
             Objects.deepEquals(this.customCPAViewthroughWeight, other.customCPAViewthroughWeight) &&
             Objects.deepEquals(this.customCPAType, other.customCPAType) &&
             Objects.deepEquals(this.impressionsOnlyBudgetingCpm, other.impressionsOnlyBudgetingCpm) &&
-            Objects.deepEquals(this.primaryChannel, other.primaryChannel) &&
             Objects.deepEquals(this.budget, other.budget) &&
-            Objects.deepEquals(this.primaryGoal, other.primaryGoal) &&
-            Objects.deepEquals(this.startDateInUtc, other.startDateInUtc) &&
             Objects.deepEquals(this.endDateInUtc, other.endDateInUtc) &&
             Objects.deepEquals(this.seedId, other.seedId) &&
-            Objects.deepEquals(this.campaignConversionReportingColumns, other.campaignConversionReportingColumns);
+            Objects.deepEquals(this.campaignConversionReportingColumns, other.campaignConversionReportingColumns) &&
+            Objects.deepEquals(this.advertiserId, other.advertiserId) &&
+            Objects.deepEquals(this.name, other.name) &&
+            Objects.deepEquals(this.primaryChannel, other.primaryChannel) &&
+            Objects.deepEquals(this.primaryGoal, other.primaryGoal) &&
+            Objects.deepEquals(this.startDateInUtc, other.startDateInUtc);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
-            advertiserId,
-            name,
             description,
             timeZone,
             customCPAClickWeight,
             customCPAViewthroughWeight,
             customCPAType,
             impressionsOnlyBudgetingCpm,
-            primaryChannel,
             budget,
-            primaryGoal,
-            startDateInUtc,
             endDateInUtc,
             seedId,
-            campaignConversionReportingColumns);
+            campaignConversionReportingColumns,
+            advertiserId,
+            name,
+            primaryChannel,
+            primaryGoal,
+            startDateInUtc);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CampaignCreateWorkflowPrimaryInput.class,
-                "advertiserId", advertiserId,
-                "name", name,
                 "description", description,
                 "timeZone", timeZone,
                 "customCPAClickWeight", customCPAClickWeight,
                 "customCPAViewthroughWeight", customCPAViewthroughWeight,
                 "customCPAType", customCPAType,
                 "impressionsOnlyBudgetingCpm", impressionsOnlyBudgetingCpm,
-                "primaryChannel", primaryChannel,
                 "budget", budget,
-                "primaryGoal", primaryGoal,
-                "startDateInUtc", startDateInUtc,
                 "endDateInUtc", endDateInUtc,
                 "seedId", seedId,
-                "campaignConversionReportingColumns", campaignConversionReportingColumns);
+                "campaignConversionReportingColumns", campaignConversionReportingColumns,
+                "advertiserId", advertiserId,
+                "name", name,
+                "primaryChannel", primaryChannel,
+                "primaryGoal", primaryGoal,
+                "startDateInUtc", startDateInUtc);
     }
     
     public final static class Builder {
- 
-        private String advertiserId;
- 
-        private String name;
  
         private JsonNullable<String> description = JsonNullable.undefined();
  
@@ -458,34 +454,26 @@ public class CampaignCreateWorkflowPrimaryInput {
  
         private JsonNullable<Double> impressionsOnlyBudgetingCpm = JsonNullable.undefined();
  
-        private CampaignChannelType primaryChannel;
- 
-        private Optional<? extends BudgetWorkflow> budget = Optional.empty();
- 
-        private CampaignCreateROIGoalWorkflow primaryGoal;
- 
-        private JsonNullable<OffsetDateTime> startDateInUtc = JsonNullable.undefined();
+        private Optional<? extends CampaignWorkflowBudgetInput> budget = Optional.empty();
  
         private JsonNullable<OffsetDateTime> endDateInUtc = JsonNullable.undefined();
  
         private JsonNullable<String> seedId = JsonNullable.undefined();
  
-        private JsonNullable<? extends List<CampaignConversionReportingColumnWorkflow>> campaignConversionReportingColumns = JsonNullable.undefined();
+        private JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns = JsonNullable.undefined();
+ 
+        private String advertiserId;
+ 
+        private String name;
+ 
+        private CampaignChannelType primaryChannel;
+ 
+        private CampaignWorkflowROIGoalInput primaryGoal;
+ 
+        private JsonNullable<OffsetDateTime> startDateInUtc = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
-        }
-
-        public Builder advertiserId(String advertiserId) {
-            Utils.checkNotNull(advertiserId, "advertiserId");
-            this.advertiserId = advertiserId;
-            return this;
-        }
-
-        public Builder name(String name) {
-            Utils.checkNotNull(name, "name");
-            this.name = name;
-            return this;
         }
 
         public Builder description(String description) {
@@ -560,39 +548,15 @@ public class CampaignCreateWorkflowPrimaryInput {
             return this;
         }
 
-        public Builder primaryChannel(CampaignChannelType primaryChannel) {
-            Utils.checkNotNull(primaryChannel, "primaryChannel");
-            this.primaryChannel = primaryChannel;
-            return this;
-        }
-
-        public Builder budget(BudgetWorkflow budget) {
+        public Builder budget(CampaignWorkflowBudgetInput budget) {
             Utils.checkNotNull(budget, "budget");
             this.budget = Optional.ofNullable(budget);
             return this;
         }
 
-        public Builder budget(Optional<? extends BudgetWorkflow> budget) {
+        public Builder budget(Optional<? extends CampaignWorkflowBudgetInput> budget) {
             Utils.checkNotNull(budget, "budget");
             this.budget = budget;
-            return this;
-        }
-
-        public Builder primaryGoal(CampaignCreateROIGoalWorkflow primaryGoal) {
-            Utils.checkNotNull(primaryGoal, "primaryGoal");
-            this.primaryGoal = primaryGoal;
-            return this;
-        }
-
-        public Builder startDateInUtc(OffsetDateTime startDateInUtc) {
-            Utils.checkNotNull(startDateInUtc, "startDateInUtc");
-            this.startDateInUtc = JsonNullable.of(startDateInUtc);
-            return this;
-        }
-
-        public Builder startDateInUtc(JsonNullable<OffsetDateTime> startDateInUtc) {
-            Utils.checkNotNull(startDateInUtc, "startDateInUtc");
-            this.startDateInUtc = startDateInUtc;
             return this;
         }
 
@@ -620,35 +584,71 @@ public class CampaignCreateWorkflowPrimaryInput {
             return this;
         }
 
-        public Builder campaignConversionReportingColumns(List<CampaignConversionReportingColumnWorkflow> campaignConversionReportingColumns) {
+        public Builder campaignConversionReportingColumns(List<CampaignWorkflowConversionReportingColumnInput> campaignConversionReportingColumns) {
             Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
             this.campaignConversionReportingColumns = JsonNullable.of(campaignConversionReportingColumns);
             return this;
         }
 
-        public Builder campaignConversionReportingColumns(JsonNullable<? extends List<CampaignConversionReportingColumnWorkflow>> campaignConversionReportingColumns) {
+        public Builder campaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns) {
             Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
             this.campaignConversionReportingColumns = campaignConversionReportingColumns;
+            return this;
+        }
+
+        public Builder advertiserId(String advertiserId) {
+            Utils.checkNotNull(advertiserId, "advertiserId");
+            this.advertiserId = advertiserId;
+            return this;
+        }
+
+        public Builder name(String name) {
+            Utils.checkNotNull(name, "name");
+            this.name = name;
+            return this;
+        }
+
+        public Builder primaryChannel(CampaignChannelType primaryChannel) {
+            Utils.checkNotNull(primaryChannel, "primaryChannel");
+            this.primaryChannel = primaryChannel;
+            return this;
+        }
+
+        public Builder primaryGoal(CampaignWorkflowROIGoalInput primaryGoal) {
+            Utils.checkNotNull(primaryGoal, "primaryGoal");
+            this.primaryGoal = primaryGoal;
+            return this;
+        }
+
+        public Builder startDateInUtc(OffsetDateTime startDateInUtc) {
+            Utils.checkNotNull(startDateInUtc, "startDateInUtc");
+            this.startDateInUtc = JsonNullable.of(startDateInUtc);
+            return this;
+        }
+
+        public Builder startDateInUtc(JsonNullable<OffsetDateTime> startDateInUtc) {
+            Utils.checkNotNull(startDateInUtc, "startDateInUtc");
+            this.startDateInUtc = startDateInUtc;
             return this;
         }
         
         public CampaignCreateWorkflowPrimaryInput build() {
             return new CampaignCreateWorkflowPrimaryInput(
-                advertiserId,
-                name,
                 description,
                 timeZone,
                 customCPAClickWeight,
                 customCPAViewthroughWeight,
                 customCPAType,
                 impressionsOnlyBudgetingCpm,
-                primaryChannel,
                 budget,
-                primaryGoal,
-                startDateInUtc,
                 endDateInUtc,
                 seedId,
-                campaignConversionReportingColumns);
+                campaignConversionReportingColumns,
+                advertiserId,
+                name,
+                primaryChannel,
+                primaryGoal,
+                startDateInUtc);
         }
     }
 }

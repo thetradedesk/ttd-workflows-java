@@ -5,7 +5,9 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInput;
 import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInput;
 import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.utils.Options;
@@ -54,6 +56,12 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
+    public interface MethodCallPatchCampaign {
+        PatchCampaignResponse patchCampaign(
+            Optional<? extends CampaignUpdateWorkflowInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
     public interface MethodCallPostCampaignBulk {
         PostCampaignBulkResponse postCampaignBulk(
             Optional<? extends List<CampaignCreateWorkflowInput>> request,
@@ -76,6 +84,12 @@ public class SDKMethodInterfaces {
     public interface MethodCallPostGraphqlRequest {
         PostGraphqlRequestResponse postGraphqlRequest(
             Optional<? extends GraphQLRequestInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostPubapi {
+        PostPubapiResponse postPubapi(
+            Optional<? extends CallPubApiWorkflowInput> request,
             Optional<Options> options) throws Exception;
     }
 }

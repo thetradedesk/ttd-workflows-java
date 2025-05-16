@@ -9,15 +9,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
-import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 public class AdGroupUpdateWorkflowInput {
 
@@ -25,106 +21,29 @@ public class AdGroupUpdateWorkflowInput {
     @JsonProperty("id")
     private Optional<String> id;
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("name")
-    private JsonNullable<String> name;
+    @JsonProperty("primaryInput")
+    private AdGroupUpdateWorkflowPrimaryInput primaryInput;
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("isEnabled")
-    private JsonNullable<Boolean> isEnabled;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("description")
-    private JsonNullable<String> description;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("channel")
-    private Optional<? extends AdGroupChannel> channel;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("funnelLocation")
-    private Optional<? extends AdGroupFunnelLocation> funnelLocation;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("budget")
-    private Optional<? extends AdGroupUpdateBudgetInput> budget;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("baseBidCPMInAdvertiserCurrency")
-    private JsonNullable<Double> baseBidCPMInAdvertiserCurrency;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("maxBidCPMInAdvertiserCurrency")
-    private JsonNullable<Double> maxBidCPMInAdvertiserCurrency;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("audienceTargeting")
-    private Optional<? extends AdGroupUpdateAudienceTargetingInput> audienceTargeting;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("roiGoal")
-    private Optional<? extends AdGroupRoiGoalInput> roiGoal;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("creativeIds")
-    private JsonNullable<? extends List<String>> creativeIds;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("associatedBidLists")
-    private JsonNullable<? extends List<AdGroupAssociateBidListInput>> associatedBidLists;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("advancedSettings")
-    private Optional<? extends AdGroupUpdateAdvancedSettingsInput> advancedSettings;
+    @JsonProperty("advancedInput")
+    private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput;
 
     @JsonCreator
     public AdGroupUpdateWorkflowInput(
             @JsonProperty("id") Optional<String> id,
-            @JsonProperty("name") JsonNullable<String> name,
-            @JsonProperty("isEnabled") JsonNullable<Boolean> isEnabled,
-            @JsonProperty("description") JsonNullable<String> description,
-            @JsonProperty("channel") Optional<? extends AdGroupChannel> channel,
-            @JsonProperty("funnelLocation") Optional<? extends AdGroupFunnelLocation> funnelLocation,
-            @JsonProperty("budget") Optional<? extends AdGroupUpdateBudgetInput> budget,
-            @JsonProperty("baseBidCPMInAdvertiserCurrency") JsonNullable<Double> baseBidCPMInAdvertiserCurrency,
-            @JsonProperty("maxBidCPMInAdvertiserCurrency") JsonNullable<Double> maxBidCPMInAdvertiserCurrency,
-            @JsonProperty("audienceTargeting") Optional<? extends AdGroupUpdateAudienceTargetingInput> audienceTargeting,
-            @JsonProperty("roiGoal") Optional<? extends AdGroupRoiGoalInput> roiGoal,
-            @JsonProperty("creativeIds") JsonNullable<? extends List<String>> creativeIds,
-            @JsonProperty("associatedBidLists") JsonNullable<? extends List<AdGroupAssociateBidListInput>> associatedBidLists,
-            @JsonProperty("advancedSettings") Optional<? extends AdGroupUpdateAdvancedSettingsInput> advancedSettings) {
+            @JsonProperty("primaryInput") AdGroupUpdateWorkflowPrimaryInput primaryInput,
+            @JsonProperty("advancedInput") Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(id, "id");
-        Utils.checkNotNull(name, "name");
-        Utils.checkNotNull(isEnabled, "isEnabled");
-        Utils.checkNotNull(description, "description");
-        Utils.checkNotNull(channel, "channel");
-        Utils.checkNotNull(funnelLocation, "funnelLocation");
-        Utils.checkNotNull(budget, "budget");
-        Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
-        Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
-        Utils.checkNotNull(audienceTargeting, "audienceTargeting");
-        Utils.checkNotNull(roiGoal, "roiGoal");
-        Utils.checkNotNull(creativeIds, "creativeIds");
-        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-        Utils.checkNotNull(advancedSettings, "advancedSettings");
+        Utils.checkNotNull(primaryInput, "primaryInput");
+        Utils.checkNotNull(advancedInput, "advancedInput");
         this.id = id;
-        this.name = name;
-        this.isEnabled = isEnabled;
-        this.description = description;
-        this.channel = channel;
-        this.funnelLocation = funnelLocation;
-        this.budget = budget;
-        this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
-        this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
-        this.audienceTargeting = audienceTargeting;
-        this.roiGoal = roiGoal;
-        this.creativeIds = creativeIds;
-        this.associatedBidLists = associatedBidLists;
-        this.advancedSettings = advancedSettings;
+        this.primaryInput = primaryInput;
+        this.advancedInput = advancedInput;
     }
     
-    public AdGroupUpdateWorkflowInput() {
-        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+    public AdGroupUpdateWorkflowInput(
+            AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+        this(Optional.empty(), primaryInput, Optional.empty());
     }
 
     @JsonIgnore
@@ -133,76 +52,14 @@ public class AdGroupUpdateWorkflowInput {
     }
 
     @JsonIgnore
-    public JsonNullable<String> name() {
-        return name;
-    }
-
-    @JsonIgnore
-    public JsonNullable<Boolean> isEnabled() {
-        return isEnabled;
-    }
-
-    @JsonIgnore
-    public JsonNullable<String> description() {
-        return description;
+    public AdGroupUpdateWorkflowPrimaryInput primaryInput() {
+        return primaryInput;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<AdGroupChannel> channel() {
-        return (Optional<AdGroupChannel>) channel;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<AdGroupFunnelLocation> funnelLocation() {
-        return (Optional<AdGroupFunnelLocation>) funnelLocation;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<AdGroupUpdateBudgetInput> budget() {
-        return (Optional<AdGroupUpdateBudgetInput>) budget;
-    }
-
-    @JsonIgnore
-    public JsonNullable<Double> baseBidCPMInAdvertiserCurrency() {
-        return baseBidCPMInAdvertiserCurrency;
-    }
-
-    @JsonIgnore
-    public JsonNullable<Double> maxBidCPMInAdvertiserCurrency() {
-        return maxBidCPMInAdvertiserCurrency;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<AdGroupUpdateAudienceTargetingInput> audienceTargeting() {
-        return (Optional<AdGroupUpdateAudienceTargetingInput>) audienceTargeting;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<AdGroupRoiGoalInput> roiGoal() {
-        return (Optional<AdGroupRoiGoalInput>) roiGoal;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<List<String>> creativeIds() {
-        return (JsonNullable<List<String>>) creativeIds;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<List<AdGroupAssociateBidListInput>> associatedBidLists() {
-        return (JsonNullable<List<AdGroupAssociateBidListInput>>) associatedBidLists;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<AdGroupUpdateAdvancedSettingsInput> advancedSettings() {
-        return (Optional<AdGroupUpdateAdvancedSettingsInput>) advancedSettings;
+    public Optional<AdGroupWorkflowAdvancedInput> advancedInput() {
+        return (Optional<AdGroupWorkflowAdvancedInput>) advancedInput;
     }
 
     public final static Builder builder() {
@@ -221,159 +78,21 @@ public class AdGroupUpdateWorkflowInput {
         return this;
     }
 
-    public AdGroupUpdateWorkflowInput withName(String name) {
-        Utils.checkNotNull(name, "name");
-        this.name = JsonNullable.of(name);
+    public AdGroupUpdateWorkflowInput withPrimaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+        Utils.checkNotNull(primaryInput, "primaryInput");
+        this.primaryInput = primaryInput;
         return this;
     }
 
-    public AdGroupUpdateWorkflowInput withName(JsonNullable<String> name) {
-        Utils.checkNotNull(name, "name");
-        this.name = name;
+    public AdGroupUpdateWorkflowInput withAdvancedInput(AdGroupWorkflowAdvancedInput advancedInput) {
+        Utils.checkNotNull(advancedInput, "advancedInput");
+        this.advancedInput = Optional.ofNullable(advancedInput);
         return this;
     }
 
-    public AdGroupUpdateWorkflowInput withIsEnabled(boolean isEnabled) {
-        Utils.checkNotNull(isEnabled, "isEnabled");
-        this.isEnabled = JsonNullable.of(isEnabled);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withIsEnabled(JsonNullable<Boolean> isEnabled) {
-        Utils.checkNotNull(isEnabled, "isEnabled");
-        this.isEnabled = isEnabled;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withDescription(String description) {
-        Utils.checkNotNull(description, "description");
-        this.description = JsonNullable.of(description);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withDescription(JsonNullable<String> description) {
-        Utils.checkNotNull(description, "description");
-        this.description = description;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withChannel(AdGroupChannel channel) {
-        Utils.checkNotNull(channel, "channel");
-        this.channel = Optional.ofNullable(channel);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withChannel(Optional<? extends AdGroupChannel> channel) {
-        Utils.checkNotNull(channel, "channel");
-        this.channel = channel;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withFunnelLocation(AdGroupFunnelLocation funnelLocation) {
-        Utils.checkNotNull(funnelLocation, "funnelLocation");
-        this.funnelLocation = Optional.ofNullable(funnelLocation);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withFunnelLocation(Optional<? extends AdGroupFunnelLocation> funnelLocation) {
-        Utils.checkNotNull(funnelLocation, "funnelLocation");
-        this.funnelLocation = funnelLocation;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withBudget(AdGroupUpdateBudgetInput budget) {
-        Utils.checkNotNull(budget, "budget");
-        this.budget = Optional.ofNullable(budget);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withBudget(Optional<? extends AdGroupUpdateBudgetInput> budget) {
-        Utils.checkNotNull(budget, "budget");
-        this.budget = budget;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withBaseBidCPMInAdvertiserCurrency(double baseBidCPMInAdvertiserCurrency) {
-        Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
-        this.baseBidCPMInAdvertiserCurrency = JsonNullable.of(baseBidCPMInAdvertiserCurrency);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withBaseBidCPMInAdvertiserCurrency(JsonNullable<Double> baseBidCPMInAdvertiserCurrency) {
-        Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
-        this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withMaxBidCPMInAdvertiserCurrency(double maxBidCPMInAdvertiserCurrency) {
-        Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
-        this.maxBidCPMInAdvertiserCurrency = JsonNullable.of(maxBidCPMInAdvertiserCurrency);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withMaxBidCPMInAdvertiserCurrency(JsonNullable<Double> maxBidCPMInAdvertiserCurrency) {
-        Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
-        this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withAudienceTargeting(AdGroupUpdateAudienceTargetingInput audienceTargeting) {
-        Utils.checkNotNull(audienceTargeting, "audienceTargeting");
-        this.audienceTargeting = Optional.ofNullable(audienceTargeting);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withAudienceTargeting(Optional<? extends AdGroupUpdateAudienceTargetingInput> audienceTargeting) {
-        Utils.checkNotNull(audienceTargeting, "audienceTargeting");
-        this.audienceTargeting = audienceTargeting;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withRoiGoal(AdGroupRoiGoalInput roiGoal) {
-        Utils.checkNotNull(roiGoal, "roiGoal");
-        this.roiGoal = Optional.ofNullable(roiGoal);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withRoiGoal(Optional<? extends AdGroupRoiGoalInput> roiGoal) {
-        Utils.checkNotNull(roiGoal, "roiGoal");
-        this.roiGoal = roiGoal;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withCreativeIds(List<String> creativeIds) {
-        Utils.checkNotNull(creativeIds, "creativeIds");
-        this.creativeIds = JsonNullable.of(creativeIds);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withCreativeIds(JsonNullable<? extends List<String>> creativeIds) {
-        Utils.checkNotNull(creativeIds, "creativeIds");
-        this.creativeIds = creativeIds;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withAssociatedBidLists(List<AdGroupAssociateBidListInput> associatedBidLists) {
-        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-        this.associatedBidLists = JsonNullable.of(associatedBidLists);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withAssociatedBidLists(JsonNullable<? extends List<AdGroupAssociateBidListInput>> associatedBidLists) {
-        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-        this.associatedBidLists = associatedBidLists;
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withAdvancedSettings(AdGroupUpdateAdvancedSettingsInput advancedSettings) {
-        Utils.checkNotNull(advancedSettings, "advancedSettings");
-        this.advancedSettings = Optional.ofNullable(advancedSettings);
-        return this;
-    }
-
-    public AdGroupUpdateWorkflowInput withAdvancedSettings(Optional<? extends AdGroupUpdateAdvancedSettingsInput> advancedSettings) {
-        Utils.checkNotNull(advancedSettings, "advancedSettings");
-        this.advancedSettings = advancedSettings;
+    public AdGroupUpdateWorkflowInput withAdvancedInput(Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput) {
+        Utils.checkNotNull(advancedInput, "advancedInput");
+        this.advancedInput = advancedInput;
         return this;
     }
 
@@ -389,88 +108,33 @@ public class AdGroupUpdateWorkflowInput {
         AdGroupUpdateWorkflowInput other = (AdGroupUpdateWorkflowInput) o;
         return 
             Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.isEnabled, other.isEnabled) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.channel, other.channel) &&
-            Objects.deepEquals(this.funnelLocation, other.funnelLocation) &&
-            Objects.deepEquals(this.budget, other.budget) &&
-            Objects.deepEquals(this.baseBidCPMInAdvertiserCurrency, other.baseBidCPMInAdvertiserCurrency) &&
-            Objects.deepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
-            Objects.deepEquals(this.audienceTargeting, other.audienceTargeting) &&
-            Objects.deepEquals(this.roiGoal, other.roiGoal) &&
-            Objects.deepEquals(this.creativeIds, other.creativeIds) &&
-            Objects.deepEquals(this.associatedBidLists, other.associatedBidLists) &&
-            Objects.deepEquals(this.advancedSettings, other.advancedSettings);
+            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
+            Objects.deepEquals(this.advancedInput, other.advancedInput);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
             id,
-            name,
-            isEnabled,
-            description,
-            channel,
-            funnelLocation,
-            budget,
-            baseBidCPMInAdvertiserCurrency,
-            maxBidCPMInAdvertiserCurrency,
-            audienceTargeting,
-            roiGoal,
-            creativeIds,
-            associatedBidLists,
-            advancedSettings);
+            primaryInput,
+            advancedInput);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AdGroupUpdateWorkflowInput.class,
                 "id", id,
-                "name", name,
-                "isEnabled", isEnabled,
-                "description", description,
-                "channel", channel,
-                "funnelLocation", funnelLocation,
-                "budget", budget,
-                "baseBidCPMInAdvertiserCurrency", baseBidCPMInAdvertiserCurrency,
-                "maxBidCPMInAdvertiserCurrency", maxBidCPMInAdvertiserCurrency,
-                "audienceTargeting", audienceTargeting,
-                "roiGoal", roiGoal,
-                "creativeIds", creativeIds,
-                "associatedBidLists", associatedBidLists,
-                "advancedSettings", advancedSettings);
+                "primaryInput", primaryInput,
+                "advancedInput", advancedInput);
     }
     
     public final static class Builder {
  
         private Optional<String> id = Optional.empty();
  
-        private JsonNullable<String> name = JsonNullable.undefined();
+        private AdGroupUpdateWorkflowPrimaryInput primaryInput;
  
-        private JsonNullable<Boolean> isEnabled = JsonNullable.undefined();
- 
-        private JsonNullable<String> description = JsonNullable.undefined();
- 
-        private Optional<? extends AdGroupChannel> channel = Optional.empty();
- 
-        private Optional<? extends AdGroupFunnelLocation> funnelLocation = Optional.empty();
- 
-        private Optional<? extends AdGroupUpdateBudgetInput> budget = Optional.empty();
- 
-        private JsonNullable<Double> baseBidCPMInAdvertiserCurrency = JsonNullable.undefined();
- 
-        private JsonNullable<Double> maxBidCPMInAdvertiserCurrency = JsonNullable.undefined();
- 
-        private Optional<? extends AdGroupUpdateAudienceTargetingInput> audienceTargeting = Optional.empty();
- 
-        private Optional<? extends AdGroupRoiGoalInput> roiGoal = Optional.empty();
- 
-        private JsonNullable<? extends List<String>> creativeIds = JsonNullable.undefined();
- 
-        private JsonNullable<? extends List<AdGroupAssociateBidListInput>> associatedBidLists = JsonNullable.undefined();
- 
-        private Optional<? extends AdGroupUpdateAdvancedSettingsInput> advancedSettings = Optional.empty();
+        private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -488,178 +152,29 @@ public class AdGroupUpdateWorkflowInput {
             return this;
         }
 
-        public Builder name(String name) {
-            Utils.checkNotNull(name, "name");
-            this.name = JsonNullable.of(name);
+        public Builder primaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+            Utils.checkNotNull(primaryInput, "primaryInput");
+            this.primaryInput = primaryInput;
             return this;
         }
 
-        public Builder name(JsonNullable<String> name) {
-            Utils.checkNotNull(name, "name");
-            this.name = name;
+        public Builder advancedInput(AdGroupWorkflowAdvancedInput advancedInput) {
+            Utils.checkNotNull(advancedInput, "advancedInput");
+            this.advancedInput = Optional.ofNullable(advancedInput);
             return this;
         }
 
-        public Builder isEnabled(boolean isEnabled) {
-            Utils.checkNotNull(isEnabled, "isEnabled");
-            this.isEnabled = JsonNullable.of(isEnabled);
-            return this;
-        }
-
-        public Builder isEnabled(JsonNullable<Boolean> isEnabled) {
-            Utils.checkNotNull(isEnabled, "isEnabled");
-            this.isEnabled = isEnabled;
-            return this;
-        }
-
-        public Builder description(String description) {
-            Utils.checkNotNull(description, "description");
-            this.description = JsonNullable.of(description);
-            return this;
-        }
-
-        public Builder description(JsonNullable<String> description) {
-            Utils.checkNotNull(description, "description");
-            this.description = description;
-            return this;
-        }
-
-        public Builder channel(AdGroupChannel channel) {
-            Utils.checkNotNull(channel, "channel");
-            this.channel = Optional.ofNullable(channel);
-            return this;
-        }
-
-        public Builder channel(Optional<? extends AdGroupChannel> channel) {
-            Utils.checkNotNull(channel, "channel");
-            this.channel = channel;
-            return this;
-        }
-
-        public Builder funnelLocation(AdGroupFunnelLocation funnelLocation) {
-            Utils.checkNotNull(funnelLocation, "funnelLocation");
-            this.funnelLocation = Optional.ofNullable(funnelLocation);
-            return this;
-        }
-
-        public Builder funnelLocation(Optional<? extends AdGroupFunnelLocation> funnelLocation) {
-            Utils.checkNotNull(funnelLocation, "funnelLocation");
-            this.funnelLocation = funnelLocation;
-            return this;
-        }
-
-        public Builder budget(AdGroupUpdateBudgetInput budget) {
-            Utils.checkNotNull(budget, "budget");
-            this.budget = Optional.ofNullable(budget);
-            return this;
-        }
-
-        public Builder budget(Optional<? extends AdGroupUpdateBudgetInput> budget) {
-            Utils.checkNotNull(budget, "budget");
-            this.budget = budget;
-            return this;
-        }
-
-        public Builder baseBidCPMInAdvertiserCurrency(double baseBidCPMInAdvertiserCurrency) {
-            Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
-            this.baseBidCPMInAdvertiserCurrency = JsonNullable.of(baseBidCPMInAdvertiserCurrency);
-            return this;
-        }
-
-        public Builder baseBidCPMInAdvertiserCurrency(JsonNullable<Double> baseBidCPMInAdvertiserCurrency) {
-            Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
-            this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
-            return this;
-        }
-
-        public Builder maxBidCPMInAdvertiserCurrency(double maxBidCPMInAdvertiserCurrency) {
-            Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
-            this.maxBidCPMInAdvertiserCurrency = JsonNullable.of(maxBidCPMInAdvertiserCurrency);
-            return this;
-        }
-
-        public Builder maxBidCPMInAdvertiserCurrency(JsonNullable<Double> maxBidCPMInAdvertiserCurrency) {
-            Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
-            this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
-            return this;
-        }
-
-        public Builder audienceTargeting(AdGroupUpdateAudienceTargetingInput audienceTargeting) {
-            Utils.checkNotNull(audienceTargeting, "audienceTargeting");
-            this.audienceTargeting = Optional.ofNullable(audienceTargeting);
-            return this;
-        }
-
-        public Builder audienceTargeting(Optional<? extends AdGroupUpdateAudienceTargetingInput> audienceTargeting) {
-            Utils.checkNotNull(audienceTargeting, "audienceTargeting");
-            this.audienceTargeting = audienceTargeting;
-            return this;
-        }
-
-        public Builder roiGoal(AdGroupRoiGoalInput roiGoal) {
-            Utils.checkNotNull(roiGoal, "roiGoal");
-            this.roiGoal = Optional.ofNullable(roiGoal);
-            return this;
-        }
-
-        public Builder roiGoal(Optional<? extends AdGroupRoiGoalInput> roiGoal) {
-            Utils.checkNotNull(roiGoal, "roiGoal");
-            this.roiGoal = roiGoal;
-            return this;
-        }
-
-        public Builder creativeIds(List<String> creativeIds) {
-            Utils.checkNotNull(creativeIds, "creativeIds");
-            this.creativeIds = JsonNullable.of(creativeIds);
-            return this;
-        }
-
-        public Builder creativeIds(JsonNullable<? extends List<String>> creativeIds) {
-            Utils.checkNotNull(creativeIds, "creativeIds");
-            this.creativeIds = creativeIds;
-            return this;
-        }
-
-        public Builder associatedBidLists(List<AdGroupAssociateBidListInput> associatedBidLists) {
-            Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-            this.associatedBidLists = JsonNullable.of(associatedBidLists);
-            return this;
-        }
-
-        public Builder associatedBidLists(JsonNullable<? extends List<AdGroupAssociateBidListInput>> associatedBidLists) {
-            Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-            this.associatedBidLists = associatedBidLists;
-            return this;
-        }
-
-        public Builder advancedSettings(AdGroupUpdateAdvancedSettingsInput advancedSettings) {
-            Utils.checkNotNull(advancedSettings, "advancedSettings");
-            this.advancedSettings = Optional.ofNullable(advancedSettings);
-            return this;
-        }
-
-        public Builder advancedSettings(Optional<? extends AdGroupUpdateAdvancedSettingsInput> advancedSettings) {
-            Utils.checkNotNull(advancedSettings, "advancedSettings");
-            this.advancedSettings = advancedSettings;
+        public Builder advancedInput(Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput) {
+            Utils.checkNotNull(advancedInput, "advancedInput");
+            this.advancedInput = advancedInput;
             return this;
         }
         
         public AdGroupUpdateWorkflowInput build() {
             return new AdGroupUpdateWorkflowInput(
                 id,
-                name,
-                isEnabled,
-                description,
-                channel,
-                funnelLocation,
-                budget,
-                baseBidCPMInAdvertiserCurrency,
-                maxBidCPMInAdvertiserCurrency,
-                audienceTargeting,
-                roiGoal,
-                creativeIds,
-                associatedBidLists,
-                advancedSettings);
+                primaryInput,
+                advancedInput);
         }
     }
 }

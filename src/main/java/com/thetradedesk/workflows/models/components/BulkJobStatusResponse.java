@@ -45,11 +45,8 @@ public class BulkJobStatusResponse {
     @JsonProperty("createdAtUtc")
     private OffsetDateTime createdAtUtc;
 
-    /**
-     * Status of that bulk job.
-     */
     @JsonProperty("status")
-    private String status;
+    private WorkflowStatus status;
 
     /**
      * The url where the result can be picked up
@@ -59,18 +56,19 @@ public class BulkJobStatusResponse {
     private JsonNullable<String> url;
 
     /**
-     * The raw result if the response is less than 5MB in size
+     * The raw result if the response is less than 5MB in size. If the result is too large and size is larger
+     * than this threshold, then null is returned.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("rawResult")
     private JsonNullable<String> rawResult;
 
     /**
-     * Any GraphQl errors
+     * Any errors encountered during workflow processing
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("gqlErrors")
-    private JsonNullable<String> gqlErrors;
+    @JsonProperty("errors")
+    private JsonNullable<String> errors;
 
     @JsonCreator
     public BulkJobStatusResponse(
@@ -78,10 +76,10 @@ public class BulkJobStatusResponse {
             @JsonProperty("completedAtUtc") JsonNullable<OffsetDateTime> completedAtUtc,
             @JsonProperty("completionPercentage") JsonNullable<Double> completionPercentage,
             @JsonProperty("createdAtUtc") OffsetDateTime createdAtUtc,
-            @JsonProperty("status") String status,
+            @JsonProperty("status") WorkflowStatus status,
             @JsonProperty("url") JsonNullable<String> url,
             @JsonProperty("rawResult") JsonNullable<String> rawResult,
-            @JsonProperty("gqlErrors") JsonNullable<String> gqlErrors) {
+            @JsonProperty("errors") JsonNullable<String> errors) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(completedAtUtc, "completedAtUtc");
         Utils.checkNotNull(completionPercentage, "completionPercentage");
@@ -89,7 +87,7 @@ public class BulkJobStatusResponse {
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(url, "url");
         Utils.checkNotNull(rawResult, "rawResult");
-        Utils.checkNotNull(gqlErrors, "gqlErrors");
+        Utils.checkNotNull(errors, "errors");
         this.id = id;
         this.completedAtUtc = completedAtUtc;
         this.completionPercentage = completionPercentage;
@@ -97,13 +95,13 @@ public class BulkJobStatusResponse {
         this.status = status;
         this.url = url;
         this.rawResult = rawResult;
-        this.gqlErrors = gqlErrors;
+        this.errors = errors;
     }
     
     public BulkJobStatusResponse(
             long id,
             OffsetDateTime createdAtUtc,
-            String status) {
+            WorkflowStatus status) {
         this(id, JsonNullable.undefined(), JsonNullable.undefined(), createdAtUtc, status, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
@@ -139,11 +137,8 @@ public class BulkJobStatusResponse {
         return createdAtUtc;
     }
 
-    /**
-     * Status of that bulk job.
-     */
     @JsonIgnore
-    public String status() {
+    public WorkflowStatus status() {
         return status;
     }
 
@@ -156,7 +151,8 @@ public class BulkJobStatusResponse {
     }
 
     /**
-     * The raw result if the response is less than 5MB in size
+     * The raw result if the response is less than 5MB in size. If the result is too large and size is larger
+     * than this threshold, then null is returned.
      */
     @JsonIgnore
     public JsonNullable<String> rawResult() {
@@ -164,11 +160,11 @@ public class BulkJobStatusResponse {
     }
 
     /**
-     * Any GraphQl errors
+     * Any errors encountered during workflow processing
      */
     @JsonIgnore
-    public JsonNullable<String> gqlErrors() {
-        return gqlErrors;
+    public JsonNullable<String> errors() {
+        return errors;
     }
 
     public final static Builder builder() {
@@ -229,10 +225,7 @@ public class BulkJobStatusResponse {
         return this;
     }
 
-    /**
-     * Status of that bulk job.
-     */
-    public BulkJobStatusResponse withStatus(String status) {
+    public BulkJobStatusResponse withStatus(WorkflowStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -257,7 +250,8 @@ public class BulkJobStatusResponse {
     }
 
     /**
-     * The raw result if the response is less than 5MB in size
+     * The raw result if the response is less than 5MB in size. If the result is too large and size is larger
+     * than this threshold, then null is returned.
      */
     public BulkJobStatusResponse withRawResult(String rawResult) {
         Utils.checkNotNull(rawResult, "rawResult");
@@ -266,7 +260,8 @@ public class BulkJobStatusResponse {
     }
 
     /**
-     * The raw result if the response is less than 5MB in size
+     * The raw result if the response is less than 5MB in size. If the result is too large and size is larger
+     * than this threshold, then null is returned.
      */
     public BulkJobStatusResponse withRawResult(JsonNullable<String> rawResult) {
         Utils.checkNotNull(rawResult, "rawResult");
@@ -275,20 +270,20 @@ public class BulkJobStatusResponse {
     }
 
     /**
-     * Any GraphQl errors
+     * Any errors encountered during workflow processing
      */
-    public BulkJobStatusResponse withGqlErrors(String gqlErrors) {
-        Utils.checkNotNull(gqlErrors, "gqlErrors");
-        this.gqlErrors = JsonNullable.of(gqlErrors);
+    public BulkJobStatusResponse withErrors(String errors) {
+        Utils.checkNotNull(errors, "errors");
+        this.errors = JsonNullable.of(errors);
         return this;
     }
 
     /**
-     * Any GraphQl errors
+     * Any errors encountered during workflow processing
      */
-    public BulkJobStatusResponse withGqlErrors(JsonNullable<String> gqlErrors) {
-        Utils.checkNotNull(gqlErrors, "gqlErrors");
-        this.gqlErrors = gqlErrors;
+    public BulkJobStatusResponse withErrors(JsonNullable<String> errors) {
+        Utils.checkNotNull(errors, "errors");
+        this.errors = errors;
         return this;
     }
 
@@ -310,7 +305,7 @@ public class BulkJobStatusResponse {
             Objects.deepEquals(this.status, other.status) &&
             Objects.deepEquals(this.url, other.url) &&
             Objects.deepEquals(this.rawResult, other.rawResult) &&
-            Objects.deepEquals(this.gqlErrors, other.gqlErrors);
+            Objects.deepEquals(this.errors, other.errors);
     }
     
     @Override
@@ -323,7 +318,7 @@ public class BulkJobStatusResponse {
             status,
             url,
             rawResult,
-            gqlErrors);
+            errors);
     }
     
     @Override
@@ -336,7 +331,7 @@ public class BulkJobStatusResponse {
                 "status", status,
                 "url", url,
                 "rawResult", rawResult,
-                "gqlErrors", gqlErrors);
+                "errors", errors);
     }
     
     public final static class Builder {
@@ -349,13 +344,13 @@ public class BulkJobStatusResponse {
  
         private OffsetDateTime createdAtUtc;
  
-        private String status;
+        private WorkflowStatus status;
  
         private JsonNullable<String> url = JsonNullable.undefined();
  
         private JsonNullable<String> rawResult = JsonNullable.undefined();
  
-        private JsonNullable<String> gqlErrors = JsonNullable.undefined();
+        private JsonNullable<String> errors = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -415,10 +410,7 @@ public class BulkJobStatusResponse {
             return this;
         }
 
-        /**
-         * Status of that bulk job.
-         */
-        public Builder status(String status) {
+        public Builder status(WorkflowStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
@@ -443,7 +435,8 @@ public class BulkJobStatusResponse {
         }
 
         /**
-         * The raw result if the response is less than 5MB in size
+         * The raw result if the response is less than 5MB in size. If the result is too large and size is larger
+         * than this threshold, then null is returned.
          */
         public Builder rawResult(String rawResult) {
             Utils.checkNotNull(rawResult, "rawResult");
@@ -452,7 +445,8 @@ public class BulkJobStatusResponse {
         }
 
         /**
-         * The raw result if the response is less than 5MB in size
+         * The raw result if the response is less than 5MB in size. If the result is too large and size is larger
+         * than this threshold, then null is returned.
          */
         public Builder rawResult(JsonNullable<String> rawResult) {
             Utils.checkNotNull(rawResult, "rawResult");
@@ -461,20 +455,20 @@ public class BulkJobStatusResponse {
         }
 
         /**
-         * Any GraphQl errors
+         * Any errors encountered during workflow processing
          */
-        public Builder gqlErrors(String gqlErrors) {
-            Utils.checkNotNull(gqlErrors, "gqlErrors");
-            this.gqlErrors = JsonNullable.of(gqlErrors);
+        public Builder errors(String errors) {
+            Utils.checkNotNull(errors, "errors");
+            this.errors = JsonNullable.of(errors);
             return this;
         }
 
         /**
-         * Any GraphQl errors
+         * Any errors encountered during workflow processing
          */
-        public Builder gqlErrors(JsonNullable<String> gqlErrors) {
-            Utils.checkNotNull(gqlErrors, "gqlErrors");
-            this.gqlErrors = gqlErrors;
+        public Builder errors(JsonNullable<String> errors) {
+            Utils.checkNotNull(errors, "errors");
+            this.errors = errors;
             return this;
         }
         
@@ -487,7 +481,7 @@ public class BulkJobStatusResponse {
                 status,
                 url,
                 rawResult,
-                gqlErrors);
+                errors);
         }
     }
 }
