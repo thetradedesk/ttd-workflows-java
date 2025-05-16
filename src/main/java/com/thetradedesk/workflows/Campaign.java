@@ -4,15 +4,18 @@
 package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.CampaignBulkPayload;
+import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
-import com.thetradedesk.workflows.models.components.CampaignSinglePayload;
+import com.thetradedesk.workflows.models.components.CampaignPayload;
+import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInput;
 import com.thetradedesk.workflows.models.components.CampaignVersionWorkflow;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequest;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionResponse;
+import com.thetradedesk.workflows.models.operations.PatchCampaignRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PatchCampaignResponse;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequest;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveResponse;
@@ -49,6 +52,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Campaign implements
             MethodCallPostCampaign,
+            MethodCallPatchCampaign,
             MethodCallPostCampaignBulk,
             MethodCallPostCampaignArchive,
             MethodCallGetCampaignIdVersion {
@@ -192,10 +196,194 @@ public class Campaign implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "201")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                CampaignSinglePayload _out = Utils.mapper().readValue(
+                CampaignPayload _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<CampaignSinglePayload>() {});
-                _res.withCampaignSinglePayload(Optional.ofNullable(_out));
+                    new TypeReference<CampaignPayload>() {});
+                _res.withCampaignPayload(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ProblemDetailsException _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<ProblemDetailsException>() {});
+                throw _out;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new APIException(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Update an existing campaign with specified fields
+     * 
+     * @return The call builder
+     */
+    public PatchCampaignRequestBuilder patchCampaign() {
+        return new PatchCampaignRequestBuilder(this);
+    }
+
+    /**
+     * Update an existing campaign with specified fields
+     * 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PatchCampaignResponse patchCampaignDirect() throws Exception {
+        return patchCampaign(Optional.empty(), Optional.empty());
+    }
+    
+    /**
+     * Update an existing campaign with specified fields
+     * 
+     * @param request The request object containing all of the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PatchCampaignResponse patchCampaign(
+            Optional<? extends CampaignUpdateWorkflowInput> request,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
+                "/campaign");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<Optional<? extends CampaignUpdateWorkflowInput>>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "request",
+                "json",
+                false);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("5XX");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                _baseUrl,
+                                "patch_/campaign", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                _baseUrl,
+                                "patch_/campaign",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                          _baseUrl,
+                         "patch_/campaign", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        PatchCampaignResponse.Builder _resBuilder = 
+            PatchCampaignResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        PatchCampaignResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                CampaignPayload _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<CampaignPayload>() {});
+                _res.withCampaignPayload(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -374,12 +562,12 @@ public class Campaign implements
 
         PostCampaignBulkResponse _res = _resBuilder.build();
         
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "201")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                List<CampaignBulkPayload> _out = Utils.mapper().readValue(
+                BulkJobSubmitResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<List<CampaignBulkPayload>>() {});
-                _res.withCampaignBulkPayloads(Optional.ofNullable(_out));
+                    new TypeReference<BulkJobSubmitResponse>() {});
+                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -389,7 +577,7 @@ public class Campaign implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
@@ -411,7 +599,7 @@ public class Campaign implements
                     "API error occurred", 
                     Utils.extractByteArrayFromBody(_httpRes));
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
             // no content 
             throw new APIException(
                     _httpRes, 
@@ -587,7 +775,7 @@ public class Campaign implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),

@@ -66,7 +66,7 @@ public class AdGroupWorkflow {
     private Optional<? extends AdGroupAudienceTargeting> audienceTargeting;
 
     @JsonProperty("roiGoal")
-    private AdGroupRoiGoal roiGoal;
+    private AdGroupROIGoal roiGoal;
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("creativeIds")
@@ -118,7 +118,7 @@ public class AdGroupWorkflow {
             @JsonProperty("baseBidCPMInAdvertiserCurrency") JsonNullable<Double> baseBidCPMInAdvertiserCurrency,
             @JsonProperty("maxBidCPMInAdvertiserCurrency") JsonNullable<Double> maxBidCPMInAdvertiserCurrency,
             @JsonProperty("audienceTargeting") Optional<? extends AdGroupAudienceTargeting> audienceTargeting,
-            @JsonProperty("roiGoal") AdGroupRoiGoal roiGoal,
+            @JsonProperty("roiGoal") AdGroupROIGoal roiGoal,
             @JsonProperty("creativeIds") Optional<? extends List<String>> creativeIds,
             @JsonProperty("associatedBidLists") Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists,
             @JsonProperty("flights") Optional<? extends List<AdGroupFlight>> flights,
@@ -182,7 +182,7 @@ public class AdGroupWorkflow {
             AdGroupChannel channel,
             AdGroupFunnelLocation funnelLocation,
             AdGroupBudget budget,
-            AdGroupRoiGoal roiGoal,
+            AdGroupROIGoal roiGoal,
             AdGroupComscoreSettings comscoreSettings,
             AdGroupContractTargeting contractTargeting,
             boolean isUseClicksAsConversionsEnabled,
@@ -252,7 +252,7 @@ public class AdGroupWorkflow {
     }
 
     @JsonIgnore
-    public AdGroupRoiGoal roiGoal() {
+    public AdGroupROIGoal roiGoal() {
         return roiGoal;
     }
 
@@ -436,7 +436,7 @@ public class AdGroupWorkflow {
         return this;
     }
 
-    public AdGroupWorkflow withRoiGoal(AdGroupRoiGoal roiGoal) {
+    public AdGroupWorkflow withRoiGoal(AdGroupROIGoal roiGoal) {
         Utils.checkNotNull(roiGoal, "roiGoal");
         this.roiGoal = roiGoal;
         return this;
@@ -656,7 +656,7 @@ public class AdGroupWorkflow {
  
         private Optional<? extends AdGroupAudienceTargeting> audienceTargeting = Optional.empty();
  
-        private AdGroupRoiGoal roiGoal;
+        private AdGroupROIGoal roiGoal;
  
         private Optional<? extends List<String>> creativeIds = Optional.empty();
  
@@ -802,7 +802,7 @@ public class AdGroupWorkflow {
             return this;
         }
 
-        public Builder roiGoal(AdGroupRoiGoal roiGoal) {
+        public Builder roiGoal(AdGroupROIGoal roiGoal) {
             Utils.checkNotNull(roiGoal, "roiGoal");
             this.roiGoal = roiGoal;
             return this;

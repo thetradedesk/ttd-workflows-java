@@ -36,6 +36,8 @@ public class TtdWorkflows {
 
     private final GraphQL graphQL;
 
+    private final PubApi pubApi;
+
     public AdGroup adGroup() {
         return adGroup;
     }
@@ -50,6 +52,10 @@ public class TtdWorkflows {
 
     public GraphQL graphQL() {
         return graphQL;
+    }
+
+    public PubApi pubApi() {
+        return pubApi;
     }
 
     private final SDKConfiguration sdkConfiguration;
@@ -193,6 +199,7 @@ public class TtdWorkflows {
         this.bulkJob = new BulkJob(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);
         this.graphQL = new GraphQL(sdkConfiguration);
+        this.pubApi = new PubApi(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }
 }

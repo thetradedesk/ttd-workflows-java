@@ -5,7 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.thetradedesk.workflows.models.components.CampaignBulkPayload;
+import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -36,24 +35,24 @@ public class PostCampaignBulkResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * Created
+     * Accepted
      */
-    private Optional<? extends List<CampaignBulkPayload>> campaignBulkPayloads;
+    private Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse;
 
     @JsonCreator
     public PostCampaignBulkResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends List<CampaignBulkPayload>> campaignBulkPayloads) {
+            Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(campaignBulkPayloads, "campaignBulkPayloads");
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.campaignBulkPayloads = campaignBulkPayloads;
+        this.bulkJobSubmitResponse = bulkJobSubmitResponse;
     }
     
     public PostCampaignBulkResponse(
@@ -88,12 +87,12 @@ public class PostCampaignBulkResponse implements Response {
     }
 
     /**
-     * Created
+     * Accepted
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<List<CampaignBulkPayload>> campaignBulkPayloads() {
-        return (Optional<List<CampaignBulkPayload>>) campaignBulkPayloads;
+    public Optional<BulkJobSubmitResponse> bulkJobSubmitResponse() {
+        return (Optional<BulkJobSubmitResponse>) bulkJobSubmitResponse;
     }
 
     public final static Builder builder() {
@@ -128,20 +127,20 @@ public class PostCampaignBulkResponse implements Response {
     }
 
     /**
-     * Created
+     * Accepted
      */
-    public PostCampaignBulkResponse withCampaignBulkPayloads(List<CampaignBulkPayload> campaignBulkPayloads) {
-        Utils.checkNotNull(campaignBulkPayloads, "campaignBulkPayloads");
-        this.campaignBulkPayloads = Optional.ofNullable(campaignBulkPayloads);
+    public PostCampaignBulkResponse withBulkJobSubmitResponse(BulkJobSubmitResponse bulkJobSubmitResponse) {
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+        this.bulkJobSubmitResponse = Optional.ofNullable(bulkJobSubmitResponse);
         return this;
     }
 
     /**
-     * Created
+     * Accepted
      */
-    public PostCampaignBulkResponse withCampaignBulkPayloads(Optional<? extends List<CampaignBulkPayload>> campaignBulkPayloads) {
-        Utils.checkNotNull(campaignBulkPayloads, "campaignBulkPayloads");
-        this.campaignBulkPayloads = campaignBulkPayloads;
+    public PostCampaignBulkResponse withBulkJobSubmitResponse(Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+        this.bulkJobSubmitResponse = bulkJobSubmitResponse;
         return this;
     }
 
@@ -159,7 +158,7 @@ public class PostCampaignBulkResponse implements Response {
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.campaignBulkPayloads, other.campaignBulkPayloads);
+            Objects.deepEquals(this.bulkJobSubmitResponse, other.bulkJobSubmitResponse);
     }
     
     @Override
@@ -168,7 +167,7 @@ public class PostCampaignBulkResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            campaignBulkPayloads);
+            bulkJobSubmitResponse);
     }
     
     @Override
@@ -177,7 +176,7 @@ public class PostCampaignBulkResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "campaignBulkPayloads", campaignBulkPayloads);
+                "bulkJobSubmitResponse", bulkJobSubmitResponse);
     }
     
     public final static class Builder {
@@ -188,7 +187,7 @@ public class PostCampaignBulkResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends List<CampaignBulkPayload>> campaignBulkPayloads = Optional.empty();
+        private Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -222,20 +221,20 @@ public class PostCampaignBulkResponse implements Response {
         }
 
         /**
-         * Created
+         * Accepted
          */
-        public Builder campaignBulkPayloads(List<CampaignBulkPayload> campaignBulkPayloads) {
-            Utils.checkNotNull(campaignBulkPayloads, "campaignBulkPayloads");
-            this.campaignBulkPayloads = Optional.ofNullable(campaignBulkPayloads);
+        public Builder bulkJobSubmitResponse(BulkJobSubmitResponse bulkJobSubmitResponse) {
+            Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+            this.bulkJobSubmitResponse = Optional.ofNullable(bulkJobSubmitResponse);
             return this;
         }
 
         /**
-         * Created
+         * Accepted
          */
-        public Builder campaignBulkPayloads(Optional<? extends List<CampaignBulkPayload>> campaignBulkPayloads) {
-            Utils.checkNotNull(campaignBulkPayloads, "campaignBulkPayloads");
-            this.campaignBulkPayloads = campaignBulkPayloads;
+        public Builder bulkJobSubmitResponse(Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
+            Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+            this.bulkJobSubmitResponse = bulkJobSubmitResponse;
             return this;
         }
         
@@ -244,7 +243,7 @@ public class PostCampaignBulkResponse implements Response {
                 contentType,
                 statusCode,
                 rawResponse,
-                campaignBulkPayloads);
+                bulkJobSubmitResponse);
         }
     }
 }

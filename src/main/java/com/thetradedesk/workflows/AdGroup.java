@@ -200,7 +200,7 @@ public class AdGroup implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
@@ -384,7 +384,7 @@ public class AdGroup implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
@@ -424,7 +424,7 @@ public class AdGroup implements
 
 
     /**
-     * Archive a list of AdGroups
+     * Archive a list of ad groups
      * 
      * @return The call builder
      */
@@ -433,7 +433,7 @@ public class AdGroup implements
     }
 
     /**
-     * Archive a list of AdGroups
+     * Archive a list of ad groups
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -443,7 +443,7 @@ public class AdGroup implements
     }
     
     /**
-     * Archive a list of AdGroups
+     * Archive a list of ad groups
      * 
      * @param forceArchive 
      * @param requestBody 
@@ -582,7 +582,7 @@ public class AdGroup implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 ProblemDetailsException _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
