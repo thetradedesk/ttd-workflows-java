@@ -1,4 +1,4 @@
-# CampaignWorkflowConversionReportingColumnInput
+# CampaignWorkflowCampaignConversionReportingColumnInput
 
 
 ## Fields

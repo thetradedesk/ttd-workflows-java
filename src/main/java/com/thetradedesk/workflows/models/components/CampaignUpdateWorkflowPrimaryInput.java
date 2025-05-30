@@ -59,7 +59,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaignConversionReportingColumns")
-    private JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns;
+    private JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns;
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("id")
@@ -92,7 +92,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
             @JsonProperty("budget") Optional<? extends CampaignWorkflowBudgetInput> budget,
             @JsonProperty("endDateInUtc") JsonNullable<OffsetDateTime> endDateInUtc,
             @JsonProperty("seedId") JsonNullable<String> seedId,
-            @JsonProperty("campaignConversionReportingColumns") JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns,
+            @JsonProperty("campaignConversionReportingColumns") JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns,
             @JsonProperty("id") Optional<String> id,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("primaryChannel") Optional<? extends CampaignChannelType> primaryChannel,
@@ -183,8 +183,8 @@ public class CampaignUpdateWorkflowPrimaryInput {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns() {
-        return (JsonNullable<List<CampaignWorkflowConversionReportingColumnInput>>) campaignConversionReportingColumns;
+    public JsonNullable<List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns() {
+        return (JsonNullable<List<CampaignWorkflowCampaignConversionReportingColumnInput>>) campaignConversionReportingColumns;
     }
 
     @JsonIgnore
@@ -326,13 +326,13 @@ public class CampaignUpdateWorkflowPrimaryInput {
         return this;
     }
 
-    public CampaignUpdateWorkflowPrimaryInput withCampaignConversionReportingColumns(List<CampaignWorkflowConversionReportingColumnInput> campaignConversionReportingColumns) {
+    public CampaignUpdateWorkflowPrimaryInput withCampaignConversionReportingColumns(List<CampaignWorkflowCampaignConversionReportingColumnInput> campaignConversionReportingColumns) {
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
         this.campaignConversionReportingColumns = JsonNullable.of(campaignConversionReportingColumns);
         return this;
     }
 
-    public CampaignUpdateWorkflowPrimaryInput withCampaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns) {
+    public CampaignUpdateWorkflowPrimaryInput withCampaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns) {
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
         this.campaignConversionReportingColumns = campaignConversionReportingColumns;
         return this;
@@ -486,7 +486,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
  
         private JsonNullable<String> seedId = JsonNullable.undefined();
  
-        private JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns = JsonNullable.undefined();
+        private JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns = JsonNullable.undefined();
  
         private Optional<String> id = Optional.empty();
  
@@ -610,13 +610,13 @@ public class CampaignUpdateWorkflowPrimaryInput {
             return this;
         }
 
-        public Builder campaignConversionReportingColumns(List<CampaignWorkflowConversionReportingColumnInput> campaignConversionReportingColumns) {
+        public Builder campaignConversionReportingColumns(List<CampaignWorkflowCampaignConversionReportingColumnInput> campaignConversionReportingColumns) {
             Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
             this.campaignConversionReportingColumns = JsonNullable.of(campaignConversionReportingColumns);
             return this;
         }
 
-        public Builder campaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowConversionReportingColumnInput>> campaignConversionReportingColumns) {
+        public Builder campaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns) {
             Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
             this.campaignConversionReportingColumns = campaignConversionReportingColumns;
             return this;

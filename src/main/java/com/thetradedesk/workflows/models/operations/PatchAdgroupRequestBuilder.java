@@ -3,7 +3,7 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
-import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class PatchAdgroupRequestBuilder {
 
-    private Optional<? extends AdGroupUpdateWorkflowInput> request = Optional.empty();
+    private Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallPatchAdgroup sdk;
 
@@ -20,13 +20,13 @@ public class PatchAdgroupRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public PatchAdgroupRequestBuilder request(AdGroupUpdateWorkflowInput request) {
+    public PatchAdgroupRequestBuilder request(AdGroupUpdateWorkflowInputWithValidation request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public PatchAdgroupRequestBuilder request(Optional<? extends AdGroupUpdateWorkflowInput> request) {
+    public PatchAdgroupRequestBuilder request(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

@@ -3,17 +3,16 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
-import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Exception;
-import java.util.List;
 import java.util.Optional;
 
 public class PostCampaignBulkRequestBuilder {
 
-    private Optional<? extends List<CampaignCreateWorkflowInput>> request = Optional.empty();
+    private Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKMethodInterfaces.MethodCallPostCampaignBulk sdk;
 
@@ -21,13 +20,13 @@ public class PostCampaignBulkRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public PostCampaignBulkRequestBuilder request(List<CampaignCreateWorkflowInput> request) {
+    public PostCampaignBulkRequestBuilder request(CampaignBulkCreateWorkflowInputWithValidation request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public PostCampaignBulkRequestBuilder request(Optional<? extends List<CampaignCreateWorkflowInput>> request) {
+    public PostCampaignBulkRequestBuilder request(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

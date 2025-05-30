@@ -3,11 +3,15 @@
  */
 package com.thetradedesk.workflows.models.operations;
 
-import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInput;
-import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.AdGroupBulkCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.AdGroupBulkUpdateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
-import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
-import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.CampaignBulkUpdateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.utils.Options;
@@ -21,13 +25,13 @@ public class SDKMethodInterfaces {
 
     public interface MethodCallPostAdgroup {
         PostAdgroupResponse postAdgroup(
-            Optional<? extends AdGroupCreateWorkflowInput> request,
+            Optional<? extends AdGroupCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 
     public interface MethodCallPatchAdgroup {
         PatchAdgroupResponse patchAdgroup(
-            Optional<? extends AdGroupUpdateWorkflowInput> request,
+            Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 
@@ -38,9 +42,26 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
+    public interface MethodCallPostAdgroupBulk {
+        PostAdgroupBulkResponse postAdgroupBulk(
+            Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPatchAdgroupBulk {
+        PatchAdgroupBulkResponse patchAdgroupBulk(
+            Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request,
+            Optional<Options> options) throws Exception;
+    }
+
     public interface MethodCallPostBulkjobFirstpartydata {
         PostBulkjobFirstpartydataResponse postBulkjobFirstpartydata(
             Optional<? extends FirstPartyDataInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostBulkjobCallback {
+        PostBulkjobCallbackResponse postBulkjobCallback(
             Optional<Options> options) throws Exception;
     }
 
@@ -52,19 +73,25 @@ public class SDKMethodInterfaces {
 
     public interface MethodCallPostCampaign {
         PostCampaignResponse create(
-            Optional<? extends CampaignCreateWorkflowInput> request,
+            Optional<? extends CampaignCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 
     public interface MethodCallPatchCampaign {
         PatchCampaignResponse patchCampaign(
-            Optional<? extends CampaignUpdateWorkflowInput> request,
+            Optional<? extends CampaignUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 
     public interface MethodCallPostCampaignBulk {
         PostCampaignBulkResponse postCampaignBulk(
-            Optional<? extends List<CampaignCreateWorkflowInput>> request,
+            Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPatchCampaignBulk {
+        PatchCampaignBulkResponse patchCampaignBulk(
+            Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 

@@ -4,8 +4,8 @@
 package com.thetradedesk.workflows;
 
 import com.thetradedesk.workflows.utils.HTTPClient;
+import com.thetradedesk.workflows.utils.Hook.SdkInitData;
 import com.thetradedesk.workflows.utils.RetryConfig;
-import com.thetradedesk.workflows.utils.SpeakeasyHTTPClient;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.String;
 import java.util.Map;
@@ -58,7 +58,7 @@ public class TtdWorkflows {
         return pubApi;
     }
 
-    private final SDKConfiguration sdkConfiguration;
+    private SDKConfiguration sdkConfiguration;
 
     /**
      * The Builder class allows the configuration of a new instance of the SDK.
@@ -66,6 +66,9 @@ public class TtdWorkflows {
     public static class Builder {
 
         private final SDKConfiguration sdkConfiguration = new SDKConfiguration();
+        private String serverUrl;
+        private String server;
+        
 
         private Builder() {
         }
@@ -77,7 +80,7 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder client(HTTPClient client) {
-            this.sdkConfiguration.defaultClient = client;
+            this.sdkConfiguration.setClient(client);
             return this;
         }
         /**
@@ -87,9 +90,9 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder ttdAuth(String ttdAuth) {
-            this.sdkConfiguration.securitySource = SecuritySource.of(com.thetradedesk.workflows.models.components.Security.builder()
+            this.sdkConfiguration.setSecuritySource(SecuritySource.of(com.thetradedesk.workflows.models.components.Security.builder()
               .ttdAuth(ttdAuth)
-              .build());
+              .build()));
             return this;
         }
 
@@ -100,7 +103,8 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder securitySource(SecuritySource securitySource) {
-            this.sdkConfiguration.securitySource = securitySource;
+            Utils.checkNotNull(securitySource, "securitySource");
+            this.sdkConfiguration.setSecuritySource(securitySource);
             return this;
         }
         
@@ -111,7 +115,7 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder serverURL(String serverUrl) {
-            this.sdkConfiguration.serverUrl = serverUrl;
+            this.serverUrl = serverUrl;
             return this;
         }
 
@@ -123,7 +127,7 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder serverURL(String serverUrl, Map<String, String> params) {
-            this.sdkConfiguration.serverUrl = Utils.templateUrl(serverUrl, params);
+            this.serverUrl = Utils.templateUrl(serverUrl, params);
             return this;
         }
         
@@ -134,8 +138,8 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder serverIndex(int serverIdx) {
-            this.sdkConfiguration.serverIdx = serverIdx;
-            this.sdkConfiguration.serverUrl = SERVERS[serverIdx];
+            this.sdkConfiguration.setServerIdx(serverIdx);
+            this.serverUrl= SERVERS[serverIdx];
             return this;
         }
         
@@ -146,7 +150,7 @@ public class TtdWorkflows {
          * @return The builder instance.
          */
         public Builder retryConfig(RetryConfig retryConfig) {
-            this.sdkConfiguration.retryConfig = Optional.of(retryConfig);
+            this.sdkConfiguration.setRetryConfig(Optional.of(retryConfig));
             return this;
         }
         // Visible for testing, may be accessed via reflection in tests
@@ -167,19 +171,11 @@ public class TtdWorkflows {
          * @return The SDK instance.
          */
         public TtdWorkflows build() {
-            if (sdkConfiguration.defaultClient == null) {
-                sdkConfiguration.defaultClient = new SpeakeasyHTTPClient();
+            if (serverUrl == null || serverUrl.isBlank()) {
+                serverUrl = SERVERS[0];
+                sdkConfiguration.setServerIdx(0);
             }
-	        if (sdkConfiguration.securitySource == null) {
-	    	    sdkConfiguration.securitySource = SecuritySource.of(null);
-	        }
-            if (sdkConfiguration.serverUrl == null || sdkConfiguration.serverUrl.isBlank()) {
-                sdkConfiguration.serverUrl = SERVERS[0];
-                sdkConfiguration.serverIdx = 0;
-            }
-            if (sdkConfiguration.serverUrl.endsWith("/")) {
-                sdkConfiguration.serverUrl = sdkConfiguration.serverUrl.substring(0, sdkConfiguration.serverUrl.length() - 1);
-            }
+            sdkConfiguration.setServerUrl(serverUrl);
             return new TtdWorkflows(sdkConfiguration);
         }
     }
@@ -195,11 +191,15 @@ public class TtdWorkflows {
 
     private TtdWorkflows(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.sdkConfiguration.initialize();
         this.adGroup = new AdGroup(sdkConfiguration);
         this.bulkJob = new BulkJob(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);
         this.graphQL = new GraphQL(sdkConfiguration);
         this.pubApi = new PubApi(sdkConfiguration);
-        this.sdkConfiguration.initialize();
+        
+        SdkInitData data = this.sdkConfiguration.hooks().sdkInit(new SdkInitData(this.sdkConfiguration.resolvedServerUrl(), this.sdkConfiguration.client()));
+        this.sdkConfiguration.setServerUrl(data.baseUrl());
+        this.sdkConfiguration.setClient(data.client());
     }
 }
