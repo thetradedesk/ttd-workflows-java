@@ -4,16 +4,23 @@
 package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInput;
+import com.thetradedesk.workflows.models.components.AdGroupBulkCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.AdGroupBulkUpdateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.AdGroupPayload;
-import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.PatchAdgroupBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PatchAdgroupBulkResponse;
 import com.thetradedesk.workflows.models.operations.PatchAdgroupRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PatchAdgroupResponse;
 import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveRequest;
 import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveResponse;
+import com.thetradedesk.workflows.models.operations.PostAdgroupBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PostAdgroupBulkResponse;
 import com.thetradedesk.workflows.models.operations.PostAdgroupRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
@@ -46,7 +53,9 @@ import java.util.concurrent.TimeUnit;
 public class AdGroup implements
             MethodCallPostAdgroup,
             MethodCallPatchAdgroup,
-            MethodCallPostAdgroupArchive {
+            MethodCallPostAdgroupArchive,
+            MethodCallPostAdgroupBulk,
+            MethodCallPatchAdgroupBulk {
 
     private final SDKConfiguration sdkConfiguration;
 
@@ -83,13 +92,13 @@ public class AdGroup implements
      * @throws Exception if the API call fails
      */
     public PostAdgroupResponse postAdgroup(
-            Optional<? extends AdGroupCreateWorkflowInput> request,
+            Optional<? extends AdGroupCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/adgroup");
@@ -98,7 +107,7 @@ public class AdGroup implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends AdGroupCreateWorkflowInput>>() {});
+                new TypeReference<Optional<? extends AdGroupCreateWorkflowInputWithValidation>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -109,16 +118,16 @@ public class AdGroup implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -139,6 +148,7 @@ public class AdGroup implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/adgroup", 
                                 Optional.of(List.of()), 
@@ -153,6 +163,7 @@ public class AdGroup implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/adgroup",
                                  Optional.of(List.of()),
@@ -167,7 +178,8 @@ public class AdGroup implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "post_/adgroup", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -185,6 +197,10 @@ public class AdGroup implements
 
         PostAdgroupResponse _res = _resBuilder.build();
         
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            // no content 
+            return _res;
+        }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "201")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 AdGroupPayload _out = Utils.mapper().readValue(
@@ -267,13 +283,13 @@ public class AdGroup implements
      * @throws Exception if the API call fails
      */
     public PatchAdgroupResponse patchAdgroup(
-            Optional<? extends AdGroupUpdateWorkflowInput> request,
+            Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/adgroup");
@@ -282,7 +298,7 @@ public class AdGroup implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends AdGroupUpdateWorkflowInput>>() {});
+                new TypeReference<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -293,16 +309,16 @@ public class AdGroup implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -323,6 +339,7 @@ public class AdGroup implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "patch_/adgroup", 
                                 Optional.of(List.of()), 
@@ -337,6 +354,7 @@ public class AdGroup implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "patch_/adgroup",
                                  Optional.of(List.of()),
@@ -351,7 +369,8 @@ public class AdGroup implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "patch_/adgroup", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -466,7 +485,7 @@ public class AdGroup implements
                 .requestBody(requestBody)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/adgroup/archive");
@@ -491,16 +510,16 @@ public class AdGroup implements
                 request, 
                 null));
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -521,6 +540,7 @@ public class AdGroup implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/adgroup/archive", 
                                 Optional.of(List.of()), 
@@ -535,6 +555,7 @@ public class AdGroup implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/adgroup/archive",
                                  Optional.of(List.of()),
@@ -549,7 +570,8 @@ public class AdGroup implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "post_/adgroup/archive", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -605,6 +627,380 @@ public class AdGroup implements
                     Utils.extractByteArrayFromBody(_httpRes));
         }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new APIException(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Create a list of ad groups with required fields.
+     * 
+     * @return The call builder
+     */
+    public PostAdgroupBulkRequestBuilder postAdgroupBulk() {
+        return new PostAdgroupBulkRequestBuilder(this);
+    }
+
+    /**
+     * Create a list of ad groups with required fields.
+     * 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PostAdgroupBulkResponse postAdgroupBulkDirect() throws Exception {
+        return postAdgroupBulk(Optional.empty(), Optional.empty());
+    }
+    
+    /**
+     * Create a list of ad groups with required fields.
+     * 
+     * @param request The request object containing all of the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PostAdgroupBulkResponse postAdgroupBulk(
+            Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        String _baseUrl = this.sdkConfiguration.serverUrl();
+        String _url = Utils.generateURL(
+                _baseUrl,
+                "/adgroup/bulk");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "POST");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation>>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "request",
+                "json",
+                false);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("5XX");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "post_/adgroup/bulk", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "post_/adgroup/bulk",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         this.sdkConfiguration,
+                         _baseUrl,
+                         "post_/adgroup/bulk", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        PostAdgroupBulkResponse.Builder _resBuilder = 
+            PostAdgroupBulkResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        PostAdgroupBulkResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<BulkJobSubmitResponse>() {});
+                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ProblemDetailsException _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<ProblemDetailsException>() {});
+                throw _out;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new APIException(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+     * 
+     * @return The call builder
+     */
+    public PatchAdgroupBulkRequestBuilder patchAdgroupBulk() {
+        return new PatchAdgroupBulkRequestBuilder(this);
+    }
+
+    /**
+     * Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+     * 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PatchAdgroupBulkResponse patchAdgroupBulkDirect() throws Exception {
+        return patchAdgroupBulk(Optional.empty(), Optional.empty());
+    }
+    
+    /**
+     * Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+     * 
+     * @param request The request object containing all of the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PatchAdgroupBulkResponse patchAdgroupBulk(
+            Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        String _baseUrl = this.sdkConfiguration.serverUrl();
+        String _url = Utils.generateURL(
+                _baseUrl,
+                "/adgroup/bulk");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "request",
+                "json",
+                false);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("5XX");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "patch_/adgroup/bulk", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "patch_/adgroup/bulk",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         this.sdkConfiguration,
+                         _baseUrl,
+                         "patch_/adgroup/bulk", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        PatchAdgroupBulkResponse.Builder _resBuilder = 
+            PatchAdgroupBulkResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        PatchAdgroupBulkResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<BulkJobSubmitResponse>() {});
+                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ProblemDetailsException _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<ProblemDetailsException>() {});
+                throw _out;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
             // no content 
             throw new APIException(
                     _httpRes, 

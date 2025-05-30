@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
-import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -31,29 +30,22 @@ public class CampaignCreateWorkflowInput {
     @JsonProperty("adGroups")
     private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups;
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("validationOnly")
-    private JsonNullable<Boolean> validationOnly;
-
     @JsonCreator
     public CampaignCreateWorkflowInput(
             @JsonProperty("primaryInput") CampaignCreateWorkflowPrimaryInput primaryInput,
             @JsonProperty("advancedInput") Optional<? extends CampaignWorkflowAdvancedInput> advancedInput,
-            @JsonProperty("adGroups") JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups,
-            @JsonProperty("validationOnly") JsonNullable<Boolean> validationOnly) {
+            @JsonProperty("adGroups") JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups) {
         Utils.checkNotNull(primaryInput, "primaryInput");
         Utils.checkNotNull(advancedInput, "advancedInput");
         Utils.checkNotNull(adGroups, "adGroups");
-        Utils.checkNotNull(validationOnly, "validationOnly");
         this.primaryInput = primaryInput;
         this.advancedInput = advancedInput;
         this.adGroups = adGroups;
-        this.validationOnly = validationOnly;
     }
     
     public CampaignCreateWorkflowInput(
             CampaignCreateWorkflowPrimaryInput primaryInput) {
-        this(primaryInput, Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(primaryInput, Optional.empty(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -71,11 +63,6 @@ public class CampaignCreateWorkflowInput {
     @JsonIgnore
     public JsonNullable<List<CampaignCreateWorkflowAdGroupInput>> adGroups() {
         return (JsonNullable<List<CampaignCreateWorkflowAdGroupInput>>) adGroups;
-    }
-
-    @JsonIgnore
-    public JsonNullable<Boolean> validationOnly() {
-        return validationOnly;
     }
 
     public final static Builder builder() {
@@ -112,18 +99,6 @@ public class CampaignCreateWorkflowInput {
         return this;
     }
 
-    public CampaignCreateWorkflowInput withValidationOnly(boolean validationOnly) {
-        Utils.checkNotNull(validationOnly, "validationOnly");
-        this.validationOnly = JsonNullable.of(validationOnly);
-        return this;
-    }
-
-    public CampaignCreateWorkflowInput withValidationOnly(JsonNullable<Boolean> validationOnly) {
-        Utils.checkNotNull(validationOnly, "validationOnly");
-        this.validationOnly = validationOnly;
-        return this;
-    }
-
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -137,8 +112,7 @@ public class CampaignCreateWorkflowInput {
         return 
             Objects.deepEquals(this.primaryInput, other.primaryInput) &&
             Objects.deepEquals(this.advancedInput, other.advancedInput) &&
-            Objects.deepEquals(this.adGroups, other.adGroups) &&
-            Objects.deepEquals(this.validationOnly, other.validationOnly);
+            Objects.deepEquals(this.adGroups, other.adGroups);
     }
     
     @Override
@@ -146,8 +120,7 @@ public class CampaignCreateWorkflowInput {
         return Objects.hash(
             primaryInput,
             advancedInput,
-            adGroups,
-            validationOnly);
+            adGroups);
     }
     
     @Override
@@ -155,8 +128,7 @@ public class CampaignCreateWorkflowInput {
         return Utils.toString(CampaignCreateWorkflowInput.class,
                 "primaryInput", primaryInput,
                 "advancedInput", advancedInput,
-                "adGroups", adGroups,
-                "validationOnly", validationOnly);
+                "adGroups", adGroups);
     }
     
     public final static class Builder {
@@ -166,8 +138,6 @@ public class CampaignCreateWorkflowInput {
         private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput = Optional.empty();
  
         private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups = JsonNullable.undefined();
- 
-        private JsonNullable<Boolean> validationOnly = JsonNullable.undefined();
         
         private Builder() {
           // force use of static builder() method
@@ -202,25 +172,12 @@ public class CampaignCreateWorkflowInput {
             this.adGroups = adGroups;
             return this;
         }
-
-        public Builder validationOnly(boolean validationOnly) {
-            Utils.checkNotNull(validationOnly, "validationOnly");
-            this.validationOnly = JsonNullable.of(validationOnly);
-            return this;
-        }
-
-        public Builder validationOnly(JsonNullable<Boolean> validationOnly) {
-            Utils.checkNotNull(validationOnly, "validationOnly");
-            this.validationOnly = validationOnly;
-            return this;
-        }
         
         public CampaignCreateWorkflowInput build() {
             return new CampaignCreateWorkflowInput(
                 primaryInput,
                 advancedInput,
-                adGroups,
-                validationOnly);
+                adGroups);
         }
     }
 }

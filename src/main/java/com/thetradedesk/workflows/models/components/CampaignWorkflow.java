@@ -26,9 +26,9 @@ public class CampaignWorkflow {
     @JsonProperty("id")
     private Optional<String> id;
 
-    @JsonInclude(Include.ALWAYS)
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
-    private Optional<String> name;
+    private JsonNullable<String> name;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
@@ -85,7 +85,7 @@ public class CampaignWorkflow {
     @JsonCreator
     public CampaignWorkflow(
             @JsonProperty("id") Optional<String> id,
-            @JsonProperty("name") Optional<String> name,
+            @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("startDate") JsonNullable<OffsetDateTime> startDate,
             @JsonProperty("endDate") JsonNullable<OffsetDateTime> endDate,
@@ -132,7 +132,7 @@ public class CampaignWorkflow {
     }
     
     public CampaignWorkflow() {
-        this(Optional.empty(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -141,7 +141,7 @@ public class CampaignWorkflow {
     }
 
     @JsonIgnore
-    public Optional<String> name() {
+    public JsonNullable<String> name() {
         return name;
     }
 
@@ -231,11 +231,11 @@ public class CampaignWorkflow {
 
     public CampaignWorkflow withName(String name) {
         Utils.checkNotNull(name, "name");
-        this.name = Optional.ofNullable(name);
+        this.name = JsonNullable.of(name);
         return this;
     }
 
-    public CampaignWorkflow withName(Optional<String> name) {
+    public CampaignWorkflow withName(JsonNullable<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
         return this;
@@ -469,7 +469,7 @@ public class CampaignWorkflow {
  
         private Optional<String> id = Optional.empty();
  
-        private Optional<String> name = Optional.empty();
+        private JsonNullable<String> name = JsonNullable.undefined();
  
         private JsonNullable<String> description = JsonNullable.undefined();
  
@@ -515,11 +515,11 @@ public class CampaignWorkflow {
 
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
-            this.name = Optional.ofNullable(name);
+            this.name = JsonNullable.of(name);
             return this;
         }
 
-        public Builder name(Optional<String> name) {
+        public Builder name(JsonNullable<String> name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;

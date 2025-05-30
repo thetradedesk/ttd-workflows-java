@@ -1,0 +1,9 @@
+# CampaignBulkUpdateWorkflowInputWithValidation
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `input`                                                                                      | List\<[CampaignUpdateWorkflowInput](../../models/components/CampaignUpdateWorkflowInput.md)> | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `validateInputOnly`                                                                          | *JsonNullable\<Boolean>*                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |

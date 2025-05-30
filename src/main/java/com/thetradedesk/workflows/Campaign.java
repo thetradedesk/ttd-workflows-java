@@ -5,15 +5,19 @@ package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
-import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.CampaignBulkUpdateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignPayload;
-import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInput;
+import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignVersionWorkflow;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequest;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionResponse;
+import com.thetradedesk.workflows.models.operations.PatchCampaignBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PatchCampaignBulkResponse;
 import com.thetradedesk.workflows.models.operations.PatchCampaignRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PatchCampaignResponse;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequest;
@@ -54,6 +58,7 @@ public class Campaign implements
             MethodCallPostCampaign,
             MethodCallPatchCampaign,
             MethodCallPostCampaignBulk,
+            MethodCallPatchCampaignBulk,
             MethodCallPostCampaignArchive,
             MethodCallGetCampaignIdVersion {
 
@@ -92,13 +97,13 @@ public class Campaign implements
      * @throws Exception if the API call fails
      */
     public PostCampaignResponse create(
-            Optional<? extends CampaignCreateWorkflowInput> request,
+            Optional<? extends CampaignCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/campaign");
@@ -107,7 +112,7 @@ public class Campaign implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignCreateWorkflowInput>>() {});
+                new TypeReference<Optional<? extends CampaignCreateWorkflowInputWithValidation>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -118,16 +123,16 @@ public class Campaign implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -148,6 +153,7 @@ public class Campaign implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/campaign", 
                                 Optional.of(List.of()), 
@@ -162,6 +168,7 @@ public class Campaign implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/campaign",
                                  Optional.of(List.of()),
@@ -176,7 +183,8 @@ public class Campaign implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "post_/campaign", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -276,13 +284,13 @@ public class Campaign implements
      * @throws Exception if the API call fails
      */
     public PatchCampaignResponse patchCampaign(
-            Optional<? extends CampaignUpdateWorkflowInput> request,
+            Optional<? extends CampaignUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/campaign");
@@ -291,7 +299,7 @@ public class Campaign implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignUpdateWorkflowInput>>() {});
+                new TypeReference<Optional<? extends CampaignUpdateWorkflowInputWithValidation>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -302,16 +310,16 @@ public class Campaign implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -332,6 +340,7 @@ public class Campaign implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "patch_/campaign", 
                                 Optional.of(List.of()), 
@@ -346,6 +355,7 @@ public class Campaign implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "patch_/campaign",
                                  Optional.of(List.of()),
@@ -360,7 +370,8 @@ public class Campaign implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "patch_/campaign", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -433,7 +444,7 @@ public class Campaign implements
 
 
     /**
-     * Create a list of campaigns with required fields. `ValidationOnly` value should be the same for all campaigns.
+     * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
      * 
      * @return The call builder
      */
@@ -442,7 +453,7 @@ public class Campaign implements
     }
 
     /**
-     * Create a list of campaigns with required fields. `ValidationOnly` value should be the same for all campaigns.
+     * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -452,7 +463,7 @@ public class Campaign implements
     }
     
     /**
-     * Create a list of campaigns with required fields. `ValidationOnly` value should be the same for all campaigns.
+     * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
@@ -460,13 +471,13 @@ public class Campaign implements
      * @throws Exception if the API call fails
      */
     public PostCampaignBulkResponse postCampaignBulk(
-            Optional<? extends List<CampaignCreateWorkflowInput>> request,
+            Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/campaign/bulk");
@@ -475,7 +486,7 @@ public class Campaign implements
         Object _convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends List<CampaignCreateWorkflowInput>>>() {});
+                new TypeReference<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>>() {});
         SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, 
                 "request",
@@ -486,16 +497,16 @@ public class Campaign implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -516,6 +527,7 @@ public class Campaign implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/campaign/bulk", 
                                 Optional.of(List.of()), 
@@ -530,6 +542,7 @@ public class Campaign implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/campaign/bulk",
                                  Optional.of(List.of()),
@@ -544,7 +557,8 @@ public class Campaign implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "post_/campaign/bulk", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -561,6 +575,193 @@ public class Campaign implements
                 .rawResponse(_httpRes);
 
         PostCampaignBulkResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<BulkJobSubmitResponse>() {});
+                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ProblemDetailsException _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<ProblemDetailsException>() {});
+                throw _out;
+            } else {
+                throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new APIException(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * 
+     * @return The call builder
+     */
+    public PatchCampaignBulkRequestBuilder patchCampaignBulk() {
+        return new PatchCampaignBulkRequestBuilder(this);
+    }
+
+    /**
+     * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PatchCampaignBulkResponse patchCampaignBulkDirect() throws Exception {
+        return patchCampaignBulk(Optional.empty(), Optional.empty());
+    }
+    
+    /**
+     * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * 
+     * @param request The request object containing all of the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public PatchCampaignBulkResponse patchCampaignBulk(
+            Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        String _baseUrl = this.sdkConfiguration.serverUrl();
+        String _url = Utils.generateURL(
+                _baseUrl,
+                "/campaign/bulk");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "request",
+                "json",
+                false);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("5XX");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "patch_/campaign/bulk", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "patch_/campaign/bulk",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         this.sdkConfiguration,
+                         _baseUrl,
+                         "patch_/campaign/bulk", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        PatchCampaignBulkResponse.Builder _resBuilder = 
+            PatchCampaignBulkResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        PatchCampaignBulkResponse _res = _resBuilder.build();
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
@@ -659,7 +860,7 @@ public class Campaign implements
                 .requestBody(requestBody)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/campaign/archive");
@@ -684,16 +885,16 @@ public class Campaign implements
                 request, 
                 null));
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -714,6 +915,7 @@ public class Campaign implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/campaign/archive", 
                                 Optional.of(List.of()), 
@@ -728,6 +930,7 @@ public class Campaign implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/campaign/archive",
                                  Optional.of(List.of()),
@@ -742,7 +945,8 @@ public class Campaign implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "post_/campaign/archive", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -856,7 +1060,7 @@ public class Campaign implements
                 .id(id)
                 .build();
         
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 GetCampaignIdVersionRequest.class,
                 _baseUrl,
@@ -868,16 +1072,16 @@ public class Campaign implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -898,6 +1102,7 @@ public class Campaign implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "get_/campaign/{id}/version", 
                                 Optional.of(List.of()), 
@@ -912,6 +1117,7 @@ public class Campaign implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "get_/campaign/{id}/version",
                                  Optional.of(List.of()),
@@ -926,7 +1132,8 @@ public class Campaign implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "get_/campaign/{id}/version", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),

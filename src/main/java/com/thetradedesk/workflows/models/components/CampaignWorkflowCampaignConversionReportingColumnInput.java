@@ -19,7 +19,7 @@ import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CampaignWorkflowConversionReportingColumnInput {
+public class CampaignWorkflowCampaignConversionReportingColumnInput {
 
     @JsonProperty("trackingTagId")
     private String trackingTagId;
@@ -43,7 +43,7 @@ public class CampaignWorkflowConversionReportingColumnInput {
     private JsonNullable<String> crossDeviceAttributionModelId;
 
     @JsonCreator
-    public CampaignWorkflowConversionReportingColumnInput(
+    public CampaignWorkflowCampaignConversionReportingColumnInput(
             @JsonProperty("trackingTagId") String trackingTagId,
             @JsonProperty("includeInCustomCPA") boolean includeInCustomCPA,
             @JsonProperty("reportingColumnId") int reportingColumnId,
@@ -64,7 +64,7 @@ public class CampaignWorkflowConversionReportingColumnInput {
         this.crossDeviceAttributionModelId = crossDeviceAttributionModelId;
     }
     
-    public CampaignWorkflowConversionReportingColumnInput(
+    public CampaignWorkflowCampaignConversionReportingColumnInput(
             String trackingTagId,
             boolean includeInCustomCPA,
             int reportingColumnId) {
@@ -106,55 +106,55 @@ public class CampaignWorkflowConversionReportingColumnInput {
         return new Builder();
     }    
 
-    public CampaignWorkflowConversionReportingColumnInput withTrackingTagId(String trackingTagId) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withTrackingTagId(String trackingTagId) {
         Utils.checkNotNull(trackingTagId, "trackingTagId");
         this.trackingTagId = trackingTagId;
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withIncludeInCustomCPA(boolean includeInCustomCPA) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withIncludeInCustomCPA(boolean includeInCustomCPA) {
         Utils.checkNotNull(includeInCustomCPA, "includeInCustomCPA");
         this.includeInCustomCPA = includeInCustomCPA;
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withReportingColumnId(int reportingColumnId) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withReportingColumnId(int reportingColumnId) {
         Utils.checkNotNull(reportingColumnId, "reportingColumnId");
         this.reportingColumnId = reportingColumnId;
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withROASConfig(CustomROASConfig roasConfig) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withROASConfig(CustomROASConfig roasConfig) {
         Utils.checkNotNull(roasConfig, "roasConfig");
         this.roasConfig = Optional.ofNullable(roasConfig);
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withROASConfig(Optional<? extends CustomROASConfig> roasConfig) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withROASConfig(Optional<? extends CustomROASConfig> roasConfig) {
         Utils.checkNotNull(roasConfig, "roasConfig");
         this.roasConfig = roasConfig;
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withWeight(double weight) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withWeight(double weight) {
         Utils.checkNotNull(weight, "weight");
         this.weight = JsonNullable.of(weight);
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withWeight(JsonNullable<Double> weight) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withWeight(JsonNullable<Double> weight) {
         Utils.checkNotNull(weight, "weight");
         this.weight = weight;
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withCrossDeviceAttributionModelId(String crossDeviceAttributionModelId) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withCrossDeviceAttributionModelId(String crossDeviceAttributionModelId) {
         Utils.checkNotNull(crossDeviceAttributionModelId, "crossDeviceAttributionModelId");
         this.crossDeviceAttributionModelId = JsonNullable.of(crossDeviceAttributionModelId);
         return this;
     }
 
-    public CampaignWorkflowConversionReportingColumnInput withCrossDeviceAttributionModelId(JsonNullable<String> crossDeviceAttributionModelId) {
+    public CampaignWorkflowCampaignConversionReportingColumnInput withCrossDeviceAttributionModelId(JsonNullable<String> crossDeviceAttributionModelId) {
         Utils.checkNotNull(crossDeviceAttributionModelId, "crossDeviceAttributionModelId");
         this.crossDeviceAttributionModelId = crossDeviceAttributionModelId;
         return this;
@@ -169,7 +169,7 @@ public class CampaignWorkflowConversionReportingColumnInput {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CampaignWorkflowConversionReportingColumnInput other = (CampaignWorkflowConversionReportingColumnInput) o;
+        CampaignWorkflowCampaignConversionReportingColumnInput other = (CampaignWorkflowCampaignConversionReportingColumnInput) o;
         return 
             Objects.deepEquals(this.trackingTagId, other.trackingTagId) &&
             Objects.deepEquals(this.includeInCustomCPA, other.includeInCustomCPA) &&
@@ -192,7 +192,7 @@ public class CampaignWorkflowConversionReportingColumnInput {
     
     @Override
     public String toString() {
-        return Utils.toString(CampaignWorkflowConversionReportingColumnInput.class,
+        return Utils.toString(CampaignWorkflowCampaignConversionReportingColumnInput.class,
                 "trackingTagId", trackingTagId,
                 "includeInCustomCPA", includeInCustomCPA,
                 "reportingColumnId", reportingColumnId,
@@ -273,8 +273,8 @@ public class CampaignWorkflowConversionReportingColumnInput {
             return this;
         }
         
-        public CampaignWorkflowConversionReportingColumnInput build() {
-            return new CampaignWorkflowConversionReportingColumnInput(
+        public CampaignWorkflowCampaignConversionReportingColumnInput build() {
+            return new CampaignWorkflowCampaignConversionReportingColumnInput(
                 trackingTagId,
                 includeInCustomCPA,
                 reportingColumnId,

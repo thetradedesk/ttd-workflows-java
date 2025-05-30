@@ -20,6 +20,7 @@ import com.thetradedesk.workflows.models.components.PubApiMethodType;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostPubapiResponse;
 import java.lang.Exception;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -30,9 +31,9 @@ public class Application {
             .build();
 
         CallPubApiWorkflowInput req = CallPubApiWorkflowInput.builder()
-                .methodType(PubApiMethodType.PUT)
+                .methodType(PubApiMethodType.DELETE)
                 .endpoint("<value>")
-                .dataBody("<value>")
+                .dataBody(JsonNullable.of(null))
                 .build();
 
         PostPubapiResponse res = sdk.pubApi().postPubapi()

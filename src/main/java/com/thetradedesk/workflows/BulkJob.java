@@ -12,6 +12,8 @@ import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusRequest;
 import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusResponse;
+import com.thetradedesk.workflows.models.operations.PostBulkjobCallbackRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PostBulkjobCallbackResponse;
 import com.thetradedesk.workflows.models.operations.PostBulkjobFirstpartydataRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostBulkjobFirstpartydataResponse;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
@@ -42,6 +44,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BulkJob implements
             MethodCallPostBulkjobFirstpartydata,
+            MethodCallPostBulkjobCallback,
             MethodCallGetBulkjobIdStatus {
 
     private final SDKConfiguration sdkConfiguration;
@@ -52,7 +55,7 @@ public class BulkJob implements
 
 
     /**
-     * Submits a query for First Party Data to Hydra
+     * Submit a query for First Party Data to Hydra
      * 
      * @return The call builder
      */
@@ -61,7 +64,7 @@ public class BulkJob implements
     }
 
     /**
-     * Submits a query for First Party Data to Hydra
+     * Submit a query for First Party Data to Hydra
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -71,7 +74,7 @@ public class BulkJob implements
     }
     
     /**
-     * Submits a query for First Party Data to Hydra
+     * Submit a query for First Party Data to Hydra
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
@@ -85,7 +88,7 @@ public class BulkJob implements
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/bulkjob/firstpartydata");
@@ -105,16 +108,16 @@ public class BulkJob implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -135,6 +138,7 @@ public class BulkJob implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/bulkjob/firstpartydata", 
                                 Optional.of(List.of()), 
@@ -149,6 +153,7 @@ public class BulkJob implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "post_/bulkjob/firstpartydata",
                                  Optional.of(List.of()),
@@ -163,7 +168,8 @@ public class BulkJob implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "post_/bulkjob/firstpartydata", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -236,69 +242,57 @@ public class BulkJob implements
 
 
     /**
-     * Get the status of a bulk job you submitted earlier
+     * Used for receiving a callback from Hydra once a job is completed
      * 
      * @return The call builder
      */
-    public GetBulkjobIdStatusRequestBuilder getBulkjobIdStatus() {
-        return new GetBulkjobIdStatusRequestBuilder(this);
+    public PostBulkjobCallbackRequestBuilder postBulkjobCallback() {
+        return new PostBulkjobCallbackRequestBuilder(this);
     }
 
     /**
-     * Get the status of a bulk job you submitted earlier
+     * Used for receiving a callback from Hydra once a job is completed
      * 
-     * @param id 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetBulkjobIdStatusResponse getBulkjobIdStatus(
-            long id) throws Exception {
-        return getBulkjobIdStatus(id, Optional.empty());
+    public PostBulkjobCallbackResponse postBulkjobCallbackDirect() throws Exception {
+        return postBulkjobCallback(Optional.empty());
     }
     
     /**
-     * Get the status of a bulk job you submitted earlier
+     * Used for receiving a callback from Hydra once a job is completed
      * 
-     * @param id 
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetBulkjobIdStatusResponse getBulkjobIdStatus(
-            long id,
+    public PostBulkjobCallbackResponse postBulkjobCallback(
             Optional<Options> options) throws Exception {
 
         if (options.isPresent()) {
           options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
         }
-        GetBulkjobIdStatusRequest request =
-            GetBulkjobIdStatusRequest
-                .builder()
-                .id(id)
-                .build();
-        
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
-                GetBulkjobIdStatusRequest.class,
                 _baseUrl,
-                "/bulkjob/{id}/status",
-                request, null);
+                "/bulkjob/callback");
         
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
+        HTTPRequest _req = new HTTPRequest(_url, "POST");
+        _req.addHeader("Accept", "*/*")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
         if (options.isPresent() && options.get().retryConfig().isPresent()) {
             _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig.isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig.get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
         } else {
             _retryConfig = RetryConfig.builder()
                 .backoff(BackoffStrategy.builder()
@@ -319,6 +313,169 @@ public class BulkJob implements
                     _r = sdkConfiguration.hooks()
                         .beforeRequest(
                             new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "post_/bulkjob/callback", 
+                                Optional.of(List.of()), 
+                                _hookSecuritySource),
+                            _finalReq.build());
+                } catch (Exception _e) {
+                    throw new NonRetryableException(_e);
+                }
+                try {
+                    return _client.send(_r);
+                } catch (Exception _e) {
+                    return sdkConfiguration.hooks()
+                        .afterError(
+                            new AfterErrorContextImpl(
+                                this.sdkConfiguration,
+                                _baseUrl,
+                                "post_/bulkjob/callback",
+                                 Optional.of(List.of()),
+                                 _hookSecuritySource), 
+                            Optional.empty(),
+                            Optional.of(_e));
+                }
+            })
+            .retryConfig(_retryConfig)
+            .statusCodes(_statusCodes)
+            .build();
+        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
+                 .afterSuccess(
+                     new AfterSuccessContextImpl(
+                         this.sdkConfiguration,
+                         _baseUrl,
+                         "post_/bulkjob/callback", 
+                         Optional.of(List.of()), 
+                         _hookSecuritySource),
+                     _retries.run());
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        PostBulkjobCallbackResponse.Builder _resBuilder = 
+            PostBulkjobCallbackResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        PostBulkjobCallbackResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
+            // no content 
+            throw new APIException(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new APIException(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Get the status of a bulk job workflow you submitted earlier
+     * 
+     * @return The call builder
+     */
+    public GetBulkjobIdStatusRequestBuilder getBulkjobIdStatus() {
+        return new GetBulkjobIdStatusRequestBuilder(this);
+    }
+
+    /**
+     * Get the status of a bulk job workflow you submitted earlier
+     * 
+     * @param id 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public GetBulkjobIdStatusResponse getBulkjobIdStatus(
+            long id) throws Exception {
+        return getBulkjobIdStatus(id, Optional.empty());
+    }
+    
+    /**
+     * Get the status of a bulk job workflow you submitted earlier
+     * 
+     * @param id 
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public GetBulkjobIdStatusResponse getBulkjobIdStatus(
+            long id,
+            Optional<Options> options) throws Exception {
+
+        if (options.isPresent()) {
+          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
+        }
+        GetBulkjobIdStatusRequest request =
+            GetBulkjobIdStatusRequest
+                .builder()
+                .id(id)
+                .build();
+        
+        String _baseUrl = this.sdkConfiguration.serverUrl();
+        String _url = Utils.generateURL(
+                GetBulkjobIdStatusRequest.class,
+                _baseUrl,
+                "/bulkjob/{id}/status",
+                request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
+        HTTPRequest _finalReq = _req;
+        RetryConfig _retryConfig;
+        if (options.isPresent() && options.get().retryConfig().isPresent()) {
+            _retryConfig = options.get().retryConfig().get();
+        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
+            _retryConfig = this.sdkConfiguration.retryConfig().get();
+        } else {
+            _retryConfig = RetryConfig.builder()
+                .backoff(BackoffStrategy.builder()
+                            .initialInterval(500, TimeUnit.MILLISECONDS)
+                            .maxInterval(60000, TimeUnit.MILLISECONDS)
+                            .baseFactor((double)(1.5))
+                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
+                            .retryConnectError(true)
+                            .build())
+                .build();
+        }
+        List<String> _statusCodes = new ArrayList<>();
+        _statusCodes.add("5XX");
+        Retries _retries = Retries.builder()
+            .action(() -> {
+                HttpRequest _r = null;
+                try {
+                    _r = sdkConfiguration.hooks()
+                        .beforeRequest(
+                            new BeforeRequestContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "get_/bulkjob/{id}/status", 
                                 Optional.of(List.of()), 
@@ -333,6 +490,7 @@ public class BulkJob implements
                     return sdkConfiguration.hooks()
                         .afterError(
                             new AfterErrorContextImpl(
+                                this.sdkConfiguration,
                                 _baseUrl,
                                 "get_/bulkjob/{id}/status",
                                  Optional.of(List.of()),
@@ -347,7 +505,8 @@ public class BulkJob implements
         HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
                  .afterSuccess(
                      new AfterSuccessContextImpl(
-                          _baseUrl,
+                         this.sdkConfiguration,
+                         _baseUrl,
                          "get_/bulkjob/{id}/status", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
@@ -365,7 +524,7 @@ public class BulkJob implements
 
         GetBulkjobIdStatusResponse _res = _resBuilder.build();
         
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200", "202")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
                 BulkJobStatusResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),

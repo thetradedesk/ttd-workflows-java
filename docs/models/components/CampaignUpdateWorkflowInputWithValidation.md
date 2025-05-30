@@ -1,0 +1,10 @@
+# CampaignUpdateWorkflowInputWithValidation
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `primaryInput`                                                                                       | [CampaignUpdateWorkflowPrimaryInput](../../models/components/CampaignUpdateWorkflowPrimaryInput.md)  | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `advancedInput`                                                                                      | [Optional\<CampaignWorkflowAdvancedInput>](../../models/components/CampaignWorkflowAdvancedInput.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `validateInputOnly`                                                                                  | *JsonNullable\<Boolean>*                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
