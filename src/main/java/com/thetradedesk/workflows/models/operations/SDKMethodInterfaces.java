@@ -14,6 +14,7 @@ import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInputW
 import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
+import com.thetradedesk.workflows.models.components.ThirdPartyDataInput;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
 import java.lang.Exception;
@@ -60,14 +61,15 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostBulkjobCallback {
-        PostBulkjobCallbackResponse postBulkjobCallback(
-            Optional<Options> options) throws Exception;
-    }
-
     public interface MethodCallGetBulkjobIdStatus {
         GetBulkjobIdStatusResponse getBulkjobIdStatus(
             long id,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostBulkjobThirdpartydata {
+        PostBulkjobThirdpartydataResponse postBulkjobThirdpartydata(
+            Optional<? extends ThirdPartyDataInput> request,
             Optional<Options> options) throws Exception;
     }
 

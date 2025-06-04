@@ -21,8 +21,9 @@ public class AdGroupUpdateWorkflowInput {
     @JsonProperty("id")
     private Optional<String> id;
 
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("primaryInput")
-    private AdGroupUpdateWorkflowPrimaryInput primaryInput;
+    private Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
@@ -31,7 +32,7 @@ public class AdGroupUpdateWorkflowInput {
     @JsonCreator
     public AdGroupUpdateWorkflowInput(
             @JsonProperty("id") Optional<String> id,
-            @JsonProperty("primaryInput") AdGroupUpdateWorkflowPrimaryInput primaryInput,
+            @JsonProperty("primaryInput") Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput,
             @JsonProperty("advancedInput") Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(primaryInput, "primaryInput");
@@ -41,9 +42,8 @@ public class AdGroupUpdateWorkflowInput {
         this.advancedInput = advancedInput;
     }
     
-    public AdGroupUpdateWorkflowInput(
-            AdGroupUpdateWorkflowPrimaryInput primaryInput) {
-        this(Optional.empty(), primaryInput, Optional.empty());
+    public AdGroupUpdateWorkflowInput() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     @JsonIgnore
@@ -51,9 +51,10 @@ public class AdGroupUpdateWorkflowInput {
         return id;
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public AdGroupUpdateWorkflowPrimaryInput primaryInput() {
-        return primaryInput;
+    public Optional<AdGroupUpdateWorkflowPrimaryInput> primaryInput() {
+        return (Optional<AdGroupUpdateWorkflowPrimaryInput>) primaryInput;
     }
 
     @SuppressWarnings("unchecked")
@@ -79,6 +80,12 @@ public class AdGroupUpdateWorkflowInput {
     }
 
     public AdGroupUpdateWorkflowInput withPrimaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+        Utils.checkNotNull(primaryInput, "primaryInput");
+        this.primaryInput = Optional.ofNullable(primaryInput);
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowInput withPrimaryInput(Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
         this.primaryInput = primaryInput;
         return this;
@@ -132,7 +139,7 @@ public class AdGroupUpdateWorkflowInput {
  
         private Optional<String> id = Optional.empty();
  
-        private AdGroupUpdateWorkflowPrimaryInput primaryInput;
+        private Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput = Optional.empty();
  
         private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput = Optional.empty();
         
@@ -153,6 +160,12 @@ public class AdGroupUpdateWorkflowInput {
         }
 
         public Builder primaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+            Utils.checkNotNull(primaryInput, "primaryInput");
+            this.primaryInput = Optional.ofNullable(primaryInput);
+            return this;
+        }
+
+        public Builder primaryInput(Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = primaryInput;
             return this;

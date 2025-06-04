@@ -23,8 +23,9 @@ public class AdGroupUpdateWorkflowInputWithValidation {
     @JsonProperty("id")
     private Optional<String> id;
 
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("primaryInput")
-    private AdGroupUpdateWorkflowPrimaryInput primaryInput;
+    private Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
@@ -37,7 +38,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
     @JsonCreator
     public AdGroupUpdateWorkflowInputWithValidation(
             @JsonProperty("id") Optional<String> id,
-            @JsonProperty("primaryInput") AdGroupUpdateWorkflowPrimaryInput primaryInput,
+            @JsonProperty("primaryInput") Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput,
             @JsonProperty("advancedInput") Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput,
             @JsonProperty("validateInputOnly") JsonNullable<Boolean> validateInputOnly) {
         Utils.checkNotNull(id, "id");
@@ -50,9 +51,8 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         this.validateInputOnly = validateInputOnly;
     }
     
-    public AdGroupUpdateWorkflowInputWithValidation(
-            AdGroupUpdateWorkflowPrimaryInput primaryInput) {
-        this(Optional.empty(), primaryInput, Optional.empty(), JsonNullable.undefined());
+    public AdGroupUpdateWorkflowInputWithValidation() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -60,9 +60,10 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         return id;
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public AdGroupUpdateWorkflowPrimaryInput primaryInput() {
-        return primaryInput;
+    public Optional<AdGroupUpdateWorkflowPrimaryInput> primaryInput() {
+        return (Optional<AdGroupUpdateWorkflowPrimaryInput>) primaryInput;
     }
 
     @SuppressWarnings("unchecked")
@@ -93,6 +94,12 @@ public class AdGroupUpdateWorkflowInputWithValidation {
     }
 
     public AdGroupUpdateWorkflowInputWithValidation withPrimaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+        Utils.checkNotNull(primaryInput, "primaryInput");
+        this.primaryInput = Optional.ofNullable(primaryInput);
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowInputWithValidation withPrimaryInput(Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
         this.primaryInput = primaryInput;
         return this;
@@ -161,7 +168,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
  
         private Optional<String> id = Optional.empty();
  
-        private AdGroupUpdateWorkflowPrimaryInput primaryInput;
+        private Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput = Optional.empty();
  
         private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput = Optional.empty();
  
@@ -184,6 +191,12 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         }
 
         public Builder primaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
+            Utils.checkNotNull(primaryInput, "primaryInput");
+            this.primaryInput = Optional.ofNullable(primaryInput);
+            return this;
+        }
+
+        public Builder primaryInput(Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = primaryInput;
             return this;

@@ -11,7 +11,8 @@ import java.util.Optional;
 public enum WorkflowStatus {
     IN_PROGRESS("InProgress"),
     FAILURE("Failure"),
-    SUCCESS("Success");
+    SUCCESS("Success"),
+    PARTIAL_SUCCESS("PartialSuccess");
 
     @JsonValue
     private final String value;

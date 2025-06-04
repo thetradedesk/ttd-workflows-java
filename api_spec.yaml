@@ -1,21 +1,10 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Workflows API
   description: A RESTful service for commonly used workflows.
   version: v1
 servers:
-  - url: https://api.thetradedesk.com/workflows
-    description: The Trade Desk Workflows API
-x-speakeasy-retries:
-  strategy: backoff
-  backoff:
-    initialInterval: 500
-    maxInterval: 60000
-    maxElapsedTime: 3600000
-    exponent: 1.5
-  statusCodes: 
-    - 5XX
-  retryConnectionErrors: true
+  - url: /workflows
 paths:
   /adgroup:
     post:
@@ -282,6 +271,57 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
+  /bulkjob/thirdpartydata:
+    post:
+      tags:
+        - BulkJob
+      summary: Submits a query for Third Party Data to Hydra
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkJobSubmitResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
   /campaign:
     post:
       tags:
@@ -498,7 +538,6 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: true
         '400':
           description: Bad Request
           content:
@@ -660,6 +699,8 @@ components:
         validateInputOnly:
           type: boolean
           nullable: true
+        callbackInput:
+          $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
     AdGroupBulkUpdateWorkflowInputWithValidation:
       required:
@@ -674,6 +715,8 @@ components:
         validateInputOnly:
           type: boolean
           nullable: true
+        callbackInput:
+          $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
     AdGroupChannel:
       enum:
@@ -929,7 +972,6 @@ components:
     AdGroupUpdateWorkflowInput:
       required:
         - id
-        - primaryInput
       type: object
       properties:
         id:
@@ -943,7 +985,6 @@ components:
     AdGroupUpdateWorkflowInputWithValidation:
       required:
         - id
-        - primaryInput
       type: object
       properties:
         id:
@@ -1439,6 +1480,8 @@ components:
         validateInputOnly:
           type: boolean
           nullable: true
+        callbackInput:
+          $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
     CampaignBulkUpdateWorkflowInputWithValidation:
       required:
@@ -1453,6 +1496,8 @@ components:
         validateInputOnly:
           type: boolean
           nullable: true
+        callbackInput:
+          $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
     CampaignChannelType:
       enum:
@@ -1675,9 +1720,12 @@ components:
       additionalProperties: false
     CampaignUpdateWorkflowInput:
       required:
-        - primaryInput
+        - id
       type: object
       properties:
+        id:
+          type: string
+          nullable: true
         primaryInput:
           $ref: '#/components/schemas/CampaignUpdateWorkflowPrimaryInput'
         advancedInput:
@@ -1685,9 +1733,12 @@ components:
       additionalProperties: false
     CampaignUpdateWorkflowInputWithValidation:
       required:
-        - primaryInput
+        - id
       type: object
       properties:
+        id:
+          type: string
+          nullable: true
         primaryInput:
           $ref: '#/components/schemas/CampaignUpdateWorkflowPrimaryInput'
         advancedInput:
@@ -1697,8 +1748,6 @@ components:
           nullable: true
       additionalProperties: false
     CampaignUpdateWorkflowPrimaryInput:
-      required:
-        - id
       type: object
       properties:
         description:
@@ -1734,9 +1783,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CampaignWorkflowCampaignConversionReportingColumnInput'
-          nullable: true
-        id:
-          type: string
           nullable: true
         name:
           type: string
@@ -2104,6 +2150,8 @@ components:
           type: string
           description: "The shape of the query with the fields being asked for, which is sent downstream.\nThis determines how the response will look like.\nIf this is not provided the default query shape will be used:\n            \nnodes {\n   name\n   id\n   activeUniques {\n      householdCount\n      idsConnectedTvCount\n      idsCount\n      idsInAppCount\n      idsWebCount\n      personsCount\n   }\n}"
           nullable: true
+        callbackInput:
+          $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
       description: Required fields for submitting a bulk job for first party data
     GraphQLRequestInput:
@@ -2184,11 +2232,43 @@ components:
         - FiftyFive
         - SixtyFive
       type: string
+    ThirdPartyDataInput:
+      required:
+        - partnerId
+      type: object
+      properties:
+        partnerId:
+          minLength: 1
+          type: string
+          description: The partner id to query for.
+        queryShape:
+          type: string
+          description: "The shape of the query with the fields being asked for, which is sent downstream.\nThis determines how the response will look like.\nIf this is not provided the default query shape will be used:\n            \nnodes {\n    id\n    name\n    providerId\n    providerElementId\n    description\n    buyable\n    fullPath\n    activeUniques {\n        householdCount\n        idsConnectedTvCount\n        idsInAppCount\n        idsWebCount\n        personsCount\n        thirdPartyDataOverlapCount\n        lastUpdated\n    }\n}"
+          nullable: true
+        callbackInput:
+          $ref: '#/components/schemas/WorkflowCallbackInput'
+      additionalProperties: false
+      description: Required fields for submitting a bulk job for third party data
+    WorkflowCallbackInput:
+      required:
+        - callbackUrl
+      type: object
+      properties:
+        callbackUrl:
+          minLength: 1
+          type: string
+        callbackHeaders:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+      additionalProperties: false
     WorkflowStatus:
       enum:
         - InProgress
         - Failure
         - Success
+        - PartialSuccess
       type: string
   securitySchemes:
     TTD-Auth:

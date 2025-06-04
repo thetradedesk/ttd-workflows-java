@@ -5,16 +5,19 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.Objects;
+import java.util.Optional;
 
-public class PostBulkjobCallbackResponse implements Response {
+public class PostBulkjobThirdpartydataResponse implements Response {
 
     /**
      * HTTP response content type for this operation
@@ -31,17 +34,32 @@ public class PostBulkjobCallbackResponse implements Response {
      */
     private HttpResponse<InputStream> rawResponse;
 
+    /**
+     * Accepted
+     */
+    private Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse;
+
     @JsonCreator
-    public PostBulkjobCallbackResponse(
+    public PostBulkjobThirdpartydataResponse(
             String contentType,
             int statusCode,
-            HttpResponse<InputStream> rawResponse) {
+            HttpResponse<InputStream> rawResponse,
+            Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
+        this.bulkJobSubmitResponse = bulkJobSubmitResponse;
+    }
+    
+    public PostBulkjobThirdpartydataResponse(
+            String contentType,
+            int statusCode,
+            HttpResponse<InputStream> rawResponse) {
+        this(contentType, statusCode, rawResponse, Optional.empty());
     }
 
     /**
@@ -68,6 +86,15 @@ public class PostBulkjobCallbackResponse implements Response {
         return rawResponse;
     }
 
+    /**
+     * Accepted
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<BulkJobSubmitResponse> bulkJobSubmitResponse() {
+        return (Optional<BulkJobSubmitResponse>) bulkJobSubmitResponse;
+    }
+
     public final static Builder builder() {
         return new Builder();
     }    
@@ -75,7 +102,7 @@ public class PostBulkjobCallbackResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
-    public PostBulkjobCallbackResponse withContentType(String contentType) {
+    public PostBulkjobThirdpartydataResponse withContentType(String contentType) {
         Utils.checkNotNull(contentType, "contentType");
         this.contentType = contentType;
         return this;
@@ -84,7 +111,7 @@ public class PostBulkjobCallbackResponse implements Response {
     /**
      * HTTP response status code for this operation
      */
-    public PostBulkjobCallbackResponse withStatusCode(int statusCode) {
+    public PostBulkjobThirdpartydataResponse withStatusCode(int statusCode) {
         Utils.checkNotNull(statusCode, "statusCode");
         this.statusCode = statusCode;
         return this;
@@ -93,9 +120,27 @@ public class PostBulkjobCallbackResponse implements Response {
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
-    public PostBulkjobCallbackResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
+    public PostBulkjobThirdpartydataResponse withRawResponse(HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.rawResponse = rawResponse;
+        return this;
+    }
+
+    /**
+     * Accepted
+     */
+    public PostBulkjobThirdpartydataResponse withBulkJobSubmitResponse(BulkJobSubmitResponse bulkJobSubmitResponse) {
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+        this.bulkJobSubmitResponse = Optional.ofNullable(bulkJobSubmitResponse);
+        return this;
+    }
+
+    /**
+     * Accepted
+     */
+    public PostBulkjobThirdpartydataResponse withBulkJobSubmitResponse(Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
+        Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+        this.bulkJobSubmitResponse = bulkJobSubmitResponse;
         return this;
     }
 
@@ -108,11 +153,12 @@ public class PostBulkjobCallbackResponse implements Response {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PostBulkjobCallbackResponse other = (PostBulkjobCallbackResponse) o;
+        PostBulkjobThirdpartydataResponse other = (PostBulkjobThirdpartydataResponse) o;
         return 
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.rawResponse, other.rawResponse);
+            Objects.deepEquals(this.rawResponse, other.rawResponse) &&
+            Objects.deepEquals(this.bulkJobSubmitResponse, other.bulkJobSubmitResponse);
     }
     
     @Override
@@ -120,15 +166,17 @@ public class PostBulkjobCallbackResponse implements Response {
         return Objects.hash(
             contentType,
             statusCode,
-            rawResponse);
+            rawResponse,
+            bulkJobSubmitResponse);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(PostBulkjobCallbackResponse.class,
+        return Utils.toString(PostBulkjobThirdpartydataResponse.class,
                 "contentType", contentType,
                 "statusCode", statusCode,
-                "rawResponse", rawResponse);
+                "rawResponse", rawResponse,
+                "bulkJobSubmitResponse", bulkJobSubmitResponse);
     }
     
     public final static class Builder {
@@ -138,6 +186,8 @@ public class PostBulkjobCallbackResponse implements Response {
         private Integer statusCode;
  
         private HttpResponse<InputStream> rawResponse;
+ 
+        private Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -169,12 +219,31 @@ public class PostBulkjobCallbackResponse implements Response {
             this.rawResponse = rawResponse;
             return this;
         }
+
+        /**
+         * Accepted
+         */
+        public Builder bulkJobSubmitResponse(BulkJobSubmitResponse bulkJobSubmitResponse) {
+            Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+            this.bulkJobSubmitResponse = Optional.ofNullable(bulkJobSubmitResponse);
+            return this;
+        }
+
+        /**
+         * Accepted
+         */
+        public Builder bulkJobSubmitResponse(Optional<? extends BulkJobSubmitResponse> bulkJobSubmitResponse) {
+            Utils.checkNotNull(bulkJobSubmitResponse, "bulkJobSubmitResponse");
+            this.bulkJobSubmitResponse = bulkJobSubmitResponse;
+            return this;
+        }
         
-        public PostBulkjobCallbackResponse build() {
-            return new PostBulkjobCallbackResponse(
+        public PostBulkjobThirdpartydataResponse build() {
+            return new PostBulkjobThirdpartydataResponse(
                 contentType,
                 statusCode,
-                rawResponse);
+                rawResponse,
+                bulkJobSubmitResponse);
         }
     }
 }

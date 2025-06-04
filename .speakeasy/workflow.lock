@@ -1,9 +1,9 @@
-speakeasyVersion: 1.554.1
+speakeasyVersion: 1.555.3
 sources:
     Workflows API:
         sourceNamespace: workflows-api
-        sourceRevisionDigest: sha256:a262eaca41b422b221de8f833834cb970f34b1ae4478d87ccfc7a95470ece9da
-        sourceBlobDigest: sha256:a81ca51bdb7f498dbc2e34965ab2b582b3569bb20d696923714ab400229b798b
+        sourceRevisionDigest: sha256:667126da98d77636a2a43b9d341054d00d37ef1ecca7ff6610f65fdfe22e70be
+        sourceBlobDigest: sha256:6bdb982d23c39808cfb1234d68a0b55584d661367b0d6a087e261dd8c070a0a9
         tags:
             - latest
             - v1
@@ -11,10 +11,10 @@ targets:
     ttd-workflows:
         source: Workflows API
         sourceNamespace: workflows-api
-        sourceRevisionDigest: sha256:a262eaca41b422b221de8f833834cb970f34b1ae4478d87ccfc7a95470ece9da
-        sourceBlobDigest: sha256:a81ca51bdb7f498dbc2e34965ab2b582b3569bb20d696923714ab400229b798b
+        sourceRevisionDigest: sha256:667126da98d77636a2a43b9d341054d00d37ef1ecca7ff6610f65fdfe22e70be
+        sourceBlobDigest: sha256:6bdb982d23c39808cfb1234d68a0b55584d661367b0d6a087e261dd8c070a0a9
         codeSamplesNamespace: workflows-api-java-code-samples
-        codeSamplesRevisionDigest: sha256:52eb2692e6f4cebc9103e06855f8269890bea9677f5a06a0874ed53af48a747a
+        codeSamplesRevisionDigest: sha256:c21cd5cd0af204303aeeb3867247148c5503d2de6dcf2bedee2a1c91d927b491
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -24,6 +24,8 @@ workflow:
                 - location: ./api_spec.yaml
             overlays:
                 - location: .speakeasy/speakeasy-modifications-overlay.yaml
+                - location: .speakeasy/speakeasy-config-overlay.yaml
+                - location: .speakeasy/api-spec-overlay.yaml
             registry:
                 location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api
     targets:
