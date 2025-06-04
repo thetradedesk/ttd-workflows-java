@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.5.0'
+implementation 'com.thetradedesk:workflows:0.5.1'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
 </dependency>
 ```
 
@@ -418,6 +418,7 @@ public class Application {
 * [postBulkjobFirstpartydata](docs/sdks/bulkjob/README.md#postbulkjobfirstpartydata) - Submit a query for First Party Data to Hydra
 * [postBulkjobCallback](docs/sdks/bulkjob/README.md#postbulkjobcallback) - Used for receiving a callback from Hydra once a job is completed
 * [getBulkjobIdStatus](docs/sdks/bulkjob/README.md#getbulkjobidstatus) - Get the status of a bulk job workflow you submitted earlier
+* [postBulkjobThirdpartydata](docs/sdks/bulkjob/README.md#postbulkjobthirdpartydata) - Submits a query for Third Party Data to Hydra
 
 ### [campaign()](docs/sdks/campaign/README.md)
 

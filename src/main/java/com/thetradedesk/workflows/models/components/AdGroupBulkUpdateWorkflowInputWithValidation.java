@@ -28,18 +28,25 @@ public class AdGroupBulkUpdateWorkflowInputWithValidation {
     @JsonProperty("validateInputOnly")
     private JsonNullable<Boolean> validateInputOnly;
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("callbackInput")
+    private Optional<? extends WorkflowCallbackInput> callbackInput;
+
     @JsonCreator
     public AdGroupBulkUpdateWorkflowInputWithValidation(
             @JsonProperty("input") Optional<? extends List<AdGroupUpdateWorkflowInput>> input,
-            @JsonProperty("validateInputOnly") JsonNullable<Boolean> validateInputOnly) {
+            @JsonProperty("validateInputOnly") JsonNullable<Boolean> validateInputOnly,
+            @JsonProperty("callbackInput") Optional<? extends WorkflowCallbackInput> callbackInput) {
         Utils.checkNotNull(input, "input");
         Utils.checkNotNull(validateInputOnly, "validateInputOnly");
+        Utils.checkNotNull(callbackInput, "callbackInput");
         this.input = input;
         this.validateInputOnly = validateInputOnly;
+        this.callbackInput = callbackInput;
     }
     
     public AdGroupBulkUpdateWorkflowInputWithValidation() {
-        this(Optional.empty(), JsonNullable.undefined());
+        this(Optional.empty(), JsonNullable.undefined(), Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
@@ -51,6 +58,12 @@ public class AdGroupBulkUpdateWorkflowInputWithValidation {
     @JsonIgnore
     public JsonNullable<Boolean> validateInputOnly() {
         return validateInputOnly;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<WorkflowCallbackInput> callbackInput() {
+        return (Optional<WorkflowCallbackInput>) callbackInput;
     }
 
     public final static Builder builder() {
@@ -81,6 +94,18 @@ public class AdGroupBulkUpdateWorkflowInputWithValidation {
         return this;
     }
 
+    public AdGroupBulkUpdateWorkflowInputWithValidation withCallbackInput(WorkflowCallbackInput callbackInput) {
+        Utils.checkNotNull(callbackInput, "callbackInput");
+        this.callbackInput = Optional.ofNullable(callbackInput);
+        return this;
+    }
+
+    public AdGroupBulkUpdateWorkflowInputWithValidation withCallbackInput(Optional<? extends WorkflowCallbackInput> callbackInput) {
+        Utils.checkNotNull(callbackInput, "callbackInput");
+        this.callbackInput = callbackInput;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -93,21 +118,24 @@ public class AdGroupBulkUpdateWorkflowInputWithValidation {
         AdGroupBulkUpdateWorkflowInputWithValidation other = (AdGroupBulkUpdateWorkflowInputWithValidation) o;
         return 
             Objects.deepEquals(this.input, other.input) &&
-            Objects.deepEquals(this.validateInputOnly, other.validateInputOnly);
+            Objects.deepEquals(this.validateInputOnly, other.validateInputOnly) &&
+            Objects.deepEquals(this.callbackInput, other.callbackInput);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
             input,
-            validateInputOnly);
+            validateInputOnly,
+            callbackInput);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AdGroupBulkUpdateWorkflowInputWithValidation.class,
                 "input", input,
-                "validateInputOnly", validateInputOnly);
+                "validateInputOnly", validateInputOnly,
+                "callbackInput", callbackInput);
     }
     
     public final static class Builder {
@@ -115,6 +143,8 @@ public class AdGroupBulkUpdateWorkflowInputWithValidation {
         private Optional<? extends List<AdGroupUpdateWorkflowInput>> input = Optional.empty();
  
         private JsonNullable<Boolean> validateInputOnly = JsonNullable.undefined();
+ 
+        private Optional<? extends WorkflowCallbackInput> callbackInput = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -143,11 +173,24 @@ public class AdGroupBulkUpdateWorkflowInputWithValidation {
             this.validateInputOnly = validateInputOnly;
             return this;
         }
+
+        public Builder callbackInput(WorkflowCallbackInput callbackInput) {
+            Utils.checkNotNull(callbackInput, "callbackInput");
+            this.callbackInput = Optional.ofNullable(callbackInput);
+            return this;
+        }
+
+        public Builder callbackInput(Optional<? extends WorkflowCallbackInput> callbackInput) {
+            Utils.checkNotNull(callbackInput, "callbackInput");
+            this.callbackInput = callbackInput;
+            return this;
+        }
         
         public AdGroupBulkUpdateWorkflowInputWithValidation build() {
             return new AdGroupBulkUpdateWorkflowInputWithValidation(
                 input,
-                validateInputOnly);
+                validateInputOnly,
+                callbackInput);
         }
     }
 }

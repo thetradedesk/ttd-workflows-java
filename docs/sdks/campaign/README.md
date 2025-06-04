@@ -330,9 +330,11 @@ package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
+import com.thetradedesk.workflows.models.components.WorkflowCallbackInput;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostCampaignBulkResponse;
 import java.lang.Exception;
+import java.util.Map;
 import java.util.Optional;
 
 public class Application {
@@ -346,6 +348,11 @@ public class Application {
         CampaignBulkCreateWorkflowInputWithValidation req = CampaignBulkCreateWorkflowInputWithValidation.builder()
                 .input(Optional.empty())
                 .validateInputOnly(true)
+                .callbackInput(WorkflowCallbackInput.builder()
+                    .callbackUrl("https://dental-divine.org/")
+                    .callbackHeaders(Map.ofEntries(
+                        Map.entry("key", "<value>")))
+                    .build())
                 .build();
 
         PostCampaignBulkResponse res = sdk.campaign().postCampaignBulk()
@@ -392,6 +399,7 @@ import com.thetradedesk.workflows.models.operations.PatchCampaignBulkResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -460,6 +468,11 @@ public class Application {
                             .build())
                         .build()))
                 .validateInputOnly(false)
+                .callbackInput(WorkflowCallbackInput.builder()
+                    .callbackUrl("https://grizzled-riser.com/")
+                    .callbackHeaders(Map.ofEntries(
+                        Map.entry("key", "<value>")))
+                    .build())
                 .build();
 
         PatchCampaignBulkResponse res = sdk.campaign().patchCampaignBulk()
@@ -514,6 +527,7 @@ public class Application {
             .build();
 
         PostCampaignArchiveResponse res = sdk.campaign().postCampaignArchive()
+                .forceArchive(false)
                 .requestBody(List.of(
                     "<value 1>"))
                 .call();

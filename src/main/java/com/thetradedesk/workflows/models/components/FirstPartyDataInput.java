@@ -11,7 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.util.Objects;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -57,22 +59,29 @@ public class FirstPartyDataInput {
     @JsonProperty("queryShape")
     private JsonNullable<String> queryShape;
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("callbackInput")
+    private Optional<? extends WorkflowCallbackInput> callbackInput;
+
     @JsonCreator
     public FirstPartyDataInput(
             @JsonProperty("advertiserId") String advertiserId,
             @JsonProperty("nameFilter") JsonNullable<String> nameFilter,
-            @JsonProperty("queryShape") JsonNullable<String> queryShape) {
+            @JsonProperty("queryShape") JsonNullable<String> queryShape,
+            @JsonProperty("callbackInput") Optional<? extends WorkflowCallbackInput> callbackInput) {
         Utils.checkNotNull(advertiserId, "advertiserId");
         Utils.checkNotNull(nameFilter, "nameFilter");
         Utils.checkNotNull(queryShape, "queryShape");
+        Utils.checkNotNull(callbackInput, "callbackInput");
         this.advertiserId = advertiserId;
         this.nameFilter = nameFilter;
         this.queryShape = queryShape;
+        this.callbackInput = callbackInput;
     }
     
     public FirstPartyDataInput(
             String advertiserId) {
-        this(advertiserId, JsonNullable.undefined(), JsonNullable.undefined());
+        this(advertiserId, JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -113,6 +122,12 @@ public class FirstPartyDataInput {
     @JsonIgnore
     public JsonNullable<String> queryShape() {
         return queryShape;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<WorkflowCallbackInput> callbackInput() {
+        return (Optional<WorkflowCallbackInput>) callbackInput;
     }
 
     public final static Builder builder() {
@@ -196,6 +211,18 @@ public class FirstPartyDataInput {
         return this;
     }
 
+    public FirstPartyDataInput withCallbackInput(WorkflowCallbackInput callbackInput) {
+        Utils.checkNotNull(callbackInput, "callbackInput");
+        this.callbackInput = Optional.ofNullable(callbackInput);
+        return this;
+    }
+
+    public FirstPartyDataInput withCallbackInput(Optional<? extends WorkflowCallbackInput> callbackInput) {
+        Utils.checkNotNull(callbackInput, "callbackInput");
+        this.callbackInput = callbackInput;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -209,7 +236,8 @@ public class FirstPartyDataInput {
         return 
             Objects.deepEquals(this.advertiserId, other.advertiserId) &&
             Objects.deepEquals(this.nameFilter, other.nameFilter) &&
-            Objects.deepEquals(this.queryShape, other.queryShape);
+            Objects.deepEquals(this.queryShape, other.queryShape) &&
+            Objects.deepEquals(this.callbackInput, other.callbackInput);
     }
     
     @Override
@@ -217,7 +245,8 @@ public class FirstPartyDataInput {
         return Objects.hash(
             advertiserId,
             nameFilter,
-            queryShape);
+            queryShape,
+            callbackInput);
     }
     
     @Override
@@ -225,7 +254,8 @@ public class FirstPartyDataInput {
         return Utils.toString(FirstPartyDataInput.class,
                 "advertiserId", advertiserId,
                 "nameFilter", nameFilter,
-                "queryShape", queryShape);
+                "queryShape", queryShape,
+                "callbackInput", callbackInput);
     }
     
     public final static class Builder {
@@ -235,6 +265,8 @@ public class FirstPartyDataInput {
         private JsonNullable<String> nameFilter = JsonNullable.undefined();
  
         private JsonNullable<String> queryShape = JsonNullable.undefined();
+ 
+        private Optional<? extends WorkflowCallbackInput> callbackInput = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -316,12 +348,25 @@ public class FirstPartyDataInput {
             this.queryShape = queryShape;
             return this;
         }
+
+        public Builder callbackInput(WorkflowCallbackInput callbackInput) {
+            Utils.checkNotNull(callbackInput, "callbackInput");
+            this.callbackInput = Optional.ofNullable(callbackInput);
+            return this;
+        }
+
+        public Builder callbackInput(Optional<? extends WorkflowCallbackInput> callbackInput) {
+            Utils.checkNotNull(callbackInput, "callbackInput");
+            this.callbackInput = callbackInput;
+            return this;
+        }
         
         public FirstPartyDataInput build() {
             return new FirstPartyDataInput(
                 advertiserId,
                 nameFilter,
-                queryShape);
+                queryShape,
+                callbackInput);
         }
     }
 }

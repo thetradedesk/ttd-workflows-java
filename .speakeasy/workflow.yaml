@@ -6,6 +6,8 @@ sources:
             - location: ./api_spec.yaml
         overlays:
             - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            - location: .speakeasy/speakeasy-config-overlay.yaml
+            - location: .speakeasy/api-spec-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api
 targets:

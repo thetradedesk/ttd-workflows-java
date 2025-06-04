@@ -372,6 +372,7 @@ public class Application {
             .build();
 
         PostAdgroupArchiveResponse res = sdk.adGroup().postAdgroupArchive()
+                .forceArchive(false)
                 .requestBody(List.of(
                     "<value 1>",
                     "<value 2>",
@@ -417,8 +418,7 @@ import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PostAdgroupBulkResponse;
 import java.lang.Exception;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -819,6 +819,11 @@ public class Application {
                             .build())
                         .build()))
                 .validateInputOnly(true)
+                .callbackInput(WorkflowCallbackInput.builder()
+                    .callbackUrl("https://thorny-packaging.net")
+                    .callbackHeaders(Map.ofEntries(
+                        Map.entry("key", "<value>")))
+                    .build())
                 .build();
 
         PostAdgroupBulkResponse res = sdk.adGroup().postAdgroupBulk()
@@ -864,6 +869,7 @@ import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.PatchAdgroupBulkResponse;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -1101,6 +1107,12 @@ public class Application {
                             .build())
                         .build()))
                 .validateInputOnly(true)
+                .callbackInput(WorkflowCallbackInput.builder()
+                    .callbackUrl("https://musty-ecliptic.com/")
+                    .callbackHeaders(Map.ofEntries(
+                        Map.entry("key", "<value>"),
+                        Map.entry("key1", "<value>")))
+                    .build())
                 .build();
 
         PatchAdgroupBulkResponse res = sdk.adGroup().patchAdgroupBulk()
