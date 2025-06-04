@@ -13,8 +13,6 @@ import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusRequest;
 import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetBulkjobIdStatusResponse;
-import com.thetradedesk.workflows.models.operations.PostBulkjobCallbackRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostBulkjobCallbackResponse;
 import com.thetradedesk.workflows.models.operations.PostBulkjobFirstpartydataRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostBulkjobFirstpartydataResponse;
 import com.thetradedesk.workflows.models.operations.PostBulkjobThirdpartydataRequestBuilder;
@@ -47,7 +45,6 @@ import java.util.concurrent.TimeUnit;
 
 public class BulkJob implements
             MethodCallPostBulkjobFirstpartydata,
-            MethodCallPostBulkjobCallback,
             MethodCallGetBulkjobIdStatus,
             MethodCallPostBulkjobThirdpartydata {
 
@@ -219,156 +216,6 @@ public class BulkJob implements
                     "Unexpected content-type received: " + _contentType, 
                     Utils.extractByteArrayFromBody(_httpRes));
             }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
-    }
-
-
-
-    /**
-     * Used for receiving a callback from Hydra once a job is completed
-     * 
-     * @return The call builder
-     */
-    public PostBulkjobCallbackRequestBuilder postBulkjobCallback() {
-        return new PostBulkjobCallbackRequestBuilder(this);
-    }
-
-    /**
-     * Used for receiving a callback from Hydra once a job is completed
-     * 
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public PostBulkjobCallbackResponse postBulkjobCallbackDirect() throws Exception {
-        return postBulkjobCallback(Optional.empty());
-    }
-    
-    /**
-     * Used for receiving a callback from Hydra once a job is completed
-     * 
-     * @param options additional options
-     * @return The response from the API call
-     * @throws Exception if the API call fails
-     */
-    public PostBulkjobCallbackResponse postBulkjobCallback(
-            Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/bulkjob/callback");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        _req.addHeader("Accept", "*/*")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/bulkjob/callback", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/bulkjob/callback",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "post_/bulkjob/callback", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PostBulkjobCallbackResponse.Builder _resBuilder = 
-            PostBulkjobCallbackResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PostBulkjobCallbackResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            // no content 
-            return _res;
         }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
             // no content 

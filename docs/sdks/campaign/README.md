@@ -193,8 +193,8 @@ public class Application {
             .build();
 
         CampaignUpdateWorkflowInputWithValidation req = CampaignUpdateWorkflowInputWithValidation.builder()
+                .id("<id>")
                 .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
-                    .id("<id>")
                     .description("until notwithstanding bump")
                     .timeZone(JsonNullable.of(null))
                     .customCPAClickWeight(6995)
@@ -413,8 +413,8 @@ public class Application {
         CampaignBulkUpdateWorkflowInputWithValidation req = CampaignBulkUpdateWorkflowInputWithValidation.builder()
                 .input(List.of(
                     CampaignUpdateWorkflowInput.builder()
+                        .id("<id>")
                         .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
-                            .id("<id>")
                             .description("make innocently gerbil")
                             .timeZone("America/Halifax")
                             .customCPAClickWeight(90.53)

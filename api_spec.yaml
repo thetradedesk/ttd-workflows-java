@@ -972,7 +972,6 @@ components:
     AdGroupUpdateWorkflowInput:
       required:
         - id
-        - primaryInput
       type: object
       properties:
         id:
@@ -986,7 +985,6 @@ components:
     AdGroupUpdateWorkflowInputWithValidation:
       required:
         - id
-        - primaryInput
       type: object
       properties:
         id:
@@ -1722,9 +1720,12 @@ components:
       additionalProperties: false
     CampaignUpdateWorkflowInput:
       required:
-        - primaryInput
+        - id
       type: object
       properties:
+        id:
+          type: string
+          nullable: true
         primaryInput:
           $ref: '#/components/schemas/CampaignUpdateWorkflowPrimaryInput'
         advancedInput:
@@ -1732,9 +1733,12 @@ components:
       additionalProperties: false
     CampaignUpdateWorkflowInputWithValidation:
       required:
-        - primaryInput
+        - id
       type: object
       properties:
+        id:
+          type: string
+          nullable: true
         primaryInput:
           $ref: '#/components/schemas/CampaignUpdateWorkflowPrimaryInput'
         advancedInput:
@@ -1744,8 +1748,6 @@ components:
           nullable: true
       additionalProperties: false
     CampaignUpdateWorkflowPrimaryInput:
-      required:
-        - id
       type: object
       properties:
         description:
@@ -1781,9 +1783,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CampaignWorkflowCampaignConversionReportingColumnInput'
-          nullable: true
-        id:
-          type: string
           nullable: true
         name:
           type: string
@@ -2269,6 +2268,7 @@ components:
         - InProgress
         - Failure
         - Success
+        - PartialSuccess
       type: string
   securitySchemes:
     TTD-Auth:

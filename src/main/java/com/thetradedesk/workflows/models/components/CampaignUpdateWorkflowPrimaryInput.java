@@ -61,10 +61,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
     @JsonProperty("campaignConversionReportingColumns")
     private JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns;
 
-    @JsonInclude(Include.ALWAYS)
-    @JsonProperty("id")
-    private Optional<String> id;
-
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
@@ -93,7 +89,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
             @JsonProperty("endDateInUtc") JsonNullable<OffsetDateTime> endDateInUtc,
             @JsonProperty("seedId") JsonNullable<String> seedId,
             @JsonProperty("campaignConversionReportingColumns") JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns,
-            @JsonProperty("id") Optional<String> id,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("primaryChannel") Optional<? extends CampaignChannelType> primaryChannel,
             @JsonProperty("primaryGoal") Optional<? extends CampaignWorkflowROIGoalInput> primaryGoal,
@@ -108,7 +103,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
         Utils.checkNotNull(endDateInUtc, "endDateInUtc");
         Utils.checkNotNull(seedId, "seedId");
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
-        Utils.checkNotNull(id, "id");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(primaryChannel, "primaryChannel");
         Utils.checkNotNull(primaryGoal, "primaryGoal");
@@ -123,7 +117,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
         this.endDateInUtc = endDateInUtc;
         this.seedId = seedId;
         this.campaignConversionReportingColumns = campaignConversionReportingColumns;
-        this.id = id;
         this.name = name;
         this.primaryChannel = primaryChannel;
         this.primaryGoal = primaryGoal;
@@ -131,7 +124,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
     }
     
     public CampaignUpdateWorkflowPrimaryInput() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -185,11 +178,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
     @JsonIgnore
     public JsonNullable<List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns() {
         return (JsonNullable<List<CampaignWorkflowCampaignConversionReportingColumnInput>>) campaignConversionReportingColumns;
-    }
-
-    @JsonIgnore
-    public Optional<String> id() {
-        return id;
     }
 
     @JsonIgnore
@@ -338,18 +326,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
         return this;
     }
 
-    public CampaignUpdateWorkflowPrimaryInput withId(String id) {
-        Utils.checkNotNull(id, "id");
-        this.id = Optional.ofNullable(id);
-        return this;
-    }
-
-    public CampaignUpdateWorkflowPrimaryInput withId(Optional<String> id) {
-        Utils.checkNotNull(id, "id");
-        this.id = id;
-        return this;
-    }
-
     public CampaignUpdateWorkflowPrimaryInput withName(String name) {
         Utils.checkNotNull(name, "name");
         this.name = JsonNullable.of(name);
@@ -419,7 +395,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
             Objects.deepEquals(this.endDateInUtc, other.endDateInUtc) &&
             Objects.deepEquals(this.seedId, other.seedId) &&
             Objects.deepEquals(this.campaignConversionReportingColumns, other.campaignConversionReportingColumns) &&
-            Objects.deepEquals(this.id, other.id) &&
             Objects.deepEquals(this.name, other.name) &&
             Objects.deepEquals(this.primaryChannel, other.primaryChannel) &&
             Objects.deepEquals(this.primaryGoal, other.primaryGoal) &&
@@ -439,7 +414,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
             endDateInUtc,
             seedId,
             campaignConversionReportingColumns,
-            id,
             name,
             primaryChannel,
             primaryGoal,
@@ -459,7 +433,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
                 "endDateInUtc", endDateInUtc,
                 "seedId", seedId,
                 "campaignConversionReportingColumns", campaignConversionReportingColumns,
-                "id", id,
                 "name", name,
                 "primaryChannel", primaryChannel,
                 "primaryGoal", primaryGoal,
@@ -487,8 +460,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
         private JsonNullable<String> seedId = JsonNullable.undefined();
  
         private JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns = JsonNullable.undefined();
- 
-        private Optional<String> id = Optional.empty();
  
         private JsonNullable<String> name = JsonNullable.undefined();
  
@@ -622,18 +593,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
             return this;
         }
 
-        public Builder id(String id) {
-            Utils.checkNotNull(id, "id");
-            this.id = Optional.ofNullable(id);
-            return this;
-        }
-
-        public Builder id(Optional<String> id) {
-            Utils.checkNotNull(id, "id");
-            this.id = id;
-            return this;
-        }
-
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -694,7 +653,6 @@ public class CampaignUpdateWorkflowPrimaryInput {
                 endDateInUtc,
                 seedId,
                 campaignConversionReportingColumns,
-                id,
                 name,
                 primaryChannel,
                 primaryGoal,

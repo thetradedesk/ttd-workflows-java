@@ -6,7 +6,6 @@
 ### Available Operations
 
 * [postBulkjobFirstpartydata](#postbulkjobfirstpartydata) - Submit a query for First Party Data to Hydra
-* [postBulkjobCallback](#postbulkjobcallback) - Used for receiving a callback from Hydra once a job is completed
 * [getBulkjobIdStatus](#getbulkjobidstatus) - Get the status of a bulk job workflow you submitted earlier
 * [postBulkjobThirdpartydata](#postbulkjobthirdpartydata) - Submits a query for Third Party Data to Hydra
 
@@ -74,45 +73,6 @@ public class Application {
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | models/errors/ProblemDetailsException | 400, 401, 403, 404                    | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
-
-## postBulkjobCallback
-
-Used for receiving a callback from Hydra once a job is completed
-
-### Example Usage
-
-```java
-package hello.world;
-
-import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.operations.PostBulkjobCallbackResponse;
-import java.lang.Exception;
-
-public class Application {
-
-    public static void main(String[] args) throws Exception {
-
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
-            .build();
-
-        PostBulkjobCallbackResponse res = sdk.bulkJob().postBulkjobCallback()
-                .call();
-
-        // handle response
-    }
-}
-```
-
-### Response
-
-**[PostBulkjobCallbackResponse](../../models/operations/PostBulkjobCallbackResponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models/errors/APIException | 4XX, 5XX                   | \*/\*                      |
 
 ## getBulkjobIdStatus
 

@@ -61,11 +61,6 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostBulkjobCallback {
-        PostBulkjobCallbackResponse postBulkjobCallback(
-            Optional<Options> options) throws Exception;
-    }
-
     public interface MethodCallGetBulkjobIdStatus {
         GetBulkjobIdStatusResponse getBulkjobIdStatus(
             long id,
