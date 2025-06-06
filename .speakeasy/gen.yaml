@@ -21,6 +21,7 @@ java:
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
+  baseErrorName: TtdWorkflowsError
   clientServerStatusCodesAsErrors: true
   companyEmail: dl-platform-sdk@thetradedesk.com
   companyName: The Trade Desk
