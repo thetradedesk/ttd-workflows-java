@@ -3,7 +3,9 @@ speakeasyVersion: latest
 sources:
     Workflows API:
         inputs:
-            - location: ./api_spec.yaml
+            - location: https://api.thetradedesk.com/workflows/swagger/v1/swagger.yaml
+              authHeader: TTD-Auth
+              authSecret: $openapi_doc_auth_token
         overlays:
             - location: .speakeasy/speakeasy-modifications-overlay.yaml
             - location: .speakeasy/speakeasy-config-overlay.yaml
