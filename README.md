@@ -48,7 +48,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.5.1'
+implementation 'com.thetradedesk:workflows:0.5.2'
 ```
 
 Maven:
@@ -56,7 +56,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.5.1</version>
+    <version>0.5.2</version>
 </dependency>
 ```
 
