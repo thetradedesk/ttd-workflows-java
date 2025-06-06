@@ -3,8 +3,6 @@ info:
   title: Workflows API
   description: A RESTful service for commonly used workflows.
   version: v1
-servers:
-  - url: /workflows
 paths:
   /adgroup:
     post:
@@ -212,18 +210,6 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-  /bulkjob/callback:
-    post:
-      tags:
-        - BulkJob
-      summary: Used for receiving a callback from Hydra once a job is completed
-      responses:
-        '200':
-          description: OK
-        '500':
-          description: Internal Server Error
-        '503':
-          description: Service Unavailable
   '/bulkjob/{id}/status':
     get:
       tags:
@@ -351,6 +337,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+      x-speakeasy-name-override: create
     patch:
       tags:
         - Campaign
@@ -521,6 +508,7 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '500':
           description: Internal Server Error
+      x-speakeasy-name-override: getVersion
   /graphql-request:
     post:
       tags:
@@ -538,6 +526,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
         '400':
           description: Bad Request
           content:
@@ -2277,4 +2266,17 @@ components:
       name: TTD-Auth
       in: header
 security:
-  - TTD-Auth: [ ]
+  - TTD-Auth: []
+servers:
+  - url: https://api.thetradedesk.com/workflows
+    description: "A RESTful service for commonly used workflows."
+x-speakeasy-retries:
+  strategy: backoff
+  backoff:
+    initialInterval: 500
+    maxInterval: 60000
+    maxElapsedTime: 3600000
+    exponent: 1.5
+  statusCodes:
+    - 5XX
+  retryConnectionErrors: true

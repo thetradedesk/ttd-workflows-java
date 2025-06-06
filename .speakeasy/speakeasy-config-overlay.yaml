@@ -3,12 +3,11 @@ info:
   title: Speakeasy Configurations
   version: 0.0.1
 actions:
-  - target: $.servers[0]
-    remove: true
-  - target: $.servers
+  - target: $
     update:
-      - url: https://api.thetradedesk.com/workflows
-        description: "A RESTful service for commonly used workflows."
+      servers:
+        - url: https://api.thetradedesk.com/workflows
+          description: "A RESTful service for commonly used workflows." 
   - target: $
     update:
       x-speakeasy-retries:
