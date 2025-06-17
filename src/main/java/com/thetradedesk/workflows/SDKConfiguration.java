@@ -16,8 +16,8 @@ public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "v1";
-    public static final String SDK_VERSION = "0.5.2";
-    public static final String GEN_VERSION = "2.623.0";
+    public static final String SDK_VERSION = "0.6.0";
+    public static final String GEN_VERSION = "2.630.6";
     private static final String BASE_PACKAGE = "com.thetradedesk.workflows";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s",
@@ -70,14 +70,16 @@ public class SDKConfiguration {
         return serverUrl;
     }
     
-    private int serverIdx = 0;
+    // the name of the server to use from the server map
+    private String server;
     
-    public void setServerIdx(int serverIdx) {
-        this.serverIdx = serverIdx;
+    public void setServer(String server) {
+        Utils.checkNotNull(server, "server");
+        this.server = server;
     }
     
-    public int serverIdx() {
-        return serverIdx;
+    public String server() {
+        return server;
     }
     
     

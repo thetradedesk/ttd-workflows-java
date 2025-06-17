@@ -7,7 +7,11 @@ actions:
     update:
       servers:
         - url: https://api.thetradedesk.com/workflows
-          description: "A RESTful service for commonly used workflows." 
+          description: "The production environment."
+          x-speakeasy-server-id: prod
+        - url: https://ext-api.sb.thetradedesk.com/workflows
+          description: "The sandbox environment for testing."
+          x-speakeasy-server-id: sandbox
   - target: $
     update:
       x-speakeasy-retries:
@@ -17,6 +21,6 @@ actions:
           maxInterval: 60000
           maxElapsedTime: 3600000
           exponent: 1.5
-        statusCodes: 
+        statusCodes:
           - 5XX
         retryConnectionErrors: true

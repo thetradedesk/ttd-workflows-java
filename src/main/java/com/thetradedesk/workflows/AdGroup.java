@@ -63,7 +63,6 @@ public class AdGroup implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Returns a builder to make a request.
      * 
@@ -254,7 +253,6 @@ public class AdGroup implements
     }
 
 
-
     /**
      * Returns a builder to make a request.
      * 
@@ -439,7 +437,6 @@ public class AdGroup implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -642,7 +639,6 @@ public class AdGroup implements
     }
 
 
-
     /**
      * Create a list of ad groups with required fields.
      * 
@@ -827,7 +823,6 @@ public class AdGroup implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
