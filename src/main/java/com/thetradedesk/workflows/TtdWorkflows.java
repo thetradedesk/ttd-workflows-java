@@ -23,7 +23,6 @@ public class TtdWorkflows {
      */
     public static final String[] SERVERS = {
         /**
-         * A RESTful service for commonly used workflows.
          */
         "https://api.thetradedesk.com/workflows",
     };
