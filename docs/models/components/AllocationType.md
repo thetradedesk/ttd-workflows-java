@@ -6,5 +6,5 @@
 | Name      | Value     |
 | --------- | --------- |
 | `MINIMUM` | Minimum   |
-| `MAXIMUM` | Maximum   |
 | `FIXED`   | Fixed     |
+| `MAXIMUM` | Maximum   |

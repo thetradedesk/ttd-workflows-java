@@ -1388,8 +1388,8 @@ components:
     AllocationType:
       enum:
         - Minimum
-        - Maximum
         - Fixed
+        - Maximum
       type: string
     BulkJobStatusResponse:
       required:
@@ -2269,7 +2269,11 @@ security:
   - TTD-Auth: []
 servers:
   - url: https://api.thetradedesk.com/workflows
-    description: "A RESTful service for commonly used workflows."
+    description: "The production environment."
+    x-speakeasy-server-id: prod
+  - url: https://ext-api.sb.thetradedesk.com/workflows
+    description: "The sandbox environment for testing."
+    x-speakeasy-server-id: sandbox
 x-speakeasy-retries:
   strategy: backoff
   backoff:
