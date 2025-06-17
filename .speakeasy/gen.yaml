@@ -17,7 +17,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
 java:
-  version: 0.5.2
+  version: 0.6.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
@@ -27,6 +27,7 @@ java:
   companyName: The Trade Desk
   companyURL: https://www.thetradedesk.com/
   defaultErrorName: APIException
+  enableCustomCodeRegions: false
   flattenGlobalSecurity: true
   githubURL: github.com/thetradedesk/ttd-workflows-java
   groupID: com.thetradedesk

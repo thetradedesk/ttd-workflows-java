@@ -45,7 +45,6 @@ public class GraphQL implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * An endpoint that executes valid GraphQL queries or mutations.
      * 

@@ -45,7 +45,6 @@ public class PubApi implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Returns a builder to make a request.
      * 

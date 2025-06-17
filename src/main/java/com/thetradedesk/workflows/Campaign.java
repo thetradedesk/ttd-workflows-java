@@ -68,7 +68,6 @@ public class Campaign implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Create a new campaign with required fields
      * 
@@ -253,7 +252,6 @@ public class Campaign implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -442,7 +440,6 @@ public class Campaign implements
     }
 
 
-
     /**
      * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
      * 
@@ -629,7 +626,6 @@ public class Campaign implements
     }
 
 
-
     /**
      * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
      * 
@@ -814,7 +810,6 @@ public class Campaign implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**
@@ -1015,7 +1010,6 @@ public class Campaign implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

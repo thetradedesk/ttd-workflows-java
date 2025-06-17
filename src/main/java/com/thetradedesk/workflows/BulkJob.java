@@ -54,7 +54,6 @@ public class BulkJob implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Submit a query for First Party Data to Hydra
      * 
@@ -241,7 +240,6 @@ public class BulkJob implements
     }
 
 
-
     /**
      * Get the status of a bulk job workflow you submitted earlier
      * 
@@ -426,7 +424,6 @@ public class BulkJob implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.extractByteArrayFromBody(_httpRes));
     }
-
 
 
     /**

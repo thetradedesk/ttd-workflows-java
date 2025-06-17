@@ -8,6 +8,8 @@ import com.thetradedesk.workflows.utils.Hook.SdkInitData;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -17,15 +19,43 @@ import java.util.function.Consumer;
  */
 public class TtdWorkflows {
 
+  
+    /**
+     * AvailableServers contains identifiers for the servers available to the SDK.
+     */
+    public enum AvailableServers {
+        /**
+         * PROD
+         * 
+         * <p>The production environment.
+         */
+      PROD("prod"),
+        /**
+         * SANDBOX
+         * 
+         * <p>The sandbox environment for testing.
+         */
+      SANDBOX("sandbox");
+
+        private final String server;
+
+        private AvailableServers(String server) {
+            this.server = server;
+        }
+
+        public String server() {
+           return server;
+        }
+    }
 
     /**
      * SERVERS contains the list of server urls available to the SDK.
      */
-    public static final String[] SERVERS = {
-        /**
-         */
-        "https://api.thetradedesk.com/workflows",
-    };
+    @SuppressWarnings("serial")
+    public static final Map<AvailableServers, String> SERVERS = new HashMap<>() { {
+    put(AvailableServers.PROD, "https://api.thetradedesk.com/workflows");
+    put(AvailableServers.SANDBOX, "https://ext-api.sb.thetradedesk.com/workflows");
+    }};
 
     private final AdGroup adGroup;
 
@@ -131,14 +161,14 @@ public class TtdWorkflows {
         }
         
         /**
-         * Overrides the default server by index.
+         * Overrides the default server by name.
          *
-         * @param serverIdx The server to use for all requests.
+         * @param server The server to use for all requests.
          * @return The builder instance.
          */
-        public Builder serverIndex(int serverIdx) {
-            this.sdkConfiguration.setServerIdx(serverIdx);
-            this.serverUrl= SERVERS[serverIdx];
+        public Builder server(AvailableServers server) {
+            this.server = server.server();
+            this.serverUrl = SERVERS.get(server);
             return this;
         }
         
@@ -171,10 +201,13 @@ public class TtdWorkflows {
          */
         public TtdWorkflows build() {
             if (serverUrl == null || serverUrl.isBlank()) {
-                serverUrl = SERVERS[0];
-                sdkConfiguration.setServerIdx(0);
+                serverUrl = SERVERS.get(AvailableServers.PROD);
+                server = AvailableServers.PROD.server();
             }
             sdkConfiguration.setServerUrl(serverUrl);
+            if (server != null) {
+                sdkConfiguration.setServer(server);
+            }
             return new TtdWorkflows(sdkConfiguration);
         }
     }

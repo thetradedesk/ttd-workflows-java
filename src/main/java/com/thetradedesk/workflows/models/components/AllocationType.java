@@ -10,8 +10,8 @@ import java.util.Optional;
 
 public enum AllocationType {
     MINIMUM("Minimum"),
-    MAXIMUM("Maximum"),
-    FIXED("Fixed");
+    FIXED("Fixed"),
+    MAXIMUM("Maximum");
 
     @JsonValue
     private final String value;
