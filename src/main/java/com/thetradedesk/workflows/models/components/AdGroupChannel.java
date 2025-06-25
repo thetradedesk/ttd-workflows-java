@@ -22,7 +22,7 @@ public enum AdGroupChannel {
     @JsonValue
     private final String value;
 
-    private AdGroupChannel(String value) {
+    AdGroupChannel(String value) {
         this.value = value;
     }
     

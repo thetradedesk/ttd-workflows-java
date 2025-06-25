@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [postRestrequest](#postrestrequest) - Submit a valid REST request
+* [submitRestRequest](#submitrestrequest) - Submit a valid REST request
 
-## postRestrequest
+## submitRestRequest
 
 This generic operation can be used to execute any valid REST request.
 To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
@@ -21,7 +21,7 @@ import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
 import com.thetradedesk.workflows.models.components.PubApiMethodType;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostRestrequestResponse;
+import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -33,12 +33,12 @@ public class Application {
             .build();
 
         CallPubApiWorkflowInput req = CallPubApiWorkflowInput.builder()
-                .methodType(PubApiMethodType.POST)
+                .methodType(PubApiMethodType.GET)
                 .endpoint("<value>")
                 .dataBody("<value>")
                 .build();
 
-        PostRestrequestResponse res = sdk.restRequest().postRestrequest()
+        SubmitRestRequestResponse res = sdk.restRequest().submitRestRequest()
                 .request(req)
                 .call();
 
@@ -57,7 +57,7 @@ public class Application {
 
 ### Response
 
-**[PostRestrequestResponse](../../models/operations/PostRestrequestResponse.md)**
+**[SubmitRestRequestResponse](../../models/operations/SubmitRestRequestResponse.md)**
 
 ### Errors
 

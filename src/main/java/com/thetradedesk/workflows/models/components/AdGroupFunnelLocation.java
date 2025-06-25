@@ -17,7 +17,7 @@ public enum AdGroupFunnelLocation {
     @JsonValue
     private final String value;
 
-    private AdGroupFunnelLocation(String value) {
+    AdGroupFunnelLocation(String value) {
         this.value = value;
     }
     

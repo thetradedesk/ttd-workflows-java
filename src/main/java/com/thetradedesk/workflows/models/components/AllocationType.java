@@ -16,7 +16,7 @@ public enum AllocationType {
     @JsonValue
     private final String value;
 
-    private AllocationType(String value) {
+    AllocationType(String value) {
         this.value = value;
     }
     

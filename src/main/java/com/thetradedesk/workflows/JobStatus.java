@@ -3,39 +3,19 @@
  */
 package com.thetradedesk.workflows;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.TypeBasedJobStatusResponse;
-import com.thetradedesk.workflows.models.errors.APIException;
-import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.GetTypebasedjobIdStatusRequest;
-import com.thetradedesk.workflows.models.operations.GetTypebasedjobIdStatusRequestBuilder;
-import com.thetradedesk.workflows.models.operations.GetTypebasedjobIdStatusResponse;
-import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
-import com.thetradedesk.workflows.utils.BackoffStrategy;
-import com.thetradedesk.workflows.utils.HTTPClient;
-import com.thetradedesk.workflows.utils.HTTPRequest;
-import com.thetradedesk.workflows.utils.Hook.AfterErrorContextImpl;
-import com.thetradedesk.workflows.utils.Hook.AfterSuccessContextImpl;
-import com.thetradedesk.workflows.utils.Hook.BeforeRequestContextImpl;
+import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
+
+import com.thetradedesk.workflows.models.operations.GetJobStatusRequest;
+import com.thetradedesk.workflows.models.operations.GetJobStatusRequestBuilder;
+import com.thetradedesk.workflows.models.operations.GetJobStatusResponse;
+import com.thetradedesk.workflows.operations.GetJobStatusOperation;
 import com.thetradedesk.workflows.utils.Options;
-import com.thetradedesk.workflows.utils.Retries.NonRetryableException;
-import com.thetradedesk.workflows.utils.Retries;
-import com.thetradedesk.workflows.utils.RetryConfig;
-import com.thetradedesk.workflows.utils.Utils;
-import java.io.InputStream;
 import java.lang.Exception;
-import java.lang.String;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
-public class JobStatus implements
-            MethodCallGetTypebasedjobIdStatus {
 
+public class JobStatus {
     private final SDKConfiguration sdkConfiguration;
 
     JobStatus(SDKConfiguration sdkConfiguration) {
@@ -50,8 +30,8 @@ public class JobStatus implements
      * 
      * @return The call builder
      */
-    public GetTypebasedjobIdStatusRequestBuilder getTypebasedjobIdStatus() {
-        return new GetTypebasedjobIdStatusRequestBuilder(this);
+    public GetJobStatusRequestBuilder getJobStatus() {
+        return new GetJobStatusRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -64,11 +44,10 @@ public class JobStatus implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetTypebasedjobIdStatusResponse getTypebasedjobIdStatus(
-            long id) throws Exception {
-        return getTypebasedjobIdStatus(id, Optional.empty());
+    public GetJobStatusResponse getJobStatus(long id) throws Exception {
+        return getJobStatus(id, Optional.empty());
     }
-    
+
     /**
      * Get the status of a previously submitted type-based job
      * 
@@ -80,160 +59,19 @@ public class JobStatus implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetTypebasedjobIdStatusResponse getTypebasedjobIdStatus(
+    public GetJobStatusResponse getJobStatus(
             long id,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        GetTypebasedjobIdStatusRequest request =
-            GetTypebasedjobIdStatusRequest
+        GetJobStatusRequest request =
+            GetJobStatusRequest
                 .builder()
                 .id(id)
                 .build();
-        
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                GetTypebasedjobIdStatusRequest.class,
-                _baseUrl,
-                "/typebasedjob/{id}/status",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "get_/typebasedjob/{id}/status", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "get_/typebasedjob/{id}/status",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "get_/typebasedjob/{id}/status", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        GetTypebasedjobIdStatusResponse.Builder _resBuilder = 
-            GetTypebasedjobIdStatusResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        GetTypebasedjobIdStatusResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                TypeBasedJobStatusResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<TypeBasedJobStatusResponse>() {});
-                _res.withTypeBasedJobStatusResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "401", "403", "404")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
+              = new GetJobStatusOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 }
