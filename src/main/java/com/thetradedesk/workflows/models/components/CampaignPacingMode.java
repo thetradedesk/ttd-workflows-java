@@ -17,7 +17,7 @@ public enum CampaignPacingMode {
     @JsonValue
     private final String value;
 
-    private CampaignPacingMode(String value) {
+    CampaignPacingMode(String value) {
         this.value = value;
     }
     

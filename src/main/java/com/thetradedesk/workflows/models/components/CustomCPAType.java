@@ -16,7 +16,7 @@ public enum CustomCPAType {
     @JsonValue
     private final String value;
 
-    private CustomCPAType(String value) {
+    CustomCPAType(String value) {
         this.value = value;
     }
     

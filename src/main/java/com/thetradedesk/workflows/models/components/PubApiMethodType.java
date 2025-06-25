@@ -17,7 +17,7 @@ public enum PubApiMethodType {
     @JsonValue
     private final String value;
 
-    private PubApiMethodType(String value) {
+    PubApiMethodType(String value) {
         this.value = value;
     }
     

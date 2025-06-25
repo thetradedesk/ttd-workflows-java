@@ -21,7 +21,7 @@ public enum CampaignChannelType {
     @JsonValue
     private final String value;
 
-    private CampaignChannelType(String value) {
+    CampaignChannelType(String value) {
         this.value = value;
     }
     

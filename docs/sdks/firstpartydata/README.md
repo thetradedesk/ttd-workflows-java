@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [postTypebasedjobFirstpartydata](#posttypebasedjobfirstpartydata) - Submit a type-based job for first-party data retrieval for an advertiser
+* [getFirstPartyDataJob](#getfirstpartydatajob) - Submit a type-based job for first-party data retrieval for an advertiser
 
-## postTypebasedjobFirstpartydata
+## getFirstPartyDataJob
 
 When a first-party data query is submitted, a job ID is returned.
 This job ID can be used to poll for the job's status using the associated operation under "Job Status".
@@ -21,10 +21,9 @@ import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
 import com.thetradedesk.workflows.models.components.WorkflowCallbackInput;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostTypebasedjobFirstpartydataResponse;
+import com.thetradedesk.workflows.models.operations.GetFirstPartyDataJobResponse;
 import java.lang.Exception;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -37,16 +36,17 @@ public class Application {
         FirstPartyDataInput req = FirstPartyDataInput.builder()
                 .advertiserId("<id>")
                 .nameFilter("<value>")
-                .queryShape(JsonNullable.of(null))
+                .queryShape("<value>")
                 .callbackInput(WorkflowCallbackInput.builder()
-                    .callbackUrl("https://ashamed-traffic.info")
+                    .callbackUrl("https://difficult-pocket-watch.com")
                     .callbackHeaders(Map.ofEntries(
                         Map.entry("key", "<value>"),
-                        Map.entry("key1", "<value>")))
+                        Map.entry("key1", "<value>"),
+                        Map.entry("key2", "<value>")))
                     .build())
                 .build();
 
-        PostTypebasedjobFirstpartydataResponse res = sdk.firstPartyData().postTypebasedjobFirstpartydata()
+        GetFirstPartyDataJobResponse res = sdk.firstPartyData().getFirstPartyDataJob()
                 .request(req)
                 .call();
 
@@ -65,7 +65,7 @@ public class Application {
 
 ### Response
 
-**[PostTypebasedjobFirstpartydataResponse](../../models/operations/PostTypebasedjobFirstpartydataResponse.md)**
+**[GetFirstPartyDataJobResponse](../../models/operations/GetFirstPartyDataJobResponse.md)**
 
 ### Errors
 
