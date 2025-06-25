@@ -1,13 +1,14 @@
 openapi: 3.0.4
 info:
-  title: Workflows API
-  description: A RESTful service for commonly used workflows.
+  title: Workflows Service
+  description: "## Operations for commonly used workflows.\r\nThis service provides operations for commonly used workflows on The Trade Desk's platform.\r\nIn addition, this service provides generic operations for submitting:\r\n\r\n- GraphQL API requests\r\n- REST API requests\r\n\r\nTo interface with this service, we provide SDKs in multiple languages.\r\nFor each available language, there is a code sample displayed to the right of each operation.\r\n\r\nTo get started with the SDK in your language of choice, see the associated guide:\r\n\r\n- Java - coming soon\r\n- [Python](https://pypi.org/project/ttd-workflows/)\r\n\r\nFor further explanation on the entities encountered in this documentation (e.g.,\r\n[campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and\r\n[ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the\r\n[Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases)."
   version: v1
 paths:
   /adgroup:
     post:
       tags:
-        - AdGroup
+        - Ad Group
+      summary: Create a new ad group with required fields
       requestBody:
         content:
           application/json:
@@ -36,7 +37,9 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
     patch:
       tags:
-        - AdGroup
+        - Ad Group
+      summary: Update an ad group with specified fields
+      description: Only the fields provided in the request payload will be updated.
       requestBody:
         content:
           application/json:
@@ -64,8 +67,9 @@ paths:
   /adgroup/archive:
     post:
       tags:
-        - AdGroup
-      summary: Archive a list of ad groups
+        - Ad Group
+      summary: Archive multiple ad groups
+      description: '**NOTE**: Once archived, ad groups cannot be un-archived.'
       parameters:
         - name: forceArchive
           in: query
@@ -100,11 +104,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-  /adgroup/bulk:
+  /typebasedjob/adgroup/bulk:
     post:
       tags:
-        - AdGroup
-      summary: Create a list of ad groups with required fields.
+        - Ad Group
+      summary: Create multiple new ad groups with required fields
       requestBody:
         content:
           application/json:
@@ -116,7 +120,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkJobSubmitResponse'
+                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -135,8 +139,9 @@ paths:
           description: Service Unavailable
     patch:
       tags:
-        - AdGroup
-      summary: Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+        - Ad Group
+      summary: Update multiple ad groups with specified fields
+      description: Only the fields provided in the request payload for each specific ad group will be updated.
       requestBody:
         content:
           application/json:
@@ -148,7 +153,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkJobSubmitResponse'
+                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -157,149 +162,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '403':
           description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '500':
-          description: Internal Server Error
-        '503':
-          description: Service Unavailable
-  /bulkjob/firstpartydata:
-    post:
-      tags:
-        - BulkJob
-      summary: Submit a query for First Party Data to Hydra
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FirstPartyDataInput'
-      responses:
-        '202':
-          description: Accepted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BulkJobSubmitResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '500':
-          description: Internal Server Error
-        '503':
-          description: Service Unavailable
-  '/bulkjob/{id}/status':
-    get:
-      tags:
-        - BulkJob
-      summary: Get the status of a bulk job workflow you submitted earlier
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BulkJobStatusResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '500':
-          description: Internal Server Error
-        '503':
-          description: Service Unavailable
-  /bulkjob/thirdpartydata:
-    post:
-      tags:
-        - BulkJob
-      summary: Submits a query for Third Party Data to Hydra
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ThirdPartyDataInput'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ThirdPartyDataInput'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ThirdPartyDataInput'
-      responses:
-        '202':
-          description: Accepted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BulkJobSubmitResponse'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '404':
-          description: Not Found
           content:
             application/json:
               schema:
@@ -341,7 +203,8 @@ paths:
     patch:
       tags:
         - Campaign
-      summary: Update an existing campaign with specified fields
+      summary: Update a campaign with specified fields
+      description: Only the fields provided in the request payload will be updated.
       requestBody:
         content:
           application/json:
@@ -360,11 +223,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-  /campaign/bulk:
+  /typebasedjob/campaign/bulk:
     post:
       tags:
         - Campaign
-      summary: Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
+      summary: Create multiple new campaigns with required fields
       requestBody:
         content:
           application/json:
@@ -376,7 +239,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkJobSubmitResponse'
+                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -396,7 +259,8 @@ paths:
     patch:
       tags:
         - Campaign
-      summary: Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+      summary: Update multiple campaigns with specified fields
+      description: Only the fields provided in the request payload for each specific campaign will be updated.
       requestBody:
         content:
           application/json:
@@ -408,7 +272,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BulkJobSubmitResponse'
+                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -429,7 +293,8 @@ paths:
     post:
       tags:
         - Campaign
-      summary: Archive a list of campaigns
+      summary: Archive multiple campaigns
+      description: '**NOTE**: Once archived, campaigns cannot be un-archived.'
       parameters:
         - name: forceArchive
           in: query
@@ -468,7 +333,7 @@ paths:
     get:
       tags:
         - Campaign
-      summary: GET a campaign's version
+      summary: Get a campaign's version
       parameters:
         - name: id
           in: path
@@ -509,24 +374,24 @@ paths:
         '500':
           description: Internal Server Error
       x-speakeasy-name-override: getVersion
-  /graphql-request:
+  /typebasedjob/firstpartydata:
     post:
       tags:
-        - GraphQL
-      summary: An endpoint that executes valid GraphQL queries or mutations.
+        - First-Party Data
+      summary: Submit a type-based job for first-party data retrieval for an advertiser
+      description: "When a first-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status using the associated operation under \"Job Status\"."
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GraphQLRequestInput'
+              $ref: '#/components/schemas/FirstPartyDataInput'
       responses:
-        '200':
-          description: OK
+        '202':
+          description: Accepted
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -555,10 +420,58 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-  /pubapi:
+  /graphqlrequest:
     post:
       tags:
-        - PubApi
+        - GraphQL Request
+      summary: Submit a valid GraphQL query or mutation
+      description: "This generic operation can be used to execute any valid GraphQL request.\nTo explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema)."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphQLRequestInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+  /restrequest:
+    post:
+      tags:
+        - REST Request
+      summary: Submit a valid REST request
+      description: "This generic operation can be used to execute any valid REST request.\nTo explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform)."
       requestBody:
         content:
           application/json:
@@ -597,6 +510,106 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '500':
           description: Internal Server Error
+  /typebasedjob/thirdpartydata:
+    post:
+      tags:
+        - Third-Party Data
+      summary: Submit a type-based job for third-party data retrieval for an advertiser
+      description: "When a third-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status using the associated operation under \"Job Status\"."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+  '/typebasedjob/{id}/status':
+    get:
+      tags:
+        - Job Status
+      summary: Get the status of a previously submitted type-based job
+      description: "Use this operation to get a previously submitted job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeBasedJobStatusResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
 components:
   schemas:
     AdGroupAssociateBidList:
@@ -1391,56 +1404,6 @@ components:
         - Fixed
         - Maximum
       type: string
-    BulkJobStatusResponse:
-      required:
-        - createdAtUtc
-        - id
-        - status
-      type: object
-      properties:
-        id:
-          type: integer
-          description: ID of the bulk job.
-          format: int64
-        completedAtUtc:
-          type: string
-          description: Time of completion for this bulk job in UTC.
-          format: date-time
-          nullable: true
-        completionPercentage:
-          type: number
-          description: Completion percentage for that bulk job.
-          format: double
-          nullable: true
-        createdAtUtc:
-          type: string
-          description: Time of creation for that bulk job in UTC.
-          format: date-time
-        status:
-          $ref: '#/components/schemas/WorkflowStatus'
-        url:
-          type: string
-          description: The url where the result can be picked up
-          nullable: true
-        rawResult:
-          type: string
-          description: "The raw result if the response is less than 5MB in size. If the result is too large and size is larger\nthan this threshold, then null is returned."
-          nullable: true
-        errors:
-          type: string
-          description: Any errors encountered during workflow processing
-          nullable: true
-      additionalProperties: false
-    BulkJobSubmitResponse:
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: ID of the bulk job.
-          format: int64
-      additionalProperties: false
     CallPubApiWorkflowInput:
       required:
         - endpoint
@@ -2130,10 +2093,10 @@ components:
         advertiserId:
           minLength: 1
           type: string
-          description: The advertiser id to query for.
+          description: The advertiser ID to query for.
         nameFilter:
           type: string
-          description: "The name to filter by in the query. This filter will be applied to the results for the advertiser.\nIf there are no nodes which match the filter, a response with empty nodes with no first party data will be returned."
+          description: "The name to filter by in the query. This filter will be applied to the results for the advertiser.\nIf there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned."
           nullable: true
         queryShape:
           type: string
@@ -2142,7 +2105,7 @@ components:
         callbackInput:
           $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
-      description: Required fields for submitting a bulk job for first party data
+      description: Required fields for submitting a bulk job for first-party data.
     GraphQLRequestInput:
       required:
         - request
@@ -2229,7 +2192,7 @@ components:
         partnerId:
           minLength: 1
           type: string
-          description: The partner id to query for.
+          description: The partner ID to query for.
         queryShape:
           type: string
           description: "The shape of the query with the fields being asked for, which is sent downstream.\nThis determines how the response will look like.\nIf this is not provided the default query shape will be used:\n            \nnodes {\n    id\n    name\n    providerId\n    providerElementId\n    description\n    buyable\n    fullPath\n    activeUniques {\n        householdCount\n        idsConnectedTvCount\n        idsInAppCount\n        idsWebCount\n        personsCount\n        thirdPartyDataOverlapCount\n        lastUpdated\n    }\n}"
@@ -2237,7 +2200,57 @@ components:
         callbackInput:
           $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
-      description: Required fields for submitting a bulk job for third party data
+      description: Required fields for submitting a bulk job for third-party data.
+    TypeBasedJobStatusResponse:
+      required:
+        - createdAtUtc
+        - id
+        - status
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the job.
+          format: int64
+        completedAtUtc:
+          type: string
+          description: The UTC data and time that the job completed.
+          format: date-time
+          nullable: true
+        completionPercentage:
+          type: number
+          description: The job completion percentage.
+          format: double
+          nullable: true
+        createdAtUtc:
+          type: string
+          description: The UTC date and time that the job was created.
+          format: date-time
+        status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        url:
+          type: string
+          description: The URL from which the job result can be downloaded.
+          nullable: true
+        rawResult:
+          type: string
+          description: "The raw job result if the response is less than or equal to 20MB in size.\nIf the job result is larger than 20MB, then null is returned."
+          nullable: true
+        errors:
+          type: string
+          description: A list of errors encountered during workflow processing.
+          nullable: true
+      additionalProperties: false
+    TypeBasedJobSubmitResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the job.
+          format: int64
+      additionalProperties: false
     WorkflowCallbackInput:
       required:
         - callbackUrl

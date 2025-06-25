@@ -6,11 +6,11 @@
 ### Available Operations
 
 * [create](#create) - Create a new campaign with required fields
-* [patchCampaign](#patchcampaign) - Update an existing campaign with specified fields
-* [postCampaignBulk](#postcampaignbulk) - Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
-* [patchCampaignBulk](#patchcampaignbulk) - Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
-* [postCampaignArchive](#postcampaignarchive) - Archive a list of campaigns
-* [getVersion](#getversion) - GET a campaign's version
+* [patchCampaign](#patchcampaign) - Update a campaign with specified fields
+* [postTypebasedjobCampaignBulk](#posttypebasedjobcampaignbulk) - Create multiple new campaigns with required fields
+* [patchTypebasedjobCampaignBulk](#patchtypebasedjobcampaignbulk) - Update multiple campaigns with specified fields
+* [postCampaignArchive](#postcampaignarchive) - Archive multiple campaigns
+* [getVersion](#getversion) - Get a campaign's version
 
 ## create
 
@@ -168,7 +168,7 @@ public class Application {
 
 ## patchCampaign
 
-Update an existing campaign with specified fields
+Only the fields provided in the request payload will be updated.
 
 ### Example Usage
 
@@ -319,9 +319,9 @@ public class Application {
 | models/errors/ProblemDetailsException | 400                                   | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## postCampaignBulk
+## postTypebasedjobCampaignBulk
 
-Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
+Create multiple new campaigns with required fields
 
 ### Example Usage
 
@@ -329,13 +329,14 @@ Create a list of campaigns with required fields. `ValidateInputOnly` value shoul
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.models.components.WorkflowCallbackInput;
+import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostCampaignBulkResponse;
+import com.thetradedesk.workflows.models.operations.PostTypebasedjobCampaignBulkResponse;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -346,20 +347,186 @@ public class Application {
             .build();
 
         CampaignBulkCreateWorkflowInputWithValidation req = CampaignBulkCreateWorkflowInputWithValidation.builder()
-                .input(Optional.empty())
-                .validateInputOnly(true)
+                .input(List.of(
+                    CampaignCreateWorkflowInput.builder()
+                        .primaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                            .advertiserId("<id>")
+                            .name("<value>")
+                            .primaryChannel(CampaignChannelType.NONE)
+                            .primaryGoal(CampaignWorkflowROIGoalInput.builder()
+                                .maximizeReach(JsonNullable.of(null))
+                                .maximizeLtvIncrementalReach(true)
+                                .cpcInAdvertiserCurrency(7342.9)
+                                .ctrInPercent(4157.33)
+                                .nielsenOTPInPercent(1508.37)
+                                .cpaInAdvertiserCurrency(5200.65)
+                                .returnOnAdSpendPercent(2714.64)
+                                .vcrInPercent(4408.66)
+                                .viewabilityInPercent(4646.22)
+                                .vcpmInAdvertiserCurrency(5303.62)
+                                .cpcvInAdvertiserCurrency(7628.07)
+                                .miaozhenOTPInPercent(2965.51)
+                                .build())
+                            .description("terribly someplace deflect")
+                            .timeZone("America/Miquelon")
+                            .customCPAClickWeight(779.21)
+                            .customCPAViewthroughWeight(1198.23)
+                            .customCPAType(CustomCPAType.PIXEL_WEIGHTING)
+                            .impressionsOnlyBudgetingCpm(5375.63)
+                            .budget(CampaignWorkflowBudgetInput.builder()
+                                .pacingMode(CampaignPacingMode.PACE_AHEAD)
+                                .budgetInAdvertiserCurrency(4629.97)
+                                .budgetInImpressions(808130L)
+                                .dailyTargetInAdvertiserCurrency(4067.56)
+                                .dailyTargetInImpressions(243576L)
+                                .build())
+                            .endDateInUtc(OffsetDateTime.parse("2025-12-15T08:27:00.961Z"))
+                            .seedId(JsonNullable.of(null))
+                            .campaignConversionReportingColumns(List.of(
+                                CampaignWorkflowCampaignConversionReportingColumnInput.builder()
+                                    .trackingTagId("<id>")
+                                    .includeInCustomCPA(true)
+                                    .reportingColumnId(265596)
+                                    .roasConfig(CustomROASConfig.builder()
+                                        .includeInCustomROAS(false)
+                                        .customROASWeight(1659.76)
+                                        .customROASClickWeight(7838.93)
+                                        .customROASViewthroughWeight(7814.81)
+                                        .build())
+                                    .weight(9286.55)
+                                    .crossDeviceAttributionModelId("<id>")
+                                    .build()))
+                            .startDateInUtc(JsonNullable.of(null))
+                            .build())
+                        .advancedInput(CampaignWorkflowAdvancedInput.builder()
+                            .flights(List.of(
+                                CampaignWorkflowFlightInput.builder()
+                                    .startDateInclusiveUTC(OffsetDateTime.parse("2023-05-29T15:44:07.749Z"))
+                                    .budgetInAdvertiserCurrency(9558.91)
+                                    .endDateExclusiveUTC(OffsetDateTime.parse("2024-01-24T07:42:34.281Z"))
+                                    .budgetInImpressions(73147L)
+                                    .dailyTargetInAdvertiserCurrency(4332.71)
+                                    .dailyTargetInImpressions(768928L)
+                                    .build()))
+                            .purchaseOrderNumber("<value>")
+                            .build())
+                        .adGroups(List.of(
+                            CampaignCreateWorkflowAdGroupInput.builder()
+                                .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
+                                    .name("<value>")
+                                    .channel(AdGroupChannel.AUDIO)
+                                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
+                                    .isEnabled(true)
+                                    .description(JsonNullable.of(null))
+                                    .budget(AdGroupWorkflowBudgetInput.builder()
+                                        .allocationType(AllocationType.MAXIMUM)
+                                        .budgetInAdvertiserCurrency(6785.04)
+                                        .budgetInImpressions(835320L)
+                                        .dailyTargetInAdvertiserCurrency(4763.51)
+                                        .dailyTargetInImpressions(267343L)
+                                        .build())
+                                    .baseBidCPMInAdvertiserCurrency(2929.53)
+                                    .maxBidCPMInAdvertiserCurrency(3306.27)
+                                    .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
+                                        .audienceId("<id>")
+                                        .audienceAcceleratorExclusionsEnabled(true)
+                                        .audienceBoosterEnabled(true)
+                                        .audienceExcluderEnabled(false)
+                                        .audiencePredictorEnabled(false)
+                                        .crossDeviceVendorListForAudience(List.of(
+                                            745991,
+                                            421485,
+                                            187325))
+                                        .recencyExclusionWindowInMinutes(651644)
+                                        .targetTrackableUsersEnabled(JsonNullable.of(null))
+                                        .useMcIdAsPrimary(true)
+                                        .build())
+                                    .roiGoal(AdGroupWorkflowROIGoalInput.builder()
+                                        .maximizeReach(false)
+                                        .maximizeLtvIncrementalReach(false)
+                                        .cpcInAdvertiserCurrency(3342.73)
+                                        .ctrInPercent(8498.13)
+                                        .nielsenOTPInPercent(JsonNullable.of(null))
+                                        .cpaInAdvertiserCurrency(4541.91)
+                                        .returnOnAdSpendPercent(1951.31)
+                                        .vcrInPercent(4890.16)
+                                        .viewabilityInPercent(7796.33)
+                                        .vcpmInAdvertiserCurrency(9686.38)
+                                        .cpcvInAdvertiserCurrency(5397.14)
+                                        .miaozhenOTPInPercent(6837.51)
+                                        .build())
+                                    .creativeIds(JsonNullable.of(null))
+                                    .associatedBidLists(List.of(
+                                        AdGroupWorkflowAssociateBidListInput.builder()
+                                            .bidListId("<id>")
+                                            .isEnabled(false)
+                                            .isDefaultForDimension(JsonNullable.of(null))
+                                            .build()))
+                                    .programmaticGuaranteedPrivateContractId("<id>")
+                                    .build())
+                                .advancedInput(CampaignCreateWorkflowAdGroupAdvancedInput.builder()
+                                    .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
+                                        .areFutureKoaFeaturesEnabled(JsonNullable.of(null))
+                                        .predictiveClearingEnabled(true)
+                                        .build())
+                                    .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
+                                        .isEnabled(false)
+                                        .populationId(392396)
+                                        .demographicMemberIds(List.of(
+                                            815546,
+                                            208096,
+                                            412653))
+                                        .mobileDemographicMemberIds(JsonNullable.of(null))
+                                        .build())
+                                    .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
+                                        .allowOpenMarketBiddingWhenTargetingContracts(true)
+                                        .build())
+                                    .dimensionalBiddingAutoOptimizationSettings(List.of(
+                                        List.of(
+                                            DimensionalBiddingDimensions.HAS_FREQUENCY_V2_ADJUSTMENT_ID)))
+                                    .isUseClicksAsConversionsEnabled(false)
+                                    .isUseSecondaryConversionsEnabled(true)
+                                    .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
+                                        .gender(TargetingGender.MALE)
+                                        .startAge(TargetingStartAge.THIRTY)
+                                        .endAge(TargetingEndAge.TWENTY_NINE)
+                                        .countries(List.of(
+                                            "<value 1>",
+                                            "<value 2>"))
+                                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                                        .build())
+                                    .newFrequencyConfigs(List.of(
+                                        AdGroupWorkflowNewFrequencyConfigInput.builder()
+                                            .counterName("<value>")
+                                            .frequencyCap(26304)
+                                            .frequencyGoal(197135)
+                                            .resetIntervalInMinutes(993919)
+                                            .build()))
+                                    .flights(List.of(
+                                        CampaignCreateWorkflowAdGroupFlightInput.builder()
+                                            .allocationType(AllocationType.FIXED)
+                                            .budgetInAdvertiserCurrency(1254.25)
+                                            .budgetInImpressions(426962L)
+                                            .dailyTargetInAdvertiserCurrency(3971.88)
+                                            .dailyTargetInImpressions(746686L)
+                                            .build()))
+                                    .build())
+                                .build()))
+                        .build()))
+                .validateInputOnly(false)
                 .callbackInput(WorkflowCallbackInput.builder()
-                    .callbackUrl("https://dental-divine.org/")
+                    .callbackUrl("https://neat-inspection.biz/")
                     .callbackHeaders(Map.ofEntries(
-                        Map.entry("key", "<value>")))
+                        Map.entry("key", "<value>"),
+                        Map.entry("key1", "<value>")))
                     .build())
                 .build();
 
-        PostCampaignBulkResponse res = sdk.campaign().postCampaignBulk()
+        PostTypebasedjobCampaignBulkResponse res = sdk.campaign().postTypebasedjobCampaignBulk()
                 .request(req)
                 .call();
 
-        if (res.bulkJobSubmitResponse().isPresent()) {
+        if (res.typeBasedJobSubmitResponse().isPresent()) {
             // handle response
         }
     }
@@ -374,7 +541,7 @@ public class Application {
 
 ### Response
 
-**[PostCampaignBulkResponse](../../models/operations/PostCampaignBulkResponse.md)**
+**[PostTypebasedjobCampaignBulkResponse](../../models/operations/PostTypebasedjobCampaignBulkResponse.md)**
 
 ### Errors
 
@@ -383,9 +550,9 @@ public class Application {
 | models/errors/ProblemDetailsException | 400, 403                              | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## patchCampaignBulk
+## patchTypebasedjobCampaignBulk
 
-Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+Only the fields provided in the request payload for each specific campaign will be updated.
 
 ### Example Usage
 
@@ -395,7 +562,7 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PatchCampaignBulkResponse;
+import com.thetradedesk.workflows.models.operations.PatchTypebasedjobCampaignBulkResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -415,71 +582,68 @@ public class Application {
                     CampaignUpdateWorkflowInput.builder()
                         .id("<id>")
                         .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
-                            .description("make innocently gerbil")
-                            .timeZone("America/Halifax")
-                            .customCPAClickWeight(90.53)
-                            .customCPAViewthroughWeight(6332.3)
-                            .customCPAType(CustomCPAType.DISABLED)
-                            .impressionsOnlyBudgetingCpm(JsonNullable.of(null))
+                            .description("dreamily oxygenate swine instead cannon indeed concerning clamp queasily")
+                            .timeZone("America/North_Dakota/New_Salem")
+                            .customCPAClickWeight(2069.39)
+                            .customCPAViewthroughWeight(6500.84)
+                            .customCPAType(CustomCPAType.CLICK_VIEWTHROUGH_WEIGHTING)
+                            .impressionsOnlyBudgetingCpm(6512.22)
                             .budget(CampaignWorkflowBudgetInput.builder()
-                                .pacingMode(CampaignPacingMode.PACE_TO_DAILY_CAP)
-                                .budgetInAdvertiserCurrency(7811.09)
-                                .budgetInImpressions(JsonNullable.of(null))
-                                .dailyTargetInAdvertiserCurrency(3493.9)
-                                .dailyTargetInImpressions(530411L)
+                                .pacingMode(CampaignPacingMode.PACE_EVENLY)
+                                .budgetInAdvertiserCurrency(4239.6)
+                                .budgetInImpressions(22149L)
+                                .dailyTargetInAdvertiserCurrency(2521.81)
+                                .dailyTargetInImpressions(843774L)
                                 .build())
-                            .endDateInUtc(OffsetDateTime.parse("2024-04-14T22:55:04.136Z"))
+                            .endDateInUtc(OffsetDateTime.parse("2024-08-25T01:07:39.538Z"))
                             .seedId("<id>")
-                            .campaignConversionReportingColumns(List.of(
-                                CampaignWorkflowCampaignConversionReportingColumnInput.builder()
-                                    .trackingTagId("<id>")
-                                    .includeInCustomCPA(false)
-                                    .reportingColumnId(75289)
-                                    .roasConfig(CustomROASConfig.builder()
-                                        .includeInCustomROAS(true)
-                                        .customROASWeight(8299.16)
-                                        .customROASClickWeight(JsonNullable.of(null))
-                                        .customROASViewthroughWeight(764.33)
-                                        .build())
-                                    .weight(9258.39)
-                                    .crossDeviceAttributionModelId("<id>")
-                                    .build()))
-                            .name("<value>")
-                            .primaryChannel(CampaignChannelType.DOOH)
+                            .campaignConversionReportingColumns(JsonNullable.of(null))
+                            .name(JsonNullable.of(null))
+                            .primaryChannel(CampaignChannelType.NATIVE_DISPLAY)
                             .primaryGoal(CampaignWorkflowROIGoalInput.builder()
-                                .maximizeReach(true)
+                                .maximizeReach(false)
                                 .maximizeLtvIncrementalReach(false)
-                                .cpcInAdvertiserCurrency(6613.91)
+                                .cpcInAdvertiserCurrency(7023.26)
                                 .ctrInPercent(JsonNullable.of(null))
-                                .nielsenOTPInPercent(8409.91)
-                                .cpaInAdvertiserCurrency(5081.39)
-                                .returnOnAdSpendPercent(8381.93)
-                                .vcrInPercent(940.02)
-                                .viewabilityInPercent(6474.82)
-                                .vcpmInAdvertiserCurrency(8867.76)
-                                .cpcvInAdvertiserCurrency(9393.86)
-                                .miaozhenOTPInPercent(218.76)
+                                .nielsenOTPInPercent(7851.49)
+                                .cpaInAdvertiserCurrency(JsonNullable.of(null))
+                                .returnOnAdSpendPercent(8228.66)
+                                .vcrInPercent(1734.42)
+                                .viewabilityInPercent(9398.46)
+                                .vcpmInAdvertiserCurrency(3476.53)
+                                .cpcvInAdvertiserCurrency(6537.87)
+                                .miaozhenOTPInPercent(4667.23)
                                 .build())
-                            .startDateInUtc(OffsetDateTime.parse("2024-01-25T12:04:17.661Z"))
+                            .startDateInUtc(JsonNullable.of(null))
                             .build())
                         .advancedInput(CampaignWorkflowAdvancedInput.builder()
-                            .flights(JsonNullable.of(null))
+                            .flights(List.of(
+                                CampaignWorkflowFlightInput.builder()
+                                    .startDateInclusiveUTC(OffsetDateTime.parse("2025-05-03T18:31:10.973Z"))
+                                    .budgetInAdvertiserCurrency(1936.69)
+                                    .endDateExclusiveUTC(OffsetDateTime.parse("2023-02-05T18:37:52.192Z"))
+                                    .budgetInImpressions(216227L)
+                                    .dailyTargetInAdvertiserCurrency(3384.57)
+                                    .dailyTargetInImpressions(677379L)
+                                    .build()))
                             .purchaseOrderNumber("<value>")
                             .build())
                         .build()))
                 .validateInputOnly(false)
                 .callbackInput(WorkflowCallbackInput.builder()
-                    .callbackUrl("https://grizzled-riser.com/")
+                    .callbackUrl("https://hollow-rosemary.biz/")
                     .callbackHeaders(Map.ofEntries(
-                        Map.entry("key", "<value>")))
+                        Map.entry("key", "<value>"),
+                        Map.entry("key1", "<value>"),
+                        Map.entry("key2", "<value>")))
                     .build())
                 .build();
 
-        PatchCampaignBulkResponse res = sdk.campaign().patchCampaignBulk()
+        PatchTypebasedjobCampaignBulkResponse res = sdk.campaign().patchTypebasedjobCampaignBulk()
                 .request(req)
                 .call();
 
-        if (res.bulkJobSubmitResponse().isPresent()) {
+        if (res.typeBasedJobSubmitResponse().isPresent()) {
             // handle response
         }
     }
@@ -494,7 +658,7 @@ public class Application {
 
 ### Response
 
-**[PatchCampaignBulkResponse](../../models/operations/PatchCampaignBulkResponse.md)**
+**[PatchTypebasedjobCampaignBulkResponse](../../models/operations/PatchTypebasedjobCampaignBulkResponse.md)**
 
 ### Errors
 
@@ -505,7 +669,7 @@ public class Application {
 
 ## postCampaignArchive
 
-Archive a list of campaigns
+**NOTE**: Once archived, campaigns cannot be un-archived.
 
 ### Example Usage
 
@@ -559,7 +723,7 @@ public class Application {
 
 ## getVersion
 
-GET a campaign's version
+Get a campaign's version
 
 ### Example Usage
 

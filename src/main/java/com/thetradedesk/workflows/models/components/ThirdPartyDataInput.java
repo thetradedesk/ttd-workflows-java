@@ -19,12 +19,12 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * ThirdPartyDataInput
  * 
- * <p>Required fields for submitting a bulk job for third party data
+ * <p>Required fields for submitting a bulk job for third-party data.
  */
 public class ThirdPartyDataInput {
 
     /**
-     * The partner id to query for.
+     * The partner ID to query for.
      */
     @JsonProperty("partnerId")
     private String partnerId;
@@ -80,7 +80,7 @@ public class ThirdPartyDataInput {
     }
 
     /**
-     * The partner id to query for.
+     * The partner ID to query for.
      */
     @JsonIgnore
     public String partnerId() {
@@ -127,7 +127,7 @@ public class ThirdPartyDataInput {
     }    
 
     /**
-     * The partner id to query for.
+     * The partner ID to query for.
      */
     public ThirdPartyDataInput withPartnerId(String partnerId) {
         Utils.checkNotNull(partnerId, "partnerId");
@@ -252,7 +252,7 @@ public class ThirdPartyDataInput {
         }
 
         /**
-         * The partner id to query for.
+         * The partner ID to query for.
          */
         public Builder partnerId(String partnerId) {
             Utils.checkNotNull(partnerId, "partnerId");

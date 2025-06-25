@@ -9,20 +9,20 @@ import com.thetradedesk.workflows.models.components.AdGroupBulkUpdateWorkflowInp
 import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.AdGroupPayload;
 import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
+import com.thetradedesk.workflows.models.components.TypeBasedJobSubmitResponse;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PatchAdgroupBulkRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PatchAdgroupBulkResponse;
 import com.thetradedesk.workflows.models.operations.PatchAdgroupRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PatchAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.PatchTypebasedjobAdgroupBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PatchTypebasedjobAdgroupBulkResponse;
 import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveRequest;
 import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostAdgroupArchiveResponse;
-import com.thetradedesk.workflows.models.operations.PostAdgroupBulkRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostAdgroupBulkResponse;
 import com.thetradedesk.workflows.models.operations.PostAdgroupRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.PostTypebasedjobAdgroupBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PostTypebasedjobAdgroupBulkResponse;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.HTTPClient;
@@ -54,8 +54,8 @@ public class AdGroup implements
             MethodCallPostAdgroup,
             MethodCallPatchAdgroup,
             MethodCallPostAdgroupArchive,
-            MethodCallPostAdgroupBulk,
-            MethodCallPatchAdgroupBulk {
+            MethodCallPostTypebasedjobAdgroupBulk,
+            MethodCallPatchTypebasedjobAdgroupBulk {
 
     private final SDKConfiguration sdkConfiguration;
 
@@ -64,7 +64,7 @@ public class AdGroup implements
     }
 
     /**
-     * Returns a builder to make a request.
+     * Create a new ad group with required fields
      * 
      * @return The call builder
      */
@@ -73,7 +73,7 @@ public class AdGroup implements
     }
 
     /**
-     * Makes a request (required parameters only).
+     * Create a new ad group with required fields
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -83,7 +83,7 @@ public class AdGroup implements
     }
     
     /**
-     * Makes a request.
+     * Create a new ad group with required fields
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
@@ -254,7 +254,9 @@ public class AdGroup implements
 
 
     /**
-     * Returns a builder to make a request.
+     * Update an ad group with specified fields
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
      * 
      * @return The call builder
      */
@@ -263,7 +265,9 @@ public class AdGroup implements
     }
 
     /**
-     * Makes a request (required parameters only).
+     * Update an ad group with specified fields
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -273,7 +277,9 @@ public class AdGroup implements
     }
     
     /**
-     * Makes a request.
+     * Update an ad group with specified fields
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
@@ -440,7 +446,9 @@ public class AdGroup implements
 
 
     /**
-     * Archive a list of ad groups
+     * Archive multiple ad groups
+     * 
+     * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
      * 
      * @return The call builder
      */
@@ -449,7 +457,9 @@ public class AdGroup implements
     }
 
     /**
-     * Archive a list of ad groups
+     * Archive multiple ad groups
+     * 
+     * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -459,7 +469,9 @@ public class AdGroup implements
     }
     
     /**
-     * Archive a list of ad groups
+     * Archive multiple ad groups
+     * 
+     * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
      * 
      * @param forceArchive 
      * @param requestBody 
@@ -640,33 +652,33 @@ public class AdGroup implements
 
 
     /**
-     * Create a list of ad groups with required fields.
+     * Create multiple new ad groups with required fields
      * 
      * @return The call builder
      */
-    public PostAdgroupBulkRequestBuilder postAdgroupBulk() {
-        return new PostAdgroupBulkRequestBuilder(this);
+    public PostTypebasedjobAdgroupBulkRequestBuilder postTypebasedjobAdgroupBulk() {
+        return new PostTypebasedjobAdgroupBulkRequestBuilder(this);
     }
 
     /**
-     * Create a list of ad groups with required fields.
+     * Create multiple new ad groups with required fields
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostAdgroupBulkResponse postAdgroupBulkDirect() throws Exception {
-        return postAdgroupBulk(Optional.empty(), Optional.empty());
+    public PostTypebasedjobAdgroupBulkResponse postTypebasedjobAdgroupBulkDirect() throws Exception {
+        return postTypebasedjobAdgroupBulk(Optional.empty(), Optional.empty());
     }
     
     /**
-     * Create a list of ad groups with required fields.
+     * Create multiple new ad groups with required fields
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostAdgroupBulkResponse postAdgroupBulk(
+    public PostTypebasedjobAdgroupBulkResponse postTypebasedjobAdgroupBulk(
             Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
@@ -676,7 +688,7 @@ public class AdGroup implements
         String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
-                "/adgroup/bulk");
+                "/typebasedjob/adgroup/bulk");
         
         HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(
@@ -725,7 +737,7 @@ public class AdGroup implements
                             new BeforeRequestContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "post_/adgroup/bulk", 
+                                "post_/typebasedjob/adgroup/bulk", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -740,7 +752,7 @@ public class AdGroup implements
                             new AfterErrorContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "post_/adgroup/bulk",
+                                "post_/typebasedjob/adgroup/bulk",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -755,7 +767,7 @@ public class AdGroup implements
                      new AfterSuccessContextImpl(
                          this.sdkConfiguration,
                          _baseUrl,
-                         "post_/adgroup/bulk", 
+                         "post_/typebasedjob/adgroup/bulk", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -763,21 +775,21 @@ public class AdGroup implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PostAdgroupBulkResponse.Builder _resBuilder = 
-            PostAdgroupBulkResponse
+        PostTypebasedjobAdgroupBulkResponse.Builder _resBuilder = 
+            PostTypebasedjobAdgroupBulkResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PostAdgroupBulkResponse _res = _resBuilder.build();
+        PostTypebasedjobAdgroupBulkResponse _res = _resBuilder.build();
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                TypeBasedJobSubmitResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BulkJobSubmitResponse>() {});
-                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                    new TypeReference<TypeBasedJobSubmitResponse>() {});
+                _res.withTypeBasedJobSubmitResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -826,33 +838,39 @@ public class AdGroup implements
 
 
     /**
-     * Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+     * Update multiple ad groups with specified fields
+     * 
+     * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
      * @return The call builder
      */
-    public PatchAdgroupBulkRequestBuilder patchAdgroupBulk() {
-        return new PatchAdgroupBulkRequestBuilder(this);
+    public PatchTypebasedjobAdgroupBulkRequestBuilder patchTypebasedjobAdgroupBulk() {
+        return new PatchTypebasedjobAdgroupBulkRequestBuilder(this);
     }
 
     /**
-     * Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+     * Update multiple ad groups with specified fields
+     * 
+     * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchAdgroupBulkResponse patchAdgroupBulkDirect() throws Exception {
-        return patchAdgroupBulk(Optional.empty(), Optional.empty());
+    public PatchTypebasedjobAdgroupBulkResponse patchTypebasedjobAdgroupBulkDirect() throws Exception {
+        return patchTypebasedjobAdgroupBulk(Optional.empty(), Optional.empty());
     }
     
     /**
-     * Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
+     * Update multiple ad groups with specified fields
+     * 
+     * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchAdgroupBulkResponse patchAdgroupBulk(
+    public PatchTypebasedjobAdgroupBulkResponse patchTypebasedjobAdgroupBulk(
             Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
@@ -862,7 +880,7 @@ public class AdGroup implements
         String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
-                "/adgroup/bulk");
+                "/typebasedjob/adgroup/bulk");
         
         HTTPRequest _req = new HTTPRequest(_url, "PATCH");
         Object _convertedRequest = Utils.convertToShape(
@@ -911,7 +929,7 @@ public class AdGroup implements
                             new BeforeRequestContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "patch_/adgroup/bulk", 
+                                "patch_/typebasedjob/adgroup/bulk", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -926,7 +944,7 @@ public class AdGroup implements
                             new AfterErrorContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "patch_/adgroup/bulk",
+                                "patch_/typebasedjob/adgroup/bulk",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -941,7 +959,7 @@ public class AdGroup implements
                      new AfterSuccessContextImpl(
                          this.sdkConfiguration,
                          _baseUrl,
-                         "patch_/adgroup/bulk", 
+                         "patch_/typebasedjob/adgroup/bulk", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -949,21 +967,21 @@ public class AdGroup implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PatchAdgroupBulkResponse.Builder _resBuilder = 
-            PatchAdgroupBulkResponse
+        PatchTypebasedjobAdgroupBulkResponse.Builder _resBuilder = 
+            PatchTypebasedjobAdgroupBulkResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PatchAdgroupBulkResponse _res = _resBuilder.build();
+        PatchTypebasedjobAdgroupBulkResponse _res = _resBuilder.build();
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                TypeBasedJobSubmitResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BulkJobSubmitResponse>() {});
-                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                    new TypeReference<TypeBasedJobSubmitResponse>() {});
+                _res.withTypeBasedJobSubmitResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(

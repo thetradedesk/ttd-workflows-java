@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: 5828c1975834237028d0fe664a8c104e
+  docChecksum: 5fc1a20f1cef417ad221d9028f2c3d95
   docVersion: v1
-  speakeasyVersion: 1.563.4
-  generationVersion: 2.630.6
-  releaseVersion: 0.6.0
-  configChecksum: 63851738abcc5521d5641d44bdecf2e8
+  speakeasyVersion: 1.568.2
+  generationVersion: 2.634.2
+  releaseVersion: 0.6.1
+  configChecksum: 0a1621cc4e3fca67be8de7b46c7828b2
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -62,8 +62,6 @@ generatedFiles:
   - docs/models/components/AdGroupWorkflowNielsenTrackingAttributesInput.md
   - docs/models/components/AdGroupWorkflowROIGoalInput.md
   - docs/models/components/AllocationType.md
-  - docs/models/components/BulkJobStatusResponse.md
-  - docs/models/components/BulkJobSubmitResponse.md
   - docs/models/components/CallPubApiWorkflowInput.md
   - docs/models/components/CampaignBulkCreateWorkflowInputWithValidation.md
   - docs/models/components/CampaignBulkUpdateWorkflowInputWithValidation.md
@@ -100,36 +98,41 @@ generatedFiles:
   - docs/models/components/TargetingGender.md
   - docs/models/components/TargetingStartAge.md
   - docs/models/components/ThirdPartyDataInput.md
+  - docs/models/components/TypeBasedJobStatusResponse.md
+  - docs/models/components/TypeBasedJobSubmitResponse.md
   - docs/models/components/Variables.md
   - docs/models/components/WorkflowCallbackInput.md
   - docs/models/components/WorkflowStatus.md
   - docs/models/errors/ProblemDetailsException.md
-  - docs/models/operations/GetBulkjobIdStatusRequest.md
-  - docs/models/operations/GetBulkjobIdStatusResponse.md
   - docs/models/operations/GetCampaignIdVersionRequest.md
   - docs/models/operations/GetCampaignIdVersionResponse.md
-  - docs/models/operations/PatchAdgroupBulkResponse.md
+  - docs/models/operations/GetTypebasedjobIdStatusRequest.md
+  - docs/models/operations/GetTypebasedjobIdStatusResponse.md
   - docs/models/operations/PatchAdgroupResponse.md
-  - docs/models/operations/PatchCampaignBulkResponse.md
   - docs/models/operations/PatchCampaignResponse.md
+  - docs/models/operations/PatchTypebasedjobAdgroupBulkResponse.md
+  - docs/models/operations/PatchTypebasedjobCampaignBulkResponse.md
   - docs/models/operations/PostAdgroupArchiveRequest.md
   - docs/models/operations/PostAdgroupArchiveResponse.md
-  - docs/models/operations/PostAdgroupBulkResponse.md
   - docs/models/operations/PostAdgroupResponse.md
-  - docs/models/operations/PostBulkjobFirstpartydataResponse.md
-  - docs/models/operations/PostBulkjobThirdpartydataResponse.md
   - docs/models/operations/PostCampaignArchiveRequest.md
   - docs/models/operations/PostCampaignArchiveResponse.md
-  - docs/models/operations/PostCampaignBulkResponse.md
   - docs/models/operations/PostCampaignResponse.md
-  - docs/models/operations/PostGraphqlRequestResponse.md
-  - docs/models/operations/PostPubapiResponse.md
-  - docs/models/operations/PostPubapiResponseBody.md
+  - docs/models/operations/PostGraphqlrequestResponse.md
+  - docs/models/operations/PostGraphqlrequestResponseBody.md
+  - docs/models/operations/PostRestrequestResponse.md
+  - docs/models/operations/PostRestrequestResponseBody.md
+  - docs/models/operations/PostTypebasedjobAdgroupBulkResponse.md
+  - docs/models/operations/PostTypebasedjobCampaignBulkResponse.md
+  - docs/models/operations/PostTypebasedjobFirstpartydataResponse.md
+  - docs/models/operations/PostTypebasedjobThirdpartydataResponse.md
   - docs/sdks/adgroup/README.md
-  - docs/sdks/bulkjob/README.md
   - docs/sdks/campaign/README.md
-  - docs/sdks/graphql/README.md
-  - docs/sdks/pubapi/README.md
+  - docs/sdks/firstpartydata/README.md
+  - docs/sdks/graphqlrequest/README.md
+  - docs/sdks/jobstatus/README.md
+  - docs/sdks/restrequest/README.md
+  - docs/sdks/thirdpartydata/README.md
   - docs/sdks/ttdworkflows/README.md
   - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
@@ -138,12 +141,14 @@ generatedFiles:
   - gradlew.bat
   - settings.gradle
   - src/main/java/com/thetradedesk/workflows/AdGroup.java
-  - src/main/java/com/thetradedesk/workflows/BulkJob.java
   - src/main/java/com/thetradedesk/workflows/Campaign.java
-  - src/main/java/com/thetradedesk/workflows/GraphQL.java
-  - src/main/java/com/thetradedesk/workflows/PubApi.java
+  - src/main/java/com/thetradedesk/workflows/FirstPartyData.java
+  - src/main/java/com/thetradedesk/workflows/GraphQLRequest.java
+  - src/main/java/com/thetradedesk/workflows/JobStatus.java
+  - src/main/java/com/thetradedesk/workflows/RESTRequest.java
   - src/main/java/com/thetradedesk/workflows/SDKConfiguration.java
   - src/main/java/com/thetradedesk/workflows/SecuritySource.java
+  - src/main/java/com/thetradedesk/workflows/ThirdPartyData.java
   - src/main/java/com/thetradedesk/workflows/TtdWorkflows.java
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAssociateBidList.java
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAudienceTargeting.java
@@ -178,8 +183,6 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowNielsenTrackingAttributesInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowROIGoalInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/AllocationType.java
-  - src/main/java/com/thetradedesk/workflows/models/components/BulkJobStatusResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/components/BulkJobSubmitResponse.java
   - src/main/java/com/thetradedesk/workflows/models/components/CallPubApiWorkflowInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignBulkCreateWorkflowInputWithValidation.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignBulkUpdateWorkflowInputWithValidation.java
@@ -216,49 +219,52 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingGender.java
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingStartAge.java
   - src/main/java/com/thetradedesk/workflows/models/components/ThirdPartyDataInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/TypeBasedJobStatusResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/components/TypeBasedJobSubmitResponse.java
   - src/main/java/com/thetradedesk/workflows/models/components/Variables.java
   - src/main/java/com/thetradedesk/workflows/models/components/WorkflowCallbackInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/WorkflowStatus.java
   - src/main/java/com/thetradedesk/workflows/models/errors/APIException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/AuthException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/ProblemDetailsException.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/GetBulkjobIdStatusRequest.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/GetBulkjobIdStatusRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/GetBulkjobIdStatusResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionRequest.java
   - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/GetCampaignIdVersionResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PatchAdgroupBulkRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PatchAdgroupBulkResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetTypebasedjobIdStatusRequest.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetTypebasedjobIdStatusRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/GetTypebasedjobIdStatusResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PatchAdgroupRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PatchAdgroupResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PatchCampaignBulkRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PatchCampaignBulkResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PatchCampaignRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PatchCampaignResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PatchTypebasedjobAdgroupBulkRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PatchTypebasedjobAdgroupBulkResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PatchTypebasedjobCampaignBulkRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PatchTypebasedjobCampaignBulkResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupArchiveRequest.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupArchiveRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupArchiveResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupBulkRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupBulkResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostAdgroupResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostBulkjobFirstpartydataRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostBulkjobFirstpartydataResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostBulkjobThirdpartydataRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostBulkjobThirdpartydataResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignArchiveRequest.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignArchiveRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignArchiveResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignBulkRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignBulkResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/PostCampaignResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlRequestResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostPubapiRequestBuilder.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostPubapiResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/PostPubapiResponseBody.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlrequestRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlrequestResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostGraphqlrequestResponseBody.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostRestrequestRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostRestrequestResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostRestrequestResponseBody.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobAdgroupBulkRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobAdgroupBulkResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobCampaignBulkRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobCampaignBulkResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobFirstpartydataRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobFirstpartydataResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobThirdpartydataRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/PostTypebasedjobThirdpartydataResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SDKMethodInterfaces.java
   - src/main/java/com/thetradedesk/workflows/utils/BackoffStrategy.java
   - src/main/java/com/thetradedesk/workflows/utils/BigDecimalString.java
@@ -270,6 +276,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/utils/EventStreamMessage.java
   - src/main/java/com/thetradedesk/workflows/utils/EventStreamReader.java
   - src/main/java/com/thetradedesk/workflows/utils/FormMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/Globals.java
   - src/main/java/com/thetradedesk/workflows/utils/HTTPClient.java
   - src/main/java/com/thetradedesk/workflows/utils/HTTPRequest.java
   - src/main/java/com/thetradedesk/workflows/utils/HasSecurity.java
@@ -462,5 +469,89 @@ examples:
           application/json: {"id": 525756}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 397180, "detail": "<value>", "instance": "<value>"}
+  post_/typebasedjob/adgroup/bulk:
+    speakeasy-default-post-/typebasedjob/adgroup/bulk:
+      requestBody:
+        application/json: {"input": [], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://unhealthy-toothbrush.biz/", "callbackHeaders": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
+      responses:
+        "202":
+          application/json: {"id": 218171}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 632149, "detail": "<value>", "instance": "<value>"}
+  patch_/typebasedjob/adgroup/bulk:
+    speakeasy-default-patch-/typebasedjob/adgroup/bulk:
+      requestBody:
+        application/json: {"input": [{"id": "<id>", "primaryInput": {"isEnabled": true, "description": null, "budget": {"allocationType": "Minimum", "budgetInAdvertiserCurrency": 4365.6, "budgetInImpressions": 797262, "dailyTargetInAdvertiserCurrency": 2847.63, "dailyTargetInImpressions": null}, "baseBidCPMInAdvertiserCurrency": 1985.29, "maxBidCPMInAdvertiserCurrency": 4757.87, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": false, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [66244, 540186, 225330], "recencyExclusionWindowInMinutes": 524436, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": false}, "roiGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 4773.66, "ctrInPercent": 8842.31, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": 1316.63, "returnOnAdSpendPercent": 3656.49, "vcrInPercent": 8557.42, "viewabilityInPercent": 7299.96, "vcpmInAdvertiserCurrency": 7239.85, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 2809.53}, "creativeIds": null, "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "name": "<value>", "channel": "NativeDisplay", "funnelLocation": "None"}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": false, "populationId": 809148, "demographicMemberIds": [532747, 484388], "mobileDemographicMemberIds": [529979, 812676]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasVideoMutedStateId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Both", "startAge": "SixtyFive", "endAge": "Twenty", "countries": ["<value 1>"]}, "newFrequencyConfigs": null, "flights": [{"allocationType": "Minimum", "budgetInAdvertiserCurrency": 3571.65, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 9076.57, "dailyTargetInImpressions": 864528, "campaignFlightId": 284595}]}}], "validateInputOnly": false, "callbackInput": {"callbackUrl": "https://funny-prohibition.org/", "callbackHeaders": {"key": "<value>"}}}
+      responses:
+        "202":
+          application/json: {"id": 322237}
+        "400":
+          application/json: {"type": null, "title": "<value>", "status": null, "detail": "<value>", "instance": "<value>"}
+  post_/typebasedjob/campaign/bulk:
+    speakeasy-default-post-/typebasedjob/campaign/bulk:
+      requestBody:
+        application/json: {"input": [{"primaryInput": {"description": "terribly someplace deflect", "timeZone": "America/Miquelon", "customCPAClickWeight": 779.21, "customCPAViewthroughWeight": 1198.23, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 5375.63, "budget": {"pacingMode": "PaceAhead", "budgetInAdvertiserCurrency": 4629.97, "budgetInImpressions": 808130, "dailyTargetInAdvertiserCurrency": 4067.56, "dailyTargetInImpressions": 243576}, "endDateInUtc": "2025-12-15T08:27:00.961Z", "seedId": null, "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": true, "reportingColumnId": 265596, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": 1659.76, "customROASClickWeight": 7838.93, "customROASViewthroughWeight": 7814.81}, "weight": 9286.55, "crossDeviceAttributionModelId": "<id>"}], "advertiserId": "<id>", "name": "<value>", "primaryChannel": "None", "primaryGoal": {"maximizeReach": null, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 7342.9, "ctrInPercent": 4157.33, "nielsenOTPInPercent": 1508.37, "cpaInAdvertiserCurrency": 5200.65, "returnOnAdSpendPercent": 2714.64, "vcrInPercent": 4408.66, "viewabilityInPercent": 4646.22, "vcpmInAdvertiserCurrency": 5303.62, "cpcvInAdvertiserCurrency": 7628.07, "miaozhenOTPInPercent": 2965.51}, "startDateInUtc": null}, "advancedInput": {"flights": [{"startDateInclusiveUTC": "2023-05-29T15:44:07.749Z", "endDateExclusiveUTC": "2024-01-24T07:42:34.281Z", "budgetInAdvertiserCurrency": 9558.91, "budgetInImpressions": 73147, "dailyTargetInAdvertiserCurrency": 4332.71, "dailyTargetInImpressions": 768928}], "purchaseOrderNumber": "<value>"}, "adGroups": [{"primaryInput": {"isEnabled": true, "description": null, "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 6785.04, "budgetInImpressions": 835320, "dailyTargetInAdvertiserCurrency": 4763.51, "dailyTargetInImpressions": 267343}, "baseBidCPMInAdvertiserCurrency": 2929.53, "maxBidCPMInAdvertiserCurrency": 3306.27, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [745991, 421485, 187325], "recencyExclusionWindowInMinutes": 651644, "targetTrackableUsersEnabled": null, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 3342.73, "ctrInPercent": 8498.13, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": 4541.91, "returnOnAdSpendPercent": 1951.31, "vcrInPercent": 4890.16, "viewabilityInPercent": 7796.33, "vcpmInAdvertiserCurrency": 9686.38, "cpcvInAdvertiserCurrency": 5397.14, "miaozhenOTPInPercent": 6837.51}, "creativeIds": null, "associatedBidLists": [{"bidListId": "<id>", "isEnabled": false, "isDefaultForDimension": null}], "name": "<value>", "channel": "Audio", "funnelLocation": "Awareness", "programmaticGuaranteedPrivateContractId": "<id>"}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": null, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": false, "populationId": 392396, "demographicMemberIds": [815546, 208096, 412653], "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasFrequencyV2AdjustmentId"]], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Male", "startAge": "Thirty", "endAge": "TwentyNine", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 26304, "frequencyGoal": 197135, "resetIntervalInMinutes": 993919}], "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 1254.25, "budgetInImpressions": 426962, "dailyTargetInAdvertiserCurrency": 3971.88, "dailyTargetInImpressions": 746686}]}}]}], "validateInputOnly": false, "callbackInput": {"callbackUrl": "https://neat-inspection.biz/", "callbackHeaders": {"key": "<value>", "key1": "<value>"}}}
+      responses:
+        "202":
+          application/json: {"id": 761635}
+        "400":
+          application/json: {"type": "<value>", "title": null, "status": 900111, "detail": "<value>", "instance": "<value>"}
+  patch_/typebasedjob/campaign/bulk:
+    speakeasy-default-patch-/typebasedjob/campaign/bulk:
+      requestBody:
+        application/json: {"input": [{"id": "<id>", "primaryInput": {"description": "dreamily oxygenate swine instead cannon indeed concerning clamp queasily", "timeZone": "America/North_Dakota/New_Salem", "customCPAClickWeight": 2069.39, "customCPAViewthroughWeight": 6500.84, "customCPAType": "ClickViewthroughWeighting", "impressionsOnlyBudgetingCpm": 6512.22, "budget": {"pacingMode": "PaceEvenly", "budgetInAdvertiserCurrency": 4239.6, "budgetInImpressions": 22149, "dailyTargetInAdvertiserCurrency": 2521.81, "dailyTargetInImpressions": 843774}, "endDateInUtc": "2024-08-25T01:07:39.538Z", "seedId": "<id>", "campaignConversionReportingColumns": null, "name": null, "primaryChannel": "NativeDisplay", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 7023.26, "ctrInPercent": null, "nielsenOTPInPercent": 7851.49, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 8228.66, "vcrInPercent": 1734.42, "viewabilityInPercent": 9398.46, "vcpmInAdvertiserCurrency": 3476.53, "cpcvInAdvertiserCurrency": 6537.87, "miaozhenOTPInPercent": 4667.23}, "startDateInUtc": null}, "advancedInput": {"flights": [{"startDateInclusiveUTC": "2025-05-03T18:31:10.973Z", "endDateExclusiveUTC": "2023-02-05T18:37:52.192Z", "budgetInAdvertiserCurrency": 1936.69, "budgetInImpressions": 216227, "dailyTargetInAdvertiserCurrency": 3384.57, "dailyTargetInImpressions": 677379}], "purchaseOrderNumber": "<value>"}}], "validateInputOnly": false, "callbackInput": {"callbackUrl": "https://hollow-rosemary.biz/", "callbackHeaders": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
+      responses:
+        "202":
+          application/json: {"id": 390367}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 980623, "detail": null, "instance": "<value>"}
+  post_/typebasedjob/firstpartydata:
+    speakeasy-default-post-/typebasedjob/firstpartydata:
+      requestBody:
+        application/json: {"advertiserId": "<id>", "nameFilter": "<value>", "queryShape": null, "callbackInput": {"callbackUrl": "https://ashamed-traffic.info", "callbackHeaders": {"key": "<value>", "key1": "<value>"}}}
+      responses:
+        "202":
+          application/json: {"id": 190248}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 318340, "detail": "<value>", "instance": "<value>"}
+  post_/graphqlrequest:
+    speakeasy-default-post-/graphqlrequest:
+      requestBody:
+        application/json: {"request": "<value>", "variables": {}}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"type": null, "title": "<value>", "status": 432705, "detail": "<value>", "instance": "<value>"}
+  post_/restrequest:
+    speakeasy-default-post-/restrequest:
+      requestBody:
+        application/json: {"methodType": "POST", "endpoint": "<value>", "dataBody": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": null, "detail": "<value>", "instance": "<value>"}
+  post_/typebasedjob/thirdpartydata:
+    speakeasy-default-post-/typebasedjob/thirdpartydata:
+      requestBody:
+        application/json: {"partnerId": "<id>", "queryShape": "<value>", "callbackInput": {"callbackUrl": "https://colorful-utilization.com/", "callbackHeaders": {"key": "<value>", "key1": "<value>"}}}
+        text/json: {"partnerId": "<id>", "queryShape": "<value>", "callbackInput": {"callbackUrl": "https://colorful-utilization.com/", "callbackHeaders": {"key": "<value>", "key1": "<value>"}}}
+        application/*+json: {"partnerId": "<id>", "queryShape": "<value>", "callbackInput": {"callbackUrl": "https://colorful-utilization.com/", "callbackHeaders": {"key": "<value>", "key1": "<value>"}}}
+      responses:
+        "202":
+          application/json: {"id": 263834}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 406731, "detail": "<value>", "instance": "<value>"}
+  get_/typebasedjob/{id}/status:
+    speakeasy-default-get-/typebasedjob/{id}/status:
+      parameters:
+        path:
+          id: 416928
+      responses:
+        "200":
+          application/json: {"id": 807492, "completedAtUtc": "2025-07-02T10:31:44.663Z", "completionPercentage": 8874.55, "createdAtUtc": "2025-04-20T14:07:20.297Z", "status": "Failure", "url": null, "rawResult": "<value>", "errors": "<value>"}
+        "400":
+          application/json: {"type": "<value>", "title": "<value>", "status": 268224, "detail": "<value>", "instance": null}
 examplesVersion: 1.0.2
 generatedTests: {}

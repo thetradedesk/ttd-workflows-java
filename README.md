@@ -17,7 +17,25 @@ Developer-friendly & type-safe Java SDK specifically catered to leverage *openap
 <!-- Start Summary [summary] -->
 ## Summary
 
-Workflows API: A RESTful service for commonly used workflows.
+Workflows Service: ## Operations for commonly used workflows.
+This service provides operations for commonly used workflows on The Trade Desk's platform.
+In addition, this service provides generic operations for submitting:
+
+- GraphQL API requests
+- REST API requests
+
+To interface with this service, we provide SDKs in multiple languages.
+For each available language, there is a code sample displayed to the right of each operation.
+
+To get started with the SDK in your language of choice, see the associated guide:
+
+- Java - coming soon
+- [Python](https://pypi.org/project/ttd-workflows/)
+
+For further explanation on the entities encountered in this documentation (e.g.,
+[campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and
+[ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the
+[Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases).
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -48,7 +66,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.6.0'
+implementation 'com.thetradedesk:workflows:0.6.1'
 ```
 
 Maven:
@@ -56,7 +74,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.6.0</version>
+    <version>0.6.1</version>
 </dependency>
 ```
 
@@ -407,34 +425,40 @@ public class Application {
 
 ### [adGroup()](docs/sdks/adgroup/README.md)
 
-* [postAdgroup](docs/sdks/adgroup/README.md#postadgroup)
-* [patchAdgroup](docs/sdks/adgroup/README.md#patchadgroup)
-* [postAdgroupArchive](docs/sdks/adgroup/README.md#postadgrouparchive) - Archive a list of ad groups
-* [postAdgroupBulk](docs/sdks/adgroup/README.md#postadgroupbulk) - Create a list of ad groups with required fields.
-* [patchAdgroupBulk](docs/sdks/adgroup/README.md#patchadgroupbulk) - Create a list of ad groups with required fields. `ValidateInputOnly` value should be the same for all ad groups.
-
-### [bulkJob()](docs/sdks/bulkjob/README.md)
-
-* [postBulkjobFirstpartydata](docs/sdks/bulkjob/README.md#postbulkjobfirstpartydata) - Submit a query for First Party Data to Hydra
-* [getBulkjobIdStatus](docs/sdks/bulkjob/README.md#getbulkjobidstatus) - Get the status of a bulk job workflow you submitted earlier
-* [postBulkjobThirdpartydata](docs/sdks/bulkjob/README.md#postbulkjobthirdpartydata) - Submits a query for Third Party Data to Hydra
+* [postAdgroup](docs/sdks/adgroup/README.md#postadgroup) - Create a new ad group with required fields
+* [patchAdgroup](docs/sdks/adgroup/README.md#patchadgroup) - Update an ad group with specified fields
+* [postAdgroupArchive](docs/sdks/adgroup/README.md#postadgrouparchive) - Archive multiple ad groups
+* [postTypebasedjobAdgroupBulk](docs/sdks/adgroup/README.md#posttypebasedjobadgroupbulk) - Create multiple new ad groups with required fields
+* [patchTypebasedjobAdgroupBulk](docs/sdks/adgroup/README.md#patchtypebasedjobadgroupbulk) - Update multiple ad groups with specified fields
 
 ### [campaign()](docs/sdks/campaign/README.md)
 
 * [create](docs/sdks/campaign/README.md#create) - Create a new campaign with required fields
-* [patchCampaign](docs/sdks/campaign/README.md#patchcampaign) - Update an existing campaign with specified fields
-* [postCampaignBulk](docs/sdks/campaign/README.md#postcampaignbulk) - Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
-* [patchCampaignBulk](docs/sdks/campaign/README.md#patchcampaignbulk) - Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
-* [postCampaignArchive](docs/sdks/campaign/README.md#postcampaignarchive) - Archive a list of campaigns
-* [getVersion](docs/sdks/campaign/README.md#getversion) - GET a campaign's version
+* [patchCampaign](docs/sdks/campaign/README.md#patchcampaign) - Update a campaign with specified fields
+* [postTypebasedjobCampaignBulk](docs/sdks/campaign/README.md#posttypebasedjobcampaignbulk) - Create multiple new campaigns with required fields
+* [patchTypebasedjobCampaignBulk](docs/sdks/campaign/README.md#patchtypebasedjobcampaignbulk) - Update multiple campaigns with specified fields
+* [postCampaignArchive](docs/sdks/campaign/README.md#postcampaignarchive) - Archive multiple campaigns
+* [getVersion](docs/sdks/campaign/README.md#getversion) - Get a campaign's version
 
-### [graphQL()](docs/sdks/graphql/README.md)
+### [firstPartyData()](docs/sdks/firstpartydata/README.md)
 
-* [postGraphqlRequest](docs/sdks/graphql/README.md#postgraphqlrequest) - An endpoint that executes valid GraphQL queries or mutations.
+* [postTypebasedjobFirstpartydata](docs/sdks/firstpartydata/README.md#posttypebasedjobfirstpartydata) - Submit a type-based job for first-party data retrieval for an advertiser
 
-### [pubApi()](docs/sdks/pubapi/README.md)
+### [graphQLRequest()](docs/sdks/graphqlrequest/README.md)
 
-* [postPubapi](docs/sdks/pubapi/README.md#postpubapi)
+* [postGraphqlrequest](docs/sdks/graphqlrequest/README.md#postgraphqlrequest) - Submit a valid GraphQL query or mutation
+
+### [jobStatus()](docs/sdks/jobstatus/README.md)
+
+* [getTypebasedjobIdStatus](docs/sdks/jobstatus/README.md#gettypebasedjobidstatus) - Get the status of a previously submitted type-based job
+
+### [restRequest()](docs/sdks/restrequest/README.md)
+
+* [postRestrequest](docs/sdks/restrequest/README.md#postrestrequest) - Submit a valid REST request
+
+### [thirdPartyData()](docs/sdks/thirdpartydata/README.md)
+
+* [postTypebasedjobThirdpartydata](docs/sdks/thirdpartydata/README.md#posttypebasedjobthirdpartydata) - Submit a type-based job for third-party data retrieval for an advertiser
 
 
 </details>
