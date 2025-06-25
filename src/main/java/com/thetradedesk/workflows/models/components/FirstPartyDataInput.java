@@ -19,19 +19,19 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * FirstPartyDataInput
  * 
- * <p>Required fields for submitting a bulk job for first party data
+ * <p>Required fields for submitting a bulk job for first-party data.
  */
 public class FirstPartyDataInput {
 
     /**
-     * The advertiser id to query for.
+     * The advertiser ID to query for.
      */
     @JsonProperty("advertiserId")
     private String advertiserId;
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nameFilter")
@@ -85,7 +85,7 @@ public class FirstPartyDataInput {
     }
 
     /**
-     * The advertiser id to query for.
+     * The advertiser ID to query for.
      */
     @JsonIgnore
     public String advertiserId() {
@@ -94,7 +94,7 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
      */
     @JsonIgnore
     public JsonNullable<String> nameFilter() {
@@ -135,7 +135,7 @@ public class FirstPartyDataInput {
     }    
 
     /**
-     * The advertiser id to query for.
+     * The advertiser ID to query for.
      */
     public FirstPartyDataInput withAdvertiserId(String advertiserId) {
         Utils.checkNotNull(advertiserId, "advertiserId");
@@ -145,7 +145,7 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
      */
     public FirstPartyDataInput withNameFilter(String nameFilter) {
         Utils.checkNotNull(nameFilter, "nameFilter");
@@ -155,7 +155,7 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
      */
     public FirstPartyDataInput withNameFilter(JsonNullable<String> nameFilter) {
         Utils.checkNotNull(nameFilter, "nameFilter");
@@ -273,7 +273,7 @@ public class FirstPartyDataInput {
         }
 
         /**
-         * The advertiser id to query for.
+         * The advertiser ID to query for.
          */
         public Builder advertiserId(String advertiserId) {
             Utils.checkNotNull(advertiserId, "advertiserId");
@@ -283,7 +283,7 @@ public class FirstPartyDataInput {
 
         /**
          * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-         * If there are no nodes which match the filter, a response with empty nodes with no first party data will be returned.
+         * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
          */
         public Builder nameFilter(String nameFilter) {
             Utils.checkNotNull(nameFilter, "nameFilter");
@@ -293,7 +293,7 @@ public class FirstPartyDataInput {
 
         /**
          * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-         * If there are no nodes which match the filter, a response with empty nodes with no first party data will be returned.
+         * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
          */
         public Builder nameFilter(JsonNullable<String> nameFilter) {
             Utils.checkNotNull(nameFilter, "nameFilter");

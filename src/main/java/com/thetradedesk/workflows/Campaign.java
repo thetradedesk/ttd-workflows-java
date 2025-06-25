@@ -4,29 +4,29 @@
 package com.thetradedesk.workflows;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.thetradedesk.workflows.models.components.BulkJobSubmitResponse;
 import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignBulkUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignPayload;
 import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignVersionWorkflow;
+import com.thetradedesk.workflows.models.components.TypeBasedJobSubmitResponse;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequest;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionResponse;
-import com.thetradedesk.workflows.models.operations.PatchCampaignBulkRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PatchCampaignBulkResponse;
 import com.thetradedesk.workflows.models.operations.PatchCampaignRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PatchCampaignResponse;
+import com.thetradedesk.workflows.models.operations.PatchTypebasedjobCampaignBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PatchTypebasedjobCampaignBulkResponse;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequest;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostCampaignArchiveResponse;
-import com.thetradedesk.workflows.models.operations.PostCampaignBulkRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostCampaignBulkResponse;
 import com.thetradedesk.workflows.models.operations.PostCampaignRequestBuilder;
 import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
+import com.thetradedesk.workflows.models.operations.PostTypebasedjobCampaignBulkRequestBuilder;
+import com.thetradedesk.workflows.models.operations.PostTypebasedjobCampaignBulkResponse;
 import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.HTTPClient;
@@ -57,8 +57,8 @@ import java.util.concurrent.TimeUnit;
 public class Campaign implements
             MethodCallPostCampaign,
             MethodCallPatchCampaign,
-            MethodCallPostCampaignBulk,
-            MethodCallPatchCampaignBulk,
+            MethodCallPostTypebasedjobCampaignBulk,
+            MethodCallPatchTypebasedjobCampaignBulk,
             MethodCallPostCampaignArchive,
             MethodCallGetCampaignIdVersion {
 
@@ -255,7 +255,9 @@ public class Campaign implements
 
 
     /**
-     * Update an existing campaign with specified fields
+     * Update a campaign with specified fields
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
      * 
      * @return The call builder
      */
@@ -264,7 +266,9 @@ public class Campaign implements
     }
 
     /**
-     * Update an existing campaign with specified fields
+     * Update a campaign with specified fields
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -274,7 +278,9 @@ public class Campaign implements
     }
     
     /**
-     * Update an existing campaign with specified fields
+     * Update a campaign with specified fields
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
@@ -441,33 +447,33 @@ public class Campaign implements
 
 
     /**
-     * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * Create multiple new campaigns with required fields
      * 
      * @return The call builder
      */
-    public PostCampaignBulkRequestBuilder postCampaignBulk() {
-        return new PostCampaignBulkRequestBuilder(this);
+    public PostTypebasedjobCampaignBulkRequestBuilder postTypebasedjobCampaignBulk() {
+        return new PostTypebasedjobCampaignBulkRequestBuilder(this);
     }
 
     /**
-     * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * Create multiple new campaigns with required fields
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignBulkResponse postCampaignBulkDirect() throws Exception {
-        return postCampaignBulk(Optional.empty(), Optional.empty());
+    public PostTypebasedjobCampaignBulkResponse postTypebasedjobCampaignBulkDirect() throws Exception {
+        return postTypebasedjobCampaignBulk(Optional.empty(), Optional.empty());
     }
     
     /**
-     * Create a list of campaigns with required fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * Create multiple new campaigns with required fields
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignBulkResponse postCampaignBulk(
+    public PostTypebasedjobCampaignBulkResponse postTypebasedjobCampaignBulk(
             Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
@@ -477,7 +483,7 @@ public class Campaign implements
         String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
-                "/campaign/bulk");
+                "/typebasedjob/campaign/bulk");
         
         HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(
@@ -526,7 +532,7 @@ public class Campaign implements
                             new BeforeRequestContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "post_/campaign/bulk", 
+                                "post_/typebasedjob/campaign/bulk", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -541,7 +547,7 @@ public class Campaign implements
                             new AfterErrorContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "post_/campaign/bulk",
+                                "post_/typebasedjob/campaign/bulk",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -556,7 +562,7 @@ public class Campaign implements
                      new AfterSuccessContextImpl(
                          this.sdkConfiguration,
                          _baseUrl,
-                         "post_/campaign/bulk", 
+                         "post_/typebasedjob/campaign/bulk", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -564,21 +570,21 @@ public class Campaign implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PostCampaignBulkResponse.Builder _resBuilder = 
-            PostCampaignBulkResponse
+        PostTypebasedjobCampaignBulkResponse.Builder _resBuilder = 
+            PostTypebasedjobCampaignBulkResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PostCampaignBulkResponse _res = _resBuilder.build();
+        PostTypebasedjobCampaignBulkResponse _res = _resBuilder.build();
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                TypeBasedJobSubmitResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BulkJobSubmitResponse>() {});
-                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                    new TypeReference<TypeBasedJobSubmitResponse>() {});
+                _res.withTypeBasedJobSubmitResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -627,33 +633,39 @@ public class Campaign implements
 
 
     /**
-     * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * Update multiple campaigns with specified fields
+     * 
+     * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @return The call builder
      */
-    public PatchCampaignBulkRequestBuilder patchCampaignBulk() {
-        return new PatchCampaignBulkRequestBuilder(this);
+    public PatchTypebasedjobCampaignBulkRequestBuilder patchTypebasedjobCampaignBulk() {
+        return new PatchTypebasedjobCampaignBulkRequestBuilder(this);
     }
 
     /**
-     * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * Update multiple campaigns with specified fields
+     * 
+     * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchCampaignBulkResponse patchCampaignBulkDirect() throws Exception {
-        return patchCampaignBulk(Optional.empty(), Optional.empty());
+    public PatchTypebasedjobCampaignBulkResponse patchTypebasedjobCampaignBulkDirect() throws Exception {
+        return patchTypebasedjobCampaignBulk(Optional.empty(), Optional.empty());
     }
     
     /**
-     * Update a list of existing campaigns with specified fields. `ValidateInputOnly` value should be the same for all campaigns.
+     * Update multiple campaigns with specified fields
+     * 
+     * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @param request The request object containing all of the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchCampaignBulkResponse patchCampaignBulk(
+    public PatchTypebasedjobCampaignBulkResponse patchTypebasedjobCampaignBulk(
             Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
 
@@ -663,7 +675,7 @@ public class Campaign implements
         String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
-                "/campaign/bulk");
+                "/typebasedjob/campaign/bulk");
         
         HTTPRequest _req = new HTTPRequest(_url, "PATCH");
         Object _convertedRequest = Utils.convertToShape(
@@ -712,7 +724,7 @@ public class Campaign implements
                             new BeforeRequestContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "patch_/campaign/bulk", 
+                                "patch_/typebasedjob/campaign/bulk", 
                                 Optional.of(List.of()), 
                                 _hookSecuritySource),
                             _finalReq.build());
@@ -727,7 +739,7 @@ public class Campaign implements
                             new AfterErrorContextImpl(
                                 this.sdkConfiguration,
                                 _baseUrl,
-                                "patch_/campaign/bulk",
+                                "patch_/typebasedjob/campaign/bulk",
                                  Optional.of(List.of()),
                                  _hookSecuritySource), 
                             Optional.empty(),
@@ -742,7 +754,7 @@ public class Campaign implements
                      new AfterSuccessContextImpl(
                          this.sdkConfiguration,
                          _baseUrl,
-                         "patch_/campaign/bulk", 
+                         "patch_/typebasedjob/campaign/bulk", 
                          Optional.of(List.of()), 
                          _hookSecuritySource),
                      _retries.run());
@@ -750,21 +762,21 @@ public class Campaign implements
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        PatchCampaignBulkResponse.Builder _resBuilder = 
-            PatchCampaignBulkResponse
+        PatchTypebasedjobCampaignBulkResponse.Builder _resBuilder = 
+            PatchTypebasedjobCampaignBulkResponse
                 .builder()
                 .contentType(_contentType)
                 .statusCode(_httpRes.statusCode())
                 .rawResponse(_httpRes);
 
-        PatchCampaignBulkResponse _res = _resBuilder.build();
+        PatchTypebasedjobCampaignBulkResponse _res = _resBuilder.build();
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                BulkJobSubmitResponse _out = Utils.mapper().readValue(
+                TypeBasedJobSubmitResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<BulkJobSubmitResponse>() {});
-                _res.withBulkJobSubmitResponse(Optional.ofNullable(_out));
+                    new TypeReference<TypeBasedJobSubmitResponse>() {});
+                _res.withTypeBasedJobSubmitResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new APIException(
@@ -813,7 +825,9 @@ public class Campaign implements
 
 
     /**
-     * Archive a list of campaigns
+     * Archive multiple campaigns
+     * 
+     * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
      * 
      * @return The call builder
      */
@@ -822,7 +836,9 @@ public class Campaign implements
     }
 
     /**
-     * Archive a list of campaigns
+     * Archive multiple campaigns
+     * 
+     * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -832,7 +848,9 @@ public class Campaign implements
     }
     
     /**
-     * Archive a list of campaigns
+     * Archive multiple campaigns
+     * 
+     * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
      * 
      * @param forceArchive 
      * @param requestBody 
@@ -1013,7 +1031,7 @@ public class Campaign implements
 
 
     /**
-     * GET a campaign's version
+     * Get a campaign's version
      * 
      * @return The call builder
      */
@@ -1022,7 +1040,7 @@ public class Campaign implements
     }
 
     /**
-     * GET a campaign's version
+     * Get a campaign's version
      * 
      * @param id 
      * @return The response from the API call
@@ -1034,7 +1052,7 @@ public class Campaign implements
     }
     
     /**
-     * GET a campaign's version
+     * Get a campaign's version
      * 
      * @param id 
      * @param options additional options

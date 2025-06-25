@@ -1,0 +1,67 @@
+# RESTRequest
+(*restRequest()*)
+
+## Overview
+
+### Available Operations
+
+* [postRestrequest](#postrestrequest) - Submit a valid REST request
+
+## postRestrequest
+
+This generic operation can be used to execute any valid REST request.
+To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.PubApiMethodType;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.PostRestrequestResponse;
+import java.lang.Exception;
+
+public class Application {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        TtdWorkflows sdk = TtdWorkflows.builder()
+                .ttdAuth("<YOUR_API_KEY_HERE>")
+            .build();
+
+        CallPubApiWorkflowInput req = CallPubApiWorkflowInput.builder()
+                .methodType(PubApiMethodType.POST)
+                .endpoint("<value>")
+                .dataBody("<value>")
+                .build();
+
+        PostRestrequestResponse res = sdk.restRequest().postRestrequest()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [CallPubApiWorkflowInput](../../models/shared/CallPubApiWorkflowInput.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+### Response
+
+**[PostRestrequestResponse](../../models/operations/PostRestrequestResponse.md)**
+
+### Errors
+
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models/errors/ProblemDetailsException | 400, 401, 403, 404                    | application/json                      |
+| models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |

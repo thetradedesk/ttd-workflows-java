@@ -43,33 +43,15 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostAdgroupBulk {
-        PostAdgroupBulkResponse postAdgroupBulk(
+    public interface MethodCallPostTypebasedjobAdgroupBulk {
+        PostTypebasedjobAdgroupBulkResponse postTypebasedjobAdgroupBulk(
             Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPatchAdgroupBulk {
-        PatchAdgroupBulkResponse patchAdgroupBulk(
+    public interface MethodCallPatchTypebasedjobAdgroupBulk {
+        PatchTypebasedjobAdgroupBulkResponse patchTypebasedjobAdgroupBulk(
             Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception;
-    }
-
-    public interface MethodCallPostBulkjobFirstpartydata {
-        PostBulkjobFirstpartydataResponse postBulkjobFirstpartydata(
-            Optional<? extends FirstPartyDataInput> request,
-            Optional<Options> options) throws Exception;
-    }
-
-    public interface MethodCallGetBulkjobIdStatus {
-        GetBulkjobIdStatusResponse getBulkjobIdStatus(
-            long id,
-            Optional<Options> options) throws Exception;
-    }
-
-    public interface MethodCallPostBulkjobThirdpartydata {
-        PostBulkjobThirdpartydataResponse postBulkjobThirdpartydata(
-            Optional<? extends ThirdPartyDataInput> request,
             Optional<Options> options) throws Exception;
     }
 
@@ -85,14 +67,14 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostCampaignBulk {
-        PostCampaignBulkResponse postCampaignBulk(
+    public interface MethodCallPostTypebasedjobCampaignBulk {
+        PostTypebasedjobCampaignBulkResponse postTypebasedjobCampaignBulk(
             Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPatchCampaignBulk {
-        PatchCampaignBulkResponse patchCampaignBulk(
+    public interface MethodCallPatchTypebasedjobCampaignBulk {
+        PatchTypebasedjobCampaignBulkResponse patchTypebasedjobCampaignBulk(
             Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception;
     }
@@ -110,15 +92,33 @@ public class SDKMethodInterfaces {
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostGraphqlRequest {
-        PostGraphqlRequestResponse postGraphqlRequest(
+    public interface MethodCallPostTypebasedjobFirstpartydata {
+        PostTypebasedjobFirstpartydataResponse postTypebasedjobFirstpartydata(
+            Optional<? extends FirstPartyDataInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostGraphqlrequest {
+        PostGraphqlrequestResponse postGraphqlrequest(
             Optional<? extends GraphQLRequestInput> request,
             Optional<Options> options) throws Exception;
     }
 
-    public interface MethodCallPostPubapi {
-        PostPubapiResponse postPubapi(
+    public interface MethodCallPostRestrequest {
+        PostRestrequestResponse postRestrequest(
             Optional<? extends CallPubApiWorkflowInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallPostTypebasedjobThirdpartydata {
+        PostTypebasedjobThirdpartydataResponse postTypebasedjobThirdpartydata(
+            Optional<? extends ThirdPartyDataInput> request,
+            Optional<Options> options) throws Exception;
+    }
+
+    public interface MethodCallGetTypebasedjobIdStatus {
+        GetTypebasedjobIdStatusResponse getTypebasedjobIdStatus(
+            long id,
             Optional<Options> options) throws Exception;
     }
 }
