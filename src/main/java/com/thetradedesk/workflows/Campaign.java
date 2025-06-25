@@ -3,65 +3,41 @@
  */
 package com.thetradedesk.workflows;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
+
 import com.thetradedesk.workflows.models.components.CampaignBulkCreateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignBulkUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.models.components.CampaignPayload;
 import com.thetradedesk.workflows.models.components.CampaignUpdateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.models.components.CampaignVersionWorkflow;
-import com.thetradedesk.workflows.models.components.TypeBasedJobSubmitResponse;
-import com.thetradedesk.workflows.models.errors.APIException;
-import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequest;
-import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionRequestBuilder;
-import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionResponse;
-import com.thetradedesk.workflows.models.operations.PatchCampaignRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PatchCampaignResponse;
-import com.thetradedesk.workflows.models.operations.PatchTypebasedjobCampaignBulkRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PatchTypebasedjobCampaignBulkResponse;
-import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequest;
-import com.thetradedesk.workflows.models.operations.PostCampaignArchiveRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostCampaignArchiveResponse;
-import com.thetradedesk.workflows.models.operations.PostCampaignRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
-import com.thetradedesk.workflows.models.operations.PostTypebasedjobCampaignBulkRequestBuilder;
-import com.thetradedesk.workflows.models.operations.PostTypebasedjobCampaignBulkResponse;
-import com.thetradedesk.workflows.models.operations.SDKMethodInterfaces.*;
-import com.thetradedesk.workflows.utils.BackoffStrategy;
-import com.thetradedesk.workflows.utils.HTTPClient;
-import com.thetradedesk.workflows.utils.HTTPRequest;
-import com.thetradedesk.workflows.utils.Hook.AfterErrorContextImpl;
-import com.thetradedesk.workflows.utils.Hook.AfterSuccessContextImpl;
-import com.thetradedesk.workflows.utils.Hook.BeforeRequestContextImpl;
+import com.thetradedesk.workflows.models.operations.ArchiveCampaignsRequest;
+import com.thetradedesk.workflows.models.operations.ArchiveCampaignsRequestBuilder;
+import com.thetradedesk.workflows.models.operations.ArchiveCampaignsResponse;
+import com.thetradedesk.workflows.models.operations.CreateCampaignRequestBuilder;
+import com.thetradedesk.workflows.models.operations.CreateCampaignResponse;
+import com.thetradedesk.workflows.models.operations.CreateCampaignsJobRequestBuilder;
+import com.thetradedesk.workflows.models.operations.CreateCampaignsJobResponse;
+import com.thetradedesk.workflows.models.operations.GetCampaignVersionRequest;
+import com.thetradedesk.workflows.models.operations.GetCampaignVersionRequestBuilder;
+import com.thetradedesk.workflows.models.operations.GetCampaignVersionResponse;
+import com.thetradedesk.workflows.models.operations.UpdateCampaignRequestBuilder;
+import com.thetradedesk.workflows.models.operations.UpdateCampaignResponse;
+import com.thetradedesk.workflows.models.operations.UpdateCampaignsJobRequestBuilder;
+import com.thetradedesk.workflows.models.operations.UpdateCampaignsJobResponse;
+import com.thetradedesk.workflows.operations.ArchiveCampaignsOperation;
+import com.thetradedesk.workflows.operations.CreateCampaignOperation;
+import com.thetradedesk.workflows.operations.CreateCampaignsJobOperation;
+import com.thetradedesk.workflows.operations.GetCampaignVersionOperation;
+import com.thetradedesk.workflows.operations.UpdateCampaignOperation;
+import com.thetradedesk.workflows.operations.UpdateCampaignsJobOperation;
 import com.thetradedesk.workflows.utils.Options;
-import com.thetradedesk.workflows.utils.Retries.NonRetryableException;
-import com.thetradedesk.workflows.utils.Retries;
-import com.thetradedesk.workflows.utils.RetryConfig;
-import com.thetradedesk.workflows.utils.SerializedBody;
-import com.thetradedesk.workflows.utils.Utils.JsonShape;
-import com.thetradedesk.workflows.utils.Utils;
-import java.io.InputStream;
 import java.lang.Boolean;
 import java.lang.Exception;
-import java.lang.Object;
 import java.lang.String;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
-public class Campaign implements
-            MethodCallPostCampaign,
-            MethodCallPatchCampaign,
-            MethodCallPostTypebasedjobCampaignBulk,
-            MethodCallPatchTypebasedjobCampaignBulk,
-            MethodCallPostCampaignArchive,
-            MethodCallGetCampaignIdVersion {
 
+public class Campaign {
     private final SDKConfiguration sdkConfiguration;
 
     Campaign(SDKConfiguration sdkConfiguration) {
@@ -73,8 +49,8 @@ public class Campaign implements
      * 
      * @return The call builder
      */
-    public PostCampaignRequestBuilder create() {
-        return new PostCampaignRequestBuilder(this);
+    public CreateCampaignRequestBuilder create() {
+        return new CreateCampaignRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -83,174 +59,26 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignResponse createDirect() throws Exception {
+    public CreateCampaignResponse createDirect() throws Exception {
         return create(Optional.empty(), Optional.empty());
     }
-    
+
     /**
      * Create a new campaign with required fields
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignResponse create(
+    public CreateCampaignResponse create(
             Optional<? extends CampaignCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/campaign");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignCreateWorkflowInputWithValidation>>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/campaign", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/campaign",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "post_/campaign", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PostCampaignResponse.Builder _resBuilder = 
-            PostCampaignResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PostCampaignResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "201")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                CampaignPayload _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<CampaignPayload>() {});
-                _res.withCampaignPayload(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
+              = new CreateCampaignOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -261,8 +89,8 @@ public class Campaign implements
      * 
      * @return The call builder
      */
-    public PatchCampaignRequestBuilder patchCampaign() {
-        return new PatchCampaignRequestBuilder(this);
+    public UpdateCampaignRequestBuilder updateCampaign() {
+        return new UpdateCampaignRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -273,176 +101,28 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchCampaignResponse patchCampaignDirect() throws Exception {
-        return patchCampaign(Optional.empty(), Optional.empty());
+    public UpdateCampaignResponse updateCampaignDirect() throws Exception {
+        return updateCampaign(Optional.empty(), Optional.empty());
     }
-    
+
     /**
      * Update a campaign with specified fields
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchCampaignResponse patchCampaign(
+    public UpdateCampaignResponse updateCampaign(
             Optional<? extends CampaignUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/campaign");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignUpdateWorkflowInputWithValidation>>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "patch_/campaign", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "patch_/campaign",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "patch_/campaign", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PatchCampaignResponse.Builder _resBuilder = 
-            PatchCampaignResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PatchCampaignResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                CampaignPayload _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<CampaignPayload>() {});
-                _res.withCampaignPayload(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
+              = new UpdateCampaignOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -451,8 +131,8 @@ public class Campaign implements
      * 
      * @return The call builder
      */
-    public PostTypebasedjobCampaignBulkRequestBuilder postTypebasedjobCampaignBulk() {
-        return new PostTypebasedjobCampaignBulkRequestBuilder(this);
+    public CreateCampaignsJobRequestBuilder createCampaignsJob() {
+        return new CreateCampaignsJobRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -461,174 +141,26 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostTypebasedjobCampaignBulkResponse postTypebasedjobCampaignBulkDirect() throws Exception {
-        return postTypebasedjobCampaignBulk(Optional.empty(), Optional.empty());
+    public CreateCampaignsJobResponse createCampaignsJobDirect() throws Exception {
+        return createCampaignsJob(Optional.empty(), Optional.empty());
     }
-    
+
     /**
      * Create multiple new campaigns with required fields
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostTypebasedjobCampaignBulkResponse postTypebasedjobCampaignBulk(
+    public CreateCampaignsJobResponse createCampaignsJob(
             Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/typebasedjob/campaign/bulk");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/typebasedjob/campaign/bulk", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/typebasedjob/campaign/bulk",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "post_/typebasedjob/campaign/bulk", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PostTypebasedjobCampaignBulkResponse.Builder _resBuilder = 
-            PostTypebasedjobCampaignBulkResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PostTypebasedjobCampaignBulkResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                TypeBasedJobSubmitResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<TypeBasedJobSubmitResponse>() {});
-                _res.withTypeBasedJobSubmitResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
+              = new CreateCampaignsJobOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -639,8 +171,8 @@ public class Campaign implements
      * 
      * @return The call builder
      */
-    public PatchTypebasedjobCampaignBulkRequestBuilder patchTypebasedjobCampaignBulk() {
-        return new PatchTypebasedjobCampaignBulkRequestBuilder(this);
+    public UpdateCampaignsJobRequestBuilder updateCampaignsJob() {
+        return new UpdateCampaignsJobRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -651,176 +183,28 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchTypebasedjobCampaignBulkResponse patchTypebasedjobCampaignBulkDirect() throws Exception {
-        return patchTypebasedjobCampaignBulk(Optional.empty(), Optional.empty());
+    public UpdateCampaignsJobResponse updateCampaignsJobDirect() throws Exception {
+        return updateCampaignsJob(Optional.empty(), Optional.empty());
     }
-    
+
     /**
      * Update multiple campaigns with specified fields
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PatchTypebasedjobCampaignBulkResponse patchTypebasedjobCampaignBulk(
+    public UpdateCampaignsJobResponse updateCampaignsJob(
             Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/typebasedjob/campaign/bulk");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "patch_/typebasedjob/campaign/bulk", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "patch_/typebasedjob/campaign/bulk",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "patch_/typebasedjob/campaign/bulk", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PatchTypebasedjobCampaignBulkResponse.Builder _resBuilder = 
-            PatchTypebasedjobCampaignBulkResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PatchTypebasedjobCampaignBulkResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "202")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                TypeBasedJobSubmitResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<TypeBasedJobSubmitResponse>() {});
-                _res.withTypeBasedJobSubmitResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "503", "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
+              = new UpdateCampaignsJobOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -831,8 +215,8 @@ public class Campaign implements
      * 
      * @return The call builder
      */
-    public PostCampaignArchiveRequestBuilder postCampaignArchive() {
-        return new PostCampaignArchiveRequestBuilder(this);
+    public ArchiveCampaignsRequestBuilder archiveCampaigns() {
+        return new ArchiveCampaignsRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -843,10 +227,10 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignArchiveResponse postCampaignArchiveDirect() throws Exception {
-        return postCampaignArchive(Optional.empty(), Optional.empty(), Optional.empty());
+    public ArchiveCampaignsResponse archiveCampaignsDirect() throws Exception {
+        return archiveCampaigns(Optional.empty(), Optional.empty(), Optional.empty());
     }
-    
+
     /**
      * Archive multiple campaigns
      * 
@@ -858,175 +242,21 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public PostCampaignArchiveResponse postCampaignArchive(
+    public ArchiveCampaignsResponse archiveCampaigns(
             Optional<Boolean> forceArchive,
             Optional<? extends List<String>> requestBody,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        PostCampaignArchiveRequest request =
-            PostCampaignArchiveRequest
+        ArchiveCampaignsRequest request =
+            ArchiveCampaignsRequest
                 .builder()
                 .forceArchive(forceArchive)
                 .requestBody(requestBody)
                 .build();
-        
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/campaign/archive");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Object>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "requestBody",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                PostCampaignArchiveRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/campaign/archive", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "post_/campaign/archive",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "post_/campaign/archive", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PostCampaignArchiveResponse.Builder _resBuilder = 
-            PostCampaignArchiveResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PostCampaignArchiveResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                List<String> _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<List<String>>() {});
-                _res.withStrings(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
+              = new ArchiveCampaignsOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 
@@ -1035,8 +265,8 @@ public class Campaign implements
      * 
      * @return The call builder
      */
-    public GetCampaignIdVersionRequestBuilder getVersion() {
-        return new GetCampaignIdVersionRequestBuilder(this);
+    public GetCampaignVersionRequestBuilder getVersion() {
+        return new GetCampaignVersionRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -1046,11 +276,10 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetCampaignIdVersionResponse getVersion(
-            String id) throws Exception {
+    public GetCampaignVersionResponse getVersion(String id) throws Exception {
         return getVersion(id, Optional.empty());
     }
-    
+
     /**
      * Get a campaign's version
      * 
@@ -1059,160 +288,19 @@ public class Campaign implements
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetCampaignIdVersionResponse getVersion(
+    public GetCampaignVersionResponse getVersion(
             String id,
             Optional<Options> options) throws Exception {
-
-        if (options.isPresent()) {
-          options.get().validate(Arrays.asList(Options.Option.RETRY_CONFIG));
-        }
-        GetCampaignIdVersionRequest request =
-            GetCampaignIdVersionRequest
+        GetCampaignVersionRequest request =
+            GetCampaignVersionRequest
                 .builder()
                 .id(id)
                 .build();
-        
-        String _baseUrl = this.sdkConfiguration.serverUrl();
-        String _url = Utils.generateURL(
-                GetCampaignIdVersionRequest.class,
-                _baseUrl,
-                "/campaign/{id}/version",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource().getSecurity());
-        HTTPClient _client = this.sdkConfiguration.client();
-        HTTPRequest _finalReq = _req;
-        RetryConfig _retryConfig;
-        if (options.isPresent() && options.get().retryConfig().isPresent()) {
-            _retryConfig = options.get().retryConfig().get();
-        } else if (this.sdkConfiguration.retryConfig().isPresent()) {
-            _retryConfig = this.sdkConfiguration.retryConfig().get();
-        } else {
-            _retryConfig = RetryConfig.builder()
-                .backoff(BackoffStrategy.builder()
-                            .initialInterval(500, TimeUnit.MILLISECONDS)
-                            .maxInterval(60000, TimeUnit.MILLISECONDS)
-                            .baseFactor((double)(1.5))
-                            .maxElapsedTime(3600000, TimeUnit.MILLISECONDS)
-                            .retryConnectError(true)
-                            .build())
-                .build();
-        }
-        List<String> _statusCodes = new ArrayList<>();
-        _statusCodes.add("5XX");
-        Retries _retries = Retries.builder()
-            .action(() -> {
-                HttpRequest _r = null;
-                try {
-                    _r = sdkConfiguration.hooks()
-                        .beforeRequest(
-                            new BeforeRequestContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "get_/campaign/{id}/version", 
-                                Optional.of(List.of()), 
-                                _hookSecuritySource),
-                            _finalReq.build());
-                } catch (Exception _e) {
-                    throw new NonRetryableException(_e);
-                }
-                try {
-                    return _client.send(_r);
-                } catch (Exception _e) {
-                    return sdkConfiguration.hooks()
-                        .afterError(
-                            new AfterErrorContextImpl(
-                                this.sdkConfiguration,
-                                _baseUrl,
-                                "get_/campaign/{id}/version",
-                                 Optional.of(List.of()),
-                                 _hookSecuritySource), 
-                            Optional.empty(),
-                            Optional.of(_e));
-                }
-            })
-            .retryConfig(_retryConfig)
-            .statusCodes(_statusCodes)
-            .build();
-        HttpResponse<InputStream> _httpRes = sdkConfiguration.hooks()
-                 .afterSuccess(
-                     new AfterSuccessContextImpl(
-                         this.sdkConfiguration,
-                         _baseUrl,
-                         "get_/campaign/{id}/version", 
-                         Optional.of(List.of()), 
-                         _hookSecuritySource),
-                     _retries.run());
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        GetCampaignIdVersionResponse.Builder _resBuilder = 
-            GetCampaignIdVersionResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        GetCampaignIdVersionResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                CampaignVersionWorkflow _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<CampaignVersionWorkflow>() {});
-                _res.withCampaignVersionWorkflow(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "401", "403", "404")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ProblemDetailsException _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ProblemDetailsException>() {});
-                throw _out;
-            } else {
-                throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "500", "5XX")) {
-            // no content 
-            throw new APIException(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new APIException(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
+              = new GetCampaignVersionOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 }

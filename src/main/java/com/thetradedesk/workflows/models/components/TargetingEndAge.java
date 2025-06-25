@@ -24,7 +24,7 @@ public enum TargetingEndAge {
     @JsonValue
     private final String value;
 
-    private TargetingEndAge(String value) {
+    TargetingEndAge(String value) {
         this.value = value;
     }
     

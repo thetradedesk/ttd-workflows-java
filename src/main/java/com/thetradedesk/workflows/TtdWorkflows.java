@@ -6,6 +6,7 @@ package com.thetradedesk.workflows;
 import com.thetradedesk.workflows.utils.HTTPClient;
 import com.thetradedesk.workflows.utils.Hook.SdkInitData;
 import com.thetradedesk.workflows.utils.RetryConfig;
+import com.thetradedesk.workflows.utils.SpeakeasyHTTPClient;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -37,7 +38,6 @@ import java.util.function.Consumer;
  */
 public class TtdWorkflows {
 
-  
     /**
      * AvailableServers contains identifiers for the servers available to the SDK.
      */
@@ -74,6 +74,8 @@ public class TtdWorkflows {
     put(AvailableServers.PROD, "https://api.thetradedesk.com/workflows");
     put(AvailableServers.SANDBOX, "https://ext-api.sb.thetradedesk.com/workflows");
     }};
+
+    
 
     private final AdGroup adGroup;
 
@@ -116,7 +118,6 @@ public class TtdWorkflows {
     public JobStatus jobStatus() {
         return jobStatus;
     }
-
     private SDKConfiguration sdkConfiguration;
 
     /**
@@ -210,6 +211,20 @@ public class TtdWorkflows {
          */
         public Builder retryConfig(RetryConfig retryConfig) {
             this.sdkConfiguration.setRetryConfig(Optional.of(retryConfig));
+            return this;
+        }
+
+        /**
+         * Enables debug logging for HTTP requests and responses, including JSON body content.
+         *
+         * This is a convenience method that calls {@link HTTPClient#enableDebugLogging()}.
+         * {@link SpeakeasyHTTPClient} honors this setting. If you are using a custom HTTP client,
+         * it is up to the custom client to honor this setting.
+         *
+         * @return The builder instance.
+         */
+        public Builder enableHTTPDebugLogging() {
+            this.sdkConfiguration.client().enableDebugLogging();
             return this;
         }
         // Visible for testing, may be accessed via reflection in tests

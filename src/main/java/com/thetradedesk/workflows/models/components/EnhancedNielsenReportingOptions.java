@@ -16,7 +16,7 @@ public enum EnhancedNielsenReportingOptions {
     @JsonValue
     private final String value;
 
-    private EnhancedNielsenReportingOptions(String value) {
+    EnhancedNielsenReportingOptions(String value) {
         this.value = value;
     }
     
