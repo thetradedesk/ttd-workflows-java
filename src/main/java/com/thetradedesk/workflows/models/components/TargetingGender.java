@@ -16,7 +16,7 @@ public enum TargetingGender {
     @JsonValue
     private final String value;
 
-    private TargetingGender(String value) {
+    TargetingGender(String value) {
         this.value = value;
     }
     

@@ -103,7 +103,7 @@ public enum DimensionalBiddingDimensions {
     @JsonValue
     private final String value;
 
-    private DimensionalBiddingDimensions(String value) {
+    DimensionalBiddingDimensions(String value) {
         this.value = value;
     }
     

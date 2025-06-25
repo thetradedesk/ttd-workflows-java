@@ -66,7 +66,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.6.1'
+implementation 'com.thetradedesk:workflows:0.7.0'
 ```
 
 Maven:
@@ -74,7 +74,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.6.1</version>
+    <version>0.7.0</version>
 </dependency>
 ```
 
@@ -95,9 +95,11 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ### Logging
 A logging framework/facade has not yet been adopted but is under consideration.
 
-For request and response logging (especially json bodies) use:
+For request and response logging (especially json bodies), call `enableHTTPDebugLogging()` on the SDK builder like so:
 ```java
-SpeakeasyHTTPClient.setDebugLogging(true); // experimental API only (may change without warning)
+SDK.builder()
+    .enableHTTPDebugLogging()
+    .build();
 ```
 Example output:
 ```
@@ -111,7 +113,9 @@ Response body:
   "token": "global"
 }
 ```
-WARNING: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End SDK Installation [installation] -->
@@ -127,9 +131,10 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -143,115 +148,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .call();
 
@@ -281,9 +281,10 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -297,115 +298,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .call();
 
@@ -425,40 +421,40 @@ public class Application {
 
 ### [adGroup()](docs/sdks/adgroup/README.md)
 
-* [postAdgroup](docs/sdks/adgroup/README.md#postadgroup) - Create a new ad group with required fields
-* [patchAdgroup](docs/sdks/adgroup/README.md#patchadgroup) - Update an ad group with specified fields
-* [postAdgroupArchive](docs/sdks/adgroup/README.md#postadgrouparchive) - Archive multiple ad groups
-* [postTypebasedjobAdgroupBulk](docs/sdks/adgroup/README.md#posttypebasedjobadgroupbulk) - Create multiple new ad groups with required fields
-* [patchTypebasedjobAdgroupBulk](docs/sdks/adgroup/README.md#patchtypebasedjobadgroupbulk) - Update multiple ad groups with specified fields
+* [createAdGroup](docs/sdks/adgroup/README.md#createadgroup) - Create a new ad group with required fields
+* [updateAdGroup](docs/sdks/adgroup/README.md#updateadgroup) - Update an ad group with specified fields
+* [archiveAdGroups](docs/sdks/adgroup/README.md#archiveadgroups) - Archive multiple ad groups
+* [createAdGroupsJob](docs/sdks/adgroup/README.md#createadgroupsjob) - Create multiple new ad groups with required fields
+* [updateAdGroupsJob](docs/sdks/adgroup/README.md#updateadgroupsjob) - Update multiple ad groups with specified fields
 
 ### [campaign()](docs/sdks/campaign/README.md)
 
 * [create](docs/sdks/campaign/README.md#create) - Create a new campaign with required fields
-* [patchCampaign](docs/sdks/campaign/README.md#patchcampaign) - Update a campaign with specified fields
-* [postTypebasedjobCampaignBulk](docs/sdks/campaign/README.md#posttypebasedjobcampaignbulk) - Create multiple new campaigns with required fields
-* [patchTypebasedjobCampaignBulk](docs/sdks/campaign/README.md#patchtypebasedjobcampaignbulk) - Update multiple campaigns with specified fields
-* [postCampaignArchive](docs/sdks/campaign/README.md#postcampaignarchive) - Archive multiple campaigns
+* [updateCampaign](docs/sdks/campaign/README.md#updatecampaign) - Update a campaign with specified fields
+* [createCampaignsJob](docs/sdks/campaign/README.md#createcampaignsjob) - Create multiple new campaigns with required fields
+* [updateCampaignsJob](docs/sdks/campaign/README.md#updatecampaignsjob) - Update multiple campaigns with specified fields
+* [archiveCampaigns](docs/sdks/campaign/README.md#archivecampaigns) - Archive multiple campaigns
 * [getVersion](docs/sdks/campaign/README.md#getversion) - Get a campaign's version
 
 ### [firstPartyData()](docs/sdks/firstpartydata/README.md)
 
-* [postTypebasedjobFirstpartydata](docs/sdks/firstpartydata/README.md#posttypebasedjobfirstpartydata) - Submit a type-based job for first-party data retrieval for an advertiser
+* [getFirstPartyDataJob](docs/sdks/firstpartydata/README.md#getfirstpartydatajob) - Submit a type-based job for first-party data retrieval for an advertiser
 
 ### [graphQLRequest()](docs/sdks/graphqlrequest/README.md)
 
-* [postGraphqlrequest](docs/sdks/graphqlrequest/README.md#postgraphqlrequest) - Submit a valid GraphQL query or mutation
+* [submitGraphQlRequest](docs/sdks/graphqlrequest/README.md#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
 
 ### [jobStatus()](docs/sdks/jobstatus/README.md)
 
-* [getTypebasedjobIdStatus](docs/sdks/jobstatus/README.md#gettypebasedjobidstatus) - Get the status of a previously submitted type-based job
+* [getJobStatus](docs/sdks/jobstatus/README.md#getjobstatus) - Get the status of a previously submitted type-based job
 
 ### [restRequest()](docs/sdks/restrequest/README.md)
 
-* [postRestrequest](docs/sdks/restrequest/README.md#postrestrequest) - Submit a valid REST request
+* [submitRestRequest](docs/sdks/restrequest/README.md#submitrestrequest) - Submit a valid REST request
 
 ### [thirdPartyData()](docs/sdks/thirdpartydata/README.md)
 
-* [postTypebasedjobThirdpartydata](docs/sdks/thirdpartydata/README.md#posttypebasedjobthirdpartydata) - Submit a type-based job for third-party data retrieval for an advertiser
+* [getThirdPartyDataJob](docs/sdks/thirdpartydata/README.md#getthirdpartydatajob) - Submit a type-based job for third-party data retrieval for an advertiser
 
 
 </details>
@@ -476,11 +472,12 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -495,115 +492,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .retryConfig(RetryConfig.builder()
                     .backoff(BackoffStrategy.builder()
@@ -631,11 +623,12 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -660,115 +653,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .call();
 
@@ -785,7 +773,7 @@ public class Application {
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
 
-By default, an API error will throw a `models/errors/APIException` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `postAdgroup` method throws the following exceptions:
+By default, an API error will throw a `models/errors/APIException` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `createAdGroup` method throws the following exceptions:
 
 | Error Type                            | Status Code | Content Type     |
 | ------------------------------------- | ----------- | ---------------- |
@@ -800,9 +788,10 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -816,115 +805,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .call();
 
@@ -956,9 +940,10 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -973,115 +958,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .call();
 
@@ -1101,9 +1081,10 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostAdgroupResponse;
+import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
 import java.lang.Exception;
 import java.util.List;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
@@ -1118,115 +1099,110 @@ public class Application {
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                     .name("<value>")
-                    .channel(AdGroupChannel.NATIVE_DISPLAY)
-                    .funnelLocation(AdGroupFunnelLocation.AWARENESS)
-                    .isEnabled(true)
-                    .description("after wrongly laughter rare")
+                    .channel(AdGroupChannel.DISPLAY)
+                    .funnelLocation(AdGroupFunnelLocation.CONSIDERATION)
+                    .isEnabled(false)
+                    .description("twine from gosh poor safely editor astride vice lost and")
                     .budget(AdGroupWorkflowBudgetInput.builder()
-                        .allocationType(AllocationType.MINIMUM)
-                        .budgetInAdvertiserCurrency(5906.7)
-                        .budgetInImpressions(606146L)
-                        .dailyTargetInAdvertiserCurrency(3786.12)
-                        .dailyTargetInImpressions(568427L)
+                        .allocationType(AllocationType.MAXIMUM)
+                        .budgetInAdvertiserCurrency(3786.02)
+                        .budgetInImpressions(783190L)
+                        .dailyTargetInAdvertiserCurrency(9747.02)
+                        .dailyTargetInImpressions(985999L)
                         .build())
-                    .baseBidCPMInAdvertiserCurrency(939.59)
-                    .maxBidCPMInAdvertiserCurrency(6554.77)
+                    .baseBidCPMInAdvertiserCurrency(3785.04)
+                    .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                         .audienceId("<id>")
-                        .audienceAcceleratorExclusionsEnabled(false)
-                        .audienceBoosterEnabled(false)
+                        .audienceAcceleratorExclusionsEnabled(true)
+                        .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
                         .audiencePredictorEnabled(false)
                         .crossDeviceVendorListForAudience(List.of(
-                            77740,
-                            699788))
-                        .recencyExclusionWindowInMinutes(675119)
-                        .targetTrackableUsersEnabled(false)
+                            107263))
+                        .recencyExclusionWindowInMinutes(90062)
+                        .targetTrackableUsersEnabled(true)
                         .useMcIdAsPrimary(true)
                         .build())
                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
-                        .maximizeReach(false)
-                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
-                        .cpcInAdvertiserCurrency(2128.6)
-                        .ctrInPercent(2164.49)
-                        .nielsenOTPInPercent(8642.95)
-                        .cpaInAdvertiserCurrency(9706.01)
-                        .returnOnAdSpendPercent(259.31)
-                        .vcrInPercent(9665.19)
-                        .viewabilityInPercent(2917.69)
-                        .vcpmInAdvertiserCurrency(9415.05)
-                        .cpcvInAdvertiserCurrency(5100.12)
-                        .miaozhenOTPInPercent(JsonNullable.of(null))
+                        .maximizeReach(true)
+                        .maximizeLtvIncrementalReach(false)
+                        .cpcInAdvertiserCurrency(2280.31)
+                        .ctrInPercent(JsonNullable.of(null))
+                        .nielsenOTPInPercent(5175.21)
+                        .cpaInAdvertiserCurrency(2544.37)
+                        .returnOnAdSpendPercent(8201.47)
+                        .vcrInPercent(4846.08)
+                        .viewabilityInPercent(JsonNullable.of(null))
+                        .vcpmInAdvertiserCurrency(4649.53)
+                        .cpcvInAdvertiserCurrency(313.95)
+                        .miaozhenOTPInPercent(4704.1)
                         .build())
-                    .creativeIds(List.of(
-                        "<value 1>",
-                        "<value 2>"))
+                    .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
                         AdGroupWorkflowAssociateBidListInput.builder()
                             .bidListId("<id>")
                             .isEnabled(false)
-                            .isDefaultForDimension(false)
+                            .isDefaultForDimension(true)
                             .build()))
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                        .areFutureKoaFeaturesEnabled(true)
-                        .predictiveClearingEnabled(JsonNullable.of(null))
+                        .areFutureKoaFeaturesEnabled(false)
+                        .predictiveClearingEnabled(false)
                         .build())
                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
-                        .isEnabled(true)
-                        .populationId(937153)
-                        .demographicMemberIds(JsonNullable.of(null))
+                        .isEnabled(false)
+                        .populationId(JsonNullable.of(null))
+                        .demographicMemberIds(List.of(
+                            959580,
+                            236376))
                         .mobileDemographicMemberIds(List.of(
-                            948705,
-                            285090))
+                            664689,
+                            827980,
+                            21321))
                         .build())
                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
                         .allowOpenMarketBiddingWhenTargetingContracts(true)
                         .build())
                     .dimensionalBiddingAutoOptimizationSettings(List.of(
+                        List.of(),
                         List.of()))
-                    .isUseClicksAsConversionsEnabled(true)
-                    .isUseSecondaryConversionsEnabled(true)
+                    .isUseClicksAsConversionsEnabled(false)
+                    .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.THIRTEEN)
-                        .endAge(TargetingEndAge.TWENTY_FOUR)
+                        .gender(TargetingGender.MALE)
+                        .startAge(TargetingStartAge.TWENTY_FIVE)
+                        .endAge(TargetingEndAge.SEVENTEEN)
                         .countries(List.of(
-                            "<value 1>"))
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
                         .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
-                            .counterName("<value>")
-                            .frequencyCap(440820)
-                            .frequencyGoal(576339)
-                            .resetIntervalInMinutes(309043)
+                            .counterName(Optional.empty())
+                            .frequencyCap(375286)
+                            .frequencyGoal(534735)
+                            .resetIntervalInMinutes(788122)
                             .build()))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
-                            .build(),
-                        AdGroupWorkflowFlightInput.builder()
-                            .campaignFlightId(170903L)
-                            .allocationType(AllocationType.MINIMUM)
-                            .budgetInAdvertiserCurrency(3143.19)
-                            .budgetInImpressions(647708L)
-                            .dailyTargetInAdvertiserCurrency(JsonNullable.of(null))
-                            .dailyTargetInImpressions(746586L)
+                            .campaignFlightId(874887L)
+                            .allocationType(AllocationType.MAXIMUM)
+                            .budgetInAdvertiserCurrency(4070.96)
+                            .budgetInImpressions(901477L)
+                            .dailyTargetInAdvertiserCurrency(5847.35)
+                            .dailyTargetInImpressions(257517L)
                             .build()))
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PostAdgroupResponse res = sdk.adGroup().postAdgroup()
+        CreateAdGroupResponse res = sdk.adGroup().createAdGroup()
                 .request(req)
                 .call();
 

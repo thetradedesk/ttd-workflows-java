@@ -6,10 +6,10 @@
 ### Available Operations
 
 * [create](#create) - Create a new campaign with required fields
-* [patchCampaign](#patchcampaign) - Update a campaign with specified fields
-* [postTypebasedjobCampaignBulk](#posttypebasedjobcampaignbulk) - Create multiple new campaigns with required fields
-* [patchTypebasedjobCampaignBulk](#patchtypebasedjobcampaignbulk) - Update multiple campaigns with specified fields
-* [postCampaignArchive](#postcampaignarchive) - Archive multiple campaigns
+* [updateCampaign](#updatecampaign) - Update a campaign with specified fields
+* [createCampaignsJob](#createcampaignsjob) - Create multiple new campaigns with required fields
+* [updateCampaignsJob](#updatecampaignsjob) - Update multiple campaigns with specified fields
+* [archiveCampaigns](#archivecampaigns) - Archive multiple campaigns
 * [getVersion](#getversion) - Get a campaign's version
 
 ## create
@@ -24,7 +24,7 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostCampaignResponse;
+import com.thetradedesk.workflows.models.operations.CreateCampaignResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -42,103 +42,167 @@ public class Application {
                 .primaryInput(CampaignCreateWorkflowPrimaryInput.builder()
                     .advertiserId("<id>")
                     .name("<value>")
-                    .primaryChannel(CampaignChannelType.NATIVE_VIDEO)
+                    .primaryChannel(CampaignChannelType.DOOH)
                     .primaryGoal(CampaignWorkflowROIGoalInput.builder()
-                        .maximizeReach(true)
-                        .maximizeLtvIncrementalReach(true)
-                        .cpcInAdvertiserCurrency(8043.58)
-                        .ctrInPercent(5969.41)
-                        .nielsenOTPInPercent(2053.15)
-                        .cpaInAdvertiserCurrency(1984.87)
-                        .returnOnAdSpendPercent(JsonNullable.of(null))
-                        .vcrInPercent(8220.61)
-                        .viewabilityInPercent(3757.54)
-                        .vcpmInAdvertiserCurrency(5996.9)
+                        .maximizeReach(false)
+                        .maximizeLtvIncrementalReach(JsonNullable.of(null))
+                        .cpcInAdvertiserCurrency(6678.34)
+                        .ctrInPercent(5357.4)
+                        .nielsenOTPInPercent(2741.6)
+                        .cpaInAdvertiserCurrency(4220.63)
+                        .returnOnAdSpendPercent(8572.83)
+                        .vcrInPercent(8294.92)
+                        .viewabilityInPercent(8592.21)
+                        .vcpmInAdvertiserCurrency(8388.8)
                         .cpcvInAdvertiserCurrency(JsonNullable.of(null))
-                        .miaozhenOTPInPercent(9595.06)
+                        .miaozhenOTPInPercent(3033.14)
                         .build())
-                    .description("brightly once incidentally biodegrade waterlogged geez quaff coolly remark")
-                    .timeZone("America/Martinique")
-                    .customCPAClickWeight(8565.86)
-                    .customCPAViewthroughWeight(4944.28)
-                    .customCPAType(CustomCPAType.DISABLED)
-                    .impressionsOnlyBudgetingCpm(3563.37)
+                    .description("woot furthermore mentor")
+                    .timeZone("Europe/Ulyanovsk")
+                    .customCPAClickWeight(2561.01)
+                    .customCPAViewthroughWeight(5604.35)
+                    .customCPAType(CustomCPAType.CLICK_VIEWTHROUGH_WEIGHTING)
+                    .impressionsOnlyBudgetingCpm(1502.33)
                     .budget(CampaignWorkflowBudgetInput.builder()
                         .pacingMode(CampaignPacingMode.PACE_AS_SOON_AS_POSSIBLE)
-                        .budgetInAdvertiserCurrency(3004.71)
-                        .budgetInImpressions(470604L)
-                        .dailyTargetInAdvertiserCurrency(6178.77)
-                        .dailyTargetInImpressions(229960L)
+                        .budgetInAdvertiserCurrency(6363.35)
+                        .budgetInImpressions(836518L)
+                        .dailyTargetInAdvertiserCurrency(7814.79)
+                        .dailyTargetInImpressions(784985L)
                         .build())
-                    .endDateInUtc(OffsetDateTime.parse("2023-10-12T00:18:24.941Z"))
-                    .seedId("<id>")
+                    .endDateInUtc(JsonNullable.of(null))
+                    .seedId(JsonNullable.of(null))
                     .campaignConversionReportingColumns(List.of(
                         CampaignWorkflowCampaignConversionReportingColumnInput.builder()
                             .trackingTagId("<id>")
                             .includeInCustomCPA(false)
-                            .reportingColumnId(637398)
+                            .reportingColumnId(888649)
                             .roasConfig(CustomROASConfig.builder()
                                 .includeInCustomROAS(false)
-                                .customROASWeight(6976.5)
-                                .customROASClickWeight(3551.1)
-                                .customROASViewthroughWeight(4100.93)
+                                .customROASWeight(4766.9)
+                                .customROASClickWeight(3310.24)
+                                .customROASViewthroughWeight(2919.37)
                                 .build())
-                            .weight(2092.05)
-                            .crossDeviceAttributionModelId("<id>")
-                            .build(),
-                        CampaignWorkflowCampaignConversionReportingColumnInput.builder()
-                            .trackingTagId("<id>")
-                            .includeInCustomCPA(false)
-                            .reportingColumnId(637398)
-                            .roasConfig(CustomROASConfig.builder()
-                                .includeInCustomROAS(false)
-                                .customROASWeight(6976.5)
-                                .customROASClickWeight(3551.1)
-                                .customROASViewthroughWeight(4100.93)
-                                .build())
-                            .weight(2092.05)
-                            .crossDeviceAttributionModelId("<id>")
-                            .build(),
-                        CampaignWorkflowCampaignConversionReportingColumnInput.builder()
-                            .trackingTagId("<id>")
-                            .includeInCustomCPA(false)
-                            .reportingColumnId(637398)
-                            .roasConfig(CustomROASConfig.builder()
-                                .includeInCustomROAS(false)
-                                .customROASWeight(6976.5)
-                                .customROASClickWeight(3551.1)
-                                .customROASViewthroughWeight(4100.93)
-                                .build())
-                            .weight(2092.05)
+                            .weight(5369.43)
                             .crossDeviceAttributionModelId("<id>")
                             .build()))
-                    .startDateInUtc(OffsetDateTime.parse("2025-11-14T15:34:57.905Z"))
+                    .startDateInUtc(JsonNullable.of(null))
                     .build())
                 .advancedInput(CampaignWorkflowAdvancedInput.builder()
                     .flights(List.of(
                         CampaignWorkflowFlightInput.builder()
-                            .startDateInclusiveUTC(OffsetDateTime.parse("2025-03-12T15:05:09.942Z"))
-                            .budgetInAdvertiserCurrency(4180.14)
-                            .endDateExclusiveUTC(OffsetDateTime.parse("2023-09-04T20:53:09.531Z"))
-                            .budgetInImpressions(222439L)
-                            .dailyTargetInAdvertiserCurrency(7167.72)
-                            .dailyTargetInImpressions(948610L)
-                            .build(),
-                        CampaignWorkflowFlightInput.builder()
-                            .startDateInclusiveUTC(OffsetDateTime.parse("2025-03-12T15:05:09.942Z"))
-                            .budgetInAdvertiserCurrency(4180.14)
-                            .endDateExclusiveUTC(OffsetDateTime.parse("2023-09-04T20:53:09.531Z"))
-                            .budgetInImpressions(222439L)
-                            .dailyTargetInAdvertiserCurrency(7167.72)
-                            .dailyTargetInImpressions(948610L)
+                            .startDateInclusiveUTC(OffsetDateTime.parse("2024-07-08T10:52:56.944Z"))
+                            .budgetInAdvertiserCurrency(5904.11)
+                            .endDateExclusiveUTC(OffsetDateTime.parse("2023-05-12T16:41:56.386Z"))
+                            .budgetInImpressions(JsonNullable.of(null))
+                            .dailyTargetInAdvertiserCurrency(6112.24)
+                            .dailyTargetInImpressions(333131L)
                             .build()))
-                    .purchaseOrderNumber("<value>")
+                    .purchaseOrderNumber(JsonNullable.of(null))
                     .build())
-                .adGroups(JsonNullable.of(null))
+                .adGroups(List.of(
+                    CampaignCreateWorkflowAdGroupInput.builder()
+                        .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
+                            .name("<value>")
+                            .channel(AdGroupChannel.NATIVE_VIDEO)
+                            .funnelLocation(AdGroupFunnelLocation.NONE)
+                            .isEnabled(false)
+                            .description("quash lightly rot bashfully slope")
+                            .budget(AdGroupWorkflowBudgetInput.builder()
+                                .allocationType(AllocationType.MINIMUM)
+                                .budgetInAdvertiserCurrency(4043.98)
+                                .budgetInImpressions(907414L)
+                                .dailyTargetInAdvertiserCurrency(49.95)
+                                .dailyTargetInImpressions(62363L)
+                                .build())
+                            .baseBidCPMInAdvertiserCurrency(1136.89)
+                            .maxBidCPMInAdvertiserCurrency(6950.27)
+                            .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
+                                .audienceId("<id>")
+                                .audienceAcceleratorExclusionsEnabled(false)
+                                .audienceBoosterEnabled(true)
+                                .audienceExcluderEnabled(false)
+                                .audiencePredictorEnabled(true)
+                                .crossDeviceVendorListForAudience(List.of(
+                                    458524,
+                                    284141))
+                                .recencyExclusionWindowInMinutes(982426)
+                                .targetTrackableUsersEnabled(false)
+                                .useMcIdAsPrimary(true)
+                                .build())
+                            .roiGoal(AdGroupWorkflowROIGoalInput.builder()
+                                .maximizeReach(JsonNullable.of(null))
+                                .maximizeLtvIncrementalReach(true)
+                                .cpcInAdvertiserCurrency(8782.74)
+                                .ctrInPercent(JsonNullable.of(null))
+                                .nielsenOTPInPercent(7930.85)
+                                .cpaInAdvertiserCurrency(4606.89)
+                                .returnOnAdSpendPercent(2522.83)
+                                .vcrInPercent(5828.49)
+                                .viewabilityInPercent(6824.44)
+                                .vcpmInAdvertiserCurrency(7123.95)
+                                .cpcvInAdvertiserCurrency(6233.72)
+                                .miaozhenOTPInPercent(8437.22)
+                                .build())
+                            .creativeIds(List.of(
+                                "<value 1>"))
+                            .associatedBidLists(List.of(
+                                AdGroupWorkflowAssociateBidListInput.builder()
+                                    .bidListId("<id>")
+                                    .isEnabled(true)
+                                    .isDefaultForDimension(false)
+                                    .build()))
+                            .programmaticGuaranteedPrivateContractId("<id>")
+                            .build())
+                        .advancedInput(CampaignCreateWorkflowAdGroupAdvancedInput.builder()
+                            .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
+                                .areFutureKoaFeaturesEnabled(true)
+                                .predictiveClearingEnabled(true)
+                                .build())
+                            .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
+                                .isEnabled(false)
+                                .populationId(523753)
+                                .demographicMemberIds(JsonNullable.of(null))
+                                .mobileDemographicMemberIds(JsonNullable.of(null))
+                                .build())
+                            .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
+                                .allowOpenMarketBiddingWhenTargetingContracts(true)
+                                .build())
+                            .dimensionalBiddingAutoOptimizationSettings(List.of(
+                                List.of(
+                                    DimensionalBiddingDimensions.HAS_FULL_REFERRER_URL),
+                                List.of(
+                                    DimensionalBiddingDimensions.HAS_PUBLISHER_ID)))
+                            .isUseClicksAsConversionsEnabled(JsonNullable.of(null))
+                            .isUseSecondaryConversionsEnabled(true)
+                            .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
+                                .gender(TargetingGender.FEMALE)
+                                .startAge(TargetingStartAge.THIRTY_FIVE)
+                                .endAge(TargetingEndAge.FORTY_NINE)
+                                .countries(List.of())
+                                .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                                .build())
+                            .newFrequencyConfigs(List.of(
+                                AdGroupWorkflowNewFrequencyConfigInput.builder()
+                                    .counterName("<value>")
+                                    .frequencyCap(391231)
+                                    .frequencyGoal(499235)
+                                    .resetIntervalInMinutes(587736)
+                                    .build()))
+                            .flights(List.of(
+                                CampaignCreateWorkflowAdGroupFlightInput.builder()
+                                    .allocationType(AllocationType.FIXED)
+                                    .budgetInAdvertiserCurrency(5340.32)
+                                    .budgetInImpressions(492382L)
+                                    .dailyTargetInAdvertiserCurrency(5622.5)
+                                    .dailyTargetInImpressions(398919L)
+                                    .build()))
+                            .build())
+                        .build()))
                 .validateInputOnly(false)
                 .build();
 
-        PostCampaignResponse res = sdk.campaign().create()
+        CreateCampaignResponse res = sdk.campaign().create()
                 .request(req)
                 .call();
 
@@ -157,7 +221,7 @@ public class Application {
 
 ### Response
 
-**[PostCampaignResponse](../../models/operations/PostCampaignResponse.md)**
+**[CreateCampaignResponse](../../models/operations/CreateCampaignResponse.md)**
 
 ### Errors
 
@@ -166,7 +230,7 @@ public class Application {
 | models/errors/ProblemDetailsException | 400, 403                              | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## patchCampaign
+## updateCampaign
 
 Only the fields provided in the request payload will be updated.
 
@@ -178,7 +242,7 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PatchCampaignResponse;
+import com.thetradedesk.workflows.models.operations.UpdateCampaignResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -195,103 +259,69 @@ public class Application {
         CampaignUpdateWorkflowInputWithValidation req = CampaignUpdateWorkflowInputWithValidation.builder()
                 .id("<id>")
                 .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
-                    .description("until notwithstanding bump")
-                    .timeZone(JsonNullable.of(null))
-                    .customCPAClickWeight(6995)
-                    .customCPAViewthroughWeight(8563.38)
-                    .customCPAType(CustomCPAType.DISABLED)
-                    .impressionsOnlyBudgetingCpm(8246.96)
+                    .description("yahoo whether frail but into form sway neck notwithstanding")
+                    .timeZone("Asia/Amman")
+                    .customCPAClickWeight(1380.93)
+                    .customCPAViewthroughWeight(3991.98)
+                    .customCPAType(CustomCPAType.CLICK_VIEWTHROUGH_WEIGHTING)
+                    .impressionsOnlyBudgetingCpm(126.57)
                     .budget(CampaignWorkflowBudgetInput.builder()
-                        .pacingMode(CampaignPacingMode.PACE_EVENLY)
-                        .budgetInAdvertiserCurrency(8712.02)
-                        .budgetInImpressions(JsonNullable.of(null))
-                        .dailyTargetInAdvertiserCurrency(8897.46)
-                        .dailyTargetInImpressions(665232L)
+                        .pacingMode(CampaignPacingMode.PACE_AS_SOON_AS_POSSIBLE)
+                        .budgetInAdvertiserCurrency(6974.82)
+                        .budgetInImpressions(834352L)
+                        .dailyTargetInAdvertiserCurrency(8583.49)
+                        .dailyTargetInImpressions(746941L)
                         .build())
-                    .endDateInUtc(JsonNullable.of(null))
+                    .endDateInUtc(OffsetDateTime.parse("2024-07-09T17:14:23.542Z"))
                     .seedId("<id>")
                     .campaignConversionReportingColumns(List.of(
                         CampaignWorkflowCampaignConversionReportingColumnInput.builder()
                             .trackingTagId("<id>")
-                            .includeInCustomCPA(true)
-                            .reportingColumnId(97349)
+                            .includeInCustomCPA(false)
+                            .reportingColumnId(716444)
                             .roasConfig(CustomROASConfig.builder()
-                                .includeInCustomROAS(false)
-                                .customROASWeight(4101.84)
-                                .customROASClickWeight(JsonNullable.of(null))
-                                .customROASViewthroughWeight(4368.63)
+                                .includeInCustomROAS(true)
+                                .customROASWeight(8307.9)
+                                .customROASClickWeight(129.65)
+                                .customROASViewthroughWeight(2890.82)
                                 .build())
-                            .weight(7340.95)
-                            .crossDeviceAttributionModelId("<id>")
-                            .build(),
-                        CampaignWorkflowCampaignConversionReportingColumnInput.builder()
-                            .trackingTagId("<id>")
-                            .includeInCustomCPA(true)
-                            .reportingColumnId(97349)
-                            .roasConfig(CustomROASConfig.builder()
-                                .includeInCustomROAS(false)
-                                .customROASWeight(4101.84)
-                                .customROASClickWeight(JsonNullable.of(null))
-                                .customROASViewthroughWeight(4368.63)
-                                .build())
-                            .weight(7340.95)
-                            .crossDeviceAttributionModelId("<id>")
-                            .build(),
-                        CampaignWorkflowCampaignConversionReportingColumnInput.builder()
-                            .trackingTagId("<id>")
-                            .includeInCustomCPA(true)
-                            .reportingColumnId(97349)
-                            .roasConfig(CustomROASConfig.builder()
-                                .includeInCustomROAS(false)
-                                .customROASWeight(4101.84)
-                                .customROASClickWeight(JsonNullable.of(null))
-                                .customROASViewthroughWeight(4368.63)
-                                .build())
-                            .weight(7340.95)
-                            .crossDeviceAttributionModelId("<id>")
+                            .weight(5187.48)
+                            .crossDeviceAttributionModelId(JsonNullable.of(null))
                             .build()))
                     .name("<value>")
-                    .primaryChannel(CampaignChannelType.NONE)
+                    .primaryChannel(CampaignChannelType.DISPLAY)
                     .primaryGoal(CampaignWorkflowROIGoalInput.builder()
                         .maximizeReach(false)
                         .maximizeLtvIncrementalReach(true)
-                        .cpcInAdvertiserCurrency(8699.49)
-                        .ctrInPercent(8949.6)
-                        .nielsenOTPInPercent(37.27)
-                        .cpaInAdvertiserCurrency(3521.28)
-                        .returnOnAdSpendPercent(7256.13)
-                        .vcrInPercent(5452.85)
-                        .viewabilityInPercent(737.27)
-                        .vcpmInAdvertiserCurrency(1743.53)
-                        .cpcvInAdvertiserCurrency(JsonNullable.of(null))
-                        .miaozhenOTPInPercent(5666.12)
+                        .cpcInAdvertiserCurrency(8835.54)
+                        .ctrInPercent(4975.78)
+                        .nielsenOTPInPercent(6033.78)
+                        .cpaInAdvertiserCurrency(JsonNullable.of(null))
+                        .returnOnAdSpendPercent(5696.08)
+                        .vcrInPercent(8315.31)
+                        .viewabilityInPercent(1059.68)
+                        .vcpmInAdvertiserCurrency(4588.07)
+                        .cpcvInAdvertiserCurrency(2202.71)
+                        .miaozhenOTPInPercent(2682.12)
                         .build())
-                    .startDateInUtc(OffsetDateTime.parse("2023-03-15T19:37:35.952Z"))
+                    .startDateInUtc(OffsetDateTime.parse("2024-02-29T10:31:50.069Z"))
                     .build())
                 .advancedInput(CampaignWorkflowAdvancedInput.builder()
                     .flights(List.of(
                         CampaignWorkflowFlightInput.builder()
-                            .startDateInclusiveUTC(OffsetDateTime.parse("2023-06-20T19:40:02.162Z"))
-                            .budgetInAdvertiserCurrency(8764.81)
-                            .endDateExclusiveUTC(OffsetDateTime.parse("2025-01-24T04:52:37.846Z"))
-                            .budgetInImpressions(472441L)
-                            .dailyTargetInAdvertiserCurrency(5399.55)
-                            .dailyTargetInImpressions(808445L)
-                            .build(),
-                        CampaignWorkflowFlightInput.builder()
-                            .startDateInclusiveUTC(OffsetDateTime.parse("2023-06-20T19:40:02.162Z"))
-                            .budgetInAdvertiserCurrency(8764.81)
-                            .endDateExclusiveUTC(OffsetDateTime.parse("2025-01-24T04:52:37.846Z"))
-                            .budgetInImpressions(472441L)
-                            .dailyTargetInAdvertiserCurrency(5399.55)
-                            .dailyTargetInImpressions(808445L)
+                            .startDateInclusiveUTC(OffsetDateTime.parse("2025-11-09T04:11:39.432Z"))
+                            .budgetInAdvertiserCurrency(6534.57)
+                            .endDateExclusiveUTC(OffsetDateTime.parse("2025-09-10T20:38:51.701Z"))
+                            .budgetInImpressions(865481L)
+                            .dailyTargetInAdvertiserCurrency(1033.72)
+                            .dailyTargetInImpressions(JsonNullable.of(null))
                             .build()))
                     .purchaseOrderNumber("<value>")
                     .build())
-                .validateInputOnly(JsonNullable.of(null))
+                .validateInputOnly(true)
                 .build();
 
-        PatchCampaignResponse res = sdk.campaign().patchCampaign()
+        UpdateCampaignResponse res = sdk.campaign().updateCampaign()
                 .request(req)
                 .call();
 
@@ -310,7 +340,7 @@ public class Application {
 
 ### Response
 
-**[PatchCampaignResponse](../../models/operations/PatchCampaignResponse.md)**
+**[UpdateCampaignResponse](../../models/operations/UpdateCampaignResponse.md)**
 
 ### Errors
 
@@ -319,7 +349,7 @@ public class Application {
 | models/errors/ProblemDetailsException | 400                                   | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## postTypebasedjobCampaignBulk
+## createCampaignsJob
 
 Create multiple new campaigns with required fields
 
@@ -331,7 +361,7 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostTypebasedjobCampaignBulkResponse;
+import com.thetradedesk.workflows.models.operations.CreateCampaignsJobResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -352,61 +382,61 @@ public class Application {
                         .primaryInput(CampaignCreateWorkflowPrimaryInput.builder()
                             .advertiserId("<id>")
                             .name("<value>")
-                            .primaryChannel(CampaignChannelType.NONE)
+                            .primaryChannel(CampaignChannelType.NATIVE_VIDEO)
                             .primaryGoal(CampaignWorkflowROIGoalInput.builder()
-                                .maximizeReach(JsonNullable.of(null))
-                                .maximizeLtvIncrementalReach(true)
-                                .cpcInAdvertiserCurrency(7342.9)
-                                .ctrInPercent(4157.33)
-                                .nielsenOTPInPercent(1508.37)
-                                .cpaInAdvertiserCurrency(5200.65)
-                                .returnOnAdSpendPercent(2714.64)
-                                .vcrInPercent(4408.66)
-                                .viewabilityInPercent(4646.22)
-                                .vcpmInAdvertiserCurrency(5303.62)
-                                .cpcvInAdvertiserCurrency(7628.07)
-                                .miaozhenOTPInPercent(2965.51)
+                                .maximizeReach(false)
+                                .maximizeLtvIncrementalReach(false)
+                                .cpcInAdvertiserCurrency(25.32)
+                                .ctrInPercent(4889.32)
+                                .nielsenOTPInPercent(5258.8)
+                                .cpaInAdvertiserCurrency(2553.01)
+                                .returnOnAdSpendPercent(1142.91)
+                                .vcrInPercent(1152.77)
+                                .viewabilityInPercent(6711.38)
+                                .vcpmInAdvertiserCurrency(4528.37)
+                                .cpcvInAdvertiserCurrency(9833.69)
+                                .miaozhenOTPInPercent(1951.58)
                                 .build())
-                            .description("terribly someplace deflect")
-                            .timeZone("America/Miquelon")
-                            .customCPAClickWeight(779.21)
-                            .customCPAViewthroughWeight(1198.23)
-                            .customCPAType(CustomCPAType.PIXEL_WEIGHTING)
-                            .impressionsOnlyBudgetingCpm(5375.63)
+                            .description(JsonNullable.of(null))
+                            .timeZone("America/North_Dakota/Center")
+                            .customCPAClickWeight(9662.9)
+                            .customCPAViewthroughWeight(3558.78)
+                            .customCPAType(CustomCPAType.CLICK_VIEWTHROUGH_WEIGHTING)
+                            .impressionsOnlyBudgetingCpm(4427.56)
                             .budget(CampaignWorkflowBudgetInput.builder()
                                 .pacingMode(CampaignPacingMode.PACE_AHEAD)
-                                .budgetInAdvertiserCurrency(4629.97)
-                                .budgetInImpressions(808130L)
-                                .dailyTargetInAdvertiserCurrency(4067.56)
-                                .dailyTargetInImpressions(243576L)
+                                .budgetInAdvertiserCurrency(5501.96)
+                                .budgetInImpressions(629784L)
+                                .dailyTargetInAdvertiserCurrency(2524.41)
+                                .dailyTargetInImpressions(726807L)
                                 .build())
-                            .endDateInUtc(OffsetDateTime.parse("2025-12-15T08:27:00.961Z"))
-                            .seedId(JsonNullable.of(null))
+                            .endDateInUtc(OffsetDateTime.parse("2023-12-21T01:12:20.772Z"))
+                            .seedId("<id>")
                             .campaignConversionReportingColumns(List.of(
                                 CampaignWorkflowCampaignConversionReportingColumnInput.builder()
                                     .trackingTagId("<id>")
-                                    .includeInCustomCPA(true)
-                                    .reportingColumnId(265596)
+                                    .includeInCustomCPA(false)
+                                    .reportingColumnId(356532)
                                     .roasConfig(CustomROASConfig.builder()
                                         .includeInCustomROAS(false)
-                                        .customROASWeight(1659.76)
-                                        .customROASClickWeight(7838.93)
-                                        .customROASViewthroughWeight(7814.81)
+                                        .customROASWeight(1483.03)
+                                        .customROASClickWeight(5286.76)
+                                        .customROASViewthroughWeight(8906.82)
                                         .build())
-                                    .weight(9286.55)
+                                    .weight(JsonNullable.of(null))
                                     .crossDeviceAttributionModelId("<id>")
                                     .build()))
-                            .startDateInUtc(JsonNullable.of(null))
+                            .startDateInUtc(OffsetDateTime.parse("2025-09-26T21:06:42.946Z"))
                             .build())
                         .advancedInput(CampaignWorkflowAdvancedInput.builder()
                             .flights(List.of(
                                 CampaignWorkflowFlightInput.builder()
-                                    .startDateInclusiveUTC(OffsetDateTime.parse("2023-05-29T15:44:07.749Z"))
-                                    .budgetInAdvertiserCurrency(9558.91)
-                                    .endDateExclusiveUTC(OffsetDateTime.parse("2024-01-24T07:42:34.281Z"))
-                                    .budgetInImpressions(73147L)
-                                    .dailyTargetInAdvertiserCurrency(4332.71)
-                                    .dailyTargetInImpressions(768928L)
+                                    .startDateInclusiveUTC(OffsetDateTime.parse("2024-09-20T06:04:19.345Z"))
+                                    .budgetInAdvertiserCurrency(8219.9)
+                                    .endDateExclusiveUTC(OffsetDateTime.parse("2024-01-18T07:43:56.299Z"))
+                                    .budgetInImpressions(76925L)
+                                    .dailyTargetInAdvertiserCurrency(9309.03)
+                                    .dailyTargetInImpressions(152838L)
                                     .build()))
                             .purchaseOrderNumber("<value>")
                             .build())
@@ -414,68 +444,68 @@ public class Application {
                             CampaignCreateWorkflowAdGroupInput.builder()
                                 .primaryInput(AdGroupCreateWorkflowPrimaryInput.builder()
                                     .name("<value>")
-                                    .channel(AdGroupChannel.AUDIO)
+                                    .channel(AdGroupChannel.DISPLAY)
                                     .funnelLocation(AdGroupFunnelLocation.AWARENESS)
                                     .isEnabled(true)
-                                    .description(JsonNullable.of(null))
+                                    .description("scenario dish gracefully through tame yahoo pension husband as atop")
                                     .budget(AdGroupWorkflowBudgetInput.builder()
                                         .allocationType(AllocationType.MAXIMUM)
-                                        .budgetInAdvertiserCurrency(6785.04)
-                                        .budgetInImpressions(835320L)
-                                        .dailyTargetInAdvertiserCurrency(4763.51)
-                                        .dailyTargetInImpressions(267343L)
+                                        .budgetInAdvertiserCurrency(2283.06)
+                                        .budgetInImpressions(301691L)
+                                        .dailyTargetInAdvertiserCurrency(9268.18)
+                                        .dailyTargetInImpressions(851470L)
                                         .build())
-                                    .baseBidCPMInAdvertiserCurrency(2929.53)
-                                    .maxBidCPMInAdvertiserCurrency(3306.27)
+                                    .baseBidCPMInAdvertiserCurrency(694.78)
+                                    .maxBidCPMInAdvertiserCurrency(6084.4)
                                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
                                         .audienceId("<id>")
                                         .audienceAcceleratorExclusionsEnabled(true)
-                                        .audienceBoosterEnabled(true)
-                                        .audienceExcluderEnabled(false)
+                                        .audienceBoosterEnabled(false)
+                                        .audienceExcluderEnabled(true)
                                         .audiencePredictorEnabled(false)
                                         .crossDeviceVendorListForAudience(List.of(
-                                            745991,
-                                            421485,
-                                            187325))
-                                        .recencyExclusionWindowInMinutes(651644)
-                                        .targetTrackableUsersEnabled(JsonNullable.of(null))
+                                            497890,
+                                            566253))
+                                        .recencyExclusionWindowInMinutes(742665)
+                                        .targetTrackableUsersEnabled(true)
                                         .useMcIdAsPrimary(true)
                                         .build())
                                     .roiGoal(AdGroupWorkflowROIGoalInput.builder()
                                         .maximizeReach(false)
-                                        .maximizeLtvIncrementalReach(false)
-                                        .cpcInAdvertiserCurrency(3342.73)
-                                        .ctrInPercent(8498.13)
-                                        .nielsenOTPInPercent(JsonNullable.of(null))
-                                        .cpaInAdvertiserCurrency(4541.91)
-                                        .returnOnAdSpendPercent(1951.31)
-                                        .vcrInPercent(4890.16)
-                                        .viewabilityInPercent(7796.33)
-                                        .vcpmInAdvertiserCurrency(9686.38)
-                                        .cpcvInAdvertiserCurrency(5397.14)
-                                        .miaozhenOTPInPercent(6837.51)
+                                        .maximizeLtvIncrementalReach(true)
+                                        .cpcInAdvertiserCurrency(9062.02)
+                                        .ctrInPercent(7192.99)
+                                        .nielsenOTPInPercent(2823.22)
+                                        .cpaInAdvertiserCurrency(3140.25)
+                                        .returnOnAdSpendPercent(6857.21)
+                                        .vcrInPercent(2704.73)
+                                        .viewabilityInPercent(2247.4)
+                                        .vcpmInAdvertiserCurrency(8383.69)
+                                        .cpcvInAdvertiserCurrency(4755.8)
+                                        .miaozhenOTPInPercent(4575.86)
                                         .build())
-                                    .creativeIds(JsonNullable.of(null))
+                                    .creativeIds(List.of(
+                                        "<value 1>",
+                                        "<value 2>"))
                                     .associatedBidLists(List.of(
                                         AdGroupWorkflowAssociateBidListInput.builder()
                                             .bidListId("<id>")
-                                            .isEnabled(false)
-                                            .isDefaultForDimension(JsonNullable.of(null))
+                                            .isEnabled(true)
+                                            .isDefaultForDimension(false)
                                             .build()))
                                     .programmaticGuaranteedPrivateContractId("<id>")
                                     .build())
                                 .advancedInput(CampaignCreateWorkflowAdGroupAdvancedInput.builder()
                                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
-                                        .areFutureKoaFeaturesEnabled(JsonNullable.of(null))
-                                        .predictiveClearingEnabled(true)
+                                        .areFutureKoaFeaturesEnabled(true)
+                                        .predictiveClearingEnabled(false)
                                         .build())
                                     .comscoreSettings(AdGroupWorkflowComscoreSettingsInput.builder()
                                         .isEnabled(false)
-                                        .populationId(392396)
+                                        .populationId(559587)
                                         .demographicMemberIds(List.of(
-                                            815546,
-                                            208096,
-                                            412653))
+                                            139340,
+                                            129935))
                                         .mobileDemographicMemberIds(JsonNullable.of(null))
                                         .build())
                                     .contractTargeting(AdGroupWorkflowContractTargetingInput.builder()
@@ -483,46 +513,40 @@ public class Application {
                                         .build())
                                     .dimensionalBiddingAutoOptimizationSettings(List.of(
                                         List.of(
-                                            DimensionalBiddingDimensions.HAS_FREQUENCY_V2_ADJUSTMENT_ID)))
+                                            DimensionalBiddingDimensions.HAS_AUDIENCE_REACH_PERCENTAGE_TIER_ID),
+                                        List.of()))
                                     .isUseClicksAsConversionsEnabled(false)
                                     .isUseSecondaryConversionsEnabled(true)
                                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                                        .gender(TargetingGender.MALE)
-                                        .startAge(TargetingStartAge.THIRTY)
-                                        .endAge(TargetingEndAge.TWENTY_NINE)
+                                        .gender(TargetingGender.FEMALE)
+                                        .startAge(TargetingStartAge.THIRTY_FIVE)
+                                        .endAge(TargetingEndAge.TWENTY_FOUR)
                                         .countries(List.of(
                                             "<value 1>",
                                             "<value 2>"))
-                                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                                        .enhancedReportingOption(EnhancedNielsenReportingOptions.NONE)
                                         .build())
-                                    .newFrequencyConfigs(List.of(
-                                        AdGroupWorkflowNewFrequencyConfigInput.builder()
-                                            .counterName("<value>")
-                                            .frequencyCap(26304)
-                                            .frequencyGoal(197135)
-                                            .resetIntervalInMinutes(993919)
-                                            .build()))
+                                    .newFrequencyConfigs(JsonNullable.of(null))
                                     .flights(List.of(
                                         CampaignCreateWorkflowAdGroupFlightInput.builder()
-                                            .allocationType(AllocationType.FIXED)
-                                            .budgetInAdvertiserCurrency(1254.25)
-                                            .budgetInImpressions(426962L)
-                                            .dailyTargetInAdvertiserCurrency(3971.88)
-                                            .dailyTargetInImpressions(746686L)
+                                            .allocationType(AllocationType.MAXIMUM)
+                                            .budgetInAdvertiserCurrency(4838.47)
+                                            .budgetInImpressions(420224L)
+                                            .dailyTargetInAdvertiserCurrency(1513.78)
+                                            .dailyTargetInImpressions(735500L)
                                             .build()))
                                     .build())
                                 .build()))
                         .build()))
-                .validateInputOnly(false)
+                .validateInputOnly(true)
                 .callbackInput(WorkflowCallbackInput.builder()
-                    .callbackUrl("https://neat-inspection.biz/")
+                    .callbackUrl("https://impeccable-pick.com/")
                     .callbackHeaders(Map.ofEntries(
-                        Map.entry("key", "<value>"),
-                        Map.entry("key1", "<value>")))
+                        Map.entry("key", "<value>")))
                     .build())
                 .build();
 
-        PostTypebasedjobCampaignBulkResponse res = sdk.campaign().postTypebasedjobCampaignBulk()
+        CreateCampaignsJobResponse res = sdk.campaign().createCampaignsJob()
                 .request(req)
                 .call();
 
@@ -541,7 +565,7 @@ public class Application {
 
 ### Response
 
-**[PostTypebasedjobCampaignBulkResponse](../../models/operations/PostTypebasedjobCampaignBulkResponse.md)**
+**[CreateCampaignsJobResponse](../../models/operations/CreateCampaignsJobResponse.md)**
 
 ### Errors
 
@@ -550,7 +574,7 @@ public class Application {
 | models/errors/ProblemDetailsException | 400, 403                              | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## patchTypebasedjobCampaignBulk
+## updateCampaignsJob
 
 Only the fields provided in the request payload for each specific campaign will be updated.
 
@@ -562,7 +586,7 @@ package hello.world;
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PatchTypebasedjobCampaignBulkResponse;
+import com.thetradedesk.workflows.models.operations.UpdateCampaignsJobResponse;
 import java.lang.Exception;
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -582,56 +606,69 @@ public class Application {
                     CampaignUpdateWorkflowInput.builder()
                         .id("<id>")
                         .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
-                            .description("dreamily oxygenate swine instead cannon indeed concerning clamp queasily")
-                            .timeZone("America/North_Dakota/New_Salem")
-                            .customCPAClickWeight(2069.39)
-                            .customCPAViewthroughWeight(6500.84)
-                            .customCPAType(CustomCPAType.CLICK_VIEWTHROUGH_WEIGHTING)
-                            .impressionsOnlyBudgetingCpm(6512.22)
+                            .description("hmph energetically yet surprisingly swift knight swear multicolored absent")
+                            .timeZone("America/Argentina/San_Juan")
+                            .customCPAClickWeight(JsonNullable.of(null))
+                            .customCPAViewthroughWeight(8361.84)
+                            .customCPAType(CustomCPAType.PIXEL_WEIGHTING)
+                            .impressionsOnlyBudgetingCpm(2706.4)
                             .budget(CampaignWorkflowBudgetInput.builder()
-                                .pacingMode(CampaignPacingMode.PACE_EVENLY)
-                                .budgetInAdvertiserCurrency(4239.6)
-                                .budgetInImpressions(22149L)
-                                .dailyTargetInAdvertiserCurrency(2521.81)
-                                .dailyTargetInImpressions(843774L)
+                                .pacingMode(CampaignPacingMode.PACE_AS_SOON_AS_POSSIBLE)
+                                .budgetInAdvertiserCurrency(2564.89)
+                                .budgetInImpressions(659726L)
+                                .dailyTargetInAdvertiserCurrency(6514.48)
+                                .dailyTargetInImpressions(892097L)
                                 .build())
-                            .endDateInUtc(OffsetDateTime.parse("2024-08-25T01:07:39.538Z"))
+                            .endDateInUtc(OffsetDateTime.parse("2023-11-11T21:39:56.025Z"))
                             .seedId("<id>")
-                            .campaignConversionReportingColumns(JsonNullable.of(null))
-                            .name(JsonNullable.of(null))
-                            .primaryChannel(CampaignChannelType.NATIVE_DISPLAY)
+                            .campaignConversionReportingColumns(List.of(
+                                CampaignWorkflowCampaignConversionReportingColumnInput.builder()
+                                    .trackingTagId("<id>")
+                                    .includeInCustomCPA(true)
+                                    .reportingColumnId(809247)
+                                    .roasConfig(CustomROASConfig.builder()
+                                        .includeInCustomROAS(false)
+                                        .customROASWeight(JsonNullable.of(null))
+                                        .customROASClickWeight(JsonNullable.of(null))
+                                        .customROASViewthroughWeight(6784.9)
+                                        .build())
+                                    .weight(2260.69)
+                                    .crossDeviceAttributionModelId("<id>")
+                                    .build()))
+                            .name("<value>")
+                            .primaryChannel(CampaignChannelType.NONE)
                             .primaryGoal(CampaignWorkflowROIGoalInput.builder()
-                                .maximizeReach(false)
+                                .maximizeReach(true)
                                 .maximizeLtvIncrementalReach(false)
-                                .cpcInAdvertiserCurrency(7023.26)
-                                .ctrInPercent(JsonNullable.of(null))
-                                .nielsenOTPInPercent(7851.49)
-                                .cpaInAdvertiserCurrency(JsonNullable.of(null))
-                                .returnOnAdSpendPercent(8228.66)
-                                .vcrInPercent(1734.42)
-                                .viewabilityInPercent(9398.46)
-                                .vcpmInAdvertiserCurrency(3476.53)
-                                .cpcvInAdvertiserCurrency(6537.87)
-                                .miaozhenOTPInPercent(4667.23)
+                                .cpcInAdvertiserCurrency(3354.68)
+                                .ctrInPercent(7716.49)
+                                .nielsenOTPInPercent(JsonNullable.of(null))
+                                .cpaInAdvertiserCurrency(381.7)
+                                .returnOnAdSpendPercent(8461.44)
+                                .vcrInPercent(4170.61)
+                                .viewabilityInPercent(5364.85)
+                                .vcpmInAdvertiserCurrency(1107.08)
+                                .cpcvInAdvertiserCurrency(JsonNullable.of(null))
+                                .miaozhenOTPInPercent(4584.96)
                                 .build())
-                            .startDateInUtc(JsonNullable.of(null))
+                            .startDateInUtc(OffsetDateTime.parse("2023-01-13T23:06:05.083Z"))
                             .build())
                         .advancedInput(CampaignWorkflowAdvancedInput.builder()
                             .flights(List.of(
                                 CampaignWorkflowFlightInput.builder()
-                                    .startDateInclusiveUTC(OffsetDateTime.parse("2025-05-03T18:31:10.973Z"))
-                                    .budgetInAdvertiserCurrency(1936.69)
-                                    .endDateExclusiveUTC(OffsetDateTime.parse("2023-02-05T18:37:52.192Z"))
-                                    .budgetInImpressions(216227L)
-                                    .dailyTargetInAdvertiserCurrency(3384.57)
-                                    .dailyTargetInImpressions(677379L)
+                                    .startDateInclusiveUTC(OffsetDateTime.parse("2023-08-14T13:47:31.198Z"))
+                                    .budgetInAdvertiserCurrency(1874.95)
+                                    .endDateExclusiveUTC(OffsetDateTime.parse("2024-07-07T14:46:57.378Z"))
+                                    .budgetInImpressions(207094L)
+                                    .dailyTargetInAdvertiserCurrency(7255.71)
+                                    .dailyTargetInImpressions(760981L)
                                     .build()))
                             .purchaseOrderNumber("<value>")
                             .build())
                         .build()))
-                .validateInputOnly(false)
+                .validateInputOnly(true)
                 .callbackInput(WorkflowCallbackInput.builder()
-                    .callbackUrl("https://hollow-rosemary.biz/")
+                    .callbackUrl("https://soggy-apparatus.org/")
                     .callbackHeaders(Map.ofEntries(
                         Map.entry("key", "<value>"),
                         Map.entry("key1", "<value>"),
@@ -639,7 +676,7 @@ public class Application {
                     .build())
                 .build();
 
-        PatchTypebasedjobCampaignBulkResponse res = sdk.campaign().patchTypebasedjobCampaignBulk()
+        UpdateCampaignsJobResponse res = sdk.campaign().updateCampaignsJob()
                 .request(req)
                 .call();
 
@@ -658,7 +695,7 @@ public class Application {
 
 ### Response
 
-**[PatchTypebasedjobCampaignBulkResponse](../../models/operations/PatchTypebasedjobCampaignBulkResponse.md)**
+**[UpdateCampaignsJobResponse](../../models/operations/UpdateCampaignsJobResponse.md)**
 
 ### Errors
 
@@ -667,7 +704,7 @@ public class Application {
 | models/errors/ProblemDetailsException | 400, 403                              | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## postCampaignArchive
+## archiveCampaigns
 
 **NOTE**: Once archived, campaigns cannot be un-archived.
 
@@ -678,7 +715,7 @@ package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostCampaignArchiveResponse;
+import com.thetradedesk.workflows.models.operations.ArchiveCampaignsResponse;
 import java.lang.Exception;
 import java.util.List;
 
@@ -690,10 +727,12 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        PostCampaignArchiveResponse res = sdk.campaign().postCampaignArchive()
+        ArchiveCampaignsResponse res = sdk.campaign().archiveCampaigns()
                 .forceArchive(false)
                 .requestBody(List.of(
-                    "<value 1>"))
+                    "<value 1>",
+                    "<value 2>",
+                    "<value 3>"))
                 .call();
 
         if (res.strings().isPresent()) {
@@ -712,7 +751,7 @@ public class Application {
 
 ### Response
 
-**[PostCampaignArchiveResponse](../../models/operations/PostCampaignArchiveResponse.md)**
+**[ArchiveCampaignsResponse](../../models/operations/ArchiveCampaignsResponse.md)**
 
 ### Errors
 
@@ -732,7 +771,7 @@ package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.GetCampaignIdVersionResponse;
+import com.thetradedesk.workflows.models.operations.GetCampaignVersionResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -743,7 +782,7 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        GetCampaignIdVersionResponse res = sdk.campaign().getVersion()
+        GetCampaignVersionResponse res = sdk.campaign().getVersion()
                 .id("<id>")
                 .call();
 
@@ -762,7 +801,7 @@ public class Application {
 
 ### Response
 
-**[GetCampaignIdVersionResponse](../../models/operations/GetCampaignIdVersionResponse.md)**
+**[GetCampaignVersionResponse](../../models/operations/GetCampaignVersionResponse.md)**
 
 ### Errors
 

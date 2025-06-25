@@ -17,7 +17,7 @@ public enum WorkflowStatus {
     @JsonValue
     private final String value;
 
-    private WorkflowStatus(String value) {
+    WorkflowStatus(String value) {
         this.value = value;
     }
     

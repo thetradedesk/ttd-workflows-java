@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [postTypebasedjobThirdpartydata](#posttypebasedjobthirdpartydata) - Submit a type-based job for third-party data retrieval for an advertiser
+* [getThirdPartyDataJob](#getthirdpartydatajob) - Submit a type-based job for third-party data retrieval for an advertiser
 
-## postTypebasedjobThirdpartydata
+## getThirdPartyDataJob
 
 When a third-party data query is submitted, a job ID is returned.
 This job ID can be used to poll for the job's status using the associated operation under "Job Status".
@@ -21,7 +21,7 @@ import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.ThirdPartyDataInput;
 import com.thetradedesk.workflows.models.components.WorkflowCallbackInput;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostTypebasedjobThirdpartydataResponse;
+import com.thetradedesk.workflows.models.operations.GetThirdPartyDataJobResponse;
 import java.lang.Exception;
 import java.util.Map;
 
@@ -37,14 +37,14 @@ public class Application {
                 .partnerId("<id>")
                 .queryShape("<value>")
                 .callbackInput(WorkflowCallbackInput.builder()
-                    .callbackUrl("https://colorful-utilization.com/")
+                    .callbackUrl("https://extroverted-intent.net")
                     .callbackHeaders(Map.ofEntries(
                         Map.entry("key", "<value>"),
                         Map.entry("key1", "<value>")))
                     .build())
                 .build();
 
-        PostTypebasedjobThirdpartydataResponse res = sdk.thirdPartyData().postTypebasedjobThirdpartydata()
+        GetThirdPartyDataJobResponse res = sdk.thirdPartyData().getThirdPartyDataJob()
                 .request(req)
                 .call();
 
@@ -63,7 +63,7 @@ public class Application {
 
 ### Response
 
-**[PostTypebasedjobThirdpartydataResponse](../../models/operations/PostTypebasedjobThirdpartydataResponse.md)**
+**[GetThirdPartyDataJobResponse](../../models/operations/GetThirdPartyDataJobResponse.md)**
 
 ### Errors
 

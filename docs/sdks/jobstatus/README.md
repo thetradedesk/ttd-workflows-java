@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [getTypebasedjobIdStatus](#gettypebasedjobidstatus) - Get the status of a previously submitted type-based job
+* [getJobStatus](#getjobstatus) - Get the status of a previously submitted type-based job
 
-## getTypebasedjobIdStatus
+## getJobStatus
 
 Use this operation to get a previously submitted job's status and completion percentage.
 Once a job is complete, this operation will return the URL from which to download the job results.
@@ -19,7 +19,7 @@ package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.GetTypebasedjobIdStatusResponse;
+import com.thetradedesk.workflows.models.operations.GetJobStatusResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -30,8 +30,8 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        GetTypebasedjobIdStatusResponse res = sdk.jobStatus().getTypebasedjobIdStatus()
-                .id(416928L)
+        GetJobStatusResponse res = sdk.jobStatus().getJobStatus()
+                .id(412651L)
                 .call();
 
         if (res.typeBasedJobStatusResponse().isPresent()) {
@@ -49,7 +49,7 @@ public class Application {
 
 ### Response
 
-**[GetTypebasedjobIdStatusResponse](../../models/operations/GetTypebasedjobIdStatusResponse.md)**
+**[GetJobStatusResponse](../../models/operations/GetJobStatusResponse.md)**
 
 ### Errors
 

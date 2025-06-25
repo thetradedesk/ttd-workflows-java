@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [postGraphqlrequest](#postgraphqlrequest) - Submit a valid GraphQL query or mutation
+* [submitGraphQlRequest](#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
 
-## postGraphqlrequest
+## submitGraphQlRequest
 
 This generic operation can be used to execute any valid GraphQL request.
 To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
@@ -21,7 +21,7 @@ import com.thetradedesk.workflows.TtdWorkflows;
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.models.components.Variables;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.PostGraphqlrequestResponse;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -38,7 +38,7 @@ public class Application {
                     .build())
                 .build();
 
-        PostGraphqlrequestResponse res = sdk.graphQLRequest().postGraphqlrequest()
+        SubmitGraphQlRequestResponse res = sdk.graphQLRequest().submitGraphQlRequest()
                 .request(req)
                 .call();
 
@@ -57,7 +57,7 @@ public class Application {
 
 ### Response
 
-**[PostGraphqlrequestResponse](../../models/operations/PostGraphqlrequestResponse.md)**
+**[SubmitGraphQlRequestResponse](../../models/operations/SubmitGraphQlRequestResponse.md)**
 
 ### Errors
 
