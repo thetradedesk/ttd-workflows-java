@@ -8,7 +8,7 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public enum PubApiMethodType {
+public enum RestApiMethodType {
     POST("POST"),
     PUT("PUT"),
     GET("GET"),
@@ -17,7 +17,7 @@ public enum PubApiMethodType {
     @JsonValue
     private final String value;
 
-    PubApiMethodType(String value) {
+    RestApiMethodType(String value) {
         this.value = value;
     }
     
@@ -25,8 +25,8 @@ public enum PubApiMethodType {
         return value;
     }
     
-    public static Optional<PubApiMethodType> fromValue(String value) {
-        for (PubApiMethodType o: PubApiMethodType.values()) {
+    public static Optional<RestApiMethodType> fromValue(String value) {
+        for (RestApiMethodType o: RestApiMethodType.values()) {
             if (Objects.deepEquals(o.value, value)) {
                 return Optional.of(o);
             }

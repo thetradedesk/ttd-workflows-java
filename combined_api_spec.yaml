@@ -490,7 +490,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CallPubApiWorkflowInput'
+              $ref: '#/components/schemas/CallRestApiWorkflowInput'
       responses:
         '200':
           description: OK
@@ -1420,14 +1420,14 @@ components:
         - Fixed
         - Maximum
       type: string
-    CallPubApiWorkflowInput:
+    CallRestApiWorkflowInput:
       required:
         - endpoint
         - methodType
       type: object
       properties:
         methodType:
-          $ref: '#/components/schemas/PubApiMethodType'
+          $ref: '#/components/schemas/RestApiMethodType'
         endpoint:
           type: string
           nullable: true
@@ -2158,7 +2158,7 @@ components:
           nullable: true
       additionalProperties:
         type: object
-    PubApiMethodType:
+    RestApiMethodType:
       enum:
         - POST
         - PUT

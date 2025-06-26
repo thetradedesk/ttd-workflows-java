@@ -18,8 +18,8 @@ To explore the available REST operations, see the [REST API Reference](https://p
 package hello.world;
 
 import com.thetradedesk.workflows.TtdWorkflows;
-import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
-import com.thetradedesk.workflows.models.components.PubApiMethodType;
+import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.RestApiMethodType;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
 import java.lang.Exception;
@@ -32,8 +32,8 @@ public class Application {
                 .ttdAuth("<YOUR_API_KEY_HERE>")
             .build();
 
-        CallPubApiWorkflowInput req = CallPubApiWorkflowInput.builder()
-                .methodType(PubApiMethodType.GET)
+        CallRestApiWorkflowInput req = CallRestApiWorkflowInput.builder()
+                .methodType(RestApiMethodType.GET)
                 .endpoint("<value>")
                 .dataBody("<value>")
                 .build();
@@ -51,9 +51,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [CallPubApiWorkflowInput](../../models/shared/CallPubApiWorkflowInput.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [CallRestApiWorkflowInput](../../models/shared/CallRestApiWorkflowInput.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 

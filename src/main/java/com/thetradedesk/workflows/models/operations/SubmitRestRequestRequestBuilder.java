@@ -6,7 +6,7 @@ package com.thetradedesk.workflows.models.operations;
 import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
-import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.operations.SubmitRestRequestOperation;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class SubmitRestRequestRequestBuilder {
 
-    private Optional<? extends CallPubApiWorkflowInput> request = Optional.empty();
+    private Optional<? extends CallRestApiWorkflowInput> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
 
@@ -24,13 +24,13 @@ public class SubmitRestRequestRequestBuilder {
         this.sdkConfiguration = sdkConfiguration;
     }
                 
-    public SubmitRestRequestRequestBuilder request(CallPubApiWorkflowInput request) {
+    public SubmitRestRequestRequestBuilder request(CallRestApiWorkflowInput request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public SubmitRestRequestRequestBuilder request(Optional<? extends CallPubApiWorkflowInput> request) {
+    public SubmitRestRequestRequestBuilder request(Optional<? extends CallRestApiWorkflowInput> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;
@@ -53,7 +53,7 @@ public class SubmitRestRequestRequestBuilder {
             .retryConfig(retryConfig)
             .build());
 
-        RequestOperation<Optional<? extends CallPubApiWorkflowInput>, SubmitRestRequestResponse> operation
+        RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
               = new SubmitRestRequestOperation(
                  sdkConfiguration,
                  options);
