@@ -5,7 +5,7 @@ package com.thetradedesk.workflows;
 
 import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
-import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
 import com.thetradedesk.workflows.operations.SubmitRestRequestOperation;
@@ -59,9 +59,9 @@ public class RESTRequest {
      * @throws Exception if the API call fails
      */
     public SubmitRestRequestResponse submitRestRequest(
-            Optional<? extends CallPubApiWorkflowInput> request,
+            Optional<? extends CallRestApiWorkflowInput> request,
             Optional<Options> options) throws Exception {
-        RequestOperation<Optional<? extends CallPubApiWorkflowInput>, SubmitRestRequestResponse> operation
+        RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
               = new SubmitRestRequestOperation(
                  sdkConfiguration,
                  options);

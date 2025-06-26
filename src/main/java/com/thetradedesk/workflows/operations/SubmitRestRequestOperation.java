@@ -8,7 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.SecuritySource;
-import com.thetradedesk.workflows.models.components.CallPubApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
@@ -38,7 +38,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 
-public class SubmitRestRequestOperation implements RequestOperation<Optional<? extends CallPubApiWorkflowInput>, SubmitRestRequestResponse> {
+public class SubmitRestRequestOperation implements RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> {
     
     private final SDKConfiguration sdkConfiguration;
     private final Optional<Options> options;
@@ -51,7 +51,7 @@ public class SubmitRestRequestOperation implements RequestOperation<Optional<? e
     }
     
     @Override
-    public HttpResponse<InputStream> doRequest(Optional<? extends CallPubApiWorkflowInput> request) throws Exception {
+    public HttpResponse<InputStream> doRequest(Optional<? extends CallRestApiWorkflowInput> request) throws Exception {
         options.ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG)));
         String baseUrl = this.sdkConfiguration.serverUrl();
         String url = Utils.generateURL(
@@ -62,7 +62,7 @@ public class SubmitRestRequestOperation implements RequestOperation<Optional<? e
         Object convertedRequest = Utils.convertToShape(
                 request, 
                 JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends CallPubApiWorkflowInput>>() {});
+                new TypeReference<Optional<? extends CallRestApiWorkflowInput>>() {});
         SerializedBody serializedRequestBody = Utils.serializeRequestBody(
                 convertedRequest, 
                 "request",

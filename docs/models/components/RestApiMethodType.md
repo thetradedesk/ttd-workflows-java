@@ -1,4 +1,4 @@
-# PubApiMethodType
+# RestApiMethodType
 
 
 ## Values

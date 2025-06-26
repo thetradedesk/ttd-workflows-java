@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: 5594f11bac596d49c347dc51c4c98c8a
+  docChecksum: eebb0445d0be3ad3e2d2df37cf212871
   docVersion: v1
-  speakeasyVersion: 1.570.0
-  generationVersion: 2.638.0
-  releaseVersion: 0.7.0
-  configChecksum: 50b0bbd2a07bdfd3cf26bc08f0593929
+  speakeasyVersion: 1.570.1
+  generationVersion: 2.638.1
+  releaseVersion: 0.7.1
+  configChecksum: dac26c6b73050839dd33345b2aaabed3
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -62,7 +62,7 @@ generatedFiles:
   - docs/models/components/AdGroupWorkflowNielsenTrackingAttributesInput.md
   - docs/models/components/AdGroupWorkflowROIGoalInput.md
   - docs/models/components/AllocationType.md
-  - docs/models/components/CallPubApiWorkflowInput.md
+  - docs/models/components/CallRestApiWorkflowInput.md
   - docs/models/components/CampaignBulkCreateWorkflowInputWithValidation.md
   - docs/models/components/CampaignBulkUpdateWorkflowInputWithValidation.md
   - docs/models/components/CampaignChannelType.md
@@ -92,7 +92,7 @@ generatedFiles:
   - docs/models/components/FirstPartyDataInput.md
   - docs/models/components/GraphQLRequestInput.md
   - docs/models/components/ProblemDetails.md
-  - docs/models/components/PubApiMethodType.md
+  - docs/models/components/RestApiMethodType.md
   - docs/models/components/Security.md
   - docs/models/components/TargetingEndAge.md
   - docs/models/components/TargetingGender.md
@@ -183,7 +183,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowNielsenTrackingAttributesInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowROIGoalInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/AllocationType.java
-  - src/main/java/com/thetradedesk/workflows/models/components/CallPubApiWorkflowInput.java
+  - src/main/java/com/thetradedesk/workflows/models/components/CallRestApiWorkflowInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignBulkCreateWorkflowInputWithValidation.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignBulkUpdateWorkflowInputWithValidation.java
   - src/main/java/com/thetradedesk/workflows/models/components/CampaignChannelType.java
@@ -213,7 +213,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/FirstPartyDataInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/GraphQLRequestInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/ProblemDetails.java
-  - src/main/java/com/thetradedesk/workflows/models/components/PubApiMethodType.java
+  - src/main/java/com/thetradedesk/workflows/models/components/RestApiMethodType.java
   - src/main/java/com/thetradedesk/workflows/models/components/Security.java
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingEndAge.java
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingGender.java

@@ -15,10 +15,10 @@ import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class CallPubApiWorkflowInput {
+public class CallRestApiWorkflowInput {
 
     @JsonProperty("methodType")
-    private PubApiMethodType methodType;
+    private RestApiMethodType methodType;
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("endpoint")
@@ -29,8 +29,8 @@ public class CallPubApiWorkflowInput {
     private JsonNullable<String> dataBody;
 
     @JsonCreator
-    public CallPubApiWorkflowInput(
-            @JsonProperty("methodType") PubApiMethodType methodType,
+    public CallRestApiWorkflowInput(
+            @JsonProperty("methodType") RestApiMethodType methodType,
             @JsonProperty("endpoint") Optional<String> endpoint,
             @JsonProperty("dataBody") JsonNullable<String> dataBody) {
         Utils.checkNotNull(methodType, "methodType");
@@ -41,13 +41,13 @@ public class CallPubApiWorkflowInput {
         this.dataBody = dataBody;
     }
     
-    public CallPubApiWorkflowInput(
-            PubApiMethodType methodType) {
+    public CallRestApiWorkflowInput(
+            RestApiMethodType methodType) {
         this(methodType, Optional.empty(), JsonNullable.undefined());
     }
 
     @JsonIgnore
-    public PubApiMethodType methodType() {
+    public RestApiMethodType methodType() {
         return methodType;
     }
 
@@ -65,31 +65,31 @@ public class CallPubApiWorkflowInput {
         return new Builder();
     }    
 
-    public CallPubApiWorkflowInput withMethodType(PubApiMethodType methodType) {
+    public CallRestApiWorkflowInput withMethodType(RestApiMethodType methodType) {
         Utils.checkNotNull(methodType, "methodType");
         this.methodType = methodType;
         return this;
     }
 
-    public CallPubApiWorkflowInput withEndpoint(String endpoint) {
+    public CallRestApiWorkflowInput withEndpoint(String endpoint) {
         Utils.checkNotNull(endpoint, "endpoint");
         this.endpoint = Optional.ofNullable(endpoint);
         return this;
     }
 
-    public CallPubApiWorkflowInput withEndpoint(Optional<String> endpoint) {
+    public CallRestApiWorkflowInput withEndpoint(Optional<String> endpoint) {
         Utils.checkNotNull(endpoint, "endpoint");
         this.endpoint = endpoint;
         return this;
     }
 
-    public CallPubApiWorkflowInput withDataBody(String dataBody) {
+    public CallRestApiWorkflowInput withDataBody(String dataBody) {
         Utils.checkNotNull(dataBody, "dataBody");
         this.dataBody = JsonNullable.of(dataBody);
         return this;
     }
 
-    public CallPubApiWorkflowInput withDataBody(JsonNullable<String> dataBody) {
+    public CallRestApiWorkflowInput withDataBody(JsonNullable<String> dataBody) {
         Utils.checkNotNull(dataBody, "dataBody");
         this.dataBody = dataBody;
         return this;
@@ -104,7 +104,7 @@ public class CallPubApiWorkflowInput {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CallPubApiWorkflowInput other = (CallPubApiWorkflowInput) o;
+        CallRestApiWorkflowInput other = (CallRestApiWorkflowInput) o;
         return 
             Objects.deepEquals(this.methodType, other.methodType) &&
             Objects.deepEquals(this.endpoint, other.endpoint) &&
@@ -121,7 +121,7 @@ public class CallPubApiWorkflowInput {
     
     @Override
     public String toString() {
-        return Utils.toString(CallPubApiWorkflowInput.class,
+        return Utils.toString(CallRestApiWorkflowInput.class,
                 "methodType", methodType,
                 "endpoint", endpoint,
                 "dataBody", dataBody);
@@ -129,7 +129,7 @@ public class CallPubApiWorkflowInput {
     
     public final static class Builder {
  
-        private PubApiMethodType methodType;
+        private RestApiMethodType methodType;
  
         private Optional<String> endpoint = Optional.empty();
  
@@ -139,7 +139,7 @@ public class CallPubApiWorkflowInput {
           // force use of static builder() method
         }
 
-        public Builder methodType(PubApiMethodType methodType) {
+        public Builder methodType(RestApiMethodType methodType) {
             Utils.checkNotNull(methodType, "methodType");
             this.methodType = methodType;
             return this;
@@ -169,8 +169,8 @@ public class CallPubApiWorkflowInput {
             return this;
         }
         
-        public CallPubApiWorkflowInput build() {
-            return new CallPubApiWorkflowInput(
+        public CallRestApiWorkflowInput build() {
+            return new CallRestApiWorkflowInput(
                 methodType,
                 endpoint,
                 dataBody);
