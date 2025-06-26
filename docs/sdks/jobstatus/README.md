@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [getJobStatus](#getjobstatus) - Get the status of a previously submitted type-based job
+* [getJobStatus](#getjobstatus) - Get the status of a previously submitted job
 
 ## getJobStatus
 
