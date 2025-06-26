@@ -23,7 +23,7 @@ public class JobStatus {
     }
 
     /**
-     * Get the status of a previously submitted type-based job
+     * Get the status of a previously submitted job
      * 
      * <p>Use this operation to get a previously submitted job's status and completion percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
@@ -35,7 +35,7 @@ public class JobStatus {
     }
 
     /**
-     * Get the status of a previously submitted type-based job
+     * Get the status of a previously submitted job
      * 
      * <p>Use this operation to get a previously submitted job's status and completion percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
@@ -49,7 +49,7 @@ public class JobStatus {
     }
 
     /**
-     * Get the status of a previously submitted type-based job
+     * Get the status of a previously submitted job
      * 
      * <p>Use this operation to get a previously submitted job's status and completion percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.

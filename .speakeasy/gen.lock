@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: eebb0445d0be3ad3e2d2df37cf212871
+  docChecksum: bc4d8e9dcad64d2852e03f7bdf0df7f8
   docVersion: v1
-  speakeasyVersion: 1.570.1
-  generationVersion: 2.638.1
-  releaseVersion: 0.7.1
-  configChecksum: dac26c6b73050839dd33345b2aaabed3
+  speakeasyVersion: 1.570.2
+  generationVersion: 2.638.5
+  releaseVersion: 0.7.2
+  configChecksum: 409a5f481a86d3ab1684995398eeab73
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -128,11 +128,10 @@ generatedFiles:
   - docs/models/operations/UpdateCampaignsJobResponse.md
   - docs/sdks/adgroup/README.md
   - docs/sdks/campaign/README.md
-  - docs/sdks/firstpartydata/README.md
+  - docs/sdks/dmp/README.md
   - docs/sdks/graphqlrequest/README.md
   - docs/sdks/jobstatus/README.md
   - docs/sdks/restrequest/README.md
-  - docs/sdks/thirdpartydata/README.md
   - docs/sdks/ttdworkflows/README.md
   - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
@@ -142,13 +141,12 @@ generatedFiles:
   - settings.gradle
   - src/main/java/com/thetradedesk/workflows/AdGroup.java
   - src/main/java/com/thetradedesk/workflows/Campaign.java
-  - src/main/java/com/thetradedesk/workflows/FirstPartyData.java
+  - src/main/java/com/thetradedesk/workflows/Dmp.java
   - src/main/java/com/thetradedesk/workflows/GraphQLRequest.java
   - src/main/java/com/thetradedesk/workflows/JobStatus.java
   - src/main/java/com/thetradedesk/workflows/RESTRequest.java
   - src/main/java/com/thetradedesk/workflows/SDKConfiguration.java
   - src/main/java/com/thetradedesk/workflows/SecuritySource.java
-  - src/main/java/com/thetradedesk/workflows/ThirdPartyData.java
   - src/main/java/com/thetradedesk/workflows/TtdWorkflows.java
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAssociateBidList.java
   - src/main/java/com/thetradedesk/workflows/models/components/AdGroupAudienceTargeting.java
