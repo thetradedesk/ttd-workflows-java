@@ -66,7 +66,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.7.1'
+implementation 'com.thetradedesk:workflows:0.7.2'
 ```
 
 Maven:
@@ -74,7 +74,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.7.1</version>
+    <version>0.7.2</version>
 </dependency>
 ```
 
@@ -95,10 +95,10 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ### Logging
 A logging framework/facade has not yet been adopted but is under consideration.
 
-For request and response logging (especially json bodies), call `enableHTTPDebugLogging()` on the SDK builder like so:
+For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
 ```java
 SDK.builder()
-    .enableHTTPDebugLogging()
+    .enableHTTPDebugLogging(true)
     .build();
 ```
 Example output:
@@ -436,9 +436,10 @@ public class Application {
 * [archiveCampaigns](docs/sdks/campaign/README.md#archivecampaigns) - Archive multiple campaigns
 * [getVersion](docs/sdks/campaign/README.md#getversion) - Get a campaign's version
 
-### [firstPartyData()](docs/sdks/firstpartydata/README.md)
+### [dmp()](docs/sdks/dmp/README.md)
 
-* [getFirstPartyDataJob](docs/sdks/firstpartydata/README.md#getfirstpartydatajob) - Submit a type-based job for first-party data retrieval for an advertiser
+* [getFirstPartyDataJob](docs/sdks/dmp/README.md#getfirstpartydatajob) - Submit a job for first-party data retrieval for an advertiser
+* [getThirdPartyDataJob](docs/sdks/dmp/README.md#getthirdpartydatajob) - Submit a job for third-party data retrieval for a partner
 
 ### [graphQLRequest()](docs/sdks/graphqlrequest/README.md)
 
@@ -446,15 +447,11 @@ public class Application {
 
 ### [jobStatus()](docs/sdks/jobstatus/README.md)
 
-* [getJobStatus](docs/sdks/jobstatus/README.md#getjobstatus) - Get the status of a previously submitted type-based job
+* [getJobStatus](docs/sdks/jobstatus/README.md#getjobstatus) - Get the status of a previously submitted job
 
 ### [restRequest()](docs/sdks/restrequest/README.md)
 
 * [submitRestRequest](docs/sdks/restrequest/README.md#submitrestrequest) - Submit a valid REST request
-
-### [thirdPartyData()](docs/sdks/thirdpartydata/README.md)
-
-* [getThirdPartyDataJob](docs/sdks/thirdpartydata/README.md#getthirdpartydatajob) - Submit a type-based job for third-party data retrieval for an advertiser
 
 
 </details>

@@ -1,21 +1,21 @@
-speakeasyVersion: 1.570.1
+speakeasyVersion: 1.570.2
 sources:
     Workflows API:
         sourceNamespace: workflows-api
-        sourceRevisionDigest: sha256:025f761b6606c0668ed4156f7119f0aa7626869156b90c5a0c9b2a84c510ac0a
-        sourceBlobDigest: sha256:45db5ed29baea5afd975deaa96abd0e8c9a35e854865ba2a4a739a82c1235d82
+        sourceRevisionDigest: sha256:079bb2d9c44d53916f403a93d51eced4756faf2acb9651b66bad4398433f14cd
+        sourceBlobDigest: sha256:c2dacb25953fbbc1500fdf23cf073df97a318cfa21a3af42c8c3bafffb5c7168
         tags:
             - latest
-            - speakeasy-sdk-regen-1750920191
+            - speakeasy-sdk-regen-1750961642
             - v1
 targets:
     ttd-workflows:
         source: Workflows API
         sourceNamespace: workflows-api
-        sourceRevisionDigest: sha256:025f761b6606c0668ed4156f7119f0aa7626869156b90c5a0c9b2a84c510ac0a
-        sourceBlobDigest: sha256:45db5ed29baea5afd975deaa96abd0e8c9a35e854865ba2a4a739a82c1235d82
+        sourceRevisionDigest: sha256:079bb2d9c44d53916f403a93d51eced4756faf2acb9651b66bad4398433f14cd
+        sourceBlobDigest: sha256:c2dacb25953fbbc1500fdf23cf073df97a318cfa21a3af42c8c3bafffb5c7168
         codeSamplesNamespace: workflows-api-java-code-samples
-        codeSamplesRevisionDigest: sha256:4db8e664ad1526ad8a56124a8fca0ed676246d621991866132240dcdc13963ca
+        codeSamplesRevisionDigest: sha256:c1ecdde966fb28ca681eb3ce6e9e5c351b078adf6c873de25ea7f60c386864cd
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
