@@ -81,13 +81,11 @@ public class TtdWorkflows {
 
     private final Campaign campaign;
 
-    private final FirstPartyData firstPartyData;
+    private final Dmp dmp;
 
     private final GraphQLRequest graphQLRequest;
 
     private final RESTRequest restRequest;
-
-    private final ThirdPartyData thirdPartyData;
 
     private final JobStatus jobStatus;
 
@@ -99,8 +97,8 @@ public class TtdWorkflows {
         return campaign;
     }
 
-    public FirstPartyData firstPartyData() {
-        return firstPartyData;
+    public Dmp dmp() {
+        return dmp;
     }
 
     public GraphQLRequest graphQLRequest() {
@@ -109,10 +107,6 @@ public class TtdWorkflows {
 
     public RESTRequest restRequest() {
         return restRequest;
-    }
-
-    public ThirdPartyData thirdPartyData() {
-        return thirdPartyData;
     }
 
     public JobStatus jobStatus() {
@@ -217,16 +211,17 @@ public class TtdWorkflows {
         /**
          * Enables debug logging for HTTP requests and responses, including JSON body content.
          *
-         * This is a convenience method that calls {@link HTTPClient#enableDebugLogging()}.
+         * Convenience method that calls {@link HTTPClient#enableDebugging(boolean)}.
          * {@link SpeakeasyHTTPClient} honors this setting. If you are using a custom HTTP client,
          * it is up to the custom client to honor this setting.
          *
          * @return The builder instance.
          */
-        public Builder enableHTTPDebugLogging() {
-            this.sdkConfiguration.client().enableDebugLogging();
+        public Builder enableHTTPDebugLogging(boolean enabled) {
+            this.sdkConfiguration.client().enableDebugging(enabled);
             return this;
         }
+
         // Visible for testing, may be accessed via reflection in tests
         Builder _hooks(com.thetradedesk.workflows.utils.Hooks hooks) {
             sdkConfiguration.setHooks(hooks);  
@@ -271,10 +266,9 @@ public class TtdWorkflows {
         this.sdkConfiguration.initialize();
         this.adGroup = new AdGroup(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);
-        this.firstPartyData = new FirstPartyData(sdkConfiguration);
+        this.dmp = new Dmp(sdkConfiguration);
         this.graphQLRequest = new GraphQLRequest(sdkConfiguration);
         this.restRequest = new RESTRequest(sdkConfiguration);
-        this.thirdPartyData = new ThirdPartyData(sdkConfiguration);
         this.jobStatus = new JobStatus(sdkConfiguration);
         
         SdkInitData data = this.sdkConfiguration.hooks().sdkInit(new SdkInitData(this.sdkConfiguration.resolvedServerUrl(), this.sdkConfiguration.client()));

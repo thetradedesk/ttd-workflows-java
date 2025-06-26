@@ -388,8 +388,8 @@ paths:
   /typebasedjob/firstpartydata:
     post:
       tags:
-        - First-Party Data
-      summary: Submit a type-based job for first-party data retrieval for an advertiser
+        - DMP
+      summary: Submit a job for first-party data retrieval for an advertiser
       description: "When a first-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status using the associated operation under \"Job Status\"."
       operationId: getFirstPartyDataJob
       requestBody:
@@ -527,8 +527,8 @@ paths:
   /typebasedjob/thirdpartydata:
     post:
       tags:
-        - Third-Party Data
-      summary: Submit a type-based job for third-party data retrieval for an advertiser
+        - DMP
+      summary: Submit a job for third-party data retrieval for a partner
       description: "When a third-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status using the associated operation under \"Job Status\"."
       operationId: getThirdPartyDataJob
       requestBody:
@@ -581,7 +581,7 @@ paths:
     get:
       tags:
         - Job Status
-      summary: Get the status of a previously submitted type-based job
+      summary: Get the status of a previously submitted job
       description: "Use this operation to get a previously submitted job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results."
       operationId: getJobStatus
       parameters:
