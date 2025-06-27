@@ -479,6 +479,101 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
+  /graphqlqueryjob:
+    post:
+      tags:
+        - GraphQL Request
+      summary: Submit a valid bulk GraphQL query.
+      description: "This generic operation can be used to execute any valid bulk GraphQL query.\nFor information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations)."
+      operationId: submitGraphQlQueryJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphQlQueryJobInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQlQueryJobResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
+  '/graphqlqueryjob/{id}':
+    get:
+      tags:
+        - Job Status
+      summary: Get the status of a previously submitted GraphQL query job.
+      description: "Use this operation to get a previously submitted GraphQL query job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results."
+      operationId: getGraphQlQueryJobStatus
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLQueryJobRetrievalResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+        '503':
+          description: Service Unavailable
   /restrequest:
     post:
       tags:
@@ -529,7 +624,7 @@ paths:
       tags:
         - DMP
       summary: Submit a job for third-party data retrieval for a partner
-      description: "When a third-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status using the associated operation under \"Job Status\"."
+      description: "When a third-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status, and when complete, the results download link,\nusing the associated operation under \"Job Status\"."
       operationId: getThirdPartyDataJob
       requestBody:
         content:
@@ -582,7 +677,7 @@ paths:
       tags:
         - Job Status
       summary: Get the status of a previously submitted job
-      description: "Use this operation to get a previously submitted job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results."
+      description: "Use this operation to get a previously submitted job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results.\n            \nJob results expire after 24 hours, at which point you will need to submit a new job."
       operationId: getJobStatus
       parameters:
         - name: id
@@ -1420,6 +1515,15 @@ components:
         - Fixed
         - Maximum
       type: string
+    BulkJobStatus:
+      enum:
+        - Queued
+        - InProgress
+        - PartialSuccess
+        - Failure
+        - Success
+        - Cancelled
+      type: string
     CallRestApiWorkflowInput:
       required:
         - endpoint
@@ -2116,12 +2220,42 @@ components:
           nullable: true
         queryShape:
           type: string
-          description: "The shape of the query with the fields being asked for, which is sent downstream.\nThis determines how the response will look like.\nIf this is not provided the default query shape will be used:\n            \nnodes {\n   name\n   id\n   activeUniques {\n      householdCount\n      idsConnectedTvCount\n      idsCount\n      idsInAppCount\n      idsWebCount\n      personsCount\n   }\n}"
+          description: " The shape of the query with the fields being asked for, which is sent downstream.\n This determines what the response will look like.\n\n For example, a query shape equal to `\"nodes {id name}\"` will return the `id` and `name` fields only.\n\n If this is not provided the default query shape will be used:\n\n ```graphql\n nodes {\n    name\n    id\n    activeUniques {\n       householdCount\n       idsConnectedTvCount\n       idsCount\n       idsInAppCount\n       idsWebCount\n       personsCount\n    }\n }\n```"
           nullable: true
         callbackInput:
           $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
       description: Required fields for submitting a bulk job for first-party data.
+    GraphQLQueryJobError:
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+        field:
+          type: array
+          items:
+            type: string
+          nullable: true
+        additionalData:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+      additionalProperties: false
+      description: Represents an error type returned by the inner data on a mutation response
+    GraphQLQueryJobRetrievalResponse:
+      type: object
+      properties:
+        job:
+          $ref: '#/components/schemas/GraphQlQueryJob'
+        errors:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: This is the top level class returned to a user when they retrieve a query job
     GraphQLRequestInput:
       required:
         - request
@@ -2137,6 +2271,119 @@ components:
           nullable: true
       additionalProperties: false
       description: Required fields for executing a GraphQL query
+    GraphQlJobCallbackInput:
+      required:
+        - callbackUrl
+      type: object
+      properties:
+        callbackUrl:
+          minLength: 1
+          type: string
+        callbackHeaders:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValuePairOfStringAndStringInput'
+          nullable: true
+      additionalProperties: false
+      description: Input class for providing a callback's url and any headers needed for the callback.
+    GraphQlQueryJob:
+      required:
+        - createdAt
+        - id
+        - runtimeErrors
+        - status
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the job.
+          format: int64
+        completedAt:
+          type: string
+          description: The UTC data and time that the job completed.
+          format: date-time
+          nullable: true
+        completionPercentage:
+          type: number
+          description: The job completion percentage.
+          format: float
+          nullable: true
+        createdAt:
+          type: string
+          description: Time of creation for that bulk job in UTC.
+          format: date-time
+        status:
+          $ref: '#/components/schemas/BulkJobStatus'
+        url:
+          type: string
+          description: The URL from which the job result can be downloaded.
+          nullable: true
+        rawResult:
+          type: string
+          description: "The raw job result if the response is less than or equal to 20MB in size.\nIf the job result is larger than 20MB, then null is returned."
+          nullable: true
+        queryGqlErrors:
+          type: array
+          items:
+            type: string
+          description: 'If the GQL requests within the job hard failed (such as from an authorization error or an internal server error), the causes encountered during execution'
+          nullable: true
+        runtimeErrors:
+          type: array
+          items:
+            type: string
+          description: Errors encountered while executing the job
+          nullable: true
+      additionalProperties: false
+      description: This is the response model that mirrors the GQL bulkjob
+    GraphQlQueryJobInput:
+      required:
+        - query
+      type: object
+      properties:
+        query:
+          minLength: 1
+          type: string
+          description: The GraphQL query to execute
+        callbackInput:
+          $ref: '#/components/schemas/GraphQlJobCallbackInput'
+      additionalProperties: false
+      description: Required fields for executing a GraphQL query job
+    GraphQlQueryJobPayload:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GraphQlQueryJob'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/GraphQLQueryJobError'
+          nullable: true
+      additionalProperties: false
+    GraphQlQueryJobResponse:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/GraphQlQueryJobPayload'
+        errors:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: This is the top level class returned to a user when a query job is created.
+    KeyValuePairOfStringAndStringInput:
+      required:
+        - key
+        - value
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Type that specifies the key value association of a callback header.
     ProblemDetails:
       type: object
       properties:
@@ -2211,7 +2458,7 @@ components:
           description: The partner ID to query for.
         queryShape:
           type: string
-          description: "The shape of the query with the fields being asked for, which is sent downstream.\nThis determines how the response will look like.\nIf this is not provided the default query shape will be used:\n            \nnodes {\n    id\n    name\n    providerId\n    providerElementId\n    description\n    buyable\n    fullPath\n    activeUniques {\n        householdCount\n        idsConnectedTvCount\n        idsInAppCount\n        idsWebCount\n        personsCount\n        thirdPartyDataOverlapCount\n        lastUpdated\n    }\n}"
+          description: " The shape of the query with the fields being asked for, which is sent downstream.\n This determines what the response will look like.\n\n For example, a query shape equal to `\"nodes {id name}\"` will return the `id` and `name` fields only.\n\n If this is not provided the default query shape will be used:\n\n ```graphql\n nodes {\n     id\n     name\n     providerId\n     providerElementId\n     description\n     buyable\n     fullPath\n     activeUniques {\n         householdCount\n         idsConnectedTvCount\n         idsInAppCount\n         idsWebCount\n         personsCount\n         thirdPartyDataOverlapCount\n         lastUpdated\n     }\n }\n```"
           nullable: true
         callbackInput:
           $ref: '#/components/schemas/WorkflowCallbackInput'
@@ -2287,6 +2534,7 @@ components:
         - Failure
         - Success
         - PartialSuccess
+        - ResultsExpired
       type: string
   securitySchemes:
     TTD-Auth:

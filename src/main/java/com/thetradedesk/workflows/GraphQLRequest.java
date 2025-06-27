@@ -6,8 +6,12 @@ package com.thetradedesk.workflows;
 import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
+import com.thetradedesk.workflows.models.components.GraphQlQueryJobInput;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobRequestBuilder;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobResponse;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestResponse;
+import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJobOperation;
 import com.thetradedesk.workflows.operations.SubmitGraphQlRequestOperation;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
@@ -63,6 +67,53 @@ public class GraphQLRequest {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
               = new SubmitGraphQlRequestOperation(
+                 sdkConfiguration,
+                 options);
+        return operation.handleResponse(operation.doRequest(request));
+    }
+
+
+    /**
+     * Submit a valid bulk GraphQL query.
+     * 
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
+     * For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * 
+     * @return The call builder
+     */
+    public SubmitGraphQlQueryJobRequestBuilder submitGraphQlQueryJob() {
+        return new SubmitGraphQlQueryJobRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Submit a valid bulk GraphQL query.
+     * 
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
+     * For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * 
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public SubmitGraphQlQueryJobResponse submitGraphQlQueryJobDirect() throws Exception {
+        return submitGraphQlQueryJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a valid bulk GraphQL query.
+     * 
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
+     * For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @param options additional options
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public SubmitGraphQlQueryJobResponse submitGraphQlQueryJob(
+            Optional<? extends GraphQlQueryJobInput> request,
+            Optional<Options> options) throws Exception {
+        RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
+              = new SubmitGraphQlQueryJobOperation(
                  sdkConfiguration,
                  options);
         return operation.handleResponse(operation.doRequest(request));

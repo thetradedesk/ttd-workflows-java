@@ -8,17 +8,18 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-public enum WorkflowStatus {
+public enum BulkJobStatus {
+    QUEUED("Queued"),
     IN_PROGRESS("InProgress"),
+    PARTIAL_SUCCESS("PartialSuccess"),
     FAILURE("Failure"),
     SUCCESS("Success"),
-    PARTIAL_SUCCESS("PartialSuccess"),
-    RESULTS_EXPIRED("ResultsExpired");
+    CANCELLED("Cancelled");
 
     @JsonValue
     private final String value;
 
-    WorkflowStatus(String value) {
+    BulkJobStatus(String value) {
         this.value = value;
     }
     
@@ -26,8 +27,8 @@ public enum WorkflowStatus {
         return value;
     }
     
-    public static Optional<WorkflowStatus> fromValue(String value) {
-        for (WorkflowStatus o: WorkflowStatus.values()) {
+    public static Optional<BulkJobStatus> fromValue(String value) {
+        for (BulkJobStatus o: BulkJobStatus.values()) {
             if (Objects.deepEquals(o.value, value)) {
                 return Optional.of(o);
             }
