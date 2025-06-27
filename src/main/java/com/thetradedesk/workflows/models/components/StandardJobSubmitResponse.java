@@ -12,7 +12,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
 
-public class TypeBasedJobSubmitResponse {
+public class StandardJobSubmitResponse {
 
     /**
      * The ID of the job.
@@ -21,7 +21,7 @@ public class TypeBasedJobSubmitResponse {
     private long id;
 
     @JsonCreator
-    public TypeBasedJobSubmitResponse(
+    public StandardJobSubmitResponse(
             @JsonProperty("id") long id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
@@ -42,7 +42,7 @@ public class TypeBasedJobSubmitResponse {
     /**
      * The ID of the job.
      */
-    public TypeBasedJobSubmitResponse withId(long id) {
+    public StandardJobSubmitResponse withId(long id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
@@ -57,7 +57,7 @@ public class TypeBasedJobSubmitResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        TypeBasedJobSubmitResponse other = (TypeBasedJobSubmitResponse) o;
+        StandardJobSubmitResponse other = (StandardJobSubmitResponse) o;
         return 
             Objects.deepEquals(this.id, other.id);
     }
@@ -70,7 +70,7 @@ public class TypeBasedJobSubmitResponse {
     
     @Override
     public String toString() {
-        return Utils.toString(TypeBasedJobSubmitResponse.class,
+        return Utils.toString(StandardJobSubmitResponse.class,
                 "id", id);
     }
     
@@ -91,8 +91,8 @@ public class TypeBasedJobSubmitResponse {
             return this;
         }
         
-        public TypeBasedJobSubmitResponse build() {
-            return new TypeBasedJobSubmitResponse(
+        public StandardJobSubmitResponse build() {
+            return new StandardJobSubmitResponse(
                 id);
         }
     }

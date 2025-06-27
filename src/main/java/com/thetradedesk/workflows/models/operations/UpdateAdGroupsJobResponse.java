@@ -5,7 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.thetradedesk.workflows.models.components.TypeBasedJobSubmitResponse;
+import com.thetradedesk.workflows.models.components.StandardJobSubmitResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -37,22 +37,22 @@ public class UpdateAdGroupsJobResponse implements Response {
     /**
      * Accepted
      */
-    private Optional<? extends TypeBasedJobSubmitResponse> typeBasedJobSubmitResponse;
+    private Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse;
 
     @JsonCreator
     public UpdateAdGroupsJobResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends TypeBasedJobSubmitResponse> typeBasedJobSubmitResponse) {
+            Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(typeBasedJobSubmitResponse, "typeBasedJobSubmitResponse");
+        Utils.checkNotNull(standardJobSubmitResponse, "standardJobSubmitResponse");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.typeBasedJobSubmitResponse = typeBasedJobSubmitResponse;
+        this.standardJobSubmitResponse = standardJobSubmitResponse;
     }
     
     public UpdateAdGroupsJobResponse(
@@ -91,8 +91,8 @@ public class UpdateAdGroupsJobResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<TypeBasedJobSubmitResponse> typeBasedJobSubmitResponse() {
-        return (Optional<TypeBasedJobSubmitResponse>) typeBasedJobSubmitResponse;
+    public Optional<StandardJobSubmitResponse> standardJobSubmitResponse() {
+        return (Optional<StandardJobSubmitResponse>) standardJobSubmitResponse;
     }
 
     public final static Builder builder() {
@@ -129,18 +129,18 @@ public class UpdateAdGroupsJobResponse implements Response {
     /**
      * Accepted
      */
-    public UpdateAdGroupsJobResponse withTypeBasedJobSubmitResponse(TypeBasedJobSubmitResponse typeBasedJobSubmitResponse) {
-        Utils.checkNotNull(typeBasedJobSubmitResponse, "typeBasedJobSubmitResponse");
-        this.typeBasedJobSubmitResponse = Optional.ofNullable(typeBasedJobSubmitResponse);
+    public UpdateAdGroupsJobResponse withStandardJobSubmitResponse(StandardJobSubmitResponse standardJobSubmitResponse) {
+        Utils.checkNotNull(standardJobSubmitResponse, "standardJobSubmitResponse");
+        this.standardJobSubmitResponse = Optional.ofNullable(standardJobSubmitResponse);
         return this;
     }
 
     /**
      * Accepted
      */
-    public UpdateAdGroupsJobResponse withTypeBasedJobSubmitResponse(Optional<? extends TypeBasedJobSubmitResponse> typeBasedJobSubmitResponse) {
-        Utils.checkNotNull(typeBasedJobSubmitResponse, "typeBasedJobSubmitResponse");
-        this.typeBasedJobSubmitResponse = typeBasedJobSubmitResponse;
+    public UpdateAdGroupsJobResponse withStandardJobSubmitResponse(Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse) {
+        Utils.checkNotNull(standardJobSubmitResponse, "standardJobSubmitResponse");
+        this.standardJobSubmitResponse = standardJobSubmitResponse;
         return this;
     }
 
@@ -158,7 +158,7 @@ public class UpdateAdGroupsJobResponse implements Response {
             Objects.deepEquals(this.contentType, other.contentType) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.typeBasedJobSubmitResponse, other.typeBasedJobSubmitResponse);
+            Objects.deepEquals(this.standardJobSubmitResponse, other.standardJobSubmitResponse);
     }
     
     @Override
@@ -167,7 +167,7 @@ public class UpdateAdGroupsJobResponse implements Response {
             contentType,
             statusCode,
             rawResponse,
-            typeBasedJobSubmitResponse);
+            standardJobSubmitResponse);
     }
     
     @Override
@@ -176,7 +176,7 @@ public class UpdateAdGroupsJobResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "typeBasedJobSubmitResponse", typeBasedJobSubmitResponse);
+                "standardJobSubmitResponse", standardJobSubmitResponse);
     }
     
     public final static class Builder {
@@ -187,7 +187,7 @@ public class UpdateAdGroupsJobResponse implements Response {
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends TypeBasedJobSubmitResponse> typeBasedJobSubmitResponse = Optional.empty();
+        private Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -223,18 +223,18 @@ public class UpdateAdGroupsJobResponse implements Response {
         /**
          * Accepted
          */
-        public Builder typeBasedJobSubmitResponse(TypeBasedJobSubmitResponse typeBasedJobSubmitResponse) {
-            Utils.checkNotNull(typeBasedJobSubmitResponse, "typeBasedJobSubmitResponse");
-            this.typeBasedJobSubmitResponse = Optional.ofNullable(typeBasedJobSubmitResponse);
+        public Builder standardJobSubmitResponse(StandardJobSubmitResponse standardJobSubmitResponse) {
+            Utils.checkNotNull(standardJobSubmitResponse, "standardJobSubmitResponse");
+            this.standardJobSubmitResponse = Optional.ofNullable(standardJobSubmitResponse);
             return this;
         }
 
         /**
          * Accepted
          */
-        public Builder typeBasedJobSubmitResponse(Optional<? extends TypeBasedJobSubmitResponse> typeBasedJobSubmitResponse) {
-            Utils.checkNotNull(typeBasedJobSubmitResponse, "typeBasedJobSubmitResponse");
-            this.typeBasedJobSubmitResponse = typeBasedJobSubmitResponse;
+        public Builder standardJobSubmitResponse(Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse) {
+            Utils.checkNotNull(standardJobSubmitResponse, "standardJobSubmitResponse");
+            this.standardJobSubmitResponse = standardJobSubmitResponse;
             return this;
         }
         
@@ -243,7 +243,7 @@ public class UpdateAdGroupsJobResponse implements Response {
                 contentType,
                 statusCode,
                 rawResponse,
-                typeBasedJobSubmitResponse);
+                standardJobSubmitResponse);
         }
     }
 }

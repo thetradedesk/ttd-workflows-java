@@ -8,7 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.SecuritySource;
-import com.thetradedesk.workflows.models.components.TypeBasedJobStatusResponse;
+import com.thetradedesk.workflows.models.components.StandardJobStatusResponse;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequest;
@@ -54,7 +54,7 @@ public class GetJobStatusOperation implements RequestOperation<GetJobStatusReque
         String url = Utils.generateURL(
                 GetJobStatusRequest.class,
                 baseUrl,
-                "/typebasedjob/{id}/status",
+                "/standardjob/{id}/status",
                 request, null);
         
         HTTPRequest req = new HTTPRequest(url, "GET");
@@ -145,11 +145,11 @@ public class GetJobStatusOperation implements RequestOperation<GetJobStatusReque
         
         if (Utils.statusCodeMatches(response.statusCode(), "200")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                TypeBasedJobStatusResponse out = Utils.mapper().readValue(
+                StandardJobStatusResponse out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
-                res.withTypeBasedJobStatusResponse(out);
+                res.withStandardJobStatusResponse(out);
                 return res;
             } else {
                 throw new APIException(

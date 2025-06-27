@@ -17,7 +17,7 @@ import java.time.OffsetDateTime;
 import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class TypeBasedJobStatusResponse {
+public class StandardJobStatusResponse {
 
     /**
      * The ID of the job.
@@ -71,7 +71,7 @@ public class TypeBasedJobStatusResponse {
     private JsonNullable<String> errors;
 
     @JsonCreator
-    public TypeBasedJobStatusResponse(
+    public StandardJobStatusResponse(
             @JsonProperty("id") long id,
             @JsonProperty("completedAtUtc") JsonNullable<OffsetDateTime> completedAtUtc,
             @JsonProperty("completionPercentage") JsonNullable<Double> completionPercentage,
@@ -98,7 +98,7 @@ public class TypeBasedJobStatusResponse {
         this.errors = errors;
     }
     
-    public TypeBasedJobStatusResponse(
+    public StandardJobStatusResponse(
             long id,
             OffsetDateTime createdAtUtc,
             WorkflowStatus status) {
@@ -174,7 +174,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The ID of the job.
      */
-    public TypeBasedJobStatusResponse withId(long id) {
+    public StandardJobStatusResponse withId(long id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
@@ -183,7 +183,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The UTC data and time that the job completed.
      */
-    public TypeBasedJobStatusResponse withCompletedAtUtc(OffsetDateTime completedAtUtc) {
+    public StandardJobStatusResponse withCompletedAtUtc(OffsetDateTime completedAtUtc) {
         Utils.checkNotNull(completedAtUtc, "completedAtUtc");
         this.completedAtUtc = JsonNullable.of(completedAtUtc);
         return this;
@@ -192,7 +192,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The UTC data and time that the job completed.
      */
-    public TypeBasedJobStatusResponse withCompletedAtUtc(JsonNullable<OffsetDateTime> completedAtUtc) {
+    public StandardJobStatusResponse withCompletedAtUtc(JsonNullable<OffsetDateTime> completedAtUtc) {
         Utils.checkNotNull(completedAtUtc, "completedAtUtc");
         this.completedAtUtc = completedAtUtc;
         return this;
@@ -201,7 +201,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The job completion percentage.
      */
-    public TypeBasedJobStatusResponse withCompletionPercentage(double completionPercentage) {
+    public StandardJobStatusResponse withCompletionPercentage(double completionPercentage) {
         Utils.checkNotNull(completionPercentage, "completionPercentage");
         this.completionPercentage = JsonNullable.of(completionPercentage);
         return this;
@@ -210,7 +210,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The job completion percentage.
      */
-    public TypeBasedJobStatusResponse withCompletionPercentage(JsonNullable<Double> completionPercentage) {
+    public StandardJobStatusResponse withCompletionPercentage(JsonNullable<Double> completionPercentage) {
         Utils.checkNotNull(completionPercentage, "completionPercentage");
         this.completionPercentage = completionPercentage;
         return this;
@@ -219,13 +219,13 @@ public class TypeBasedJobStatusResponse {
     /**
      * The UTC date and time that the job was created.
      */
-    public TypeBasedJobStatusResponse withCreatedAtUtc(OffsetDateTime createdAtUtc) {
+    public StandardJobStatusResponse withCreatedAtUtc(OffsetDateTime createdAtUtc) {
         Utils.checkNotNull(createdAtUtc, "createdAtUtc");
         this.createdAtUtc = createdAtUtc;
         return this;
     }
 
-    public TypeBasedJobStatusResponse withStatus(WorkflowStatus status) {
+    public StandardJobStatusResponse withStatus(WorkflowStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -234,7 +234,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The URL from which the job result can be downloaded.
      */
-    public TypeBasedJobStatusResponse withUrl(String url) {
+    public StandardJobStatusResponse withUrl(String url) {
         Utils.checkNotNull(url, "url");
         this.url = JsonNullable.of(url);
         return this;
@@ -243,7 +243,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * The URL from which the job result can be downloaded.
      */
-    public TypeBasedJobStatusResponse withUrl(JsonNullable<String> url) {
+    public StandardJobStatusResponse withUrl(JsonNullable<String> url) {
         Utils.checkNotNull(url, "url");
         this.url = url;
         return this;
@@ -253,7 +253,7 @@ public class TypeBasedJobStatusResponse {
      * The raw job result if the response is less than or equal to 20MB in size.
      * If the job result is larger than 20MB, then null is returned.
      */
-    public TypeBasedJobStatusResponse withRawResult(String rawResult) {
+    public StandardJobStatusResponse withRawResult(String rawResult) {
         Utils.checkNotNull(rawResult, "rawResult");
         this.rawResult = JsonNullable.of(rawResult);
         return this;
@@ -263,7 +263,7 @@ public class TypeBasedJobStatusResponse {
      * The raw job result if the response is less than or equal to 20MB in size.
      * If the job result is larger than 20MB, then null is returned.
      */
-    public TypeBasedJobStatusResponse withRawResult(JsonNullable<String> rawResult) {
+    public StandardJobStatusResponse withRawResult(JsonNullable<String> rawResult) {
         Utils.checkNotNull(rawResult, "rawResult");
         this.rawResult = rawResult;
         return this;
@@ -272,7 +272,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * A list of errors encountered during workflow processing.
      */
-    public TypeBasedJobStatusResponse withErrors(String errors) {
+    public StandardJobStatusResponse withErrors(String errors) {
         Utils.checkNotNull(errors, "errors");
         this.errors = JsonNullable.of(errors);
         return this;
@@ -281,7 +281,7 @@ public class TypeBasedJobStatusResponse {
     /**
      * A list of errors encountered during workflow processing.
      */
-    public TypeBasedJobStatusResponse withErrors(JsonNullable<String> errors) {
+    public StandardJobStatusResponse withErrors(JsonNullable<String> errors) {
         Utils.checkNotNull(errors, "errors");
         this.errors = errors;
         return this;
@@ -296,7 +296,7 @@ public class TypeBasedJobStatusResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        TypeBasedJobStatusResponse other = (TypeBasedJobStatusResponse) o;
+        StandardJobStatusResponse other = (StandardJobStatusResponse) o;
         return 
             Objects.deepEquals(this.id, other.id) &&
             Objects.deepEquals(this.completedAtUtc, other.completedAtUtc) &&
@@ -323,7 +323,7 @@ public class TypeBasedJobStatusResponse {
     
     @Override
     public String toString() {
-        return Utils.toString(TypeBasedJobStatusResponse.class,
+        return Utils.toString(StandardJobStatusResponse.class,
                 "id", id,
                 "completedAtUtc", completedAtUtc,
                 "completionPercentage", completionPercentage,
@@ -472,8 +472,8 @@ public class TypeBasedJobStatusResponse {
             return this;
         }
         
-        public TypeBasedJobStatusResponse build() {
-            return new TypeBasedJobStatusResponse(
+        public StandardJobStatusResponse build() {
+            return new StandardJobStatusResponse(
                 id,
                 completedAtUtc,
                 completionPercentage,

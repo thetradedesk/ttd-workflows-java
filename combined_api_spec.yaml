@@ -1,7 +1,7 @@
 openapi: 3.0.4
 info:
   title: Workflows Service
-  description: "## Operations for commonly used workflows.\r\nThis service provides operations for commonly used workflows on The Trade Desk's platform.\r\nIn addition, this service provides generic operations for submitting:\r\n\r\n- GraphQL API requests\r\n- REST API requests\r\n\r\nTo interface with this service, we provide SDKs in multiple languages.\r\nFor each available language, there is a code sample displayed to the right of each operation.\r\n\r\nTo get started with the SDK in your language of choice, see the associated guide:\r\n\r\n- Java - coming soon\r\n- [Python](https://pypi.org/project/ttd-workflows/)\r\n\r\nFor further explanation on the entities encountered in this documentation (e.g.,\r\n[campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and\r\n[ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the\r\n[Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases)."
+  description: "Operations for commonly used workflows.\r\nThis service provides operations for commonly used workflows on The Trade Desk's platform.\r\nIn addition, this service provides generic operations for submitting:\r\n\r\n- GraphQL API requests\r\n- REST API requests\r\n\r\nFor further explanation on the entities encountered in this documentation (e.g.,\r\n[campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and\r\n[ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the\r\n[Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases)."
   version: v1
 paths:
   /adgroup:
@@ -107,7 +107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-  /typebasedjob/adgroup/bulk:
+  /standardjob/adgroup/bulk:
     post:
       tags:
         - Ad Group
@@ -124,7 +124,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+                $ref: '#/components/schemas/StandardJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -158,7 +158,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+                $ref: '#/components/schemas/StandardJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -230,7 +230,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-  /typebasedjob/campaign/bulk:
+  /standardjob/campaign/bulk:
     post:
       tags:
         - Campaign
@@ -247,7 +247,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+                $ref: '#/components/schemas/StandardJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -281,7 +281,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+                $ref: '#/components/schemas/StandardJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -385,7 +385,7 @@ paths:
         '500':
           description: Internal Server Error
       x-speakeasy-name-override: getVersion
-  /typebasedjob/firstpartydata:
+  /standardjob/firstpartydata:
     post:
       tags:
         - DMP
@@ -403,7 +403,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+                $ref: '#/components/schemas/StandardJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -483,8 +483,8 @@ paths:
     post:
       tags:
         - GraphQL Request
-      summary: Submit a valid bulk GraphQL query.
-      description: "This generic operation can be used to execute any valid bulk GraphQL query.\nFor information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations)."
+      summary: Submit a valid bulk GraphQL query
+      description: "This generic operation can be used to execute any valid bulk GraphQL query.\nFor information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations)."
       operationId: submitGraphQlQueryJob
       requestBody:
         content:
@@ -619,31 +619,27 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '500':
           description: Internal Server Error
-  /typebasedjob/thirdpartydata:
-    post:
+  '/standardjob/{id}/status':
+    get:
       tags:
-        - DMP
-      summary: Submit a job for third-party data retrieval for a partner
-      description: "When a third-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status, and when complete, the results download link,\nusing the associated operation under \"Job Status\"."
-      operationId: getThirdPartyDataJob
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ThirdPartyDataInput'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ThirdPartyDataInput'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ThirdPartyDataInput'
+        - Job Status
+      summary: Get the status of a previously submitted job
+      description: "Use this operation to get a previously submitted job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results.\n            \nJob results expire after 24 hours, at which point you will need to submit a new job."
+      operationId: getJobStatus
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
-        '202':
-          description: Accepted
+        '200':
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobSubmitResponse'
+                $ref: '#/components/schemas/StandardJobStatusResponse'
         '400':
           description: Bad Request
           content:
@@ -672,27 +668,31 @@ paths:
           description: Internal Server Error
         '503':
           description: Service Unavailable
-  '/typebasedjob/{id}/status':
-    get:
+  /standardjob/thirdpartydata:
+    post:
       tags:
-        - Job Status
-      summary: Get the status of a previously submitted job
-      description: "Use this operation to get a previously submitted job's status and completion percentage.\nOnce a job is complete, this operation will return the URL from which to download the job results.\n            \nJob results expire after 24 hours, at which point you will need to submit a new job."
-      operationId: getJobStatus
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int64
+        - DMP
+      summary: Submit a job for third-party data retrieval for a partner
+      description: "When a third-party data query is submitted, a job ID is returned.\nThis job ID can be used to poll for the job's status, and when complete, the results download link,\nusing the associated operation under \"Job Status\"."
+      operationId: getThirdPartyDataJob
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ThirdPartyDataInput'
       responses:
-        '200':
-          description: OK
+        '202':
+          description: Accepted
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TypeBasedJobStatusResponse'
+                $ref: '#/components/schemas/StandardJobSubmitResponse'
         '400':
           description: Bad Request
           content:
@@ -2412,6 +2412,56 @@ components:
         - GET
         - DELETE
       type: string
+    StandardJobStatusResponse:
+      required:
+        - createdAtUtc
+        - id
+        - status
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the job.
+          format: int64
+        completedAtUtc:
+          type: string
+          description: The UTC data and time that the job completed.
+          format: date-time
+          nullable: true
+        completionPercentage:
+          type: number
+          description: The job completion percentage.
+          format: double
+          nullable: true
+        createdAtUtc:
+          type: string
+          description: The UTC date and time that the job was created.
+          format: date-time
+        status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        url:
+          type: string
+          description: The URL from which the job result can be downloaded.
+          nullable: true
+        rawResult:
+          type: string
+          description: "The raw job result if the response is less than or equal to 20MB in size.\nIf the job result is larger than 20MB, then null is returned."
+          nullable: true
+        errors:
+          type: string
+          description: A list of errors encountered during workflow processing.
+          nullable: true
+      additionalProperties: false
+    StandardJobSubmitResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the job.
+          format: int64
+      additionalProperties: false
     TargetingEndAge:
       enum:
         - Seventeen
@@ -2464,56 +2514,6 @@ components:
           $ref: '#/components/schemas/WorkflowCallbackInput'
       additionalProperties: false
       description: Required fields for submitting a bulk job for third-party data.
-    TypeBasedJobStatusResponse:
-      required:
-        - createdAtUtc
-        - id
-        - status
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the job.
-          format: int64
-        completedAtUtc:
-          type: string
-          description: The UTC data and time that the job completed.
-          format: date-time
-          nullable: true
-        completionPercentage:
-          type: number
-          description: The job completion percentage.
-          format: double
-          nullable: true
-        createdAtUtc:
-          type: string
-          description: The UTC date and time that the job was created.
-          format: date-time
-        status:
-          $ref: '#/components/schemas/WorkflowStatus'
-        url:
-          type: string
-          description: The URL from which the job result can be downloaded.
-          nullable: true
-        rawResult:
-          type: string
-          description: "The raw job result if the response is less than or equal to 20MB in size.\nIf the job result is larger than 20MB, then null is returned."
-          nullable: true
-        errors:
-          type: string
-          description: A list of errors encountered during workflow processing.
-          nullable: true
-      additionalProperties: false
-    TypeBasedJobSubmitResponse:
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the job.
-          format: int64
-      additionalProperties: false
     WorkflowCallbackInput:
       required:
         - callbackUrl
