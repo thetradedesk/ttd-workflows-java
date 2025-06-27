@@ -78,7 +78,8 @@ public class Application {
 ## getThirdPartyDataJob
 
 When a third-party data query is submitted, a job ID is returned.
-This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+This job ID can be used to poll for the job's status, and when complete, the results download link,
+using the associated operation under "Job Status".
 
 ### Example Usage
 

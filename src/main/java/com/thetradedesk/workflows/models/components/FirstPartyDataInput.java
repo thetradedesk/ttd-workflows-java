@@ -39,21 +39,26 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     * This determines how the response will look like.
-     * If this is not provided the default query shape will be used:
+     *  This determines what the response will look like.
      * 
-     * <p>nodes {
-     *    name
-     *    id
-     *    activeUniques {
-     *       householdCount
-     *       idsConnectedTvCount
-     *       idsCount
-     *       idsInAppCount
-     *       idsWebCount
-     *       personsCount
-     *    }
-     * }
+     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * 
+     * <p> If this is not provided the default query shape will be used:
+     * 
+     * <p> ```graphql
+     *  nodes {
+     *     name
+     *     id
+     *     activeUniques {
+     *        householdCount
+     *        idsConnectedTvCount
+     *        idsCount
+     *        idsInAppCount
+     *        idsWebCount
+     *        personsCount
+     *     }
+     *  }
+     * ```
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("queryShape")
@@ -103,21 +108,26 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     * This determines how the response will look like.
-     * If this is not provided the default query shape will be used:
+     *  This determines what the response will look like.
      * 
-     * <p>nodes {
-     *    name
-     *    id
-     *    activeUniques {
-     *       householdCount
-     *       idsConnectedTvCount
-     *       idsCount
-     *       idsInAppCount
-     *       idsWebCount
-     *       personsCount
-     *    }
-     * }
+     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * 
+     * <p> If this is not provided the default query shape will be used:
+     * 
+     * <p> ```graphql
+     *  nodes {
+     *     name
+     *     id
+     *     activeUniques {
+     *        householdCount
+     *        idsConnectedTvCount
+     *        idsCount
+     *        idsInAppCount
+     *        idsWebCount
+     *        personsCount
+     *     }
+     *  }
+     * ```
      */
     @JsonIgnore
     public JsonNullable<String> queryShape() {
@@ -165,21 +175,26 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     * This determines how the response will look like.
-     * If this is not provided the default query shape will be used:
+     *  This determines what the response will look like.
      * 
-     * <p>nodes {
-     *    name
-     *    id
-     *    activeUniques {
-     *       householdCount
-     *       idsConnectedTvCount
-     *       idsCount
-     *       idsInAppCount
-     *       idsWebCount
-     *       personsCount
-     *    }
-     * }
+     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * 
+     * <p> If this is not provided the default query shape will be used:
+     * 
+     * <p> ```graphql
+     *  nodes {
+     *     name
+     *     id
+     *     activeUniques {
+     *        householdCount
+     *        idsConnectedTvCount
+     *        idsCount
+     *        idsInAppCount
+     *        idsWebCount
+     *        personsCount
+     *     }
+     *  }
+     * ```
      */
     public FirstPartyDataInput withQueryShape(String queryShape) {
         Utils.checkNotNull(queryShape, "queryShape");
@@ -189,21 +204,26 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     * This determines how the response will look like.
-     * If this is not provided the default query shape will be used:
+     *  This determines what the response will look like.
      * 
-     * <p>nodes {
-     *    name
-     *    id
-     *    activeUniques {
-     *       householdCount
-     *       idsConnectedTvCount
-     *       idsCount
-     *       idsInAppCount
-     *       idsWebCount
-     *       personsCount
-     *    }
-     * }
+     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * 
+     * <p> If this is not provided the default query shape will be used:
+     * 
+     * <p> ```graphql
+     *  nodes {
+     *     name
+     *     id
+     *     activeUniques {
+     *        householdCount
+     *        idsConnectedTvCount
+     *        idsCount
+     *        idsInAppCount
+     *        idsWebCount
+     *        personsCount
+     *     }
+     *  }
+     * ```
      */
     public FirstPartyDataInput withQueryShape(JsonNullable<String> queryShape) {
         Utils.checkNotNull(queryShape, "queryShape");
@@ -303,21 +323,26 @@ public class FirstPartyDataInput {
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
-         * This determines how the response will look like.
-         * If this is not provided the default query shape will be used:
+         *  This determines what the response will look like.
          * 
-         * <p>nodes {
-         *    name
-         *    id
-         *    activeUniques {
-         *       householdCount
-         *       idsConnectedTvCount
-         *       idsCount
-         *       idsInAppCount
-         *       idsWebCount
-         *       personsCount
-         *    }
-         * }
+         * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+         * 
+         * <p> If this is not provided the default query shape will be used:
+         * 
+         * <p> ```graphql
+         *  nodes {
+         *     name
+         *     id
+         *     activeUniques {
+         *        householdCount
+         *        idsConnectedTvCount
+         *        idsCount
+         *        idsInAppCount
+         *        idsWebCount
+         *        personsCount
+         *     }
+         *  }
+         * ```
          */
         public Builder queryShape(String queryShape) {
             Utils.checkNotNull(queryShape, "queryShape");
@@ -327,21 +352,26 @@ public class FirstPartyDataInput {
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
-         * This determines how the response will look like.
-         * If this is not provided the default query shape will be used:
+         *  This determines what the response will look like.
          * 
-         * <p>nodes {
-         *    name
-         *    id
-         *    activeUniques {
-         *       householdCount
-         *       idsConnectedTvCount
-         *       idsCount
-         *       idsInAppCount
-         *       idsWebCount
-         *       personsCount
-         *    }
-         * }
+         * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+         * 
+         * <p> If this is not provided the default query shape will be used:
+         * 
+         * <p> ```graphql
+         *  nodes {
+         *     name
+         *     id
+         *     activeUniques {
+         *        householdCount
+         *        idsConnectedTvCount
+         *        idsCount
+         *        idsInAppCount
+         *        idsWebCount
+         *        personsCount
+         *     }
+         *  }
+         * ```
          */
         public Builder queryShape(JsonNullable<String> queryShape) {
             Utils.checkNotNull(queryShape, "queryShape");

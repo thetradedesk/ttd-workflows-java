@@ -85,9 +85,9 @@ public class TtdWorkflows {
 
     private final GraphQLRequest graphQLRequest;
 
-    private final RESTRequest restRequest;
-
     private final JobStatus jobStatus;
+
+    private final RESTRequest restRequest;
 
     public AdGroup adGroup() {
         return adGroup;
@@ -105,12 +105,12 @@ public class TtdWorkflows {
         return graphQLRequest;
     }
 
-    public RESTRequest restRequest() {
-        return restRequest;
-    }
-
     public JobStatus jobStatus() {
         return jobStatus;
+    }
+
+    public RESTRequest restRequest() {
+        return restRequest;
     }
     private SDKConfiguration sdkConfiguration;
 
@@ -268,8 +268,8 @@ public class TtdWorkflows {
         this.campaign = new Campaign(sdkConfiguration);
         this.dmp = new Dmp(sdkConfiguration);
         this.graphQLRequest = new GraphQLRequest(sdkConfiguration);
-        this.restRequest = new RESTRequest(sdkConfiguration);
         this.jobStatus = new JobStatus(sdkConfiguration);
+        this.restRequest = new RESTRequest(sdkConfiguration);
         
         SdkInitData data = this.sdkConfiguration.hooks().sdkInit(new SdkInitData(this.sdkConfiguration.resolvedServerUrl(), this.sdkConfiguration.client()));
         this.sdkConfiguration.setServerUrl(data.baseUrl());
