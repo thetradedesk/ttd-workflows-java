@@ -12,7 +12,8 @@ Developer-friendly & type-safe Java SDK specifically catered to facilitate commo
 <!-- Start Summary [summary] -->
 ## Summary
 
-This SDK provides operations for commonly used workflows on The Trade Desk's platform.
+Workflows Service: Operations for commonly used workflows.
+This service provides operations for commonly used workflows on The Trade Desk's platform.
 In addition, this service provides generic operations for submitting:
 
 - GraphQL API requests
@@ -52,7 +53,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.7.3'
+implementation 'com.thetradedesk:workflows:0.7.4'
 ```
 
 Maven:
@@ -60,7 +61,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.7.3</version>
+    <version>0.7.4</version>
 </dependency>
 ```
 
@@ -430,7 +431,7 @@ public class Application {
 ### [graphQLRequest()](docs/sdks/graphqlrequest/README.md)
 
 * [submitGraphQlRequest](docs/sdks/graphqlrequest/README.md#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
-* [submitGraphQlQueryJob](docs/sdks/graphqlrequest/README.md#submitgraphqlqueryjob) - Submit a valid bulk GraphQL query.
+* [submitGraphQlQueryJob](docs/sdks/graphqlrequest/README.md#submitgraphqlqueryjob) - Submit a valid bulk GraphQL query
 
 ### [jobStatus()](docs/sdks/jobstatus/README.md)
 

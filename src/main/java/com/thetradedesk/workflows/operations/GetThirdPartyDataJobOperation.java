@@ -8,8 +8,8 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.SecuritySource;
+import com.thetradedesk.workflows.models.components.StandardJobSubmitResponse;
 import com.thetradedesk.workflows.models.components.ThirdPartyDataInput;
-import com.thetradedesk.workflows.models.components.TypeBasedJobSubmitResponse;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetThirdPartyDataJobResponse;
@@ -56,7 +56,7 @@ public class GetThirdPartyDataJobOperation implements RequestOperation<Optional<
         String baseUrl = this.sdkConfiguration.serverUrl();
         String url = Utils.generateURL(
                 baseUrl,
-                "/typebasedjob/thirdpartydata");
+                "/standardjob/thirdpartydata");
         
         HTTPRequest req = new HTTPRequest(url, "POST");
         Object convertedRequest = Utils.convertToShape(
@@ -156,11 +156,11 @@ public class GetThirdPartyDataJobOperation implements RequestOperation<Optional<
         
         if (Utils.statusCodeMatches(response.statusCode(), "202")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                TypeBasedJobSubmitResponse out = Utils.mapper().readValue(
+                StandardJobSubmitResponse out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
-                res.withTypeBasedJobSubmitResponse(out);
+                res.withStandardJobSubmitResponse(out);
                 return res;
             } else {
                 throw new APIException(

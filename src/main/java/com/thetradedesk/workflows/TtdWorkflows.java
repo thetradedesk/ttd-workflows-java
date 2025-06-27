@@ -16,20 +16,12 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * Workflows Service: ## Operations for commonly used workflows.
+ * Workflows Service: Operations for commonly used workflows.
  * This service provides operations for commonly used workflows on The Trade Desk's platform.
  * In addition, this service provides generic operations for submitting:
  * 
  * <p>- GraphQL API requests
  * - REST API requests
- * 
- * <p>To interface with this service, we provide SDKs in multiple languages.
- * For each available language, there is a code sample displayed to the right of each operation.
- * 
- * <p>To get started with the SDK in your language of choice, see the associated guide:
- * 
- * <p>- Java - coming soon
- * - [Python](https://pypi.org/project/ttd-workflows/)
  * 
  * <p>For further explanation on the entities encountered in this documentation (e.g.,
  * [campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and

@@ -1,4 +1,4 @@
-# TypeBasedJobStatusResponse
+# StandardJobStatusResponse
 
 
 ## Fields
