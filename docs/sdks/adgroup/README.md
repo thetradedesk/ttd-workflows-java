@@ -34,7 +34,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -193,7 +193,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupUpdateWorkflowInputWithValidation req = AdGroupUpdateWorkflowInputWithValidation.builder()
@@ -354,7 +354,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         ArchiveAdGroupsResponse res = sdk.adGroup().archiveAdGroups()
@@ -412,7 +412,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupBulkCreateWorkflowInputWithValidation req = AdGroupBulkCreateWorkflowInputWithValidation.builder()
@@ -431,7 +431,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.typeBasedJobSubmitResponse().isPresent()) {
+        if (res.standardJobSubmitResponse().isPresent()) {
             // handle response
         }
     }
@@ -477,7 +477,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupBulkUpdateWorkflowInputWithValidation req = AdGroupBulkUpdateWorkflowInputWithValidation.builder()
@@ -585,7 +585,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.typeBasedJobSubmitResponse().isPresent()) {
+        if (res.standardJobSubmitResponse().isPresent()) {
             // handle response
         }
     }

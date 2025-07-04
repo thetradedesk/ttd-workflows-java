@@ -15,9 +15,9 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupCreateWorkflowPrimaryInput {
 
@@ -25,47 +25,59 @@ public class AdGroupCreateWorkflowPrimaryInput {
     @JsonProperty("isEnabled")
     private JsonNullable<Boolean> isEnabled;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budget")
     private Optional<? extends AdGroupWorkflowBudgetInput> budget;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("baseBidCPMInAdvertiserCurrency")
     private JsonNullable<Double> baseBidCPMInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("maxBidCPMInAdvertiserCurrency")
     private JsonNullable<Double> maxBidCPMInAdvertiserCurrency;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceTargeting")
     private Optional<? extends AdGroupWorkflowAudienceTargetingInput> audienceTargeting;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("roiGoal")
     private Optional<? extends AdGroupWorkflowROIGoalInput> roiGoal;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("creativeIds")
     private JsonNullable<? extends List<String>> creativeIds;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("associatedBidLists")
     private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists;
 
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("name")
     private Optional<String> name;
 
+
     @JsonProperty("channel")
     private AdGroupChannel channel;
 
+
     @JsonProperty("funnelLocation")
     private AdGroupFunnelLocation funnelLocation;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("programmaticGuaranteedPrivateContractId")
@@ -117,7 +129,11 @@ public class AdGroupCreateWorkflowPrimaryInput {
     public AdGroupCreateWorkflowPrimaryInput(
             AdGroupChannel channel,
             AdGroupFunnelLocation funnelLocation) {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), channel, funnelLocation, JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
+            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty(), channel, funnelLocation,
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -190,9 +206,10 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return programmaticGuaranteedPrivateContractId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupCreateWorkflowPrimaryInput withIsEnabled(boolean isEnabled) {
         Utils.checkNotNull(isEnabled, "isEnabled");
@@ -223,6 +240,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
         this.budget = Optional.ofNullable(budget);
         return this;
     }
+
 
     public AdGroupCreateWorkflowPrimaryInput withBudget(Optional<? extends AdGroupWorkflowBudgetInput> budget) {
         Utils.checkNotNull(budget, "budget");
@@ -260,6 +278,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return this;
     }
 
+
     public AdGroupCreateWorkflowPrimaryInput withAudienceTargeting(Optional<? extends AdGroupWorkflowAudienceTargetingInput> audienceTargeting) {
         Utils.checkNotNull(audienceTargeting, "audienceTargeting");
         this.audienceTargeting = audienceTargeting;
@@ -271,6 +290,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
         this.roiGoal = Optional.ofNullable(roiGoal);
         return this;
     }
+
 
     public AdGroupCreateWorkflowPrimaryInput withRoiGoal(Optional<? extends AdGroupWorkflowROIGoalInput> roiGoal) {
         Utils.checkNotNull(roiGoal, "roiGoal");
@@ -308,6 +328,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return this;
     }
 
+
     public AdGroupCreateWorkflowPrimaryInput withName(Optional<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
@@ -338,7 +359,6 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -349,36 +369,28 @@ public class AdGroupCreateWorkflowPrimaryInput {
         }
         AdGroupCreateWorkflowPrimaryInput other = (AdGroupCreateWorkflowPrimaryInput) o;
         return 
-            Objects.deepEquals(this.isEnabled, other.isEnabled) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.budget, other.budget) &&
-            Objects.deepEquals(this.baseBidCPMInAdvertiserCurrency, other.baseBidCPMInAdvertiserCurrency) &&
-            Objects.deepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
-            Objects.deepEquals(this.audienceTargeting, other.audienceTargeting) &&
-            Objects.deepEquals(this.roiGoal, other.roiGoal) &&
-            Objects.deepEquals(this.creativeIds, other.creativeIds) &&
-            Objects.deepEquals(this.associatedBidLists, other.associatedBidLists) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.channel, other.channel) &&
-            Objects.deepEquals(this.funnelLocation, other.funnelLocation) &&
-            Objects.deepEquals(this.programmaticGuaranteedPrivateContractId, other.programmaticGuaranteedPrivateContractId);
+            Utils.enhancedDeepEquals(this.isEnabled, other.isEnabled) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.budget, other.budget) &&
+            Utils.enhancedDeepEquals(this.baseBidCPMInAdvertiserCurrency, other.baseBidCPMInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.audienceTargeting, other.audienceTargeting) &&
+            Utils.enhancedDeepEquals(this.roiGoal, other.roiGoal) &&
+            Utils.enhancedDeepEquals(this.creativeIds, other.creativeIds) &&
+            Utils.enhancedDeepEquals(this.associatedBidLists, other.associatedBidLists) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.channel, other.channel) &&
+            Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation) &&
+            Utils.enhancedDeepEquals(this.programmaticGuaranteedPrivateContractId, other.programmaticGuaranteedPrivateContractId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            isEnabled,
-            description,
-            budget,
-            baseBidCPMInAdvertiserCurrency,
-            maxBidCPMInAdvertiserCurrency,
-            audienceTargeting,
-            roiGoal,
-            creativeIds,
-            associatedBidLists,
-            name,
-            channel,
-            funnelLocation,
+        return Utils.enhancedHash(
+            isEnabled, description, budget,
+            baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
+            roiGoal, creativeIds, associatedBidLists,
+            name, channel, funnelLocation,
             programmaticGuaranteedPrivateContractId);
     }
     
@@ -399,38 +411,40 @@ public class AdGroupCreateWorkflowPrimaryInput {
                 "funnelLocation", funnelLocation,
                 "programmaticGuaranteedPrivateContractId", programmaticGuaranteedPrivateContractId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Boolean> isEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private Optional<? extends AdGroupWorkflowBudgetInput> budget = Optional.empty();
- 
+
         private JsonNullable<Double> baseBidCPMInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> maxBidCPMInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private Optional<? extends AdGroupWorkflowAudienceTargetingInput> audienceTargeting = Optional.empty();
- 
+
         private Optional<? extends AdGroupWorkflowROIGoalInput> roiGoal = Optional.empty();
- 
+
         private JsonNullable<? extends List<String>> creativeIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists = JsonNullable.undefined();
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private AdGroupChannel channel;
- 
+
         private AdGroupFunnelLocation funnelLocation;
- 
+
         private JsonNullable<String> programmaticGuaranteedPrivateContractId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder isEnabled(boolean isEnabled) {
             Utils.checkNotNull(isEnabled, "isEnabled");
@@ -444,6 +458,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
             this.description = JsonNullable.of(description);
@@ -455,6 +470,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             this.description = description;
             return this;
         }
+
 
         public Builder budget(AdGroupWorkflowBudgetInput budget) {
             Utils.checkNotNull(budget, "budget");
@@ -468,6 +484,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
         public Builder baseBidCPMInAdvertiserCurrency(double baseBidCPMInAdvertiserCurrency) {
             Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
             this.baseBidCPMInAdvertiserCurrency = JsonNullable.of(baseBidCPMInAdvertiserCurrency);
@@ -479,6 +496,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             this.baseBidCPMInAdvertiserCurrency = baseBidCPMInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder maxBidCPMInAdvertiserCurrency(double maxBidCPMInAdvertiserCurrency) {
             Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
@@ -492,6 +510,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
         public Builder audienceTargeting(AdGroupWorkflowAudienceTargetingInput audienceTargeting) {
             Utils.checkNotNull(audienceTargeting, "audienceTargeting");
             this.audienceTargeting = Optional.ofNullable(audienceTargeting);
@@ -503,6 +522,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             this.audienceTargeting = audienceTargeting;
             return this;
         }
+
 
         public Builder roiGoal(AdGroupWorkflowROIGoalInput roiGoal) {
             Utils.checkNotNull(roiGoal, "roiGoal");
@@ -516,6 +536,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
         public Builder creativeIds(List<String> creativeIds) {
             Utils.checkNotNull(creativeIds, "creativeIds");
             this.creativeIds = JsonNullable.of(creativeIds);
@@ -527,6 +548,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             this.creativeIds = creativeIds;
             return this;
         }
+
 
         public Builder associatedBidLists(List<AdGroupWorkflowAssociateBidListInput> associatedBidLists) {
             Utils.checkNotNull(associatedBidLists, "associatedBidLists");
@@ -540,6 +562,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -552,17 +575,20 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
         public Builder channel(AdGroupChannel channel) {
             Utils.checkNotNull(channel, "channel");
             this.channel = channel;
             return this;
         }
 
+
         public Builder funnelLocation(AdGroupFunnelLocation funnelLocation) {
             Utils.checkNotNull(funnelLocation, "funnelLocation");
             this.funnelLocation = funnelLocation;
             return this;
         }
+
 
         public Builder programmaticGuaranteedPrivateContractId(String programmaticGuaranteedPrivateContractId) {
             Utils.checkNotNull(programmaticGuaranteedPrivateContractId, "programmaticGuaranteedPrivateContractId");
@@ -575,22 +601,16 @@ public class AdGroupCreateWorkflowPrimaryInput {
             this.programmaticGuaranteedPrivateContractId = programmaticGuaranteedPrivateContractId;
             return this;
         }
-        
+
         public AdGroupCreateWorkflowPrimaryInput build() {
+
             return new AdGroupCreateWorkflowPrimaryInput(
-                isEnabled,
-                description,
-                budget,
-                baseBidCPMInAdvertiserCurrency,
-                maxBidCPMInAdvertiserCurrency,
-                audienceTargeting,
-                roiGoal,
-                creativeIds,
-                associatedBidLists,
-                name,
-                channel,
-                funnelLocation,
+                isEnabled, description, budget,
+                baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
+                roiGoal, creativeIds, associatedBidLists,
+                name, channel, funnelLocation,
                 programmaticGuaranteedPrivateContractId);
         }
+
     }
 }

@@ -31,7 +31,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         FirstPartyDataInput req = FirstPartyDataInput.builder()
@@ -51,7 +51,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.typeBasedJobSubmitResponse().isPresent()) {
+        if (res.standardJobSubmitResponse().isPresent()) {
             // handle response
         }
     }
@@ -99,7 +99,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         ThirdPartyDataInput req = ThirdPartyDataInput.builder()
@@ -117,7 +117,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.typeBasedJobSubmitResponse().isPresent()) {
+        if (res.standardJobSubmitResponse().isPresent()) {
             // handle response
         }
     }

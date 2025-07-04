@@ -10,7 +10,7 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class GetJobStatusRequest {
 
@@ -29,9 +29,10 @@ public class GetJobStatusRequest {
         return id;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GetJobStatusRequest withId(long id) {
         Utils.checkNotNull(id, "id");
@@ -39,7 +40,6 @@ public class GetJobStatusRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +50,12 @@ public class GetJobStatusRequest {
         }
         GetJobStatusRequest other = (GetJobStatusRequest) o;
         return 
-            Objects.deepEquals(this.id, other.id);
+            Utils.enhancedDeepEquals(this.id, other.id);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id);
     }
     
@@ -64,24 +64,28 @@ public class GetJobStatusRequest {
         return Utils.toString(GetJobStatusRequest.class,
                 "id", id);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long id;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(long id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
-        
+
         public GetJobStatusRequest build() {
+
             return new GetJobStatusRequest(
                 id);
         }
+
     }
 }

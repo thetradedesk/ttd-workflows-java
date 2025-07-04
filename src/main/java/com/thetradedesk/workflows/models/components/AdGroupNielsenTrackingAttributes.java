@@ -13,22 +13,26 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AdGroupNielsenTrackingAttributes {
 
     @JsonProperty("enhancedReportingOption")
     private EnhancedNielsenReportingOptions enhancedReportingOption;
 
+
     @JsonProperty("gender")
     private TargetingGender gender;
+
 
     @JsonProperty("startAge")
     private TargetingStartAge startAge;
 
+
     @JsonProperty("endAge")
     private TargetingEndAge endAge;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("countries")
@@ -58,7 +62,8 @@ public class AdGroupNielsenTrackingAttributes {
             TargetingGender gender,
             TargetingStartAge startAge,
             TargetingEndAge endAge) {
-        this(enhancedReportingOption, gender, startAge, endAge, Optional.empty());
+        this(enhancedReportingOption, gender, startAge,
+            endAge, Optional.empty());
     }
 
     @JsonIgnore
@@ -87,9 +92,10 @@ public class AdGroupNielsenTrackingAttributes {
         return (Optional<List<String>>) countries;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupNielsenTrackingAttributes withEnhancedReportingOption(EnhancedNielsenReportingOptions enhancedReportingOption) {
         Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
@@ -121,13 +127,13 @@ public class AdGroupNielsenTrackingAttributes {
         return this;
     }
 
+
     public AdGroupNielsenTrackingAttributes withCountries(Optional<? extends List<String>> countries) {
         Utils.checkNotNull(countries, "countries");
         this.countries = countries;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,21 +144,18 @@ public class AdGroupNielsenTrackingAttributes {
         }
         AdGroupNielsenTrackingAttributes other = (AdGroupNielsenTrackingAttributes) o;
         return 
-            Objects.deepEquals(this.enhancedReportingOption, other.enhancedReportingOption) &&
-            Objects.deepEquals(this.gender, other.gender) &&
-            Objects.deepEquals(this.startAge, other.startAge) &&
-            Objects.deepEquals(this.endAge, other.endAge) &&
-            Objects.deepEquals(this.countries, other.countries);
+            Utils.enhancedDeepEquals(this.enhancedReportingOption, other.enhancedReportingOption) &&
+            Utils.enhancedDeepEquals(this.gender, other.gender) &&
+            Utils.enhancedDeepEquals(this.startAge, other.startAge) &&
+            Utils.enhancedDeepEquals(this.endAge, other.endAge) &&
+            Utils.enhancedDeepEquals(this.countries, other.countries);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            enhancedReportingOption,
-            gender,
-            startAge,
-            endAge,
-            countries);
+        return Utils.enhancedHash(
+            enhancedReportingOption, gender, startAge,
+            endAge, countries);
     }
     
     @Override
@@ -164,22 +167,24 @@ public class AdGroupNielsenTrackingAttributes {
                 "endAge", endAge,
                 "countries", countries);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private EnhancedNielsenReportingOptions enhancedReportingOption;
- 
+
         private TargetingGender gender;
- 
+
         private TargetingStartAge startAge;
- 
+
         private TargetingEndAge endAge;
- 
+
         private Optional<? extends List<String>> countries = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder enhancedReportingOption(EnhancedNielsenReportingOptions enhancedReportingOption) {
             Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
@@ -187,11 +192,13 @@ public class AdGroupNielsenTrackingAttributes {
             return this;
         }
 
+
         public Builder gender(TargetingGender gender) {
             Utils.checkNotNull(gender, "gender");
             this.gender = gender;
             return this;
         }
+
 
         public Builder startAge(TargetingStartAge startAge) {
             Utils.checkNotNull(startAge, "startAge");
@@ -199,11 +206,13 @@ public class AdGroupNielsenTrackingAttributes {
             return this;
         }
 
+
         public Builder endAge(TargetingEndAge endAge) {
             Utils.checkNotNull(endAge, "endAge");
             this.endAge = endAge;
             return this;
         }
+
 
         public Builder countries(List<String> countries) {
             Utils.checkNotNull(countries, "countries");
@@ -216,14 +225,13 @@ public class AdGroupNielsenTrackingAttributes {
             this.countries = countries;
             return this;
         }
-        
+
         public AdGroupNielsenTrackingAttributes build() {
+
             return new AdGroupNielsenTrackingAttributes(
-                enhancedReportingOption,
-                gender,
-                startAge,
-                endAge,
-                countries);
+                enhancedReportingOption, gender, startAge,
+                endAge, countries);
         }
+
     }
 }

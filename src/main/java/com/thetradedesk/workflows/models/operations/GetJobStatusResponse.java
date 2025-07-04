@@ -5,7 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.thetradedesk.workflows.models.components.TypeBasedJobStatusResponse;
+import com.thetradedesk.workflows.models.components.StandardJobStatusResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
@@ -14,11 +14,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GetJobStatusResponse implements Response {
 
+public class GetJobStatusResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
@@ -37,29 +36,30 @@ public class GetJobStatusResponse implements Response {
     /**
      * OK
      */
-    private Optional<? extends TypeBasedJobStatusResponse> typeBasedJobStatusResponse;
+    private Optional<? extends StandardJobStatusResponse> standardJobStatusResponse;
 
     @JsonCreator
     public GetJobStatusResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends TypeBasedJobStatusResponse> typeBasedJobStatusResponse) {
+            Optional<? extends StandardJobStatusResponse> standardJobStatusResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
-        Utils.checkNotNull(typeBasedJobStatusResponse, "typeBasedJobStatusResponse");
+        Utils.checkNotNull(standardJobStatusResponse, "standardJobStatusResponse");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
-        this.typeBasedJobStatusResponse = typeBasedJobStatusResponse;
+        this.standardJobStatusResponse = standardJobStatusResponse;
     }
     
     public GetJobStatusResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
-        this(contentType, statusCode, rawResponse, Optional.empty());
+        this(contentType, statusCode, rawResponse,
+            Optional.empty());
     }
 
     /**
@@ -91,13 +91,14 @@ public class GetJobStatusResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<TypeBasedJobStatusResponse> typeBasedJobStatusResponse() {
-        return (Optional<TypeBasedJobStatusResponse>) typeBasedJobStatusResponse;
+    public Optional<StandardJobStatusResponse> standardJobStatusResponse() {
+        return (Optional<StandardJobStatusResponse>) standardJobStatusResponse;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP response content type for this operation
@@ -129,22 +130,22 @@ public class GetJobStatusResponse implements Response {
     /**
      * OK
      */
-    public GetJobStatusResponse withTypeBasedJobStatusResponse(TypeBasedJobStatusResponse typeBasedJobStatusResponse) {
-        Utils.checkNotNull(typeBasedJobStatusResponse, "typeBasedJobStatusResponse");
-        this.typeBasedJobStatusResponse = Optional.ofNullable(typeBasedJobStatusResponse);
+    public GetJobStatusResponse withStandardJobStatusResponse(StandardJobStatusResponse standardJobStatusResponse) {
+        Utils.checkNotNull(standardJobStatusResponse, "standardJobStatusResponse");
+        this.standardJobStatusResponse = Optional.ofNullable(standardJobStatusResponse);
         return this;
     }
+
 
     /**
      * OK
      */
-    public GetJobStatusResponse withTypeBasedJobStatusResponse(Optional<? extends TypeBasedJobStatusResponse> typeBasedJobStatusResponse) {
-        Utils.checkNotNull(typeBasedJobStatusResponse, "typeBasedJobStatusResponse");
-        this.typeBasedJobStatusResponse = typeBasedJobStatusResponse;
+    public GetJobStatusResponse withStandardJobStatusResponse(Optional<? extends StandardJobStatusResponse> standardJobStatusResponse) {
+        Utils.checkNotNull(standardJobStatusResponse, "standardJobStatusResponse");
+        this.standardJobStatusResponse = standardJobStatusResponse;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,19 +156,17 @@ public class GetJobStatusResponse implements Response {
         }
         GetJobStatusResponse other = (GetJobStatusResponse) o;
         return 
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.rawResponse, other.rawResponse) &&
-            Objects.deepEquals(this.typeBasedJobStatusResponse, other.typeBasedJobStatusResponse);
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
+            Utils.enhancedDeepEquals(this.standardJobStatusResponse, other.standardJobStatusResponse);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            contentType,
-            statusCode,
-            rawResponse,
-            typeBasedJobStatusResponse);
+        return Utils.enhancedHash(
+            contentType, statusCode, rawResponse,
+            standardJobStatusResponse);
     }
     
     @Override
@@ -176,22 +175,24 @@ public class GetJobStatusResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "typeBasedJobStatusResponse", typeBasedJobStatusResponse);
+                "standardJobStatusResponse", standardJobStatusResponse);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String contentType;
- 
+
         private Integer statusCode;
- 
+
         private HttpResponse<InputStream> rawResponse;
- 
-        private Optional<? extends TypeBasedJobStatusResponse> typeBasedJobStatusResponse = Optional.empty();
-        
+
+        private Optional<? extends StandardJobStatusResponse> standardJobStatusResponse = Optional.empty();
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP response content type for this operation
@@ -202,6 +203,7 @@ public class GetJobStatusResponse implements Response {
             return this;
         }
 
+
         /**
          * HTTP response status code for this operation
          */
@@ -210,6 +212,7 @@ public class GetJobStatusResponse implements Response {
             this.statusCode = statusCode;
             return this;
         }
+
 
         /**
          * Raw HTTP response; suitable for custom response parsing
@@ -220,30 +223,31 @@ public class GetJobStatusResponse implements Response {
             return this;
         }
 
+
         /**
          * OK
          */
-        public Builder typeBasedJobStatusResponse(TypeBasedJobStatusResponse typeBasedJobStatusResponse) {
-            Utils.checkNotNull(typeBasedJobStatusResponse, "typeBasedJobStatusResponse");
-            this.typeBasedJobStatusResponse = Optional.ofNullable(typeBasedJobStatusResponse);
+        public Builder standardJobStatusResponse(StandardJobStatusResponse standardJobStatusResponse) {
+            Utils.checkNotNull(standardJobStatusResponse, "standardJobStatusResponse");
+            this.standardJobStatusResponse = Optional.ofNullable(standardJobStatusResponse);
             return this;
         }
 
         /**
          * OK
          */
-        public Builder typeBasedJobStatusResponse(Optional<? extends TypeBasedJobStatusResponse> typeBasedJobStatusResponse) {
-            Utils.checkNotNull(typeBasedJobStatusResponse, "typeBasedJobStatusResponse");
-            this.typeBasedJobStatusResponse = typeBasedJobStatusResponse;
+        public Builder standardJobStatusResponse(Optional<? extends StandardJobStatusResponse> standardJobStatusResponse) {
+            Utils.checkNotNull(standardJobStatusResponse, "standardJobStatusResponse");
+            this.standardJobStatusResponse = standardJobStatusResponse;
             return this;
         }
-        
+
         public GetJobStatusResponse build() {
+
             return new GetJobStatusResponse(
-                contentType,
-                statusCode,
-                rawResponse,
-                typeBasedJobStatusResponse);
+                contentType, statusCode, rawResponse,
+                standardJobStatusResponse);
         }
+
     }
 }

@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -22,13 +21,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>This is the top level class returned to a user when they retrieve a query job
  */
 public class GraphQLQueryJobRetrievalResponse {
-
     /**
      * This is the response model that mirrors the GQL bulkjob
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("job")
     private Optional<? extends GraphQlQueryJob> job;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("errors")
@@ -62,9 +61,10 @@ public class GraphQLQueryJobRetrievalResponse {
         return errors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * This is the response model that mirrors the GQL bulkjob
@@ -74,6 +74,7 @@ public class GraphQLQueryJobRetrievalResponse {
         this.job = Optional.ofNullable(job);
         return this;
     }
+
 
     /**
      * This is the response model that mirrors the GQL bulkjob
@@ -96,7 +97,6 @@ public class GraphQLQueryJobRetrievalResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,15 +107,14 @@ public class GraphQLQueryJobRetrievalResponse {
         }
         GraphQLQueryJobRetrievalResponse other = (GraphQLQueryJobRetrievalResponse) o;
         return 
-            Objects.deepEquals(this.job, other.job) &&
-            Objects.deepEquals(this.errors, other.errors);
+            Utils.enhancedDeepEquals(this.job, other.job) &&
+            Utils.enhancedDeepEquals(this.errors, other.errors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            job,
-            errors);
+        return Utils.enhancedHash(
+            job, errors);
     }
     
     @Override
@@ -124,16 +123,18 @@ public class GraphQLQueryJobRetrievalResponse {
                 "job", job,
                 "errors", errors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends GraphQlQueryJob> job = Optional.empty();
- 
+
         private JsonNullable<String> errors = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * This is the response model that mirrors the GQL bulkjob
@@ -153,6 +154,7 @@ public class GraphQLQueryJobRetrievalResponse {
             return this;
         }
 
+
         public Builder errors(String errors) {
             Utils.checkNotNull(errors, "errors");
             this.errors = JsonNullable.of(errors);
@@ -164,11 +166,12 @@ public class GraphQLQueryJobRetrievalResponse {
             this.errors = errors;
             return this;
         }
-        
+
         public GraphQLQueryJobRetrievalResponse build() {
+
             return new GraphQLQueryJobRetrievalResponse(
-                job,
-                errors);
+                job, errors);
         }
+
     }
 }

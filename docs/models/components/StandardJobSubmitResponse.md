@@ -1,4 +1,4 @@
-# TypeBasedJobSubmitResponse
+# StandardJobSubmitResponse
 
 
 ## Fields

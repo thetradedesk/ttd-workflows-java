@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [submitGraphQlRequest](#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
-* [submitGraphQlQueryJob](#submitgraphqlqueryjob) - Submit a valid bulk GraphQL query.
+* [submitGraphQlQueryJob](#submitgraphqlqueryjob) - Submit a valid bulk GraphQL query
 
 ## submitGraphQlRequest
 
@@ -30,7 +30,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         GraphQLRequestInput req = GraphQLRequestInput.builder()
@@ -70,7 +70,7 @@ public class Application {
 ## submitGraphQlQueryJob
 
 This generic operation can be used to execute any valid bulk GraphQL query.
-For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
 
 ### Example Usage
 
@@ -89,7 +89,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         GraphQlQueryJobInput req = GraphQlQueryJobInput.builder()

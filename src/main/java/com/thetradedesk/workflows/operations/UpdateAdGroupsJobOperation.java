@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.SecuritySource;
 import com.thetradedesk.workflows.models.components.AdGroupBulkUpdateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.models.components.TypeBasedJobSubmitResponse;
+import com.thetradedesk.workflows.models.components.StandardJobSubmitResponse;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.UpdateAdGroupsJobResponse;
@@ -52,11 +52,12 @@ public class UpdateAdGroupsJobOperation implements RequestOperation<Optional<? e
     
     @Override
     public HttpResponse<InputStream> doRequest(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request) throws Exception {
-        options.ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG)));
+        options
+                .ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG)));
         String baseUrl = this.sdkConfiguration.serverUrl();
         String url = Utils.generateURL(
                 baseUrl,
-                "/typebasedjob/adgroup/bulk");
+                "/standardjob/adgroup/bulk");
         
         HTTPRequest req = new HTTPRequest(url, "PATCH");
         Object convertedRequest = Utils.convertToShape(
@@ -156,11 +157,11 @@ public class UpdateAdGroupsJobOperation implements RequestOperation<Optional<? e
         
         if (Utils.statusCodeMatches(response.statusCode(), "202")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                TypeBasedJobSubmitResponse out = Utils.mapper().readValue(
+                StandardJobSubmitResponse out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
-                res.withTypeBasedJobSubmitResponse(out);
+                res.withStandardJobSubmitResponse(out);
                 return res;
             } else {
                 throw new APIException(

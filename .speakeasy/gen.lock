@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: a0f6e8c35b5ce74365b72acb49c36024
+  docChecksum: 3e843519a336a29f379e4fe2a5a59f9a
   docVersion: v1
-  speakeasyVersion: 1.570.2
-  generationVersion: 2.638.5
-  releaseVersion: 0.7.3
-  configChecksum: 5d7ff17e6d1cd06f0496710ca71f38f1
+  speakeasyVersion: 1.580.0
+  generationVersion: 2.654.2
+  releaseVersion: 0.8.0
+  configChecksum: 4072a27e3386c76395cb36731bbed256
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -14,9 +14,9 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.39.1
+    core: 3.43.0
     flattening: 2.81.1
-    globalSecurity: 2.82.8
+    globalSecurity: 2.83.0
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.2
@@ -103,12 +103,12 @@ generatedFiles:
   - docs/models/components/ProblemDetails.md
   - docs/models/components/RestApiMethodType.md
   - docs/models/components/Security.md
+  - docs/models/components/StandardJobStatusResponse.md
+  - docs/models/components/StandardJobSubmitResponse.md
   - docs/models/components/TargetingEndAge.md
   - docs/models/components/TargetingGender.md
   - docs/models/components/TargetingStartAge.md
   - docs/models/components/ThirdPartyDataInput.md
-  - docs/models/components/TypeBasedJobStatusResponse.md
-  - docs/models/components/TypeBasedJobSubmitResponse.md
   - docs/models/components/Variables.md
   - docs/models/components/WorkflowCallbackInput.md
   - docs/models/components/WorkflowStatus.md
@@ -234,12 +234,12 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/components/ProblemDetails.java
   - src/main/java/com/thetradedesk/workflows/models/components/RestApiMethodType.java
   - src/main/java/com/thetradedesk/workflows/models/components/Security.java
+  - src/main/java/com/thetradedesk/workflows/models/components/StandardJobStatusResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/components/StandardJobSubmitResponse.java
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingEndAge.java
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingGender.java
   - src/main/java/com/thetradedesk/workflows/models/components/TargetingStartAge.java
   - src/main/java/com/thetradedesk/workflows/models/components/ThirdPartyDataInput.java
-  - src/main/java/com/thetradedesk/workflows/models/components/TypeBasedJobStatusResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/components/TypeBasedJobSubmitResponse.java
   - src/main/java/com/thetradedesk/workflows/models/components/Variables.java
   - src/main/java/com/thetradedesk/workflows/models/components/WorkflowCallbackInput.java
   - src/main/java/com/thetradedesk/workflows/models/components/WorkflowStatus.java

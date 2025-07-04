@@ -10,10 +10,9 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
-public class TypeBasedJobSubmitResponse {
 
+public class StandardJobSubmitResponse {
     /**
      * The ID of the job.
      */
@@ -21,7 +20,7 @@ public class TypeBasedJobSubmitResponse {
     private long id;
 
     @JsonCreator
-    public TypeBasedJobSubmitResponse(
+    public StandardJobSubmitResponse(
             @JsonProperty("id") long id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
@@ -35,20 +34,20 @@ public class TypeBasedJobSubmitResponse {
         return id;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID of the job.
      */
-    public TypeBasedJobSubmitResponse withId(long id) {
+    public StandardJobSubmitResponse withId(long id) {
         Utils.checkNotNull(id, "id");
         this.id = id;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -57,30 +56,32 @@ public class TypeBasedJobSubmitResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        TypeBasedJobSubmitResponse other = (TypeBasedJobSubmitResponse) o;
+        StandardJobSubmitResponse other = (StandardJobSubmitResponse) o;
         return 
-            Objects.deepEquals(this.id, other.id);
+            Utils.enhancedDeepEquals(this.id, other.id);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(TypeBasedJobSubmitResponse.class,
+        return Utils.toString(StandardJobSubmitResponse.class,
                 "id", id);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long id;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID of the job.
@@ -90,10 +91,12 @@ public class TypeBasedJobSubmitResponse {
             this.id = id;
             return this;
         }
-        
-        public TypeBasedJobSubmitResponse build() {
-            return new TypeBasedJobSubmitResponse(
+
+        public StandardJobSubmitResponse build() {
+
+            return new StandardJobSubmitResponse(
                 id);
         }
+
     }
 }

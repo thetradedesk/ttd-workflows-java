@@ -25,7 +25,6 @@ public class GraphQLRequest {
     GraphQLRequest(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Submit a valid GraphQL query or mutation
      * 
@@ -67,17 +66,16 @@ public class GraphQLRequest {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
               = new SubmitGraphQlRequestOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
-
     /**
-     * Submit a valid bulk GraphQL query.
+     * Submit a valid bulk GraphQL query
      * 
      * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @return The call builder
      */
@@ -86,10 +84,10 @@ public class GraphQLRequest {
     }
 
     /**
-     * Submit a valid bulk GraphQL query.
+     * Submit a valid bulk GraphQL query
      * 
      * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -99,10 +97,10 @@ public class GraphQLRequest {
     }
 
     /**
-     * Submit a valid bulk GraphQL query.
+     * Submit a valid bulk GraphQL query
      * 
      * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQ query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -114,8 +112,8 @@ public class GraphQLRequest {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
               = new SubmitGraphQlQueryJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

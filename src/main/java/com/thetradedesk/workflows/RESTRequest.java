@@ -21,7 +21,6 @@ public class RESTRequest {
     RESTRequest(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Submit a valid REST request
      * 
@@ -63,8 +62,8 @@ public class RESTRequest {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
               = new SubmitRestRequestOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
