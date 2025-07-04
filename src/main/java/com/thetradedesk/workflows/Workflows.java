@@ -28,7 +28,7 @@ import java.util.function.Consumer;
  * [ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the
  * [Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases).
  */
-public class TtdWorkflows {
+public class Workflows {
 
     /**
      * AvailableServers contains identifiers for the servers available to the SDK.
@@ -244,7 +244,7 @@ public class TtdWorkflows {
          *
          * @return The SDK instance.
          */
-        public TtdWorkflows build() {
+        public Workflows build() {
             if (serverUrl == null || serverUrl.isBlank()) {
                 serverUrl = SERVERS.get(AvailableServers.PROD);
                 server = AvailableServers.PROD.server();
@@ -253,7 +253,7 @@ public class TtdWorkflows {
             if (server != null) {
                 sdkConfiguration.setServer(server);
             }
-            return new TtdWorkflows(sdkConfiguration);
+            return new Workflows(sdkConfiguration);
         }
     }
     
@@ -266,7 +266,7 @@ public class TtdWorkflows {
         return new Builder();
     }
 
-    private TtdWorkflows(SDKConfiguration sdkConfiguration) {
+    private Workflows(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.sdkConfiguration.initialize();
         this.adGroup = new AdGroup(sdkConfiguration);
