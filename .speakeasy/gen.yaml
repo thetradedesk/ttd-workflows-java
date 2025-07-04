@@ -1,0 +1,60 @@
+configVersion: 2.0.0
+generation:
+  sdkClassName: Workflows
+  maintainOpenAPIOrder: true
+  usageSnippets:
+    optionalPropertyRendering: always
+    sdkInitStyle: constructor
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: true
+    nameResolutionFeb2025: true
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+    securityFeb2025: true
+    sharedErrorComponentsApr2025: false
+  auth:
+    oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: true
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
+java:
+  version: 0.9.3
+  additionalDependencies: []
+  additionalPlugins: []
+  artifactID: workflows
+  baseErrorName: WorkflowsError
+  clientServerStatusCodesAsErrors: true
+  companyEmail: dl-platform-sdk@thetradedesk.com
+  companyName: The Trade Desk
+  companyURL: https://www.thetradedesk.com/
+  defaultErrorName: APIException
+  enableAsync: false
+  enableCustomCodeRegions: false
+  envVarPrefix: WORKFLOWS
+  flattenGlobalSecurity: true
+  githubURL: github.com/thetradedesk/ttd-workflows-java
+  groupID: com.thetradedesk
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/components
+      webhooks: models/webhooks
+  inputModelSuffix: input
+  languageVersion: 11
+  license:
+    name: The MIT License (MIT)
+    shortName: MIT
+    url: https://mit-license.org/
+  maxMethodParams: 999
+  methodArguments: infer-optional-args
+  nullFriendlyParameters: false
+  outputModelSuffix: output
+  projectName: ttd-workflows
+  responseFormat: envelope-http
+  templateVersion: v2

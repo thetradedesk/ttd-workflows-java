@@ -1,0 +1,49 @@
+speakeasyVersion: 1.582.0
+sources:
+    Workflows API:
+        sourceNamespace: workflows-api
+        sourceRevisionDigest: sha256:32a3f53804e3cdbfbf52f460895962a469b2e986d0030f861f52aa0bdd3ee9d0
+        sourceBlobDigest: sha256:786ccb2a5ae123201d41668c26b1e24f078d077e7f3c49ee21a45faa7f196ef4
+        tags:
+            - latest
+            - speakeasy-sdk-regen-1752682355
+            - v1
+targets:
+    ttd-workflows:
+        source: Workflows API
+        sourceNamespace: workflows-api
+        sourceRevisionDigest: sha256:32a3f53804e3cdbfbf52f460895962a469b2e986d0030f861f52aa0bdd3ee9d0
+        sourceBlobDigest: sha256:786ccb2a5ae123201d41668c26b1e24f078d077e7f3c49ee21a45faa7f196ef4
+        codeSamplesNamespace: workflows-api-java-code-samples
+        codeSamplesRevisionDigest: sha256:dadb2a4d2d9b21ee042255874c770fd49e2015ffbe6384ce54ca71ee65d4ac73
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Workflows API:
+            inputs:
+                - location: https://api.thetradedesk.com/workflows/swagger/v1/swagger.yaml
+                  authHeader: TTD-Auth
+                  authSecret: $openapi_doc_auth_token
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+                - location: .speakeasy/speakeasy-config-overlay.yaml
+                - location: .speakeasy/api-spec-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api
+    targets:
+        ttd-workflows:
+            target: java
+            source: Workflows API
+            publish:
+                java:
+                    ossrhUsername: $ossrh_username
+                    ossrhPassword: $ossrh_password
+                    gpgSecretKey: $java_gpg_secret_key
+                    gpgPassPhrase: $java_gpg_passphrase
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/thetradedesk/workflows/workflows-api-java-code-samples
+                labelOverride:
+                    fixedValue: Java (SDK)
+                blocking: false
