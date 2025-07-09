@@ -55,8 +55,8 @@ public class SubmitGraphQlQueryJobRequestBuilder {
 
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
               = new SubmitGraphQlQueryJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

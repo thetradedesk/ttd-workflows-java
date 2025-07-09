@@ -14,9 +14,9 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowBudgetInput {
 
@@ -24,17 +24,21 @@ public class AdGroupWorkflowBudgetInput {
     @JsonProperty("allocationType")
     private Optional<? extends AllocationType> allocationType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInAdvertiserCurrency")
     private JsonNullable<Double> budgetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInImpressions")
     private JsonNullable<Long> budgetInImpressions;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInAdvertiserCurrency")
     private JsonNullable<Double> dailyTargetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInImpressions")
@@ -60,7 +64,8 @@ public class AdGroupWorkflowBudgetInput {
     }
     
     public AdGroupWorkflowBudgetInput() {
-        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -89,15 +94,17 @@ public class AdGroupWorkflowBudgetInput {
         return dailyTargetInImpressions;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowBudgetInput withAllocationType(AllocationType allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
         this.allocationType = Optional.ofNullable(allocationType);
         return this;
     }
+
 
     public AdGroupWorkflowBudgetInput withAllocationType(Optional<? extends AllocationType> allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
@@ -153,7 +160,6 @@ public class AdGroupWorkflowBudgetInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -164,21 +170,18 @@ public class AdGroupWorkflowBudgetInput {
         }
         AdGroupWorkflowBudgetInput other = (AdGroupWorkflowBudgetInput) o;
         return 
-            Objects.deepEquals(this.allocationType, other.allocationType) &&
-            Objects.deepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
-            Objects.deepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
+            Utils.enhancedDeepEquals(this.allocationType, other.allocationType) &&
+            Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            allocationType,
-            budgetInAdvertiserCurrency,
-            budgetInImpressions,
-            dailyTargetInAdvertiserCurrency,
-            dailyTargetInImpressions);
+        return Utils.enhancedHash(
+            allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+            dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
     }
     
     @Override
@@ -190,22 +193,24 @@ public class AdGroupWorkflowBudgetInput {
                 "dailyTargetInAdvertiserCurrency", dailyTargetInAdvertiserCurrency,
                 "dailyTargetInImpressions", dailyTargetInImpressions);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends AllocationType> allocationType = Optional.empty();
- 
+
         private JsonNullable<Double> budgetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> dailyTargetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> dailyTargetInImpressions = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder allocationType(AllocationType allocationType) {
             Utils.checkNotNull(allocationType, "allocationType");
@@ -219,6 +224,7 @@ public class AdGroupWorkflowBudgetInput {
             return this;
         }
 
+
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = JsonNullable.of(budgetInAdvertiserCurrency);
@@ -230,6 +236,7 @@ public class AdGroupWorkflowBudgetInput {
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder budgetInImpressions(long budgetInImpressions) {
             Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
@@ -243,6 +250,7 @@ public class AdGroupWorkflowBudgetInput {
             return this;
         }
 
+
         public Builder dailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
             Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
             this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
@@ -255,6 +263,7 @@ public class AdGroupWorkflowBudgetInput {
             return this;
         }
 
+
         public Builder dailyTargetInImpressions(long dailyTargetInImpressions) {
             Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
             this.dailyTargetInImpressions = JsonNullable.of(dailyTargetInImpressions);
@@ -266,14 +275,13 @@ public class AdGroupWorkflowBudgetInput {
             this.dailyTargetInImpressions = dailyTargetInImpressions;
             return this;
         }
-        
+
         public AdGroupWorkflowBudgetInput build() {
+
             return new AdGroupWorkflowBudgetInput(
-                allocationType,
-                budgetInAdvertiserCurrency,
-                budgetInImpressions,
-                dailyTargetInAdvertiserCurrency,
-                dailyTargetInImpressions);
+                allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+                dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
         }
+
     }
 }

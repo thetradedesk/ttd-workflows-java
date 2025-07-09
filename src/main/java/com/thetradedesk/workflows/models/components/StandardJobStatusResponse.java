@@ -14,11 +14,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class StandardJobStatusResponse {
 
+public class StandardJobStatusResponse {
     /**
      * The ID of the job.
      */
@@ -44,6 +43,7 @@ public class StandardJobStatusResponse {
      */
     @JsonProperty("createdAtUtc")
     private OffsetDateTime createdAtUtc;
+
 
     @JsonProperty("status")
     private WorkflowStatus status;
@@ -102,7 +102,9 @@ public class StandardJobStatusResponse {
             long id,
             OffsetDateTime createdAtUtc,
             WorkflowStatus status) {
-        this(id, JsonNullable.undefined(), JsonNullable.undefined(), createdAtUtc, status, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(id, JsonNullable.undefined(), JsonNullable.undefined(),
+            createdAtUtc, status, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -167,9 +169,10 @@ public class StandardJobStatusResponse {
         return errors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID of the job.
@@ -287,7 +290,6 @@ public class StandardJobStatusResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -298,27 +300,22 @@ public class StandardJobStatusResponse {
         }
         StandardJobStatusResponse other = (StandardJobStatusResponse) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.completedAtUtc, other.completedAtUtc) &&
-            Objects.deepEquals(this.completionPercentage, other.completionPercentage) &&
-            Objects.deepEquals(this.createdAtUtc, other.createdAtUtc) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.rawResult, other.rawResult) &&
-            Objects.deepEquals(this.errors, other.errors);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.completedAtUtc, other.completedAtUtc) &&
+            Utils.enhancedDeepEquals(this.completionPercentage, other.completionPercentage) &&
+            Utils.enhancedDeepEquals(this.createdAtUtc, other.createdAtUtc) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.rawResult, other.rawResult) &&
+            Utils.enhancedDeepEquals(this.errors, other.errors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            completedAtUtc,
-            completionPercentage,
-            createdAtUtc,
-            status,
-            url,
-            rawResult,
-            errors);
+        return Utils.enhancedHash(
+            id, completedAtUtc, completionPercentage,
+            createdAtUtc, status, url,
+            rawResult, errors);
     }
     
     @Override
@@ -333,28 +330,30 @@ public class StandardJobStatusResponse {
                 "rawResult", rawResult,
                 "errors", errors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long id;
- 
+
         private JsonNullable<OffsetDateTime> completedAtUtc = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> completionPercentage = JsonNullable.undefined();
- 
+
         private OffsetDateTime createdAtUtc;
- 
+
         private WorkflowStatus status;
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<String> rawResult = JsonNullable.undefined();
- 
+
         private JsonNullable<String> errors = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID of the job.
@@ -364,6 +363,7 @@ public class StandardJobStatusResponse {
             this.id = id;
             return this;
         }
+
 
         /**
          * The UTC data and time that the job completed.
@@ -383,6 +383,7 @@ public class StandardJobStatusResponse {
             return this;
         }
 
+
         /**
          * The job completion percentage.
          */
@@ -401,6 +402,7 @@ public class StandardJobStatusResponse {
             return this;
         }
 
+
         /**
          * The UTC date and time that the job was created.
          */
@@ -410,11 +412,13 @@ public class StandardJobStatusResponse {
             return this;
         }
 
+
         public Builder status(WorkflowStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
         }
+
 
         /**
          * The URL from which the job result can be downloaded.
@@ -433,6 +437,7 @@ public class StandardJobStatusResponse {
             this.url = url;
             return this;
         }
+
 
         /**
          * The raw job result if the response is less than or equal to 20MB in size.
@@ -454,6 +459,7 @@ public class StandardJobStatusResponse {
             return this;
         }
 
+
         /**
          * A list of errors encountered during workflow processing.
          */
@@ -471,17 +477,14 @@ public class StandardJobStatusResponse {
             this.errors = errors;
             return this;
         }
-        
+
         public StandardJobStatusResponse build() {
+
             return new StandardJobStatusResponse(
-                id,
-                completedAtUtc,
-                completionPercentage,
-                createdAtUtc,
-                status,
-                url,
-                rawResult,
-                errors);
+                id, completedAtUtc, completionPercentage,
+                createdAtUtc, status, url,
+                rawResult, errors);
         }
+
     }
 }

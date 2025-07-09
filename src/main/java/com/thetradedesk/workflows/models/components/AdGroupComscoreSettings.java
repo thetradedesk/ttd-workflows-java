@@ -15,22 +15,25 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupComscoreSettings {
 
     @JsonProperty("isEnabled")
     private boolean isEnabled;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("populationId")
     private JsonNullable<Integer> populationId;
 
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("demographicMemberIds")
     private Optional<? extends List<Integer>> demographicMemberIds;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("mobileDemographicMemberIds")
@@ -54,7 +57,8 @@ public class AdGroupComscoreSettings {
     
     public AdGroupComscoreSettings(
             boolean isEnabled) {
-        this(isEnabled, JsonNullable.undefined(), Optional.empty(), Optional.empty());
+        this(isEnabled, JsonNullable.undefined(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -79,9 +83,10 @@ public class AdGroupComscoreSettings {
         return (Optional<List<Integer>>) mobileDemographicMemberIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupComscoreSettings withIsEnabled(boolean isEnabled) {
         Utils.checkNotNull(isEnabled, "isEnabled");
@@ -107,6 +112,7 @@ public class AdGroupComscoreSettings {
         return this;
     }
 
+
     public AdGroupComscoreSettings withDemographicMemberIds(Optional<? extends List<Integer>> demographicMemberIds) {
         Utils.checkNotNull(demographicMemberIds, "demographicMemberIds");
         this.demographicMemberIds = demographicMemberIds;
@@ -119,13 +125,13 @@ public class AdGroupComscoreSettings {
         return this;
     }
 
+
     public AdGroupComscoreSettings withMobileDemographicMemberIds(Optional<? extends List<Integer>> mobileDemographicMemberIds) {
         Utils.checkNotNull(mobileDemographicMemberIds, "mobileDemographicMemberIds");
         this.mobileDemographicMemberIds = mobileDemographicMemberIds;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -136,18 +142,16 @@ public class AdGroupComscoreSettings {
         }
         AdGroupComscoreSettings other = (AdGroupComscoreSettings) o;
         return 
-            Objects.deepEquals(this.isEnabled, other.isEnabled) &&
-            Objects.deepEquals(this.populationId, other.populationId) &&
-            Objects.deepEquals(this.demographicMemberIds, other.demographicMemberIds) &&
-            Objects.deepEquals(this.mobileDemographicMemberIds, other.mobileDemographicMemberIds);
+            Utils.enhancedDeepEquals(this.isEnabled, other.isEnabled) &&
+            Utils.enhancedDeepEquals(this.populationId, other.populationId) &&
+            Utils.enhancedDeepEquals(this.demographicMemberIds, other.demographicMemberIds) &&
+            Utils.enhancedDeepEquals(this.mobileDemographicMemberIds, other.mobileDemographicMemberIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            isEnabled,
-            populationId,
-            demographicMemberIds,
+        return Utils.enhancedHash(
+            isEnabled, populationId, demographicMemberIds,
             mobileDemographicMemberIds);
     }
     
@@ -159,26 +163,29 @@ public class AdGroupComscoreSettings {
                 "demographicMemberIds", demographicMemberIds,
                 "mobileDemographicMemberIds", mobileDemographicMemberIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Boolean isEnabled;
- 
+
         private JsonNullable<Integer> populationId = JsonNullable.undefined();
- 
+
         private Optional<? extends List<Integer>> demographicMemberIds = Optional.empty();
- 
+
         private Optional<? extends List<Integer>> mobileDemographicMemberIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder isEnabled(boolean isEnabled) {
             Utils.checkNotNull(isEnabled, "isEnabled");
             this.isEnabled = isEnabled;
             return this;
         }
+
 
         public Builder populationId(int populationId) {
             Utils.checkNotNull(populationId, "populationId");
@@ -192,6 +199,7 @@ public class AdGroupComscoreSettings {
             return this;
         }
 
+
         public Builder demographicMemberIds(List<Integer> demographicMemberIds) {
             Utils.checkNotNull(demographicMemberIds, "demographicMemberIds");
             this.demographicMemberIds = Optional.ofNullable(demographicMemberIds);
@@ -204,6 +212,7 @@ public class AdGroupComscoreSettings {
             return this;
         }
 
+
         public Builder mobileDemographicMemberIds(List<Integer> mobileDemographicMemberIds) {
             Utils.checkNotNull(mobileDemographicMemberIds, "mobileDemographicMemberIds");
             this.mobileDemographicMemberIds = Optional.ofNullable(mobileDemographicMemberIds);
@@ -215,13 +224,13 @@ public class AdGroupComscoreSettings {
             this.mobileDemographicMemberIds = mobileDemographicMemberIds;
             return this;
         }
-        
+
         public AdGroupComscoreSettings build() {
+
             return new AdGroupComscoreSettings(
-                isEnabled,
-                populationId,
-                demographicMemberIds,
+                isEnabled, populationId, demographicMemberIds,
                 mobileDemographicMemberIds);
         }
+
     }
 }
