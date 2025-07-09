@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -21,7 +20,6 @@ import java.util.Optional;
  * <p>Required fields for executing a GraphQL query job
  */
 public class GraphQlQueryJobInput {
-
     /**
      * The GraphQL query to execute
      */
@@ -67,9 +65,10 @@ public class GraphQlQueryJobInput {
         return (Optional<GraphQlJobCallbackInput>) callbackInput;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The GraphQL query to execute
@@ -89,6 +88,7 @@ public class GraphQlQueryJobInput {
         return this;
     }
 
+
     /**
      * Input class for providing a callback's url and any headers needed for the callback.
      */
@@ -98,7 +98,6 @@ public class GraphQlQueryJobInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -109,15 +108,14 @@ public class GraphQlQueryJobInput {
         }
         GraphQlQueryJobInput other = (GraphQlQueryJobInput) o;
         return 
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.callbackInput, other.callbackInput);
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.callbackInput, other.callbackInput);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            query,
-            callbackInput);
+        return Utils.enhancedHash(
+            query, callbackInput);
     }
     
     @Override
@@ -126,16 +124,18 @@ public class GraphQlQueryJobInput {
                 "query", query,
                 "callbackInput", callbackInput);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String query;
- 
+
         private Optional<? extends GraphQlJobCallbackInput> callbackInput = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The GraphQL query to execute
@@ -145,6 +145,7 @@ public class GraphQlQueryJobInput {
             this.query = query;
             return this;
         }
+
 
         /**
          * Input class for providing a callback's url and any headers needed for the callback.
@@ -163,11 +164,12 @@ public class GraphQlQueryJobInput {
             this.callbackInput = callbackInput;
             return this;
         }
-        
+
         public GraphQlQueryJobInput build() {
+
             return new GraphQlQueryJobInput(
-                query,
-                callbackInput);
+                query, callbackInput);
         }
+
     }
 }

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: b077b3c2c016309ddbc234eac983b593
+  docChecksum: 3e843519a336a29f379e4fe2a5a59f9a
   docVersion: v1
-  speakeasyVersion: 1.570.2
-  generationVersion: 2.638.5
-  releaseVersion: 0.7.4
-  configChecksum: 5f99d8aa8a4f1d9efd77ae6041bade8f
+  speakeasyVersion: 1.580.0
+  generationVersion: 2.654.2
+  releaseVersion: 0.8.0
+  configChecksum: 4072a27e3386c76395cb36731bbed256
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -14,9 +14,9 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.39.1
+    core: 3.43.0
     flattening: 2.81.1
-    globalSecurity: 2.82.8
+    globalSecurity: 2.83.0
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.2

@@ -12,7 +12,7 @@ Developer-friendly & type-safe Java SDK specifically catered to facilitate commo
 <!-- Start Summary [summary] -->
 ## Summary
 
-Workflows Service: Operations for commonly used workflows.
+Workflows Service: 
 This service provides operations for commonly used workflows on The Trade Desk's platform.
 In addition, this service provides generic operations for submitting:
 
@@ -53,7 +53,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.7.4'
+implementation 'com.thetradedesk:workflows:0.8.0'
 ```
 
 Maven:
@@ -61,7 +61,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.7.4</version>
+    <version>0.8.0</version>
 </dependency>
 ```
 
@@ -129,7 +129,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -279,7 +279,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -472,7 +472,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -633,7 +633,7 @@ public class Application {
                         .retryConnectError(false)
                         .build())
                     .build())
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -785,7 +785,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -938,7 +938,7 @@ public class Application {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
                 .server(TtdWorkflows.AvailableServers.SANDBOX)
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -1079,7 +1079,7 @@ public class Application {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
                 .serverURL("https://api.thetradedesk.com/workflows")
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()

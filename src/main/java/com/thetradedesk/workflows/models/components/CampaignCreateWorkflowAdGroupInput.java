@@ -12,13 +12,14 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class CampaignCreateWorkflowAdGroupInput {
 
     @JsonProperty("primaryInput")
     private AdGroupCreateWorkflowPrimaryInput primaryInput;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
@@ -50,9 +51,10 @@ public class CampaignCreateWorkflowAdGroupInput {
         return (Optional<CampaignCreateWorkflowAdGroupAdvancedInput>) advancedInput;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignCreateWorkflowAdGroupInput withPrimaryInput(AdGroupCreateWorkflowPrimaryInput primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
@@ -66,13 +68,13 @@ public class CampaignCreateWorkflowAdGroupInput {
         return this;
     }
 
+
     public CampaignCreateWorkflowAdGroupInput withAdvancedInput(Optional<? extends CampaignCreateWorkflowAdGroupAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
         this.advancedInput = advancedInput;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -83,15 +85,14 @@ public class CampaignCreateWorkflowAdGroupInput {
         }
         CampaignCreateWorkflowAdGroupInput other = (CampaignCreateWorkflowAdGroupInput) o;
         return 
-            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
-            Objects.deepEquals(this.advancedInput, other.advancedInput);
+            Utils.enhancedDeepEquals(this.primaryInput, other.primaryInput) &&
+            Utils.enhancedDeepEquals(this.advancedInput, other.advancedInput);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            primaryInput,
-            advancedInput);
+        return Utils.enhancedHash(
+            primaryInput, advancedInput);
     }
     
     @Override
@@ -100,22 +101,25 @@ public class CampaignCreateWorkflowAdGroupInput {
                 "primaryInput", primaryInput,
                 "advancedInput", advancedInput);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private AdGroupCreateWorkflowPrimaryInput primaryInput;
- 
+
         private Optional<? extends CampaignCreateWorkflowAdGroupAdvancedInput> advancedInput = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder primaryInput(AdGroupCreateWorkflowPrimaryInput primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = primaryInput;
             return this;
         }
+
 
         public Builder advancedInput(CampaignCreateWorkflowAdGroupAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
@@ -128,11 +132,12 @@ public class CampaignCreateWorkflowAdGroupInput {
             this.advancedInput = advancedInput;
             return this;
         }
-        
+
         public CampaignCreateWorkflowAdGroupInput build() {
+
             return new CampaignCreateWorkflowAdGroupInput(
-                primaryInput,
-                advancedInput);
+                primaryInput, advancedInput);
         }
+
     }
 }

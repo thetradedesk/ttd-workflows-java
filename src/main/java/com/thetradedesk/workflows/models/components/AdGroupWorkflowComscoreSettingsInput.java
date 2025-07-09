@@ -15,21 +15,24 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowComscoreSettingsInput {
 
     @JsonProperty("isEnabled")
     private boolean isEnabled;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("populationId")
     private JsonNullable<Integer> populationId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("demographicMemberIds")
     private JsonNullable<? extends List<Integer>> demographicMemberIds;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mobileDemographicMemberIds")
@@ -53,7 +56,8 @@ public class AdGroupWorkflowComscoreSettingsInput {
     
     public AdGroupWorkflowComscoreSettingsInput(
             boolean isEnabled) {
-        this(isEnabled, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(isEnabled, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -78,9 +82,10 @@ public class AdGroupWorkflowComscoreSettingsInput {
         return (JsonNullable<List<Integer>>) mobileDemographicMemberIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowComscoreSettingsInput withIsEnabled(boolean isEnabled) {
         Utils.checkNotNull(isEnabled, "isEnabled");
@@ -124,7 +129,6 @@ public class AdGroupWorkflowComscoreSettingsInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -135,18 +139,16 @@ public class AdGroupWorkflowComscoreSettingsInput {
         }
         AdGroupWorkflowComscoreSettingsInput other = (AdGroupWorkflowComscoreSettingsInput) o;
         return 
-            Objects.deepEquals(this.isEnabled, other.isEnabled) &&
-            Objects.deepEquals(this.populationId, other.populationId) &&
-            Objects.deepEquals(this.demographicMemberIds, other.demographicMemberIds) &&
-            Objects.deepEquals(this.mobileDemographicMemberIds, other.mobileDemographicMemberIds);
+            Utils.enhancedDeepEquals(this.isEnabled, other.isEnabled) &&
+            Utils.enhancedDeepEquals(this.populationId, other.populationId) &&
+            Utils.enhancedDeepEquals(this.demographicMemberIds, other.demographicMemberIds) &&
+            Utils.enhancedDeepEquals(this.mobileDemographicMemberIds, other.mobileDemographicMemberIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            isEnabled,
-            populationId,
-            demographicMemberIds,
+        return Utils.enhancedHash(
+            isEnabled, populationId, demographicMemberIds,
             mobileDemographicMemberIds);
     }
     
@@ -158,26 +160,29 @@ public class AdGroupWorkflowComscoreSettingsInput {
                 "demographicMemberIds", demographicMemberIds,
                 "mobileDemographicMemberIds", mobileDemographicMemberIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Boolean isEnabled;
- 
+
         private JsonNullable<Integer> populationId = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Integer>> demographicMemberIds = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Integer>> mobileDemographicMemberIds = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder isEnabled(boolean isEnabled) {
             Utils.checkNotNull(isEnabled, "isEnabled");
             this.isEnabled = isEnabled;
             return this;
         }
+
 
         public Builder populationId(int populationId) {
             Utils.checkNotNull(populationId, "populationId");
@@ -191,6 +196,7 @@ public class AdGroupWorkflowComscoreSettingsInput {
             return this;
         }
 
+
         public Builder demographicMemberIds(List<Integer> demographicMemberIds) {
             Utils.checkNotNull(demographicMemberIds, "demographicMemberIds");
             this.demographicMemberIds = JsonNullable.of(demographicMemberIds);
@@ -203,6 +209,7 @@ public class AdGroupWorkflowComscoreSettingsInput {
             return this;
         }
 
+
         public Builder mobileDemographicMemberIds(List<Integer> mobileDemographicMemberIds) {
             Utils.checkNotNull(mobileDemographicMemberIds, "mobileDemographicMemberIds");
             this.mobileDemographicMemberIds = JsonNullable.of(mobileDemographicMemberIds);
@@ -214,13 +221,13 @@ public class AdGroupWorkflowComscoreSettingsInput {
             this.mobileDemographicMemberIds = mobileDemographicMemberIds;
             return this;
         }
-        
+
         public AdGroupWorkflowComscoreSettingsInput build() {
+
             return new AdGroupWorkflowComscoreSettingsInput(
-                isEnabled,
-                populationId,
-                demographicMemberIds,
+                isEnabled, populationId, demographicMemberIds,
                 mobileDemographicMemberIds);
         }
+
     }
 }

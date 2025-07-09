@@ -14,13 +14,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ArchiveCampaignsRequest {
 
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=forceArchive")
     private Optional<Boolean> forceArchive;
+
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private Optional<? extends List<String>> requestBody;
@@ -50,15 +51,17 @@ public class ArchiveCampaignsRequest {
         return (Optional<List<String>>) requestBody;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ArchiveCampaignsRequest withForceArchive(boolean forceArchive) {
         Utils.checkNotNull(forceArchive, "forceArchive");
         this.forceArchive = Optional.ofNullable(forceArchive);
         return this;
     }
+
 
     public ArchiveCampaignsRequest withForceArchive(Optional<Boolean> forceArchive) {
         Utils.checkNotNull(forceArchive, "forceArchive");
@@ -72,13 +75,13 @@ public class ArchiveCampaignsRequest {
         return this;
     }
 
+
     public ArchiveCampaignsRequest withRequestBody(Optional<? extends List<String>> requestBody) {
         Utils.checkNotNull(requestBody, "requestBody");
         this.requestBody = requestBody;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +92,14 @@ public class ArchiveCampaignsRequest {
         }
         ArchiveCampaignsRequest other = (ArchiveCampaignsRequest) o;
         return 
-            Objects.deepEquals(this.forceArchive, other.forceArchive) &&
-            Objects.deepEquals(this.requestBody, other.requestBody);
+            Utils.enhancedDeepEquals(this.forceArchive, other.forceArchive) &&
+            Utils.enhancedDeepEquals(this.requestBody, other.requestBody);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            forceArchive,
-            requestBody);
+        return Utils.enhancedHash(
+            forceArchive, requestBody);
     }
     
     @Override
@@ -106,16 +108,18 @@ public class ArchiveCampaignsRequest {
                 "forceArchive", forceArchive,
                 "requestBody", requestBody);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> forceArchive;
- 
+
         private Optional<? extends List<String>> requestBody = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder forceArchive(boolean forceArchive) {
             Utils.checkNotNull(forceArchive, "forceArchive");
@@ -129,6 +133,7 @@ public class ArchiveCampaignsRequest {
             return this;
         }
 
+
         public Builder requestBody(List<String> requestBody) {
             Utils.checkNotNull(requestBody, "requestBody");
             this.requestBody = Optional.ofNullable(requestBody);
@@ -140,15 +145,16 @@ public class ArchiveCampaignsRequest {
             this.requestBody = requestBody;
             return this;
         }
-        
+
         public ArchiveCampaignsRequest build() {
             if (forceArchive == null) {
                 forceArchive = _SINGLETON_VALUE_ForceArchive.value();
             }
+
             return new ArchiveCampaignsRequest(
-                forceArchive,
-                requestBody);
+                forceArchive, requestBody);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_ForceArchive =
                 new LazySingletonValue<>(

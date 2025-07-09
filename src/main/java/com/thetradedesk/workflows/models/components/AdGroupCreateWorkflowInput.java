@@ -12,17 +12,19 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AdGroupCreateWorkflowInput {
 
     @JsonProperty("primaryInput")
     private AdGroupCreateWorkflowPrimaryInput primaryInput;
 
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("campaignId")
     private Optional<String> campaignId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
@@ -62,9 +64,10 @@ public class AdGroupCreateWorkflowInput {
         return (Optional<AdGroupWorkflowAdvancedInput>) advancedInput;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupCreateWorkflowInput withPrimaryInput(AdGroupCreateWorkflowPrimaryInput primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
@@ -78,6 +81,7 @@ public class AdGroupCreateWorkflowInput {
         return this;
     }
 
+
     public AdGroupCreateWorkflowInput withCampaignId(Optional<String> campaignId) {
         Utils.checkNotNull(campaignId, "campaignId");
         this.campaignId = campaignId;
@@ -90,13 +94,13 @@ public class AdGroupCreateWorkflowInput {
         return this;
     }
 
+
     public AdGroupCreateWorkflowInput withAdvancedInput(Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
         this.advancedInput = advancedInput;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,17 +111,15 @@ public class AdGroupCreateWorkflowInput {
         }
         AdGroupCreateWorkflowInput other = (AdGroupCreateWorkflowInput) o;
         return 
-            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
-            Objects.deepEquals(this.campaignId, other.campaignId) &&
-            Objects.deepEquals(this.advancedInput, other.advancedInput);
+            Utils.enhancedDeepEquals(this.primaryInput, other.primaryInput) &&
+            Utils.enhancedDeepEquals(this.campaignId, other.campaignId) &&
+            Utils.enhancedDeepEquals(this.advancedInput, other.advancedInput);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            primaryInput,
-            campaignId,
-            advancedInput);
+        return Utils.enhancedHash(
+            primaryInput, campaignId, advancedInput);
     }
     
     @Override
@@ -127,24 +129,27 @@ public class AdGroupCreateWorkflowInput {
                 "campaignId", campaignId,
                 "advancedInput", advancedInput);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private AdGroupCreateWorkflowPrimaryInput primaryInput;
- 
+
         private Optional<String> campaignId = Optional.empty();
- 
+
         private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder primaryInput(AdGroupCreateWorkflowPrimaryInput primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = primaryInput;
             return this;
         }
+
 
         public Builder campaignId(String campaignId) {
             Utils.checkNotNull(campaignId, "campaignId");
@@ -158,6 +163,7 @@ public class AdGroupCreateWorkflowInput {
             return this;
         }
 
+
         public Builder advancedInput(AdGroupWorkflowAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
             this.advancedInput = Optional.ofNullable(advancedInput);
@@ -169,12 +175,12 @@ public class AdGroupCreateWorkflowInput {
             this.advancedInput = advancedInput;
             return this;
         }
-        
+
         public AdGroupCreateWorkflowInput build() {
+
             return new AdGroupCreateWorkflowInput(
-                primaryInput,
-                campaignId,
-                advancedInput);
+                primaryInput, campaignId, advancedInput);
         }
+
     }
 }
