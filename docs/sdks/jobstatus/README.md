@@ -18,7 +18,7 @@ Once a job is complete, this operation will return the URL from which to downloa
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusResponse;
 import java.lang.Exception;
@@ -27,8 +27,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         GetGraphQlQueryJobStatusResponse res = sdk.jobStatus().getGraphQlQueryJobStatus()
@@ -71,7 +71,7 @@ Job results expire after 24 hours, at which point you will need to submit a new 
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetJobStatusResponse;
 import java.lang.Exception;
@@ -80,8 +80,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         GetJobStatusResponse res = sdk.jobStatus().getJobStatus()

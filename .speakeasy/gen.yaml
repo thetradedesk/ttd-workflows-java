@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.7.4
+  version: 0.8.1
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
@@ -45,12 +45,14 @@ java:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
+  languageVersion: 11
   license:
     name: The MIT License (MIT)
     shortName: MIT
     url: https://mit-license.org/
   maxMethodParams: 999
   methodArguments: infer-optional-args
+  nullFriendlyParameters: false
   outputModelSuffix: output
   projectName: ttd-workflows
   responseFormat: envelope-http

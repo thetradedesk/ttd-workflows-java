@@ -26,7 +26,6 @@ public class JobStatus {
     JobStatus(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Get the status of a previously submitted GraphQL query job.
      * 
@@ -74,11 +73,10 @@ public class JobStatus {
                 .build();
         RequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
               = new GetGraphQlQueryJobStatusOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get the status of a previously submitted job
@@ -133,8 +131,8 @@ public class JobStatus {
                 .build();
         RequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
               = new GetJobStatusOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

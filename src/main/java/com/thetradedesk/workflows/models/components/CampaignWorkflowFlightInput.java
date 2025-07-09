@@ -14,28 +14,33 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignWorkflowFlightInput {
 
     @JsonProperty("startDateInclusiveUTC")
     private OffsetDateTime startDateInclusiveUTC;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endDateExclusiveUTC")
     private JsonNullable<OffsetDateTime> endDateExclusiveUTC;
 
+
     @JsonProperty("budgetInAdvertiserCurrency")
     private double budgetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInImpressions")
     private JsonNullable<Long> budgetInImpressions;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInAdvertiserCurrency")
     private JsonNullable<Double> dailyTargetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInImpressions")
@@ -66,7 +71,8 @@ public class CampaignWorkflowFlightInput {
     public CampaignWorkflowFlightInput(
             OffsetDateTime startDateInclusiveUTC,
             double budgetInAdvertiserCurrency) {
-        this(startDateInclusiveUTC, JsonNullable.undefined(), budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(startDateInclusiveUTC, JsonNullable.undefined(), budgetInAdvertiserCurrency,
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -99,9 +105,10 @@ public class CampaignWorkflowFlightInput {
         return dailyTargetInImpressions;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignWorkflowFlightInput withStartDateInclusiveUTC(OffsetDateTime startDateInclusiveUTC) {
         Utils.checkNotNull(startDateInclusiveUTC, "startDateInclusiveUTC");
@@ -163,7 +170,6 @@ public class CampaignWorkflowFlightInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,23 +180,19 @@ public class CampaignWorkflowFlightInput {
         }
         CampaignWorkflowFlightInput other = (CampaignWorkflowFlightInput) o;
         return 
-            Objects.deepEquals(this.startDateInclusiveUTC, other.startDateInclusiveUTC) &&
-            Objects.deepEquals(this.endDateExclusiveUTC, other.endDateExclusiveUTC) &&
-            Objects.deepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
-            Objects.deepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
+            Utils.enhancedDeepEquals(this.startDateInclusiveUTC, other.startDateInclusiveUTC) &&
+            Utils.enhancedDeepEquals(this.endDateExclusiveUTC, other.endDateExclusiveUTC) &&
+            Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            startDateInclusiveUTC,
-            endDateExclusiveUTC,
-            budgetInAdvertiserCurrency,
-            budgetInImpressions,
-            dailyTargetInAdvertiserCurrency,
-            dailyTargetInImpressions);
+        return Utils.enhancedHash(
+            startDateInclusiveUTC, endDateExclusiveUTC, budgetInAdvertiserCurrency,
+            budgetInImpressions, dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
     }
     
     @Override
@@ -203,30 +205,33 @@ public class CampaignWorkflowFlightInput {
                 "dailyTargetInAdvertiserCurrency", dailyTargetInAdvertiserCurrency,
                 "dailyTargetInImpressions", dailyTargetInImpressions);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private OffsetDateTime startDateInclusiveUTC;
- 
+
         private JsonNullable<OffsetDateTime> endDateExclusiveUTC = JsonNullable.undefined();
- 
+
         private Double budgetInAdvertiserCurrency;
- 
+
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> dailyTargetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> dailyTargetInImpressions = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder startDateInclusiveUTC(OffsetDateTime startDateInclusiveUTC) {
             Utils.checkNotNull(startDateInclusiveUTC, "startDateInclusiveUTC");
             this.startDateInclusiveUTC = startDateInclusiveUTC;
             return this;
         }
+
 
         public Builder endDateExclusiveUTC(OffsetDateTime endDateExclusiveUTC) {
             Utils.checkNotNull(endDateExclusiveUTC, "endDateExclusiveUTC");
@@ -240,11 +245,13 @@ public class CampaignWorkflowFlightInput {
             return this;
         }
 
+
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder budgetInImpressions(long budgetInImpressions) {
             Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
@@ -258,6 +265,7 @@ public class CampaignWorkflowFlightInput {
             return this;
         }
 
+
         public Builder dailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
             Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
             this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
@@ -270,6 +278,7 @@ public class CampaignWorkflowFlightInput {
             return this;
         }
 
+
         public Builder dailyTargetInImpressions(long dailyTargetInImpressions) {
             Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
             this.dailyTargetInImpressions = JsonNullable.of(dailyTargetInImpressions);
@@ -281,15 +290,13 @@ public class CampaignWorkflowFlightInput {
             this.dailyTargetInImpressions = dailyTargetInImpressions;
             return this;
         }
-        
+
         public CampaignWorkflowFlightInput build() {
+
             return new CampaignWorkflowFlightInput(
-                startDateInclusiveUTC,
-                endDateExclusiveUTC,
-                budgetInAdvertiserCurrency,
-                budgetInImpressions,
-                dailyTargetInAdvertiserCurrency,
-                dailyTargetInImpressions);
+                startDateInclusiveUTC, endDateExclusiveUTC, budgetInAdvertiserCurrency,
+                budgetInImpressions, dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
         }
+
     }
 }

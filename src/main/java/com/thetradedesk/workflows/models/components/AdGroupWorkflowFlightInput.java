@@ -14,9 +14,9 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowFlightInput {
 
@@ -24,21 +24,26 @@ public class AdGroupWorkflowFlightInput {
     @JsonProperty("allocationType")
     private Optional<? extends AllocationType> allocationType;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInAdvertiserCurrency")
     private JsonNullable<Double> budgetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInImpressions")
     private JsonNullable<Long> budgetInImpressions;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInAdvertiserCurrency")
     private JsonNullable<Double> dailyTargetInAdvertiserCurrency;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInImpressions")
     private JsonNullable<Long> dailyTargetInImpressions;
+
 
     @JsonProperty("campaignFlightId")
     private long campaignFlightId;
@@ -67,7 +72,8 @@ public class AdGroupWorkflowFlightInput {
     
     public AdGroupWorkflowFlightInput(
             long campaignFlightId) {
-        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId);
+        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId);
     }
 
     @SuppressWarnings("unchecked")
@@ -101,15 +107,17 @@ public class AdGroupWorkflowFlightInput {
         return campaignFlightId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowFlightInput withAllocationType(AllocationType allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
         this.allocationType = Optional.ofNullable(allocationType);
         return this;
     }
+
 
     public AdGroupWorkflowFlightInput withAllocationType(Optional<? extends AllocationType> allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
@@ -171,7 +179,6 @@ public class AdGroupWorkflowFlightInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -182,23 +189,19 @@ public class AdGroupWorkflowFlightInput {
         }
         AdGroupWorkflowFlightInput other = (AdGroupWorkflowFlightInput) o;
         return 
-            Objects.deepEquals(this.allocationType, other.allocationType) &&
-            Objects.deepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
-            Objects.deepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions) &&
-            Objects.deepEquals(this.campaignFlightId, other.campaignFlightId);
+            Utils.enhancedDeepEquals(this.allocationType, other.allocationType) &&
+            Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions) &&
+            Utils.enhancedDeepEquals(this.campaignFlightId, other.campaignFlightId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            allocationType,
-            budgetInAdvertiserCurrency,
-            budgetInImpressions,
-            dailyTargetInAdvertiserCurrency,
-            dailyTargetInImpressions,
-            campaignFlightId);
+        return Utils.enhancedHash(
+            allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+            dailyTargetInAdvertiserCurrency, dailyTargetInImpressions, campaignFlightId);
     }
     
     @Override
@@ -211,24 +214,26 @@ public class AdGroupWorkflowFlightInput {
                 "dailyTargetInImpressions", dailyTargetInImpressions,
                 "campaignFlightId", campaignFlightId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends AllocationType> allocationType = Optional.empty();
- 
+
         private JsonNullable<Double> budgetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> dailyTargetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> dailyTargetInImpressions = JsonNullable.undefined();
- 
+
         private Long campaignFlightId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder allocationType(AllocationType allocationType) {
             Utils.checkNotNull(allocationType, "allocationType");
@@ -242,6 +247,7 @@ public class AdGroupWorkflowFlightInput {
             return this;
         }
 
+
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = JsonNullable.of(budgetInAdvertiserCurrency);
@@ -253,6 +259,7 @@ public class AdGroupWorkflowFlightInput {
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder budgetInImpressions(long budgetInImpressions) {
             Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
@@ -266,6 +273,7 @@ public class AdGroupWorkflowFlightInput {
             return this;
         }
 
+
         public Builder dailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
             Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
             this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
@@ -277,6 +285,7 @@ public class AdGroupWorkflowFlightInput {
             this.dailyTargetInAdvertiserCurrency = dailyTargetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder dailyTargetInImpressions(long dailyTargetInImpressions) {
             Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
@@ -290,20 +299,19 @@ public class AdGroupWorkflowFlightInput {
             return this;
         }
 
+
         public Builder campaignFlightId(long campaignFlightId) {
             Utils.checkNotNull(campaignFlightId, "campaignFlightId");
             this.campaignFlightId = campaignFlightId;
             return this;
         }
-        
+
         public AdGroupWorkflowFlightInput build() {
+
             return new AdGroupWorkflowFlightInput(
-                allocationType,
-                budgetInAdvertiserCurrency,
-                budgetInImpressions,
-                dailyTargetInAdvertiserCurrency,
-                dailyTargetInImpressions,
-                campaignFlightId);
+                allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+                dailyTargetInAdvertiserCurrency, dailyTargetInImpressions, campaignFlightId);
         }
+
     }
 }

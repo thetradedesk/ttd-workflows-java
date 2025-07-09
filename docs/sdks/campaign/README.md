@@ -21,7 +21,7 @@ Create a new campaign with required fields
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateCampaignResponse;
@@ -34,8 +34,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         CampaignCreateWorkflowInputWithValidation req = CampaignCreateWorkflowInputWithValidation.builder()
@@ -239,7 +239,7 @@ Only the fields provided in the request payload will be updated.
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.UpdateCampaignResponse;
@@ -252,8 +252,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         CampaignUpdateWorkflowInputWithValidation req = CampaignUpdateWorkflowInputWithValidation.builder()
@@ -358,7 +358,7 @@ Create multiple new campaigns with required fields
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateCampaignsJobResponse;
@@ -372,8 +372,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         CampaignBulkCreateWorkflowInputWithValidation req = CampaignBulkCreateWorkflowInputWithValidation.builder()
@@ -583,7 +583,7 @@ Only the fields provided in the request payload for each specific campaign will 
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.UpdateCampaignsJobResponse;
@@ -597,8 +597,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         CampaignBulkUpdateWorkflowInputWithValidation req = CampaignBulkUpdateWorkflowInputWithValidation.builder()
@@ -713,7 +713,7 @@ public class Application {
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.ArchiveCampaignsResponse;
 import java.lang.Exception;
@@ -723,8 +723,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         ArchiveCampaignsResponse res = sdk.campaign().archiveCampaigns()
@@ -769,7 +769,7 @@ Get a campaign's version
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetCampaignVersionResponse;
 import java.lang.Exception;
@@ -778,8 +778,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         GetCampaignVersionResponse res = sdk.campaign().getVersion()

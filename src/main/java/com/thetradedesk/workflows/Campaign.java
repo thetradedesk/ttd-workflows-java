@@ -43,7 +43,6 @@ public class Campaign {
     Campaign(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Create a new campaign with required fields
      * 
@@ -76,11 +75,10 @@ public class Campaign {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
               = new CreateCampaignOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update a campaign with specified fields
@@ -120,11 +118,10 @@ public class Campaign {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
               = new UpdateCampaignOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create multiple new campaigns with required fields
@@ -158,11 +155,10 @@ public class Campaign {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
               = new CreateCampaignsJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update multiple campaigns with specified fields
@@ -202,11 +198,10 @@ public class Campaign {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
               = new UpdateCampaignsJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Archive multiple campaigns
@@ -254,11 +249,10 @@ public class Campaign {
                 .build();
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
               = new ArchiveCampaignsOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Get a campaign's version
@@ -298,8 +292,8 @@ public class Campaign {
                 .build();
         RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
               = new GetCampaignVersionOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

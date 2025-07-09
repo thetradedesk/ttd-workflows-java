@@ -18,7 +18,7 @@ To explore the available GraphQL operations, see the [GraphQL Schema Explorer](h
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.models.components.Variables;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
@@ -29,8 +29,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         GraphQLRequestInput req = GraphQLRequestInput.builder()
@@ -77,7 +77,7 @@ For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobResponse;
@@ -88,8 +88,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         GraphQlQueryJobInput req = GraphQlQueryJobInput.builder()

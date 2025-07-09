@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
- * Workflows Service: Operations for commonly used workflows.
+ * Workflows Service: 
  * This service provides operations for commonly used workflows on The Trade Desk's platform.
  * In addition, this service provides generic operations for submitting:
  * 
@@ -28,7 +28,7 @@ import java.util.function.Consumer;
  * [ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the
  * [Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases).
  */
-public class TtdWorkflows {
+public class Workflows {
 
     /**
      * AvailableServers contains identifiers for the servers available to the SDK.
@@ -39,17 +39,17 @@ public class TtdWorkflows {
          * 
          * <p>The production environment.
          */
-      PROD("prod"),
+        PROD("prod"),
         /**
          * SANDBOX
          * 
          * <p>The sandbox environment for testing.
          */
-      SANDBOX("sandbox");
+        SANDBOX("sandbox");
 
         private final String server;
 
-        private AvailableServers(String server) {
+        AvailableServers(String server) {
             this.server = server;
         }
 
@@ -63,48 +63,59 @@ public class TtdWorkflows {
      */
     @SuppressWarnings("serial")
     public static final Map<AvailableServers, String> SERVERS = new HashMap<>() { {
-    put(AvailableServers.PROD, "https://api.thetradedesk.com/workflows");
-    put(AvailableServers.SANDBOX, "https://ext-api.sb.thetradedesk.com/workflows");
+        put(AvailableServers.PROD, "https://api.thetradedesk.com/workflows");
+        put(AvailableServers.SANDBOX, "https://ext-api.sb.thetradedesk.com/workflows");
     }};
 
-    
 
     private final AdGroup adGroup;
 
+
     private final Campaign campaign;
+
 
     private final Dmp dmp;
 
+
     private final GraphQLRequest graphQLRequest;
+
 
     private final JobStatus jobStatus;
 
+
     private final RESTRequest restRequest;
+
 
     public AdGroup adGroup() {
         return adGroup;
     }
 
+
     public Campaign campaign() {
         return campaign;
     }
+
 
     public Dmp dmp() {
         return dmp;
     }
 
+
     public GraphQLRequest graphQLRequest() {
         return graphQLRequest;
     }
+
 
     public JobStatus jobStatus() {
         return jobStatus;
     }
 
+
     public RESTRequest restRequest() {
         return restRequest;
     }
-    private SDKConfiguration sdkConfiguration;
+
+    private final SDKConfiguration sdkConfiguration;
 
     /**
      * The Builder class allows the configuration of a new instance of the SDK.
@@ -202,15 +213,17 @@ public class TtdWorkflows {
 
         /**
          * Enables debug logging for HTTP requests and responses, including JSON body content.
-         *
-         * Convenience method that calls {@link HTTPClient#enableDebugging(boolean)}.
+         * <p>
+         * Convenience method that calls {@link HTTPClient#enableDebugLogging(boolean)}.
          * {@link SpeakeasyHTTPClient} honors this setting. If you are using a custom HTTP client,
          * it is up to the custom client to honor this setting.
+         * </p>
          *
+         * @param enabled Whether to enable debug logging.
          * @return The builder instance.
          */
         public Builder enableHTTPDebugLogging(boolean enabled) {
-            this.sdkConfiguration.client().enableDebugging(enabled);
+            this.sdkConfiguration.client().enableDebugLogging(enabled);
             return this;
         }
 
@@ -231,7 +244,7 @@ public class TtdWorkflows {
          *
          * @return The SDK instance.
          */
-        public TtdWorkflows build() {
+        public Workflows build() {
             if (serverUrl == null || serverUrl.isBlank()) {
                 serverUrl = SERVERS.get(AvailableServers.PROD);
                 server = AvailableServers.PROD.server();
@@ -240,7 +253,7 @@ public class TtdWorkflows {
             if (server != null) {
                 sdkConfiguration.setServer(server);
             }
-            return new TtdWorkflows(sdkConfiguration);
+            return new Workflows(sdkConfiguration);
         }
     }
     
@@ -253,7 +266,7 @@ public class TtdWorkflows {
         return new Builder();
     }
 
-    private TtdWorkflows(SDKConfiguration sdkConfiguration) {
+    private Workflows(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
         this.sdkConfiguration.initialize();
         this.adGroup = new AdGroup(sdkConfiguration);
@@ -262,8 +275,10 @@ public class TtdWorkflows {
         this.graphQLRequest = new GraphQLRequest(sdkConfiguration);
         this.jobStatus = new JobStatus(sdkConfiguration);
         this.restRequest = new RESTRequest(sdkConfiguration);
-        
-        SdkInitData data = this.sdkConfiguration.hooks().sdkInit(new SdkInitData(this.sdkConfiguration.resolvedServerUrl(), this.sdkConfiguration.client()));
+        SdkInitData data = this.sdkConfiguration.hooks().sdkInit(
+                new SdkInitData(
+                        this.sdkConfiguration.resolvedServerUrl(), 
+                        this.sdkConfiguration.client()));
         this.sdkConfiguration.setServerUrl(data.baseUrl());
         this.sdkConfiguration.setClient(data.client());
     }

@@ -9,7 +9,7 @@ import com.thetradedesk.workflows.utils.SpeakeasyMetadata;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class GetCampaignVersionRequest {
 
@@ -28,9 +28,10 @@ public class GetCampaignVersionRequest {
         return id;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GetCampaignVersionRequest withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -38,7 +39,6 @@ public class GetCampaignVersionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class GetCampaignVersionRequest {
         }
         GetCampaignVersionRequest other = (GetCampaignVersionRequest) o;
         return 
-            Objects.deepEquals(this.id, other.id);
+            Utils.enhancedDeepEquals(this.id, other.id);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             id);
     }
     
@@ -63,24 +63,28 @@ public class GetCampaignVersionRequest {
         return Utils.toString(GetCampaignVersionRequest.class,
                 "id", id);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
-        
+
         public GetCampaignVersionRequest build() {
+
             return new GetCampaignVersionRequest(
                 id);
         }
+
     }
 }

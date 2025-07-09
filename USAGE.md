@@ -2,7 +2,7 @@
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -15,8 +15,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()

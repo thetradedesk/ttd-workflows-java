@@ -12,7 +12,7 @@ Developer-friendly & type-safe Java SDK specifically catered to facilitate commo
 <!-- Start Summary [summary] -->
 ## Summary
 
-Workflows Service: Operations for commonly used workflows.
+Workflows Service: 
 This service provides operations for commonly used workflows on The Trade Desk's platform.
 In addition, this service provides generic operations for submitting:
 
@@ -36,6 +36,7 @@ For further explanation on the entities encountered in this documentation (e.g.,
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
+  * [Debugging](#debugging)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -53,7 +54,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.7.4'
+implementation 'com.thetradedesk:workflows:0.8.1'
 ```
 
 Maven:
@@ -61,7 +62,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.7.4</version>
+    <version>0.8.1</version>
 </dependency>
 ```
 
@@ -78,33 +79,6 @@ On Windows:
 ```bash
 gradlew.bat publishToMavenLocal -Pskip.signing
 ```
-
-### Logging
-A logging framework/facade has not yet been adopted but is under consideration.
-
-For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
-```java
-SDK.builder()
-    .enableHTTPDebugLogging(true)
-    .build();
-```
-Example output:
-```
-Sending request: http://localhost:35123/bearer#global GET
-Request headers: {Accept=[application/json], Authorization=[******], Client-Level-Header=[added by client], Idempotency-Key=[some-key], x-speakeasy-user-agent=[speakeasy-sdk/java 0.0.1 internal 0.1.0 org.openapis.openapi]}
-Received response: (GET http://localhost:35123/bearer#global) 200
-Response headers: {access-control-allow-credentials=[true], access-control-allow-origin=[*], connection=[keep-alive], content-length=[50], content-type=[application/json], date=[Wed, 09 Apr 2025 01:43:29 GMT], server=[gunicorn/19.9.0]}
-Response body:
-{
-  "authenticated": true, 
-  "token": "global"
-}
-```
-__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
-
-__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
-
-Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End SDK Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->
@@ -115,7 +89,7 @@ Another option is to set the System property `-Djdk.httpclient.HttpClient.log=al
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -128,8 +102,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -257,15 +231,15 @@ public class Application {
 
 This SDK supports the following security scheme globally:
 
-| Name      | Type   | Scheme  |
-| --------- | ------ | ------- |
-| `ttdAuth` | apiKey | API key |
+| Name      | Type   | Scheme  | Environment Variable |
+| --------- | ------ | ------- | -------------------- |
+| `ttdAuth` | apiKey | API key | `WORKFLOWS_TTD_AUTH` |
 
 To authenticate with the API the `ttdAuth` parameter must be set when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -278,8 +252,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -455,7 +429,7 @@ To change the default retry strategy for a single API call, you can provide a `R
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -471,8 +445,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -606,7 +580,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -622,7 +596,7 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
+        Workflows sdk = Workflows.builder()
                 .retryConfig(RetryConfig.builder()
                     .backoff(BackoffStrategy.builder()
                         .initialInterval(1L, TimeUnit.MILLISECONDS)
@@ -633,7 +607,7 @@ public class Application {
                         .retryConnectError(false)
                         .build())
                     .build())
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -771,7 +745,7 @@ By default, an API error will throw a `models/errors/APIException` exception. Wh
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -784,8 +758,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -923,7 +897,7 @@ You can override the default server globally using the `.server(AvailableServers
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -936,9 +910,9 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .server(TtdWorkflows.AvailableServers.SANDBOX)
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -1064,7 +1038,7 @@ The default server can also be overridden globally using the `.serverURL(String 
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.*;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.CreateAdGroupResponse;
@@ -1077,9 +1051,9 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
+        Workflows sdk = Workflows.builder()
                 .serverURL("https://api.thetradedesk.com/workflows")
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         AdGroupCreateWorkflowInputWithValidation req = AdGroupCreateWorkflowInputWithValidation.builder()
@@ -1199,6 +1173,37 @@ public class Application {
 }
 ```
 <!-- End Server Selection [server] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+### Debug
+You can setup your SDK to emit debug logs for SDK requests and responses.
+
+For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
+```java
+SDK.builder()
+    .enableHTTPDebugLogging(true)
+    .build();
+```
+Example output:
+```
+Sending request: http://localhost:35123/bearer#global GET
+Request headers: {Accept=[application/json], Authorization=[******], Client-Level-Header=[added by client], Idempotency-Key=[some-key], x-speakeasy-user-agent=[speakeasy-sdk/java 0.0.1 internal 0.1.0 org.openapis.openapi]}
+Received response: (GET http://localhost:35123/bearer#global) 200
+Response headers: {access-control-allow-credentials=[true], access-control-allow-origin=[*], connection=[keep-alive], content-length=[50], content-type=[application/json], date=[Wed, 09 Apr 2025 01:43:29 GMT], server=[gunicorn/19.9.0]}
+Response body:
+{
+  "authenticated": true, 
+  "token": "global"
+}
+```
+__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+__NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
+
+Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

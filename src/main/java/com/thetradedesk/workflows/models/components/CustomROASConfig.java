@@ -13,21 +13,24 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CustomROASConfig {
 
     @JsonProperty("includeInCustomROAS")
     private boolean includeInCustomROAS;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("customROASWeight")
     private JsonNullable<Double> customROASWeight;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("customROASClickWeight")
     private JsonNullable<Double> customROASClickWeight;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("customROASViewthroughWeight")
@@ -51,7 +54,8 @@ public class CustomROASConfig {
     
     public CustomROASConfig(
             boolean includeInCustomROAS) {
-        this(includeInCustomROAS, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(includeInCustomROAS, JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -74,9 +78,10 @@ public class CustomROASConfig {
         return customROASViewthroughWeight;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CustomROASConfig withIncludeInCustomROAS(boolean includeInCustomROAS) {
         Utils.checkNotNull(includeInCustomROAS, "includeInCustomROAS");
@@ -120,7 +125,6 @@ public class CustomROASConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -131,18 +135,16 @@ public class CustomROASConfig {
         }
         CustomROASConfig other = (CustomROASConfig) o;
         return 
-            Objects.deepEquals(this.includeInCustomROAS, other.includeInCustomROAS) &&
-            Objects.deepEquals(this.customROASWeight, other.customROASWeight) &&
-            Objects.deepEquals(this.customROASClickWeight, other.customROASClickWeight) &&
-            Objects.deepEquals(this.customROASViewthroughWeight, other.customROASViewthroughWeight);
+            Utils.enhancedDeepEquals(this.includeInCustomROAS, other.includeInCustomROAS) &&
+            Utils.enhancedDeepEquals(this.customROASWeight, other.customROASWeight) &&
+            Utils.enhancedDeepEquals(this.customROASClickWeight, other.customROASClickWeight) &&
+            Utils.enhancedDeepEquals(this.customROASViewthroughWeight, other.customROASViewthroughWeight);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            includeInCustomROAS,
-            customROASWeight,
-            customROASClickWeight,
+        return Utils.enhancedHash(
+            includeInCustomROAS, customROASWeight, customROASClickWeight,
             customROASViewthroughWeight);
     }
     
@@ -154,26 +156,29 @@ public class CustomROASConfig {
                 "customROASClickWeight", customROASClickWeight,
                 "customROASViewthroughWeight", customROASViewthroughWeight);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Boolean includeInCustomROAS;
- 
+
         private JsonNullable<Double> customROASWeight = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> customROASClickWeight = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> customROASViewthroughWeight = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder includeInCustomROAS(boolean includeInCustomROAS) {
             Utils.checkNotNull(includeInCustomROAS, "includeInCustomROAS");
             this.includeInCustomROAS = includeInCustomROAS;
             return this;
         }
+
 
         public Builder customROASWeight(double customROASWeight) {
             Utils.checkNotNull(customROASWeight, "customROASWeight");
@@ -187,6 +192,7 @@ public class CustomROASConfig {
             return this;
         }
 
+
         public Builder customROASClickWeight(double customROASClickWeight) {
             Utils.checkNotNull(customROASClickWeight, "customROASClickWeight");
             this.customROASClickWeight = JsonNullable.of(customROASClickWeight);
@@ -199,6 +205,7 @@ public class CustomROASConfig {
             return this;
         }
 
+
         public Builder customROASViewthroughWeight(double customROASViewthroughWeight) {
             Utils.checkNotNull(customROASViewthroughWeight, "customROASViewthroughWeight");
             this.customROASViewthroughWeight = JsonNullable.of(customROASViewthroughWeight);
@@ -210,13 +217,13 @@ public class CustomROASConfig {
             this.customROASViewthroughWeight = customROASViewthroughWeight;
             return this;
         }
-        
+
         public CustomROASConfig build() {
+
             return new CustomROASConfig(
-                includeInCustomROAS,
-                customROASWeight,
-                customROASClickWeight,
+                includeInCustomROAS, customROASWeight, customROASClickWeight,
                 customROASViewthroughWeight);
         }
+
     }
 }

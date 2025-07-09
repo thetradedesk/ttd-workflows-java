@@ -55,8 +55,8 @@ public class SubmitGraphQlRequestRequestBuilder {
 
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
               = new SubmitGraphQlRequestOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
