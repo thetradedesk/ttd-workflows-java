@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 @SuppressWarnings("serial")
 public class ProblemDetailsException extends RuntimeException {
@@ -29,21 +29,26 @@ public class ProblemDetailsException extends RuntimeException {
     @JsonProperty("type")
     private JsonNullable<String> type;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("title")
     private JsonNullable<String> title;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
     private JsonNullable<Integer> status;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("detail")
     private JsonNullable<String> detail;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance")
     private JsonNullable<String> instance;
+
 
     @JsonIgnore
     private Map<String, ProblemDetails> additionalProperties;
@@ -55,6 +60,7 @@ public class ProblemDetailsException extends RuntimeException {
             @JsonProperty("status") JsonNullable<Integer> status,
             @JsonProperty("detail") JsonNullable<String> detail,
             @JsonProperty("instance") JsonNullable<String> instance) {
+        super("API error occurred");
         Utils.checkNotNull(type, "type");
         Utils.checkNotNull(title, "title");
         Utils.checkNotNull(status, "status");
@@ -69,7 +75,8 @@ public class ProblemDetailsException extends RuntimeException {
     }
     
     public ProblemDetailsException() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -102,9 +109,10 @@ public class ProblemDetailsException extends RuntimeException {
         return additionalProperties;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ProblemDetailsException withType(String type) {
         Utils.checkNotNull(type, "type");
@@ -172,15 +180,13 @@ public class ProblemDetailsException extends RuntimeException {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public ProblemDetailsException withAdditionalProperties(Map<String, ProblemDetails> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -191,23 +197,19 @@ public class ProblemDetailsException extends RuntimeException {
         }
         ProblemDetailsException other = (ProblemDetailsException) o;
         return 
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.title, other.title) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.detail, other.detail) &&
-            Objects.deepEquals(this.instance, other.instance) &&
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties);
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.title, other.title) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.detail, other.detail) &&
+            Utils.enhancedDeepEquals(this.instance, other.instance) &&
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            type,
-            title,
-            status,
-            detail,
-            instance,
-            additionalProperties);
+        return Utils.enhancedHash(
+            type, title, status,
+            detail, instance, additionalProperties);
     }
     
     @Override
@@ -220,24 +222,26 @@ public class ProblemDetailsException extends RuntimeException {
                 "instance", instance,
                 "additionalProperties", additionalProperties);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> type = JsonNullable.undefined();
- 
+
         private JsonNullable<String> title = JsonNullable.undefined();
- 
+
         private JsonNullable<Integer> status = JsonNullable.undefined();
- 
+
         private JsonNullable<String> detail = JsonNullable.undefined();
- 
+
         private JsonNullable<String> instance = JsonNullable.undefined();
- 
+
         private Map<String, ProblemDetails> additionalProperties = new HashMap<>();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder type(String type) {
             Utils.checkNotNull(type, "type");
@@ -251,6 +255,7 @@ public class ProblemDetailsException extends RuntimeException {
             return this;
         }
 
+
         public Builder title(String title) {
             Utils.checkNotNull(title, "title");
             this.title = JsonNullable.of(title);
@@ -262,6 +267,7 @@ public class ProblemDetailsException extends RuntimeException {
             this.title = title;
             return this;
         }
+
 
         public Builder status(int status) {
             Utils.checkNotNull(status, "status");
@@ -275,6 +281,7 @@ public class ProblemDetailsException extends RuntimeException {
             return this;
         }
 
+
         public Builder detail(String detail) {
             Utils.checkNotNull(detail, "detail");
             this.detail = JsonNullable.of(detail);
@@ -286,6 +293,7 @@ public class ProblemDetailsException extends RuntimeException {
             this.detail = detail;
             return this;
         }
+
 
         public Builder instance(String instance) {
             Utils.checkNotNull(instance, "instance");
@@ -314,16 +322,15 @@ public class ProblemDetailsException extends RuntimeException {
             this.additionalProperties = additionalProperties;
             return this;
         }
-        
+
         public ProblemDetailsException build() {
+
             return new ProblemDetailsException(
-                type,
-                title,
-                status,
-                detail,
-                instance)
+                type, title, status,
+                detail, instance)
                 .withAdditionalProperties(additionalProperties);
         }
+
     }
 }
 

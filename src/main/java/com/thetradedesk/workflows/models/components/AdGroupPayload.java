@@ -12,8 +12,8 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AdGroupPayload {
 
@@ -38,9 +38,10 @@ public class AdGroupPayload {
         return (Optional<AdGroupWorkflow>) adGroup;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupPayload withAdGroup(AdGroupWorkflow adGroup) {
         Utils.checkNotNull(adGroup, "adGroup");
@@ -48,13 +49,13 @@ public class AdGroupPayload {
         return this;
     }
 
+
     public AdGroupPayload withAdGroup(Optional<? extends AdGroupWorkflow> adGroup) {
         Utils.checkNotNull(adGroup, "adGroup");
         this.adGroup = adGroup;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -65,12 +66,12 @@ public class AdGroupPayload {
         }
         AdGroupPayload other = (AdGroupPayload) o;
         return 
-            Objects.deepEquals(this.adGroup, other.adGroup);
+            Utils.enhancedDeepEquals(this.adGroup, other.adGroup);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             adGroup);
     }
     
@@ -79,14 +80,16 @@ public class AdGroupPayload {
         return Utils.toString(AdGroupPayload.class,
                 "adGroup", adGroup);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends AdGroupWorkflow> adGroup = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder adGroup(AdGroupWorkflow adGroup) {
             Utils.checkNotNull(adGroup, "adGroup");
@@ -99,10 +102,12 @@ public class AdGroupPayload {
             this.adGroup = adGroup;
             return this;
         }
-        
+
         public AdGroupPayload build() {
+
             return new AdGroupPayload(
                 adGroup);
         }
+
     }
 }

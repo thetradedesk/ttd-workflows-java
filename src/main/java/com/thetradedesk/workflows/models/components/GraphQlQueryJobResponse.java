@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -26,6 +25,7 @@ public class GraphQlQueryJobResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("payload")
     private Optional<? extends GraphQlQueryJobPayload> payload;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("errors")
@@ -56,15 +56,17 @@ public class GraphQlQueryJobResponse {
         return errors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GraphQlQueryJobResponse withPayload(GraphQlQueryJobPayload payload) {
         Utils.checkNotNull(payload, "payload");
         this.payload = Optional.ofNullable(payload);
         return this;
     }
+
 
     public GraphQlQueryJobResponse withPayload(Optional<? extends GraphQlQueryJobPayload> payload) {
         Utils.checkNotNull(payload, "payload");
@@ -84,7 +86,6 @@ public class GraphQlQueryJobResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +96,14 @@ public class GraphQlQueryJobResponse {
         }
         GraphQlQueryJobResponse other = (GraphQlQueryJobResponse) o;
         return 
-            Objects.deepEquals(this.payload, other.payload) &&
-            Objects.deepEquals(this.errors, other.errors);
+            Utils.enhancedDeepEquals(this.payload, other.payload) &&
+            Utils.enhancedDeepEquals(this.errors, other.errors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            payload,
-            errors);
+        return Utils.enhancedHash(
+            payload, errors);
     }
     
     @Override
@@ -112,16 +112,18 @@ public class GraphQlQueryJobResponse {
                 "payload", payload,
                 "errors", errors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends GraphQlQueryJobPayload> payload = Optional.empty();
- 
+
         private JsonNullable<String> errors = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder payload(GraphQlQueryJobPayload payload) {
             Utils.checkNotNull(payload, "payload");
@@ -135,6 +137,7 @@ public class GraphQlQueryJobResponse {
             return this;
         }
 
+
         public Builder errors(String errors) {
             Utils.checkNotNull(errors, "errors");
             this.errors = JsonNullable.of(errors);
@@ -146,11 +149,12 @@ public class GraphQlQueryJobResponse {
             this.errors = errors;
             return this;
         }
-        
+
         public GraphQlQueryJobResponse build() {
+
             return new GraphQlQueryJobResponse(
-                payload,
-                errors);
+                payload, errors);
         }
+
     }
 }

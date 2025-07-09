@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -25,6 +24,7 @@ public class GraphQlJobCallbackInput {
 
     @JsonProperty("callbackUrl")
     private String callbackUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("callbackHeaders")
@@ -56,9 +56,10 @@ public class GraphQlJobCallbackInput {
         return (JsonNullable<List<KeyValuePairOfStringAndStringInput>>) callbackHeaders;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GraphQlJobCallbackInput withCallbackUrl(String callbackUrl) {
         Utils.checkNotNull(callbackUrl, "callbackUrl");
@@ -78,7 +79,6 @@ public class GraphQlJobCallbackInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +89,14 @@ public class GraphQlJobCallbackInput {
         }
         GraphQlJobCallbackInput other = (GraphQlJobCallbackInput) o;
         return 
-            Objects.deepEquals(this.callbackUrl, other.callbackUrl) &&
-            Objects.deepEquals(this.callbackHeaders, other.callbackHeaders);
+            Utils.enhancedDeepEquals(this.callbackUrl, other.callbackUrl) &&
+            Utils.enhancedDeepEquals(this.callbackHeaders, other.callbackHeaders);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            callbackUrl,
-            callbackHeaders);
+        return Utils.enhancedHash(
+            callbackUrl, callbackHeaders);
     }
     
     @Override
@@ -106,22 +105,25 @@ public class GraphQlJobCallbackInput {
                 "callbackUrl", callbackUrl,
                 "callbackHeaders", callbackHeaders);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String callbackUrl;
- 
+
         private JsonNullable<? extends List<KeyValuePairOfStringAndStringInput>> callbackHeaders = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder callbackUrl(String callbackUrl) {
             Utils.checkNotNull(callbackUrl, "callbackUrl");
             this.callbackUrl = callbackUrl;
             return this;
         }
+
 
         public Builder callbackHeaders(List<KeyValuePairOfStringAndStringInput> callbackHeaders) {
             Utils.checkNotNull(callbackHeaders, "callbackHeaders");
@@ -134,11 +136,12 @@ public class GraphQlJobCallbackInput {
             this.callbackHeaders = callbackHeaders;
             return this;
         }
-        
+
         public GraphQlJobCallbackInput build() {
+
             return new GraphQlJobCallbackInput(
-                callbackUrl,
-                callbackHeaders);
+                callbackUrl, callbackHeaders);
         }
+
     }
 }

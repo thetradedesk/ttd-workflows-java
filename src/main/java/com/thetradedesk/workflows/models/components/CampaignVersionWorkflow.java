@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignVersionWorkflow {
 
@@ -21,9 +21,11 @@ public class CampaignVersionWorkflow {
     @JsonProperty("Id")
     private Optional<String> id;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("version")
     private JsonNullable<String> version;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetingVersion")
@@ -61,15 +63,17 @@ public class CampaignVersionWorkflow {
         return budgetingVersion;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignVersionWorkflow withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = Optional.ofNullable(id);
         return this;
     }
+
 
     public CampaignVersionWorkflow withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
@@ -101,7 +105,6 @@ public class CampaignVersionWorkflow {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,17 +115,15 @@ public class CampaignVersionWorkflow {
         }
         CampaignVersionWorkflow other = (CampaignVersionWorkflow) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.version, other.version) &&
-            Objects.deepEquals(this.budgetingVersion, other.budgetingVersion);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.version, other.version) &&
+            Utils.enhancedDeepEquals(this.budgetingVersion, other.budgetingVersion);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            version,
-            budgetingVersion);
+        return Utils.enhancedHash(
+            id, version, budgetingVersion);
     }
     
     @Override
@@ -132,18 +133,20 @@ public class CampaignVersionWorkflow {
                 "version", version,
                 "budgetingVersion", budgetingVersion);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> id = Optional.empty();
- 
+
         private JsonNullable<String> version = JsonNullable.undefined();
- 
+
         private JsonNullable<String> budgetingVersion = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -157,6 +160,7 @@ public class CampaignVersionWorkflow {
             return this;
         }
 
+
         public Builder version(String version) {
             Utils.checkNotNull(version, "version");
             this.version = JsonNullable.of(version);
@@ -169,6 +173,7 @@ public class CampaignVersionWorkflow {
             return this;
         }
 
+
         public Builder budgetingVersion(String budgetingVersion) {
             Utils.checkNotNull(budgetingVersion, "budgetingVersion");
             this.budgetingVersion = JsonNullable.of(budgetingVersion);
@@ -180,12 +185,12 @@ public class CampaignVersionWorkflow {
             this.budgetingVersion = budgetingVersion;
             return this;
         }
-        
+
         public CampaignVersionWorkflow build() {
+
             return new CampaignVersionWorkflow(
-                id,
-                version,
-                budgetingVersion);
+                id, version, budgetingVersion);
         }
+
     }
 }

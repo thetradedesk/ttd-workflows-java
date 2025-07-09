@@ -17,7 +17,7 @@ To explore the available REST operations, see the [REST API Reference](https://p
 ```java
 package hello.world;
 
-import com.thetradedesk.workflows.TtdWorkflows;
+import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.components.RestApiMethodType;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
@@ -28,8 +28,8 @@ public class Application {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+        Workflows sdk = Workflows.builder()
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
         CallRestApiWorkflowInput req = CallRestApiWorkflowInput.builder()

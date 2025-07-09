@@ -13,18 +13,20 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignCreateWorkflowInput {
 
     @JsonProperty("primaryInput")
     private CampaignCreateWorkflowPrimaryInput primaryInput;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
     private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("adGroups")
@@ -65,9 +67,10 @@ public class CampaignCreateWorkflowInput {
         return (JsonNullable<List<CampaignCreateWorkflowAdGroupInput>>) adGroups;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignCreateWorkflowInput withPrimaryInput(CampaignCreateWorkflowPrimaryInput primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
@@ -80,6 +83,7 @@ public class CampaignCreateWorkflowInput {
         this.advancedInput = Optional.ofNullable(advancedInput);
         return this;
     }
+
 
     public CampaignCreateWorkflowInput withAdvancedInput(Optional<? extends CampaignWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
@@ -99,7 +103,6 @@ public class CampaignCreateWorkflowInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,17 +113,15 @@ public class CampaignCreateWorkflowInput {
         }
         CampaignCreateWorkflowInput other = (CampaignCreateWorkflowInput) o;
         return 
-            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
-            Objects.deepEquals(this.advancedInput, other.advancedInput) &&
-            Objects.deepEquals(this.adGroups, other.adGroups);
+            Utils.enhancedDeepEquals(this.primaryInput, other.primaryInput) &&
+            Utils.enhancedDeepEquals(this.advancedInput, other.advancedInput) &&
+            Utils.enhancedDeepEquals(this.adGroups, other.adGroups);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            primaryInput,
-            advancedInput,
-            adGroups);
+        return Utils.enhancedHash(
+            primaryInput, advancedInput, adGroups);
     }
     
     @Override
@@ -130,24 +131,27 @@ public class CampaignCreateWorkflowInput {
                 "advancedInput", advancedInput,
                 "adGroups", adGroups);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private CampaignCreateWorkflowPrimaryInput primaryInput;
- 
+
         private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput = Optional.empty();
- 
+
         private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder primaryInput(CampaignCreateWorkflowPrimaryInput primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = primaryInput;
             return this;
         }
+
 
         public Builder advancedInput(CampaignWorkflowAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
@@ -161,6 +165,7 @@ public class CampaignCreateWorkflowInput {
             return this;
         }
 
+
         public Builder adGroups(List<CampaignCreateWorkflowAdGroupInput> adGroups) {
             Utils.checkNotNull(adGroups, "adGroups");
             this.adGroups = JsonNullable.of(adGroups);
@@ -172,12 +177,12 @@ public class CampaignCreateWorkflowInput {
             this.adGroups = adGroups;
             return this;
         }
-        
+
         public CampaignCreateWorkflowInput build() {
+
             return new CampaignCreateWorkflowInput(
-                primaryInput,
-                advancedInput,
-                adGroups);
+                primaryInput, advancedInput, adGroups);
         }
+
     }
 }

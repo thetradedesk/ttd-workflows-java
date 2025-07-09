@@ -25,7 +25,6 @@ public class Dmp {
     Dmp(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Submit a job for first-party data retrieval for an advertiser
      * 
@@ -67,11 +66,10 @@ public class Dmp {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
               = new GetFirstPartyDataJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Submit a job for third-party data retrieval for a partner
@@ -117,8 +115,8 @@ public class Dmp {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
               = new GetThirdPartyDataJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

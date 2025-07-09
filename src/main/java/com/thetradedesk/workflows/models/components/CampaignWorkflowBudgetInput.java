@@ -13,24 +13,28 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignWorkflowBudgetInput {
 
     @JsonProperty("pacingMode")
     private CampaignPacingMode pacingMode;
 
+
     @JsonProperty("budgetInAdvertiserCurrency")
     private double budgetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInImpressions")
     private JsonNullable<Long> budgetInImpressions;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInAdvertiserCurrency")
     private JsonNullable<Double> dailyTargetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInImpressions")
@@ -58,7 +62,8 @@ public class CampaignWorkflowBudgetInput {
     public CampaignWorkflowBudgetInput(
             CampaignPacingMode pacingMode,
             double budgetInAdvertiserCurrency) {
-        this(pacingMode, budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(pacingMode, budgetInAdvertiserCurrency, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -86,9 +91,10 @@ public class CampaignWorkflowBudgetInput {
         return dailyTargetInImpressions;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignWorkflowBudgetInput withPacingMode(CampaignPacingMode pacingMode) {
         Utils.checkNotNull(pacingMode, "pacingMode");
@@ -138,7 +144,6 @@ public class CampaignWorkflowBudgetInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,21 +154,18 @@ public class CampaignWorkflowBudgetInput {
         }
         CampaignWorkflowBudgetInput other = (CampaignWorkflowBudgetInput) o;
         return 
-            Objects.deepEquals(this.pacingMode, other.pacingMode) &&
-            Objects.deepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
-            Objects.deepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
+            Utils.enhancedDeepEquals(this.pacingMode, other.pacingMode) &&
+            Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            pacingMode,
-            budgetInAdvertiserCurrency,
-            budgetInImpressions,
-            dailyTargetInAdvertiserCurrency,
-            dailyTargetInImpressions);
+        return Utils.enhancedHash(
+            pacingMode, budgetInAdvertiserCurrency, budgetInImpressions,
+            dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
     }
     
     @Override
@@ -175,22 +177,24 @@ public class CampaignWorkflowBudgetInput {
                 "dailyTargetInAdvertiserCurrency", dailyTargetInAdvertiserCurrency,
                 "dailyTargetInImpressions", dailyTargetInImpressions);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private CampaignPacingMode pacingMode;
- 
+
         private Double budgetInAdvertiserCurrency;
- 
+
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> dailyTargetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> dailyTargetInImpressions = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder pacingMode(CampaignPacingMode pacingMode) {
             Utils.checkNotNull(pacingMode, "pacingMode");
@@ -198,11 +202,13 @@ public class CampaignWorkflowBudgetInput {
             return this;
         }
 
+
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder budgetInImpressions(long budgetInImpressions) {
             Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
@@ -216,6 +222,7 @@ public class CampaignWorkflowBudgetInput {
             return this;
         }
 
+
         public Builder dailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
             Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
             this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
@@ -228,6 +235,7 @@ public class CampaignWorkflowBudgetInput {
             return this;
         }
 
+
         public Builder dailyTargetInImpressions(long dailyTargetInImpressions) {
             Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
             this.dailyTargetInImpressions = JsonNullable.of(dailyTargetInImpressions);
@@ -239,14 +247,13 @@ public class CampaignWorkflowBudgetInput {
             this.dailyTargetInImpressions = dailyTargetInImpressions;
             return this;
         }
-        
+
         public CampaignWorkflowBudgetInput build() {
+
             return new CampaignWorkflowBudgetInput(
-                pacingMode,
-                budgetInAdvertiserCurrency,
-                budgetInImpressions,
-                dailyTargetInAdvertiserCurrency,
-                dailyTargetInImpressions);
+                pacingMode, budgetInAdvertiserCurrency, budgetInImpressions,
+                dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
         }
+
     }
 }
