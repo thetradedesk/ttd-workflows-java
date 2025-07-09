@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * Variables
@@ -15,18 +14,15 @@ import java.util.Objects;
  * <p>Variables to substitute into the query.
  */
 public class Variables {
-
     @JsonCreator
     public Variables() {
-        
-        
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -40,7 +36,7 @@ public class Variables {
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             );
     }
     
@@ -48,16 +44,19 @@ public class Variables {
     public String toString() {
         return Utils.toString(Variables.class);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public Variables build() {
+
             return new Variables(
                 );
         }
+
     }
 }

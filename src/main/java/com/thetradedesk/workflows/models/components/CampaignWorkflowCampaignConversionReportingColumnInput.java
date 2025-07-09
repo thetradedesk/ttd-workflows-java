@@ -15,28 +15,33 @@ import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignWorkflowCampaignConversionReportingColumnInput {
 
     @JsonProperty("trackingTagId")
     private String trackingTagId;
 
+
     @JsonProperty("includeInCustomCPA")
     private boolean includeInCustomCPA;
 
+
     @JsonProperty("reportingColumnId")
     private int reportingColumnId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ROASConfig")
     private Optional<? extends CustomROASConfig> roasConfig;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("weight")
     private JsonNullable<Double> weight;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("crossDeviceAttributionModelId")
@@ -68,7 +73,8 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             String trackingTagId,
             boolean includeInCustomCPA,
             int reportingColumnId) {
-        this(trackingTagId, includeInCustomCPA, reportingColumnId, Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(trackingTagId, includeInCustomCPA, reportingColumnId,
+            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -102,9 +108,10 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         return crossDeviceAttributionModelId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignWorkflowCampaignConversionReportingColumnInput withTrackingTagId(String trackingTagId) {
         Utils.checkNotNull(trackingTagId, "trackingTagId");
@@ -129,6 +136,7 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         this.roasConfig = Optional.ofNullable(roasConfig);
         return this;
     }
+
 
     public CampaignWorkflowCampaignConversionReportingColumnInput withROASConfig(Optional<? extends CustomROASConfig> roasConfig) {
         Utils.checkNotNull(roasConfig, "roasConfig");
@@ -160,7 +168,6 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -171,23 +178,19 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         }
         CampaignWorkflowCampaignConversionReportingColumnInput other = (CampaignWorkflowCampaignConversionReportingColumnInput) o;
         return 
-            Objects.deepEquals(this.trackingTagId, other.trackingTagId) &&
-            Objects.deepEquals(this.includeInCustomCPA, other.includeInCustomCPA) &&
-            Objects.deepEquals(this.reportingColumnId, other.reportingColumnId) &&
-            Objects.deepEquals(this.roasConfig, other.roasConfig) &&
-            Objects.deepEquals(this.weight, other.weight) &&
-            Objects.deepEquals(this.crossDeviceAttributionModelId, other.crossDeviceAttributionModelId);
+            Utils.enhancedDeepEquals(this.trackingTagId, other.trackingTagId) &&
+            Utils.enhancedDeepEquals(this.includeInCustomCPA, other.includeInCustomCPA) &&
+            Utils.enhancedDeepEquals(this.reportingColumnId, other.reportingColumnId) &&
+            Utils.enhancedDeepEquals(this.roasConfig, other.roasConfig) &&
+            Utils.enhancedDeepEquals(this.weight, other.weight) &&
+            Utils.enhancedDeepEquals(this.crossDeviceAttributionModelId, other.crossDeviceAttributionModelId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            trackingTagId,
-            includeInCustomCPA,
-            reportingColumnId,
-            roasConfig,
-            weight,
-            crossDeviceAttributionModelId);
+        return Utils.enhancedHash(
+            trackingTagId, includeInCustomCPA, reportingColumnId,
+            roasConfig, weight, crossDeviceAttributionModelId);
     }
     
     @Override
@@ -200,24 +203,26 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
                 "weight", weight,
                 "crossDeviceAttributionModelId", crossDeviceAttributionModelId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String trackingTagId;
- 
+
         private Boolean includeInCustomCPA;
- 
+
         private Integer reportingColumnId;
- 
+
         private Optional<? extends CustomROASConfig> roasConfig = Optional.empty();
- 
+
         private JsonNullable<Double> weight = JsonNullable.undefined();
- 
+
         private JsonNullable<String> crossDeviceAttributionModelId = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder trackingTagId(String trackingTagId) {
             Utils.checkNotNull(trackingTagId, "trackingTagId");
@@ -225,17 +230,20 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             return this;
         }
 
+
         public Builder includeInCustomCPA(boolean includeInCustomCPA) {
             Utils.checkNotNull(includeInCustomCPA, "includeInCustomCPA");
             this.includeInCustomCPA = includeInCustomCPA;
             return this;
         }
 
+
         public Builder reportingColumnId(int reportingColumnId) {
             Utils.checkNotNull(reportingColumnId, "reportingColumnId");
             this.reportingColumnId = reportingColumnId;
             return this;
         }
+
 
         public Builder roasConfig(CustomROASConfig roasConfig) {
             Utils.checkNotNull(roasConfig, "roasConfig");
@@ -249,6 +257,7 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             return this;
         }
 
+
         public Builder weight(double weight) {
             Utils.checkNotNull(weight, "weight");
             this.weight = JsonNullable.of(weight);
@@ -261,6 +270,7 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             return this;
         }
 
+
         public Builder crossDeviceAttributionModelId(String crossDeviceAttributionModelId) {
             Utils.checkNotNull(crossDeviceAttributionModelId, "crossDeviceAttributionModelId");
             this.crossDeviceAttributionModelId = JsonNullable.of(crossDeviceAttributionModelId);
@@ -272,15 +282,13 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             this.crossDeviceAttributionModelId = crossDeviceAttributionModelId;
             return this;
         }
-        
+
         public CampaignWorkflowCampaignConversionReportingColumnInput build() {
+
             return new CampaignWorkflowCampaignConversionReportingColumnInput(
-                trackingTagId,
-                includeInCustomCPA,
-                reportingColumnId,
-                roasConfig,
-                weight,
-                crossDeviceAttributionModelId);
+                trackingTagId, includeInCustomCPA, reportingColumnId,
+                roasConfig, weight, crossDeviceAttributionModelId);
         }
+
     }
 }

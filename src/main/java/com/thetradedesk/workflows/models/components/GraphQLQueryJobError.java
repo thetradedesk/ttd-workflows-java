@@ -14,7 +14,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -29,9 +28,11 @@ public class GraphQLQueryJobError {
     @JsonProperty("message")
     private Optional<String> message;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("field")
     private JsonNullable<? extends List<String>> field;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("additionalData")
@@ -71,15 +72,17 @@ public class GraphQLQueryJobError {
         return (JsonNullable<Map<String, String>>) additionalData;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GraphQLQueryJobError withMessage(String message) {
         Utils.checkNotNull(message, "message");
         this.message = Optional.ofNullable(message);
         return this;
     }
+
 
     public GraphQLQueryJobError withMessage(Optional<String> message) {
         Utils.checkNotNull(message, "message");
@@ -111,7 +114,6 @@ public class GraphQLQueryJobError {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +124,15 @@ public class GraphQLQueryJobError {
         }
         GraphQLQueryJobError other = (GraphQLQueryJobError) o;
         return 
-            Objects.deepEquals(this.message, other.message) &&
-            Objects.deepEquals(this.field, other.field) &&
-            Objects.deepEquals(this.additionalData, other.additionalData);
+            Utils.enhancedDeepEquals(this.message, other.message) &&
+            Utils.enhancedDeepEquals(this.field, other.field) &&
+            Utils.enhancedDeepEquals(this.additionalData, other.additionalData);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            message,
-            field,
-            additionalData);
+        return Utils.enhancedHash(
+            message, field, additionalData);
     }
     
     @Override
@@ -142,18 +142,20 @@ public class GraphQLQueryJobError {
                 "field", field,
                 "additionalData", additionalData);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> message = Optional.empty();
- 
+
         private JsonNullable<? extends List<String>> field = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends Map<String, String>> additionalData = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder message(String message) {
             Utils.checkNotNull(message, "message");
@@ -167,6 +169,7 @@ public class GraphQLQueryJobError {
             return this;
         }
 
+
         public Builder field(List<String> field) {
             Utils.checkNotNull(field, "field");
             this.field = JsonNullable.of(field);
@@ -179,6 +182,7 @@ public class GraphQLQueryJobError {
             return this;
         }
 
+
         public Builder additionalData(Map<String, String> additionalData) {
             Utils.checkNotNull(additionalData, "additionalData");
             this.additionalData = JsonNullable.of(additionalData);
@@ -190,12 +194,12 @@ public class GraphQLQueryJobError {
             this.additionalData = additionalData;
             return this;
         }
-        
+
         public GraphQLQueryJobError build() {
+
             return new GraphQLQueryJobError(
-                message,
-                field,
-                additionalData);
+                message, field, additionalData);
         }
+
     }
 }

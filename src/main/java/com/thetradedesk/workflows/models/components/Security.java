@@ -10,7 +10,7 @@ import com.thetradedesk.workflows.utils.SpeakeasyMetadata;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Security implements HasSecurity {
 
@@ -29,9 +29,10 @@ public class Security implements HasSecurity {
         return ttdAuth;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Security withTTDAuth(String ttdAuth) {
         Utils.checkNotNull(ttdAuth, "ttdAuth");
@@ -39,7 +40,6 @@ public class Security implements HasSecurity {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +50,12 @@ public class Security implements HasSecurity {
         }
         Security other = (Security) o;
         return 
-            Objects.deepEquals(this.ttdAuth, other.ttdAuth);
+            Utils.enhancedDeepEquals(this.ttdAuth, other.ttdAuth);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             ttdAuth);
     }
     
@@ -64,24 +64,28 @@ public class Security implements HasSecurity {
         return Utils.toString(Security.class,
                 "ttdAuth", ttdAuth);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String ttdAuth;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder ttdAuth(String ttdAuth) {
             Utils.checkNotNull(ttdAuth, "ttdAuth");
             this.ttdAuth = ttdAuth;
             return this;
         }
-        
+
         public Security build() {
+
             return new Security(
                 ttdAuth);
         }
+
     }
 }

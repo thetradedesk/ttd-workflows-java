@@ -1,7 +1,7 @@
 openapi: 3.0.4
 info:
   title: Workflows Service
-  description: "Operations for commonly used workflows.\r\nThis service provides operations for commonly used workflows on The Trade Desk's platform.\r\nIn addition, this service provides generic operations for submitting:\r\n\r\n- GraphQL API requests\r\n- REST API requests\r\n\r\nFor further explanation on the entities encountered in this documentation (e.g.,\r\n[campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and\r\n[ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the\r\n[Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases)."
+  description: "\r\nThis service provides operations for commonly used workflows on The Trade Desk's platform.\r\nIn addition, this service provides generic operations for submitting:\r\n\r\n- GraphQL API requests\r\n- REST API requests\r\n\r\nFor further explanation on the entities encountered in this documentation (e.g.,\r\n[campaigns](https://partner.thetradedesk.com/v3/portal/api/doc/Campaigns) and\r\n[ad groups](https://partner.thetradedesk.com/v3/portal/api/doc/AdGroup)), visit the\r\n[Partner Portal](https://partner.thetradedesk.com/v3/portal/api/doc/ApiUseCases)."
   version: v1
 paths:
   /adgroup:

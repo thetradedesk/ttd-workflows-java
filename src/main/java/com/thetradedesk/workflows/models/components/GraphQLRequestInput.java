@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -21,7 +20,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Required fields for executing a GraphQL query
  */
 public class GraphQLRequestInput {
-
     /**
      * The GraphQL query to execute.
      */
@@ -67,9 +65,10 @@ public class GraphQLRequestInput {
         return (JsonNullable<Variables>) variables;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The GraphQL query to execute.
@@ -98,7 +97,6 @@ public class GraphQLRequestInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -109,15 +107,14 @@ public class GraphQLRequestInput {
         }
         GraphQLRequestInput other = (GraphQLRequestInput) o;
         return 
-            Objects.deepEquals(this.request, other.request) &&
-            Objects.deepEquals(this.variables, other.variables);
+            Utils.enhancedDeepEquals(this.request, other.request) &&
+            Utils.enhancedDeepEquals(this.variables, other.variables);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            request,
-            variables);
+        return Utils.enhancedHash(
+            request, variables);
     }
     
     @Override
@@ -126,16 +123,18 @@ public class GraphQLRequestInput {
                 "request", request,
                 "variables", variables);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String request;
- 
+
         private JsonNullable<? extends Variables> variables = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The GraphQL query to execute.
@@ -145,6 +144,7 @@ public class GraphQLRequestInput {
             this.request = request;
             return this;
         }
+
 
         /**
          * Variables to substitute into the query.
@@ -163,11 +163,12 @@ public class GraphQLRequestInput {
             this.variables = variables;
             return this;
         }
-        
+
         public GraphQLRequestInput build() {
+
             return new GraphQLRequestInput(
-                request,
-                variables);
+                request, variables);
         }
+
     }
 }

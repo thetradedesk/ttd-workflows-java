@@ -13,32 +13,38 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupFlight {
 
     @JsonProperty("allocationType")
     private AllocationType allocationType;
 
+
     @JsonProperty("budgetInAdvertiserCurrency")
     private double budgetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInImpressions")
     private JsonNullable<Long> budgetInImpressions;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInAdvertiserCurrency")
     private JsonNullable<Double> dailyTargetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInImpressions")
     private JsonNullable<Long> dailyTargetInImpressions;
 
+
     @JsonProperty("campaignFlightId")
     private long campaignFlightId;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("adGroupId")
@@ -73,7 +79,9 @@ public class AdGroupFlight {
             AllocationType allocationType,
             double budgetInAdvertiserCurrency,
             long campaignFlightId) {
-        this(allocationType, budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId, Optional.empty());
+        this(allocationType, budgetInAdvertiserCurrency, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId,
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -111,9 +119,10 @@ public class AdGroupFlight {
         return adGroupId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupFlight withAllocationType(AllocationType allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
@@ -175,13 +184,13 @@ public class AdGroupFlight {
         return this;
     }
 
+
     public AdGroupFlight withAdGroupId(Optional<String> adGroupId) {
         Utils.checkNotNull(adGroupId, "adGroupId");
         this.adGroupId = adGroupId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -192,24 +201,20 @@ public class AdGroupFlight {
         }
         AdGroupFlight other = (AdGroupFlight) o;
         return 
-            Objects.deepEquals(this.allocationType, other.allocationType) &&
-            Objects.deepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
-            Objects.deepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions) &&
-            Objects.deepEquals(this.campaignFlightId, other.campaignFlightId) &&
-            Objects.deepEquals(this.adGroupId, other.adGroupId);
+            Utils.enhancedDeepEquals(this.allocationType, other.allocationType) &&
+            Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions) &&
+            Utils.enhancedDeepEquals(this.campaignFlightId, other.campaignFlightId) &&
+            Utils.enhancedDeepEquals(this.adGroupId, other.adGroupId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            allocationType,
-            budgetInAdvertiserCurrency,
-            budgetInImpressions,
-            dailyTargetInAdvertiserCurrency,
-            dailyTargetInImpressions,
-            campaignFlightId,
+        return Utils.enhancedHash(
+            allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+            dailyTargetInAdvertiserCurrency, dailyTargetInImpressions, campaignFlightId,
             adGroupId);
     }
     
@@ -224,26 +229,28 @@ public class AdGroupFlight {
                 "campaignFlightId", campaignFlightId,
                 "adGroupId", adGroupId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private AllocationType allocationType;
- 
+
         private Double budgetInAdvertiserCurrency;
- 
+
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> dailyTargetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> dailyTargetInImpressions = JsonNullable.undefined();
- 
+
         private Long campaignFlightId;
- 
+
         private Optional<String> adGroupId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder allocationType(AllocationType allocationType) {
             Utils.checkNotNull(allocationType, "allocationType");
@@ -251,11 +258,13 @@ public class AdGroupFlight {
             return this;
         }
 
+
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder budgetInImpressions(long budgetInImpressions) {
             Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
@@ -269,6 +278,7 @@ public class AdGroupFlight {
             return this;
         }
 
+
         public Builder dailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
             Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
             this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
@@ -280,6 +290,7 @@ public class AdGroupFlight {
             this.dailyTargetInAdvertiserCurrency = dailyTargetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder dailyTargetInImpressions(long dailyTargetInImpressions) {
             Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
@@ -293,11 +304,13 @@ public class AdGroupFlight {
             return this;
         }
 
+
         public Builder campaignFlightId(long campaignFlightId) {
             Utils.checkNotNull(campaignFlightId, "campaignFlightId");
             this.campaignFlightId = campaignFlightId;
             return this;
         }
+
 
         public Builder adGroupId(String adGroupId) {
             Utils.checkNotNull(adGroupId, "adGroupId");
@@ -310,16 +323,14 @@ public class AdGroupFlight {
             this.adGroupId = adGroupId;
             return this;
         }
-        
+
         public AdGroupFlight build() {
+
             return new AdGroupFlight(
-                allocationType,
-                budgetInAdvertiserCurrency,
-                budgetInImpressions,
-                dailyTargetInAdvertiserCurrency,
-                dailyTargetInImpressions,
-                campaignFlightId,
+                allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+                dailyTargetInAdvertiserCurrency, dailyTargetInImpressions, campaignFlightId,
                 adGroupId);
         }
+
     }
 }
