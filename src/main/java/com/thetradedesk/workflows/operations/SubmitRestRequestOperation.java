@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.errors.APIException;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
-import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponseBody;
 import com.thetradedesk.workflows.utils.BackoffStrategy;
 import com.thetradedesk.workflows.utils.HTTPClient;
 import com.thetradedesk.workflows.utils.HTTPRequest;
@@ -34,6 +33,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -157,7 +157,7 @@ public class SubmitRestRequestOperation implements RequestOperation<Optional<? e
         
         if (Utils.statusCodeMatches(response.statusCode(), "200")) {
             if (Utils.contentTypeMatches(contentType, "application/json")) {
-                SubmitRestRequestResponseBody out = Utils.mapper().readValue(
+                Map<String, Object> out = Utils.mapper().readValue(
                     response.body(),
                     new TypeReference<>() {
                     });
