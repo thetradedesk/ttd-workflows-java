@@ -12,8 +12,8 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowContractTargetingInput {
 
@@ -37,9 +37,10 @@ public class AdGroupWorkflowContractTargetingInput {
         return allowOpenMarketBiddingWhenTargetingContracts;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowContractTargetingInput withAllowOpenMarketBiddingWhenTargetingContracts(boolean allowOpenMarketBiddingWhenTargetingContracts) {
         Utils.checkNotNull(allowOpenMarketBiddingWhenTargetingContracts, "allowOpenMarketBiddingWhenTargetingContracts");
@@ -53,7 +54,6 @@ public class AdGroupWorkflowContractTargetingInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -64,12 +64,12 @@ public class AdGroupWorkflowContractTargetingInput {
         }
         AdGroupWorkflowContractTargetingInput other = (AdGroupWorkflowContractTargetingInput) o;
         return 
-            Objects.deepEquals(this.allowOpenMarketBiddingWhenTargetingContracts, other.allowOpenMarketBiddingWhenTargetingContracts);
+            Utils.enhancedDeepEquals(this.allowOpenMarketBiddingWhenTargetingContracts, other.allowOpenMarketBiddingWhenTargetingContracts);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             allowOpenMarketBiddingWhenTargetingContracts);
     }
     
@@ -78,14 +78,16 @@ public class AdGroupWorkflowContractTargetingInput {
         return Utils.toString(AdGroupWorkflowContractTargetingInput.class,
                 "allowOpenMarketBiddingWhenTargetingContracts", allowOpenMarketBiddingWhenTargetingContracts);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Boolean> allowOpenMarketBiddingWhenTargetingContracts = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder allowOpenMarketBiddingWhenTargetingContracts(boolean allowOpenMarketBiddingWhenTargetingContracts) {
             Utils.checkNotNull(allowOpenMarketBiddingWhenTargetingContracts, "allowOpenMarketBiddingWhenTargetingContracts");
@@ -98,10 +100,12 @@ public class AdGroupWorkflowContractTargetingInput {
             this.allowOpenMarketBiddingWhenTargetingContracts = allowOpenMarketBiddingWhenTargetingContracts;
             return this;
         }
-        
+
         public AdGroupWorkflowContractTargetingInput build() {
+
             return new AdGroupWorkflowContractTargetingInput(
                 allowOpenMarketBiddingWhenTargetingContracts);
         }
+
     }
 }

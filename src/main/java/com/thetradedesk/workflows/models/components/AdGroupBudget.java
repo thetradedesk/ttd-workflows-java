@@ -13,24 +13,28 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupBudget {
 
     @JsonProperty("allocationType")
     private AllocationType allocationType;
 
+
     @JsonProperty("budgetInAdvertiserCurrency")
     private double budgetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("budgetInImpressions")
     private JsonNullable<Long> budgetInImpressions;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInAdvertiserCurrency")
     private JsonNullable<Double> dailyTargetInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dailyTargetInImpressions")
@@ -58,7 +62,8 @@ public class AdGroupBudget {
     public AdGroupBudget(
             AllocationType allocationType,
             double budgetInAdvertiserCurrency) {
-        this(allocationType, budgetInAdvertiserCurrency, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(allocationType, budgetInAdvertiserCurrency, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -86,9 +91,10 @@ public class AdGroupBudget {
         return dailyTargetInImpressions;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupBudget withAllocationType(AllocationType allocationType) {
         Utils.checkNotNull(allocationType, "allocationType");
@@ -138,7 +144,6 @@ public class AdGroupBudget {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,21 +154,18 @@ public class AdGroupBudget {
         }
         AdGroupBudget other = (AdGroupBudget) o;
         return 
-            Objects.deepEquals(this.allocationType, other.allocationType) &&
-            Objects.deepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
-            Objects.deepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
-            Objects.deepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
+            Utils.enhancedDeepEquals(this.allocationType, other.allocationType) &&
+            Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.budgetInImpressions, other.budgetInImpressions) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInAdvertiserCurrency, other.dailyTargetInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.dailyTargetInImpressions, other.dailyTargetInImpressions);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            allocationType,
-            budgetInAdvertiserCurrency,
-            budgetInImpressions,
-            dailyTargetInAdvertiserCurrency,
-            dailyTargetInImpressions);
+        return Utils.enhancedHash(
+            allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+            dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
     }
     
     @Override
@@ -175,22 +177,24 @@ public class AdGroupBudget {
                 "dailyTargetInAdvertiserCurrency", dailyTargetInAdvertiserCurrency,
                 "dailyTargetInImpressions", dailyTargetInImpressions);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private AllocationType allocationType;
- 
+
         private Double budgetInAdvertiserCurrency;
- 
+
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> dailyTargetInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Long> dailyTargetInImpressions = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder allocationType(AllocationType allocationType) {
             Utils.checkNotNull(allocationType, "allocationType");
@@ -198,11 +202,13 @@ public class AdGroupBudget {
             return this;
         }
 
+
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder budgetInImpressions(long budgetInImpressions) {
             Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
@@ -216,6 +222,7 @@ public class AdGroupBudget {
             return this;
         }
 
+
         public Builder dailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
             Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
             this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
@@ -228,6 +235,7 @@ public class AdGroupBudget {
             return this;
         }
 
+
         public Builder dailyTargetInImpressions(long dailyTargetInImpressions) {
             Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
             this.dailyTargetInImpressions = JsonNullable.of(dailyTargetInImpressions);
@@ -239,14 +247,13 @@ public class AdGroupBudget {
             this.dailyTargetInImpressions = dailyTargetInImpressions;
             return this;
         }
-        
+
         public AdGroupBudget build() {
+
             return new AdGroupBudget(
-                allocationType,
-                budgetInAdvertiserCurrency,
-                budgetInImpressions,
-                dailyTargetInAdvertiserCurrency,
-                dailyTargetInImpressions);
+                allocationType, budgetInAdvertiserCurrency, budgetInImpressions,
+                dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
         }
+
     }
 }

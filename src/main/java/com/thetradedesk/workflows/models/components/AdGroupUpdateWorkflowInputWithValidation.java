@@ -13,9 +13,9 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupUpdateWorkflowInputWithValidation {
 
@@ -23,13 +23,16 @@ public class AdGroupUpdateWorkflowInputWithValidation {
     @JsonProperty("id")
     private Optional<String> id;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("primaryInput")
     private Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
     private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("validateInputOnly")
@@ -52,7 +55,8 @@ public class AdGroupUpdateWorkflowInputWithValidation {
     }
     
     public AdGroupUpdateWorkflowInputWithValidation() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -77,15 +81,17 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         return validateInputOnly;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupUpdateWorkflowInputWithValidation withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = Optional.ofNullable(id);
         return this;
     }
+
 
     public AdGroupUpdateWorkflowInputWithValidation withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
@@ -99,6 +105,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         return this;
     }
 
+
     public AdGroupUpdateWorkflowInputWithValidation withPrimaryInput(Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
         this.primaryInput = primaryInput;
@@ -110,6 +117,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         this.advancedInput = Optional.ofNullable(advancedInput);
         return this;
     }
+
 
     public AdGroupUpdateWorkflowInputWithValidation withAdvancedInput(Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
@@ -129,7 +137,6 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +147,16 @@ public class AdGroupUpdateWorkflowInputWithValidation {
         }
         AdGroupUpdateWorkflowInputWithValidation other = (AdGroupUpdateWorkflowInputWithValidation) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
-            Objects.deepEquals(this.advancedInput, other.advancedInput) &&
-            Objects.deepEquals(this.validateInputOnly, other.validateInputOnly);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.primaryInput, other.primaryInput) &&
+            Utils.enhancedDeepEquals(this.advancedInput, other.advancedInput) &&
+            Utils.enhancedDeepEquals(this.validateInputOnly, other.validateInputOnly);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            primaryInput,
-            advancedInput,
+        return Utils.enhancedHash(
+            id, primaryInput, advancedInput,
             validateInputOnly);
     }
     
@@ -163,20 +168,22 @@ public class AdGroupUpdateWorkflowInputWithValidation {
                 "advancedInput", advancedInput,
                 "validateInputOnly", validateInputOnly);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> id = Optional.empty();
- 
+
         private Optional<? extends AdGroupUpdateWorkflowPrimaryInput> primaryInput = Optional.empty();
- 
+
         private Optional<? extends AdGroupWorkflowAdvancedInput> advancedInput = Optional.empty();
- 
+
         private JsonNullable<Boolean> validateInputOnly = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -190,6 +197,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
             return this;
         }
 
+
         public Builder primaryInput(AdGroupUpdateWorkflowPrimaryInput primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = Optional.ofNullable(primaryInput);
@@ -201,6 +209,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
             this.primaryInput = primaryInput;
             return this;
         }
+
 
         public Builder advancedInput(AdGroupWorkflowAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
@@ -214,6 +223,7 @@ public class AdGroupUpdateWorkflowInputWithValidation {
             return this;
         }
 
+
         public Builder validateInputOnly(boolean validateInputOnly) {
             Utils.checkNotNull(validateInputOnly, "validateInputOnly");
             this.validateInputOnly = JsonNullable.of(validateInputOnly);
@@ -225,13 +235,13 @@ public class AdGroupUpdateWorkflowInputWithValidation {
             this.validateInputOnly = validateInputOnly;
             return this;
         }
-        
+
         public AdGroupUpdateWorkflowInputWithValidation build() {
+
             return new AdGroupUpdateWorkflowInputWithValidation(
-                id,
-                primaryInput,
-                advancedInput,
+                id, primaryInput, advancedInput,
                 validateInputOnly);
         }
+
     }
 }

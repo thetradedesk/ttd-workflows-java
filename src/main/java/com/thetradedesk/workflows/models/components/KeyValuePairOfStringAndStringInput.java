@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -24,6 +23,7 @@ public class KeyValuePairOfStringAndStringInput {
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("key")
     private Optional<String> key;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("value")
@@ -53,15 +53,17 @@ public class KeyValuePairOfStringAndStringInput {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public KeyValuePairOfStringAndStringInput withKey(String key) {
         Utils.checkNotNull(key, "key");
         this.key = Optional.ofNullable(key);
         return this;
     }
+
 
     public KeyValuePairOfStringAndStringInput withKey(Optional<String> key) {
         Utils.checkNotNull(key, "key");
@@ -75,13 +77,13 @@ public class KeyValuePairOfStringAndStringInput {
         return this;
     }
 
+
     public KeyValuePairOfStringAndStringInput withValue(Optional<String> value) {
         Utils.checkNotNull(value, "value");
         this.value = value;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -92,15 +94,14 @@ public class KeyValuePairOfStringAndStringInput {
         }
         KeyValuePairOfStringAndStringInput other = (KeyValuePairOfStringAndStringInput) o;
         return 
-            Objects.deepEquals(this.key, other.key) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            key,
-            value);
+        return Utils.enhancedHash(
+            key, value);
     }
     
     @Override
@@ -109,16 +110,18 @@ public class KeyValuePairOfStringAndStringInput {
                 "key", key,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> key = Optional.empty();
- 
+
         private Optional<String> value = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder key(String key) {
             Utils.checkNotNull(key, "key");
@@ -132,6 +135,7 @@ public class KeyValuePairOfStringAndStringInput {
             return this;
         }
 
+
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
             this.value = Optional.ofNullable(value);
@@ -143,11 +147,12 @@ public class KeyValuePairOfStringAndStringInput {
             this.value = value;
             return this;
         }
-        
+
         public KeyValuePairOfStringAndStringInput build() {
+
             return new KeyValuePairOfStringAndStringInput(
-                key,
-                value);
+                key, value);
         }
+
     }
 }

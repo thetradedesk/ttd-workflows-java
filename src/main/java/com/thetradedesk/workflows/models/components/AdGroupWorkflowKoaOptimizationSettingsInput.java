@@ -12,14 +12,15 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowKoaOptimizationSettingsInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("areFutureKoaFeaturesEnabled")
     private JsonNullable<Boolean> areFutureKoaFeaturesEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("predictiveClearingEnabled")
@@ -49,9 +50,10 @@ public class AdGroupWorkflowKoaOptimizationSettingsInput {
         return predictiveClearingEnabled;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowKoaOptimizationSettingsInput withAreFutureKoaFeaturesEnabled(boolean areFutureKoaFeaturesEnabled) {
         Utils.checkNotNull(areFutureKoaFeaturesEnabled, "areFutureKoaFeaturesEnabled");
@@ -77,7 +79,6 @@ public class AdGroupWorkflowKoaOptimizationSettingsInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,15 +89,14 @@ public class AdGroupWorkflowKoaOptimizationSettingsInput {
         }
         AdGroupWorkflowKoaOptimizationSettingsInput other = (AdGroupWorkflowKoaOptimizationSettingsInput) o;
         return 
-            Objects.deepEquals(this.areFutureKoaFeaturesEnabled, other.areFutureKoaFeaturesEnabled) &&
-            Objects.deepEquals(this.predictiveClearingEnabled, other.predictiveClearingEnabled);
+            Utils.enhancedDeepEquals(this.areFutureKoaFeaturesEnabled, other.areFutureKoaFeaturesEnabled) &&
+            Utils.enhancedDeepEquals(this.predictiveClearingEnabled, other.predictiveClearingEnabled);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            areFutureKoaFeaturesEnabled,
-            predictiveClearingEnabled);
+        return Utils.enhancedHash(
+            areFutureKoaFeaturesEnabled, predictiveClearingEnabled);
     }
     
     @Override
@@ -105,16 +105,18 @@ public class AdGroupWorkflowKoaOptimizationSettingsInput {
                 "areFutureKoaFeaturesEnabled", areFutureKoaFeaturesEnabled,
                 "predictiveClearingEnabled", predictiveClearingEnabled);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Boolean> areFutureKoaFeaturesEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> predictiveClearingEnabled = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder areFutureKoaFeaturesEnabled(boolean areFutureKoaFeaturesEnabled) {
             Utils.checkNotNull(areFutureKoaFeaturesEnabled, "areFutureKoaFeaturesEnabled");
@@ -128,6 +130,7 @@ public class AdGroupWorkflowKoaOptimizationSettingsInput {
             return this;
         }
 
+
         public Builder predictiveClearingEnabled(boolean predictiveClearingEnabled) {
             Utils.checkNotNull(predictiveClearingEnabled, "predictiveClearingEnabled");
             this.predictiveClearingEnabled = JsonNullable.of(predictiveClearingEnabled);
@@ -139,11 +142,12 @@ public class AdGroupWorkflowKoaOptimizationSettingsInput {
             this.predictiveClearingEnabled = predictiveClearingEnabled;
             return this;
         }
-        
+
         public AdGroupWorkflowKoaOptimizationSettingsInput build() {
+
             return new AdGroupWorkflowKoaOptimizationSettingsInput(
-                areFutureKoaFeaturesEnabled,
-                predictiveClearingEnabled);
+                areFutureKoaFeaturesEnabled, predictiveClearingEnabled);
         }
+
     }
 }

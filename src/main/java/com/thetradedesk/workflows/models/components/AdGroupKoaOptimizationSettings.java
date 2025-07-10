@@ -12,14 +12,15 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AdGroupKoaOptimizationSettings {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("areFutureKoaFeaturesEnabled")
     private Optional<Boolean> areFutureKoaFeaturesEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("predictiveClearingEnabled")
@@ -49,15 +50,17 @@ public class AdGroupKoaOptimizationSettings {
         return predictiveClearingEnabled;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupKoaOptimizationSettings withAreFutureKoaFeaturesEnabled(boolean areFutureKoaFeaturesEnabled) {
         Utils.checkNotNull(areFutureKoaFeaturesEnabled, "areFutureKoaFeaturesEnabled");
         this.areFutureKoaFeaturesEnabled = Optional.ofNullable(areFutureKoaFeaturesEnabled);
         return this;
     }
+
 
     public AdGroupKoaOptimizationSettings withAreFutureKoaFeaturesEnabled(Optional<Boolean> areFutureKoaFeaturesEnabled) {
         Utils.checkNotNull(areFutureKoaFeaturesEnabled, "areFutureKoaFeaturesEnabled");
@@ -71,13 +74,13 @@ public class AdGroupKoaOptimizationSettings {
         return this;
     }
 
+
     public AdGroupKoaOptimizationSettings withPredictiveClearingEnabled(Optional<Boolean> predictiveClearingEnabled) {
         Utils.checkNotNull(predictiveClearingEnabled, "predictiveClearingEnabled");
         this.predictiveClearingEnabled = predictiveClearingEnabled;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,15 +91,14 @@ public class AdGroupKoaOptimizationSettings {
         }
         AdGroupKoaOptimizationSettings other = (AdGroupKoaOptimizationSettings) o;
         return 
-            Objects.deepEquals(this.areFutureKoaFeaturesEnabled, other.areFutureKoaFeaturesEnabled) &&
-            Objects.deepEquals(this.predictiveClearingEnabled, other.predictiveClearingEnabled);
+            Utils.enhancedDeepEquals(this.areFutureKoaFeaturesEnabled, other.areFutureKoaFeaturesEnabled) &&
+            Utils.enhancedDeepEquals(this.predictiveClearingEnabled, other.predictiveClearingEnabled);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            areFutureKoaFeaturesEnabled,
-            predictiveClearingEnabled);
+        return Utils.enhancedHash(
+            areFutureKoaFeaturesEnabled, predictiveClearingEnabled);
     }
     
     @Override
@@ -105,16 +107,18 @@ public class AdGroupKoaOptimizationSettings {
                 "areFutureKoaFeaturesEnabled", areFutureKoaFeaturesEnabled,
                 "predictiveClearingEnabled", predictiveClearingEnabled);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> areFutureKoaFeaturesEnabled = Optional.empty();
- 
+
         private Optional<Boolean> predictiveClearingEnabled = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder areFutureKoaFeaturesEnabled(boolean areFutureKoaFeaturesEnabled) {
             Utils.checkNotNull(areFutureKoaFeaturesEnabled, "areFutureKoaFeaturesEnabled");
@@ -128,6 +132,7 @@ public class AdGroupKoaOptimizationSettings {
             return this;
         }
 
+
         public Builder predictiveClearingEnabled(boolean predictiveClearingEnabled) {
             Utils.checkNotNull(predictiveClearingEnabled, "predictiveClearingEnabled");
             this.predictiveClearingEnabled = Optional.ofNullable(predictiveClearingEnabled);
@@ -139,11 +144,12 @@ public class AdGroupKoaOptimizationSettings {
             this.predictiveClearingEnabled = predictiveClearingEnabled;
             return this;
         }
-        
+
         public AdGroupKoaOptimizationSettings build() {
+
             return new AdGroupKoaOptimizationSettings(
-                areFutureKoaFeaturesEnabled,
-                predictiveClearingEnabled);
+                areFutureKoaFeaturesEnabled, predictiveClearingEnabled);
         }
+
     }
 }

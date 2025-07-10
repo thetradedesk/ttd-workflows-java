@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -22,7 +21,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Required fields for submitting a bulk job for third-party data.
  */
 public class ThirdPartyDataInput {
-
     /**
      * The partner ID to query for.
      */
@@ -61,6 +59,7 @@ public class ThirdPartyDataInput {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("queryShape")
     private JsonNullable<String> queryShape;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("callbackInput")
@@ -132,9 +131,10 @@ public class ThirdPartyDataInput {
         return (Optional<WorkflowCallbackInput>) callbackInput;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The partner ID to query for.
@@ -221,13 +221,13 @@ public class ThirdPartyDataInput {
         return this;
     }
 
+
     public ThirdPartyDataInput withCallbackInput(Optional<? extends WorkflowCallbackInput> callbackInput) {
         Utils.checkNotNull(callbackInput, "callbackInput");
         this.callbackInput = callbackInput;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -238,17 +238,15 @@ public class ThirdPartyDataInput {
         }
         ThirdPartyDataInput other = (ThirdPartyDataInput) o;
         return 
-            Objects.deepEquals(this.partnerId, other.partnerId) &&
-            Objects.deepEquals(this.queryShape, other.queryShape) &&
-            Objects.deepEquals(this.callbackInput, other.callbackInput);
+            Utils.enhancedDeepEquals(this.partnerId, other.partnerId) &&
+            Utils.enhancedDeepEquals(this.queryShape, other.queryShape) &&
+            Utils.enhancedDeepEquals(this.callbackInput, other.callbackInput);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            partnerId,
-            queryShape,
-            callbackInput);
+        return Utils.enhancedHash(
+            partnerId, queryShape, callbackInput);
     }
     
     @Override
@@ -258,18 +256,20 @@ public class ThirdPartyDataInput {
                 "queryShape", queryShape,
                 "callbackInput", callbackInput);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String partnerId;
- 
+
         private JsonNullable<String> queryShape = JsonNullable.undefined();
- 
+
         private Optional<? extends WorkflowCallbackInput> callbackInput = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The partner ID to query for.
@@ -279,6 +279,7 @@ public class ThirdPartyDataInput {
             this.partnerId = partnerId;
             return this;
         }
+
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
@@ -350,6 +351,7 @@ public class ThirdPartyDataInput {
             return this;
         }
 
+
         public Builder callbackInput(WorkflowCallbackInput callbackInput) {
             Utils.checkNotNull(callbackInput, "callbackInput");
             this.callbackInput = Optional.ofNullable(callbackInput);
@@ -361,12 +363,12 @@ public class ThirdPartyDataInput {
             this.callbackInput = callbackInput;
             return this;
         }
-        
+
         public ThirdPartyDataInput build() {
+
             return new ThirdPartyDataInput(
-                partnerId,
-                queryShape,
-                callbackInput);
+                partnerId, queryShape, callbackInput);
         }
+
     }
 }

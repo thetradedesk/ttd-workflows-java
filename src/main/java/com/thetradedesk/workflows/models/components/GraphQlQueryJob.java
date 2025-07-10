@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -26,7 +25,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>This is the response model that mirrors the GQL bulkjob
  */
 public class GraphQlQueryJob {
-
     /**
      * The ID of the job.
      */
@@ -52,6 +50,7 @@ public class GraphQlQueryJob {
      */
     @JsonProperty("createdAt")
     private OffsetDateTime createdAt;
+
 
     @JsonProperty("status")
     private BulkJobStatus status;
@@ -120,7 +119,9 @@ public class GraphQlQueryJob {
             long id,
             OffsetDateTime createdAt,
             BulkJobStatus status) {
-        this(id, JsonNullable.undefined(), JsonNullable.undefined(), createdAt, status, JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+        this(id, JsonNullable.undefined(), JsonNullable.undefined(),
+            createdAt, status, JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
     }
 
     /**
@@ -195,9 +196,10 @@ public class GraphQlQueryJob {
         return (Optional<List<String>>) runtimeErrors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The ID of the job.
@@ -324,6 +326,7 @@ public class GraphQlQueryJob {
         return this;
     }
 
+
     /**
      * Errors encountered while executing the job
      */
@@ -333,7 +336,6 @@ public class GraphQlQueryJob {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -344,29 +346,23 @@ public class GraphQlQueryJob {
         }
         GraphQlQueryJob other = (GraphQlQueryJob) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.completedAt, other.completedAt) &&
-            Objects.deepEquals(this.completionPercentage, other.completionPercentage) &&
-            Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.url, other.url) &&
-            Objects.deepEquals(this.rawResult, other.rawResult) &&
-            Objects.deepEquals(this.queryGqlErrors, other.queryGqlErrors) &&
-            Objects.deepEquals(this.runtimeErrors, other.runtimeErrors);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.completedAt, other.completedAt) &&
+            Utils.enhancedDeepEquals(this.completionPercentage, other.completionPercentage) &&
+            Utils.enhancedDeepEquals(this.createdAt, other.createdAt) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.url, other.url) &&
+            Utils.enhancedDeepEquals(this.rawResult, other.rawResult) &&
+            Utils.enhancedDeepEquals(this.queryGqlErrors, other.queryGqlErrors) &&
+            Utils.enhancedDeepEquals(this.runtimeErrors, other.runtimeErrors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            completedAt,
-            completionPercentage,
-            createdAt,
-            status,
-            url,
-            rawResult,
-            queryGqlErrors,
-            runtimeErrors);
+        return Utils.enhancedHash(
+            id, completedAt, completionPercentage,
+            createdAt, status, url,
+            rawResult, queryGqlErrors, runtimeErrors);
     }
     
     @Override
@@ -382,30 +378,32 @@ public class GraphQlQueryJob {
                 "queryGqlErrors", queryGqlErrors,
                 "runtimeErrors", runtimeErrors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long id;
- 
+
         private JsonNullable<OffsetDateTime> completedAt = JsonNullable.undefined();
- 
+
         private JsonNullable<Float> completionPercentage = JsonNullable.undefined();
- 
+
         private OffsetDateTime createdAt;
- 
+
         private BulkJobStatus status;
- 
+
         private JsonNullable<String> url = JsonNullable.undefined();
- 
+
         private JsonNullable<String> rawResult = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<String>> queryGqlErrors = JsonNullable.undefined();
- 
+
         private Optional<? extends List<String>> runtimeErrors = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The ID of the job.
@@ -415,6 +413,7 @@ public class GraphQlQueryJob {
             this.id = id;
             return this;
         }
+
 
         /**
          * The UTC data and time that the job completed.
@@ -434,6 +433,7 @@ public class GraphQlQueryJob {
             return this;
         }
 
+
         /**
          * The job completion percentage.
          */
@@ -452,6 +452,7 @@ public class GraphQlQueryJob {
             return this;
         }
 
+
         /**
          * Time of creation for that bulk job in UTC.
          */
@@ -461,11 +462,13 @@ public class GraphQlQueryJob {
             return this;
         }
 
+
         public Builder status(BulkJobStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
         }
+
 
         /**
          * The URL from which the job result can be downloaded.
@@ -484,6 +487,7 @@ public class GraphQlQueryJob {
             this.url = url;
             return this;
         }
+
 
         /**
          * The raw job result if the response is less than or equal to 20MB in size.
@@ -505,6 +509,7 @@ public class GraphQlQueryJob {
             return this;
         }
 
+
         /**
          * If the GQL requests within the job hard failed (such as from an authorization error or an internal server error), the causes encountered during execution
          */
@@ -523,6 +528,7 @@ public class GraphQlQueryJob {
             return this;
         }
 
+
         /**
          * Errors encountered while executing the job
          */
@@ -540,18 +546,14 @@ public class GraphQlQueryJob {
             this.runtimeErrors = runtimeErrors;
             return this;
         }
-        
+
         public GraphQlQueryJob build() {
+
             return new GraphQlQueryJob(
-                id,
-                completedAt,
-                completionPercentage,
-                createdAt,
-                status,
-                url,
-                rawResult,
-                queryGqlErrors,
-                runtimeErrors);
+                id, completedAt, completionPercentage,
+                createdAt, status, url,
+                rawResult, queryGqlErrors, runtimeErrors);
         }
+
     }
 }
