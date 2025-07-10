@@ -20,10 +20,10 @@ package hello.world;
 
 import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
-import com.thetradedesk.workflows.models.components.Variables;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestResponse;
 import java.lang.Exception;
+import java.util.Map;
 
 public class Application {
 
@@ -35,8 +35,8 @@ public class Application {
 
         GraphQLRequestInput req = GraphQLRequestInput.builder()
                 .request("<value>")
-                .variables(Variables.builder()
-                    .build())
+                .variables(Map.ofEntries(
+                ))
                 .build();
 
         SubmitGraphQlRequestResponse res = sdk.graphQLRequest().submitGraphQlRequest()

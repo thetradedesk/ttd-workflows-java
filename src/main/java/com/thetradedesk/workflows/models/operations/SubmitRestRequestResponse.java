@@ -9,10 +9,12 @@ import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
 import java.io.InputStream;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -35,14 +37,14 @@ public class SubmitRestRequestResponse implements Response {
     /**
      * OK
      */
-    private Optional<? extends SubmitRestRequestResponseBody> object;
+    private Optional<? extends Map<String, Object>> object;
 
     @JsonCreator
     public SubmitRestRequestResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends SubmitRestRequestResponseBody> object) {
+            Optional<? extends Map<String, Object>> object) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
@@ -90,8 +92,8 @@ public class SubmitRestRequestResponse implements Response {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SubmitRestRequestResponseBody> object() {
-        return (Optional<SubmitRestRequestResponseBody>) object;
+    public Optional<Map<String, Object>> object() {
+        return (Optional<Map<String, Object>>) object;
     }
 
     public static Builder builder() {
@@ -129,7 +131,7 @@ public class SubmitRestRequestResponse implements Response {
     /**
      * OK
      */
-    public SubmitRestRequestResponse withObject(SubmitRestRequestResponseBody object) {
+    public SubmitRestRequestResponse withObject(Map<String, Object> object) {
         Utils.checkNotNull(object, "object");
         this.object = Optional.ofNullable(object);
         return this;
@@ -139,7 +141,7 @@ public class SubmitRestRequestResponse implements Response {
     /**
      * OK
      */
-    public SubmitRestRequestResponse withObject(Optional<? extends SubmitRestRequestResponseBody> object) {
+    public SubmitRestRequestResponse withObject(Optional<? extends Map<String, Object>> object) {
         Utils.checkNotNull(object, "object");
         this.object = object;
         return this;
@@ -186,7 +188,7 @@ public class SubmitRestRequestResponse implements Response {
 
         private HttpResponse<InputStream> rawResponse;
 
-        private Optional<? extends SubmitRestRequestResponseBody> object = Optional.empty();
+        private Optional<? extends Map<String, Object>> object = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -226,7 +228,7 @@ public class SubmitRestRequestResponse implements Response {
         /**
          * OK
          */
-        public Builder object(SubmitRestRequestResponseBody object) {
+        public Builder object(Map<String, Object> object) {
             Utils.checkNotNull(object, "object");
             this.object = Optional.ofNullable(object);
             return this;
@@ -235,7 +237,7 @@ public class SubmitRestRequestResponse implements Response {
         /**
          * OK
          */
-        public Builder object(Optional<? extends SubmitRestRequestResponseBody> object) {
+        public Builder object(Optional<? extends Map<String, Object>> object) {
             Utils.checkNotNull(object, "object");
             this.object = object;
             return this;
