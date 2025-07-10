@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowAudienceTargetingInput {
 
@@ -24,33 +24,41 @@ public class AdGroupWorkflowAudienceTargetingInput {
     @JsonProperty("audienceId")
     private JsonNullable<String> audienceId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceAcceleratorExclusionsEnabled")
     private JsonNullable<Boolean> audienceAcceleratorExclusionsEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceBoosterEnabled")
     private JsonNullable<Boolean> audienceBoosterEnabled;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceExcluderEnabled")
     private JsonNullable<Boolean> audienceExcluderEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audiencePredictorEnabled")
     private JsonNullable<Boolean> audiencePredictorEnabled;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("crossDeviceVendorListForAudience")
     private JsonNullable<? extends List<Integer>> crossDeviceVendorListForAudience;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("recencyExclusionWindowInMinutes")
     private JsonNullable<Integer> recencyExclusionWindowInMinutes;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("targetTrackableUsersEnabled")
     private JsonNullable<Boolean> targetTrackableUsersEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("useMcIdAsPrimary")
@@ -88,7 +96,9 @@ public class AdGroupWorkflowAudienceTargetingInput {
     }
     
     public AdGroupWorkflowAudienceTargetingInput() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -137,9 +147,10 @@ public class AdGroupWorkflowAudienceTargetingInput {
         return useMcIdAsPrimary;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowAudienceTargetingInput withAudienceId(String audienceId) {
         Utils.checkNotNull(audienceId, "audienceId");
@@ -249,7 +260,6 @@ public class AdGroupWorkflowAudienceTargetingInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -260,29 +270,23 @@ public class AdGroupWorkflowAudienceTargetingInput {
         }
         AdGroupWorkflowAudienceTargetingInput other = (AdGroupWorkflowAudienceTargetingInput) o;
         return 
-            Objects.deepEquals(this.audienceId, other.audienceId) &&
-            Objects.deepEquals(this.audienceAcceleratorExclusionsEnabled, other.audienceAcceleratorExclusionsEnabled) &&
-            Objects.deepEquals(this.audienceBoosterEnabled, other.audienceBoosterEnabled) &&
-            Objects.deepEquals(this.audienceExcluderEnabled, other.audienceExcluderEnabled) &&
-            Objects.deepEquals(this.audiencePredictorEnabled, other.audiencePredictorEnabled) &&
-            Objects.deepEquals(this.crossDeviceVendorListForAudience, other.crossDeviceVendorListForAudience) &&
-            Objects.deepEquals(this.recencyExclusionWindowInMinutes, other.recencyExclusionWindowInMinutes) &&
-            Objects.deepEquals(this.targetTrackableUsersEnabled, other.targetTrackableUsersEnabled) &&
-            Objects.deepEquals(this.useMcIdAsPrimary, other.useMcIdAsPrimary);
+            Utils.enhancedDeepEquals(this.audienceId, other.audienceId) &&
+            Utils.enhancedDeepEquals(this.audienceAcceleratorExclusionsEnabled, other.audienceAcceleratorExclusionsEnabled) &&
+            Utils.enhancedDeepEquals(this.audienceBoosterEnabled, other.audienceBoosterEnabled) &&
+            Utils.enhancedDeepEquals(this.audienceExcluderEnabled, other.audienceExcluderEnabled) &&
+            Utils.enhancedDeepEquals(this.audiencePredictorEnabled, other.audiencePredictorEnabled) &&
+            Utils.enhancedDeepEquals(this.crossDeviceVendorListForAudience, other.crossDeviceVendorListForAudience) &&
+            Utils.enhancedDeepEquals(this.recencyExclusionWindowInMinutes, other.recencyExclusionWindowInMinutes) &&
+            Utils.enhancedDeepEquals(this.targetTrackableUsersEnabled, other.targetTrackableUsersEnabled) &&
+            Utils.enhancedDeepEquals(this.useMcIdAsPrimary, other.useMcIdAsPrimary);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            audienceId,
-            audienceAcceleratorExclusionsEnabled,
-            audienceBoosterEnabled,
-            audienceExcluderEnabled,
-            audiencePredictorEnabled,
-            crossDeviceVendorListForAudience,
-            recencyExclusionWindowInMinutes,
-            targetTrackableUsersEnabled,
-            useMcIdAsPrimary);
+        return Utils.enhancedHash(
+            audienceId, audienceAcceleratorExclusionsEnabled, audienceBoosterEnabled,
+            audienceExcluderEnabled, audiencePredictorEnabled, crossDeviceVendorListForAudience,
+            recencyExclusionWindowInMinutes, targetTrackableUsersEnabled, useMcIdAsPrimary);
     }
     
     @Override
@@ -298,30 +302,32 @@ public class AdGroupWorkflowAudienceTargetingInput {
                 "targetTrackableUsersEnabled", targetTrackableUsersEnabled,
                 "useMcIdAsPrimary", useMcIdAsPrimary);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<String> audienceId = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> audienceAcceleratorExclusionsEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> audienceBoosterEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> audienceExcluderEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> audiencePredictorEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<? extends List<Integer>> crossDeviceVendorListForAudience = JsonNullable.undefined();
- 
+
         private JsonNullable<Integer> recencyExclusionWindowInMinutes = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> targetTrackableUsersEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> useMcIdAsPrimary = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder audienceId(String audienceId) {
             Utils.checkNotNull(audienceId, "audienceId");
@@ -335,6 +341,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             return this;
         }
 
+
         public Builder audienceAcceleratorExclusionsEnabled(boolean audienceAcceleratorExclusionsEnabled) {
             Utils.checkNotNull(audienceAcceleratorExclusionsEnabled, "audienceAcceleratorExclusionsEnabled");
             this.audienceAcceleratorExclusionsEnabled = JsonNullable.of(audienceAcceleratorExclusionsEnabled);
@@ -346,6 +353,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             this.audienceAcceleratorExclusionsEnabled = audienceAcceleratorExclusionsEnabled;
             return this;
         }
+
 
         public Builder audienceBoosterEnabled(boolean audienceBoosterEnabled) {
             Utils.checkNotNull(audienceBoosterEnabled, "audienceBoosterEnabled");
@@ -359,6 +367,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             return this;
         }
 
+
         public Builder audienceExcluderEnabled(boolean audienceExcluderEnabled) {
             Utils.checkNotNull(audienceExcluderEnabled, "audienceExcluderEnabled");
             this.audienceExcluderEnabled = JsonNullable.of(audienceExcluderEnabled);
@@ -370,6 +379,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             this.audienceExcluderEnabled = audienceExcluderEnabled;
             return this;
         }
+
 
         public Builder audiencePredictorEnabled(boolean audiencePredictorEnabled) {
             Utils.checkNotNull(audiencePredictorEnabled, "audiencePredictorEnabled");
@@ -383,6 +393,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             return this;
         }
 
+
         public Builder crossDeviceVendorListForAudience(List<Integer> crossDeviceVendorListForAudience) {
             Utils.checkNotNull(crossDeviceVendorListForAudience, "crossDeviceVendorListForAudience");
             this.crossDeviceVendorListForAudience = JsonNullable.of(crossDeviceVendorListForAudience);
@@ -394,6 +405,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             this.crossDeviceVendorListForAudience = crossDeviceVendorListForAudience;
             return this;
         }
+
 
         public Builder recencyExclusionWindowInMinutes(int recencyExclusionWindowInMinutes) {
             Utils.checkNotNull(recencyExclusionWindowInMinutes, "recencyExclusionWindowInMinutes");
@@ -407,6 +419,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             return this;
         }
 
+
         public Builder targetTrackableUsersEnabled(boolean targetTrackableUsersEnabled) {
             Utils.checkNotNull(targetTrackableUsersEnabled, "targetTrackableUsersEnabled");
             this.targetTrackableUsersEnabled = JsonNullable.of(targetTrackableUsersEnabled);
@@ -419,6 +432,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
             return this;
         }
 
+
         public Builder useMcIdAsPrimary(boolean useMcIdAsPrimary) {
             Utils.checkNotNull(useMcIdAsPrimary, "useMcIdAsPrimary");
             this.useMcIdAsPrimary = JsonNullable.of(useMcIdAsPrimary);
@@ -430,18 +444,14 @@ public class AdGroupWorkflowAudienceTargetingInput {
             this.useMcIdAsPrimary = useMcIdAsPrimary;
             return this;
         }
-        
+
         public AdGroupWorkflowAudienceTargetingInput build() {
+
             return new AdGroupWorkflowAudienceTargetingInput(
-                audienceId,
-                audienceAcceleratorExclusionsEnabled,
-                audienceBoosterEnabled,
-                audienceExcluderEnabled,
-                audiencePredictorEnabled,
-                crossDeviceVendorListForAudience,
-                recencyExclusionWindowInMinutes,
-                targetTrackableUsersEnabled,
-                useMcIdAsPrimary);
+                audienceId, audienceAcceleratorExclusionsEnabled, audienceBoosterEnabled,
+                audienceExcluderEnabled, audiencePredictorEnabled, crossDeviceVendorListForAudience,
+                recencyExclusionWindowInMinutes, targetTrackableUsersEnabled, useMcIdAsPrimary);
         }
+
     }
 }

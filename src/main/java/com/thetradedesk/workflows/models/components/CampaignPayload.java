@@ -13,15 +13,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignPayload {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaign")
     private Optional<? extends CampaignWorkflow> campaign;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("adGroups")
@@ -53,15 +54,17 @@ public class CampaignPayload {
         return (JsonNullable<List<AdGroupWorkflow>>) adGroups;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignPayload withCampaign(CampaignWorkflow campaign) {
         Utils.checkNotNull(campaign, "campaign");
         this.campaign = Optional.ofNullable(campaign);
         return this;
     }
+
 
     public CampaignPayload withCampaign(Optional<? extends CampaignWorkflow> campaign) {
         Utils.checkNotNull(campaign, "campaign");
@@ -81,7 +84,6 @@ public class CampaignPayload {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -92,15 +94,14 @@ public class CampaignPayload {
         }
         CampaignPayload other = (CampaignPayload) o;
         return 
-            Objects.deepEquals(this.campaign, other.campaign) &&
-            Objects.deepEquals(this.adGroups, other.adGroups);
+            Utils.enhancedDeepEquals(this.campaign, other.campaign) &&
+            Utils.enhancedDeepEquals(this.adGroups, other.adGroups);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            campaign,
-            adGroups);
+        return Utils.enhancedHash(
+            campaign, adGroups);
     }
     
     @Override
@@ -109,16 +110,18 @@ public class CampaignPayload {
                 "campaign", campaign,
                 "adGroups", adGroups);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends CampaignWorkflow> campaign = Optional.empty();
- 
+
         private JsonNullable<? extends List<AdGroupWorkflow>> adGroups = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder campaign(CampaignWorkflow campaign) {
             Utils.checkNotNull(campaign, "campaign");
@@ -132,6 +135,7 @@ public class CampaignPayload {
             return this;
         }
 
+
         public Builder adGroups(List<AdGroupWorkflow> adGroups) {
             Utils.checkNotNull(adGroups, "adGroups");
             this.adGroups = JsonNullable.of(adGroups);
@@ -143,11 +147,12 @@ public class CampaignPayload {
             this.adGroups = adGroups;
             return this;
         }
-        
+
         public CampaignPayload build() {
+
             return new CampaignPayload(
-                campaign,
-                adGroups);
+                campaign, adGroups);
         }
+
     }
 }

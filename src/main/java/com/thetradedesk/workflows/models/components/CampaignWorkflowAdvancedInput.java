@@ -13,14 +13,15 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignWorkflowAdvancedInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flights")
     private JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("purchaseOrderNumber")
@@ -51,9 +52,10 @@ public class CampaignWorkflowAdvancedInput {
         return purchaseOrderNumber;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignWorkflowAdvancedInput withFlights(List<CampaignWorkflowFlightInput> flights) {
         Utils.checkNotNull(flights, "flights");
@@ -79,7 +81,6 @@ public class CampaignWorkflowAdvancedInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,15 +91,14 @@ public class CampaignWorkflowAdvancedInput {
         }
         CampaignWorkflowAdvancedInput other = (CampaignWorkflowAdvancedInput) o;
         return 
-            Objects.deepEquals(this.flights, other.flights) &&
-            Objects.deepEquals(this.purchaseOrderNumber, other.purchaseOrderNumber);
+            Utils.enhancedDeepEquals(this.flights, other.flights) &&
+            Utils.enhancedDeepEquals(this.purchaseOrderNumber, other.purchaseOrderNumber);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            flights,
-            purchaseOrderNumber);
+        return Utils.enhancedHash(
+            flights, purchaseOrderNumber);
     }
     
     @Override
@@ -107,16 +107,18 @@ public class CampaignWorkflowAdvancedInput {
                 "flights", flights,
                 "purchaseOrderNumber", purchaseOrderNumber);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights = JsonNullable.undefined();
- 
+
         private JsonNullable<String> purchaseOrderNumber = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder flights(List<CampaignWorkflowFlightInput> flights) {
             Utils.checkNotNull(flights, "flights");
@@ -130,6 +132,7 @@ public class CampaignWorkflowAdvancedInput {
             return this;
         }
 
+
         public Builder purchaseOrderNumber(String purchaseOrderNumber) {
             Utils.checkNotNull(purchaseOrderNumber, "purchaseOrderNumber");
             this.purchaseOrderNumber = JsonNullable.of(purchaseOrderNumber);
@@ -141,11 +144,12 @@ public class CampaignWorkflowAdvancedInput {
             this.purchaseOrderNumber = purchaseOrderNumber;
             return this;
         }
-        
+
         public CampaignWorkflowAdvancedInput build() {
+
             return new CampaignWorkflowAdvancedInput(
-                flights,
-                purchaseOrderNumber);
+                flights, purchaseOrderNumber);
         }
+
     }
 }

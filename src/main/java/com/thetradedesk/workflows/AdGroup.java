@@ -39,7 +39,6 @@ public class AdGroup {
     AdGroup(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Create a new ad group with required fields
      * 
@@ -72,11 +71,10 @@ public class AdGroup {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
               = new CreateAdGroupOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update an ad group with specified fields
@@ -116,11 +114,10 @@ public class AdGroup {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>, UpdateAdGroupResponse> operation
               = new UpdateAdGroupOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Archive multiple ad groups
@@ -168,11 +165,10 @@ public class AdGroup {
                 .build();
         RequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation
               = new ArchiveAdGroupsOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Create multiple new ad groups with required fields
@@ -206,11 +202,10 @@ public class AdGroup {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation>, CreateAdGroupsJobResponse> operation
               = new CreateAdGroupsJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Update multiple ad groups with specified fields
@@ -250,8 +245,8 @@ public class AdGroup {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>, UpdateAdGroupsJobResponse> operation
               = new UpdateAdGroupsJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
