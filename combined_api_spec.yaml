@@ -451,6 +451,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
         '400':
           description: Bad Request
           content:
