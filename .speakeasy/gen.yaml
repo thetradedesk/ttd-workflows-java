@@ -35,6 +35,7 @@ java:
   envVarPrefix: WORKFLOWS
   flattenGlobalSecurity: true
   groupID: com.thetradedesk
+  githubURL: github.com/thetradedesk/ttd-workflows-java
   imports:
     option: openapi
     paths:
