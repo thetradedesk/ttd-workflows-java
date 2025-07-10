@@ -594,6 +594,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
         '400':
           description: Bad Request
           content:
@@ -1539,6 +1540,7 @@ components:
         dataBody:
           type: string
           nullable: true
+          additionalProperties: true
       additionalProperties: false
     CampaignBulkCreateWorkflowInputWithValidation:
       required:
@@ -2270,6 +2272,7 @@ components:
           type: object
           description: Variables to substitute into the query.
           nullable: true
+          additionalProperties: true
       additionalProperties: false
       description: Required fields for executing a GraphQL query
     GraphQlJobCallbackInput:

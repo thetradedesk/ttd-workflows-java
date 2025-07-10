@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.9.1
+  version: 0.9.2
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
@@ -34,6 +34,7 @@ java:
   enableCustomCodeRegions: false
   envVarPrefix: WORKFLOWS
   flattenGlobalSecurity: true
+  githubURL: github.com/thetradedesk/ttd-workflows-java
   groupID: com.thetradedesk
   imports:
     option: openapi

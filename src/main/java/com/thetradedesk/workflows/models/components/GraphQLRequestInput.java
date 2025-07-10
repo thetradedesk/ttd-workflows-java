@@ -9,9 +9,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -31,12 +33,12 @@ public class GraphQLRequestInput {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("variables")
-    private JsonNullable<? extends Variables> variables;
+    private JsonNullable<? extends Map<String, Object>> variables;
 
     @JsonCreator
     public GraphQLRequestInput(
             @JsonProperty("request") String request,
-            @JsonProperty("variables") JsonNullable<? extends Variables> variables) {
+            @JsonProperty("variables") JsonNullable<? extends Map<String, Object>> variables) {
         Utils.checkNotNull(request, "request");
         Utils.checkNotNull(variables, "variables");
         this.request = request;
@@ -61,8 +63,8 @@ public class GraphQLRequestInput {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<Variables> variables() {
-        return (JsonNullable<Variables>) variables;
+    public JsonNullable<Map<String, Object>> variables() {
+        return (JsonNullable<Map<String, Object>>) variables;
     }
 
     public static Builder builder() {
@@ -82,7 +84,7 @@ public class GraphQLRequestInput {
     /**
      * Variables to substitute into the query.
      */
-    public GraphQLRequestInput withVariables(Variables variables) {
+    public GraphQLRequestInput withVariables(Map<String, Object> variables) {
         Utils.checkNotNull(variables, "variables");
         this.variables = JsonNullable.of(variables);
         return this;
@@ -91,7 +93,7 @@ public class GraphQLRequestInput {
     /**
      * Variables to substitute into the query.
      */
-    public GraphQLRequestInput withVariables(JsonNullable<? extends Variables> variables) {
+    public GraphQLRequestInput withVariables(JsonNullable<? extends Map<String, Object>> variables) {
         Utils.checkNotNull(variables, "variables");
         this.variables = variables;
         return this;
@@ -129,7 +131,7 @@ public class GraphQLRequestInput {
 
         private String request;
 
-        private JsonNullable<? extends Variables> variables = JsonNullable.undefined();
+        private JsonNullable<? extends Map<String, Object>> variables = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -149,7 +151,7 @@ public class GraphQLRequestInput {
         /**
          * Variables to substitute into the query.
          */
-        public Builder variables(Variables variables) {
+        public Builder variables(Map<String, Object> variables) {
             Utils.checkNotNull(variables, "variables");
             this.variables = JsonNullable.of(variables);
             return this;
@@ -158,7 +160,7 @@ public class GraphQLRequestInput {
         /**
          * Variables to substitute into the query.
          */
-        public Builder variables(JsonNullable<? extends Variables> variables) {
+        public Builder variables(JsonNullable<? extends Map<String, Object>> variables) {
             Utils.checkNotNull(variables, "variables");
             this.variables = variables;
             return this;
