@@ -30,7 +30,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         GraphQLRequestInput req = GraphQLRequestInput.builder()
@@ -89,7 +89,7 @@ public class Application {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         TtdWorkflows sdk = TtdWorkflows.builder()
-                .ttdAuth("<YOUR_API_KEY_HERE>")
+                .ttdAuth(System.getenv().getOrDefault("TTD_AUTH", ""))
             .build();
 
         GraphQlQueryJobInput req = GraphQlQueryJobInput.builder()

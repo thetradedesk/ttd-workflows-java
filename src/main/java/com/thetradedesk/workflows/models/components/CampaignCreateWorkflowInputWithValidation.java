@@ -14,22 +14,25 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CampaignCreateWorkflowInputWithValidation {
 
     @JsonProperty("primaryInput")
     private CampaignCreateWorkflowPrimaryInput primaryInput;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
     private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("adGroups")
     private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("validateInputOnly")
@@ -53,7 +56,8 @@ public class CampaignCreateWorkflowInputWithValidation {
     
     public CampaignCreateWorkflowInputWithValidation(
             CampaignCreateWorkflowPrimaryInput primaryInput) {
-        this(primaryInput, Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(primaryInput, Optional.empty(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -78,9 +82,10 @@ public class CampaignCreateWorkflowInputWithValidation {
         return validateInputOnly;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignCreateWorkflowInputWithValidation withPrimaryInput(CampaignCreateWorkflowPrimaryInput primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
@@ -93,6 +98,7 @@ public class CampaignCreateWorkflowInputWithValidation {
         this.advancedInput = Optional.ofNullable(advancedInput);
         return this;
     }
+
 
     public CampaignCreateWorkflowInputWithValidation withAdvancedInput(Optional<? extends CampaignWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
@@ -124,7 +130,6 @@ public class CampaignCreateWorkflowInputWithValidation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -135,18 +140,16 @@ public class CampaignCreateWorkflowInputWithValidation {
         }
         CampaignCreateWorkflowInputWithValidation other = (CampaignCreateWorkflowInputWithValidation) o;
         return 
-            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
-            Objects.deepEquals(this.advancedInput, other.advancedInput) &&
-            Objects.deepEquals(this.adGroups, other.adGroups) &&
-            Objects.deepEquals(this.validateInputOnly, other.validateInputOnly);
+            Utils.enhancedDeepEquals(this.primaryInput, other.primaryInput) &&
+            Utils.enhancedDeepEquals(this.advancedInput, other.advancedInput) &&
+            Utils.enhancedDeepEquals(this.adGroups, other.adGroups) &&
+            Utils.enhancedDeepEquals(this.validateInputOnly, other.validateInputOnly);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            primaryInput,
-            advancedInput,
-            adGroups,
+        return Utils.enhancedHash(
+            primaryInput, advancedInput, adGroups,
             validateInputOnly);
     }
     
@@ -158,26 +161,29 @@ public class CampaignCreateWorkflowInputWithValidation {
                 "adGroups", adGroups,
                 "validateInputOnly", validateInputOnly);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private CampaignCreateWorkflowPrimaryInput primaryInput;
- 
+
         private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput = Optional.empty();
- 
+
         private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupInput>> adGroups = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> validateInputOnly = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder primaryInput(CampaignCreateWorkflowPrimaryInput primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = primaryInput;
             return this;
         }
+
 
         public Builder advancedInput(CampaignWorkflowAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
@@ -191,6 +197,7 @@ public class CampaignCreateWorkflowInputWithValidation {
             return this;
         }
 
+
         public Builder adGroups(List<CampaignCreateWorkflowAdGroupInput> adGroups) {
             Utils.checkNotNull(adGroups, "adGroups");
             this.adGroups = JsonNullable.of(adGroups);
@@ -203,6 +210,7 @@ public class CampaignCreateWorkflowInputWithValidation {
             return this;
         }
 
+
         public Builder validateInputOnly(boolean validateInputOnly) {
             Utils.checkNotNull(validateInputOnly, "validateInputOnly");
             this.validateInputOnly = JsonNullable.of(validateInputOnly);
@@ -214,13 +222,13 @@ public class CampaignCreateWorkflowInputWithValidation {
             this.validateInputOnly = validateInputOnly;
             return this;
         }
-        
+
         public CampaignCreateWorkflowInputWithValidation build() {
+
             return new CampaignCreateWorkflowInputWithValidation(
-                primaryInput,
-                advancedInput,
-                adGroups,
+                primaryInput, advancedInput, adGroups,
                 validateInputOnly);
         }
+
     }
 }

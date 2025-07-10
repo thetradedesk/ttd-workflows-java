@@ -87,8 +87,8 @@ public class ArchiveCampaignsRequestBuilder {
 
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
               = new ArchiveCampaignsOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         ArchiveCampaignsRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

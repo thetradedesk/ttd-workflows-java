@@ -13,8 +13,8 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowROIGoalInput {
 
@@ -22,45 +22,56 @@ public class AdGroupWorkflowROIGoalInput {
     @JsonProperty("maximizeReach")
     private JsonNullable<Boolean> maximizeReach;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("maximizeLtvIncrementalReach")
     private JsonNullable<Boolean> maximizeLtvIncrementalReach;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cpcInAdvertiserCurrency")
     private JsonNullable<Double> cpcInAdvertiserCurrency;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ctrInPercent")
     private JsonNullable<Double> ctrInPercent;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nielsenOTPInPercent")
     private JsonNullable<Double> nielsenOTPInPercent;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cpaInAdvertiserCurrency")
     private JsonNullable<Double> cpaInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("returnOnAdSpendPercent")
     private JsonNullable<Double> returnOnAdSpendPercent;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("vcrInPercent")
     private JsonNullable<Double> vcrInPercent;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("viewabilityInPercent")
     private JsonNullable<Double> viewabilityInPercent;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("vcpmInAdvertiserCurrency")
     private JsonNullable<Double> vcpmInAdvertiserCurrency;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cpcvInAdvertiserCurrency")
     private JsonNullable<Double> cpcvInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("miaozhenOTPInPercent")
@@ -107,7 +118,10 @@ public class AdGroupWorkflowROIGoalInput {
     }
     
     public AdGroupWorkflowROIGoalInput() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -170,9 +184,10 @@ public class AdGroupWorkflowROIGoalInput {
         return miaozhenOTPInPercent;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowROIGoalInput withMaximizeReach(boolean maximizeReach) {
         Utils.checkNotNull(maximizeReach, "maximizeReach");
@@ -318,7 +333,6 @@ public class AdGroupWorkflowROIGoalInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -329,35 +343,27 @@ public class AdGroupWorkflowROIGoalInput {
         }
         AdGroupWorkflowROIGoalInput other = (AdGroupWorkflowROIGoalInput) o;
         return 
-            Objects.deepEquals(this.maximizeReach, other.maximizeReach) &&
-            Objects.deepEquals(this.maximizeLtvIncrementalReach, other.maximizeLtvIncrementalReach) &&
-            Objects.deepEquals(this.cpcInAdvertiserCurrency, other.cpcInAdvertiserCurrency) &&
-            Objects.deepEquals(this.ctrInPercent, other.ctrInPercent) &&
-            Objects.deepEquals(this.nielsenOTPInPercent, other.nielsenOTPInPercent) &&
-            Objects.deepEquals(this.cpaInAdvertiserCurrency, other.cpaInAdvertiserCurrency) &&
-            Objects.deepEquals(this.returnOnAdSpendPercent, other.returnOnAdSpendPercent) &&
-            Objects.deepEquals(this.vcrInPercent, other.vcrInPercent) &&
-            Objects.deepEquals(this.viewabilityInPercent, other.viewabilityInPercent) &&
-            Objects.deepEquals(this.vcpmInAdvertiserCurrency, other.vcpmInAdvertiserCurrency) &&
-            Objects.deepEquals(this.cpcvInAdvertiserCurrency, other.cpcvInAdvertiserCurrency) &&
-            Objects.deepEquals(this.miaozhenOTPInPercent, other.miaozhenOTPInPercent);
+            Utils.enhancedDeepEquals(this.maximizeReach, other.maximizeReach) &&
+            Utils.enhancedDeepEquals(this.maximizeLtvIncrementalReach, other.maximizeLtvIncrementalReach) &&
+            Utils.enhancedDeepEquals(this.cpcInAdvertiserCurrency, other.cpcInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.ctrInPercent, other.ctrInPercent) &&
+            Utils.enhancedDeepEquals(this.nielsenOTPInPercent, other.nielsenOTPInPercent) &&
+            Utils.enhancedDeepEquals(this.cpaInAdvertiserCurrency, other.cpaInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.returnOnAdSpendPercent, other.returnOnAdSpendPercent) &&
+            Utils.enhancedDeepEquals(this.vcrInPercent, other.vcrInPercent) &&
+            Utils.enhancedDeepEquals(this.viewabilityInPercent, other.viewabilityInPercent) &&
+            Utils.enhancedDeepEquals(this.vcpmInAdvertiserCurrency, other.vcpmInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.cpcvInAdvertiserCurrency, other.cpcvInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.miaozhenOTPInPercent, other.miaozhenOTPInPercent);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            maximizeReach,
-            maximizeLtvIncrementalReach,
-            cpcInAdvertiserCurrency,
-            ctrInPercent,
-            nielsenOTPInPercent,
-            cpaInAdvertiserCurrency,
-            returnOnAdSpendPercent,
-            vcrInPercent,
-            viewabilityInPercent,
-            vcpmInAdvertiserCurrency,
-            cpcvInAdvertiserCurrency,
-            miaozhenOTPInPercent);
+        return Utils.enhancedHash(
+            maximizeReach, maximizeLtvIncrementalReach, cpcInAdvertiserCurrency,
+            ctrInPercent, nielsenOTPInPercent, cpaInAdvertiserCurrency,
+            returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
+            vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent);
     }
     
     @Override
@@ -376,36 +382,38 @@ public class AdGroupWorkflowROIGoalInput {
                 "cpcvInAdvertiserCurrency", cpcvInAdvertiserCurrency,
                 "miaozhenOTPInPercent", miaozhenOTPInPercent);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JsonNullable<Boolean> maximizeReach = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> maximizeLtvIncrementalReach = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> cpcInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> ctrInPercent = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> nielsenOTPInPercent = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> cpaInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> returnOnAdSpendPercent = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> vcrInPercent = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> viewabilityInPercent = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> vcpmInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> cpcvInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> miaozhenOTPInPercent = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder maximizeReach(boolean maximizeReach) {
             Utils.checkNotNull(maximizeReach, "maximizeReach");
@@ -419,6 +427,7 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
         public Builder maximizeLtvIncrementalReach(boolean maximizeLtvIncrementalReach) {
             Utils.checkNotNull(maximizeLtvIncrementalReach, "maximizeLtvIncrementalReach");
             this.maximizeLtvIncrementalReach = JsonNullable.of(maximizeLtvIncrementalReach);
@@ -430,6 +439,7 @@ public class AdGroupWorkflowROIGoalInput {
             this.maximizeLtvIncrementalReach = maximizeLtvIncrementalReach;
             return this;
         }
+
 
         public Builder cpcInAdvertiserCurrency(double cpcInAdvertiserCurrency) {
             Utils.checkNotNull(cpcInAdvertiserCurrency, "cpcInAdvertiserCurrency");
@@ -443,6 +453,7 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
         public Builder ctrInPercent(double ctrInPercent) {
             Utils.checkNotNull(ctrInPercent, "ctrInPercent");
             this.ctrInPercent = JsonNullable.of(ctrInPercent);
@@ -454,6 +465,7 @@ public class AdGroupWorkflowROIGoalInput {
             this.ctrInPercent = ctrInPercent;
             return this;
         }
+
 
         public Builder nielsenOTPInPercent(double nielsenOTPInPercent) {
             Utils.checkNotNull(nielsenOTPInPercent, "nielsenOTPInPercent");
@@ -467,6 +479,7 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
         public Builder cpaInAdvertiserCurrency(double cpaInAdvertiserCurrency) {
             Utils.checkNotNull(cpaInAdvertiserCurrency, "cpaInAdvertiserCurrency");
             this.cpaInAdvertiserCurrency = JsonNullable.of(cpaInAdvertiserCurrency);
@@ -478,6 +491,7 @@ public class AdGroupWorkflowROIGoalInput {
             this.cpaInAdvertiserCurrency = cpaInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder returnOnAdSpendPercent(double returnOnAdSpendPercent) {
             Utils.checkNotNull(returnOnAdSpendPercent, "returnOnAdSpendPercent");
@@ -491,6 +505,7 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
         public Builder vcrInPercent(double vcrInPercent) {
             Utils.checkNotNull(vcrInPercent, "vcrInPercent");
             this.vcrInPercent = JsonNullable.of(vcrInPercent);
@@ -502,6 +517,7 @@ public class AdGroupWorkflowROIGoalInput {
             this.vcrInPercent = vcrInPercent;
             return this;
         }
+
 
         public Builder viewabilityInPercent(double viewabilityInPercent) {
             Utils.checkNotNull(viewabilityInPercent, "viewabilityInPercent");
@@ -515,6 +531,7 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
         public Builder vcpmInAdvertiserCurrency(double vcpmInAdvertiserCurrency) {
             Utils.checkNotNull(vcpmInAdvertiserCurrency, "vcpmInAdvertiserCurrency");
             this.vcpmInAdvertiserCurrency = JsonNullable.of(vcpmInAdvertiserCurrency);
@@ -526,6 +543,7 @@ public class AdGroupWorkflowROIGoalInput {
             this.vcpmInAdvertiserCurrency = vcpmInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder cpcvInAdvertiserCurrency(double cpcvInAdvertiserCurrency) {
             Utils.checkNotNull(cpcvInAdvertiserCurrency, "cpcvInAdvertiserCurrency");
@@ -539,6 +557,7 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
         public Builder miaozhenOTPInPercent(double miaozhenOTPInPercent) {
             Utils.checkNotNull(miaozhenOTPInPercent, "miaozhenOTPInPercent");
             this.miaozhenOTPInPercent = JsonNullable.of(miaozhenOTPInPercent);
@@ -550,21 +569,15 @@ public class AdGroupWorkflowROIGoalInput {
             this.miaozhenOTPInPercent = miaozhenOTPInPercent;
             return this;
         }
-        
+
         public AdGroupWorkflowROIGoalInput build() {
+
             return new AdGroupWorkflowROIGoalInput(
-                maximizeReach,
-                maximizeLtvIncrementalReach,
-                cpcInAdvertiserCurrency,
-                ctrInPercent,
-                nielsenOTPInPercent,
-                cpaInAdvertiserCurrency,
-                returnOnAdSpendPercent,
-                vcrInPercent,
-                viewabilityInPercent,
-                vcpmInAdvertiserCurrency,
-                cpcvInAdvertiserCurrency,
-                miaozhenOTPInPercent);
+                maximizeReach, maximizeLtvIncrementalReach, cpcInAdvertiserCurrency,
+                ctrInPercent, nielsenOTPInPercent, cpaInAdvertiserCurrency,
+                returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
+                vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent);
         }
+
     }
 }

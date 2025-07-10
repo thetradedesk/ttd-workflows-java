@@ -13,13 +13,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Map;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class WorkflowCallbackInput {
 
     @JsonProperty("callbackUrl")
     private String callbackUrl;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("callbackHeaders")
@@ -51,9 +52,10 @@ public class WorkflowCallbackInput {
         return (JsonNullable<Map<String, String>>) callbackHeaders;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public WorkflowCallbackInput withCallbackUrl(String callbackUrl) {
         Utils.checkNotNull(callbackUrl, "callbackUrl");
@@ -73,7 +75,6 @@ public class WorkflowCallbackInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -84,15 +85,14 @@ public class WorkflowCallbackInput {
         }
         WorkflowCallbackInput other = (WorkflowCallbackInput) o;
         return 
-            Objects.deepEquals(this.callbackUrl, other.callbackUrl) &&
-            Objects.deepEquals(this.callbackHeaders, other.callbackHeaders);
+            Utils.enhancedDeepEquals(this.callbackUrl, other.callbackUrl) &&
+            Utils.enhancedDeepEquals(this.callbackHeaders, other.callbackHeaders);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            callbackUrl,
-            callbackHeaders);
+        return Utils.enhancedHash(
+            callbackUrl, callbackHeaders);
     }
     
     @Override
@@ -101,22 +101,25 @@ public class WorkflowCallbackInput {
                 "callbackUrl", callbackUrl,
                 "callbackHeaders", callbackHeaders);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String callbackUrl;
- 
+
         private JsonNullable<? extends Map<String, String>> callbackHeaders = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder callbackUrl(String callbackUrl) {
             Utils.checkNotNull(callbackUrl, "callbackUrl");
             this.callbackUrl = callbackUrl;
             return this;
         }
+
 
         public Builder callbackHeaders(Map<String, String> callbackHeaders) {
             Utils.checkNotNull(callbackHeaders, "callbackHeaders");
@@ -129,11 +132,12 @@ public class WorkflowCallbackInput {
             this.callbackHeaders = callbackHeaders;
             return this;
         }
-        
+
         public WorkflowCallbackInput build() {
+
             return new WorkflowCallbackInput(
-                callbackUrl,
-                callbackHeaders);
+                callbackUrl, callbackHeaders);
         }
+
     }
 }

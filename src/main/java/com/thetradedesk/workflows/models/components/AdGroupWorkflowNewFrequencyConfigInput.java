@@ -12,9 +12,9 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowNewFrequencyConfigInput {
 
@@ -22,13 +22,16 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
     @JsonProperty("counterName")
     private Optional<String> counterName;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("frequencyCap")
     private JsonNullable<Integer> frequencyCap;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("frequencyGoal")
     private JsonNullable<Integer> frequencyGoal;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resetIntervalInMinutes")
@@ -51,7 +54,8 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
     }
     
     public AdGroupWorkflowNewFrequencyConfigInput() {
-        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -74,15 +78,17 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
         return resetIntervalInMinutes;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowNewFrequencyConfigInput withCounterName(String counterName) {
         Utils.checkNotNull(counterName, "counterName");
         this.counterName = Optional.ofNullable(counterName);
         return this;
     }
+
 
     public AdGroupWorkflowNewFrequencyConfigInput withCounterName(Optional<String> counterName) {
         Utils.checkNotNull(counterName, "counterName");
@@ -120,13 +126,13 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
         return this;
     }
 
+
     public AdGroupWorkflowNewFrequencyConfigInput withResetIntervalInMinutes(Optional<Integer> resetIntervalInMinutes) {
         Utils.checkNotNull(resetIntervalInMinutes, "resetIntervalInMinutes");
         this.resetIntervalInMinutes = resetIntervalInMinutes;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,18 +143,16 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
         }
         AdGroupWorkflowNewFrequencyConfigInput other = (AdGroupWorkflowNewFrequencyConfigInput) o;
         return 
-            Objects.deepEquals(this.counterName, other.counterName) &&
-            Objects.deepEquals(this.frequencyCap, other.frequencyCap) &&
-            Objects.deepEquals(this.frequencyGoal, other.frequencyGoal) &&
-            Objects.deepEquals(this.resetIntervalInMinutes, other.resetIntervalInMinutes);
+            Utils.enhancedDeepEquals(this.counterName, other.counterName) &&
+            Utils.enhancedDeepEquals(this.frequencyCap, other.frequencyCap) &&
+            Utils.enhancedDeepEquals(this.frequencyGoal, other.frequencyGoal) &&
+            Utils.enhancedDeepEquals(this.resetIntervalInMinutes, other.resetIntervalInMinutes);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            counterName,
-            frequencyCap,
-            frequencyGoal,
+        return Utils.enhancedHash(
+            counterName, frequencyCap, frequencyGoal,
             resetIntervalInMinutes);
     }
     
@@ -160,20 +164,22 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
                 "frequencyGoal", frequencyGoal,
                 "resetIntervalInMinutes", resetIntervalInMinutes);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> counterName = Optional.empty();
- 
+
         private JsonNullable<Integer> frequencyCap = JsonNullable.undefined();
- 
+
         private JsonNullable<Integer> frequencyGoal = JsonNullable.undefined();
- 
+
         private Optional<Integer> resetIntervalInMinutes = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder counterName(String counterName) {
             Utils.checkNotNull(counterName, "counterName");
@@ -187,6 +193,7 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
             return this;
         }
 
+
         public Builder frequencyCap(int frequencyCap) {
             Utils.checkNotNull(frequencyCap, "frequencyCap");
             this.frequencyCap = JsonNullable.of(frequencyCap);
@@ -198,6 +205,7 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
             this.frequencyCap = frequencyCap;
             return this;
         }
+
 
         public Builder frequencyGoal(int frequencyGoal) {
             Utils.checkNotNull(frequencyGoal, "frequencyGoal");
@@ -211,6 +219,7 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
             return this;
         }
 
+
         public Builder resetIntervalInMinutes(int resetIntervalInMinutes) {
             Utils.checkNotNull(resetIntervalInMinutes, "resetIntervalInMinutes");
             this.resetIntervalInMinutes = Optional.ofNullable(resetIntervalInMinutes);
@@ -222,13 +231,13 @@ public class AdGroupWorkflowNewFrequencyConfigInput {
             this.resetIntervalInMinutes = resetIntervalInMinutes;
             return this;
         }
-        
+
         public AdGroupWorkflowNewFrequencyConfigInput build() {
+
             return new AdGroupWorkflowNewFrequencyConfigInput(
-                counterName,
-                frequencyCap,
-                frequencyGoal,
+                counterName, frequencyCap, frequencyGoal,
                 resetIntervalInMinutes);
         }
+
     }
 }

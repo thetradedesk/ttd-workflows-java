@@ -12,8 +12,8 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class CampaignUpdateWorkflowInput {
 
@@ -21,9 +21,11 @@ public class CampaignUpdateWorkflowInput {
     @JsonProperty("id")
     private Optional<String> id;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("primaryInput")
     private Optional<? extends CampaignUpdateWorkflowPrimaryInput> primaryInput;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
@@ -63,15 +65,17 @@ public class CampaignUpdateWorkflowInput {
         return (Optional<CampaignWorkflowAdvancedInput>) advancedInput;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CampaignUpdateWorkflowInput withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = Optional.ofNullable(id);
         return this;
     }
+
 
     public CampaignUpdateWorkflowInput withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
@@ -85,6 +89,7 @@ public class CampaignUpdateWorkflowInput {
         return this;
     }
 
+
     public CampaignUpdateWorkflowInput withPrimaryInput(Optional<? extends CampaignUpdateWorkflowPrimaryInput> primaryInput) {
         Utils.checkNotNull(primaryInput, "primaryInput");
         this.primaryInput = primaryInput;
@@ -97,13 +102,13 @@ public class CampaignUpdateWorkflowInput {
         return this;
     }
 
+
     public CampaignUpdateWorkflowInput withAdvancedInput(Optional<? extends CampaignWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
         this.advancedInput = advancedInput;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,17 +119,15 @@ public class CampaignUpdateWorkflowInput {
         }
         CampaignUpdateWorkflowInput other = (CampaignUpdateWorkflowInput) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.primaryInput, other.primaryInput) &&
-            Objects.deepEquals(this.advancedInput, other.advancedInput);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.primaryInput, other.primaryInput) &&
+            Utils.enhancedDeepEquals(this.advancedInput, other.advancedInput);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            primaryInput,
-            advancedInput);
+        return Utils.enhancedHash(
+            id, primaryInput, advancedInput);
     }
     
     @Override
@@ -134,18 +137,20 @@ public class CampaignUpdateWorkflowInput {
                 "primaryInput", primaryInput,
                 "advancedInput", advancedInput);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> id = Optional.empty();
- 
+
         private Optional<? extends CampaignUpdateWorkflowPrimaryInput> primaryInput = Optional.empty();
- 
+
         private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -159,6 +164,7 @@ public class CampaignUpdateWorkflowInput {
             return this;
         }
 
+
         public Builder primaryInput(CampaignUpdateWorkflowPrimaryInput primaryInput) {
             Utils.checkNotNull(primaryInput, "primaryInput");
             this.primaryInput = Optional.ofNullable(primaryInput);
@@ -171,6 +177,7 @@ public class CampaignUpdateWorkflowInput {
             return this;
         }
 
+
         public Builder advancedInput(CampaignWorkflowAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
             this.advancedInput = Optional.ofNullable(advancedInput);
@@ -182,12 +189,12 @@ public class CampaignUpdateWorkflowInput {
             this.advancedInput = advancedInput;
             return this;
         }
-        
+
         public CampaignUpdateWorkflowInput build() {
+
             return new CampaignUpdateWorkflowInput(
-                id,
-                primaryInput,
-                advancedInput);
+                id, primaryInput, advancedInput);
         }
+
     }
 }
