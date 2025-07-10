@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -22,7 +21,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * <p>Required fields for submitting a bulk job for first-party data.
  */
 public class FirstPartyDataInput {
-
     /**
      * The advertiser ID to query for.
      */
@@ -64,6 +62,7 @@ public class FirstPartyDataInput {
     @JsonProperty("queryShape")
     private JsonNullable<String> queryShape;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("callbackInput")
     private Optional<? extends WorkflowCallbackInput> callbackInput;
@@ -86,7 +85,8 @@ public class FirstPartyDataInput {
     
     public FirstPartyDataInput(
             String advertiserId) {
-        this(advertiserId, JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty());
+        this(advertiserId, JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     /**
@@ -140,9 +140,10 @@ public class FirstPartyDataInput {
         return (Optional<WorkflowCallbackInput>) callbackInput;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The advertiser ID to query for.
@@ -237,13 +238,13 @@ public class FirstPartyDataInput {
         return this;
     }
 
+
     public FirstPartyDataInput withCallbackInput(Optional<? extends WorkflowCallbackInput> callbackInput) {
         Utils.checkNotNull(callbackInput, "callbackInput");
         this.callbackInput = callbackInput;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -254,18 +255,16 @@ public class FirstPartyDataInput {
         }
         FirstPartyDataInput other = (FirstPartyDataInput) o;
         return 
-            Objects.deepEquals(this.advertiserId, other.advertiserId) &&
-            Objects.deepEquals(this.nameFilter, other.nameFilter) &&
-            Objects.deepEquals(this.queryShape, other.queryShape) &&
-            Objects.deepEquals(this.callbackInput, other.callbackInput);
+            Utils.enhancedDeepEquals(this.advertiserId, other.advertiserId) &&
+            Utils.enhancedDeepEquals(this.nameFilter, other.nameFilter) &&
+            Utils.enhancedDeepEquals(this.queryShape, other.queryShape) &&
+            Utils.enhancedDeepEquals(this.callbackInput, other.callbackInput);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            advertiserId,
-            nameFilter,
-            queryShape,
+        return Utils.enhancedHash(
+            advertiserId, nameFilter, queryShape,
             callbackInput);
     }
     
@@ -277,20 +276,22 @@ public class FirstPartyDataInput {
                 "queryShape", queryShape,
                 "callbackInput", callbackInput);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String advertiserId;
- 
+
         private JsonNullable<String> nameFilter = JsonNullable.undefined();
- 
+
         private JsonNullable<String> queryShape = JsonNullable.undefined();
- 
+
         private Optional<? extends WorkflowCallbackInput> callbackInput = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The advertiser ID to query for.
@@ -300,6 +301,7 @@ public class FirstPartyDataInput {
             this.advertiserId = advertiserId;
             return this;
         }
+
 
         /**
          * The name to filter by in the query. This filter will be applied to the results for the advertiser.
@@ -320,6 +322,7 @@ public class FirstPartyDataInput {
             this.nameFilter = nameFilter;
             return this;
         }
+
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
@@ -379,6 +382,7 @@ public class FirstPartyDataInput {
             return this;
         }
 
+
         public Builder callbackInput(WorkflowCallbackInput callbackInput) {
             Utils.checkNotNull(callbackInput, "callbackInput");
             this.callbackInput = Optional.ofNullable(callbackInput);
@@ -390,13 +394,13 @@ public class FirstPartyDataInput {
             this.callbackInput = callbackInput;
             return this;
         }
-        
+
         public FirstPartyDataInput build() {
+
             return new FirstPartyDataInput(
-                advertiserId,
-                nameFilter,
-                queryShape,
+                advertiserId, nameFilter, queryShape,
                 callbackInput);
         }
+
     }
 }

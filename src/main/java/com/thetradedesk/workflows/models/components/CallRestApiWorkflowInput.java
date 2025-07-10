@@ -11,18 +11,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class CallRestApiWorkflowInput {
 
     @JsonProperty("methodType")
     private RestApiMethodType methodType;
 
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("endpoint")
     private Optional<String> endpoint;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataBody")
@@ -61,9 +63,10 @@ public class CallRestApiWorkflowInput {
         return dataBody;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CallRestApiWorkflowInput withMethodType(RestApiMethodType methodType) {
         Utils.checkNotNull(methodType, "methodType");
@@ -76,6 +79,7 @@ public class CallRestApiWorkflowInput {
         this.endpoint = Optional.ofNullable(endpoint);
         return this;
     }
+
 
     public CallRestApiWorkflowInput withEndpoint(Optional<String> endpoint) {
         Utils.checkNotNull(endpoint, "endpoint");
@@ -95,7 +99,6 @@ public class CallRestApiWorkflowInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,17 +109,15 @@ public class CallRestApiWorkflowInput {
         }
         CallRestApiWorkflowInput other = (CallRestApiWorkflowInput) o;
         return 
-            Objects.deepEquals(this.methodType, other.methodType) &&
-            Objects.deepEquals(this.endpoint, other.endpoint) &&
-            Objects.deepEquals(this.dataBody, other.dataBody);
+            Utils.enhancedDeepEquals(this.methodType, other.methodType) &&
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint) &&
+            Utils.enhancedDeepEquals(this.dataBody, other.dataBody);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            methodType,
-            endpoint,
-            dataBody);
+        return Utils.enhancedHash(
+            methodType, endpoint, dataBody);
     }
     
     @Override
@@ -126,24 +127,27 @@ public class CallRestApiWorkflowInput {
                 "endpoint", endpoint,
                 "dataBody", dataBody);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private RestApiMethodType methodType;
- 
+
         private Optional<String> endpoint = Optional.empty();
- 
+
         private JsonNullable<String> dataBody = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder methodType(RestApiMethodType methodType) {
             Utils.checkNotNull(methodType, "methodType");
             this.methodType = methodType;
             return this;
         }
+
 
         public Builder endpoint(String endpoint) {
             Utils.checkNotNull(endpoint, "endpoint");
@@ -157,6 +161,7 @@ public class CallRestApiWorkflowInput {
             return this;
         }
 
+
         public Builder dataBody(String dataBody) {
             Utils.checkNotNull(dataBody, "dataBody");
             this.dataBody = JsonNullable.of(dataBody);
@@ -168,12 +173,12 @@ public class CallRestApiWorkflowInput {
             this.dataBody = dataBody;
             return this;
         }
-        
+
         public CallRestApiWorkflowInput build() {
+
             return new CallRestApiWorkflowInput(
-                methodType,
-                endpoint,
-                dataBody);
+                methodType, endpoint, dataBody);
         }
+
     }
 }

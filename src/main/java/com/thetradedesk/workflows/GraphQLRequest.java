@@ -25,7 +25,6 @@ public class GraphQLRequest {
     GraphQLRequest(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
-
     /**
      * Submit a valid GraphQL query or mutation
      * 
@@ -67,11 +66,10 @@ public class GraphQLRequest {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
               = new SubmitGraphQlRequestOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
-
 
     /**
      * Submit a valid bulk GraphQL query
@@ -114,8 +112,8 @@ public class GraphQLRequest {
             Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
               = new SubmitGraphQlQueryJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

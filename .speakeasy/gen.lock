@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: b077b3c2c016309ddbc234eac983b593
+  docChecksum: 7ca265b777786f4db6ef8d1204c44142
   docVersion: v1
-  speakeasyVersion: 1.570.2
-  generationVersion: 2.638.5
-  releaseVersion: 0.7.4
-  configChecksum: 5f99d8aa8a4f1d9efd77ae6041bade8f
+  speakeasyVersion: 1.580.1
+  generationVersion: 2.656.3
+  releaseVersion: 0.9.1
+  configChecksum: cc48725c1939b21c72a14d5aa3f85432
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -14,9 +14,9 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.39.1
+    core: 3.44.0
     flattening: 2.81.1
-    globalSecurity: 2.82.8
+    globalSecurity: 2.83.0
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.2
@@ -131,7 +131,6 @@ generatedFiles:
   - docs/models/operations/GetThirdPartyDataJobResponse.md
   - docs/models/operations/SubmitGraphQlQueryJobResponse.md
   - docs/models/operations/SubmitGraphQlRequestResponse.md
-  - docs/models/operations/SubmitGraphQlRequestResponseBody.md
   - docs/models/operations/SubmitRestRequestResponse.md
   - docs/models/operations/SubmitRestRequestResponseBody.md
   - docs/models/operations/UpdateAdGroupResponse.md
@@ -277,7 +276,6 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/operations/SubmitGraphQlQueryJobResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SubmitGraphQlRequestRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SubmitGraphQlRequestResponse.java
-  - src/main/java/com/thetradedesk/workflows/models/operations/SubmitGraphQlRequestResponseBody.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SubmitRestRequestRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SubmitRestRequestResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/SubmitRestRequestResponseBody.java

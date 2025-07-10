@@ -12,17 +12,19 @@ import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflowAssociateBidListInput {
 
     @JsonProperty("bidListId")
     private String bidListId;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("isEnabled")
     private JsonNullable<Boolean> isEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("isDefaultForDimension")
@@ -61,9 +63,10 @@ public class AdGroupWorkflowAssociateBidListInput {
         return isDefaultForDimension;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflowAssociateBidListInput withBidListId(String bidListId) {
         Utils.checkNotNull(bidListId, "bidListId");
@@ -95,7 +98,6 @@ public class AdGroupWorkflowAssociateBidListInput {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,17 +108,15 @@ public class AdGroupWorkflowAssociateBidListInput {
         }
         AdGroupWorkflowAssociateBidListInput other = (AdGroupWorkflowAssociateBidListInput) o;
         return 
-            Objects.deepEquals(this.bidListId, other.bidListId) &&
-            Objects.deepEquals(this.isEnabled, other.isEnabled) &&
-            Objects.deepEquals(this.isDefaultForDimension, other.isDefaultForDimension);
+            Utils.enhancedDeepEquals(this.bidListId, other.bidListId) &&
+            Utils.enhancedDeepEquals(this.isEnabled, other.isEnabled) &&
+            Utils.enhancedDeepEquals(this.isDefaultForDimension, other.isDefaultForDimension);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bidListId,
-            isEnabled,
-            isDefaultForDimension);
+        return Utils.enhancedHash(
+            bidListId, isEnabled, isDefaultForDimension);
     }
     
     @Override
@@ -126,24 +126,27 @@ public class AdGroupWorkflowAssociateBidListInput {
                 "isEnabled", isEnabled,
                 "isDefaultForDimension", isDefaultForDimension);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String bidListId;
- 
+
         private JsonNullable<Boolean> isEnabled = JsonNullable.undefined();
- 
+
         private JsonNullable<Boolean> isDefaultForDimension = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder bidListId(String bidListId) {
             Utils.checkNotNull(bidListId, "bidListId");
             this.bidListId = bidListId;
             return this;
         }
+
 
         public Builder isEnabled(boolean isEnabled) {
             Utils.checkNotNull(isEnabled, "isEnabled");
@@ -157,6 +160,7 @@ public class AdGroupWorkflowAssociateBidListInput {
             return this;
         }
 
+
         public Builder isDefaultForDimension(boolean isDefaultForDimension) {
             Utils.checkNotNull(isDefaultForDimension, "isDefaultForDimension");
             this.isDefaultForDimension = JsonNullable.of(isDefaultForDimension);
@@ -168,12 +172,12 @@ public class AdGroupWorkflowAssociateBidListInput {
             this.isDefaultForDimension = isDefaultForDimension;
             return this;
         }
-        
+
         public AdGroupWorkflowAssociateBidListInput build() {
+
             return new AdGroupWorkflowAssociateBidListInput(
-                bidListId,
-                isEnabled,
-                isDefaultForDimension);
+                bidListId, isEnabled, isDefaultForDimension);
         }
+
     }
 }

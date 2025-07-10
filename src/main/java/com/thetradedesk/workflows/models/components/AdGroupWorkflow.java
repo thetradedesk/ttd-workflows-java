@@ -15,9 +15,9 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
+
 
 public class AdGroupWorkflow {
 
@@ -25,80 +25,102 @@ public class AdGroupWorkflow {
     @JsonProperty("id")
     private Optional<String> id;
 
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("name")
     private Optional<String> name;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("campaignId")
     private Optional<String> campaignId;
 
+
     @JsonProperty("isEnabled")
     private boolean isEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("programmaticGuaranteedPrivateContractId")
     private JsonNullable<String> programmaticGuaranteedPrivateContractId;
 
+
     @JsonProperty("channel")
     private AdGroupChannel channel;
+
 
     @JsonProperty("funnelLocation")
     private AdGroupFunnelLocation funnelLocation;
 
+
     @JsonProperty("budget")
     private AdGroupBudget budget;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("baseBidCPMInAdvertiserCurrency")
     private JsonNullable<Double> baseBidCPMInAdvertiserCurrency;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("maxBidCPMInAdvertiserCurrency")
     private JsonNullable<Double> maxBidCPMInAdvertiserCurrency;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceTargeting")
     private Optional<? extends AdGroupAudienceTargeting> audienceTargeting;
 
+
     @JsonProperty("roiGoal")
     private AdGroupROIGoal roiGoal;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("creativeIds")
     private Optional<? extends List<String>> creativeIds;
 
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("associatedBidLists")
     private Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("flights")
     private Optional<? extends List<AdGroupFlight>> flights;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("koaOptimizationSettings")
     private Optional<? extends AdGroupKoaOptimizationSettings> koaOptimizationSettings;
 
+
     @JsonProperty("comscoreSettings")
     private AdGroupComscoreSettings comscoreSettings;
 
+
     @JsonProperty("contractTargeting")
     private AdGroupContractTargeting contractTargeting;
+
 
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("dimensionalBiddingAutoOptimizationSettings")
     private Optional<? extends List<List<DimensionalBiddingDimensions>>> dimensionalBiddingAutoOptimizationSettings;
 
+
     @JsonProperty("isUseClicksAsConversionsEnabled")
     private boolean isUseClicksAsConversionsEnabled;
 
+
     @JsonProperty("isUseSecondaryConversionsEnabled")
     private boolean isUseSecondaryConversionsEnabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nielsenTrackingAttributes")
@@ -187,7 +209,14 @@ public class AdGroupWorkflow {
             AdGroupContractTargeting contractTargeting,
             boolean isUseClicksAsConversionsEnabled,
             boolean isUseSecondaryConversionsEnabled) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), isEnabled, JsonNullable.undefined(), JsonNullable.undefined(), channel, funnelLocation, budget, JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), roiGoal, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), comscoreSettings, contractTargeting, Optional.empty(), isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            isEnabled, JsonNullable.undefined(), JsonNullable.undefined(),
+            channel, funnelLocation, budget,
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
+            roiGoal, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), comscoreSettings,
+            contractTargeting, Optional.empty(), isUseClicksAsConversionsEnabled,
+            isUseSecondaryConversionsEnabled, Optional.empty());
     }
 
     @JsonIgnore
@@ -312,15 +341,17 @@ public class AdGroupWorkflow {
         return (Optional<AdGroupNielsenTrackingAttributes>) nielsenTrackingAttributes;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AdGroupWorkflow withId(String id) {
         Utils.checkNotNull(id, "id");
         this.id = Optional.ofNullable(id);
         return this;
     }
+
 
     public AdGroupWorkflow withId(Optional<String> id) {
         Utils.checkNotNull(id, "id");
@@ -334,6 +365,7 @@ public class AdGroupWorkflow {
         return this;
     }
 
+
     public AdGroupWorkflow withName(Optional<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
@@ -345,6 +377,7 @@ public class AdGroupWorkflow {
         this.campaignId = Optional.ofNullable(campaignId);
         return this;
     }
+
 
     public AdGroupWorkflow withCampaignId(Optional<String> campaignId) {
         Utils.checkNotNull(campaignId, "campaignId");
@@ -430,6 +463,7 @@ public class AdGroupWorkflow {
         return this;
     }
 
+
     public AdGroupWorkflow withAudienceTargeting(Optional<? extends AdGroupAudienceTargeting> audienceTargeting) {
         Utils.checkNotNull(audienceTargeting, "audienceTargeting");
         this.audienceTargeting = audienceTargeting;
@@ -448,6 +482,7 @@ public class AdGroupWorkflow {
         return this;
     }
 
+
     public AdGroupWorkflow withCreativeIds(Optional<? extends List<String>> creativeIds) {
         Utils.checkNotNull(creativeIds, "creativeIds");
         this.creativeIds = creativeIds;
@@ -459,6 +494,7 @@ public class AdGroupWorkflow {
         this.associatedBidLists = Optional.ofNullable(associatedBidLists);
         return this;
     }
+
 
     public AdGroupWorkflow withAssociatedBidLists(Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists) {
         Utils.checkNotNull(associatedBidLists, "associatedBidLists");
@@ -472,6 +508,7 @@ public class AdGroupWorkflow {
         return this;
     }
 
+
     public AdGroupWorkflow withFlights(Optional<? extends List<AdGroupFlight>> flights) {
         Utils.checkNotNull(flights, "flights");
         this.flights = flights;
@@ -483,6 +520,7 @@ public class AdGroupWorkflow {
         this.koaOptimizationSettings = Optional.ofNullable(koaOptimizationSettings);
         return this;
     }
+
 
     public AdGroupWorkflow withKoaOptimizationSettings(Optional<? extends AdGroupKoaOptimizationSettings> koaOptimizationSettings) {
         Utils.checkNotNull(koaOptimizationSettings, "koaOptimizationSettings");
@@ -508,6 +546,7 @@ public class AdGroupWorkflow {
         return this;
     }
 
+
     public AdGroupWorkflow withDimensionalBiddingAutoOptimizationSettings(Optional<? extends List<List<DimensionalBiddingDimensions>>> dimensionalBiddingAutoOptimizationSettings) {
         Utils.checkNotNull(dimensionalBiddingAutoOptimizationSettings, "dimensionalBiddingAutoOptimizationSettings");
         this.dimensionalBiddingAutoOptimizationSettings = dimensionalBiddingAutoOptimizationSettings;
@@ -532,13 +571,13 @@ public class AdGroupWorkflow {
         return this;
     }
 
+
     public AdGroupWorkflow withNielsenTrackingAttributes(Optional<? extends AdGroupNielsenTrackingAttributes> nielsenTrackingAttributes) {
         Utils.checkNotNull(nielsenTrackingAttributes, "nielsenTrackingAttributes");
         this.nielsenTrackingAttributes = nielsenTrackingAttributes;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -549,57 +588,42 @@ public class AdGroupWorkflow {
         }
         AdGroupWorkflow other = (AdGroupWorkflow) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.campaignId, other.campaignId) &&
-            Objects.deepEquals(this.isEnabled, other.isEnabled) &&
-            Objects.deepEquals(this.description, other.description) &&
-            Objects.deepEquals(this.programmaticGuaranteedPrivateContractId, other.programmaticGuaranteedPrivateContractId) &&
-            Objects.deepEquals(this.channel, other.channel) &&
-            Objects.deepEquals(this.funnelLocation, other.funnelLocation) &&
-            Objects.deepEquals(this.budget, other.budget) &&
-            Objects.deepEquals(this.baseBidCPMInAdvertiserCurrency, other.baseBidCPMInAdvertiserCurrency) &&
-            Objects.deepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
-            Objects.deepEquals(this.audienceTargeting, other.audienceTargeting) &&
-            Objects.deepEquals(this.roiGoal, other.roiGoal) &&
-            Objects.deepEquals(this.creativeIds, other.creativeIds) &&
-            Objects.deepEquals(this.associatedBidLists, other.associatedBidLists) &&
-            Objects.deepEquals(this.flights, other.flights) &&
-            Objects.deepEquals(this.koaOptimizationSettings, other.koaOptimizationSettings) &&
-            Objects.deepEquals(this.comscoreSettings, other.comscoreSettings) &&
-            Objects.deepEquals(this.contractTargeting, other.contractTargeting) &&
-            Objects.deepEquals(this.dimensionalBiddingAutoOptimizationSettings, other.dimensionalBiddingAutoOptimizationSettings) &&
-            Objects.deepEquals(this.isUseClicksAsConversionsEnabled, other.isUseClicksAsConversionsEnabled) &&
-            Objects.deepEquals(this.isUseSecondaryConversionsEnabled, other.isUseSecondaryConversionsEnabled) &&
-            Objects.deepEquals(this.nielsenTrackingAttributes, other.nielsenTrackingAttributes);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.campaignId, other.campaignId) &&
+            Utils.enhancedDeepEquals(this.isEnabled, other.isEnabled) &&
+            Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.programmaticGuaranteedPrivateContractId, other.programmaticGuaranteedPrivateContractId) &&
+            Utils.enhancedDeepEquals(this.channel, other.channel) &&
+            Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation) &&
+            Utils.enhancedDeepEquals(this.budget, other.budget) &&
+            Utils.enhancedDeepEquals(this.baseBidCPMInAdvertiserCurrency, other.baseBidCPMInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
+            Utils.enhancedDeepEquals(this.audienceTargeting, other.audienceTargeting) &&
+            Utils.enhancedDeepEquals(this.roiGoal, other.roiGoal) &&
+            Utils.enhancedDeepEquals(this.creativeIds, other.creativeIds) &&
+            Utils.enhancedDeepEquals(this.associatedBidLists, other.associatedBidLists) &&
+            Utils.enhancedDeepEquals(this.flights, other.flights) &&
+            Utils.enhancedDeepEquals(this.koaOptimizationSettings, other.koaOptimizationSettings) &&
+            Utils.enhancedDeepEquals(this.comscoreSettings, other.comscoreSettings) &&
+            Utils.enhancedDeepEquals(this.contractTargeting, other.contractTargeting) &&
+            Utils.enhancedDeepEquals(this.dimensionalBiddingAutoOptimizationSettings, other.dimensionalBiddingAutoOptimizationSettings) &&
+            Utils.enhancedDeepEquals(this.isUseClicksAsConversionsEnabled, other.isUseClicksAsConversionsEnabled) &&
+            Utils.enhancedDeepEquals(this.isUseSecondaryConversionsEnabled, other.isUseSecondaryConversionsEnabled) &&
+            Utils.enhancedDeepEquals(this.nielsenTrackingAttributes, other.nielsenTrackingAttributes);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            name,
-            campaignId,
-            isEnabled,
-            description,
-            programmaticGuaranteedPrivateContractId,
-            channel,
-            funnelLocation,
-            budget,
-            baseBidCPMInAdvertiserCurrency,
-            maxBidCPMInAdvertiserCurrency,
-            audienceTargeting,
-            roiGoal,
-            creativeIds,
-            associatedBidLists,
-            flights,
-            koaOptimizationSettings,
-            comscoreSettings,
-            contractTargeting,
-            dimensionalBiddingAutoOptimizationSettings,
-            isUseClicksAsConversionsEnabled,
-            isUseSecondaryConversionsEnabled,
-            nielsenTrackingAttributes);
+        return Utils.enhancedHash(
+            id, name, campaignId,
+            isEnabled, description, programmaticGuaranteedPrivateContractId,
+            channel, funnelLocation, budget,
+            baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
+            roiGoal, creativeIds, associatedBidLists,
+            flights, koaOptimizationSettings, comscoreSettings,
+            contractTargeting, dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled,
+            isUseSecondaryConversionsEnabled, nielsenTrackingAttributes);
     }
     
     @Override
@@ -629,58 +653,60 @@ public class AdGroupWorkflow {
                 "isUseSecondaryConversionsEnabled", isUseSecondaryConversionsEnabled,
                 "nielsenTrackingAttributes", nielsenTrackingAttributes);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> id = Optional.empty();
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private Optional<String> campaignId = Optional.empty();
- 
+
         private Boolean isEnabled;
- 
+
         private JsonNullable<String> description = JsonNullable.undefined();
- 
+
         private JsonNullable<String> programmaticGuaranteedPrivateContractId = JsonNullable.undefined();
- 
+
         private AdGroupChannel channel;
- 
+
         private AdGroupFunnelLocation funnelLocation;
- 
+
         private AdGroupBudget budget;
- 
+
         private JsonNullable<Double> baseBidCPMInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private JsonNullable<Double> maxBidCPMInAdvertiserCurrency = JsonNullable.undefined();
- 
+
         private Optional<? extends AdGroupAudienceTargeting> audienceTargeting = Optional.empty();
- 
+
         private AdGroupROIGoal roiGoal;
- 
+
         private Optional<? extends List<String>> creativeIds = Optional.empty();
- 
+
         private Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists = Optional.empty();
- 
+
         private Optional<? extends List<AdGroupFlight>> flights = Optional.empty();
- 
+
         private Optional<? extends AdGroupKoaOptimizationSettings> koaOptimizationSettings = Optional.empty();
- 
+
         private AdGroupComscoreSettings comscoreSettings;
- 
+
         private AdGroupContractTargeting contractTargeting;
- 
+
         private Optional<? extends List<List<DimensionalBiddingDimensions>>> dimensionalBiddingAutoOptimizationSettings = Optional.empty();
- 
+
         private Boolean isUseClicksAsConversionsEnabled;
- 
+
         private Boolean isUseSecondaryConversionsEnabled;
- 
+
         private Optional<? extends AdGroupNielsenTrackingAttributes> nielsenTrackingAttributes = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
@@ -694,6 +720,7 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -705,6 +732,7 @@ public class AdGroupWorkflow {
             this.name = name;
             return this;
         }
+
 
         public Builder campaignId(String campaignId) {
             Utils.checkNotNull(campaignId, "campaignId");
@@ -718,11 +746,13 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder isEnabled(boolean isEnabled) {
             Utils.checkNotNull(isEnabled, "isEnabled");
             this.isEnabled = isEnabled;
             return this;
         }
+
 
         public Builder description(String description) {
             Utils.checkNotNull(description, "description");
@@ -736,6 +766,7 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder programmaticGuaranteedPrivateContractId(String programmaticGuaranteedPrivateContractId) {
             Utils.checkNotNull(programmaticGuaranteedPrivateContractId, "programmaticGuaranteedPrivateContractId");
             this.programmaticGuaranteedPrivateContractId = JsonNullable.of(programmaticGuaranteedPrivateContractId);
@@ -748,11 +779,13 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder channel(AdGroupChannel channel) {
             Utils.checkNotNull(channel, "channel");
             this.channel = channel;
             return this;
         }
+
 
         public Builder funnelLocation(AdGroupFunnelLocation funnelLocation) {
             Utils.checkNotNull(funnelLocation, "funnelLocation");
@@ -760,11 +793,13 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder budget(AdGroupBudget budget) {
             Utils.checkNotNull(budget, "budget");
             this.budget = budget;
             return this;
         }
+
 
         public Builder baseBidCPMInAdvertiserCurrency(double baseBidCPMInAdvertiserCurrency) {
             Utils.checkNotNull(baseBidCPMInAdvertiserCurrency, "baseBidCPMInAdvertiserCurrency");
@@ -778,6 +813,7 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder maxBidCPMInAdvertiserCurrency(double maxBidCPMInAdvertiserCurrency) {
             Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
             this.maxBidCPMInAdvertiserCurrency = JsonNullable.of(maxBidCPMInAdvertiserCurrency);
@@ -789,6 +825,7 @@ public class AdGroupWorkflow {
             this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
             return this;
         }
+
 
         public Builder audienceTargeting(AdGroupAudienceTargeting audienceTargeting) {
             Utils.checkNotNull(audienceTargeting, "audienceTargeting");
@@ -802,11 +839,13 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder roiGoal(AdGroupROIGoal roiGoal) {
             Utils.checkNotNull(roiGoal, "roiGoal");
             this.roiGoal = roiGoal;
             return this;
         }
+
 
         public Builder creativeIds(List<String> creativeIds) {
             Utils.checkNotNull(creativeIds, "creativeIds");
@@ -820,6 +859,7 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder associatedBidLists(List<AdGroupAssociateBidList> associatedBidLists) {
             Utils.checkNotNull(associatedBidLists, "associatedBidLists");
             this.associatedBidLists = Optional.ofNullable(associatedBidLists);
@@ -831,6 +871,7 @@ public class AdGroupWorkflow {
             this.associatedBidLists = associatedBidLists;
             return this;
         }
+
 
         public Builder flights(List<AdGroupFlight> flights) {
             Utils.checkNotNull(flights, "flights");
@@ -844,6 +885,7 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder koaOptimizationSettings(AdGroupKoaOptimizationSettings koaOptimizationSettings) {
             Utils.checkNotNull(koaOptimizationSettings, "koaOptimizationSettings");
             this.koaOptimizationSettings = Optional.ofNullable(koaOptimizationSettings);
@@ -856,17 +898,20 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder comscoreSettings(AdGroupComscoreSettings comscoreSettings) {
             Utils.checkNotNull(comscoreSettings, "comscoreSettings");
             this.comscoreSettings = comscoreSettings;
             return this;
         }
 
+
         public Builder contractTargeting(AdGroupContractTargeting contractTargeting) {
             Utils.checkNotNull(contractTargeting, "contractTargeting");
             this.contractTargeting = contractTargeting;
             return this;
         }
+
 
         public Builder dimensionalBiddingAutoOptimizationSettings(List<List<DimensionalBiddingDimensions>> dimensionalBiddingAutoOptimizationSettings) {
             Utils.checkNotNull(dimensionalBiddingAutoOptimizationSettings, "dimensionalBiddingAutoOptimizationSettings");
@@ -880,17 +925,20 @@ public class AdGroupWorkflow {
             return this;
         }
 
+
         public Builder isUseClicksAsConversionsEnabled(boolean isUseClicksAsConversionsEnabled) {
             Utils.checkNotNull(isUseClicksAsConversionsEnabled, "isUseClicksAsConversionsEnabled");
             this.isUseClicksAsConversionsEnabled = isUseClicksAsConversionsEnabled;
             return this;
         }
 
+
         public Builder isUseSecondaryConversionsEnabled(boolean isUseSecondaryConversionsEnabled) {
             Utils.checkNotNull(isUseSecondaryConversionsEnabled, "isUseSecondaryConversionsEnabled");
             this.isUseSecondaryConversionsEnabled = isUseSecondaryConversionsEnabled;
             return this;
         }
+
 
         public Builder nielsenTrackingAttributes(AdGroupNielsenTrackingAttributes nielsenTrackingAttributes) {
             Utils.checkNotNull(nielsenTrackingAttributes, "nielsenTrackingAttributes");
@@ -903,32 +951,19 @@ public class AdGroupWorkflow {
             this.nielsenTrackingAttributes = nielsenTrackingAttributes;
             return this;
         }
-        
+
         public AdGroupWorkflow build() {
+
             return new AdGroupWorkflow(
-                id,
-                name,
-                campaignId,
-                isEnabled,
-                description,
-                programmaticGuaranteedPrivateContractId,
-                channel,
-                funnelLocation,
-                budget,
-                baseBidCPMInAdvertiserCurrency,
-                maxBidCPMInAdvertiserCurrency,
-                audienceTargeting,
-                roiGoal,
-                creativeIds,
-                associatedBidLists,
-                flights,
-                koaOptimizationSettings,
-                comscoreSettings,
-                contractTargeting,
-                dimensionalBiddingAutoOptimizationSettings,
-                isUseClicksAsConversionsEnabled,
-                isUseSecondaryConversionsEnabled,
-                nielsenTrackingAttributes);
+                id, name, campaignId,
+                isEnabled, description, programmaticGuaranteedPrivateContractId,
+                channel, funnelLocation, budget,
+                baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
+                roiGoal, creativeIds, associatedBidLists,
+                flights, koaOptimizationSettings, comscoreSettings,
+                contractTargeting, dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled,
+                isUseSecondaryConversionsEnabled, nielsenTrackingAttributes);
         }
+
     }
 }

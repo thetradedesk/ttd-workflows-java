@@ -55,8 +55,8 @@ public class GetThirdPartyDataJobRequestBuilder {
 
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
               = new GetThirdPartyDataJobOperation(
-                 sdkConfiguration,
-                 options);
+                sdkConfiguration,
+                options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
