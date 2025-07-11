@@ -98,7 +98,7 @@ public class Main {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
+        Workflows sdk = Workflows.builder()
                 .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
                 .build();
 
@@ -132,7 +132,7 @@ public class Main {
 
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
-        TtdWorkflows sdk = TtdWorkflows.builder()
+        Workflows sdk = Workflows.builder()
                 .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
                 .build();
 
