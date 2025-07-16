@@ -56,9 +56,7 @@ public class GetGraphQlQueryJobStatusRequestBuilder {
             .build());
 
         RequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
-              = new GetGraphQlQueryJobStatusOperation(
-                sdkConfiguration,
-                options);
+              = new GetGraphQlQueryJobStatusOperation(sdkConfiguration, options);
         GetGraphQlQueryJobStatusRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

@@ -54,9 +54,7 @@ public class GetThirdPartyDataJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
-              = new GetThirdPartyDataJobOperation(
-                sdkConfiguration,
-                options);
+              = new GetThirdPartyDataJobOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

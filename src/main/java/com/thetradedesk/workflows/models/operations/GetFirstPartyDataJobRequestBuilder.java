@@ -54,9 +54,7 @@ public class GetFirstPartyDataJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
-              = new GetFirstPartyDataJobOperation(
-                sdkConfiguration,
-                options);
+              = new GetFirstPartyDataJobOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

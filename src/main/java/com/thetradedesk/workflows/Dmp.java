@@ -15,7 +15,6 @@ import com.thetradedesk.workflows.operations.GetFirstPartyDataJobOperation;
 import com.thetradedesk.workflows.operations.GetThirdPartyDataJobOperation;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -25,6 +24,7 @@ public class Dmp {
     Dmp(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
+
     /**
      * Submit a job for first-party data retrieval for an advertiser
      * 
@@ -61,13 +61,9 @@ public class Dmp {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetFirstPartyDataJobResponse getFirstPartyDataJob(
-            Optional<? extends FirstPartyDataInput> request,
-            Optional<Options> options) throws Exception {
+    public GetFirstPartyDataJobResponse getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
-              = new GetFirstPartyDataJobOperation(
-                sdkConfiguration,
-                options);
+              = new GetFirstPartyDataJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -110,13 +106,9 @@ public class Dmp {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetThirdPartyDataJobResponse getThirdPartyDataJob(
-            Optional<? extends ThirdPartyDataInput> request,
-            Optional<Options> options) throws Exception {
+    public GetThirdPartyDataJobResponse getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
-              = new GetThirdPartyDataJobOperation(
-                sdkConfiguration,
-                options);
+              = new GetThirdPartyDataJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

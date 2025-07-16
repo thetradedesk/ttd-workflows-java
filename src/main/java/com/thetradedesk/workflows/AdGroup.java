@@ -39,6 +39,7 @@ public class AdGroup {
     AdGroup(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
+
     /**
      * Create a new ad group with required fields
      * 
@@ -66,13 +67,9 @@ public class AdGroup {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CreateAdGroupResponse createAdGroup(
-            Optional<? extends AdGroupCreateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public CreateAdGroupResponse createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
-              = new CreateAdGroupOperation(
-                sdkConfiguration,
-                options);
+              = new CreateAdGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -109,13 +106,9 @@ public class AdGroup {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public UpdateAdGroupResponse updateAdGroup(
-            Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public UpdateAdGroupResponse updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>, UpdateAdGroupResponse> operation
-              = new UpdateAdGroupOperation(
-                sdkConfiguration,
-                options);
+              = new UpdateAdGroupOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -154,8 +147,7 @@ public class AdGroup {
      * @throws Exception if the API call fails
      */
     public ArchiveAdGroupsResponse archiveAdGroups(
-            Optional<Boolean> forceArchive,
-            Optional<? extends List<String>> requestBody,
+            Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody,
             Optional<Options> options) throws Exception {
         ArchiveAdGroupsRequest request =
             ArchiveAdGroupsRequest
@@ -164,9 +156,7 @@ public class AdGroup {
                 .requestBody(requestBody)
                 .build();
         RequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation
-              = new ArchiveAdGroupsOperation(
-                sdkConfiguration,
-                options);
+              = new ArchiveAdGroupsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -197,13 +187,9 @@ public class AdGroup {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CreateAdGroupsJobResponse createAdGroupsJob(
-            Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public CreateAdGroupsJobResponse createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation>, CreateAdGroupsJobResponse> operation
-              = new CreateAdGroupsJobOperation(
-                sdkConfiguration,
-                options);
+              = new CreateAdGroupsJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -240,13 +226,9 @@ public class AdGroup {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public UpdateAdGroupsJobResponse updateAdGroupsJob(
-            Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public UpdateAdGroupsJobResponse updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>, UpdateAdGroupsJobResponse> operation
-              = new UpdateAdGroupsJobOperation(
-                sdkConfiguration,
-                options);
+              = new UpdateAdGroupsJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
