@@ -56,9 +56,7 @@ public class GetJobStatusRequestBuilder {
             .build());
 
         RequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
-              = new GetJobStatusOperation(
-                sdkConfiguration,
-                options);
+              = new GetJobStatusOperation(sdkConfiguration, options);
         GetJobStatusRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

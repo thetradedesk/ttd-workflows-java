@@ -54,9 +54,7 @@ public class CreateCampaignsJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
-              = new CreateCampaignsJobOperation(
-                sdkConfiguration,
-                options);
+              = new CreateCampaignsJobOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

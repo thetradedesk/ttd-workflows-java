@@ -43,6 +43,7 @@ public class Campaign {
     Campaign(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
+
     /**
      * Create a new campaign with required fields
      * 
@@ -70,13 +71,9 @@ public class Campaign {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CreateCampaignResponse create(
-            Optional<? extends CampaignCreateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public CreateCampaignResponse create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
-              = new CreateCampaignOperation(
-                sdkConfiguration,
-                options);
+              = new CreateCampaignOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -113,13 +110,9 @@ public class Campaign {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public UpdateCampaignResponse updateCampaign(
-            Optional<? extends CampaignUpdateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public UpdateCampaignResponse updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
-              = new UpdateCampaignOperation(
-                sdkConfiguration,
-                options);
+              = new UpdateCampaignOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -150,13 +143,9 @@ public class Campaign {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public CreateCampaignsJobResponse createCampaignsJob(
-            Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public CreateCampaignsJobResponse createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
-              = new CreateCampaignsJobOperation(
-                sdkConfiguration,
-                options);
+              = new CreateCampaignsJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -193,13 +182,9 @@ public class Campaign {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public UpdateCampaignsJobResponse updateCampaignsJob(
-            Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request,
-            Optional<Options> options) throws Exception {
+    public UpdateCampaignsJobResponse updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
-              = new UpdateCampaignsJobOperation(
-                sdkConfiguration,
-                options);
+              = new UpdateCampaignsJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -238,8 +223,7 @@ public class Campaign {
      * @throws Exception if the API call fails
      */
     public ArchiveCampaignsResponse archiveCampaigns(
-            Optional<Boolean> forceArchive,
-            Optional<? extends List<String>> requestBody,
+            Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody,
             Optional<Options> options) throws Exception {
         ArchiveCampaignsRequest request =
             ArchiveCampaignsRequest
@@ -248,9 +232,7 @@ public class Campaign {
                 .requestBody(requestBody)
                 .build();
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaignsOperation(
-                sdkConfiguration,
-                options);
+              = new ArchiveCampaignsOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -282,18 +264,14 @@ public class Campaign {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetCampaignVersionResponse getVersion(
-            String id,
-            Optional<Options> options) throws Exception {
+    public GetCampaignVersionResponse getVersion(String id, Optional<Options> options) throws Exception {
         GetCampaignVersionRequest request =
             GetCampaignVersionRequest
                 .builder()
                 .id(id)
                 .build();
         RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
-              = new GetCampaignVersionOperation(
-                sdkConfiguration,
-                options);
+              = new GetCampaignVersionOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

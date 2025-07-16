@@ -86,9 +86,7 @@ public class ArchiveAdGroupsRequestBuilder {
             .build());
 
         RequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation
-              = new ArchiveAdGroupsOperation(
-                sdkConfiguration,
-                options);
+              = new ArchiveAdGroupsOperation(sdkConfiguration, options);
         ArchiveAdGroupsRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));
