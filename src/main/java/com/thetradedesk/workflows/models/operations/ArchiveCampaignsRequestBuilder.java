@@ -86,9 +86,7 @@ public class ArchiveCampaignsRequestBuilder {
             .build());
 
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaignsOperation(
-                sdkConfiguration,
-                options);
+              = new ArchiveCampaignsOperation(sdkConfiguration, options);
         ArchiveCampaignsRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

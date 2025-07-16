@@ -16,8 +16,8 @@ public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "v1";
-    public static final String SDK_VERSION = "0.9.2";
-    public static final String GEN_VERSION = "2.656.5";
+    public static final String SDK_VERSION = "0.9.3";
+    public static final String GEN_VERSION = "2.657.1";
     private static final String BASE_PACKAGE = "com.thetradedesk.workflows";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s",
@@ -112,7 +112,7 @@ public class SDKConfiguration {
     public Optional<RetryConfig> retryConfig() {
         return retryConfig;
     }
-    
+
     public void setRetryConfig(Optional<RetryConfig> retryConfig) {
         Utils.checkNotNull(retryConfig, "retryConfig");
         this.retryConfig = retryConfig;

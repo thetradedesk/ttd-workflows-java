@@ -54,9 +54,7 @@ public class SubmitRestRequestRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequestOperation(
-                sdkConfiguration,
-                options);
+              = new SubmitRestRequestOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

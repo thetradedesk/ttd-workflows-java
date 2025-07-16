@@ -11,7 +11,6 @@ import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
 import com.thetradedesk.workflows.operations.SubmitRestRequestOperation;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -21,6 +20,7 @@ public class RESTRequest {
     RESTRequest(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
+
     /**
      * Submit a valid REST request
      * 
@@ -57,13 +57,9 @@ public class RESTRequest {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public SubmitRestRequestResponse submitRestRequest(
-            Optional<? extends CallRestApiWorkflowInput> request,
-            Optional<Options> options) throws Exception {
+    public SubmitRestRequestResponse submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequestOperation(
-                sdkConfiguration,
-                options);
+              = new SubmitRestRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

@@ -15,7 +15,6 @@ import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJobOperation;
 import com.thetradedesk.workflows.operations.SubmitGraphQlRequestOperation;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -25,6 +24,7 @@ public class GraphQLRequest {
     GraphQLRequest(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
+
     /**
      * Submit a valid GraphQL query or mutation
      * 
@@ -61,13 +61,9 @@ public class GraphQLRequest {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public SubmitGraphQlRequestResponse submitGraphQlRequest(
-            Optional<? extends GraphQLRequestInput> request,
-            Optional<Options> options) throws Exception {
+    public SubmitGraphQlRequestResponse submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
-              = new SubmitGraphQlRequestOperation(
-                sdkConfiguration,
-                options);
+              = new SubmitGraphQlRequestOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -107,13 +103,9 @@ public class GraphQLRequest {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public SubmitGraphQlQueryJobResponse submitGraphQlQueryJob(
-            Optional<? extends GraphQlQueryJobInput> request,
-            Optional<Options> options) throws Exception {
+    public SubmitGraphQlQueryJobResponse submitGraphQlQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
-              = new SubmitGraphQlQueryJobOperation(
-                sdkConfiguration,
-                options);
+              = new SubmitGraphQlQueryJobOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

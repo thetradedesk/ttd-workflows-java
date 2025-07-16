@@ -56,9 +56,7 @@ public class GetCampaignVersionRequestBuilder {
             .build());
 
         RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
-              = new GetCampaignVersionOperation(
-                sdkConfiguration,
-                options);
+              = new GetCampaignVersionOperation(sdkConfiguration, options);
         GetCampaignVersionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

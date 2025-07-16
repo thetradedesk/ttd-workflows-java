@@ -16,7 +16,6 @@ import com.thetradedesk.workflows.operations.GetJobStatusOperation;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -26,6 +25,7 @@ public class JobStatus {
     JobStatus(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
     }
+
     /**
      * Get the status of a previously submitted GraphQL query job.
      * 
@@ -63,18 +63,14 @@ public class JobStatus {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetGraphQlQueryJobStatusResponse getGraphQlQueryJobStatus(
-            String id,
-            Optional<Options> options) throws Exception {
+    public GetGraphQlQueryJobStatusResponse getGraphQlQueryJobStatus(String id, Optional<Options> options) throws Exception {
         GetGraphQlQueryJobStatusRequest request =
             GetGraphQlQueryJobStatusRequest
                 .builder()
                 .id(id)
                 .build();
         RequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
-              = new GetGraphQlQueryJobStatusOperation(
-                sdkConfiguration,
-                options);
+              = new GetGraphQlQueryJobStatusOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -121,18 +117,14 @@ public class JobStatus {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetJobStatusResponse getJobStatus(
-            long id,
-            Optional<Options> options) throws Exception {
+    public GetJobStatusResponse getJobStatus(long id, Optional<Options> options) throws Exception {
         GetJobStatusRequest request =
             GetJobStatusRequest
                 .builder()
                 .id(id)
                 .build();
         RequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
-              = new GetJobStatusOperation(
-                sdkConfiguration,
-                options);
+              = new GetJobStatusOperation(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

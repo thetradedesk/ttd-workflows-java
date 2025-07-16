@@ -54,9 +54,7 @@ public class UpdateAdGroupsJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>, UpdateAdGroupsJobResponse> operation
-              = new UpdateAdGroupsJobOperation(
-                sdkConfiguration,
-                options);
+              = new UpdateAdGroupsJobOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

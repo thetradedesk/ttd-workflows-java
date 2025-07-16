@@ -54,9 +54,7 @@ public class CreateAdGroupRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
-              = new CreateAdGroupOperation(
-                sdkConfiguration,
-                options);
+              = new CreateAdGroupOperation(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
