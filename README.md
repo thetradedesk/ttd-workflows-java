@@ -88,7 +88,6 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ```java
 package hello.world;
 
-import java.lang.Exception;
 import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.components.ThirdPartyDataInput;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
@@ -99,11 +98,12 @@ public class Main {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
                 .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
                 .build();
 
         ThirdPartyDataInput req = ThirdPartyDataInput.builder()
-                .partnerId("<partner_id>")
+                .partnerId("<id>")
                 .queryShape("nodes {id name}")
                 .build();
 
@@ -123,7 +123,6 @@ public class Main {
 ```java
 package hello.world;
 
-import java.lang.Exception;
 import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
 import com.thetradedesk.workflows.models.operations.GetJobStatusResponse;
@@ -133,11 +132,12 @@ public class Main {
     public static void main(String[] args) throws ProblemDetailsException, Exception {
 
         Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
                 .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
                 .build();
 
         GetJobStatusResponse res = sdk.jobStatus().getJobStatus()
-                .id(<job_id>)
+                .id(<id>)
                 .call();
 
         if (res.standardJobStatusResponse().isPresent()) {
@@ -146,6 +146,51 @@ public class Main {
     }
 }
 ```
+
+### Example: Create campaign with minimal configuration
+
+```java
+
+import java.time.OffsetDateTime;
+import com.thetradedesk.workflows.Workflows;
+import com.thetradedesk.workflows.models.components.*;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.CreateCampaignResponse;
+
+public class Main {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
+                .build();
+
+        CampaignCreateWorkflowInputWithValidation req = CampaignCreateWorkflowInputWithValidation
+                .builder()
+                .primaryInput(CampaignCreateWorkflowPrimaryInput.builder()
+                    .name("<value>")
+                    .advertiserId("<id>")
+                    .seedId("<id>") // required, unless the advertiser has a default seed defined
+                    .startDateInUtc(OffsetDateTime.parse("2026-07-08T10:52:56.944Z"))
+                    .primaryChannel(CampaignChannelType.DOOH)
+                    .primaryGoal(CampaignWorkflowROIGoalInput.builder()
+                        .maximizeReach(true)
+                        .build())
+                    .build())
+                .build();
+
+        CreateCampaignResponse res = sdk.campaign().create()
+                .request(req)
+                .call();
+
+        if (res.campaignPayload().isPresent()) {
+            System.out.println(res.campaignPayload().get());
+        }
+    }
+}
+```
+
 <!-- No SDK Example Usage [usage] -->
 
 <!-- Start Authentication [security] -->
