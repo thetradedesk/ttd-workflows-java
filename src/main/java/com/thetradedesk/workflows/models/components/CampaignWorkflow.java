@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Double;
 import java.lang.Integer;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -30,6 +31,11 @@ public class CampaignWorkflow {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private JsonNullable<String> name;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("campaignGroupId")
+    private JsonNullable<Long> campaignGroupId;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -100,6 +106,7 @@ public class CampaignWorkflow {
     public CampaignWorkflow(
             @JsonProperty("id") Optional<String> id,
             @JsonProperty("name") JsonNullable<String> name,
+            @JsonProperty("campaignGroupId") JsonNullable<Long> campaignGroupId,
             @JsonProperty("description") JsonNullable<String> description,
             @JsonProperty("startDate") JsonNullable<OffsetDateTime> startDate,
             @JsonProperty("endDate") JsonNullable<OffsetDateTime> endDate,
@@ -115,6 +122,7 @@ public class CampaignWorkflow {
             @JsonProperty("flights") JsonNullable<? extends List<CampaignFlightWorkflow>> flights) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(campaignGroupId, "campaignGroupId");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(endDate, "endDate");
@@ -130,6 +138,7 @@ public class CampaignWorkflow {
         Utils.checkNotNull(flights, "flights");
         this.id = id;
         this.name = name;
+        this.campaignGroupId = campaignGroupId;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -148,9 +157,10 @@ public class CampaignWorkflow {
     public CampaignWorkflow() {
         this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
-            JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            Optional.empty(), JsonNullable.undefined(), Optional.empty(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -161,6 +171,11 @@ public class CampaignWorkflow {
     @JsonIgnore
     public JsonNullable<String> name() {
         return name;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Long> campaignGroupId() {
+        return campaignGroupId;
     }
 
     @JsonIgnore
@@ -258,6 +273,18 @@ public class CampaignWorkflow {
     public CampaignWorkflow withName(JsonNullable<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
+        return this;
+    }
+
+    public CampaignWorkflow withCampaignGroupId(long campaignGroupId) {
+        Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+        this.campaignGroupId = JsonNullable.of(campaignGroupId);
+        return this;
+    }
+
+    public CampaignWorkflow withCampaignGroupId(JsonNullable<Long> campaignGroupId) {
+        Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+        this.campaignGroupId = campaignGroupId;
         return this;
     }
 
@@ -431,6 +458,7 @@ public class CampaignWorkflow {
         return 
             Utils.enhancedDeepEquals(this.id, other.id) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.campaignGroupId, other.campaignGroupId) &&
             Utils.enhancedDeepEquals(this.description, other.description) &&
             Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
             Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
@@ -449,11 +477,12 @@ public class CampaignWorkflow {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            id, name, description,
-            startDate, endDate, timeZone,
-            customCPAClickWeight, customCPAViewthroughWeight, customCPAType,
-            impressionsOnlyBudgetingCpm, primaryChannel, primaryGoal,
-            seedId, conversionReportingColumnsCount, flights);
+            id, name, campaignGroupId,
+            description, startDate, endDate,
+            timeZone, customCPAClickWeight, customCPAViewthroughWeight,
+            customCPAType, impressionsOnlyBudgetingCpm, primaryChannel,
+            primaryGoal, seedId, conversionReportingColumnsCount,
+            flights);
     }
     
     @Override
@@ -461,6 +490,7 @@ public class CampaignWorkflow {
         return Utils.toString(CampaignWorkflow.class,
                 "id", id,
                 "name", name,
+                "campaignGroupId", campaignGroupId,
                 "description", description,
                 "startDate", startDate,
                 "endDate", endDate,
@@ -482,6 +512,8 @@ public class CampaignWorkflow {
         private Optional<String> id = Optional.empty();
 
         private JsonNullable<String> name = JsonNullable.undefined();
+
+        private JsonNullable<Long> campaignGroupId = JsonNullable.undefined();
 
         private JsonNullable<String> description = JsonNullable.undefined();
 
@@ -536,6 +568,19 @@ public class CampaignWorkflow {
         public Builder name(JsonNullable<String> name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
+            return this;
+        }
+
+
+        public Builder campaignGroupId(long campaignGroupId) {
+            Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+            this.campaignGroupId = JsonNullable.of(campaignGroupId);
+            return this;
+        }
+
+        public Builder campaignGroupId(JsonNullable<Long> campaignGroupId) {
+            Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+            this.campaignGroupId = campaignGroupId;
             return this;
         }
 
@@ -711,11 +756,12 @@ public class CampaignWorkflow {
         public CampaignWorkflow build() {
 
             return new CampaignWorkflow(
-                id, name, description,
-                startDate, endDate, timeZone,
-                customCPAClickWeight, customCPAViewthroughWeight, customCPAType,
-                impressionsOnlyBudgetingCpm, primaryChannel, primaryGoal,
-                seedId, conversionReportingColumnsCount, flights);
+                id, name, campaignGroupId,
+                description, startDate, endDate,
+                timeZone, customCPAClickWeight, customCPAViewthroughWeight,
+                customCPAType, impressionsOnlyBudgetingCpm, primaryChannel,
+                primaryGoal, seedId, conversionReportingColumnsCount,
+                flights);
         }
 
     }
