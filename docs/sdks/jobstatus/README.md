@@ -15,6 +15,7 @@ Once a job is complete, this operation will return the URL from which to downloa
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getGraphQlQueryJobStatus" method="get" path="/graphqlqueryjob/{id}" -->
 ```java
 package hello.world;
 
@@ -68,6 +69,7 @@ Job results expire after 24 hours, at which point you will need to submit a new 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getJobStatus" method="get" path="/standardjob/{id}/status" -->
 ```java
 package hello.world;
 

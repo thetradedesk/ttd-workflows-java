@@ -18,6 +18,7 @@ Create a new campaign with required fields
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createCampaign" method="post" path="/campaign" -->
 ```java
 package hello.world;
 
@@ -58,6 +59,7 @@ public class Application {
                         .miaozhenOTPInPercent(3033.14)
                         .build())
                     .description("woot furthermore mentor")
+                    .campaignGroupId(86586L)
                     .timeZone("Europe/Ulyanovsk")
                     .customCPAClickWeight(2561.01)
                     .customCPAViewthroughWeight(5604.35)
@@ -236,6 +238,7 @@ Only the fields provided in the request payload will be updated.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateCampaign" method="patch" path="/campaign" -->
 ```java
 package hello.world;
 
@@ -260,6 +263,7 @@ public class Application {
                 .id("<id>")
                 .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
                     .description("yahoo whether frail but into form sway neck notwithstanding")
+                    .campaignGroupId(760468L)
                     .timeZone("Asia/Amman")
                     .customCPAClickWeight(1380.93)
                     .customCPAViewthroughWeight(3991.98)
@@ -355,6 +359,7 @@ Create multiple new campaigns with required fields
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createCampaignsJob" method="post" path="/standardjob/campaign/bulk" -->
 ```java
 package hello.world;
 
@@ -398,6 +403,7 @@ public class Application {
                                 .miaozhenOTPInPercent(1951.58)
                                 .build())
                             .description(JsonNullable.of(null))
+                            .campaignGroupId(657704L)
                             .timeZone("America/North_Dakota/Center")
                             .customCPAClickWeight(9662.9)
                             .customCPAViewthroughWeight(3558.78)
@@ -580,6 +586,7 @@ Only the fields provided in the request payload for each specific campaign will 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateCampaignsJob" method="patch" path="/standardjob/campaign/bulk" -->
 ```java
 package hello.world;
 
@@ -607,6 +614,7 @@ public class Application {
                         .id("<id>")
                         .primaryInput(CampaignUpdateWorkflowPrimaryInput.builder()
                             .description("hmph energetically yet surprisingly swift knight swear multicolored absent")
+                            .campaignGroupId(645576L)
                             .timeZone("America/Argentina/San_Juan")
                             .customCPAClickWeight(JsonNullable.of(null))
                             .customCPAViewthroughWeight(8361.84)
@@ -710,6 +718,7 @@ public class Application {
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="archiveCampaigns" method="post" path="/campaign/archive" -->
 ```java
 package hello.world;
 
@@ -766,6 +775,7 @@ Get a campaign's version
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getCampaignVersion" method="get" path="/campaign/{id}/version" -->
 ```java
 package hello.world;
 

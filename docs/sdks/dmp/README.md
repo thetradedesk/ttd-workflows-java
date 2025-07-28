@@ -15,6 +15,7 @@ This job ID can be used to poll for the job's status using the associated operat
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getFirstPartyDataJob" method="post" path="/standardjob/firstpartydata" -->
 ```java
 package hello.world;
 
@@ -83,6 +84,7 @@ using the associated operation under "Job Status".
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getThirdPartyDataJob" method="post" path="/standardjob/thirdpartydata" -->
 ```java
 package hello.world;
 
