@@ -15,6 +15,7 @@ To explore the available GraphQL operations, see the [GraphQL Schema Explorer](h
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="submitGraphQlRequest" method="post" path="/graphqlrequest" -->
 ```java
 package hello.world;
 
@@ -74,6 +75,7 @@ For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="submitGraphQlQueryJob" method="post" path="/graphqlqueryjob" -->
 ```java
 package hello.world;
 

@@ -17,6 +17,7 @@ Create a new ad group with required fields
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createAdGroup" method="post" path="/adgroup" -->
 ```java
 package hello.world;
 
@@ -177,6 +178,7 @@ Only the fields provided in the request payload will be updated.
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateAdGroup" method="patch" path="/adgroup" -->
 ```java
 package hello.world;
 
@@ -340,6 +342,7 @@ public class Application {
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="archiveAdGroups" method="post" path="/adgroup/archive" -->
 ```java
 package hello.world;
 
@@ -395,6 +398,7 @@ Create multiple new ad groups with required fields
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createAdGroupsJob" method="post" path="/standardjob/adgroup/bulk" -->
 ```java
 package hello.world;
 
@@ -461,6 +465,7 @@ Only the fields provided in the request payload for each specific ad group will 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateAdGroupsJob" method="patch" path="/standardjob/adgroup/bulk" -->
 ```java
 package hello.world;
 

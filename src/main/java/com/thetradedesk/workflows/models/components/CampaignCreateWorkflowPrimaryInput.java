@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Double;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -24,6 +25,11 @@ public class CampaignCreateWorkflowPrimaryInput {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("description")
     private JsonNullable<String> description;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("campaignGroupId")
+    private JsonNullable<Long> campaignGroupId;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -94,6 +100,7 @@ public class CampaignCreateWorkflowPrimaryInput {
     @JsonCreator
     public CampaignCreateWorkflowPrimaryInput(
             @JsonProperty("description") JsonNullable<String> description,
+            @JsonProperty("campaignGroupId") JsonNullable<Long> campaignGroupId,
             @JsonProperty("timeZone") JsonNullable<String> timeZone,
             @JsonProperty("customCPAClickWeight") JsonNullable<Double> customCPAClickWeight,
             @JsonProperty("customCPAViewthroughWeight") JsonNullable<Double> customCPAViewthroughWeight,
@@ -109,6 +116,7 @@ public class CampaignCreateWorkflowPrimaryInput {
             @JsonProperty("primaryGoal") CampaignWorkflowROIGoalInput primaryGoal,
             @JsonProperty("startDateInUtc") JsonNullable<OffsetDateTime> startDateInUtc) {
         Utils.checkNotNull(description, "description");
+        Utils.checkNotNull(campaignGroupId, "campaignGroupId");
         Utils.checkNotNull(timeZone, "timeZone");
         Utils.checkNotNull(customCPAClickWeight, "customCPAClickWeight");
         Utils.checkNotNull(customCPAViewthroughWeight, "customCPAViewthroughWeight");
@@ -124,6 +132,7 @@ public class CampaignCreateWorkflowPrimaryInput {
         Utils.checkNotNull(primaryGoal, "primaryGoal");
         Utils.checkNotNull(startDateInUtc, "startDateInUtc");
         this.description = description;
+        this.campaignGroupId = campaignGroupId;
         this.timeZone = timeZone;
         this.customCPAClickWeight = customCPAClickWeight;
         this.customCPAViewthroughWeight = customCPAViewthroughWeight;
@@ -146,15 +155,21 @@ public class CampaignCreateWorkflowPrimaryInput {
             CampaignChannelType primaryChannel,
             CampaignWorkflowROIGoalInput primaryGoal) {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(),
-            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), advertiserId, name,
-            primaryChannel, primaryGoal, JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), advertiserId,
+            name, primaryChannel, primaryGoal,
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
     public JsonNullable<String> description() {
         return description;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Long> campaignGroupId() {
+        return campaignGroupId;
     }
 
     @JsonIgnore
@@ -244,6 +259,18 @@ public class CampaignCreateWorkflowPrimaryInput {
     public CampaignCreateWorkflowPrimaryInput withDescription(JsonNullable<String> description) {
         Utils.checkNotNull(description, "description");
         this.description = description;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withCampaignGroupId(long campaignGroupId) {
+        Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+        this.campaignGroupId = JsonNullable.of(campaignGroupId);
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withCampaignGroupId(JsonNullable<Long> campaignGroupId) {
+        Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+        this.campaignGroupId = campaignGroupId;
         return this;
     }
 
@@ -404,6 +431,7 @@ public class CampaignCreateWorkflowPrimaryInput {
         CampaignCreateWorkflowPrimaryInput other = (CampaignCreateWorkflowPrimaryInput) o;
         return 
             Utils.enhancedDeepEquals(this.description, other.description) &&
+            Utils.enhancedDeepEquals(this.campaignGroupId, other.campaignGroupId) &&
             Utils.enhancedDeepEquals(this.timeZone, other.timeZone) &&
             Utils.enhancedDeepEquals(this.customCPAClickWeight, other.customCPAClickWeight) &&
             Utils.enhancedDeepEquals(this.customCPAViewthroughWeight, other.customCPAViewthroughWeight) &&
@@ -423,17 +451,19 @@ public class CampaignCreateWorkflowPrimaryInput {
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            description, timeZone, customCPAClickWeight,
-            customCPAViewthroughWeight, customCPAType, impressionsOnlyBudgetingCpm,
-            budget, endDateInUtc, seedId,
-            campaignConversionReportingColumns, advertiserId, name,
-            primaryChannel, primaryGoal, startDateInUtc);
+            description, campaignGroupId, timeZone,
+            customCPAClickWeight, customCPAViewthroughWeight, customCPAType,
+            impressionsOnlyBudgetingCpm, budget, endDateInUtc,
+            seedId, campaignConversionReportingColumns, advertiserId,
+            name, primaryChannel, primaryGoal,
+            startDateInUtc);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CampaignCreateWorkflowPrimaryInput.class,
                 "description", description,
+                "campaignGroupId", campaignGroupId,
                 "timeZone", timeZone,
                 "customCPAClickWeight", customCPAClickWeight,
                 "customCPAViewthroughWeight", customCPAViewthroughWeight,
@@ -454,6 +484,8 @@ public class CampaignCreateWorkflowPrimaryInput {
     public final static class Builder {
 
         private JsonNullable<String> description = JsonNullable.undefined();
+
+        private JsonNullable<Long> campaignGroupId = JsonNullable.undefined();
 
         private JsonNullable<String> timeZone = JsonNullable.undefined();
 
@@ -497,6 +529,19 @@ public class CampaignCreateWorkflowPrimaryInput {
         public Builder description(JsonNullable<String> description) {
             Utils.checkNotNull(description, "description");
             this.description = description;
+            return this;
+        }
+
+
+        public Builder campaignGroupId(long campaignGroupId) {
+            Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+            this.campaignGroupId = JsonNullable.of(campaignGroupId);
+            return this;
+        }
+
+        public Builder campaignGroupId(JsonNullable<Long> campaignGroupId) {
+            Utils.checkNotNull(campaignGroupId, "campaignGroupId");
+            this.campaignGroupId = campaignGroupId;
             return this;
         }
 
@@ -661,11 +706,12 @@ public class CampaignCreateWorkflowPrimaryInput {
         public CampaignCreateWorkflowPrimaryInput build() {
 
             return new CampaignCreateWorkflowPrimaryInput(
-                description, timeZone, customCPAClickWeight,
-                customCPAViewthroughWeight, customCPAType, impressionsOnlyBudgetingCpm,
-                budget, endDateInUtc, seedId,
-                campaignConversionReportingColumns, advertiserId, name,
-                primaryChannel, primaryGoal, startDateInUtc);
+                description, campaignGroupId, timeZone,
+                customCPAClickWeight, customCPAViewthroughWeight, customCPAType,
+                impressionsOnlyBudgetingCpm, budget, endDateInUtc,
+                seedId, campaignConversionReportingColumns, advertiserId,
+                name, primaryChannel, primaryGoal,
+                startDateInUtc);
         }
 
     }
