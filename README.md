@@ -118,6 +118,8 @@ public class Main {
 }
 ```
 
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/dmp/post/standardjob/thirdpartydata))
+
 ### Example: Check status for third-party data retrieval job using job ID returned from submit job
 
 ```java
@@ -147,9 +149,12 @@ public class Main {
 }
 ```
 
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/standardjob/{id}/status))
+
 ### Example: Create campaign with minimal configuration
 
 ```java
+package hello.world;
 
 import java.time.OffsetDateTime;
 import com.thetradedesk.workflows.Workflows;
@@ -190,6 +195,167 @@ public class Main {
     }
 }
 ```
+
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/campaign/post/campaign))
+
+### Example: Submit GraphQL request
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.util.Map;
+import com.thetradedesk.workflows.Workflows;
+import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestResponse;
+
+public class Main {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
+                .build();
+
+        String query = """
+query Advertiser($id: ID!) {
+    advertiser(id: $id) {
+        name
+        totalCampaignChannelCount
+        totalFunnelLocationCount
+        useImpressionsOnlyBudgeting
+        vettingStatus
+        suggestedMeasurementProviderCategories
+    }
+}
+""";
+
+        GraphQLRequestInput req = GraphQLRequestInput.builder()
+                .request(query)
+                .variables(Map.ofEntries(
+                        Map.entry("id", "<id>")
+                        ))
+                .build();
+
+        SubmitGraphQlRequestResponse res = sdk.graphQLRequest().submitGraphQlRequest()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            System.out.println(res.object().get());
+        }
+    }
+}
+```
+
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/graphql-request/post/graphqlrequest))
+
+### Example: Submit bulk GraphQL query job
+
+Note: If you submit a GraphQL bulk query job (instead of a standard GraphQL request as shown above), any paginated and nested data is fully iterated and returned in a single output file.
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import com.thetradedesk.workflows.Workflows;
+import com.thetradedesk.workflows.models.components.GraphQlQueryJobInput;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobResponse;
+
+public class Main {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
+                .build();
+
+        String query = """
+query AudiencesAcrossAdvertisers {
+  partner(id: "<id>") {
+    id
+    name
+    advertisers {
+      nodes {
+        id
+        name
+        adGroups {
+          nodes {
+            id
+            name
+            audience {
+              id
+              name
+              activeUniques {
+                householdCount
+                idsConnectedTvCount
+                idsCount
+                idsInAppCount
+                idsWebCount
+                lastUpdated
+                personsCount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+""";
+
+        GraphQlQueryJobInput req = GraphQlQueryJobInput.builder()
+                .query(query)
+                .build();
+
+        SubmitGraphQlQueryJobResponse res = sdk.graphQLRequest().submitGraphQlQueryJob()
+                .request(req)
+                .call();
+
+        if (res.graphQlQueryJobResponse().isPresent()) {
+            System.out.println(res.graphQlQueryJobResponse().get());
+        }
+    }
+}
+```
+
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/graphql-request/post/graphqlqueryjob))
+
+### Example: Check status for bulk GraphQL query job
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import com.thetradedesk.workflows.Workflows;
+import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusResponse;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+
+public class Main {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
+                .build();
+
+        GetGraphQlQueryJobStatusResponse res = sdk.jobStatus().getGraphQlQueryJobStatus()
+                .id("<id>")
+                .call();
+
+        if (res.graphQLQueryJobRetrievalResponse().isPresent()) {
+            System.out.println(res.graphQLQueryJobRetrievalResponse().get());
+        }
+    }
+}
+```
+
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlqueryjob/{id}))
 
 <!-- No SDK Example Usage [usage] -->
 
