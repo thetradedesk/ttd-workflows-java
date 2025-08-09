@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
-import com.thetradedesk.workflows.operations.ArchiveCampaignsOperation;
+import com.thetradedesk.workflows.operations.ArchiveCampaigns;
 import com.thetradedesk.workflows.utils.LazySingletonValue;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
@@ -86,7 +86,7 @@ public class ArchiveCampaignsRequestBuilder {
             .build());
 
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaignsOperation(sdkConfiguration, options);
+              = new ArchiveCampaigns.Sync(sdkConfiguration, options);
         ArchiveCampaignsRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

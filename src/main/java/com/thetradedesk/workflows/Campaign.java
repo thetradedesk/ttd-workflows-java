@@ -23,12 +23,12 @@ import com.thetradedesk.workflows.models.operations.UpdateCampaignRequestBuilder
 import com.thetradedesk.workflows.models.operations.UpdateCampaignResponse;
 import com.thetradedesk.workflows.models.operations.UpdateCampaignsJobRequestBuilder;
 import com.thetradedesk.workflows.models.operations.UpdateCampaignsJobResponse;
-import com.thetradedesk.workflows.operations.ArchiveCampaignsOperation;
-import com.thetradedesk.workflows.operations.CreateCampaignOperation;
-import com.thetradedesk.workflows.operations.CreateCampaignsJobOperation;
-import com.thetradedesk.workflows.operations.GetCampaignVersionOperation;
-import com.thetradedesk.workflows.operations.UpdateCampaignOperation;
-import com.thetradedesk.workflows.operations.UpdateCampaignsJobOperation;
+import com.thetradedesk.workflows.operations.ArchiveCampaigns;
+import com.thetradedesk.workflows.operations.CreateCampaign;
+import com.thetradedesk.workflows.operations.CreateCampaignsJob;
+import com.thetradedesk.workflows.operations.GetCampaignVersion;
+import com.thetradedesk.workflows.operations.UpdateCampaign;
+import com.thetradedesk.workflows.operations.UpdateCampaignsJob;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
 import java.lang.Exception;
@@ -73,7 +73,7 @@ public class Campaign {
      */
     public CreateCampaignResponse create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
-              = new CreateCampaignOperation(sdkConfiguration, options);
+              = new CreateCampaign.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -112,7 +112,7 @@ public class Campaign {
      */
     public UpdateCampaignResponse updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
-              = new UpdateCampaignOperation(sdkConfiguration, options);
+              = new UpdateCampaign.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -145,7 +145,7 @@ public class Campaign {
      */
     public CreateCampaignsJobResponse createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
-              = new CreateCampaignsJobOperation(sdkConfiguration, options);
+              = new CreateCampaignsJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -184,7 +184,7 @@ public class Campaign {
      */
     public UpdateCampaignsJobResponse updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
-              = new UpdateCampaignsJobOperation(sdkConfiguration, options);
+              = new UpdateCampaignsJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -232,7 +232,7 @@ public class Campaign {
                 .requestBody(requestBody)
                 .build();
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaignsOperation(sdkConfiguration, options);
+              = new ArchiveCampaigns.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -271,7 +271,7 @@ public class Campaign {
                 .id(id)
                 .build();
         RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
-              = new GetCampaignVersionOperation(sdkConfiguration, options);
+              = new GetCampaignVersion.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
