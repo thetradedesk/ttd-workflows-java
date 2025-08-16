@@ -16,8 +16,8 @@ public class SDKConfiguration {
 
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "v1";
-    public static final String SDK_VERSION = "0.9.4";
-    public static final String GEN_VERSION = "2.667.0";
+    public static final String SDK_VERSION = "0.9.5";
+    public static final String GEN_VERSION = "2.684.0";
     private static final String BASE_PACKAGE = "com.thetradedesk.workflows";
     public static final String USER_AGENT = 
             String.format("speakeasy-sdk/%s %s %s %s %s",
@@ -98,7 +98,7 @@ public class SDKConfiguration {
         this._hooks = hooks;
     }
 
-    /** 
+    /**
      * Initializes state (for example hooks).
      **/
     public void initialize() {

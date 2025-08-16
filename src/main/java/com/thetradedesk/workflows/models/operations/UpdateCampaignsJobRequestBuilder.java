@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.CampaignBulkUpdateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.operations.UpdateCampaignsJobOperation;
+import com.thetradedesk.workflows.operations.UpdateCampaignsJob;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -54,7 +54,7 @@ public class UpdateCampaignsJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
-              = new UpdateCampaignsJobOperation(sdkConfiguration, options);
+              = new UpdateCampaignsJob.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
