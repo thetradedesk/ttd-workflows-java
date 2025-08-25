@@ -54,7 +54,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.9.4'
+implementation 'com.thetradedesk:workflows:0.9.5'
 ```
 
 Maven:
@@ -62,7 +62,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.9.4</version>
+    <version>0.9.5</version>
 </dependency>
 ```
 
@@ -544,7 +544,7 @@ public class Application {
 
 ### [jobStatus()](docs/sdks/jobstatus/README.md)
 
-* [getGraphQlQueryJobStatus](docs/sdks/jobstatus/README.md#getgraphqlqueryjobstatus) - Get the status of a previously submitted GraphQL query job.
+* [getGraphQlQueryJobStatus](docs/sdks/jobstatus/README.md#getgraphqlqueryjobstatus) - Get the status of a previously submitted GraphQL query job
 * [getJobStatus](docs/sdks/jobstatus/README.md#getjobstatus) - Get the status of a previously submitted job
 
 ### [restRequest()](docs/sdks/restrequest/README.md)

@@ -8,7 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
-import com.thetradedesk.workflows.operations.SubmitRestRequestOperation;
+import com.thetradedesk.workflows.operations.SubmitRestRequest;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
@@ -59,7 +59,7 @@ public class RESTRequest {
      */
     public SubmitRestRequestResponse submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequestOperation(sdkConfiguration, options);
+              = new SubmitRestRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
