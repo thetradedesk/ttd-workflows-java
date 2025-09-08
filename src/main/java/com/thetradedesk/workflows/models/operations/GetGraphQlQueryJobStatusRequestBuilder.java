@@ -6,7 +6,7 @@ package com.thetradedesk.workflows.models.operations;
 import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
-import com.thetradedesk.workflows.operations.GetGraphQlQueryJobStatusOperation;
+import com.thetradedesk.workflows.operations.GetGraphQlQueryJobStatus;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -56,7 +56,7 @@ public class GetGraphQlQueryJobStatusRequestBuilder {
             .build());
 
         RequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
-              = new GetGraphQlQueryJobStatusOperation(sdkConfiguration, options);
+              = new GetGraphQlQueryJobStatus.Sync(sdkConfiguration, options);
         GetGraphQlQueryJobStatusRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

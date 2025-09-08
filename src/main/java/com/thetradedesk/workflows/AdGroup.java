@@ -20,11 +20,11 @@ import com.thetradedesk.workflows.models.operations.UpdateAdGroupRequestBuilder;
 import com.thetradedesk.workflows.models.operations.UpdateAdGroupResponse;
 import com.thetradedesk.workflows.models.operations.UpdateAdGroupsJobRequestBuilder;
 import com.thetradedesk.workflows.models.operations.UpdateAdGroupsJobResponse;
-import com.thetradedesk.workflows.operations.ArchiveAdGroupsOperation;
-import com.thetradedesk.workflows.operations.CreateAdGroupOperation;
-import com.thetradedesk.workflows.operations.CreateAdGroupsJobOperation;
-import com.thetradedesk.workflows.operations.UpdateAdGroupOperation;
-import com.thetradedesk.workflows.operations.UpdateAdGroupsJobOperation;
+import com.thetradedesk.workflows.operations.ArchiveAdGroups;
+import com.thetradedesk.workflows.operations.CreateAdGroup;
+import com.thetradedesk.workflows.operations.CreateAdGroupsJob;
+import com.thetradedesk.workflows.operations.UpdateAdGroup;
+import com.thetradedesk.workflows.operations.UpdateAdGroupsJob;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
 import java.lang.Exception;
@@ -35,9 +35,20 @@ import java.util.Optional;
 
 public class AdGroup {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncAdGroup asyncSDK;
 
     AdGroup(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncAdGroup(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncAdGroup async() {
+        return asyncSDK;
     }
 
     /**
@@ -69,7 +80,7 @@ public class AdGroup {
      */
     public CreateAdGroupResponse createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
-              = new CreateAdGroupOperation(sdkConfiguration, options);
+              = new CreateAdGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -108,7 +119,7 @@ public class AdGroup {
      */
     public UpdateAdGroupResponse updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>, UpdateAdGroupResponse> operation
-              = new UpdateAdGroupOperation(sdkConfiguration, options);
+              = new UpdateAdGroup.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -156,7 +167,7 @@ public class AdGroup {
                 .requestBody(requestBody)
                 .build();
         RequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation
-              = new ArchiveAdGroupsOperation(sdkConfiguration, options);
+              = new ArchiveAdGroups.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -189,7 +200,7 @@ public class AdGroup {
      */
     public CreateAdGroupsJobResponse createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation>, CreateAdGroupsJobResponse> operation
-              = new CreateAdGroupsJobOperation(sdkConfiguration, options);
+              = new CreateAdGroupsJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -228,7 +239,7 @@ public class AdGroup {
      */
     public UpdateAdGroupsJobResponse updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>, UpdateAdGroupsJobResponse> operation
-              = new UpdateAdGroupsJobOperation(sdkConfiguration, options);
+              = new UpdateAdGroupsJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

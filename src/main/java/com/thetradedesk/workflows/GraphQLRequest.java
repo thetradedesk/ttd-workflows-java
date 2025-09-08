@@ -11,8 +11,8 @@ import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobRequest
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobResponse;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestResponse;
-import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJobOperation;
-import com.thetradedesk.workflows.operations.SubmitGraphQlRequestOperation;
+import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJob;
+import com.thetradedesk.workflows.operations.SubmitGraphQlRequest;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
@@ -20,9 +20,20 @@ import java.util.Optional;
 
 public class GraphQLRequest {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncGraphQLRequest asyncSDK;
 
     GraphQLRequest(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncGraphQLRequest(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncGraphQLRequest async() {
+        return asyncSDK;
     }
 
     /**
@@ -63,7 +74,7 @@ public class GraphQLRequest {
      */
     public SubmitGraphQlRequestResponse submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
-              = new SubmitGraphQlRequestOperation(sdkConfiguration, options);
+              = new SubmitGraphQlRequest.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -105,7 +116,7 @@ public class GraphQLRequest {
      */
     public SubmitGraphQlQueryJobResponse submitGraphQlQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
-              = new SubmitGraphQlQueryJobOperation(sdkConfiguration, options);
+              = new SubmitGraphQlQueryJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

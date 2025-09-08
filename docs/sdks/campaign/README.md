@@ -688,7 +688,7 @@ public class Application {
                 .request(req)
                 .call();
 
-        if (res.standardJobSubmitResponse().isPresent()) {
+        if (res.campaignPayload().isPresent()) {
             // handle response
         }
     }

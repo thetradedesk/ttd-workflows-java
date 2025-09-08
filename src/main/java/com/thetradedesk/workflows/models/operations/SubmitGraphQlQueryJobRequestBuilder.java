@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.GraphQlQueryJobInput;
-import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJobOperation;
+import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJob;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -54,7 +54,7 @@ public class SubmitGraphQlQueryJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
-              = new SubmitGraphQlQueryJobOperation(sdkConfiguration, options);
+              = new SubmitGraphQlQueryJob.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

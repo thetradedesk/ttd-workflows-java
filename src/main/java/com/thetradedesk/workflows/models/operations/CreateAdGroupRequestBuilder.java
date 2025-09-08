@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.AdGroupCreateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.operations.CreateAdGroupOperation;
+import com.thetradedesk.workflows.operations.CreateAdGroup;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -54,7 +54,7 @@ public class CreateAdGroupRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
-              = new CreateAdGroupOperation(sdkConfiguration, options);
+              = new CreateAdGroup.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

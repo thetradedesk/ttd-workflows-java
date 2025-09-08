@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: 7564537739ae19537728651348d3ffd7
+  docChecksum: 5d0e6fac2cb8a3eed75c9fcbad135bcb
   docVersion: v1
-  speakeasyVersion: 1.592.1
-  generationVersion: 2.667.0
-  releaseVersion: 0.9.4
-  configChecksum: 548ecea204d392c845bf705f062a1cbf
+  speakeasyVersion: 1.611.1
+  generationVersion: 2.694.1
+  releaseVersion: 0.10.0
+  configChecksum: 2e0431fa4479033041aad85a467cf841
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   published: true
 features:
@@ -14,7 +14,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.45.2
+    core: 3.47.1
     flattening: 2.81.1
     globalSecurity: 2.83.0
     globalSecurityCallbacks: 0.1.0
@@ -142,6 +142,7 @@ generatedFiles:
   - docs/sdks/jobstatus/README.md
   - docs/sdks/restrequest/README.md
   - docs/sdks/workflows/README.md
+  - docs/utils/Blob.md
   - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
@@ -149,6 +150,13 @@ generatedFiles:
   - gradlew.bat
   - settings.gradle
   - src/main/java/com/thetradedesk/workflows/AdGroup.java
+  - src/main/java/com/thetradedesk/workflows/AsyncAdGroup.java
+  - src/main/java/com/thetradedesk/workflows/AsyncCampaign.java
+  - src/main/java/com/thetradedesk/workflows/AsyncDmp.java
+  - src/main/java/com/thetradedesk/workflows/AsyncGraphQLRequest.java
+  - src/main/java/com/thetradedesk/workflows/AsyncJobStatus.java
+  - src/main/java/com/thetradedesk/workflows/AsyncRESTRequest.java
+  - src/main/java/com/thetradedesk/workflows/AsyncWorkflows.java
   - src/main/java/com/thetradedesk/workflows/Campaign.java
   - src/main/java/com/thetradedesk/workflows/Dmp.java
   - src/main/java/com/thetradedesk/workflows/GraphQLRequest.java
@@ -242,6 +250,26 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/errors/APIException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/AuthException.java
   - src/main/java/com/thetradedesk/workflows/models/errors/ProblemDetailsException.java
+  - src/main/java/com/thetradedesk/workflows/models/errors/UncheckedAPIException.java
+  - src/main/java/com/thetradedesk/workflows/models/errors/async/ProblemDetailsException.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/ArchiveAdGroupsRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/ArchiveCampaignsRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/CreateAdGroupRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/CreateAdGroupsJobRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/CreateCampaignRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/CreateCampaignsJobRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/GetCampaignVersionRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/GetFirstPartyDataJobRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/GetGraphQlQueryJobStatusRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/GetJobStatusRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/GetThirdPartyDataJobRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/SubmitGraphQlQueryJobRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/SubmitGraphQlRequestRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/SubmitRestRequestRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateAdGroupRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateAdGroupsJobRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateCampaignRequestBuilder.java
+  - src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateCampaignsJobRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/ArchiveAdGroupsRequest.java
   - src/main/java/com/thetradedesk/workflows/models/operations/ArchiveAdGroupsRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/ArchiveAdGroupsResponse.java
@@ -283,35 +311,58 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/models/operations/UpdateCampaignResponse.java
   - src/main/java/com/thetradedesk/workflows/models/operations/UpdateCampaignsJobRequestBuilder.java
   - src/main/java/com/thetradedesk/workflows/models/operations/UpdateCampaignsJobResponse.java
-  - src/main/java/com/thetradedesk/workflows/operations/ArchiveAdGroupsOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/ArchiveCampaignsOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/CreateAdGroupOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/CreateAdGroupsJobOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/CreateCampaignOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/CreateCampaignsJobOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/GetCampaignVersionOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/GetFirstPartyDataJobOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/GetGraphQlQueryJobStatusOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/GetJobStatusOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/GetThirdPartyDataJobOperation.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/ArchiveAdGroupsResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/ArchiveCampaignsResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/CreateAdGroupResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/CreateAdGroupsJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/CreateCampaignResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/CreateCampaignsJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/GetCampaignVersionResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/GetFirstPartyDataJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/GetGraphQlQueryJobStatusResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/GetJobStatusResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/GetThirdPartyDataJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitGraphQlQueryJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitGraphQlRequestResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitRestRequestResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateAdGroupResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateAdGroupsJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateCampaignResponse.java
+  - src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateCampaignsJobResponse.java
+  - src/main/java/com/thetradedesk/workflows/operations/ArchiveAdGroups.java
+  - src/main/java/com/thetradedesk/workflows/operations/ArchiveCampaigns.java
+  - src/main/java/com/thetradedesk/workflows/operations/CreateAdGroup.java
+  - src/main/java/com/thetradedesk/workflows/operations/CreateAdGroupsJob.java
+  - src/main/java/com/thetradedesk/workflows/operations/CreateCampaign.java
+  - src/main/java/com/thetradedesk/workflows/operations/CreateCampaignsJob.java
+  - src/main/java/com/thetradedesk/workflows/operations/GetCampaignVersion.java
+  - src/main/java/com/thetradedesk/workflows/operations/GetFirstPartyDataJob.java
+  - src/main/java/com/thetradedesk/workflows/operations/GetGraphQlQueryJobStatus.java
+  - src/main/java/com/thetradedesk/workflows/operations/GetJobStatus.java
+  - src/main/java/com/thetradedesk/workflows/operations/GetThirdPartyDataJob.java
   - src/main/java/com/thetradedesk/workflows/operations/Operations.java
-  - src/main/java/com/thetradedesk/workflows/operations/SubmitGraphQlQueryJobOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/SubmitGraphQlRequestOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/SubmitRestRequestOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/UpdateAdGroupOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/UpdateAdGroupsJobOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/UpdateCampaignOperation.java
-  - src/main/java/com/thetradedesk/workflows/operations/UpdateCampaignsJobOperation.java
+  - src/main/java/com/thetradedesk/workflows/operations/SubmitGraphQlQueryJob.java
+  - src/main/java/com/thetradedesk/workflows/operations/SubmitGraphQlRequest.java
+  - src/main/java/com/thetradedesk/workflows/operations/SubmitRestRequest.java
+  - src/main/java/com/thetradedesk/workflows/operations/UpdateAdGroup.java
+  - src/main/java/com/thetradedesk/workflows/operations/UpdateAdGroupsJob.java
+  - src/main/java/com/thetradedesk/workflows/operations/UpdateCampaign.java
+  - src/main/java/com/thetradedesk/workflows/operations/UpdateCampaignsJob.java
+  - src/main/java/com/thetradedesk/workflows/utils/AsyncHook.java
+  - src/main/java/com/thetradedesk/workflows/utils/AsyncHooks.java
+  - src/main/java/com/thetradedesk/workflows/utils/AsyncResponse.java
+  - src/main/java/com/thetradedesk/workflows/utils/AsyncRetries.java
+  - src/main/java/com/thetradedesk/workflows/utils/AsyncRetryableException.java
   - src/main/java/com/thetradedesk/workflows/utils/BackoffStrategy.java
   - src/main/java/com/thetradedesk/workflows/utils/BigDecimalString.java
   - src/main/java/com/thetradedesk/workflows/utils/BigIntegerString.java
+  - src/main/java/com/thetradedesk/workflows/utils/Blob.java
+  - src/main/java/com/thetradedesk/workflows/utils/BlockingParser.java
   - src/main/java/com/thetradedesk/workflows/utils/Constants.java
   - src/main/java/com/thetradedesk/workflows/utils/CopiableInputStream.java
   - src/main/java/com/thetradedesk/workflows/utils/Deserializers.java
   - src/main/java/com/thetradedesk/workflows/utils/EventStream.java
-  - src/main/java/com/thetradedesk/workflows/utils/EventStreamLineReader.java
   - src/main/java/com/thetradedesk/workflows/utils/EventStreamMessage.java
-  - src/main/java/com/thetradedesk/workflows/utils/EventStreamReader.java
   - src/main/java/com/thetradedesk/workflows/utils/Exceptions.java
   - src/main/java/com/thetradedesk/workflows/utils/FormMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/Globals.java
@@ -321,6 +372,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/utils/HeaderMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/Helpers.java
   - src/main/java/com/thetradedesk/workflows/utils/Hook.java
+  - src/main/java/com/thetradedesk/workflows/utils/HookAdapters.java
   - src/main/java/com/thetradedesk/workflows/utils/Hooks.java
   - src/main/java/com/thetradedesk/workflows/utils/JSON.java
   - src/main/java/com/thetradedesk/workflows/utils/LazySingletonValue.java
@@ -328,6 +380,7 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/utils/Multipart.java
   - src/main/java/com/thetradedesk/workflows/utils/MultipartFormMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/NameValue.java
+  - src/main/java/com/thetradedesk/workflows/utils/NonRetryableException.java
   - src/main/java/com/thetradedesk/workflows/utils/OneOfDeserializer.java
   - src/main/java/com/thetradedesk/workflows/utils/Options.java
   - src/main/java/com/thetradedesk/workflows/utils/PathParamsMetadata.java
@@ -336,21 +389,27 @@ generatedFiles:
   - src/main/java/com/thetradedesk/workflows/utils/QueryParameters.java
   - src/main/java/com/thetradedesk/workflows/utils/QueryParamsMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/RecordingClient.java
+  - src/main/java/com/thetradedesk/workflows/utils/Reflections.java
   - src/main/java/com/thetradedesk/workflows/utils/RequestBody.java
   - src/main/java/com/thetradedesk/workflows/utils/RequestMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/Response.java
+  - src/main/java/com/thetradedesk/workflows/utils/ResponseWithBody.java
   - src/main/java/com/thetradedesk/workflows/utils/Retries.java
   - src/main/java/com/thetradedesk/workflows/utils/RetryConfig.java
+  - src/main/java/com/thetradedesk/workflows/utils/RetryableException.java
   - src/main/java/com/thetradedesk/workflows/utils/Security.java
   - src/main/java/com/thetradedesk/workflows/utils/SecurityMetadata.java
   - src/main/java/com/thetradedesk/workflows/utils/SerializedBody.java
   - src/main/java/com/thetradedesk/workflows/utils/SessionManager.java
   - src/main/java/com/thetradedesk/workflows/utils/SpeakeasyHTTPClient.java
   - src/main/java/com/thetradedesk/workflows/utils/SpeakeasyMetadata.java
+  - src/main/java/com/thetradedesk/workflows/utils/StreamingParser.java
   - src/main/java/com/thetradedesk/workflows/utils/TypedObject.java
   - src/main/java/com/thetradedesk/workflows/utils/Types.java
   - src/main/java/com/thetradedesk/workflows/utils/Utf8UrlEncoder.java
   - src/main/java/com/thetradedesk/workflows/utils/Utils.java
+  - src/main/java/com/thetradedesk/workflows/utils/reactive/EventStream.java
+  - src/main/java/com/thetradedesk/workflows/utils/reactive/ReactiveUtils.java
 examples:
   post_/adgroup:
     speakeasy-default-post-/adgroup:
@@ -648,6 +707,8 @@ examples:
           application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 960101, "description": "commandeer following afore ghost schematise lest understated brr happily lined", "startDate": "2025-05-13T19:59:29.421Z", "endDate": "2025-09-17T08:16:44.433Z", "timeZone": "Africa/Lome", "customCPAClickWeight": 1725.54, "customCPAViewthroughWeight": 418.34, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 3266.9, "primaryChannel": "Display", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 748798, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2024-03-12T14:53:08.741Z", "endDateExclusiveUTC": "2024-07-12T11:11:36.420Z", "budgetInAdvertiserCurrency": 6585.86, "budgetInImpressions": 83962, "dailyTargetInAdvertiserCurrency": 2584.64, "dailyTargetInImpressions": 910113}]}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": false, "description": "hence questioningly punctual austere beard around circumnavigate behind aboard", "programmaticGuaranteedPrivateContractId": null, "channel": "NativeVideo", "funnelLocation": "Consideration", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4437.6, "budgetInImpressions": 663120, "dailyTargetInAdvertiserCurrency": 3765.21, "dailyTargetInImpressions": 111869}, "baseBidCPMInAdvertiserCurrency": 9802.01, "maxBidCPMInAdvertiserCurrency": 1646.69, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": false, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [502213, 470177, 420897], "recencyExclusionWindowInMinutes": 4504, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 6741.01, "ctrInPercent": 982.47, "nielsenOTPInPercent": 7021.23, "cpaInAdvertiserCurrency": 7395.27, "returnOnAdSpendPercent": 744.23, "vcrInPercent": 3686.93, "viewabilityInPercent": 3897.27, "vcpmInAdvertiserCurrency": 4522.49, "cpcvInAdvertiserCurrency": 2016.93, "miaozhenOTPInPercent": 3516.78}, "creativeIds": ["<value 1>"], "associatedBidLists": [{"bidListId": null, "isEnabled": false, "isDefaultForDimension": true}], "flights": null, "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": null, "demographicMemberIds": [339950, 676551], "mobileDemographicMemberIds": []}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": false}, "dimensionalBiddingAutoOptimizationSettings": [["HasTVQualityIndexRange"], [], ["HasDoubleVerifyBotAvoidanceCategoryId"]], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "TwentyOne", "endAge": "SixtyFour", "countries": ["<value 1>", "<value 2>"]}}]}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 395871, "detail": "<value>", "instance": "<value>"}
+        "200":
+          application/json: {"campaign": {"id": "<id>", "name": null, "campaignGroupId": 960101, "description": "authorized equate pfft that bathrobe now monumental", "startDate": "2023-05-29T12:37:28.754Z", "endDate": "2023-01-31T12:57:12.401Z", "timeZone": "Asia/Thimphu", "customCPAClickWeight": 5357.4, "customCPAViewthroughWeight": 2741.6, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 6819.46, "primaryChannel": "NativeVideo", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 859221, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2023-03-22T18:44:52.808Z", "endDateExclusiveUTC": "2023-11-29T10:22:14.197Z", "budgetInAdvertiserCurrency": 296.01, "budgetInImpressions": 505888, "dailyTargetInAdvertiserCurrency": 1201.6, "dailyTargetInImpressions": 69520}]}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": true, "description": "chip schematise hydrant tabletop", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Audio", "funnelLocation": "None", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 2122.11, "budgetInImpressions": 14421, "dailyTargetInAdvertiserCurrency": 6819.33, "dailyTargetInImpressions": 236683}, "baseBidCPMInAdvertiserCurrency": 4043.98, "maxBidCPMInAdvertiserCurrency": 9074.14, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [695027, 701346, 714268], "recencyExclusionWindowInMinutes": 551180, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 5473.9, "ctrInPercent": 2841.41, "nielsenOTPInPercent": 9824.26, "cpaInAdvertiserCurrency": 9094.99, "returnOnAdSpendPercent": 878.85, "vcrInPercent": null, "viewabilityInPercent": 683.62, "vcpmInAdvertiserCurrency": 8782.74, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 7930.85}, "creativeIds": ["<value 1>"], "associatedBidLists": [], "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 6824.44, "budgetInImpressions": 712395, "dailyTargetInAdvertiserCurrency": 6233.72, "dailyTargetInImpressions": 843722, "campaignFlightId": 570475, "adGroupId": null}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": true, "populationId": 612763, "demographicMemberIds": [46343, 170673, 930570], "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasIntegralVideoViewabilityCategoryId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "Thirty", "endAge": "ThirtyNine", "countries": ["<value 1>", "<value 2>"]}}]}
   updateCampaign:
     speakeasy-default-update-campaign:
       requestBody:
@@ -675,6 +736,8 @@ examples:
           application/json: {"id": 833664}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 182997, "detail": "<value>", "instance": "<value>"}
+        "200":
+          application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 201033, "description": "saloon yesterday artistic doing esteemed that over apt partially", "startDate": "2023-02-25T02:45:30.882Z", "endDate": "2025-07-05T10:58:57.755Z", "timeZone": "Asia/Barnaul", "customCPAClickWeight": 7722.13, "customCPAViewthroughWeight": 1971.14, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 6514.48, "primaryChannel": "NativeVideo", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 434209, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2025-06-05T22:25:11.463Z", "endDateExclusiveUTC": "2023-01-11T11:01:46.801Z", "budgetInAdvertiserCurrency": 81.58, "budgetInImpressions": 678490, "dailyTargetInAdvertiserCurrency": 2260.69, "dailyTargetInImpressions": 945903}]}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": false, "description": "unabashedly analyse gladly convalesce ascertain", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "NativeDisplay", "funnelLocation": "Conversion", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 8509.65, "budgetInImpressions": 559602, "dailyTargetInAdvertiserCurrency": 6000.32, "dailyTargetInImpressions": 480090}, "baseBidCPMInAdvertiserCurrency": 7022.03, "maxBidCPMInAdvertiserCurrency": 3492.85, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": null, "recencyExclusionWindowInMinutes": 641872, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 8789.29, "ctrInPercent": 6097.83, "nielsenOTPInPercent": 97.94, "cpaInAdvertiserCurrency": 4920.96, "returnOnAdSpendPercent": 6036.6, "vcrInPercent": 7367.66, "viewabilityInPercent": 5682.26, "vcpmInAdvertiserCurrency": 2158.66, "cpcvInAdvertiserCurrency": 2909.06, "miaozhenOTPInPercent": null}, "creativeIds": ["<value 1>", "<value 2>", "<value 3>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 9067.5, "budgetInImpressions": 116224, "dailyTargetInAdvertiserCurrency": 5091.83, "dailyTargetInImpressions": 932776, "campaignFlightId": 942771, "adGroupId": "<id>"}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 784781, "demographicMemberIds": [], "mobileDemographicMemberIds": [138240, 326531]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasSellerId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Male", "startAge": "SixtyFive", "endAge": "Twenty", "countries": ["<value 1>", "<value 2>", "<value 3>"]}}]}
   archiveCampaigns:
     speakeasy-default-archive-campaigns:
       parameters:
@@ -766,3 +829,7 @@ examples:
           application/json: {"type": "<value>", "title": "<value>", "status": null, "detail": "<value>", "instance": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Java SDK Changes Detected:
+  * `workflows.campaign.create()`:  `response.status[200]` **Added** **Breaking** :warning:
+  * `workflows.campaign.updateCampaignsJob()`:  `response.status[200]` **Added** **Breaking** :warning:

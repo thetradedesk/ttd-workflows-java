@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
-import com.thetradedesk.workflows.operations.SubmitRestRequestOperation;
+import com.thetradedesk.workflows.operations.SubmitRestRequest;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -54,7 +54,7 @@ public class SubmitRestRequestRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequestOperation(sdkConfiguration, options);
+              = new SubmitRestRequest.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }
