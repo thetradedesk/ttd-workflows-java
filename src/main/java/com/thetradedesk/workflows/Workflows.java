@@ -116,6 +116,7 @@ public class Workflows {
     }
 
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncWorkflows asyncSDK;
 
     /**
      * The Builder class allows the configuration of a new instance of the SDK.
@@ -281,5 +282,16 @@ public class Workflows {
                         this.sdkConfiguration.client()));
         this.sdkConfiguration.setServerUrl(data.baseUrl());
         this.sdkConfiguration.setClient(data.client());
+        this.asyncSDK = new AsyncWorkflows(this, sdkConfiguration);
     }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncWorkflows async() {
+        return asyncSDK;
+    }
+
 }

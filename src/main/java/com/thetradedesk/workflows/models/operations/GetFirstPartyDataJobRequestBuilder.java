@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.FirstPartyDataInput;
-import com.thetradedesk.workflows.operations.GetFirstPartyDataJobOperation;
+import com.thetradedesk.workflows.operations.GetFirstPartyDataJob;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -54,7 +54,7 @@ public class GetFirstPartyDataJobRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
-              = new GetFirstPartyDataJobOperation(sdkConfiguration, options);
+              = new GetFirstPartyDataJob.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

@@ -5,6 +5,7 @@ package com.thetradedesk.workflows.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thetradedesk.workflows.models.components.CampaignPayload;
 import com.thetradedesk.workflows.models.components.StandardJobSubmitResponse;
 import com.thetradedesk.workflows.utils.Response;
 import com.thetradedesk.workflows.utils.Utils;
@@ -38,20 +39,28 @@ public class UpdateCampaignsJobResponse implements Response {
      */
     private Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse;
 
+    /**
+     * OK
+     */
+    private Optional<? extends CampaignPayload> campaignPayload;
+
     @JsonCreator
     public UpdateCampaignsJobResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse) {
+            Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse,
+            Optional<? extends CampaignPayload> campaignPayload) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
         Utils.checkNotNull(standardJobSubmitResponse, "standardJobSubmitResponse");
+        Utils.checkNotNull(campaignPayload, "campaignPayload");
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
         this.standardJobSubmitResponse = standardJobSubmitResponse;
+        this.campaignPayload = campaignPayload;
     }
     
     public UpdateCampaignsJobResponse(
@@ -59,7 +68,7 @@ public class UpdateCampaignsJobResponse implements Response {
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
         this(contentType, statusCode, rawResponse,
-            Optional.empty());
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -93,6 +102,15 @@ public class UpdateCampaignsJobResponse implements Response {
     @JsonIgnore
     public Optional<StandardJobSubmitResponse> standardJobSubmitResponse() {
         return (Optional<StandardJobSubmitResponse>) standardJobSubmitResponse;
+    }
+
+    /**
+     * OK
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CampaignPayload> campaignPayload() {
+        return (Optional<CampaignPayload>) campaignPayload;
     }
 
     public static Builder builder() {
@@ -146,6 +164,25 @@ public class UpdateCampaignsJobResponse implements Response {
         return this;
     }
 
+    /**
+     * OK
+     */
+    public UpdateCampaignsJobResponse withCampaignPayload(CampaignPayload campaignPayload) {
+        Utils.checkNotNull(campaignPayload, "campaignPayload");
+        this.campaignPayload = Optional.ofNullable(campaignPayload);
+        return this;
+    }
+
+
+    /**
+     * OK
+     */
+    public UpdateCampaignsJobResponse withCampaignPayload(Optional<? extends CampaignPayload> campaignPayload) {
+        Utils.checkNotNull(campaignPayload, "campaignPayload");
+        this.campaignPayload = campaignPayload;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -159,14 +196,15 @@ public class UpdateCampaignsJobResponse implements Response {
             Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
             Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
             Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse) &&
-            Utils.enhancedDeepEquals(this.standardJobSubmitResponse, other.standardJobSubmitResponse);
+            Utils.enhancedDeepEquals(this.standardJobSubmitResponse, other.standardJobSubmitResponse) &&
+            Utils.enhancedDeepEquals(this.campaignPayload, other.campaignPayload);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             contentType, statusCode, rawResponse,
-            standardJobSubmitResponse);
+            standardJobSubmitResponse, campaignPayload);
     }
     
     @Override
@@ -175,7 +213,8 @@ public class UpdateCampaignsJobResponse implements Response {
                 "contentType", contentType,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse,
-                "standardJobSubmitResponse", standardJobSubmitResponse);
+                "standardJobSubmitResponse", standardJobSubmitResponse,
+                "campaignPayload", campaignPayload);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -188,6 +227,8 @@ public class UpdateCampaignsJobResponse implements Response {
         private HttpResponse<InputStream> rawResponse;
 
         private Optional<? extends StandardJobSubmitResponse> standardJobSubmitResponse = Optional.empty();
+
+        private Optional<? extends CampaignPayload> campaignPayload = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -242,11 +283,30 @@ public class UpdateCampaignsJobResponse implements Response {
             return this;
         }
 
+
+        /**
+         * OK
+         */
+        public Builder campaignPayload(CampaignPayload campaignPayload) {
+            Utils.checkNotNull(campaignPayload, "campaignPayload");
+            this.campaignPayload = Optional.ofNullable(campaignPayload);
+            return this;
+        }
+
+        /**
+         * OK
+         */
+        public Builder campaignPayload(Optional<? extends CampaignPayload> campaignPayload) {
+            Utils.checkNotNull(campaignPayload, "campaignPayload");
+            this.campaignPayload = campaignPayload;
+            return this;
+        }
+
         public UpdateCampaignsJobResponse build() {
 
             return new UpdateCampaignsJobResponse(
                 contentType, statusCode, rawResponse,
-                standardJobSubmitResponse);
+                standardJobSubmitResponse, campaignPayload);
         }
 
     }

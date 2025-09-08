@@ -6,7 +6,7 @@ package com.thetradedesk.workflows.models.operations;
 import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
-import com.thetradedesk.workflows.operations.GetCampaignVersionOperation;
+import com.thetradedesk.workflows.operations.GetCampaignVersion;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -56,7 +56,7 @@ public class GetCampaignVersionRequestBuilder {
             .build());
 
         RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
-              = new GetCampaignVersionOperation(sdkConfiguration, options);
+              = new GetCampaignVersion.Sync(sdkConfiguration, options);
         GetCampaignVersionRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

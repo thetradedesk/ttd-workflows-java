@@ -11,8 +11,8 @@ import com.thetradedesk.workflows.models.operations.GetFirstPartyDataJobRequestB
 import com.thetradedesk.workflows.models.operations.GetFirstPartyDataJobResponse;
 import com.thetradedesk.workflows.models.operations.GetThirdPartyDataJobRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetThirdPartyDataJobResponse;
-import com.thetradedesk.workflows.operations.GetFirstPartyDataJobOperation;
-import com.thetradedesk.workflows.operations.GetThirdPartyDataJobOperation;
+import com.thetradedesk.workflows.operations.GetFirstPartyDataJob;
+import com.thetradedesk.workflows.operations.GetThirdPartyDataJob;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
@@ -20,9 +20,20 @@ import java.util.Optional;
 
 public class Dmp {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncDmp asyncSDK;
 
     Dmp(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncDmp(this, sdkConfiguration);
+    }
+
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncDmp async() {
+        return asyncSDK;
     }
 
     /**
@@ -63,7 +74,7 @@ public class Dmp {
      */
     public GetFirstPartyDataJobResponse getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
-              = new GetFirstPartyDataJobOperation(sdkConfiguration, options);
+              = new GetFirstPartyDataJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -108,7 +119,7 @@ public class Dmp {
      */
     public GetThirdPartyDataJobResponse getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
-              = new GetThirdPartyDataJobOperation(sdkConfiguration, options);
+              = new GetThirdPartyDataJob.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

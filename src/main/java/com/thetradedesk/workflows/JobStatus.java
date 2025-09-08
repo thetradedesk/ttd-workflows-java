@@ -11,8 +11,8 @@ import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusResp
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequest;
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetJobStatusResponse;
-import com.thetradedesk.workflows.operations.GetGraphQlQueryJobStatusOperation;
-import com.thetradedesk.workflows.operations.GetJobStatusOperation;
+import com.thetradedesk.workflows.operations.GetGraphQlQueryJobStatus;
+import com.thetradedesk.workflows.operations.GetJobStatus;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -21,13 +21,24 @@ import java.util.Optional;
 
 public class JobStatus {
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncJobStatus asyncSDK;
 
     JobStatus(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncJobStatus(this, sdkConfiguration);
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job.
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncJobStatus async() {
+        return asyncSDK;
+    }
+
+    /**
+     * Get the status of a previously submitted GraphQL query job
      * 
      * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
@@ -39,7 +50,7 @@ public class JobStatus {
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job.
+     * Get the status of a previously submitted GraphQL query job
      * 
      * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
@@ -53,7 +64,7 @@ public class JobStatus {
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job.
+     * Get the status of a previously submitted GraphQL query job
      * 
      * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
@@ -70,7 +81,7 @@ public class JobStatus {
                 .id(id)
                 .build();
         RequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
-              = new GetGraphQlQueryJobStatusOperation(sdkConfiguration, options);
+              = new GetGraphQlQueryJobStatus.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -124,7 +135,7 @@ public class JobStatus {
                 .id(id)
                 .build();
         RequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
-              = new GetJobStatusOperation(sdkConfiguration, options);
+              = new GetJobStatus.Sync(sdkConfiguration, options);
         return operation.handleResponse(operation.doRequest(request));
     }
 

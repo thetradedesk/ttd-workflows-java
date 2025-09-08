@@ -7,7 +7,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.CampaignCreateWorkflowInputWithValidation;
-import com.thetradedesk.workflows.operations.CreateCampaignOperation;
+import com.thetradedesk.workflows.operations.CreateCampaign;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -54,7 +54,7 @@ public class CreateCampaignRequestBuilder {
             .build());
 
         RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
-              = new CreateCampaignOperation(sdkConfiguration, options);
+              = new CreateCampaign.Sync(sdkConfiguration, options);
 
         return operation.handleResponse(operation.doRequest(request));
     }

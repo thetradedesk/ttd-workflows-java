@@ -21,18 +21,19 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.9.4
+  version: 0.10.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
+  asyncMode: enabled
   baseErrorName: WorkflowsError
   clientServerStatusCodesAsErrors: true
   companyEmail: dl-platform-sdk@thetradedesk.com
   companyName: The Trade Desk
   companyURL: https://www.thetradedesk.com/
   defaultErrorName: APIException
-  enableAsync: false
   enableCustomCodeRegions: false
+  enableStreamingUploads: false
   envVarPrefix: WORKFLOWS
   flattenGlobalSecurity: true
   githubURL: github.com/thetradedesk/ttd-workflows-java
