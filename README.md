@@ -358,6 +358,98 @@ public class Main {
 
 ([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlqueryjob/{id}))
 
+### Example: Submit REST request (GET)
+
+```java
+package hello.world;
+
+import com.thetradedesk.workflows.Workflows;
+import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.RestApiMethodType;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
+
+public class Main {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
+                .build();
+
+        CallRestApiWorkflowInput req = CallRestApiWorkflowInput.builder()
+                .methodType(RestApiMethodType.GET)
+                .endpoint("campaign/<id>")
+                .build();
+
+        SubmitRestRequestResponse res = sdk.restRequest().submitRestRequest()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            System.out.println(res.object());
+        }
+    }
+}
+```
+
+([Reference](https://ttd-workflows.apidocumentation.com/reference#tag/rest-request/post/restrequest))
+
+### Example: Submit REST request (PUT/POST)
+
+NOTE: PUT/POST syntax is equivalent to GET, with the additional `.dataBody` method called.
+
+```java
+package hello.world;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thetradedesk.workflows.Workflows;
+import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
+import com.thetradedesk.workflows.models.components.RestApiMethodType;
+import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
+import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+
+    public static void main(String[] args) throws ProblemDetailsException, Exception {
+
+        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS"));
+
+        Map<String, Object> dataBodyMap = new HashMap<>();
+        dataBodyMap.put("adGroupId", "<id>");
+        dataBodyMap.put("description", "updated by Java SDK: " + now);
+
+        ObjectMapper mapper = new ObjectMapper();
+        String dataBodyJson = mapper.writeValueAsString(dataBodyMap);
+
+        Workflows sdk = Workflows.builder()
+                .server(Workflows.AvailableServers.SANDBOX)
+                .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
+                .build();
+
+        CallRestApiWorkflowInput req = CallRestApiWorkflowInput.builder()
+                .methodType(RestApiMethodType.PUT)
+                .endpoint("adgroup")
+                .dataBody(dataBodyJson)
+                .build();
+
+        SubmitRestRequestResponse res = sdk.restRequest().submitRestRequest()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            System.out.println(res.object());
+        }
+    }
+}
+```
+
 <!-- No SDK Example Usage [usage] -->
 
 <!-- Start Asynchronous Support [async-support] -->
