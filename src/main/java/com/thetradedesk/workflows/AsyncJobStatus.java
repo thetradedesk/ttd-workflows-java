@@ -5,14 +5,15 @@ package com.thetradedesk.workflows;
 
 import static com.thetradedesk.workflows.operations.Operations.AsyncRequestOperation;
 
-import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusRequest;
+import com.thetradedesk.workflows.models.operations.GetGraphQlBulkJobStatusRequest;
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequest;
-import com.thetradedesk.workflows.models.operations.async.GetGraphQlQueryJobStatusRequestBuilder;
-import com.thetradedesk.workflows.models.operations.async.GetGraphQlQueryJobStatusResponse;
+import com.thetradedesk.workflows.models.operations.async.GetGraphQlBulkJobStatusRequestBuilder;
+import com.thetradedesk.workflows.models.operations.async.GetGraphQlBulkJobStatusResponse;
 import com.thetradedesk.workflows.models.operations.async.GetJobStatusRequestBuilder;
 import com.thetradedesk.workflows.models.operations.async.GetJobStatusResponse;
-import com.thetradedesk.workflows.operations.GetGraphQlQueryJobStatus;
+import com.thetradedesk.workflows.operations.GetGraphQlBulkJobStatus;
 import com.thetradedesk.workflows.operations.GetJobStatus;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.String;
 import java.util.Optional;
@@ -20,6 +21,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncJobStatus {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final JobStatus syncSDK;
 
@@ -39,48 +41,53 @@ public class AsyncJobStatus {
 
 
     /**
-     * Get the status of a previously submitted GraphQL query job
+     * Get the status of a previously submitted GraphQL bulk job
      * 
-     * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+     * <p>Use this operation to get a previously submitted GraphQL bulk job's status and completion
+     * percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
      * 
      * @return The async call builder
      */
-    public GetGraphQlQueryJobStatusRequestBuilder getGraphQlQueryJobStatus() {
-        return new GetGraphQlQueryJobStatusRequestBuilder(sdkConfiguration);
+    public GetGraphQlBulkJobStatusRequestBuilder getGraphQlBulkJobStatus() {
+        return new GetGraphQlBulkJobStatusRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job
+     * Get the status of a previously submitted GraphQL bulk job
      * 
-     * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+     * <p>Use this operation to get a previously submitted GraphQL bulk job's status and completion
+     * percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
      * 
      * @param id 
-     * @return CompletableFuture&lt;GetGraphQlQueryJobStatusResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetGraphQlBulkJobStatusResponse>} - The async response
      */
-    public CompletableFuture<GetGraphQlQueryJobStatusResponse> getGraphQlQueryJobStatus(String id) {
-        return getGraphQlQueryJobStatus(id, Optional.empty());
+    public CompletableFuture<GetGraphQlBulkJobStatusResponse> getGraphQlBulkJobStatus(String id) {
+        return getGraphQlBulkJobStatus(id, Optional.empty());
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job
+     * Get the status of a previously submitted GraphQL bulk job
      * 
-     * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+     * <p>Use this operation to get a previously submitted GraphQL bulk job's status and completion
+     * percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
      * 
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;GetGraphQlQueryJobStatusResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetGraphQlBulkJobStatusResponse>} - The async response
      */
-    public CompletableFuture<GetGraphQlQueryJobStatusResponse> getGraphQlQueryJobStatus(String id, Optional<Options> options) {
-        GetGraphQlQueryJobStatusRequest request =
-            GetGraphQlQueryJobStatusRequest
+    public CompletableFuture<GetGraphQlBulkJobStatusResponse> getGraphQlBulkJobStatus(String id, Optional<Options> options) {
+        GetGraphQlBulkJobStatusRequest request =
+            GetGraphQlBulkJobStatusRequest
                 .builder()
                 .id(id)
                 .build();
-        AsyncRequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
-              = new GetGraphQlQueryJobStatus.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+        AsyncRequestOperation<GetGraphQlBulkJobStatusRequest, GetGraphQlBulkJobStatusResponse> operation
+              = new GetGraphQlBulkJobStatus.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -109,7 +116,7 @@ public class AsyncJobStatus {
      * <p>Job results expire after 24 hours, at which point you will need to submit a new job.
      * 
      * @param id 
-     * @return CompletableFuture&lt;GetJobStatusResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetJobStatusResponse>} - The async response
      */
     public CompletableFuture<GetJobStatusResponse> getJobStatus(long id) {
         return getJobStatus(id, Optional.empty());
@@ -125,7 +132,7 @@ public class AsyncJobStatus {
      * 
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;GetJobStatusResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetJobStatusResponse>} - The async response
      */
     public CompletableFuture<GetJobStatusResponse> getJobStatus(long id, Optional<Options> options) {
         GetJobStatusRequest request =
@@ -134,7 +141,9 @@ public class AsyncJobStatus {
                 .id(id)
                 .build();
         AsyncRequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
-              = new GetJobStatus.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new GetJobStatus.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

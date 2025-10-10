@@ -8,3 +8,14 @@
  */
 
 rootProject.name = 'workflows'
+
+include 'workflows-spring-boot-autoconfigure'
+include 'workflows-spring-boot-starter'
+
+project(':workflows-spring-boot-autoconfigure').projectDir = file('spring/workflows-spring-boot-autoconfigure')
+project(':workflows-spring-boot-starter').projectDir = file('spring/workflows-spring-boot-starter')
+
+// Apply additional settings if the file exists
+if (file('settings-extra.gradle').exists()) {
+    apply from: 'settings-extra.gradle'
+}

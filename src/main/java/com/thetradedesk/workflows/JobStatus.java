@@ -5,14 +5,15 @@ package com.thetradedesk.workflows;
 
 import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
-import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusRequest;
-import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusRequestBuilder;
-import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusResponse;
+import com.thetradedesk.workflows.models.operations.GetGraphQlBulkJobStatusRequest;
+import com.thetradedesk.workflows.models.operations.GetGraphQlBulkJobStatusRequestBuilder;
+import com.thetradedesk.workflows.models.operations.GetGraphQlBulkJobStatusResponse;
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequest;
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequestBuilder;
 import com.thetradedesk.workflows.models.operations.GetJobStatusResponse;
-import com.thetradedesk.workflows.operations.GetGraphQlQueryJobStatus;
+import com.thetradedesk.workflows.operations.GetGraphQlBulkJobStatus;
 import com.thetradedesk.workflows.operations.GetJobStatus;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.lang.String;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 
 public class JobStatus {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncJobStatus asyncSDK;
 
@@ -38,35 +40,38 @@ public class JobStatus {
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job
+     * Get the status of a previously submitted GraphQL bulk job
      * 
-     * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+     * <p>Use this operation to get a previously submitted GraphQL bulk job's status and completion
+     * percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
      * 
      * @return The call builder
      */
-    public GetGraphQlQueryJobStatusRequestBuilder getGraphQlQueryJobStatus() {
-        return new GetGraphQlQueryJobStatusRequestBuilder(sdkConfiguration);
+    public GetGraphQlBulkJobStatusRequestBuilder getGraphQlBulkJobStatus() {
+        return new GetGraphQlBulkJobStatusRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job
+     * Get the status of a previously submitted GraphQL bulk job
      * 
-     * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+     * <p>Use this operation to get a previously submitted GraphQL bulk job's status and completion
+     * percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
      * 
      * @param id 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetGraphQlQueryJobStatusResponse getGraphQlQueryJobStatus(String id) throws Exception {
-        return getGraphQlQueryJobStatus(id, Optional.empty());
+    public GetGraphQlBulkJobStatusResponse getGraphQlBulkJobStatus(String id) throws Exception {
+        return getGraphQlBulkJobStatus(id, Optional.empty());
     }
 
     /**
-     * Get the status of a previously submitted GraphQL query job
+     * Get the status of a previously submitted GraphQL bulk job
      * 
-     * <p>Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+     * <p>Use this operation to get a previously submitted GraphQL bulk job's status and completion
+     * percentage.
      * Once a job is complete, this operation will return the URL from which to download the job results.
      * 
      * @param id 
@@ -74,14 +79,14 @@ public class JobStatus {
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public GetGraphQlQueryJobStatusResponse getGraphQlQueryJobStatus(String id, Optional<Options> options) throws Exception {
-        GetGraphQlQueryJobStatusRequest request =
-            GetGraphQlQueryJobStatusRequest
+    public GetGraphQlBulkJobStatusResponse getGraphQlBulkJobStatus(String id, Optional<Options> options) throws Exception {
+        GetGraphQlBulkJobStatusRequest request =
+            GetGraphQlBulkJobStatusRequest
                 .builder()
                 .id(id)
                 .build();
-        RequestOperation<GetGraphQlQueryJobStatusRequest, GetGraphQlQueryJobStatusResponse> operation
-              = new GetGraphQlQueryJobStatus.Sync(sdkConfiguration, options);
+        RequestOperation<GetGraphQlBulkJobStatusRequest, GetGraphQlBulkJobStatusResponse> operation
+              = new GetGraphQlBulkJobStatus.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -135,7 +140,7 @@ public class JobStatus {
                 .id(id)
                 .build();
         RequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
-              = new GetJobStatus.Sync(sdkConfiguration, options);
+              = new GetJobStatus.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

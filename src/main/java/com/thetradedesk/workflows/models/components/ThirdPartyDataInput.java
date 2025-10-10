@@ -29,31 +29,31 @@ public class ThirdPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *      id
-     *      name
-     *      providerId
-     *      providerElementId
-     *      description
-     *      buyable
-     *      fullPath
-     *      activeUniques {
-     *          householdCount
-     *          idsConnectedTvCount
-     *          idsInAppCount
-     *          idsWebCount
-     *          personsCount
-     *          thirdPartyDataOverlapCount
-     *          lastUpdated
-     *      }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * id
+     * name
+     * providerId
+     * providerElementId
+     * description
+     * buyable
+     * fullPath
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * thirdPartyDataOverlapCount
+     * lastUpdated
+     * }
+     * }
      * ```
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -93,31 +93,31 @@ public class ThirdPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *      id
-     *      name
-     *      providerId
-     *      providerElementId
-     *      description
-     *      buyable
-     *      fullPath
-     *      activeUniques {
-     *          householdCount
-     *          idsConnectedTvCount
-     *          idsInAppCount
-     *          idsWebCount
-     *          personsCount
-     *          thirdPartyDataOverlapCount
-     *          lastUpdated
-     *      }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * id
+     * name
+     * providerId
+     * providerElementId
+     * description
+     * buyable
+     * fullPath
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * thirdPartyDataOverlapCount
+     * lastUpdated
+     * }
+     * }
      * ```
      */
     @JsonIgnore
@@ -147,31 +147,31 @@ public class ThirdPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *      id
-     *      name
-     *      providerId
-     *      providerElementId
-     *      description
-     *      buyable
-     *      fullPath
-     *      activeUniques {
-     *          householdCount
-     *          idsConnectedTvCount
-     *          idsInAppCount
-     *          idsWebCount
-     *          personsCount
-     *          thirdPartyDataOverlapCount
-     *          lastUpdated
-     *      }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * id
+     * name
+     * providerId
+     * providerElementId
+     * description
+     * buyable
+     * fullPath
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * thirdPartyDataOverlapCount
+     * lastUpdated
+     * }
+     * }
      * ```
      */
     public ThirdPartyDataInput withQueryShape(String queryShape) {
@@ -182,31 +182,31 @@ public class ThirdPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *      id
-     *      name
-     *      providerId
-     *      providerElementId
-     *      description
-     *      buyable
-     *      fullPath
-     *      activeUniques {
-     *          householdCount
-     *          idsConnectedTvCount
-     *          idsInAppCount
-     *          idsWebCount
-     *          personsCount
-     *          thirdPartyDataOverlapCount
-     *          lastUpdated
-     *      }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * id
+     * name
+     * providerId
+     * providerElementId
+     * description
+     * buyable
+     * fullPath
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * thirdPartyDataOverlapCount
+     * lastUpdated
+     * }
+     * }
      * ```
      */
     public ThirdPartyDataInput withQueryShape(JsonNullable<String> queryShape) {
@@ -283,31 +283,31 @@ public class ThirdPartyDataInput {
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
-         *  This determines what the response will look like.
+         * This determines what the response will look like.
          * 
-         * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+         * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
          * 
-         * <p> If this is not provided the default query shape will be used:
+         * <p>If this is not provided the default query shape will be used:
          * 
-         * <p> ```graphql
-         *  nodes {
-         *      id
-         *      name
-         *      providerId
-         *      providerElementId
-         *      description
-         *      buyable
-         *      fullPath
-         *      activeUniques {
-         *          householdCount
-         *          idsConnectedTvCount
-         *          idsInAppCount
-         *          idsWebCount
-         *          personsCount
-         *          thirdPartyDataOverlapCount
-         *          lastUpdated
-         *      }
-         *  }
+         * <p>```graphql
+         * nodes {
+         * id
+         * name
+         * providerId
+         * providerElementId
+         * description
+         * buyable
+         * fullPath
+         * activeUniques {
+         * householdCount
+         * idsConnectedTvCount
+         * idsInAppCount
+         * idsWebCount
+         * personsCount
+         * thirdPartyDataOverlapCount
+         * lastUpdated
+         * }
+         * }
          * ```
          */
         public Builder queryShape(String queryShape) {
@@ -318,31 +318,31 @@ public class ThirdPartyDataInput {
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
-         *  This determines what the response will look like.
+         * This determines what the response will look like.
          * 
-         * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+         * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
          * 
-         * <p> If this is not provided the default query shape will be used:
+         * <p>If this is not provided the default query shape will be used:
          * 
-         * <p> ```graphql
-         *  nodes {
-         *      id
-         *      name
-         *      providerId
-         *      providerElementId
-         *      description
-         *      buyable
-         *      fullPath
-         *      activeUniques {
-         *          householdCount
-         *          idsConnectedTvCount
-         *          idsInAppCount
-         *          idsWebCount
-         *          personsCount
-         *          thirdPartyDataOverlapCount
-         *          lastUpdated
-         *      }
-         *  }
+         * <p>```graphql
+         * nodes {
+         * id
+         * name
+         * providerId
+         * providerElementId
+         * description
+         * buyable
+         * fullPath
+         * activeUniques {
+         * householdCount
+         * idsConnectedTvCount
+         * idsInAppCount
+         * idsWebCount
+         * personsCount
+         * thirdPartyDataOverlapCount
+         * lastUpdated
+         * }
+         * }
          * ```
          */
         public Builder queryShape(JsonNullable<String> queryShape) {

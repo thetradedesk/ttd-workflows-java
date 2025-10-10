@@ -35,19 +35,29 @@ public class GraphQLRequestInput {
     @JsonProperty("variables")
     private JsonNullable<? extends Map<String, Object>> variables;
 
+    /**
+     * Beta features to be enabled for this GraphQL request (passed as TTD-GQL-Beta header)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("betaFeatures")
+    private JsonNullable<String> betaFeatures;
+
     @JsonCreator
     public GraphQLRequestInput(
             @JsonProperty("request") String request,
-            @JsonProperty("variables") JsonNullable<? extends Map<String, Object>> variables) {
+            @JsonProperty("variables") JsonNullable<? extends Map<String, Object>> variables,
+            @JsonProperty("betaFeatures") JsonNullable<String> betaFeatures) {
         Utils.checkNotNull(request, "request");
         Utils.checkNotNull(variables, "variables");
+        Utils.checkNotNull(betaFeatures, "betaFeatures");
         this.request = request;
         this.variables = variables;
+        this.betaFeatures = betaFeatures;
     }
     
     public GraphQLRequestInput(
             String request) {
-        this(request, JsonNullable.undefined());
+        this(request, JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     /**
@@ -65,6 +75,14 @@ public class GraphQLRequestInput {
     @JsonIgnore
     public JsonNullable<Map<String, Object>> variables() {
         return (JsonNullable<Map<String, Object>>) variables;
+    }
+
+    /**
+     * Beta features to be enabled for this GraphQL request (passed as TTD-GQL-Beta header)
+     */
+    @JsonIgnore
+    public JsonNullable<String> betaFeatures() {
+        return betaFeatures;
     }
 
     public static Builder builder() {
@@ -99,6 +117,24 @@ public class GraphQLRequestInput {
         return this;
     }
 
+    /**
+     * Beta features to be enabled for this GraphQL request (passed as TTD-GQL-Beta header)
+     */
+    public GraphQLRequestInput withBetaFeatures(String betaFeatures) {
+        Utils.checkNotNull(betaFeatures, "betaFeatures");
+        this.betaFeatures = JsonNullable.of(betaFeatures);
+        return this;
+    }
+
+    /**
+     * Beta features to be enabled for this GraphQL request (passed as TTD-GQL-Beta header)
+     */
+    public GraphQLRequestInput withBetaFeatures(JsonNullable<String> betaFeatures) {
+        Utils.checkNotNull(betaFeatures, "betaFeatures");
+        this.betaFeatures = betaFeatures;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,20 +146,22 @@ public class GraphQLRequestInput {
         GraphQLRequestInput other = (GraphQLRequestInput) o;
         return 
             Utils.enhancedDeepEquals(this.request, other.request) &&
-            Utils.enhancedDeepEquals(this.variables, other.variables);
+            Utils.enhancedDeepEquals(this.variables, other.variables) &&
+            Utils.enhancedDeepEquals(this.betaFeatures, other.betaFeatures);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            request, variables);
+            request, variables, betaFeatures);
     }
     
     @Override
     public String toString() {
         return Utils.toString(GraphQLRequestInput.class,
                 "request", request,
-                "variables", variables);
+                "variables", variables,
+                "betaFeatures", betaFeatures);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -132,6 +170,8 @@ public class GraphQLRequestInput {
         private String request;
 
         private JsonNullable<? extends Map<String, Object>> variables = JsonNullable.undefined();
+
+        private JsonNullable<String> betaFeatures = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -166,10 +206,29 @@ public class GraphQLRequestInput {
             return this;
         }
 
+
+        /**
+         * Beta features to be enabled for this GraphQL request (passed as TTD-GQL-Beta header)
+         */
+        public Builder betaFeatures(String betaFeatures) {
+            Utils.checkNotNull(betaFeatures, "betaFeatures");
+            this.betaFeatures = JsonNullable.of(betaFeatures);
+            return this;
+        }
+
+        /**
+         * Beta features to be enabled for this GraphQL request (passed as TTD-GQL-Beta header)
+         */
+        public Builder betaFeatures(JsonNullable<String> betaFeatures) {
+            Utils.checkNotNull(betaFeatures, "betaFeatures");
+            this.betaFeatures = betaFeatures;
+            return this;
+        }
+
         public GraphQLRequestInput build() {
 
             return new GraphQLRequestInput(
-                request, variables);
+                request, variables, betaFeatures);
         }
 
     }

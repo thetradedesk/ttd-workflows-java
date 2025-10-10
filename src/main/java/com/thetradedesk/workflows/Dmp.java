@@ -13,12 +13,14 @@ import com.thetradedesk.workflows.models.operations.GetThirdPartyDataJobRequestB
 import com.thetradedesk.workflows.models.operations.GetThirdPartyDataJobResponse;
 import com.thetradedesk.workflows.operations.GetFirstPartyDataJob;
 import com.thetradedesk.workflows.operations.GetThirdPartyDataJob;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
 
 
 public class Dmp {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncDmp asyncSDK;
 
@@ -40,7 +42,8 @@ public class Dmp {
      * Submit a job for first-party data retrieval for an advertiser
      * 
      * <p>When a first-party data query is submitted, a job ID is returned.
-     * This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
      * 
      * @return The call builder
      */
@@ -52,7 +55,8 @@ public class Dmp {
      * Submit a job for first-party data retrieval for an advertiser
      * 
      * <p>When a first-party data query is submitted, a job ID is returned.
-     * This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -65,7 +69,8 @@ public class Dmp {
      * Submit a job for first-party data retrieval for an advertiser
      * 
      * <p>When a first-party data query is submitted, a job ID is returned.
-     * This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -74,7 +79,7 @@ public class Dmp {
      */
     public GetFirstPartyDataJobResponse getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
-              = new GetFirstPartyDataJob.Sync(sdkConfiguration, options);
+              = new GetFirstPartyDataJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -119,7 +124,7 @@ public class Dmp {
      */
     public GetThirdPartyDataJobResponse getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
-              = new GetThirdPartyDataJob.Sync(sdkConfiguration, options);
+              = new GetThirdPartyDataJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

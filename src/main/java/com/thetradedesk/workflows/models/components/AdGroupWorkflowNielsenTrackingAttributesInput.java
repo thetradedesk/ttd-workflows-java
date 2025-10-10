@@ -20,19 +20,19 @@ public class AdGroupWorkflowNielsenTrackingAttributesInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("enhancedReportingOption")
-    private Optional<? extends EnhancedNielsenReportingOptions> enhancedReportingOption;
+    private Optional<? extends EnhancedNielsenReportingOptionsInput> enhancedReportingOption;
 
 
     @JsonProperty("gender")
-    private TargetingGender gender;
+    private TargetingGenderInput gender;
 
 
     @JsonProperty("startAge")
-    private TargetingStartAge startAge;
+    private TargetingStartAgeInput startAge;
 
 
     @JsonProperty("endAge")
-    private TargetingEndAge endAge;
+    private TargetingEndAgeInput endAge;
 
 
     @JsonInclude(Include.ALWAYS)
@@ -41,10 +41,10 @@ public class AdGroupWorkflowNielsenTrackingAttributesInput {
 
     @JsonCreator
     public AdGroupWorkflowNielsenTrackingAttributesInput(
-            @JsonProperty("enhancedReportingOption") Optional<? extends EnhancedNielsenReportingOptions> enhancedReportingOption,
-            @JsonProperty("gender") TargetingGender gender,
-            @JsonProperty("startAge") TargetingStartAge startAge,
-            @JsonProperty("endAge") TargetingEndAge endAge,
+            @JsonProperty("enhancedReportingOption") Optional<? extends EnhancedNielsenReportingOptionsInput> enhancedReportingOption,
+            @JsonProperty("gender") TargetingGenderInput gender,
+            @JsonProperty("startAge") TargetingStartAgeInput startAge,
+            @JsonProperty("endAge") TargetingEndAgeInput endAge,
             @JsonProperty("countries") Optional<? extends List<String>> countries) {
         Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
         Utils.checkNotNull(gender, "gender");
@@ -59,31 +59,31 @@ public class AdGroupWorkflowNielsenTrackingAttributesInput {
     }
     
     public AdGroupWorkflowNielsenTrackingAttributesInput(
-            TargetingGender gender,
-            TargetingStartAge startAge,
-            TargetingEndAge endAge) {
+            TargetingGenderInput gender,
+            TargetingStartAgeInput startAge,
+            TargetingEndAgeInput endAge) {
         this(Optional.empty(), gender, startAge,
             endAge, Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<EnhancedNielsenReportingOptions> enhancedReportingOption() {
-        return (Optional<EnhancedNielsenReportingOptions>) enhancedReportingOption;
+    public Optional<EnhancedNielsenReportingOptionsInput> enhancedReportingOption() {
+        return (Optional<EnhancedNielsenReportingOptionsInput>) enhancedReportingOption;
     }
 
     @JsonIgnore
-    public TargetingGender gender() {
+    public TargetingGenderInput gender() {
         return gender;
     }
 
     @JsonIgnore
-    public TargetingStartAge startAge() {
+    public TargetingStartAgeInput startAge() {
         return startAge;
     }
 
     @JsonIgnore
-    public TargetingEndAge endAge() {
+    public TargetingEndAgeInput endAge() {
         return endAge;
     }
 
@@ -98,32 +98,32 @@ public class AdGroupWorkflowNielsenTrackingAttributesInput {
     }
 
 
-    public AdGroupWorkflowNielsenTrackingAttributesInput withEnhancedReportingOption(EnhancedNielsenReportingOptions enhancedReportingOption) {
+    public AdGroupWorkflowNielsenTrackingAttributesInput withEnhancedReportingOption(EnhancedNielsenReportingOptionsInput enhancedReportingOption) {
         Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
         this.enhancedReportingOption = Optional.ofNullable(enhancedReportingOption);
         return this;
     }
 
 
-    public AdGroupWorkflowNielsenTrackingAttributesInput withEnhancedReportingOption(Optional<? extends EnhancedNielsenReportingOptions> enhancedReportingOption) {
+    public AdGroupWorkflowNielsenTrackingAttributesInput withEnhancedReportingOption(Optional<? extends EnhancedNielsenReportingOptionsInput> enhancedReportingOption) {
         Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
         this.enhancedReportingOption = enhancedReportingOption;
         return this;
     }
 
-    public AdGroupWorkflowNielsenTrackingAttributesInput withGender(TargetingGender gender) {
+    public AdGroupWorkflowNielsenTrackingAttributesInput withGender(TargetingGenderInput gender) {
         Utils.checkNotNull(gender, "gender");
         this.gender = gender;
         return this;
     }
 
-    public AdGroupWorkflowNielsenTrackingAttributesInput withStartAge(TargetingStartAge startAge) {
+    public AdGroupWorkflowNielsenTrackingAttributesInput withStartAge(TargetingStartAgeInput startAge) {
         Utils.checkNotNull(startAge, "startAge");
         this.startAge = startAge;
         return this;
     }
 
-    public AdGroupWorkflowNielsenTrackingAttributesInput withEndAge(TargetingEndAge endAge) {
+    public AdGroupWorkflowNielsenTrackingAttributesInput withEndAge(TargetingEndAgeInput endAge) {
         Utils.checkNotNull(endAge, "endAge");
         this.endAge = endAge;
         return this;
@@ -179,13 +179,13 @@ public class AdGroupWorkflowNielsenTrackingAttributesInput {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private Optional<? extends EnhancedNielsenReportingOptions> enhancedReportingOption = Optional.empty();
+        private Optional<? extends EnhancedNielsenReportingOptionsInput> enhancedReportingOption = Optional.empty();
 
-        private TargetingGender gender;
+        private TargetingGenderInput gender;
 
-        private TargetingStartAge startAge;
+        private TargetingStartAgeInput startAge;
 
-        private TargetingEndAge endAge;
+        private TargetingEndAgeInput endAge;
 
         private Optional<? extends List<String>> countries = Optional.empty();
 
@@ -194,34 +194,34 @@ public class AdGroupWorkflowNielsenTrackingAttributesInput {
         }
 
 
-        public Builder enhancedReportingOption(EnhancedNielsenReportingOptions enhancedReportingOption) {
+        public Builder enhancedReportingOption(EnhancedNielsenReportingOptionsInput enhancedReportingOption) {
             Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
             this.enhancedReportingOption = Optional.ofNullable(enhancedReportingOption);
             return this;
         }
 
-        public Builder enhancedReportingOption(Optional<? extends EnhancedNielsenReportingOptions> enhancedReportingOption) {
+        public Builder enhancedReportingOption(Optional<? extends EnhancedNielsenReportingOptionsInput> enhancedReportingOption) {
             Utils.checkNotNull(enhancedReportingOption, "enhancedReportingOption");
             this.enhancedReportingOption = enhancedReportingOption;
             return this;
         }
 
 
-        public Builder gender(TargetingGender gender) {
+        public Builder gender(TargetingGenderInput gender) {
             Utils.checkNotNull(gender, "gender");
             this.gender = gender;
             return this;
         }
 
 
-        public Builder startAge(TargetingStartAge startAge) {
+        public Builder startAge(TargetingStartAgeInput startAge) {
             Utils.checkNotNull(startAge, "startAge");
             this.startAge = startAge;
             return this;
         }
 
 
-        public Builder endAge(TargetingEndAge endAge) {
+        public Builder endAge(TargetingEndAgeInput endAge) {
             Utils.checkNotNull(endAge, "endAge");
             this.endAge = endAge;
             return this;

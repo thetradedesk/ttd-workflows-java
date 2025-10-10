@@ -13,12 +13,14 @@ import com.thetradedesk.workflows.models.operations.async.GetThirdPartyDataJobRe
 import com.thetradedesk.workflows.models.operations.async.GetThirdPartyDataJobResponse;
 import com.thetradedesk.workflows.operations.GetFirstPartyDataJob;
 import com.thetradedesk.workflows.operations.GetThirdPartyDataJob;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncDmp {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Dmp syncSDK;
 
@@ -41,7 +43,8 @@ public class AsyncDmp {
      * Submit a job for first-party data retrieval for an advertiser
      * 
      * <p>When a first-party data query is submitted, a job ID is returned.
-     * This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
      * 
      * @return The async call builder
      */
@@ -53,9 +56,10 @@ public class AsyncDmp {
      * Submit a job for first-party data retrieval for an advertiser
      * 
      * <p>When a first-party data query is submitted, a job ID is returned.
-     * This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
      * 
-     * @return CompletableFuture&lt;GetFirstPartyDataJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetFirstPartyDataJobResponse>} - The async response
      */
     public CompletableFuture<GetFirstPartyDataJobResponse> getFirstPartyDataJobDirect() {
         return getFirstPartyDataJob(Optional.empty(), Optional.empty());
@@ -65,15 +69,18 @@ public class AsyncDmp {
      * Submit a job for first-party data retrieval for an advertiser
      * 
      * <p>When a first-party data query is submitted, a job ID is returned.
-     * This job ID can be used to poll for the job's status using the associated operation under "Job Status".
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;GetFirstPartyDataJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetFirstPartyDataJobResponse>} - The async response
      */
     public CompletableFuture<GetFirstPartyDataJobResponse> getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
-              = new GetFirstPartyDataJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new GetFirstPartyDataJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -99,7 +106,7 @@ public class AsyncDmp {
      * This job ID can be used to poll for the job's status, and when complete, the results download link,
      * using the associated operation under "Job Status".
      * 
-     * @return CompletableFuture&lt;GetThirdPartyDataJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetThirdPartyDataJobResponse>} - The async response
      */
     public CompletableFuture<GetThirdPartyDataJobResponse> getThirdPartyDataJobDirect() {
         return getThirdPartyDataJob(Optional.empty(), Optional.empty());
@@ -114,11 +121,13 @@ public class AsyncDmp {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;GetThirdPartyDataJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetThirdPartyDataJobResponse>} - The async response
      */
     public CompletableFuture<GetThirdPartyDataJobResponse> getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
-              = new GetThirdPartyDataJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new GetThirdPartyDataJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

@@ -29,6 +29,7 @@ import com.thetradedesk.workflows.operations.CreateCampaignsJob;
 import com.thetradedesk.workflows.operations.GetCampaignVersion;
 import com.thetradedesk.workflows.operations.UpdateCampaign;
 import com.thetradedesk.workflows.operations.UpdateCampaignsJob;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
 import java.lang.String;
@@ -38,6 +39,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncCampaign {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final Campaign syncSDK;
 
@@ -68,7 +70,7 @@ public class AsyncCampaign {
     /**
      * Create a new campaign with required fields
      * 
-     * @return CompletableFuture&lt;CreateCampaignResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateCampaignResponse>} - The async response
      */
     public CompletableFuture<CreateCampaignResponse> createDirect() {
         return create(Optional.empty(), Optional.empty());
@@ -79,11 +81,13 @@ public class AsyncCampaign {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CreateCampaignResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateCampaignResponse>} - The async response
      */
     public CompletableFuture<CreateCampaignResponse> create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
-              = new CreateCampaign.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CreateCampaign.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -105,7 +109,7 @@ public class AsyncCampaign {
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
-     * @return CompletableFuture&lt;UpdateCampaignResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateCampaignResponse>} - The async response
      */
     public CompletableFuture<UpdateCampaignResponse> updateCampaignDirect() {
         return updateCampaign(Optional.empty(), Optional.empty());
@@ -118,11 +122,13 @@ public class AsyncCampaign {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;UpdateCampaignResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateCampaignResponse>} - The async response
      */
     public CompletableFuture<UpdateCampaignResponse> updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
-              = new UpdateCampaign.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new UpdateCampaign.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -140,7 +146,7 @@ public class AsyncCampaign {
     /**
      * Create multiple new campaigns with required fields
      * 
-     * @return CompletableFuture&lt;CreateCampaignsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateCampaignsJobResponse>} - The async response
      */
     public CompletableFuture<CreateCampaignsJobResponse> createCampaignsJobDirect() {
         return createCampaignsJob(Optional.empty(), Optional.empty());
@@ -151,11 +157,13 @@ public class AsyncCampaign {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CreateCampaignsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateCampaignsJobResponse>} - The async response
      */
     public CompletableFuture<CreateCampaignsJobResponse> createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
-              = new CreateCampaignsJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CreateCampaignsJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -177,7 +185,7 @@ public class AsyncCampaign {
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
-     * @return CompletableFuture&lt;UpdateCampaignsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateCampaignsJobResponse>} - The async response
      */
     public CompletableFuture<UpdateCampaignsJobResponse> updateCampaignsJobDirect() {
         return updateCampaignsJob(Optional.empty(), Optional.empty());
@@ -190,11 +198,13 @@ public class AsyncCampaign {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;UpdateCampaignsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateCampaignsJobResponse>} - The async response
      */
     public CompletableFuture<UpdateCampaignsJobResponse> updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
-              = new UpdateCampaignsJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new UpdateCampaignsJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -216,7 +226,7 @@ public class AsyncCampaign {
      * 
      * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
      * 
-     * @return CompletableFuture&lt;ArchiveCampaignsResponse&gt; - The async response
+     * @return {@code CompletableFuture<ArchiveCampaignsResponse>} - The async response
      */
     public CompletableFuture<ArchiveCampaignsResponse> archiveCampaignsDirect() {
         return archiveCampaigns(Optional.empty(), Optional.empty(), Optional.empty());
@@ -230,7 +240,7 @@ public class AsyncCampaign {
      * @param forceArchive 
      * @param requestBody 
      * @param options additional options
-     * @return CompletableFuture&lt;ArchiveCampaignsResponse&gt; - The async response
+     * @return {@code CompletableFuture<ArchiveCampaignsResponse>} - The async response
      */
     public CompletableFuture<ArchiveCampaignsResponse> archiveCampaigns(
             Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody,
@@ -242,7 +252,9 @@ public class AsyncCampaign {
                 .requestBody(requestBody)
                 .build();
         AsyncRequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaigns.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ArchiveCampaigns.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -261,7 +273,7 @@ public class AsyncCampaign {
      * Get a campaign's version
      * 
      * @param id 
-     * @return CompletableFuture&lt;GetCampaignVersionResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetCampaignVersionResponse>} - The async response
      */
     public CompletableFuture<GetCampaignVersionResponse> getVersion(String id) {
         return getVersion(id, Optional.empty());
@@ -272,7 +284,7 @@ public class AsyncCampaign {
      * 
      * @param id 
      * @param options additional options
-     * @return CompletableFuture&lt;GetCampaignVersionResponse&gt; - The async response
+     * @return {@code CompletableFuture<GetCampaignVersionResponse>} - The async response
      */
     public CompletableFuture<GetCampaignVersionResponse> getVersion(String id, Optional<Options> options) {
         GetCampaignVersionRequest request =
@@ -281,7 +293,9 @@ public class AsyncCampaign {
                 .id(id)
                 .build();
         AsyncRequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
-              = new GetCampaignVersion.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new GetCampaignVersion.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

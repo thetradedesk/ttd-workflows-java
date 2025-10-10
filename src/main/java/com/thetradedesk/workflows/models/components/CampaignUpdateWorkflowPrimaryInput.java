@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
@@ -53,6 +54,11 @@ public class CampaignUpdateWorkflowPrimaryInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("customRoasType")
+    private Optional<? extends CustomROASType> customRoasType;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("impressionsOnlyBudgetingCpm")
     private JsonNullable<Double> impressionsOnlyBudgetingCpm;
 
@@ -75,6 +81,21 @@ public class CampaignUpdateWorkflowPrimaryInput {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaignConversionReportingColumns")
     private JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("isManagedByTTD")
+    private JsonNullable<Boolean> isManagedByTTD;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("secondaryGoal")
+    private Optional<? extends CampaignWorkflowROIGoalInput> secondaryGoal;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tertiaryGoal")
+    private Optional<? extends CampaignWorkflowROIGoalInput> tertiaryGoal;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -104,11 +125,15 @@ public class CampaignUpdateWorkflowPrimaryInput {
             @JsonProperty("customCPAClickWeight") JsonNullable<Double> customCPAClickWeight,
             @JsonProperty("customCPAViewthroughWeight") JsonNullable<Double> customCPAViewthroughWeight,
             @JsonProperty("customCPAType") Optional<? extends CustomCPAType> customCPAType,
+            @JsonProperty("customRoasType") Optional<? extends CustomROASType> customRoasType,
             @JsonProperty("impressionsOnlyBudgetingCpm") JsonNullable<Double> impressionsOnlyBudgetingCpm,
             @JsonProperty("budget") Optional<? extends CampaignWorkflowBudgetInput> budget,
             @JsonProperty("endDateInUtc") JsonNullable<OffsetDateTime> endDateInUtc,
             @JsonProperty("seedId") JsonNullable<String> seedId,
             @JsonProperty("campaignConversionReportingColumns") JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns,
+            @JsonProperty("isManagedByTTD") JsonNullable<Boolean> isManagedByTTD,
+            @JsonProperty("secondaryGoal") Optional<? extends CampaignWorkflowROIGoalInput> secondaryGoal,
+            @JsonProperty("tertiaryGoal") Optional<? extends CampaignWorkflowROIGoalInput> tertiaryGoal,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("primaryChannel") Optional<? extends CampaignChannelType> primaryChannel,
             @JsonProperty("primaryGoal") Optional<? extends CampaignWorkflowROIGoalInput> primaryGoal,
@@ -119,11 +144,15 @@ public class CampaignUpdateWorkflowPrimaryInput {
         Utils.checkNotNull(customCPAClickWeight, "customCPAClickWeight");
         Utils.checkNotNull(customCPAViewthroughWeight, "customCPAViewthroughWeight");
         Utils.checkNotNull(customCPAType, "customCPAType");
+        Utils.checkNotNull(customRoasType, "customRoasType");
         Utils.checkNotNull(impressionsOnlyBudgetingCpm, "impressionsOnlyBudgetingCpm");
         Utils.checkNotNull(budget, "budget");
         Utils.checkNotNull(endDateInUtc, "endDateInUtc");
         Utils.checkNotNull(seedId, "seedId");
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
+        Utils.checkNotNull(isManagedByTTD, "isManagedByTTD");
+        Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+        Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(primaryChannel, "primaryChannel");
         Utils.checkNotNull(primaryGoal, "primaryGoal");
@@ -134,11 +163,15 @@ public class CampaignUpdateWorkflowPrimaryInput {
         this.customCPAClickWeight = customCPAClickWeight;
         this.customCPAViewthroughWeight = customCPAViewthroughWeight;
         this.customCPAType = customCPAType;
+        this.customRoasType = customRoasType;
         this.impressionsOnlyBudgetingCpm = impressionsOnlyBudgetingCpm;
         this.budget = budget;
         this.endDateInUtc = endDateInUtc;
         this.seedId = seedId;
         this.campaignConversionReportingColumns = campaignConversionReportingColumns;
+        this.isManagedByTTD = isManagedByTTD;
+        this.secondaryGoal = secondaryGoal;
+        this.tertiaryGoal = tertiaryGoal;
         this.name = name;
         this.primaryChannel = primaryChannel;
         this.primaryGoal = primaryGoal;
@@ -148,9 +181,11 @@ public class CampaignUpdateWorkflowPrimaryInput {
     public CampaignUpdateWorkflowPrimaryInput() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
-            JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(),
+            Optional.empty(), JsonNullable.undefined(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            Optional.empty(), Optional.empty(), JsonNullable.undefined());
+            JsonNullable.undefined(), Optional.empty(), Optional.empty(),
+            JsonNullable.undefined(), Optional.empty(), Optional.empty(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -184,6 +219,12 @@ public class CampaignUpdateWorkflowPrimaryInput {
         return (Optional<CustomCPAType>) customCPAType;
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CustomROASType> customRoasType() {
+        return (Optional<CustomROASType>) customRoasType;
+    }
+
     @JsonIgnore
     public JsonNullable<Double> impressionsOnlyBudgetingCpm() {
         return impressionsOnlyBudgetingCpm;
@@ -209,6 +250,23 @@ public class CampaignUpdateWorkflowPrimaryInput {
     @JsonIgnore
     public JsonNullable<List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns() {
         return (JsonNullable<List<CampaignWorkflowCampaignConversionReportingColumnInput>>) campaignConversionReportingColumns;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> isManagedByTTD() {
+        return isManagedByTTD;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CampaignWorkflowROIGoalInput> secondaryGoal() {
+        return (Optional<CampaignWorkflowROIGoalInput>) secondaryGoal;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CampaignWorkflowROIGoalInput> tertiaryGoal() {
+        return (Optional<CampaignWorkflowROIGoalInput>) tertiaryGoal;
     }
 
     @JsonIgnore
@@ -311,6 +369,19 @@ public class CampaignUpdateWorkflowPrimaryInput {
         return this;
     }
 
+    public CampaignUpdateWorkflowPrimaryInput withCustomRoasType(CustomROASType customRoasType) {
+        Utils.checkNotNull(customRoasType, "customRoasType");
+        this.customRoasType = Optional.ofNullable(customRoasType);
+        return this;
+    }
+
+
+    public CampaignUpdateWorkflowPrimaryInput withCustomRoasType(Optional<? extends CustomROASType> customRoasType) {
+        Utils.checkNotNull(customRoasType, "customRoasType");
+        this.customRoasType = customRoasType;
+        return this;
+    }
+
     public CampaignUpdateWorkflowPrimaryInput withImpressionsOnlyBudgetingCpm(double impressionsOnlyBudgetingCpm) {
         Utils.checkNotNull(impressionsOnlyBudgetingCpm, "impressionsOnlyBudgetingCpm");
         this.impressionsOnlyBudgetingCpm = JsonNullable.of(impressionsOnlyBudgetingCpm);
@@ -369,6 +440,44 @@ public class CampaignUpdateWorkflowPrimaryInput {
     public CampaignUpdateWorkflowPrimaryInput withCampaignConversionReportingColumns(JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns) {
         Utils.checkNotNull(campaignConversionReportingColumns, "campaignConversionReportingColumns");
         this.campaignConversionReportingColumns = campaignConversionReportingColumns;
+        return this;
+    }
+
+    public CampaignUpdateWorkflowPrimaryInput withIsManagedByTTD(boolean isManagedByTTD) {
+        Utils.checkNotNull(isManagedByTTD, "isManagedByTTD");
+        this.isManagedByTTD = JsonNullable.of(isManagedByTTD);
+        return this;
+    }
+
+    public CampaignUpdateWorkflowPrimaryInput withIsManagedByTTD(JsonNullable<Boolean> isManagedByTTD) {
+        Utils.checkNotNull(isManagedByTTD, "isManagedByTTD");
+        this.isManagedByTTD = isManagedByTTD;
+        return this;
+    }
+
+    public CampaignUpdateWorkflowPrimaryInput withSecondaryGoal(CampaignWorkflowROIGoalInput secondaryGoal) {
+        Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+        this.secondaryGoal = Optional.ofNullable(secondaryGoal);
+        return this;
+    }
+
+
+    public CampaignUpdateWorkflowPrimaryInput withSecondaryGoal(Optional<? extends CampaignWorkflowROIGoalInput> secondaryGoal) {
+        Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+        this.secondaryGoal = secondaryGoal;
+        return this;
+    }
+
+    public CampaignUpdateWorkflowPrimaryInput withTertiaryGoal(CampaignWorkflowROIGoalInput tertiaryGoal) {
+        Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+        this.tertiaryGoal = Optional.ofNullable(tertiaryGoal);
+        return this;
+    }
+
+
+    public CampaignUpdateWorkflowPrimaryInput withTertiaryGoal(Optional<? extends CampaignWorkflowROIGoalInput> tertiaryGoal) {
+        Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+        this.tertiaryGoal = tertiaryGoal;
         return this;
     }
 
@@ -438,11 +547,15 @@ public class CampaignUpdateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.customCPAClickWeight, other.customCPAClickWeight) &&
             Utils.enhancedDeepEquals(this.customCPAViewthroughWeight, other.customCPAViewthroughWeight) &&
             Utils.enhancedDeepEquals(this.customCPAType, other.customCPAType) &&
+            Utils.enhancedDeepEquals(this.customRoasType, other.customRoasType) &&
             Utils.enhancedDeepEquals(this.impressionsOnlyBudgetingCpm, other.impressionsOnlyBudgetingCpm) &&
             Utils.enhancedDeepEquals(this.budget, other.budget) &&
             Utils.enhancedDeepEquals(this.endDateInUtc, other.endDateInUtc) &&
             Utils.enhancedDeepEquals(this.seedId, other.seedId) &&
             Utils.enhancedDeepEquals(this.campaignConversionReportingColumns, other.campaignConversionReportingColumns) &&
+            Utils.enhancedDeepEquals(this.isManagedByTTD, other.isManagedByTTD) &&
+            Utils.enhancedDeepEquals(this.secondaryGoal, other.secondaryGoal) &&
+            Utils.enhancedDeepEquals(this.tertiaryGoal, other.tertiaryGoal) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.primaryChannel, other.primaryChannel) &&
             Utils.enhancedDeepEquals(this.primaryGoal, other.primaryGoal) &&
@@ -454,9 +567,11 @@ public class CampaignUpdateWorkflowPrimaryInput {
         return Utils.enhancedHash(
             description, campaignGroupId, timeZone,
             customCPAClickWeight, customCPAViewthroughWeight, customCPAType,
-            impressionsOnlyBudgetingCpm, budget, endDateInUtc,
-            seedId, campaignConversionReportingColumns, name,
-            primaryChannel, primaryGoal, startDateInUtc);
+            customRoasType, impressionsOnlyBudgetingCpm, budget,
+            endDateInUtc, seedId, campaignConversionReportingColumns,
+            isManagedByTTD, secondaryGoal, tertiaryGoal,
+            name, primaryChannel, primaryGoal,
+            startDateInUtc);
     }
     
     @Override
@@ -468,11 +583,15 @@ public class CampaignUpdateWorkflowPrimaryInput {
                 "customCPAClickWeight", customCPAClickWeight,
                 "customCPAViewthroughWeight", customCPAViewthroughWeight,
                 "customCPAType", customCPAType,
+                "customRoasType", customRoasType,
                 "impressionsOnlyBudgetingCpm", impressionsOnlyBudgetingCpm,
                 "budget", budget,
                 "endDateInUtc", endDateInUtc,
                 "seedId", seedId,
                 "campaignConversionReportingColumns", campaignConversionReportingColumns,
+                "isManagedByTTD", isManagedByTTD,
+                "secondaryGoal", secondaryGoal,
+                "tertiaryGoal", tertiaryGoal,
                 "name", name,
                 "primaryChannel", primaryChannel,
                 "primaryGoal", primaryGoal,
@@ -494,6 +613,8 @@ public class CampaignUpdateWorkflowPrimaryInput {
 
         private Optional<? extends CustomCPAType> customCPAType = Optional.empty();
 
+        private Optional<? extends CustomROASType> customRoasType = Optional.empty();
+
         private JsonNullable<Double> impressionsOnlyBudgetingCpm = JsonNullable.undefined();
 
         private Optional<? extends CampaignWorkflowBudgetInput> budget = Optional.empty();
@@ -503,6 +624,12 @@ public class CampaignUpdateWorkflowPrimaryInput {
         private JsonNullable<String> seedId = JsonNullable.undefined();
 
         private JsonNullable<? extends List<CampaignWorkflowCampaignConversionReportingColumnInput>> campaignConversionReportingColumns = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> isManagedByTTD = JsonNullable.undefined();
+
+        private Optional<? extends CampaignWorkflowROIGoalInput> secondaryGoal = Optional.empty();
+
+        private Optional<? extends CampaignWorkflowROIGoalInput> tertiaryGoal = Optional.empty();
 
         private JsonNullable<String> name = JsonNullable.undefined();
 
@@ -595,6 +722,19 @@ public class CampaignUpdateWorkflowPrimaryInput {
         }
 
 
+        public Builder customRoasType(CustomROASType customRoasType) {
+            Utils.checkNotNull(customRoasType, "customRoasType");
+            this.customRoasType = Optional.ofNullable(customRoasType);
+            return this;
+        }
+
+        public Builder customRoasType(Optional<? extends CustomROASType> customRoasType) {
+            Utils.checkNotNull(customRoasType, "customRoasType");
+            this.customRoasType = customRoasType;
+            return this;
+        }
+
+
         public Builder impressionsOnlyBudgetingCpm(double impressionsOnlyBudgetingCpm) {
             Utils.checkNotNull(impressionsOnlyBudgetingCpm, "impressionsOnlyBudgetingCpm");
             this.impressionsOnlyBudgetingCpm = JsonNullable.of(impressionsOnlyBudgetingCpm);
@@ -660,6 +800,45 @@ public class CampaignUpdateWorkflowPrimaryInput {
         }
 
 
+        public Builder isManagedByTTD(boolean isManagedByTTD) {
+            Utils.checkNotNull(isManagedByTTD, "isManagedByTTD");
+            this.isManagedByTTD = JsonNullable.of(isManagedByTTD);
+            return this;
+        }
+
+        public Builder isManagedByTTD(JsonNullable<Boolean> isManagedByTTD) {
+            Utils.checkNotNull(isManagedByTTD, "isManagedByTTD");
+            this.isManagedByTTD = isManagedByTTD;
+            return this;
+        }
+
+
+        public Builder secondaryGoal(CampaignWorkflowROIGoalInput secondaryGoal) {
+            Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+            this.secondaryGoal = Optional.ofNullable(secondaryGoal);
+            return this;
+        }
+
+        public Builder secondaryGoal(Optional<? extends CampaignWorkflowROIGoalInput> secondaryGoal) {
+            Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+            this.secondaryGoal = secondaryGoal;
+            return this;
+        }
+
+
+        public Builder tertiaryGoal(CampaignWorkflowROIGoalInput tertiaryGoal) {
+            Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+            this.tertiaryGoal = Optional.ofNullable(tertiaryGoal);
+            return this;
+        }
+
+        public Builder tertiaryGoal(Optional<? extends CampaignWorkflowROIGoalInput> tertiaryGoal) {
+            Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+            this.tertiaryGoal = tertiaryGoal;
+            return this;
+        }
+
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = JsonNullable.of(name);
@@ -716,9 +895,11 @@ public class CampaignUpdateWorkflowPrimaryInput {
             return new CampaignUpdateWorkflowPrimaryInput(
                 description, campaignGroupId, timeZone,
                 customCPAClickWeight, customCPAViewthroughWeight, customCPAType,
-                impressionsOnlyBudgetingCpm, budget, endDateInUtc,
-                seedId, campaignConversionReportingColumns, name,
-                primaryChannel, primaryGoal, startDateInUtc);
+                customRoasType, impressionsOnlyBudgetingCpm, budget,
+                endDateInUtc, seedId, campaignConversionReportingColumns,
+                isManagedByTTD, secondaryGoal, tertiaryGoal,
+                name, primaryChannel, primaryGoal,
+                startDateInUtc);
         }
 
     }

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.operations.ArchiveCampaignsRequest;
 import com.thetradedesk.workflows.operations.ArchiveCampaigns;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.LazySingletonValue;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
@@ -29,6 +30,7 @@ public class ArchiveCampaignsRequestBuilder {
     private Optional<? extends List<String>> requestBody = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public ArchiveCampaignsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -88,7 +90,9 @@ public class ArchiveCampaignsRequestBuilder {
             .build());
 
         AsyncRequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaigns.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ArchiveCampaigns.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         ArchiveCampaignsRequest request = buildRequest();
 
         return operation.doRequest(request)

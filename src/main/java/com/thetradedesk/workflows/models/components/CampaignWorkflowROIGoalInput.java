@@ -77,6 +77,26 @@ public class CampaignWorkflowROIGoalInput {
     @JsonProperty("miaozhenOTPInPercent")
     private JsonNullable<Double> miaozhenOTPInPercent;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("iqviaAudienceQualityIndex")
+    private JsonNullable<Boolean> iqviaAudienceQualityIndex;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("crossixAudienceQualityIndex")
+    private JsonNullable<Boolean> crossixAudienceQualityIndex;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("iqviaAudienceQualityIndexAndCostPerTarget")
+    private JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("crossixCostPerTarget")
+    private JsonNullable<Boolean> crossixCostPerTarget;
+
     @JsonCreator
     public CampaignWorkflowROIGoalInput(
             @JsonProperty("maximizeReach") JsonNullable<Boolean> maximizeReach,
@@ -90,7 +110,11 @@ public class CampaignWorkflowROIGoalInput {
             @JsonProperty("viewabilityInPercent") JsonNullable<Double> viewabilityInPercent,
             @JsonProperty("vcpmInAdvertiserCurrency") JsonNullable<Double> vcpmInAdvertiserCurrency,
             @JsonProperty("cpcvInAdvertiserCurrency") JsonNullable<Double> cpcvInAdvertiserCurrency,
-            @JsonProperty("miaozhenOTPInPercent") JsonNullable<Double> miaozhenOTPInPercent) {
+            @JsonProperty("miaozhenOTPInPercent") JsonNullable<Double> miaozhenOTPInPercent,
+            @JsonProperty("iqviaAudienceQualityIndex") JsonNullable<Boolean> iqviaAudienceQualityIndex,
+            @JsonProperty("crossixAudienceQualityIndex") JsonNullable<Boolean> crossixAudienceQualityIndex,
+            @JsonProperty("iqviaAudienceQualityIndexAndCostPerTarget") JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget,
+            @JsonProperty("crossixCostPerTarget") JsonNullable<Boolean> crossixCostPerTarget) {
         Utils.checkNotNull(maximizeReach, "maximizeReach");
         Utils.checkNotNull(maximizeLtvIncrementalReach, "maximizeLtvIncrementalReach");
         Utils.checkNotNull(cpcInAdvertiserCurrency, "cpcInAdvertiserCurrency");
@@ -103,6 +127,10 @@ public class CampaignWorkflowROIGoalInput {
         Utils.checkNotNull(vcpmInAdvertiserCurrency, "vcpmInAdvertiserCurrency");
         Utils.checkNotNull(cpcvInAdvertiserCurrency, "cpcvInAdvertiserCurrency");
         Utils.checkNotNull(miaozhenOTPInPercent, "miaozhenOTPInPercent");
+        Utils.checkNotNull(iqviaAudienceQualityIndex, "iqviaAudienceQualityIndex");
+        Utils.checkNotNull(crossixAudienceQualityIndex, "crossixAudienceQualityIndex");
+        Utils.checkNotNull(iqviaAudienceQualityIndexAndCostPerTarget, "iqviaAudienceQualityIndexAndCostPerTarget");
+        Utils.checkNotNull(crossixCostPerTarget, "crossixCostPerTarget");
         this.maximizeReach = maximizeReach;
         this.maximizeLtvIncrementalReach = maximizeLtvIncrementalReach;
         this.cpcInAdvertiserCurrency = cpcInAdvertiserCurrency;
@@ -115,13 +143,19 @@ public class CampaignWorkflowROIGoalInput {
         this.vcpmInAdvertiserCurrency = vcpmInAdvertiserCurrency;
         this.cpcvInAdvertiserCurrency = cpcvInAdvertiserCurrency;
         this.miaozhenOTPInPercent = miaozhenOTPInPercent;
+        this.iqviaAudienceQualityIndex = iqviaAudienceQualityIndex;
+        this.crossixAudienceQualityIndex = crossixAudienceQualityIndex;
+        this.iqviaAudienceQualityIndexAndCostPerTarget = iqviaAudienceQualityIndexAndCostPerTarget;
+        this.crossixCostPerTarget = crossixCostPerTarget;
     }
     
     public CampaignWorkflowROIGoalInput() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -182,6 +216,26 @@ public class CampaignWorkflowROIGoalInput {
     @JsonIgnore
     public JsonNullable<Double> miaozhenOTPInPercent() {
         return miaozhenOTPInPercent;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> iqviaAudienceQualityIndex() {
+        return iqviaAudienceQualityIndex;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> crossixAudienceQualityIndex() {
+        return crossixAudienceQualityIndex;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget() {
+        return iqviaAudienceQualityIndexAndCostPerTarget;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> crossixCostPerTarget() {
+        return crossixCostPerTarget;
     }
 
     public static Builder builder() {
@@ -333,6 +387,54 @@ public class CampaignWorkflowROIGoalInput {
         return this;
     }
 
+    public CampaignWorkflowROIGoalInput withIqviaAudienceQualityIndex(boolean iqviaAudienceQualityIndex) {
+        Utils.checkNotNull(iqviaAudienceQualityIndex, "iqviaAudienceQualityIndex");
+        this.iqviaAudienceQualityIndex = JsonNullable.of(iqviaAudienceQualityIndex);
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withIqviaAudienceQualityIndex(JsonNullable<Boolean> iqviaAudienceQualityIndex) {
+        Utils.checkNotNull(iqviaAudienceQualityIndex, "iqviaAudienceQualityIndex");
+        this.iqviaAudienceQualityIndex = iqviaAudienceQualityIndex;
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withCrossixAudienceQualityIndex(boolean crossixAudienceQualityIndex) {
+        Utils.checkNotNull(crossixAudienceQualityIndex, "crossixAudienceQualityIndex");
+        this.crossixAudienceQualityIndex = JsonNullable.of(crossixAudienceQualityIndex);
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withCrossixAudienceQualityIndex(JsonNullable<Boolean> crossixAudienceQualityIndex) {
+        Utils.checkNotNull(crossixAudienceQualityIndex, "crossixAudienceQualityIndex");
+        this.crossixAudienceQualityIndex = crossixAudienceQualityIndex;
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withIqviaAudienceQualityIndexAndCostPerTarget(boolean iqviaAudienceQualityIndexAndCostPerTarget) {
+        Utils.checkNotNull(iqviaAudienceQualityIndexAndCostPerTarget, "iqviaAudienceQualityIndexAndCostPerTarget");
+        this.iqviaAudienceQualityIndexAndCostPerTarget = JsonNullable.of(iqviaAudienceQualityIndexAndCostPerTarget);
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withIqviaAudienceQualityIndexAndCostPerTarget(JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget) {
+        Utils.checkNotNull(iqviaAudienceQualityIndexAndCostPerTarget, "iqviaAudienceQualityIndexAndCostPerTarget");
+        this.iqviaAudienceQualityIndexAndCostPerTarget = iqviaAudienceQualityIndexAndCostPerTarget;
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withCrossixCostPerTarget(boolean crossixCostPerTarget) {
+        Utils.checkNotNull(crossixCostPerTarget, "crossixCostPerTarget");
+        this.crossixCostPerTarget = JsonNullable.of(crossixCostPerTarget);
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withCrossixCostPerTarget(JsonNullable<Boolean> crossixCostPerTarget) {
+        Utils.checkNotNull(crossixCostPerTarget, "crossixCostPerTarget");
+        this.crossixCostPerTarget = crossixCostPerTarget;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -354,7 +456,11 @@ public class CampaignWorkflowROIGoalInput {
             Utils.enhancedDeepEquals(this.viewabilityInPercent, other.viewabilityInPercent) &&
             Utils.enhancedDeepEquals(this.vcpmInAdvertiserCurrency, other.vcpmInAdvertiserCurrency) &&
             Utils.enhancedDeepEquals(this.cpcvInAdvertiserCurrency, other.cpcvInAdvertiserCurrency) &&
-            Utils.enhancedDeepEquals(this.miaozhenOTPInPercent, other.miaozhenOTPInPercent);
+            Utils.enhancedDeepEquals(this.miaozhenOTPInPercent, other.miaozhenOTPInPercent) &&
+            Utils.enhancedDeepEquals(this.iqviaAudienceQualityIndex, other.iqviaAudienceQualityIndex) &&
+            Utils.enhancedDeepEquals(this.crossixAudienceQualityIndex, other.crossixAudienceQualityIndex) &&
+            Utils.enhancedDeepEquals(this.iqviaAudienceQualityIndexAndCostPerTarget, other.iqviaAudienceQualityIndexAndCostPerTarget) &&
+            Utils.enhancedDeepEquals(this.crossixCostPerTarget, other.crossixCostPerTarget);
     }
     
     @Override
@@ -363,7 +469,9 @@ public class CampaignWorkflowROIGoalInput {
             maximizeReach, maximizeLtvIncrementalReach, cpcInAdvertiserCurrency,
             ctrInPercent, nielsenOTPInPercent, cpaInAdvertiserCurrency,
             returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
-            vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent);
+            vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent,
+            iqviaAudienceQualityIndex, crossixAudienceQualityIndex, iqviaAudienceQualityIndexAndCostPerTarget,
+            crossixCostPerTarget);
     }
     
     @Override
@@ -380,7 +488,11 @@ public class CampaignWorkflowROIGoalInput {
                 "viewabilityInPercent", viewabilityInPercent,
                 "vcpmInAdvertiserCurrency", vcpmInAdvertiserCurrency,
                 "cpcvInAdvertiserCurrency", cpcvInAdvertiserCurrency,
-                "miaozhenOTPInPercent", miaozhenOTPInPercent);
+                "miaozhenOTPInPercent", miaozhenOTPInPercent,
+                "iqviaAudienceQualityIndex", iqviaAudienceQualityIndex,
+                "crossixAudienceQualityIndex", crossixAudienceQualityIndex,
+                "iqviaAudienceQualityIndexAndCostPerTarget", iqviaAudienceQualityIndexAndCostPerTarget,
+                "crossixCostPerTarget", crossixCostPerTarget);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -409,6 +521,14 @@ public class CampaignWorkflowROIGoalInput {
         private JsonNullable<Double> cpcvInAdvertiserCurrency = JsonNullable.undefined();
 
         private JsonNullable<Double> miaozhenOTPInPercent = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> iqviaAudienceQualityIndex = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> crossixAudienceQualityIndex = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> crossixCostPerTarget = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -570,13 +690,67 @@ public class CampaignWorkflowROIGoalInput {
             return this;
         }
 
+
+        public Builder iqviaAudienceQualityIndex(boolean iqviaAudienceQualityIndex) {
+            Utils.checkNotNull(iqviaAudienceQualityIndex, "iqviaAudienceQualityIndex");
+            this.iqviaAudienceQualityIndex = JsonNullable.of(iqviaAudienceQualityIndex);
+            return this;
+        }
+
+        public Builder iqviaAudienceQualityIndex(JsonNullable<Boolean> iqviaAudienceQualityIndex) {
+            Utils.checkNotNull(iqviaAudienceQualityIndex, "iqviaAudienceQualityIndex");
+            this.iqviaAudienceQualityIndex = iqviaAudienceQualityIndex;
+            return this;
+        }
+
+
+        public Builder crossixAudienceQualityIndex(boolean crossixAudienceQualityIndex) {
+            Utils.checkNotNull(crossixAudienceQualityIndex, "crossixAudienceQualityIndex");
+            this.crossixAudienceQualityIndex = JsonNullable.of(crossixAudienceQualityIndex);
+            return this;
+        }
+
+        public Builder crossixAudienceQualityIndex(JsonNullable<Boolean> crossixAudienceQualityIndex) {
+            Utils.checkNotNull(crossixAudienceQualityIndex, "crossixAudienceQualityIndex");
+            this.crossixAudienceQualityIndex = crossixAudienceQualityIndex;
+            return this;
+        }
+
+
+        public Builder iqviaAudienceQualityIndexAndCostPerTarget(boolean iqviaAudienceQualityIndexAndCostPerTarget) {
+            Utils.checkNotNull(iqviaAudienceQualityIndexAndCostPerTarget, "iqviaAudienceQualityIndexAndCostPerTarget");
+            this.iqviaAudienceQualityIndexAndCostPerTarget = JsonNullable.of(iqviaAudienceQualityIndexAndCostPerTarget);
+            return this;
+        }
+
+        public Builder iqviaAudienceQualityIndexAndCostPerTarget(JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget) {
+            Utils.checkNotNull(iqviaAudienceQualityIndexAndCostPerTarget, "iqviaAudienceQualityIndexAndCostPerTarget");
+            this.iqviaAudienceQualityIndexAndCostPerTarget = iqviaAudienceQualityIndexAndCostPerTarget;
+            return this;
+        }
+
+
+        public Builder crossixCostPerTarget(boolean crossixCostPerTarget) {
+            Utils.checkNotNull(crossixCostPerTarget, "crossixCostPerTarget");
+            this.crossixCostPerTarget = JsonNullable.of(crossixCostPerTarget);
+            return this;
+        }
+
+        public Builder crossixCostPerTarget(JsonNullable<Boolean> crossixCostPerTarget) {
+            Utils.checkNotNull(crossixCostPerTarget, "crossixCostPerTarget");
+            this.crossixCostPerTarget = crossixCostPerTarget;
+            return this;
+        }
+
         public CampaignWorkflowROIGoalInput build() {
 
             return new CampaignWorkflowROIGoalInput(
                 maximizeReach, maximizeLtvIncrementalReach, cpcInAdvertiserCurrency,
                 ctrInPercent, nielsenOTPInPercent, cpaInAdvertiserCurrency,
                 returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
-                vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent);
+                vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent,
+                iqviaAudienceQualityIndex, crossixAudienceQualityIndex, iqviaAudienceQualityIndexAndCostPerTarget,
+                crossixCostPerTarget);
         }
 
     }

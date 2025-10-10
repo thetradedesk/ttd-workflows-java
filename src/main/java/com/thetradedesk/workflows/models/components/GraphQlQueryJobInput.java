@@ -13,11 +13,12 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GraphQlQueryJobInput
  * 
- * <p>Required fields for executing a GraphQL query job
+ * <p>Fields for executing a GraphQL query job
  */
 public class GraphQlQueryJobInput {
     /**
@@ -31,21 +32,31 @@ public class GraphQlQueryJobInput {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("callbackInput")
-    private Optional<? extends GraphQlJobCallbackInput> callbackInput;
+    private Optional<? extends GraphQlBulkJobCallbackInput> callbackInput;
+
+    /**
+     * Beta features to be enabled for this GraphQL query (passed as TTD-GQL-Beta header)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("betaFeatures")
+    private JsonNullable<String> betaFeatures;
 
     @JsonCreator
     public GraphQlQueryJobInput(
             @JsonProperty("query") String query,
-            @JsonProperty("callbackInput") Optional<? extends GraphQlJobCallbackInput> callbackInput) {
+            @JsonProperty("callbackInput") Optional<? extends GraphQlBulkJobCallbackInput> callbackInput,
+            @JsonProperty("betaFeatures") JsonNullable<String> betaFeatures) {
         Utils.checkNotNull(query, "query");
         Utils.checkNotNull(callbackInput, "callbackInput");
+        Utils.checkNotNull(betaFeatures, "betaFeatures");
         this.query = query;
         this.callbackInput = callbackInput;
+        this.betaFeatures = betaFeatures;
     }
     
     public GraphQlQueryJobInput(
             String query) {
-        this(query, Optional.empty());
+        this(query, Optional.empty(), JsonNullable.undefined());
     }
 
     /**
@@ -61,8 +72,16 @@ public class GraphQlQueryJobInput {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<GraphQlJobCallbackInput> callbackInput() {
-        return (Optional<GraphQlJobCallbackInput>) callbackInput;
+    public Optional<GraphQlBulkJobCallbackInput> callbackInput() {
+        return (Optional<GraphQlBulkJobCallbackInput>) callbackInput;
+    }
+
+    /**
+     * Beta features to be enabled for this GraphQL query (passed as TTD-GQL-Beta header)
+     */
+    @JsonIgnore
+    public JsonNullable<String> betaFeatures() {
+        return betaFeatures;
     }
 
     public static Builder builder() {
@@ -82,7 +101,7 @@ public class GraphQlQueryJobInput {
     /**
      * Input class for providing a callback's url and any headers needed for the callback.
      */
-    public GraphQlQueryJobInput withCallbackInput(GraphQlJobCallbackInput callbackInput) {
+    public GraphQlQueryJobInput withCallbackInput(GraphQlBulkJobCallbackInput callbackInput) {
         Utils.checkNotNull(callbackInput, "callbackInput");
         this.callbackInput = Optional.ofNullable(callbackInput);
         return this;
@@ -92,9 +111,27 @@ public class GraphQlQueryJobInput {
     /**
      * Input class for providing a callback's url and any headers needed for the callback.
      */
-    public GraphQlQueryJobInput withCallbackInput(Optional<? extends GraphQlJobCallbackInput> callbackInput) {
+    public GraphQlQueryJobInput withCallbackInput(Optional<? extends GraphQlBulkJobCallbackInput> callbackInput) {
         Utils.checkNotNull(callbackInput, "callbackInput");
         this.callbackInput = callbackInput;
+        return this;
+    }
+
+    /**
+     * Beta features to be enabled for this GraphQL query (passed as TTD-GQL-Beta header)
+     */
+    public GraphQlQueryJobInput withBetaFeatures(String betaFeatures) {
+        Utils.checkNotNull(betaFeatures, "betaFeatures");
+        this.betaFeatures = JsonNullable.of(betaFeatures);
+        return this;
+    }
+
+    /**
+     * Beta features to be enabled for this GraphQL query (passed as TTD-GQL-Beta header)
+     */
+    public GraphQlQueryJobInput withBetaFeatures(JsonNullable<String> betaFeatures) {
+        Utils.checkNotNull(betaFeatures, "betaFeatures");
+        this.betaFeatures = betaFeatures;
         return this;
     }
 
@@ -109,20 +146,22 @@ public class GraphQlQueryJobInput {
         GraphQlQueryJobInput other = (GraphQlQueryJobInput) o;
         return 
             Utils.enhancedDeepEquals(this.query, other.query) &&
-            Utils.enhancedDeepEquals(this.callbackInput, other.callbackInput);
+            Utils.enhancedDeepEquals(this.callbackInput, other.callbackInput) &&
+            Utils.enhancedDeepEquals(this.betaFeatures, other.betaFeatures);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            query, callbackInput);
+            query, callbackInput, betaFeatures);
     }
     
     @Override
     public String toString() {
         return Utils.toString(GraphQlQueryJobInput.class,
                 "query", query,
-                "callbackInput", callbackInput);
+                "callbackInput", callbackInput,
+                "betaFeatures", betaFeatures);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -130,7 +169,9 @@ public class GraphQlQueryJobInput {
 
         private String query;
 
-        private Optional<? extends GraphQlJobCallbackInput> callbackInput = Optional.empty();
+        private Optional<? extends GraphQlBulkJobCallbackInput> callbackInput = Optional.empty();
+
+        private JsonNullable<String> betaFeatures = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -150,7 +191,7 @@ public class GraphQlQueryJobInput {
         /**
          * Input class for providing a callback's url and any headers needed for the callback.
          */
-        public Builder callbackInput(GraphQlJobCallbackInput callbackInput) {
+        public Builder callbackInput(GraphQlBulkJobCallbackInput callbackInput) {
             Utils.checkNotNull(callbackInput, "callbackInput");
             this.callbackInput = Optional.ofNullable(callbackInput);
             return this;
@@ -159,16 +200,35 @@ public class GraphQlQueryJobInput {
         /**
          * Input class for providing a callback's url and any headers needed for the callback.
          */
-        public Builder callbackInput(Optional<? extends GraphQlJobCallbackInput> callbackInput) {
+        public Builder callbackInput(Optional<? extends GraphQlBulkJobCallbackInput> callbackInput) {
             Utils.checkNotNull(callbackInput, "callbackInput");
             this.callbackInput = callbackInput;
+            return this;
+        }
+
+
+        /**
+         * Beta features to be enabled for this GraphQL query (passed as TTD-GQL-Beta header)
+         */
+        public Builder betaFeatures(String betaFeatures) {
+            Utils.checkNotNull(betaFeatures, "betaFeatures");
+            this.betaFeatures = JsonNullable.of(betaFeatures);
+            return this;
+        }
+
+        /**
+         * Beta features to be enabled for this GraphQL query (passed as TTD-GQL-Beta header)
+         */
+        public Builder betaFeatures(JsonNullable<String> betaFeatures) {
+            Utils.checkNotNull(betaFeatures, "betaFeatures");
+            this.betaFeatures = betaFeatures;
             return this;
         }
 
         public GraphQlQueryJobInput build() {
 
             return new GraphQlQueryJobInput(
-                query, callbackInput);
+                query, callbackInput, betaFeatures);
         }
 
     }

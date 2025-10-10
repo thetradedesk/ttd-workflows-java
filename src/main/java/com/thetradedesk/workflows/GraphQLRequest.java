@@ -7,18 +7,20 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.models.components.GraphQlQueryJobInput;
-import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobRequestBuilder;
-import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobResponse;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlBulkQueryJobRequestBuilder;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlBulkQueryJobResponse;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.SubmitGraphQlRequestResponse;
-import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJob;
+import com.thetradedesk.workflows.operations.SubmitGraphQlBulkQueryJob;
 import com.thetradedesk.workflows.operations.SubmitGraphQlRequest;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
 
 
 public class GraphQLRequest {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncGraphQLRequest asyncSDK;
 
@@ -39,8 +41,9 @@ public class GraphQLRequest {
     /**
      * Submit a valid GraphQL query or mutation
      * 
-     * <p>This generic operation can be used to execute any valid GraphQL request.
-     * To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @return The call builder
      */
@@ -51,8 +54,9 @@ public class GraphQLRequest {
     /**
      * Submit a valid GraphQL query or mutation
      * 
-     * <p>This generic operation can be used to execute any valid GraphQL request.
-     * To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -64,8 +68,9 @@ public class GraphQLRequest {
     /**
      * Submit a valid GraphQL query or mutation
      * 
-     * <p>This generic operation can be used to execute any valid GraphQL request.
-     * To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -74,49 +79,61 @@ public class GraphQLRequest {
      */
     public SubmitGraphQlRequestResponse submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
-              = new SubmitGraphQlRequest.Sync(sdkConfiguration, options);
+              = new SubmitGraphQlRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
-     * Submit a valid bulk GraphQL query
+     * Submit a valid bulk GraphQL query job
      * 
-     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @return The call builder
      */
-    public SubmitGraphQlQueryJobRequestBuilder submitGraphQlQueryJob() {
-        return new SubmitGraphQlQueryJobRequestBuilder(sdkConfiguration);
+    public SubmitGraphQlBulkQueryJobRequestBuilder submitGraphQlBulkQueryJob() {
+        return new SubmitGraphQlBulkQueryJobRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Submit a valid bulk GraphQL query
+     * Submit a valid bulk GraphQL query job
      * 
-     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public SubmitGraphQlQueryJobResponse submitGraphQlQueryJobDirect() throws Exception {
-        return submitGraphQlQueryJob(Optional.empty(), Optional.empty());
+    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJobDirect() throws Exception {
+        return submitGraphQlBulkQueryJob(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Submit a valid bulk GraphQL query
+     * Submit a valid bulk GraphQL query job
      * 
-     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
-    public SubmitGraphQlQueryJobResponse submitGraphQlQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) throws Exception {
-        RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
-              = new SubmitGraphQlQueryJob.Sync(sdkConfiguration, options);
+    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) throws Exception {
+        RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlBulkQueryJobResponse> operation
+              = new SubmitGraphQlBulkQueryJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
