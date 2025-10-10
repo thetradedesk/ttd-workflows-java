@@ -6,12 +6,13 @@
 ### Available Operations
 
 * [submitGraphQlRequest](#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
-* [submitGraphQlQueryJob](#submitgraphqlqueryjob) - Submit a valid bulk GraphQL query
+* [submitGraphQlBulkQueryJob](#submitgraphqlbulkqueryjob) - Submit a valid bulk GraphQL query job
 
 ## submitGraphQlRequest
 
-This generic operation can be used to execute any valid GraphQL request.
-To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+This generic operation can be used to execute any valid GraphQL request. The results are returned
+directly when the request is complete. To explore the available GraphQL operations, see the
+[GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
 
 ### Example Usage
 
@@ -38,6 +39,7 @@ public class Application {
                 .request("<value>")
                 .variables(Map.ofEntries(
                 ))
+                .betaFeatures("<value>")
                 .build();
 
         SubmitGraphQlRequestResponse res = sdk.graphQLRequest().submitGraphQlRequest()
@@ -68,23 +70,27 @@ public class Application {
 | models/errors/ProblemDetailsException | 400, 401, 403, 404                    | application/json                      |
 | models/errors/APIException            | 4XX, 5XX                              | \*/\*                                 |
 
-## submitGraphQlQueryJob
+## submitGraphQlBulkQueryJob
 
-This generic operation can be used to execute any valid bulk GraphQL query.
-For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+status, completion percentage, and URL for download (once the job results are ready), query the
+[GraphQL Bulk Job Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+endpoint. For information on bulk GraphQL query syntax, see
+[GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
 
 ### Example Usage
 
-<!-- UsageSnippet language="java" operationID="submitGraphQlQueryJob" method="post" path="/graphqlqueryjob" -->
+<!-- UsageSnippet language="java" operationID="submitGraphQlBulkQueryJob" method="post" path="/graphqlbulkqueryjob" -->
 ```java
 package hello.world;
 
 import com.thetradedesk.workflows.Workflows;
-import com.thetradedesk.workflows.models.components.*;
+import com.thetradedesk.workflows.models.components.GraphQlBulkJobCallbackInput;
+import com.thetradedesk.workflows.models.components.GraphQlQueryJobInput;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.SubmitGraphQlQueryJobResponse;
+import com.thetradedesk.workflows.models.operations.SubmitGraphQlBulkQueryJobResponse;
 import java.lang.Exception;
-import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 public class Application {
 
@@ -96,21 +102,18 @@ public class Application {
 
         GraphQlQueryJobInput req = GraphQlQueryJobInput.builder()
                 .query("<value>")
-                .callbackInput(GraphQlJobCallbackInput.builder()
-                    .callbackUrl("https://wilted-cork.net/")
-                    .callbackHeaders(List.of(
-                        KeyValuePairOfStringAndStringInput.builder()
-                            .key("<key>")
-                            .value("<value>")
-                            .build()))
+                .callbackInput(GraphQlBulkJobCallbackInput.builder()
+                    .callbackUrl("https://sociable-quinoa.info/")
+                    .callbackHeaders(JsonNullable.of(null))
                     .build())
+                .betaFeatures("<value>")
                 .build();
 
-        SubmitGraphQlQueryJobResponse res = sdk.graphQLRequest().submitGraphQlQueryJob()
+        SubmitGraphQlBulkQueryJobResponse res = sdk.graphQLRequest().submitGraphQlBulkQueryJob()
                 .request(req)
                 .call();
 
-        if (res.graphQlQueryJobResponse().isPresent()) {
+        if (res.graphQlBulkJobResponse().isPresent()) {
             // handle response
         }
     }
@@ -125,7 +128,7 @@ public class Application {
 
 ### Response
 
-**[SubmitGraphQlQueryJobResponse](../../models/operations/SubmitGraphQlQueryJobResponse.md)**
+**[SubmitGraphQlBulkQueryJobResponse](../../models/operations/SubmitGraphQlBulkQueryJobResponse.md)**
 
 ### Errors
 

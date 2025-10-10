@@ -8,6 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.AsyncRequestOpera
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.AdGroupUpdateWorkflowInputWithValidation;
 import com.thetradedesk.workflows.operations.UpdateAdGroup;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -20,6 +21,7 @@ public class UpdateAdGroupRequestBuilder {
     private Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public UpdateAdGroupRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -55,7 +57,9 @@ public class UpdateAdGroupRequestBuilder {
             .build());
 
         AsyncRequestOperation<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>, UpdateAdGroupResponse> operation
-              = new UpdateAdGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new UpdateAdGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

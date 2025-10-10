@@ -25,6 +25,7 @@ import com.thetradedesk.workflows.operations.CreateAdGroup;
 import com.thetradedesk.workflows.operations.CreateAdGroupsJob;
 import com.thetradedesk.workflows.operations.UpdateAdGroup;
 import com.thetradedesk.workflows.operations.UpdateAdGroupsJob;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
 import java.lang.String;
@@ -34,6 +35,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncAdGroup {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AdGroup syncSDK;
 
@@ -64,7 +66,7 @@ public class AsyncAdGroup {
     /**
      * Create a new ad group with required fields
      * 
-     * @return CompletableFuture&lt;CreateAdGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateAdGroupResponse>} - The async response
      */
     public CompletableFuture<CreateAdGroupResponse> createAdGroupDirect() {
         return createAdGroup(Optional.empty(), Optional.empty());
@@ -75,11 +77,13 @@ public class AsyncAdGroup {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CreateAdGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateAdGroupResponse>} - The async response
      */
     public CompletableFuture<CreateAdGroupResponse> createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
-              = new CreateAdGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CreateAdGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -101,7 +105,7 @@ public class AsyncAdGroup {
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
-     * @return CompletableFuture&lt;UpdateAdGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateAdGroupResponse>} - The async response
      */
     public CompletableFuture<UpdateAdGroupResponse> updateAdGroupDirect() {
         return updateAdGroup(Optional.empty(), Optional.empty());
@@ -114,11 +118,13 @@ public class AsyncAdGroup {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;UpdateAdGroupResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateAdGroupResponse>} - The async response
      */
     public CompletableFuture<UpdateAdGroupResponse> updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>, UpdateAdGroupResponse> operation
-              = new UpdateAdGroup.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new UpdateAdGroup.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -140,7 +146,7 @@ public class AsyncAdGroup {
      * 
      * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
      * 
-     * @return CompletableFuture&lt;ArchiveAdGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<ArchiveAdGroupsResponse>} - The async response
      */
     public CompletableFuture<ArchiveAdGroupsResponse> archiveAdGroupsDirect() {
         return archiveAdGroups(Optional.empty(), Optional.empty(), Optional.empty());
@@ -154,7 +160,7 @@ public class AsyncAdGroup {
      * @param forceArchive 
      * @param requestBody 
      * @param options additional options
-     * @return CompletableFuture&lt;ArchiveAdGroupsResponse&gt; - The async response
+     * @return {@code CompletableFuture<ArchiveAdGroupsResponse>} - The async response
      */
     public CompletableFuture<ArchiveAdGroupsResponse> archiveAdGroups(
             Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody,
@@ -166,7 +172,9 @@ public class AsyncAdGroup {
                 .requestBody(requestBody)
                 .build();
         AsyncRequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation
-              = new ArchiveAdGroups.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new ArchiveAdGroups.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -184,7 +192,7 @@ public class AsyncAdGroup {
     /**
      * Create multiple new ad groups with required fields
      * 
-     * @return CompletableFuture&lt;CreateAdGroupsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateAdGroupsJobResponse>} - The async response
      */
     public CompletableFuture<CreateAdGroupsJobResponse> createAdGroupsJobDirect() {
         return createAdGroupsJob(Optional.empty(), Optional.empty());
@@ -195,11 +203,13 @@ public class AsyncAdGroup {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;CreateAdGroupsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<CreateAdGroupsJobResponse>} - The async response
      */
     public CompletableFuture<CreateAdGroupsJobResponse> createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation>, CreateAdGroupsJobResponse> operation
-              = new CreateAdGroupsJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new CreateAdGroupsJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
@@ -221,7 +231,7 @@ public class AsyncAdGroup {
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
-     * @return CompletableFuture&lt;UpdateAdGroupsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateAdGroupsJobResponse>} - The async response
      */
     public CompletableFuture<UpdateAdGroupsJobResponse> updateAdGroupsJobDirect() {
         return updateAdGroupsJob(Optional.empty(), Optional.empty());
@@ -234,11 +244,13 @@ public class AsyncAdGroup {
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;UpdateAdGroupsJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<UpdateAdGroupsJobResponse>} - The async response
      */
     public CompletableFuture<UpdateAdGroupsJobResponse> updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>, UpdateAdGroupsJobResponse> operation
-              = new UpdateAdGroupsJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new UpdateAdGroupsJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

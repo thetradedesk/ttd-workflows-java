@@ -55,7 +55,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.10.0'
+implementation 'com.thetradedesk:workflows:0.11.0'
 ```
 
 Maven:
@@ -63,7 +63,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.10.0</version>
+    <version>0.11.0</version>
 </dependency>
 ```
 
@@ -627,14 +627,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -699,17 +699,16 @@ public class Application {
 ### [graphQLRequest()](docs/sdks/graphqlrequest/README.md)
 
 * [submitGraphQlRequest](docs/sdks/graphqlrequest/README.md#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
-* [submitGraphQlQueryJob](docs/sdks/graphqlrequest/README.md#submitgraphqlqueryjob) - Submit a valid bulk GraphQL query
+* [submitGraphQlBulkQueryJob](docs/sdks/graphqlrequest/README.md#submitgraphqlbulkqueryjob) - Submit a valid bulk GraphQL query job
 
 ### [jobStatus()](docs/sdks/jobstatus/README.md)
 
-* [getGraphQlQueryJobStatus](docs/sdks/jobstatus/README.md#getgraphqlqueryjobstatus) - Get the status of a previously submitted GraphQL query job
+* [getGraphQlBulkJobStatus](docs/sdks/jobstatus/README.md#getgraphqlbulkjobstatus) - Get the status of a previously submitted GraphQL bulk job
 * [getJobStatus](docs/sdks/jobstatus/README.md#getjobstatus) - Get the status of a previously submitted job
 
 ### [restRequest()](docs/sdks/restrequest/README.md)
 
 * [submitRestRequest](docs/sdks/restrequest/README.md#submitrestrequest) - Submit a valid REST request
-
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -820,14 +819,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -981,14 +980,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -1133,14 +1132,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -1286,14 +1285,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -1427,14 +1426,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()

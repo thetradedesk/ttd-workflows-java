@@ -29,6 +29,7 @@ import com.thetradedesk.workflows.operations.CreateCampaignsJob;
 import com.thetradedesk.workflows.operations.GetCampaignVersion;
 import com.thetradedesk.workflows.operations.UpdateCampaign;
 import com.thetradedesk.workflows.operations.UpdateCampaignsJob;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
 import java.lang.Exception;
@@ -38,6 +39,7 @@ import java.util.Optional;
 
 
 public class Campaign {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncCampaign asyncSDK;
 
@@ -84,7 +86,7 @@ public class Campaign {
      */
     public CreateCampaignResponse create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
-              = new CreateCampaign.Sync(sdkConfiguration, options);
+              = new CreateCampaign.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -123,7 +125,7 @@ public class Campaign {
      */
     public UpdateCampaignResponse updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
-              = new UpdateCampaign.Sync(sdkConfiguration, options);
+              = new UpdateCampaign.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -156,7 +158,7 @@ public class Campaign {
      */
     public CreateCampaignsJobResponse createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
-              = new CreateCampaignsJob.Sync(sdkConfiguration, options);
+              = new CreateCampaignsJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -195,7 +197,7 @@ public class Campaign {
      */
     public UpdateCampaignsJobResponse updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
-              = new UpdateCampaignsJob.Sync(sdkConfiguration, options);
+              = new UpdateCampaignsJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -243,7 +245,7 @@ public class Campaign {
                 .requestBody(requestBody)
                 .build();
         RequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation
-              = new ArchiveCampaigns.Sync(sdkConfiguration, options);
+              = new ArchiveCampaigns.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
@@ -282,7 +284,7 @@ public class Campaign {
                 .id(id)
                 .build();
         RequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
-              = new GetCampaignVersion.Sync(sdkConfiguration, options);
+              = new GetCampaignVersion.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

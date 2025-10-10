@@ -5,23 +5,23 @@
 
 ### Available Operations
 
-* [getGraphQlQueryJobStatus](#getgraphqlqueryjobstatus) - Get the status of a previously submitted GraphQL query job
+* [getGraphQlBulkJobStatus](#getgraphqlbulkjobstatus) - Get the status of a previously submitted GraphQL bulk job
 * [getJobStatus](#getjobstatus) - Get the status of a previously submitted job
 
-## getGraphQlQueryJobStatus
+## getGraphQlBulkJobStatus
 
-Use this operation to get a previously submitted GraphQL query job's status and completion percentage.
+Use this operation to get a previously submitted GraphQL bulk job's status and completion percentage.
 Once a job is complete, this operation will return the URL from which to download the job results.
 
 ### Example Usage
 
-<!-- UsageSnippet language="java" operationID="getGraphQlQueryJobStatus" method="get" path="/graphqlqueryjob/{id}" -->
+<!-- UsageSnippet language="java" operationID="getGraphQlBulkJobStatus" method="get" path="/graphqlbulkjob/{id}" -->
 ```java
 package hello.world;
 
 import com.thetradedesk.workflows.Workflows;
 import com.thetradedesk.workflows.models.errors.ProblemDetailsException;
-import com.thetradedesk.workflows.models.operations.GetGraphQlQueryJobStatusResponse;
+import com.thetradedesk.workflows.models.operations.GetGraphQlBulkJobStatusResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -32,11 +32,11 @@ public class Application {
                 .ttdAuth(System.getenv().getOrDefault("WORKFLOWS_TTD_AUTH", ""))
             .build();
 
-        GetGraphQlQueryJobStatusResponse res = sdk.jobStatus().getGraphQlQueryJobStatus()
+        GetGraphQlBulkJobStatusResponse res = sdk.jobStatus().getGraphQlBulkJobStatus()
                 .id("<id>")
                 .call();
 
-        if (res.graphQLQueryJobRetrievalResponse().isPresent()) {
+        if (res.graphQLBulkJobRetrievalResponse().isPresent()) {
             // handle response
         }
     }
@@ -51,7 +51,7 @@ public class Application {
 
 ### Response
 
-**[GetGraphQlQueryJobStatusResponse](../../models/operations/GetGraphQlQueryJobStatusResponse.md)**
+**[GetGraphQlBulkJobStatusResponse](../../models/operations/GetGraphQlBulkJobStatusResponse.md)**
 
 ### Errors
 

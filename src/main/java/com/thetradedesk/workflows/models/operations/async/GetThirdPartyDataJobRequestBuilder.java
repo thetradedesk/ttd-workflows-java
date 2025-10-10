@@ -8,6 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.AsyncRequestOpera
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.ThirdPartyDataInput;
 import com.thetradedesk.workflows.operations.GetThirdPartyDataJob;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -20,6 +21,7 @@ public class GetThirdPartyDataJobRequestBuilder {
     private Optional<? extends ThirdPartyDataInput> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public GetThirdPartyDataJobRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -55,7 +57,9 @@ public class GetThirdPartyDataJobRequestBuilder {
             .build());
 
         AsyncRequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
-              = new GetThirdPartyDataJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new GetThirdPartyDataJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

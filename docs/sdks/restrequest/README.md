@@ -9,8 +9,9 @@
 
 ## submitRestRequest
 
-This generic operation can be used to execute any valid REST request.
-To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+This generic operation can be used to execute any valid REST request. The results are returned
+directly when the request is complete. To explore the available REST operations, see the
+[REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
 
 ### Example Usage
 

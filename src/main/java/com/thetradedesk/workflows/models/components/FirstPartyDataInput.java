@@ -29,7 +29,8 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data
+     * will be returned.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nameFilter")
@@ -37,25 +38,25 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *     name
-     *     id
-     *     activeUniques {
-     *        householdCount
-     *        idsConnectedTvCount
-     *        idsCount
-     *        idsInAppCount
-     *        idsWebCount
-     *        personsCount
-     *     }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * name
+     * id
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * }
+     * }
      * ```
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -99,7 +100,8 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data
+     * will be returned.
      */
     @JsonIgnore
     public JsonNullable<String> nameFilter() {
@@ -108,25 +110,25 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *     name
-     *     id
-     *     activeUniques {
-     *        householdCount
-     *        idsConnectedTvCount
-     *        idsCount
-     *        idsInAppCount
-     *        idsWebCount
-     *        personsCount
-     *     }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * name
+     * id
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * }
+     * }
      * ```
      */
     @JsonIgnore
@@ -156,7 +158,8 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data
+     * will be returned.
      */
     public FirstPartyDataInput withNameFilter(String nameFilter) {
         Utils.checkNotNull(nameFilter, "nameFilter");
@@ -166,7 +169,8 @@ public class FirstPartyDataInput {
 
     /**
      * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-     * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
+     * If there are no nodes which match the filter, a response with empty nodes with no first-party data
+     * will be returned.
      */
     public FirstPartyDataInput withNameFilter(JsonNullable<String> nameFilter) {
         Utils.checkNotNull(nameFilter, "nameFilter");
@@ -176,25 +180,25 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *     name
-     *     id
-     *     activeUniques {
-     *        householdCount
-     *        idsConnectedTvCount
-     *        idsCount
-     *        idsInAppCount
-     *        idsWebCount
-     *        personsCount
-     *     }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * name
+     * id
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * }
+     * }
      * ```
      */
     public FirstPartyDataInput withQueryShape(String queryShape) {
@@ -205,25 +209,25 @@ public class FirstPartyDataInput {
 
     /**
      * The shape of the query with the fields being asked for, which is sent downstream.
-     *  This determines what the response will look like.
+     * This determines what the response will look like.
      * 
-     * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+     * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
      * 
-     * <p> If this is not provided the default query shape will be used:
+     * <p>If this is not provided the default query shape will be used:
      * 
-     * <p> ```graphql
-     *  nodes {
-     *     name
-     *     id
-     *     activeUniques {
-     *        householdCount
-     *        idsConnectedTvCount
-     *        idsCount
-     *        idsInAppCount
-     *        idsWebCount
-     *        personsCount
-     *     }
-     *  }
+     * <p>```graphql
+     * nodes {
+     * name
+     * id
+     * activeUniques {
+     * householdCount
+     * idsConnectedTvCount
+     * idsCount
+     * idsInAppCount
+     * idsWebCount
+     * personsCount
+     * }
+     * }
      * ```
      */
     public FirstPartyDataInput withQueryShape(JsonNullable<String> queryShape) {
@@ -305,7 +309,8 @@ public class FirstPartyDataInput {
 
         /**
          * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-         * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
+         * If there are no nodes which match the filter, a response with empty nodes with no first-party data
+         * will be returned.
          */
         public Builder nameFilter(String nameFilter) {
             Utils.checkNotNull(nameFilter, "nameFilter");
@@ -315,7 +320,8 @@ public class FirstPartyDataInput {
 
         /**
          * The name to filter by in the query. This filter will be applied to the results for the advertiser.
-         * If there are no nodes which match the filter, a response with empty nodes with no first-party data will be returned.
+         * If there are no nodes which match the filter, a response with empty nodes with no first-party data
+         * will be returned.
          */
         public Builder nameFilter(JsonNullable<String> nameFilter) {
             Utils.checkNotNull(nameFilter, "nameFilter");
@@ -326,25 +332,25 @@ public class FirstPartyDataInput {
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
-         *  This determines what the response will look like.
+         * This determines what the response will look like.
          * 
-         * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+         * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
          * 
-         * <p> If this is not provided the default query shape will be used:
+         * <p>If this is not provided the default query shape will be used:
          * 
-         * <p> ```graphql
-         *  nodes {
-         *     name
-         *     id
-         *     activeUniques {
-         *        householdCount
-         *        idsConnectedTvCount
-         *        idsCount
-         *        idsInAppCount
-         *        idsWebCount
-         *        personsCount
-         *     }
-         *  }
+         * <p>```graphql
+         * nodes {
+         * name
+         * id
+         * activeUniques {
+         * householdCount
+         * idsConnectedTvCount
+         * idsCount
+         * idsInAppCount
+         * idsWebCount
+         * personsCount
+         * }
+         * }
          * ```
          */
         public Builder queryShape(String queryShape) {
@@ -355,25 +361,25 @@ public class FirstPartyDataInput {
 
         /**
          * The shape of the query with the fields being asked for, which is sent downstream.
-         *  This determines what the response will look like.
+         * This determines what the response will look like.
          * 
-         * <p> For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
+         * <p>For example, a query shape equal to `"nodes {id name}"` will return the `id` and `name` fields only.
          * 
-         * <p> If this is not provided the default query shape will be used:
+         * <p>If this is not provided the default query shape will be used:
          * 
-         * <p> ```graphql
-         *  nodes {
-         *     name
-         *     id
-         *     activeUniques {
-         *        householdCount
-         *        idsConnectedTvCount
-         *        idsCount
-         *        idsInAppCount
-         *        idsWebCount
-         *        personsCount
-         *     }
-         *  }
+         * <p>```graphql
+         * nodes {
+         * name
+         * id
+         * activeUniques {
+         * householdCount
+         * idsConnectedTvCount
+         * idsCount
+         * idsInAppCount
+         * idsWebCount
+         * personsCount
+         * }
+         * }
          * ```
          */
         public Builder queryShape(JsonNullable<String> queryShape) {

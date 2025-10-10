@@ -115,14 +115,14 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.MALE)
-                        .startAge(TargetingStartAge.TWENTY_FIVE)
-                        .endAge(TargetingEndAge.SEVENTEEN)
+                        .gender(TargetingGenderInput.MALE)
+                        .startAge(TargetingStartAgeInput.TWENTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SEVENTEEN)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>",
                             "<value 3>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.SITE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.SITE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -280,13 +280,13 @@ public class Application {
                     .isUseClicksAsConversionsEnabled(false)
                     .isUseSecondaryConversionsEnabled(false)
                     .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                        .gender(TargetingGender.FEMALE)
-                        .startAge(TargetingStartAge.FIFTY_FIVE)
-                        .endAge(TargetingEndAge.SIXTY_FOUR_PLUS)
+                        .gender(TargetingGenderInput.FEMALE)
+                        .startAge(TargetingStartAgeInput.FIFTY_FIVE)
+                        .endAge(TargetingEndAgeInput.SIXTY_FOUR_PLUS)
                         .countries(List.of(
                             "<value 1>",
                             "<value 2>"))
-                        .enhancedReportingOption(EnhancedNielsenReportingOptions.NONE)
+                        .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.NONE)
                         .build())
                     .newFrequencyConfigs(List.of(
                         AdGroupWorkflowNewFrequencyConfigInput.builder()
@@ -561,13 +561,13 @@ public class Application {
                             .isUseClicksAsConversionsEnabled(true)
                             .isUseSecondaryConversionsEnabled(true)
                             .nielsenTrackingAttributes(AdGroupWorkflowNielsenTrackingAttributesInput.builder()
-                                .gender(TargetingGender.FEMALE)
-                                .startAge(TargetingStartAge.FORTY_FIVE)
-                                .endAge(TargetingEndAge.THIRTY_FOUR)
+                                .gender(TargetingGenderInput.FEMALE)
+                                .startAge(TargetingStartAgeInput.FORTY_FIVE)
+                                .endAge(TargetingEndAgeInput.THIRTY_FOUR)
                                 .countries(List.of(
                                     "<value 1>",
                                     "<value 2>"))
-                                .enhancedReportingOption(EnhancedNielsenReportingOptions.AUDIENCE)
+                                .enhancedReportingOption(EnhancedNielsenReportingOptionsInput.AUDIENCE)
                                 .build())
                             .newFrequencyConfigs(List.of(
                                 AdGroupWorkflowNewFrequencyConfigInput.builder()

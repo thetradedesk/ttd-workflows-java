@@ -8,6 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.AsyncRequestOpera
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.operations.SubmitRestRequest;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -20,6 +21,7 @@ public class SubmitRestRequestRequestBuilder {
     private Optional<? extends CallRestApiWorkflowInput> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public SubmitRestRequestRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -55,7 +57,9 @@ public class SubmitRestRequestRequestBuilder {
             .build());
 
         AsyncRequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new SubmitRestRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
 
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);

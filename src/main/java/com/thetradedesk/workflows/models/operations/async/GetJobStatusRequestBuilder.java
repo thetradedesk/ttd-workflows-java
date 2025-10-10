@@ -8,6 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.AsyncRequestOpera
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.models.operations.GetJobStatusRequest;
 import com.thetradedesk.workflows.operations.GetJobStatus;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
@@ -21,6 +22,7 @@ public class GetJobStatusRequestBuilder {
     private Long id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public GetJobStatusRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -58,7 +60,9 @@ public class GetJobStatusRequestBuilder {
             .build());
 
         AsyncRequestOperation<GetJobStatusRequest, GetJobStatusResponse> operation
-              = new GetJobStatus.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new GetJobStatus.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         GetJobStatusRequest request = buildRequest();
 
         return operation.doRequest(request)

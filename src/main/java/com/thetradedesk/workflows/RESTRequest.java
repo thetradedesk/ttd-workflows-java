@@ -9,12 +9,14 @@ import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
 import com.thetradedesk.workflows.operations.SubmitRestRequest;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Exception;
 import java.util.Optional;
 
 
 public class RESTRequest {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final AsyncRESTRequest asyncSDK;
 
@@ -35,8 +37,9 @@ public class RESTRequest {
     /**
      * Submit a valid REST request
      * 
-     * <p>This generic operation can be used to execute any valid REST request.
-     * To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @return The call builder
      */
@@ -47,8 +50,9 @@ public class RESTRequest {
     /**
      * Submit a valid REST request
      * 
-     * <p>This generic operation can be used to execute any valid REST request.
-     * To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -60,8 +64,9 @@ public class RESTRequest {
     /**
      * Submit a valid REST request
      * 
-     * <p>This generic operation can be used to execute any valid REST request.
-     * To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -70,7 +75,7 @@ public class RESTRequest {
      */
     public SubmitRestRequestResponse submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request, Optional<Options> options) throws Exception {
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequest.Sync(sdkConfiguration, options);
+              = new SubmitRestRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 

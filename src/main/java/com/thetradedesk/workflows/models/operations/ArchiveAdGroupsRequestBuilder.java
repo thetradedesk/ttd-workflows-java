@@ -8,6 +8,7 @@ import static com.thetradedesk.workflows.operations.Operations.RequestOperation;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.SDKConfiguration;
 import com.thetradedesk.workflows.operations.ArchiveAdGroups;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.LazySingletonValue;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
@@ -27,6 +28,7 @@ public class ArchiveAdGroupsRequestBuilder {
     private Optional<? extends List<String>> requestBody = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
     public ArchiveAdGroupsRequestBuilder(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
@@ -86,7 +88,7 @@ public class ArchiveAdGroupsRequestBuilder {
             .build());
 
         RequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation
-              = new ArchiveAdGroups.Sync(sdkConfiguration, options);
+              = new ArchiveAdGroups.Sync(sdkConfiguration, options, _headers);
         ArchiveAdGroupsRequest request = buildRequest();
 
         return operation.handleResponse(operation.doRequest(request));

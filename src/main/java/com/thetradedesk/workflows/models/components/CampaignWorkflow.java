@@ -102,6 +102,16 @@ public class CampaignWorkflow {
     @JsonProperty("flights")
     private JsonNullable<? extends List<CampaignFlightWorkflow>> flights;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("secondaryGoal")
+    private JsonNullable<String> secondaryGoal;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tertiaryGoal")
+    private JsonNullable<String> tertiaryGoal;
+
     @JsonCreator
     public CampaignWorkflow(
             @JsonProperty("id") Optional<String> id,
@@ -119,7 +129,9 @@ public class CampaignWorkflow {
             @JsonProperty("primaryGoal") JsonNullable<String> primaryGoal,
             @JsonProperty("seedId") JsonNullable<String> seedId,
             @JsonProperty("conversionReportingColumnsCount") JsonNullable<Integer> conversionReportingColumnsCount,
-            @JsonProperty("flights") JsonNullable<? extends List<CampaignFlightWorkflow>> flights) {
+            @JsonProperty("flights") JsonNullable<? extends List<CampaignFlightWorkflow>> flights,
+            @JsonProperty("secondaryGoal") JsonNullable<String> secondaryGoal,
+            @JsonProperty("tertiaryGoal") JsonNullable<String> tertiaryGoal) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(campaignGroupId, "campaignGroupId");
@@ -136,6 +148,8 @@ public class CampaignWorkflow {
         Utils.checkNotNull(seedId, "seedId");
         Utils.checkNotNull(conversionReportingColumnsCount, "conversionReportingColumnsCount");
         Utils.checkNotNull(flights, "flights");
+        Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+        Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
         this.id = id;
         this.name = name;
         this.campaignGroupId = campaignGroupId;
@@ -152,6 +166,8 @@ public class CampaignWorkflow {
         this.seedId = seedId;
         this.conversionReportingColumnsCount = conversionReportingColumnsCount;
         this.flights = flights;
+        this.secondaryGoal = secondaryGoal;
+        this.tertiaryGoal = tertiaryGoal;
     }
     
     public CampaignWorkflow() {
@@ -160,7 +176,7 @@ public class CampaignWorkflow {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             Optional.empty(), JsonNullable.undefined(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -244,6 +260,16 @@ public class CampaignWorkflow {
     @JsonIgnore
     public JsonNullable<List<CampaignFlightWorkflow>> flights() {
         return (JsonNullable<List<CampaignFlightWorkflow>>) flights;
+    }
+
+    @JsonIgnore
+    public JsonNullable<String> secondaryGoal() {
+        return secondaryGoal;
+    }
+
+    @JsonIgnore
+    public JsonNullable<String> tertiaryGoal() {
+        return tertiaryGoal;
     }
 
     public static Builder builder() {
@@ -446,6 +472,30 @@ public class CampaignWorkflow {
         return this;
     }
 
+    public CampaignWorkflow withSecondaryGoal(String secondaryGoal) {
+        Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+        this.secondaryGoal = JsonNullable.of(secondaryGoal);
+        return this;
+    }
+
+    public CampaignWorkflow withSecondaryGoal(JsonNullable<String> secondaryGoal) {
+        Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+        this.secondaryGoal = secondaryGoal;
+        return this;
+    }
+
+    public CampaignWorkflow withTertiaryGoal(String tertiaryGoal) {
+        Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+        this.tertiaryGoal = JsonNullable.of(tertiaryGoal);
+        return this;
+    }
+
+    public CampaignWorkflow withTertiaryGoal(JsonNullable<String> tertiaryGoal) {
+        Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+        this.tertiaryGoal = tertiaryGoal;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -471,7 +521,9 @@ public class CampaignWorkflow {
             Utils.enhancedDeepEquals(this.primaryGoal, other.primaryGoal) &&
             Utils.enhancedDeepEquals(this.seedId, other.seedId) &&
             Utils.enhancedDeepEquals(this.conversionReportingColumnsCount, other.conversionReportingColumnsCount) &&
-            Utils.enhancedDeepEquals(this.flights, other.flights);
+            Utils.enhancedDeepEquals(this.flights, other.flights) &&
+            Utils.enhancedDeepEquals(this.secondaryGoal, other.secondaryGoal) &&
+            Utils.enhancedDeepEquals(this.tertiaryGoal, other.tertiaryGoal);
     }
     
     @Override
@@ -482,7 +534,7 @@ public class CampaignWorkflow {
             timeZone, customCPAClickWeight, customCPAViewthroughWeight,
             customCPAType, impressionsOnlyBudgetingCpm, primaryChannel,
             primaryGoal, seedId, conversionReportingColumnsCount,
-            flights);
+            flights, secondaryGoal, tertiaryGoal);
     }
     
     @Override
@@ -503,7 +555,9 @@ public class CampaignWorkflow {
                 "primaryGoal", primaryGoal,
                 "seedId", seedId,
                 "conversionReportingColumnsCount", conversionReportingColumnsCount,
-                "flights", flights);
+                "flights", flights,
+                "secondaryGoal", secondaryGoal,
+                "tertiaryGoal", tertiaryGoal);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -540,6 +594,10 @@ public class CampaignWorkflow {
         private JsonNullable<Integer> conversionReportingColumnsCount = JsonNullable.undefined();
 
         private JsonNullable<? extends List<CampaignFlightWorkflow>> flights = JsonNullable.undefined();
+
+        private JsonNullable<String> secondaryGoal = JsonNullable.undefined();
+
+        private JsonNullable<String> tertiaryGoal = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -753,6 +811,32 @@ public class CampaignWorkflow {
             return this;
         }
 
+
+        public Builder secondaryGoal(String secondaryGoal) {
+            Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+            this.secondaryGoal = JsonNullable.of(secondaryGoal);
+            return this;
+        }
+
+        public Builder secondaryGoal(JsonNullable<String> secondaryGoal) {
+            Utils.checkNotNull(secondaryGoal, "secondaryGoal");
+            this.secondaryGoal = secondaryGoal;
+            return this;
+        }
+
+
+        public Builder tertiaryGoal(String tertiaryGoal) {
+            Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+            this.tertiaryGoal = JsonNullable.of(tertiaryGoal);
+            return this;
+        }
+
+        public Builder tertiaryGoal(JsonNullable<String> tertiaryGoal) {
+            Utils.checkNotNull(tertiaryGoal, "tertiaryGoal");
+            this.tertiaryGoal = tertiaryGoal;
+            return this;
+        }
+
         public CampaignWorkflow build() {
 
             return new CampaignWorkflow(
@@ -761,7 +845,7 @@ public class CampaignWorkflow {
                 timeZone, customCPAClickWeight, customCPAViewthroughWeight,
                 customCPAType, impressionsOnlyBudgetingCpm, primaryChannel,
                 primaryGoal, seedId, conversionReportingColumnsCount,
-                flights);
+                flights, secondaryGoal, tertiaryGoal);
         }
 
     }

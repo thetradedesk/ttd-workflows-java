@@ -29,13 +29,13 @@ public class CampaignUpdateWorkflowInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advancedInput")
-    private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput;
+    private Optional<? extends CampaignUpdateWorkflowAdvancedInput> advancedInput;
 
     @JsonCreator
     public CampaignUpdateWorkflowInput(
             @JsonProperty("id") Optional<String> id,
             @JsonProperty("primaryInput") Optional<? extends CampaignUpdateWorkflowPrimaryInput> primaryInput,
-            @JsonProperty("advancedInput") Optional<? extends CampaignWorkflowAdvancedInput> advancedInput) {
+            @JsonProperty("advancedInput") Optional<? extends CampaignUpdateWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(id, "id");
         Utils.checkNotNull(primaryInput, "primaryInput");
         Utils.checkNotNull(advancedInput, "advancedInput");
@@ -61,8 +61,8 @@ public class CampaignUpdateWorkflowInput {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CampaignWorkflowAdvancedInput> advancedInput() {
-        return (Optional<CampaignWorkflowAdvancedInput>) advancedInput;
+    public Optional<CampaignUpdateWorkflowAdvancedInput> advancedInput() {
+        return (Optional<CampaignUpdateWorkflowAdvancedInput>) advancedInput;
     }
 
     public static Builder builder() {
@@ -96,14 +96,14 @@ public class CampaignUpdateWorkflowInput {
         return this;
     }
 
-    public CampaignUpdateWorkflowInput withAdvancedInput(CampaignWorkflowAdvancedInput advancedInput) {
+    public CampaignUpdateWorkflowInput withAdvancedInput(CampaignUpdateWorkflowAdvancedInput advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
         this.advancedInput = Optional.ofNullable(advancedInput);
         return this;
     }
 
 
-    public CampaignUpdateWorkflowInput withAdvancedInput(Optional<? extends CampaignWorkflowAdvancedInput> advancedInput) {
+    public CampaignUpdateWorkflowInput withAdvancedInput(Optional<? extends CampaignUpdateWorkflowAdvancedInput> advancedInput) {
         Utils.checkNotNull(advancedInput, "advancedInput");
         this.advancedInput = advancedInput;
         return this;
@@ -145,7 +145,7 @@ public class CampaignUpdateWorkflowInput {
 
         private Optional<? extends CampaignUpdateWorkflowPrimaryInput> primaryInput = Optional.empty();
 
-        private Optional<? extends CampaignWorkflowAdvancedInput> advancedInput = Optional.empty();
+        private Optional<? extends CampaignUpdateWorkflowAdvancedInput> advancedInput = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -178,13 +178,13 @@ public class CampaignUpdateWorkflowInput {
         }
 
 
-        public Builder advancedInput(CampaignWorkflowAdvancedInput advancedInput) {
+        public Builder advancedInput(CampaignUpdateWorkflowAdvancedInput advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
             this.advancedInput = Optional.ofNullable(advancedInput);
             return this;
         }
 
-        public Builder advancedInput(Optional<? extends CampaignWorkflowAdvancedInput> advancedInput) {
+        public Builder advancedInput(Optional<? extends CampaignUpdateWorkflowAdvancedInput> advancedInput) {
             Utils.checkNotNull(advancedInput, "advancedInput");
             this.advancedInput = advancedInput;
             return this;

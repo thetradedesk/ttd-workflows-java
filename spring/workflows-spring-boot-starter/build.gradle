@@ -1,0 +1,29 @@
+description = 'ttd-workflows Spring Boot Starter'
+
+// Publishing configuration overrides
+ext {
+    publishingConfig = [
+        groupId: rootProject.group,
+        artifactId: 'workflows-spring-boot-starter',
+        version: rootProject.version,
+        name: 'The Trade Desk Java SDK - Spring Boot Starter',
+        description: 'Spring Boot starter for the The Trade Desk Java SDK.',
+    ]
+}
+
+dependencies {
+    api project(':')
+    api project(':workflows-spring-boot-autoconfigure')
+    api "org.springframework.boot:spring-boot-starter:${rootProject.springBootVersion}"
+}
+
+jar {
+    dependsOn 'generatePomFileForMavenPublication'
+    archiveBaseName = 'workflows-spring-boot-starter'
+    into("META-INF/maven/com.thetradedesk/workflows-spring-boot-starter") {
+        from(layout.buildDirectory.file("pom.xml")) {
+            // Only include if it exists to avoid build ordering issues
+            duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        }
+    }
+}

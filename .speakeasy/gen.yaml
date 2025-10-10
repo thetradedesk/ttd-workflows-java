@@ -16,12 +16,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.10.0
+  version: 0.11.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
@@ -36,6 +37,7 @@ java:
   enableStreamingUploads: false
   envVarPrefix: WORKFLOWS
   flattenGlobalSecurity: true
+  generateSpringBootStarter: true
   githubURL: github.com/thetradedesk/ttd-workflows-java
   groupID: com.thetradedesk
   imports:

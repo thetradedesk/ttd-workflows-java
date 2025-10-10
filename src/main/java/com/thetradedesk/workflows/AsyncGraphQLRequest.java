@@ -7,18 +7,20 @@ import static com.thetradedesk.workflows.operations.Operations.AsyncRequestOpera
 
 import com.thetradedesk.workflows.models.components.GraphQLRequestInput;
 import com.thetradedesk.workflows.models.components.GraphQlQueryJobInput;
-import com.thetradedesk.workflows.models.operations.async.SubmitGraphQlQueryJobRequestBuilder;
-import com.thetradedesk.workflows.models.operations.async.SubmitGraphQlQueryJobResponse;
+import com.thetradedesk.workflows.models.operations.async.SubmitGraphQlBulkQueryJobRequestBuilder;
+import com.thetradedesk.workflows.models.operations.async.SubmitGraphQlBulkQueryJobResponse;
 import com.thetradedesk.workflows.models.operations.async.SubmitGraphQlRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.async.SubmitGraphQlRequestResponse;
-import com.thetradedesk.workflows.operations.SubmitGraphQlQueryJob;
+import com.thetradedesk.workflows.operations.SubmitGraphQlBulkQueryJob;
 import com.thetradedesk.workflows.operations.SubmitGraphQlRequest;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncGraphQLRequest {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final GraphQLRequest syncSDK;
 
@@ -40,8 +42,9 @@ public class AsyncGraphQLRequest {
     /**
      * Submit a valid GraphQL query or mutation
      * 
-     * <p>This generic operation can be used to execute any valid GraphQL request.
-     * To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @return The async call builder
      */
@@ -52,10 +55,11 @@ public class AsyncGraphQLRequest {
     /**
      * Submit a valid GraphQL query or mutation
      * 
-     * <p>This generic operation can be used to execute any valid GraphQL request.
-     * To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
-     * @return CompletableFuture&lt;SubmitGraphQlRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<SubmitGraphQlRequestResponse>} - The async response
      */
     public CompletableFuture<SubmitGraphQlRequestResponse> submitGraphQlRequestDirect() {
         return submitGraphQlRequest(Optional.empty(), Optional.empty());
@@ -64,58 +68,75 @@ public class AsyncGraphQLRequest {
     /**
      * Submit a valid GraphQL query or mutation
      * 
-     * <p>This generic operation can be used to execute any valid GraphQL request.
-     * To explore the available GraphQL operations, see the [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;SubmitGraphQlRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<SubmitGraphQlRequestResponse>} - The async response
      */
     public CompletableFuture<SubmitGraphQlRequestResponse> submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
-              = new SubmitGraphQlRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new SubmitGraphQlRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
 
 
     /**
-     * Submit a valid bulk GraphQL query
+     * Submit a valid bulk GraphQL query job
      * 
-     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @return The async call builder
      */
-    public SubmitGraphQlQueryJobRequestBuilder submitGraphQlQueryJob() {
-        return new SubmitGraphQlQueryJobRequestBuilder(sdkConfiguration);
+    public SubmitGraphQlBulkQueryJobRequestBuilder submitGraphQlBulkQueryJob() {
+        return new SubmitGraphQlBulkQueryJobRequestBuilder(sdkConfiguration);
     }
 
     /**
-     * Submit a valid bulk GraphQL query
+     * Submit a valid bulk GraphQL query job
      * 
-     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
-     * @return CompletableFuture&lt;SubmitGraphQlQueryJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<SubmitGraphQlBulkQueryJobResponse>} - The async response
      */
-    public CompletableFuture<SubmitGraphQlQueryJobResponse> submitGraphQlQueryJobDirect() {
-        return submitGraphQlQueryJob(Optional.empty(), Optional.empty());
+    public CompletableFuture<SubmitGraphQlBulkQueryJobResponse> submitGraphQlBulkQueryJobDirect() {
+        return submitGraphQlBulkQueryJob(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Submit a valid bulk GraphQL query
+     * Submit a valid bulk GraphQL query job
      * 
-     * <p>This generic operation can be used to execute any valid bulk GraphQL query.
-     * For information on bulk GraphQL query syntax, see [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;SubmitGraphQlQueryJobResponse&gt; - The async response
+     * @return {@code CompletableFuture<SubmitGraphQlBulkQueryJobResponse>} - The async response
      */
-    public CompletableFuture<SubmitGraphQlQueryJobResponse> submitGraphQlQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) {
-        AsyncRequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlQueryJobResponse> operation
-              = new SubmitGraphQlQueryJob.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+    public CompletableFuture<SubmitGraphQlBulkQueryJobResponse> submitGraphQlBulkQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) {
+        AsyncRequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlBulkQueryJobResponse> operation
+              = new SubmitGraphQlBulkQueryJob.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }

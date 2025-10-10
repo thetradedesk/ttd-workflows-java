@@ -1,0 +1,9 @@
+# CampaignCreateWorkflowPassThroughFeeCardInput
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `startDateUtc`                                                                                             | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html)                  | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `passThroughFees`                                                                                          | List\<[CampaignCreatePassThroughFeesInput](../../models/components/CampaignCreatePassThroughFeesInput.md)> | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

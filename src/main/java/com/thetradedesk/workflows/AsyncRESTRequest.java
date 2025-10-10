@@ -9,12 +9,14 @@ import com.thetradedesk.workflows.models.components.CallRestApiWorkflowInput;
 import com.thetradedesk.workflows.models.operations.async.SubmitRestRequestRequestBuilder;
 import com.thetradedesk.workflows.models.operations.async.SubmitRestRequestResponse;
 import com.thetradedesk.workflows.operations.SubmitRestRequest;
+import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 
 public class AsyncRESTRequest {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
     private final RESTRequest syncSDK;
 
@@ -36,8 +38,9 @@ public class AsyncRESTRequest {
     /**
      * Submit a valid REST request
      * 
-     * <p>This generic operation can be used to execute any valid REST request.
-     * To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @return The async call builder
      */
@@ -48,10 +51,11 @@ public class AsyncRESTRequest {
     /**
      * Submit a valid REST request
      * 
-     * <p>This generic operation can be used to execute any valid REST request.
-     * To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
-     * @return CompletableFuture&lt;SubmitRestRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<SubmitRestRequestResponse>} - The async response
      */
     public CompletableFuture<SubmitRestRequestResponse> submitRestRequestDirect() {
         return submitRestRequest(Optional.empty(), Optional.empty());
@@ -60,16 +64,19 @@ public class AsyncRESTRequest {
     /**
      * Submit a valid REST request
      * 
-     * <p>This generic operation can be used to execute any valid REST request.
-     * To explore the available REST operations, see the [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
-     * @return CompletableFuture&lt;SubmitRestRequestResponse&gt; - The async response
+     * @return {@code CompletableFuture<SubmitRestRequestResponse>} - The async response
      */
     public CompletableFuture<SubmitRestRequestResponse> submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request, Optional<Options> options) {
         AsyncRequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
-              = new SubmitRestRequest.Async(sdkConfiguration, options, sdkConfiguration.retryScheduler());
+              = new SubmitRestRequest.Async(
+                                    sdkConfiguration, options, sdkConfiguration.retryScheduler(),
+                                    _headers);
         return operation.doRequest(request)
             .thenCompose(operation::handleResponse);
     }
