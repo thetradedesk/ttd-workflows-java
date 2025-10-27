@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 
 public class UpdateCampaignsJobRequestBuilder {
@@ -50,7 +49,7 @@ public class UpdateCampaignsJobRequestBuilder {
         return this;
     }
 
-    public UpdateCampaignsJobResponse call() throws Exception {
+    public UpdateCampaignsJobResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

@@ -15,7 +15,6 @@ import com.thetradedesk.workflows.operations.GetFirstPartyDataJob;
 import com.thetradedesk.workflows.operations.GetThirdPartyDataJob;
 import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
-import java.lang.Exception;
 import java.util.Optional;
 
 
@@ -59,9 +58,9 @@ public class Dmp {
      * Status".
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetFirstPartyDataJobResponse getFirstPartyDataJobDirect() throws Exception {
+    public GetFirstPartyDataJobResponse getFirstPartyDataJobDirect() {
         return getFirstPartyDataJob(Optional.empty(), Optional.empty());
     }
 
@@ -75,9 +74,9 @@ public class Dmp {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetFirstPartyDataJobResponse getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request, Optional<Options> options) throws Exception {
+    public GetFirstPartyDataJobResponse getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request, Optional<Options> options) {
         RequestOperation<Optional<? extends FirstPartyDataInput>, GetFirstPartyDataJobResponse> operation
               = new GetFirstPartyDataJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -104,9 +103,9 @@ public class Dmp {
      * using the associated operation under "Job Status".
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetThirdPartyDataJobResponse getThirdPartyDataJobDirect() throws Exception {
+    public GetThirdPartyDataJobResponse getThirdPartyDataJobDirect() {
         return getThirdPartyDataJob(Optional.empty(), Optional.empty());
     }
 
@@ -120,9 +119,9 @@ public class Dmp {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetThirdPartyDataJobResponse getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request, Optional<Options> options) throws Exception {
+    public GetThirdPartyDataJobResponse getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request, Optional<Options> options) {
         RequestOperation<Optional<? extends ThirdPartyDataInput>, GetThirdPartyDataJobResponse> operation
               = new GetThirdPartyDataJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

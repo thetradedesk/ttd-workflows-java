@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [createAdGroup](#createadgroup) - Create a new ad group with required fields
-* [updateAdGroup](#updateadgroup) - Update an ad group with specified fields
+* [createAdGroup](#createadgroup) - Create a new ad group
+* [updateAdGroup](#updateadgroup) - Update an ad group
 * [archiveAdGroups](#archiveadgroups) - Archive multiple ad groups
-* [createAdGroupsJob](#createadgroupsjob) - Create multiple new ad groups with required fields
-* [updateAdGroupsJob](#updateadgroupsjob) - Update multiple ad groups with specified fields
+* [createAdGroupsJob](#createadgroupsjob) - Submit a job to create multiple new ad groups
+* [updateAdGroupsJob](#updateadgroupsjob) - Submit a job to update multiple ad groups
 
 ## createAdGroup
 
-Create a new ad group with required fields
+Create a new ad group
 
 ### Example Usage
 
@@ -394,7 +394,7 @@ public class Application {
 
 ## createAdGroupsJob
 
-Create multiple new ad groups with required fields
+Submit a job to create multiple new ad groups
 
 ### Example Usage
 

@@ -5,16 +5,16 @@
 
 ### Available Operations
 
-* [create](#create) - Create a new campaign with required fields
-* [updateCampaign](#updatecampaign) - Update a campaign with specified fields
-* [createCampaignsJob](#createcampaignsjob) - Create multiple new campaigns with required fields
-* [updateCampaignsJob](#updatecampaignsjob) - Update multiple campaigns with specified fields
+* [create](#create) - Create a new campaign
+* [updateCampaign](#updatecampaign) - Update a campaign
+* [createCampaignsJob](#createcampaignsjob) - Submit a job to create multiple new campaigns
+* [updateCampaignsJob](#updatecampaignsjob) - Submit a job to update multiple campaigns
 * [archiveCampaigns](#archivecampaigns) - Archive multiple campaigns
 * [getVersion](#getversion) - Get a campaign's version
 
 ## create
 
-Create a new campaign with required fields
+Create a new campaign
 
 ### Example Usage
 
@@ -177,6 +177,7 @@ public class Application {
                                 .build()))
                         .startDateUtc(OffsetDateTime.parse("2023-03-18T04:39:08.387Z"))
                         .build())
+                    .callerSource("<value>")
                     .build())
                 .adGroups(List.of(
                     CampaignCreateWorkflowAdGroupInput.builder()
@@ -473,7 +474,7 @@ public class Application {
 
 ## createCampaignsJob
 
-Create multiple new campaigns with required fields
+Submit a job to create multiple new campaigns
 
 ### Example Usage
 
@@ -643,6 +644,7 @@ public class Application {
                                         .build()))
                                 .startDateUtc(OffsetDateTime.parse("2024-07-24T11:58:59.190Z"))
                                 .build())
+                            .callerSource("<value>")
                             .build())
                         .adGroups(List.of(
                             CampaignCreateWorkflowAdGroupInput.builder()

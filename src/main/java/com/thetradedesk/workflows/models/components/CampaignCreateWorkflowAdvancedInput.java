@@ -39,25 +39,33 @@ public class CampaignCreateWorkflowAdvancedInput {
     @JsonProperty("passThroughFeeCard")
     private Optional<? extends CampaignCreateWorkflowPassThroughFeeCardInput> passThroughFeeCard;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("callerSource")
+    private JsonNullable<String> callerSource;
+
     @JsonCreator
     public CampaignCreateWorkflowAdvancedInput(
             @JsonProperty("flights") JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights,
             @JsonProperty("purchaseOrderNumber") JsonNullable<String> purchaseOrderNumber,
             @JsonProperty("includeDefaultsFromAdvertiser") Optional<Boolean> includeDefaultsFromAdvertiser,
-            @JsonProperty("passThroughFeeCard") Optional<? extends CampaignCreateWorkflowPassThroughFeeCardInput> passThroughFeeCard) {
+            @JsonProperty("passThroughFeeCard") Optional<? extends CampaignCreateWorkflowPassThroughFeeCardInput> passThroughFeeCard,
+            @JsonProperty("callerSource") JsonNullable<String> callerSource) {
         Utils.checkNotNull(flights, "flights");
         Utils.checkNotNull(purchaseOrderNumber, "purchaseOrderNumber");
         Utils.checkNotNull(includeDefaultsFromAdvertiser, "includeDefaultsFromAdvertiser");
         Utils.checkNotNull(passThroughFeeCard, "passThroughFeeCard");
+        Utils.checkNotNull(callerSource, "callerSource");
         this.flights = flights;
         this.purchaseOrderNumber = purchaseOrderNumber;
         this.includeDefaultsFromAdvertiser = includeDefaultsFromAdvertiser;
         this.passThroughFeeCard = passThroughFeeCard;
+        this.callerSource = callerSource;
     }
     
     public CampaignCreateWorkflowAdvancedInput() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
-            Optional.empty());
+            Optional.empty(), JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -80,6 +88,11 @@ public class CampaignCreateWorkflowAdvancedInput {
     @JsonIgnore
     public Optional<CampaignCreateWorkflowPassThroughFeeCardInput> passThroughFeeCard() {
         return (Optional<CampaignCreateWorkflowPassThroughFeeCardInput>) passThroughFeeCard;
+    }
+
+    @JsonIgnore
+    public JsonNullable<String> callerSource() {
+        return callerSource;
     }
 
     public static Builder builder() {
@@ -137,6 +150,18 @@ public class CampaignCreateWorkflowAdvancedInput {
         return this;
     }
 
+    public CampaignCreateWorkflowAdvancedInput withCallerSource(String callerSource) {
+        Utils.checkNotNull(callerSource, "callerSource");
+        this.callerSource = JsonNullable.of(callerSource);
+        return this;
+    }
+
+    public CampaignCreateWorkflowAdvancedInput withCallerSource(JsonNullable<String> callerSource) {
+        Utils.checkNotNull(callerSource, "callerSource");
+        this.callerSource = callerSource;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -150,14 +175,15 @@ public class CampaignCreateWorkflowAdvancedInput {
             Utils.enhancedDeepEquals(this.flights, other.flights) &&
             Utils.enhancedDeepEquals(this.purchaseOrderNumber, other.purchaseOrderNumber) &&
             Utils.enhancedDeepEquals(this.includeDefaultsFromAdvertiser, other.includeDefaultsFromAdvertiser) &&
-            Utils.enhancedDeepEquals(this.passThroughFeeCard, other.passThroughFeeCard);
+            Utils.enhancedDeepEquals(this.passThroughFeeCard, other.passThroughFeeCard) &&
+            Utils.enhancedDeepEquals(this.callerSource, other.callerSource);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
             flights, purchaseOrderNumber, includeDefaultsFromAdvertiser,
-            passThroughFeeCard);
+            passThroughFeeCard, callerSource);
     }
     
     @Override
@@ -166,7 +192,8 @@ public class CampaignCreateWorkflowAdvancedInput {
                 "flights", flights,
                 "purchaseOrderNumber", purchaseOrderNumber,
                 "includeDefaultsFromAdvertiser", includeDefaultsFromAdvertiser,
-                "passThroughFeeCard", passThroughFeeCard);
+                "passThroughFeeCard", passThroughFeeCard,
+                "callerSource", callerSource);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -179,6 +206,8 @@ public class CampaignCreateWorkflowAdvancedInput {
         private Optional<Boolean> includeDefaultsFromAdvertiser = Optional.empty();
 
         private Optional<? extends CampaignCreateWorkflowPassThroughFeeCardInput> passThroughFeeCard = Optional.empty();
+
+        private JsonNullable<String> callerSource = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -236,11 +265,24 @@ public class CampaignCreateWorkflowAdvancedInput {
             return this;
         }
 
+
+        public Builder callerSource(String callerSource) {
+            Utils.checkNotNull(callerSource, "callerSource");
+            this.callerSource = JsonNullable.of(callerSource);
+            return this;
+        }
+
+        public Builder callerSource(JsonNullable<String> callerSource) {
+            Utils.checkNotNull(callerSource, "callerSource");
+            this.callerSource = callerSource;
+            return this;
+        }
+
         public CampaignCreateWorkflowAdvancedInput build() {
 
             return new CampaignCreateWorkflowAdvancedInput(
                 flights, purchaseOrderNumber, includeDefaultsFromAdvertiser,
-                passThroughFeeCard);
+                passThroughFeeCard, callerSource);
         }
 
     }

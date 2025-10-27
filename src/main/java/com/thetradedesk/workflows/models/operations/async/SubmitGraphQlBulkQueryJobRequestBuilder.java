@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
-import java.lang.Exception;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -51,7 +50,7 @@ public class SubmitGraphQlBulkQueryJobRequestBuilder {
         return this;
     }
 
-    public CompletableFuture<SubmitGraphQlBulkQueryJobResponse> call() throws Exception {
+    public CompletableFuture<SubmitGraphQlBulkQueryJobResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());
