@@ -80,8 +80,18 @@ public class AdGroupCreateWorkflowPrimaryInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("marketType")
+    private Optional<? extends MarketType> marketType;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("programmaticGuaranteedPrivateContractId")
     private JsonNullable<String> programmaticGuaranteedPrivateContractId;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("includeDefaultsFromCampaign")
+    private Optional<Boolean> includeDefaultsFromCampaign;
 
     @JsonCreator
     public AdGroupCreateWorkflowPrimaryInput(
@@ -97,7 +107,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
             @JsonProperty("name") Optional<String> name,
             @JsonProperty("channel") AdGroupChannel channel,
             @JsonProperty("funnelLocation") AdGroupFunnelLocation funnelLocation,
-            @JsonProperty("programmaticGuaranteedPrivateContractId") JsonNullable<String> programmaticGuaranteedPrivateContractId) {
+            @JsonProperty("marketType") Optional<? extends MarketType> marketType,
+            @JsonProperty("programmaticGuaranteedPrivateContractId") JsonNullable<String> programmaticGuaranteedPrivateContractId,
+            @JsonProperty("includeDefaultsFromCampaign") Optional<Boolean> includeDefaultsFromCampaign) {
         Utils.checkNotNull(isEnabled, "isEnabled");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(budget, "budget");
@@ -110,7 +122,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(channel, "channel");
         Utils.checkNotNull(funnelLocation, "funnelLocation");
+        Utils.checkNotNull(marketType, "marketType");
         Utils.checkNotNull(programmaticGuaranteedPrivateContractId, "programmaticGuaranteedPrivateContractId");
+        Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
         this.isEnabled = isEnabled;
         this.description = description;
         this.budget = budget;
@@ -123,7 +137,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
         this.name = name;
         this.channel = channel;
         this.funnelLocation = funnelLocation;
+        this.marketType = marketType;
         this.programmaticGuaranteedPrivateContractId = programmaticGuaranteedPrivateContractId;
+        this.includeDefaultsFromCampaign = includeDefaultsFromCampaign;
     }
     
     public AdGroupCreateWorkflowPrimaryInput(
@@ -133,7 +149,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
             Optional.empty(), channel, funnelLocation,
-            JsonNullable.undefined());
+            Optional.empty(), JsonNullable.undefined(), Optional.empty());
     }
 
     @JsonIgnore
@@ -201,9 +217,20 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return funnelLocation;
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<MarketType> marketType() {
+        return (Optional<MarketType>) marketType;
+    }
+
     @JsonIgnore
     public JsonNullable<String> programmaticGuaranteedPrivateContractId() {
         return programmaticGuaranteedPrivateContractId;
+    }
+
+    @JsonIgnore
+    public Optional<Boolean> includeDefaultsFromCampaign() {
+        return includeDefaultsFromCampaign;
     }
 
     public static Builder builder() {
@@ -347,6 +374,19 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return this;
     }
 
+    public AdGroupCreateWorkflowPrimaryInput withMarketType(MarketType marketType) {
+        Utils.checkNotNull(marketType, "marketType");
+        this.marketType = Optional.ofNullable(marketType);
+        return this;
+    }
+
+
+    public AdGroupCreateWorkflowPrimaryInput withMarketType(Optional<? extends MarketType> marketType) {
+        Utils.checkNotNull(marketType, "marketType");
+        this.marketType = marketType;
+        return this;
+    }
+
     public AdGroupCreateWorkflowPrimaryInput withProgrammaticGuaranteedPrivateContractId(String programmaticGuaranteedPrivateContractId) {
         Utils.checkNotNull(programmaticGuaranteedPrivateContractId, "programmaticGuaranteedPrivateContractId");
         this.programmaticGuaranteedPrivateContractId = JsonNullable.of(programmaticGuaranteedPrivateContractId);
@@ -356,6 +396,19 @@ public class AdGroupCreateWorkflowPrimaryInput {
     public AdGroupCreateWorkflowPrimaryInput withProgrammaticGuaranteedPrivateContractId(JsonNullable<String> programmaticGuaranteedPrivateContractId) {
         Utils.checkNotNull(programmaticGuaranteedPrivateContractId, "programmaticGuaranteedPrivateContractId");
         this.programmaticGuaranteedPrivateContractId = programmaticGuaranteedPrivateContractId;
+        return this;
+    }
+
+    public AdGroupCreateWorkflowPrimaryInput withIncludeDefaultsFromCampaign(boolean includeDefaultsFromCampaign) {
+        Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+        this.includeDefaultsFromCampaign = Optional.ofNullable(includeDefaultsFromCampaign);
+        return this;
+    }
+
+
+    public AdGroupCreateWorkflowPrimaryInput withIncludeDefaultsFromCampaign(Optional<Boolean> includeDefaultsFromCampaign) {
+        Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+        this.includeDefaultsFromCampaign = includeDefaultsFromCampaign;
         return this;
     }
 
@@ -381,7 +434,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.channel, other.channel) &&
             Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation) &&
-            Utils.enhancedDeepEquals(this.programmaticGuaranteedPrivateContractId, other.programmaticGuaranteedPrivateContractId);
+            Utils.enhancedDeepEquals(this.marketType, other.marketType) &&
+            Utils.enhancedDeepEquals(this.programmaticGuaranteedPrivateContractId, other.programmaticGuaranteedPrivateContractId) &&
+            Utils.enhancedDeepEquals(this.includeDefaultsFromCampaign, other.includeDefaultsFromCampaign);
     }
     
     @Override
@@ -391,7 +446,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
             roiGoal, creativeIds, associatedBidLists,
             name, channel, funnelLocation,
-            programmaticGuaranteedPrivateContractId);
+            marketType, programmaticGuaranteedPrivateContractId, includeDefaultsFromCampaign);
     }
     
     @Override
@@ -409,7 +464,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
                 "name", name,
                 "channel", channel,
                 "funnelLocation", funnelLocation,
-                "programmaticGuaranteedPrivateContractId", programmaticGuaranteedPrivateContractId);
+                "marketType", marketType,
+                "programmaticGuaranteedPrivateContractId", programmaticGuaranteedPrivateContractId,
+                "includeDefaultsFromCampaign", includeDefaultsFromCampaign);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -439,7 +496,11 @@ public class AdGroupCreateWorkflowPrimaryInput {
 
         private AdGroupFunnelLocation funnelLocation;
 
+        private Optional<? extends MarketType> marketType = Optional.empty();
+
         private JsonNullable<String> programmaticGuaranteedPrivateContractId = JsonNullable.undefined();
+
+        private Optional<Boolean> includeDefaultsFromCampaign = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -590,6 +651,19 @@ public class AdGroupCreateWorkflowPrimaryInput {
         }
 
 
+        public Builder marketType(MarketType marketType) {
+            Utils.checkNotNull(marketType, "marketType");
+            this.marketType = Optional.ofNullable(marketType);
+            return this;
+        }
+
+        public Builder marketType(Optional<? extends MarketType> marketType) {
+            Utils.checkNotNull(marketType, "marketType");
+            this.marketType = marketType;
+            return this;
+        }
+
+
         public Builder programmaticGuaranteedPrivateContractId(String programmaticGuaranteedPrivateContractId) {
             Utils.checkNotNull(programmaticGuaranteedPrivateContractId, "programmaticGuaranteedPrivateContractId");
             this.programmaticGuaranteedPrivateContractId = JsonNullable.of(programmaticGuaranteedPrivateContractId);
@@ -602,6 +676,19 @@ public class AdGroupCreateWorkflowPrimaryInput {
             return this;
         }
 
+
+        public Builder includeDefaultsFromCampaign(boolean includeDefaultsFromCampaign) {
+            Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+            this.includeDefaultsFromCampaign = Optional.ofNullable(includeDefaultsFromCampaign);
+            return this;
+        }
+
+        public Builder includeDefaultsFromCampaign(Optional<Boolean> includeDefaultsFromCampaign) {
+            Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+            this.includeDefaultsFromCampaign = includeDefaultsFromCampaign;
+            return this;
+        }
+
         public AdGroupCreateWorkflowPrimaryInput build() {
 
             return new AdGroupCreateWorkflowPrimaryInput(
@@ -609,7 +696,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
                 baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
                 roiGoal, creativeIds, associatedBidLists,
                 name, channel, funnelLocation,
-                programmaticGuaranteedPrivateContractId);
+                marketType, programmaticGuaranteedPrivateContractId, includeDefaultsFromCampaign);
         }
 
     }

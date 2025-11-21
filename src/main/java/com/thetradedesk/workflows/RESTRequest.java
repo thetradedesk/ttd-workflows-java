@@ -11,7 +11,6 @@ import com.thetradedesk.workflows.models.operations.SubmitRestRequestResponse;
 import com.thetradedesk.workflows.operations.SubmitRestRequest;
 import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
-import java.lang.Exception;
 import java.util.Optional;
 
 
@@ -55,9 +54,9 @@ public class RESTRequest {
      * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public SubmitRestRequestResponse submitRestRequestDirect() throws Exception {
+    public SubmitRestRequestResponse submitRestRequestDirect() {
         return submitRestRequest(Optional.empty(), Optional.empty());
     }
 
@@ -71,9 +70,9 @@ public class RESTRequest {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public SubmitRestRequestResponse submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request, Optional<Options> options) throws Exception {
+    public SubmitRestRequestResponse submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request, Optional<Options> options) {
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation
               = new SubmitRestRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

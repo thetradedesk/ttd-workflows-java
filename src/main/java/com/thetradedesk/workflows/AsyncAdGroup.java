@@ -55,7 +55,7 @@ public class AsyncAdGroup {
 
 
     /**
-     * Create a new ad group with required fields
+     * Create a new ad group
      * 
      * @return The async call builder
      */
@@ -64,7 +64,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Create a new ad group with required fields
+     * Create a new ad group
      * 
      * @return {@code CompletableFuture<CreateAdGroupResponse>} - The async response
      */
@@ -73,7 +73,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Create a new ad group with required fields
+     * Create a new ad group
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -90,7 +90,7 @@ public class AsyncAdGroup {
 
 
     /**
-     * Update an ad group with specified fields
+     * Update an ad group
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -101,7 +101,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Update an ad group with specified fields
+     * Update an ad group
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -112,7 +112,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Update an ad group with specified fields
+     * Update an ad group
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -181,7 +181,7 @@ public class AsyncAdGroup {
 
 
     /**
-     * Create multiple new ad groups with required fields
+     * Submit a job to create multiple new ad groups
      * 
      * @return The async call builder
      */
@@ -190,7 +190,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Create multiple new ad groups with required fields
+     * Submit a job to create multiple new ad groups
      * 
      * @return {@code CompletableFuture<CreateAdGroupsJobResponse>} - The async response
      */
@@ -199,7 +199,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Create multiple new ad groups with required fields
+     * Submit a job to create multiple new ad groups
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -216,7 +216,7 @@ public class AsyncAdGroup {
 
 
     /**
-     * Update multiple ad groups with specified fields
+     * Submit a job to update multiple ad groups
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
@@ -227,7 +227,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Update multiple ad groups with specified fields
+     * Submit a job to update multiple ad groups
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
@@ -238,7 +238,7 @@ public class AsyncAdGroup {
     }
 
     /**
-     * Update multiple ad groups with specified fields
+     * Submit a job to update multiple ad groups
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 

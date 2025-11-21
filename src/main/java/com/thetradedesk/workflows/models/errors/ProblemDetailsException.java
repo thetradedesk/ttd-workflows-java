@@ -10,327 +10,449 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.thetradedesk.workflows.models.components.ProblemDetails;
+import com.thetradedesk.workflows.utils.Blob;
 import com.thetradedesk.workflows.utils.Utils;
+import jakarta.annotation.Nullable;
+import java.io.InputStream;
+import java.lang.Deprecated;
+import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Override;
-import java.lang.RuntimeException;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.lang.Throwable;
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
 @SuppressWarnings("serial")
-public class ProblemDetailsException extends RuntimeException {
+public class ProblemDetailsException extends WorkflowsError {
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("type")
-    private JsonNullable<String> type;
+    @Nullable
+    private final Data data;
 
+    @Nullable
+    private final Throwable deserializationException;
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("title")
-    private JsonNullable<String> title;
-
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("status")
-    private JsonNullable<Integer> status;
-
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("detail")
-    private JsonNullable<String> detail;
-
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("instance")
-    private JsonNullable<String> instance;
-
-
-    @JsonIgnore
-    private Map<String, ProblemDetails> additionalProperties;
-
-    @JsonCreator
     public ProblemDetailsException(
-            @JsonProperty("type") JsonNullable<String> type,
-            @JsonProperty("title") JsonNullable<String> title,
-            @JsonProperty("status") JsonNullable<Integer> status,
-            @JsonProperty("detail") JsonNullable<String> detail,
-            @JsonProperty("instance") JsonNullable<String> instance) {
-        super("API error occurred");
-        Utils.checkNotNull(type, "type");
-        Utils.checkNotNull(title, "title");
-        Utils.checkNotNull(status, "status");
-        Utils.checkNotNull(detail, "detail");
-        Utils.checkNotNull(instance, "instance");
-        this.type = type;
-        this.title = title;
-        this.status = status;
-        this.detail = detail;
-        this.instance = instance;
-        this.additionalProperties = new HashMap<>();
-    }
-    
-    public ProblemDetailsException() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+                int code,
+                byte[] body,
+                HttpResponse<?> rawResponse,
+                @Nullable Data data,
+                @Nullable Throwable deserializationException) {
+        super("API error occurred", code, body, rawResponse, null);
+        this.data = data;
+        this.deserializationException = deserializationException;
     }
 
-    @JsonIgnore
-    public JsonNullable<String> type() {
-        return type;
+    /**
+    * Parse a response into an instance of ProblemDetailsException. If deserialization of the response body fails,
+    * the resulting ProblemDetailsException instance will have a null data() value and a non-null deserializationException().
+    */
+    public static ProblemDetailsException from(HttpResponse<InputStream> response) {
+        try {
+            byte[] bytes = Utils.extractByteArrayFromBody(response);
+            Data data = Utils.mapper().readValue(bytes, Data.class);
+            return new ProblemDetailsException(response.statusCode(), bytes, response, data, null);
+        } catch (Exception e) {
+            return new ProblemDetailsException(response.statusCode(), null, response, null, e);
+        }
     }
 
-    @JsonIgnore
-    public JsonNullable<String> title() {
-        return title;
+    /**
+    * Parse a response into an instance of ProblemDetailsException asynchronously. If deserialization of the response body fails,
+    * the resulting ProblemDetailsException instance will have a null data() value and a non-null deserializationException().
+    */
+    public static CompletableFuture<ProblemDetailsException> fromAsync(HttpResponse<Blob> response) {
+        return response.body()
+                .toByteArray()
+                .handle((bytes, err) -> {
+                    // if a body read error occurs, we want to transform the exception
+                    if (err != null) {
+                        throw new AsyncAPIException(
+                                "Error reading response body: " + err.getMessage(),
+                                response.statusCode(),
+                                null,
+                                response,
+                                err);
+                    }
+
+                    try {
+                        return new ProblemDetailsException(
+                                response.statusCode(),
+                                bytes,
+                                response,
+                                Utils.mapper().readValue(
+                                        bytes,
+                                        new TypeReference<Data>() {
+                                        }),
+                                null);
+                    } catch (Exception e) {
+                        return new ProblemDetailsException(
+                                response.statusCode(),
+                                bytes,
+                                response,
+                                null,
+                                e);
+                    }
+                });
     }
 
-    @JsonIgnore
-    public JsonNullable<Integer> status() {
-        return status;
+    @Deprecated
+    public Optional<JsonNullable<String>> type() {
+        return data().map(Data::type);
     }
 
-    @JsonIgnore
-    public JsonNullable<String> detail() {
-        return detail;
+    @Deprecated
+    public Optional<JsonNullable<String>> title() {
+        return data().map(Data::title);
     }
 
-    @JsonIgnore
-    public JsonNullable<String> instance() {
-        return instance;
+    @Deprecated
+    public Optional<JsonNullable<Integer>> status() {
+        return data().map(Data::status);
     }
 
-    @JsonAnyGetter
+    @Deprecated
+    public Optional<JsonNullable<String>> detail() {
+        return data().map(Data::detail);
+    }
+
+    @Deprecated
+    public Optional<JsonNullable<String>> instance() {
+        return data().map(Data::instance);
+    }
+
+    @Deprecated
     public Map<String, ProblemDetails> additionalProperties() {
-        return additionalProperties;
+        return data().map(Data::additionalProperties).orElse(Map.of());
     }
 
-    public static Builder builder() {
-        return new Builder();
+    public Optional<Data> data() {
+        return Optional.ofNullable(data);
     }
 
-
-    public ProblemDetailsException withType(String type) {
-        Utils.checkNotNull(type, "type");
-        this.type = JsonNullable.of(type);
-        return this;
+    /**
+     * Returns the exception if an error occurs while deserializing the response body.
+     */
+    public Optional<Throwable> deserializationException() {
+        return Optional.ofNullable(deserializationException);
     }
 
-    public ProblemDetailsException withType(JsonNullable<String> type) {
-        Utils.checkNotNull(type, "type");
-        this.type = type;
-        return this;
-    }
+    public static class Data {
 
-    public ProblemDetailsException withTitle(String title) {
-        Utils.checkNotNull(title, "title");
-        this.title = JsonNullable.of(title);
-        return this;
-    }
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("type")
+        private JsonNullable<String> type;
 
-    public ProblemDetailsException withTitle(JsonNullable<String> title) {
-        Utils.checkNotNull(title, "title");
-        this.title = title;
-        return this;
-    }
 
-    public ProblemDetailsException withStatus(int status) {
-        Utils.checkNotNull(status, "status");
-        this.status = JsonNullable.of(status);
-        return this;
-    }
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("title")
+        private JsonNullable<String> title;
 
-    public ProblemDetailsException withStatus(JsonNullable<Integer> status) {
-        Utils.checkNotNull(status, "status");
-        this.status = status;
-        return this;
-    }
 
-    public ProblemDetailsException withDetail(String detail) {
-        Utils.checkNotNull(detail, "detail");
-        this.detail = JsonNullable.of(detail);
-        return this;
-    }
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("status")
+        private JsonNullable<Integer> status;
 
-    public ProblemDetailsException withDetail(JsonNullable<String> detail) {
-        Utils.checkNotNull(detail, "detail");
-        this.detail = detail;
-        return this;
-    }
 
-    public ProblemDetailsException withInstance(String instance) {
-        Utils.checkNotNull(instance, "instance");
-        this.instance = JsonNullable.of(instance);
-        return this;
-    }
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("detail")
+        private JsonNullable<String> detail;
 
-    public ProblemDetailsException withInstance(JsonNullable<String> instance) {
-        Utils.checkNotNull(instance, "instance");
-        this.instance = instance;
-        return this;
-    }
 
-    @JsonAnySetter
-    public ProblemDetailsException withAdditionalProperty(String key, ProblemDetails value) {
-        // note that value can be null because of the way JsonAnySetter works
-        Utils.checkNotNull(key, "key");
-        additionalProperties.put(key, value); 
-        return this;
-    }
-    public ProblemDetailsException withAdditionalProperties(Map<String, ProblemDetails> additionalProperties) {
-        Utils.checkNotNull(additionalProperties, "additionalProperties");
-        this.additionalProperties = additionalProperties;
-        return this;
-    }
+        @JsonInclude(Include.NON_ABSENT)
+        @JsonProperty("instance")
+        private JsonNullable<String> instance;
 
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
+
+        @JsonIgnore
+        private Map<String, ProblemDetails> additionalProperties;
+
+        @JsonCreator
+        public Data(
+                @JsonProperty("type") JsonNullable<String> type,
+                @JsonProperty("title") JsonNullable<String> title,
+                @JsonProperty("status") JsonNullable<Integer> status,
+                @JsonProperty("detail") JsonNullable<String> detail,
+                @JsonProperty("instance") JsonNullable<String> instance) {
+            Utils.checkNotNull(type, "type");
+            Utils.checkNotNull(title, "title");
+            Utils.checkNotNull(status, "status");
+            Utils.checkNotNull(detail, "detail");
+            Utils.checkNotNull(instance, "instance");
+            this.type = type;
+            this.title = title;
+            this.status = status;
+            this.detail = detail;
+            this.instance = instance;
+            this.additionalProperties = new HashMap<>();
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
+        
+        public Data() {
+            this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+                JsonNullable.undefined(), JsonNullable.undefined());
         }
-        ProblemDetailsException other = (ProblemDetailsException) o;
-        return 
-            Utils.enhancedDeepEquals(this.type, other.type) &&
-            Utils.enhancedDeepEquals(this.title, other.title) &&
-            Utils.enhancedDeepEquals(this.status, other.status) &&
-            Utils.enhancedDeepEquals(this.detail, other.detail) &&
-            Utils.enhancedDeepEquals(this.instance, other.instance) &&
-            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Utils.enhancedHash(
-            type, title, status,
-            detail, instance, additionalProperties);
-    }
-    
-    @Override
-    public String toString() {
-        return Utils.toString(ProblemDetailsException.class,
-                "type", type,
-                "title", title,
-                "status", status,
-                "detail", detail,
-                "instance", instance,
-                "additionalProperties", additionalProperties);
-    }
 
-    @SuppressWarnings("UnusedReturnValue")
-    public final static class Builder {
+        @JsonIgnore
+        public JsonNullable<String> type() {
+            return type;
+        }
 
-        private JsonNullable<String> type = JsonNullable.undefined();
+        @JsonIgnore
+        public JsonNullable<String> title() {
+            return title;
+        }
 
-        private JsonNullable<String> title = JsonNullable.undefined();
+        @JsonIgnore
+        public JsonNullable<Integer> status() {
+            return status;
+        }
 
-        private JsonNullable<Integer> status = JsonNullable.undefined();
+        @JsonIgnore
+        public JsonNullable<String> detail() {
+            return detail;
+        }
 
-        private JsonNullable<String> detail = JsonNullable.undefined();
+        @JsonIgnore
+        public JsonNullable<String> instance() {
+            return instance;
+        }
 
-        private JsonNullable<String> instance = JsonNullable.undefined();
+        @JsonAnyGetter
+        public Map<String, ProblemDetails> additionalProperties() {
+            return additionalProperties;
+        }
 
-        private Map<String, ProblemDetails> additionalProperties = new HashMap<>();
-
-        private Builder() {
-          // force use of static builder() method
+        public static Builder builder() {
+            return new Builder();
         }
 
 
-        public Builder type(String type) {
+        public Data withType(String type) {
             Utils.checkNotNull(type, "type");
             this.type = JsonNullable.of(type);
             return this;
         }
 
-        public Builder type(JsonNullable<String> type) {
+        public Data withType(JsonNullable<String> type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;
         }
 
-
-        public Builder title(String title) {
+        public Data withTitle(String title) {
             Utils.checkNotNull(title, "title");
             this.title = JsonNullable.of(title);
             return this;
         }
 
-        public Builder title(JsonNullable<String> title) {
+        public Data withTitle(JsonNullable<String> title) {
             Utils.checkNotNull(title, "title");
             this.title = title;
             return this;
         }
 
-
-        public Builder status(int status) {
+        public Data withStatus(int status) {
             Utils.checkNotNull(status, "status");
             this.status = JsonNullable.of(status);
             return this;
         }
 
-        public Builder status(JsonNullable<Integer> status) {
+        public Data withStatus(JsonNullable<Integer> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
         }
 
-
-        public Builder detail(String detail) {
+        public Data withDetail(String detail) {
             Utils.checkNotNull(detail, "detail");
             this.detail = JsonNullable.of(detail);
             return this;
         }
 
-        public Builder detail(JsonNullable<String> detail) {
+        public Data withDetail(JsonNullable<String> detail) {
             Utils.checkNotNull(detail, "detail");
             this.detail = detail;
             return this;
         }
 
-
-        public Builder instance(String instance) {
+        public Data withInstance(String instance) {
             Utils.checkNotNull(instance, "instance");
             this.instance = JsonNullable.of(instance);
             return this;
         }
 
-        public Builder instance(JsonNullable<String> instance) {
+        public Data withInstance(JsonNullable<String> instance) {
             Utils.checkNotNull(instance, "instance");
             this.instance = instance;
             return this;
         }
 
-        public Builder additionalProperty(String key, ProblemDetails value) {
+        @JsonAnySetter
+        public Data withAdditionalProperty(String key, ProblemDetails value) {
+            // note that value can be null because of the way JsonAnySetter works
             Utils.checkNotNull(key, "key");
-            // we could be strict about null values (force the user
-            // to pass `JsonNullable.of(null)`) but likely to be a bit 
-            // annoying for additional properties building so we'll 
-            // relax preconditions.
-            this.additionalProperties.put(key, value);
+            additionalProperties.put(key, value); 
             return this;
         }
-
-        public Builder additionalProperties(Map<String, ProblemDetails> additionalProperties) {
+        public Data withAdditionalProperties(Map<String, ProblemDetails> additionalProperties) {
             Utils.checkNotNull(additionalProperties, "additionalProperties");
             this.additionalProperties = additionalProperties;
             return this;
         }
 
-        public ProblemDetailsException build() {
-
-            return new ProblemDetailsException(
+        @Override
+        public boolean equals(java.lang.Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Data other = (Data) o;
+            return 
+                Utils.enhancedDeepEquals(this.type, other.type) &&
+                Utils.enhancedDeepEquals(this.title, other.title) &&
+                Utils.enhancedDeepEquals(this.status, other.status) &&
+                Utils.enhancedDeepEquals(this.detail, other.detail) &&
+                Utils.enhancedDeepEquals(this.instance, other.instance) &&
+                Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties);
+        }
+        
+        @Override
+        public int hashCode() {
+            return Utils.enhancedHash(
                 type, title, status,
-                detail, instance)
-                .withAdditionalProperties(additionalProperties);
+                detail, instance, additionalProperties);
+        }
+        
+        @Override
+        public String toString() {
+            return Utils.toString(Data.class,
+                    "type", type,
+                    "title", title,
+                    "status", status,
+                    "detail", detail,
+                    "instance", instance,
+                    "additionalProperties", additionalProperties);
         }
 
+        @SuppressWarnings("UnusedReturnValue")
+        public final static class Builder {
+
+            private JsonNullable<String> type = JsonNullable.undefined();
+
+            private JsonNullable<String> title = JsonNullable.undefined();
+
+            private JsonNullable<Integer> status = JsonNullable.undefined();
+
+            private JsonNullable<String> detail = JsonNullable.undefined();
+
+            private JsonNullable<String> instance = JsonNullable.undefined();
+
+            private Map<String, ProblemDetails> additionalProperties = new HashMap<>();
+
+            private Builder() {
+              // force use of static builder() method
+            }
+
+
+            public Builder type(String type) {
+                Utils.checkNotNull(type, "type");
+                this.type = JsonNullable.of(type);
+                return this;
+            }
+
+            public Builder type(JsonNullable<String> type) {
+                Utils.checkNotNull(type, "type");
+                this.type = type;
+                return this;
+            }
+
+
+            public Builder title(String title) {
+                Utils.checkNotNull(title, "title");
+                this.title = JsonNullable.of(title);
+                return this;
+            }
+
+            public Builder title(JsonNullable<String> title) {
+                Utils.checkNotNull(title, "title");
+                this.title = title;
+                return this;
+            }
+
+
+            public Builder status(int status) {
+                Utils.checkNotNull(status, "status");
+                this.status = JsonNullable.of(status);
+                return this;
+            }
+
+            public Builder status(JsonNullable<Integer> status) {
+                Utils.checkNotNull(status, "status");
+                this.status = status;
+                return this;
+            }
+
+
+            public Builder detail(String detail) {
+                Utils.checkNotNull(detail, "detail");
+                this.detail = JsonNullable.of(detail);
+                return this;
+            }
+
+            public Builder detail(JsonNullable<String> detail) {
+                Utils.checkNotNull(detail, "detail");
+                this.detail = detail;
+                return this;
+            }
+
+
+            public Builder instance(String instance) {
+                Utils.checkNotNull(instance, "instance");
+                this.instance = JsonNullable.of(instance);
+                return this;
+            }
+
+            public Builder instance(JsonNullable<String> instance) {
+                Utils.checkNotNull(instance, "instance");
+                this.instance = instance;
+                return this;
+            }
+
+            public Builder additionalProperty(String key, ProblemDetails value) {
+                Utils.checkNotNull(key, "key");
+                // we could be strict about null values (force the user
+                // to pass `JsonNullable.of(null)`) but likely to be a bit 
+                // annoying for additional properties building so we'll 
+                // relax preconditions.
+                this.additionalProperties.put(key, value);
+                return this;
+            }
+
+            public Builder additionalProperties(Map<String, ProblemDetails> additionalProperties) {
+                Utils.checkNotNull(additionalProperties, "additionalProperties");
+                this.additionalProperties = additionalProperties;
+                return this;
+            }
+
+            public Data build() {
+
+                return new Data(
+                    type, title, status,
+                    detail, instance)
+                    .withAdditionalProperties(additionalProperties);
+            }
+
+        }
     }
+
 }
 
