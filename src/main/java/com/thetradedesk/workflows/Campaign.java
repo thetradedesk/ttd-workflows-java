@@ -32,7 +32,6 @@ import com.thetradedesk.workflows.operations.UpdateCampaignsJob;
 import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +57,7 @@ public class Campaign {
     }
 
     /**
-     * Create a new campaign with required fields
+     * Create a new campaign
      * 
      * @return The call builder
      */
@@ -67,31 +66,31 @@ public class Campaign {
     }
 
     /**
-     * Create a new campaign with required fields
+     * Create a new campaign
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateCampaignResponse createDirect() throws Exception {
+    public CreateCampaignResponse createDirect() {
         return create(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Create a new campaign with required fields
+     * Create a new campaign
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateCampaignResponse create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public CreateCampaignResponse create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends CampaignCreateWorkflowInputWithValidation>, CreateCampaignResponse> operation
               = new CreateCampaign.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
-     * Update a campaign with specified fields
+     * Update a campaign
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -102,35 +101,35 @@ public class Campaign {
     }
 
     /**
-     * Update a campaign with specified fields
+     * Update a campaign
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateCampaignResponse updateCampaignDirect() throws Exception {
+    public UpdateCampaignResponse updateCampaignDirect() {
         return updateCampaign(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Update a campaign with specified fields
+     * Update a campaign
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateCampaignResponse updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public UpdateCampaignResponse updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends CampaignUpdateWorkflowInputWithValidation>, UpdateCampaignResponse> operation
               = new UpdateCampaign.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
-     * Create multiple new campaigns with required fields
+     * Submit a job to create multiple new campaigns
      * 
      * @return The call builder
      */
@@ -139,31 +138,31 @@ public class Campaign {
     }
 
     /**
-     * Create multiple new campaigns with required fields
+     * Submit a job to create multiple new campaigns
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateCampaignsJobResponse createCampaignsJobDirect() throws Exception {
+    public CreateCampaignsJobResponse createCampaignsJobDirect() {
         return createCampaignsJob(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Create multiple new campaigns with required fields
+     * Submit a job to create multiple new campaigns
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateCampaignsJobResponse createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public CreateCampaignsJobResponse createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends CampaignBulkCreateWorkflowInputWithValidation>, CreateCampaignsJobResponse> operation
               = new CreateCampaignsJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
-     * Update multiple campaigns with specified fields
+     * Submit a job to update multiple campaigns
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
@@ -174,28 +173,28 @@ public class Campaign {
     }
 
     /**
-     * Update multiple campaigns with specified fields
+     * Submit a job to update multiple campaigns
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateCampaignsJobResponse updateCampaignsJobDirect() throws Exception {
+    public UpdateCampaignsJobResponse updateCampaignsJobDirect() {
         return updateCampaignsJob(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Update multiple campaigns with specified fields
+     * Submit a job to update multiple campaigns
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateCampaignsJobResponse updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public UpdateCampaignsJobResponse updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation>, UpdateCampaignsJobResponse> operation
               = new UpdateCampaignsJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -218,9 +217,9 @@ public class Campaign {
      * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ArchiveCampaignsResponse archiveCampaignsDirect() throws Exception {
+    public ArchiveCampaignsResponse archiveCampaignsDirect() {
         return archiveCampaigns(Optional.empty(), Optional.empty(), Optional.empty());
     }
 
@@ -233,11 +232,11 @@ public class Campaign {
      * @param requestBody 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public ArchiveCampaignsResponse archiveCampaigns(
             Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         ArchiveCampaignsRequest request =
             ArchiveCampaignsRequest
                 .builder()
@@ -263,9 +262,9 @@ public class Campaign {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetCampaignVersionResponse getVersion(String id) throws Exception {
+    public GetCampaignVersionResponse getVersion(String id) {
         return getVersion(id, Optional.empty());
     }
 
@@ -275,9 +274,9 @@ public class Campaign {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetCampaignVersionResponse getVersion(String id, Optional<Options> options) throws Exception {
+    public GetCampaignVersionResponse getVersion(String id, Optional<Options> options) {
         GetCampaignVersionRequest request =
             GetCampaignVersionRequest
                 .builder()

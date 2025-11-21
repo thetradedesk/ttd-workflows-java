@@ -64,6 +64,11 @@ public class AdGroupWorkflowAdvancedInput {
     @JsonProperty("flights")
     private JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("callerSource")
+    private JsonNullable<String> callerSource;
+
     @JsonCreator
     public AdGroupWorkflowAdvancedInput(
             @JsonProperty("koaOptimizationSettings") Optional<? extends AdGroupWorkflowKoaOptimizationSettingsInput> koaOptimizationSettings,
@@ -74,7 +79,8 @@ public class AdGroupWorkflowAdvancedInput {
             @JsonProperty("isUseSecondaryConversionsEnabled") JsonNullable<Boolean> isUseSecondaryConversionsEnabled,
             @JsonProperty("nielsenTrackingAttributes") Optional<? extends AdGroupWorkflowNielsenTrackingAttributesInput> nielsenTrackingAttributes,
             @JsonProperty("newFrequencyConfigs") JsonNullable<? extends List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs,
-            @JsonProperty("flights") JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights) {
+            @JsonProperty("flights") JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights,
+            @JsonProperty("callerSource") JsonNullable<String> callerSource) {
         Utils.checkNotNull(koaOptimizationSettings, "koaOptimizationSettings");
         Utils.checkNotNull(comscoreSettings, "comscoreSettings");
         Utils.checkNotNull(contractTargeting, "contractTargeting");
@@ -84,6 +90,7 @@ public class AdGroupWorkflowAdvancedInput {
         Utils.checkNotNull(nielsenTrackingAttributes, "nielsenTrackingAttributes");
         Utils.checkNotNull(newFrequencyConfigs, "newFrequencyConfigs");
         Utils.checkNotNull(flights, "flights");
+        Utils.checkNotNull(callerSource, "callerSource");
         this.koaOptimizationSettings = koaOptimizationSettings;
         this.comscoreSettings = comscoreSettings;
         this.contractTargeting = contractTargeting;
@@ -93,12 +100,14 @@ public class AdGroupWorkflowAdvancedInput {
         this.nielsenTrackingAttributes = nielsenTrackingAttributes;
         this.newFrequencyConfigs = newFrequencyConfigs;
         this.flights = flights;
+        this.callerSource = callerSource;
     }
     
     public AdGroupWorkflowAdvancedInput() {
         this(Optional.empty(), Optional.empty(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
+            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -151,6 +160,11 @@ public class AdGroupWorkflowAdvancedInput {
     @JsonIgnore
     public JsonNullable<List<AdGroupWorkflowFlightInput>> flights() {
         return (JsonNullable<List<AdGroupWorkflowFlightInput>>) flights;
+    }
+
+    @JsonIgnore
+    public JsonNullable<String> callerSource() {
+        return callerSource;
     }
 
     public static Builder builder() {
@@ -270,6 +284,18 @@ public class AdGroupWorkflowAdvancedInput {
         return this;
     }
 
+    public AdGroupWorkflowAdvancedInput withCallerSource(String callerSource) {
+        Utils.checkNotNull(callerSource, "callerSource");
+        this.callerSource = JsonNullable.of(callerSource);
+        return this;
+    }
+
+    public AdGroupWorkflowAdvancedInput withCallerSource(JsonNullable<String> callerSource) {
+        Utils.checkNotNull(callerSource, "callerSource");
+        this.callerSource = callerSource;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -288,7 +314,8 @@ public class AdGroupWorkflowAdvancedInput {
             Utils.enhancedDeepEquals(this.isUseSecondaryConversionsEnabled, other.isUseSecondaryConversionsEnabled) &&
             Utils.enhancedDeepEquals(this.nielsenTrackingAttributes, other.nielsenTrackingAttributes) &&
             Utils.enhancedDeepEquals(this.newFrequencyConfigs, other.newFrequencyConfigs) &&
-            Utils.enhancedDeepEquals(this.flights, other.flights);
+            Utils.enhancedDeepEquals(this.flights, other.flights) &&
+            Utils.enhancedDeepEquals(this.callerSource, other.callerSource);
     }
     
     @Override
@@ -296,7 +323,8 @@ public class AdGroupWorkflowAdvancedInput {
         return Utils.enhancedHash(
             koaOptimizationSettings, comscoreSettings, contractTargeting,
             dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
-            nielsenTrackingAttributes, newFrequencyConfigs, flights);
+            nielsenTrackingAttributes, newFrequencyConfigs, flights,
+            callerSource);
     }
     
     @Override
@@ -310,7 +338,8 @@ public class AdGroupWorkflowAdvancedInput {
                 "isUseSecondaryConversionsEnabled", isUseSecondaryConversionsEnabled,
                 "nielsenTrackingAttributes", nielsenTrackingAttributes,
                 "newFrequencyConfigs", newFrequencyConfigs,
-                "flights", flights);
+                "flights", flights,
+                "callerSource", callerSource);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -333,6 +362,8 @@ public class AdGroupWorkflowAdvancedInput {
         private JsonNullable<? extends List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights = JsonNullable.undefined();
+
+        private JsonNullable<String> callerSource = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -455,12 +486,26 @@ public class AdGroupWorkflowAdvancedInput {
             return this;
         }
 
+
+        public Builder callerSource(String callerSource) {
+            Utils.checkNotNull(callerSource, "callerSource");
+            this.callerSource = JsonNullable.of(callerSource);
+            return this;
+        }
+
+        public Builder callerSource(JsonNullable<String> callerSource) {
+            Utils.checkNotNull(callerSource, "callerSource");
+            this.callerSource = callerSource;
+            return this;
+        }
+
         public AdGroupWorkflowAdvancedInput build() {
 
             return new AdGroupWorkflowAdvancedInput(
                 koaOptimizationSettings, comscoreSettings, contractTargeting,
                 dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
-                nielsenTrackingAttributes, newFrequencyConfigs, flights);
+                nielsenTrackingAttributes, newFrequencyConfigs, flights,
+                callerSource);
         }
 
     }

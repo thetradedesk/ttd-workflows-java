@@ -61,6 +61,11 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("includeDefaultsFromCampaign")
+    private Optional<Boolean> includeDefaultsFromCampaign;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flights")
     private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupFlightInput>> flights;
 
@@ -74,6 +79,7 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
             @JsonProperty("isUseSecondaryConversionsEnabled") JsonNullable<Boolean> isUseSecondaryConversionsEnabled,
             @JsonProperty("nielsenTrackingAttributes") Optional<? extends AdGroupWorkflowNielsenTrackingAttributesInput> nielsenTrackingAttributes,
             @JsonProperty("newFrequencyConfigs") JsonNullable<? extends List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs,
+            @JsonProperty("includeDefaultsFromCampaign") Optional<Boolean> includeDefaultsFromCampaign,
             @JsonProperty("flights") JsonNullable<? extends List<CampaignCreateWorkflowAdGroupFlightInput>> flights) {
         Utils.checkNotNull(koaOptimizationSettings, "koaOptimizationSettings");
         Utils.checkNotNull(comscoreSettings, "comscoreSettings");
@@ -83,6 +89,7 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
         Utils.checkNotNull(isUseSecondaryConversionsEnabled, "isUseSecondaryConversionsEnabled");
         Utils.checkNotNull(nielsenTrackingAttributes, "nielsenTrackingAttributes");
         Utils.checkNotNull(newFrequencyConfigs, "newFrequencyConfigs");
+        Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
         Utils.checkNotNull(flights, "flights");
         this.koaOptimizationSettings = koaOptimizationSettings;
         this.comscoreSettings = comscoreSettings;
@@ -92,13 +99,15 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
         this.isUseSecondaryConversionsEnabled = isUseSecondaryConversionsEnabled;
         this.nielsenTrackingAttributes = nielsenTrackingAttributes;
         this.newFrequencyConfigs = newFrequencyConfigs;
+        this.includeDefaultsFromCampaign = includeDefaultsFromCampaign;
         this.flights = flights;
     }
     
     public CampaignCreateWorkflowAdGroupAdvancedInput() {
         this(Optional.empty(), Optional.empty(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
+            Optional.empty(), JsonNullable.undefined(), Optional.empty(),
+            JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -145,6 +154,11 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
     @JsonIgnore
     public JsonNullable<List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs() {
         return (JsonNullable<List<AdGroupWorkflowNewFrequencyConfigInput>>) newFrequencyConfigs;
+    }
+
+    @JsonIgnore
+    public Optional<Boolean> includeDefaultsFromCampaign() {
+        return includeDefaultsFromCampaign;
     }
 
     @SuppressWarnings("unchecked")
@@ -258,6 +272,19 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
         return this;
     }
 
+    public CampaignCreateWorkflowAdGroupAdvancedInput withIncludeDefaultsFromCampaign(boolean includeDefaultsFromCampaign) {
+        Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+        this.includeDefaultsFromCampaign = Optional.ofNullable(includeDefaultsFromCampaign);
+        return this;
+    }
+
+
+    public CampaignCreateWorkflowAdGroupAdvancedInput withIncludeDefaultsFromCampaign(Optional<Boolean> includeDefaultsFromCampaign) {
+        Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+        this.includeDefaultsFromCampaign = includeDefaultsFromCampaign;
+        return this;
+    }
+
     public CampaignCreateWorkflowAdGroupAdvancedInput withFlights(List<CampaignCreateWorkflowAdGroupFlightInput> flights) {
         Utils.checkNotNull(flights, "flights");
         this.flights = JsonNullable.of(flights);
@@ -288,6 +315,7 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
             Utils.enhancedDeepEquals(this.isUseSecondaryConversionsEnabled, other.isUseSecondaryConversionsEnabled) &&
             Utils.enhancedDeepEquals(this.nielsenTrackingAttributes, other.nielsenTrackingAttributes) &&
             Utils.enhancedDeepEquals(this.newFrequencyConfigs, other.newFrequencyConfigs) &&
+            Utils.enhancedDeepEquals(this.includeDefaultsFromCampaign, other.includeDefaultsFromCampaign) &&
             Utils.enhancedDeepEquals(this.flights, other.flights);
     }
     
@@ -296,7 +324,8 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
         return Utils.enhancedHash(
             koaOptimizationSettings, comscoreSettings, contractTargeting,
             dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
-            nielsenTrackingAttributes, newFrequencyConfigs, flights);
+            nielsenTrackingAttributes, newFrequencyConfigs, includeDefaultsFromCampaign,
+            flights);
     }
     
     @Override
@@ -310,6 +339,7 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
                 "isUseSecondaryConversionsEnabled", isUseSecondaryConversionsEnabled,
                 "nielsenTrackingAttributes", nielsenTrackingAttributes,
                 "newFrequencyConfigs", newFrequencyConfigs,
+                "includeDefaultsFromCampaign", includeDefaultsFromCampaign,
                 "flights", flights);
     }
 
@@ -331,6 +361,8 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
         private Optional<? extends AdGroupWorkflowNielsenTrackingAttributesInput> nielsenTrackingAttributes = Optional.empty();
 
         private JsonNullable<? extends List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs = JsonNullable.undefined();
+
+        private Optional<Boolean> includeDefaultsFromCampaign = Optional.empty();
 
         private JsonNullable<? extends List<CampaignCreateWorkflowAdGroupFlightInput>> flights = JsonNullable.undefined();
 
@@ -443,6 +475,19 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
         }
 
 
+        public Builder includeDefaultsFromCampaign(boolean includeDefaultsFromCampaign) {
+            Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+            this.includeDefaultsFromCampaign = Optional.ofNullable(includeDefaultsFromCampaign);
+            return this;
+        }
+
+        public Builder includeDefaultsFromCampaign(Optional<Boolean> includeDefaultsFromCampaign) {
+            Utils.checkNotNull(includeDefaultsFromCampaign, "includeDefaultsFromCampaign");
+            this.includeDefaultsFromCampaign = includeDefaultsFromCampaign;
+            return this;
+        }
+
+
         public Builder flights(List<CampaignCreateWorkflowAdGroupFlightInput> flights) {
             Utils.checkNotNull(flights, "flights");
             this.flights = JsonNullable.of(flights);
@@ -460,7 +505,8 @@ public class CampaignCreateWorkflowAdGroupAdvancedInput {
             return new CampaignCreateWorkflowAdGroupAdvancedInput(
                 koaOptimizationSettings, comscoreSettings, contractTargeting,
                 dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
-                nielsenTrackingAttributes, newFrequencyConfigs, flights);
+                nielsenTrackingAttributes, newFrequencyConfigs, includeDefaultsFromCampaign,
+                flights);
         }
 
     }

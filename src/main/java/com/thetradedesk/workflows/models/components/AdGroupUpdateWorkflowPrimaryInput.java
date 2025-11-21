@@ -80,6 +80,11 @@ public class AdGroupUpdateWorkflowPrimaryInput {
     @JsonProperty("funnelLocation")
     private Optional<? extends AdGroupFunnelLocation> funnelLocation;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("marketType")
+    private Optional<? extends MarketType> marketType;
+
     @JsonCreator
     public AdGroupUpdateWorkflowPrimaryInput(
             @JsonProperty("isEnabled") JsonNullable<Boolean> isEnabled,
@@ -93,7 +98,8 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             @JsonProperty("associatedBidLists") JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("channel") Optional<? extends AdGroupChannel> channel,
-            @JsonProperty("funnelLocation") Optional<? extends AdGroupFunnelLocation> funnelLocation) {
+            @JsonProperty("funnelLocation") Optional<? extends AdGroupFunnelLocation> funnelLocation,
+            @JsonProperty("marketType") Optional<? extends MarketType> marketType) {
         Utils.checkNotNull(isEnabled, "isEnabled");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(budget, "budget");
@@ -106,6 +112,7 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(channel, "channel");
         Utils.checkNotNull(funnelLocation, "funnelLocation");
+        Utils.checkNotNull(marketType, "marketType");
         this.isEnabled = isEnabled;
         this.description = description;
         this.budget = budget;
@@ -118,13 +125,15 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         this.name = name;
         this.channel = channel;
         this.funnelLocation = funnelLocation;
+        this.marketType = marketType;
     }
     
     public AdGroupUpdateWorkflowPrimaryInput() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), Optional.empty(), Optional.empty());
+            JsonNullable.undefined(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -192,6 +201,12 @@ public class AdGroupUpdateWorkflowPrimaryInput {
     @JsonIgnore
     public Optional<AdGroupFunnelLocation> funnelLocation() {
         return (Optional<AdGroupFunnelLocation>) funnelLocation;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<MarketType> marketType() {
+        return (Optional<MarketType>) marketType;
     }
 
     public static Builder builder() {
@@ -348,6 +363,19 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         return this;
     }
 
+    public AdGroupUpdateWorkflowPrimaryInput withMarketType(MarketType marketType) {
+        Utils.checkNotNull(marketType, "marketType");
+        this.marketType = Optional.ofNullable(marketType);
+        return this;
+    }
+
+
+    public AdGroupUpdateWorkflowPrimaryInput withMarketType(Optional<? extends MarketType> marketType) {
+        Utils.checkNotNull(marketType, "marketType");
+        this.marketType = marketType;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -369,7 +397,8 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.associatedBidLists, other.associatedBidLists) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.channel, other.channel) &&
-            Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation);
+            Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation) &&
+            Utils.enhancedDeepEquals(this.marketType, other.marketType);
     }
     
     @Override
@@ -378,7 +407,8 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             isEnabled, description, budget,
             baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
             roiGoal, creativeIds, associatedBidLists,
-            name, channel, funnelLocation);
+            name, channel, funnelLocation,
+            marketType);
     }
     
     @Override
@@ -395,7 +425,8 @@ public class AdGroupUpdateWorkflowPrimaryInput {
                 "associatedBidLists", associatedBidLists,
                 "name", name,
                 "channel", channel,
-                "funnelLocation", funnelLocation);
+                "funnelLocation", funnelLocation,
+                "marketType", marketType);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -424,6 +455,8 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         private Optional<? extends AdGroupChannel> channel = Optional.empty();
 
         private Optional<? extends AdGroupFunnelLocation> funnelLocation = Optional.empty();
+
+        private Optional<? extends MarketType> marketType = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -585,13 +618,27 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             return this;
         }
 
+
+        public Builder marketType(MarketType marketType) {
+            Utils.checkNotNull(marketType, "marketType");
+            this.marketType = Optional.ofNullable(marketType);
+            return this;
+        }
+
+        public Builder marketType(Optional<? extends MarketType> marketType) {
+            Utils.checkNotNull(marketType, "marketType");
+            this.marketType = marketType;
+            return this;
+        }
+
         public AdGroupUpdateWorkflowPrimaryInput build() {
 
             return new AdGroupUpdateWorkflowPrimaryInput(
                 isEnabled, description, budget,
                 baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
                 roiGoal, creativeIds, associatedBidLists,
-                name, channel, funnelLocation);
+                name, channel, funnelLocation,
+                marketType);
         }
 
     }

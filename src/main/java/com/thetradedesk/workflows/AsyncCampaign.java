@@ -59,7 +59,7 @@ public class AsyncCampaign {
 
 
     /**
-     * Create a new campaign with required fields
+     * Create a new campaign
      * 
      * @return The async call builder
      */
@@ -68,7 +68,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Create a new campaign with required fields
+     * Create a new campaign
      * 
      * @return {@code CompletableFuture<CreateCampaignResponse>} - The async response
      */
@@ -77,7 +77,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Create a new campaign with required fields
+     * Create a new campaign
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -94,7 +94,7 @@ public class AsyncCampaign {
 
 
     /**
-     * Update a campaign with specified fields
+     * Update a campaign
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -105,7 +105,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Update a campaign with specified fields
+     * Update a campaign
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -116,7 +116,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Update a campaign with specified fields
+     * Update a campaign
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -135,7 +135,7 @@ public class AsyncCampaign {
 
 
     /**
-     * Create multiple new campaigns with required fields
+     * Submit a job to create multiple new campaigns
      * 
      * @return The async call builder
      */
@@ -144,7 +144,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Create multiple new campaigns with required fields
+     * Submit a job to create multiple new campaigns
      * 
      * @return {@code CompletableFuture<CreateCampaignsJobResponse>} - The async response
      */
@@ -153,7 +153,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Create multiple new campaigns with required fields
+     * Submit a job to create multiple new campaigns
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
@@ -170,7 +170,7 @@ public class AsyncCampaign {
 
 
     /**
-     * Update multiple campaigns with specified fields
+     * Submit a job to update multiple campaigns
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
@@ -181,7 +181,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Update multiple campaigns with specified fields
+     * Submit a job to update multiple campaigns
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
@@ -192,7 +192,7 @@ public class AsyncCampaign {
     }
 
     /**
-     * Update multiple campaigns with specified fields
+     * Submit a job to update multiple campaigns
      * 
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 

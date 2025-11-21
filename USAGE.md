@@ -68,7 +68,9 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
+                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
+                    .includeDefaultsFromCampaign(false)
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
@@ -121,6 +123,7 @@ public class Application {
                             .dailyTargetInAdvertiserCurrency(5847.35)
                             .dailyTargetInImpressions(257517L)
                             .build()))
+                    .callerSource("<value>")
                     .build())
                 .validateInputOnly(true)
                 .build();

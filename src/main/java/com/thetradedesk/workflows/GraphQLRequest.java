@@ -15,7 +15,6 @@ import com.thetradedesk.workflows.operations.SubmitGraphQlBulkQueryJob;
 import com.thetradedesk.workflows.operations.SubmitGraphQlRequest;
 import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
-import java.lang.Exception;
 import java.util.Optional;
 
 
@@ -59,9 +58,9 @@ public class GraphQLRequest {
      * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public SubmitGraphQlRequestResponse submitGraphQlRequestDirect() throws Exception {
+    public SubmitGraphQlRequestResponse submitGraphQlRequestDirect() {
         return submitGraphQlRequest(Optional.empty(), Optional.empty());
     }
 
@@ -75,9 +74,9 @@ public class GraphQLRequest {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public SubmitGraphQlRequestResponse submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request, Optional<Options> options) throws Exception {
+    public SubmitGraphQlRequestResponse submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request, Optional<Options> options) {
         RequestOperation<Optional<? extends GraphQLRequestInput>, SubmitGraphQlRequestResponse> operation
               = new SubmitGraphQlRequest.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -110,9 +109,9 @@ public class GraphQLRequest {
      * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJobDirect() throws Exception {
+    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJobDirect() {
         return submitGraphQlBulkQueryJob(Optional.empty(), Optional.empty());
     }
 
@@ -129,9 +128,9 @@ public class GraphQLRequest {
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) throws Exception {
+    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJob(Optional<? extends GraphQlQueryJobInput> request, Optional<Options> options) {
         RequestOperation<Optional<? extends GraphQlQueryJobInput>, SubmitGraphQlBulkQueryJobResponse> operation
               = new SubmitGraphQlBulkQueryJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

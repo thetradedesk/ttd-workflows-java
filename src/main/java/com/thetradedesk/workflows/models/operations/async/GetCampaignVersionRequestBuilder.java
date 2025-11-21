@@ -12,7 +12,6 @@ import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -54,7 +53,7 @@ public class GetCampaignVersionRequestBuilder {
         return request;
     }
 
-    public CompletableFuture<GetCampaignVersionResponse> call() throws Exception {
+    public CompletableFuture<GetCampaignVersionResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
             .build());

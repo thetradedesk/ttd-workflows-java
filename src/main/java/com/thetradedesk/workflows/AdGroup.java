@@ -28,7 +28,6 @@ import com.thetradedesk.workflows.operations.UpdateAdGroupsJob;
 import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import java.lang.Boolean;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +53,7 @@ public class AdGroup {
     }
 
     /**
-     * Create a new ad group with required fields
+     * Create a new ad group
      * 
      * @return The call builder
      */
@@ -63,31 +62,31 @@ public class AdGroup {
     }
 
     /**
-     * Create a new ad group with required fields
+     * Create a new ad group
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateAdGroupResponse createAdGroupDirect() throws Exception {
+    public CreateAdGroupResponse createAdGroupDirect() {
         return createAdGroup(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Create a new ad group with required fields
+     * Create a new ad group
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateAdGroupResponse createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public CreateAdGroupResponse createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends AdGroupCreateWorkflowInputWithValidation>, CreateAdGroupResponse> operation
               = new CreateAdGroup.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
-     * Update an ad group with specified fields
+     * Update an ad group
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
@@ -98,28 +97,28 @@ public class AdGroup {
     }
 
     /**
-     * Update an ad group with specified fields
+     * Update an ad group
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateAdGroupResponse updateAdGroupDirect() throws Exception {
+    public UpdateAdGroupResponse updateAdGroupDirect() {
         return updateAdGroup(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Update an ad group with specified fields
+     * Update an ad group
      * 
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateAdGroupResponse updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public UpdateAdGroupResponse updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends AdGroupUpdateWorkflowInputWithValidation>, UpdateAdGroupResponse> operation
               = new UpdateAdGroup.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
@@ -142,9 +141,9 @@ public class AdGroup {
      * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ArchiveAdGroupsResponse archiveAdGroupsDirect() throws Exception {
+    public ArchiveAdGroupsResponse archiveAdGroupsDirect() {
         return archiveAdGroups(Optional.empty(), Optional.empty(), Optional.empty());
     }
 
@@ -157,11 +156,11 @@ public class AdGroup {
      * @param requestBody 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
     public ArchiveAdGroupsResponse archiveAdGroups(
             Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody,
-            Optional<Options> options) throws Exception {
+            Optional<Options> options) {
         ArchiveAdGroupsRequest request =
             ArchiveAdGroupsRequest
                 .builder()
@@ -174,7 +173,7 @@ public class AdGroup {
     }
 
     /**
-     * Create multiple new ad groups with required fields
+     * Submit a job to create multiple new ad groups
      * 
      * @return The call builder
      */
@@ -183,31 +182,31 @@ public class AdGroup {
     }
 
     /**
-     * Create multiple new ad groups with required fields
+     * Submit a job to create multiple new ad groups
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateAdGroupsJobResponse createAdGroupsJobDirect() throws Exception {
+    public CreateAdGroupsJobResponse createAdGroupsJobDirect() {
         return createAdGroupsJob(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Create multiple new ad groups with required fields
+     * Submit a job to create multiple new ad groups
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateAdGroupsJobResponse createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public CreateAdGroupsJobResponse createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation>, CreateAdGroupsJobResponse> operation
               = new CreateAdGroupsJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));
     }
 
     /**
-     * Update multiple ad groups with specified fields
+     * Submit a job to update multiple ad groups
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
@@ -218,28 +217,28 @@ public class AdGroup {
     }
 
     /**
-     * Update multiple ad groups with specified fields
+     * Submit a job to update multiple ad groups
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateAdGroupsJobResponse updateAdGroupsJobDirect() throws Exception {
+    public UpdateAdGroupsJobResponse updateAdGroupsJobDirect() {
         return updateAdGroupsJob(Optional.empty(), Optional.empty());
     }
 
     /**
-     * Update multiple ad groups with specified fields
+     * Submit a job to update multiple ad groups
      * 
      * <p>Only the fields provided in the request payload for each specific ad group will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public UpdateAdGroupsJobResponse updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) throws Exception {
+    public UpdateAdGroupsJobResponse updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request, Optional<Options> options) {
         RequestOperation<Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation>, UpdateAdGroupsJobResponse> operation
               = new UpdateAdGroupsJob.Sync(sdkConfiguration, options, _headers);
         return operation.handleResponse(operation.doRequest(request));

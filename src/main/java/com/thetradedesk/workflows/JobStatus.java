@@ -15,7 +15,6 @@ import com.thetradedesk.workflows.operations.GetGraphQlBulkJobStatus;
 import com.thetradedesk.workflows.operations.GetJobStatus;
 import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
-import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 
@@ -61,9 +60,9 @@ public class JobStatus {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetGraphQlBulkJobStatusResponse getGraphQlBulkJobStatus(String id) throws Exception {
+    public GetGraphQlBulkJobStatusResponse getGraphQlBulkJobStatus(String id) {
         return getGraphQlBulkJobStatus(id, Optional.empty());
     }
 
@@ -77,9 +76,9 @@ public class JobStatus {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetGraphQlBulkJobStatusResponse getGraphQlBulkJobStatus(String id, Optional<Options> options) throws Exception {
+    public GetGraphQlBulkJobStatusResponse getGraphQlBulkJobStatus(String id, Optional<Options> options) {
         GetGraphQlBulkJobStatusRequest request =
             GetGraphQlBulkJobStatusRequest
                 .builder()
@@ -114,9 +113,9 @@ public class JobStatus {
      * 
      * @param id 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetJobStatusResponse getJobStatus(long id) throws Exception {
+    public GetJobStatusResponse getJobStatus(long id) {
         return getJobStatus(id, Optional.empty());
     }
 
@@ -131,9 +130,9 @@ public class JobStatus {
      * @param id 
      * @param options additional options
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetJobStatusResponse getJobStatus(long id, Optional<Options> options) throws Exception {
+    public GetJobStatusResponse getJobStatus(long id, Optional<Options> options) {
         GetJobStatusRequest request =
             GetJobStatusRequest
                 .builder()

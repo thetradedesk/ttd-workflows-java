@@ -5,15 +5,15 @@
 
 ### Available Operations
 
-* [createAdGroup](#createadgroup) - Create a new ad group with required fields
-* [updateAdGroup](#updateadgroup) - Update an ad group with specified fields
+* [createAdGroup](#createadgroup) - Create a new ad group
+* [updateAdGroup](#updateadgroup) - Update an ad group
 * [archiveAdGroups](#archiveadgroups) - Archive multiple ad groups
-* [createAdGroupsJob](#createadgroupsjob) - Create multiple new ad groups with required fields
-* [updateAdGroupsJob](#updateadgroupsjob) - Update multiple ad groups with specified fields
+* [createAdGroupsJob](#createadgroupsjob) - Submit a job to create multiple new ad groups
+* [updateAdGroupsJob](#updateadgroupsjob) - Submit a job to update multiple ad groups
 
 ## createAdGroup
 
-Create a new ad group with required fields
+Create a new ad group
 
 ### Example Usage
 
@@ -87,7 +87,9 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
+                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
+                    .includeDefaultsFromCampaign(false)
                     .build())
                 .campaignId("<id>")
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
@@ -140,6 +142,7 @@ public class Application {
                             .dailyTargetInAdvertiserCurrency(5847.35)
                             .dailyTargetInImpressions(257517L)
                             .build()))
+                    .callerSource("<value>")
                     .build())
                 .validateInputOnly(true)
                 .build();
@@ -253,6 +256,7 @@ public class Application {
                     .name("<value>")
                     .channel(AdGroupChannel.NATIVE)
                     .funnelLocation(AdGroupFunnelLocation.CONVERSION)
+                    .marketType(MarketType.OPEN_MARKET)
                     .build())
                 .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                     .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
@@ -304,6 +308,7 @@ public class Application {
                             .dailyTargetInAdvertiserCurrency(44.58)
                             .dailyTargetInImpressions(815686L)
                             .build()))
+                    .callerSource(JsonNullable.of(null))
                     .build())
                 .validateInputOnly(false)
                 .build();
@@ -394,7 +399,7 @@ public class Application {
 
 ## createAdGroupsJob
 
-Create multiple new ad groups with required fields
+Submit a job to create multiple new ad groups
 
 ### Example Usage
 
@@ -538,6 +543,7 @@ public class Application {
                             .name("<value>")
                             .channel(AdGroupChannel.TV)
                             .funnelLocation(AdGroupFunnelLocation.NONE)
+                            .marketType(MarketType.OPEN_MARKET)
                             .build())
                         .advancedInput(AdGroupWorkflowAdvancedInput.builder()
                             .koaOptimizationSettings(AdGroupWorkflowKoaOptimizationSettingsInput.builder()
@@ -577,6 +583,7 @@ public class Application {
                                     .resetIntervalInMinutes(375296)
                                     .build()))
                             .flights(JsonNullable.of(null))
+                            .callerSource("<value>")
                             .build())
                         .build()))
                 .validateInputOnly(true)
