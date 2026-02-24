@@ -61,6 +61,16 @@ public class AdGroupWorkflowAdvancedInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("inventoryTargeting")
+    private Optional<? extends AdGroupWorkflowInventoryTargetingInput> inventoryTargeting;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("isNonDecisioned")
+    private JsonNullable<Boolean> isNonDecisioned;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flights")
     private JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights;
 
@@ -79,6 +89,8 @@ public class AdGroupWorkflowAdvancedInput {
             @JsonProperty("isUseSecondaryConversionsEnabled") JsonNullable<Boolean> isUseSecondaryConversionsEnabled,
             @JsonProperty("nielsenTrackingAttributes") Optional<? extends AdGroupWorkflowNielsenTrackingAttributesInput> nielsenTrackingAttributes,
             @JsonProperty("newFrequencyConfigs") JsonNullable<? extends List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs,
+            @JsonProperty("inventoryTargeting") Optional<? extends AdGroupWorkflowInventoryTargetingInput> inventoryTargeting,
+            @JsonProperty("isNonDecisioned") JsonNullable<Boolean> isNonDecisioned,
             @JsonProperty("flights") JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights,
             @JsonProperty("callerSource") JsonNullable<String> callerSource) {
         Utils.checkNotNull(koaOptimizationSettings, "koaOptimizationSettings");
@@ -89,6 +101,8 @@ public class AdGroupWorkflowAdvancedInput {
         Utils.checkNotNull(isUseSecondaryConversionsEnabled, "isUseSecondaryConversionsEnabled");
         Utils.checkNotNull(nielsenTrackingAttributes, "nielsenTrackingAttributes");
         Utils.checkNotNull(newFrequencyConfigs, "newFrequencyConfigs");
+        Utils.checkNotNull(inventoryTargeting, "inventoryTargeting");
+        Utils.checkNotNull(isNonDecisioned, "isNonDecisioned");
         Utils.checkNotNull(flights, "flights");
         Utils.checkNotNull(callerSource, "callerSource");
         this.koaOptimizationSettings = koaOptimizationSettings;
@@ -99,6 +113,8 @@ public class AdGroupWorkflowAdvancedInput {
         this.isUseSecondaryConversionsEnabled = isUseSecondaryConversionsEnabled;
         this.nielsenTrackingAttributes = nielsenTrackingAttributes;
         this.newFrequencyConfigs = newFrequencyConfigs;
+        this.inventoryTargeting = inventoryTargeting;
+        this.isNonDecisioned = isNonDecisioned;
         this.flights = flights;
         this.callerSource = callerSource;
     }
@@ -106,8 +122,8 @@ public class AdGroupWorkflowAdvancedInput {
     public AdGroupWorkflowAdvancedInput() {
         this(Optional.empty(), Optional.empty(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined());
+            Optional.empty(), JsonNullable.undefined(), Optional.empty(),
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @SuppressWarnings("unchecked")
@@ -154,6 +170,17 @@ public class AdGroupWorkflowAdvancedInput {
     @JsonIgnore
     public JsonNullable<List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs() {
         return (JsonNullable<List<AdGroupWorkflowNewFrequencyConfigInput>>) newFrequencyConfigs;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AdGroupWorkflowInventoryTargetingInput> inventoryTargeting() {
+        return (Optional<AdGroupWorkflowInventoryTargetingInput>) inventoryTargeting;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> isNonDecisioned() {
+        return isNonDecisioned;
     }
 
     @SuppressWarnings("unchecked")
@@ -272,6 +299,31 @@ public class AdGroupWorkflowAdvancedInput {
         return this;
     }
 
+    public AdGroupWorkflowAdvancedInput withInventoryTargeting(AdGroupWorkflowInventoryTargetingInput inventoryTargeting) {
+        Utils.checkNotNull(inventoryTargeting, "inventoryTargeting");
+        this.inventoryTargeting = Optional.ofNullable(inventoryTargeting);
+        return this;
+    }
+
+
+    public AdGroupWorkflowAdvancedInput withInventoryTargeting(Optional<? extends AdGroupWorkflowInventoryTargetingInput> inventoryTargeting) {
+        Utils.checkNotNull(inventoryTargeting, "inventoryTargeting");
+        this.inventoryTargeting = inventoryTargeting;
+        return this;
+    }
+
+    public AdGroupWorkflowAdvancedInput withIsNonDecisioned(boolean isNonDecisioned) {
+        Utils.checkNotNull(isNonDecisioned, "isNonDecisioned");
+        this.isNonDecisioned = JsonNullable.of(isNonDecisioned);
+        return this;
+    }
+
+    public AdGroupWorkflowAdvancedInput withIsNonDecisioned(JsonNullable<Boolean> isNonDecisioned) {
+        Utils.checkNotNull(isNonDecisioned, "isNonDecisioned");
+        this.isNonDecisioned = isNonDecisioned;
+        return this;
+    }
+
     public AdGroupWorkflowAdvancedInput withFlights(List<AdGroupWorkflowFlightInput> flights) {
         Utils.checkNotNull(flights, "flights");
         this.flights = JsonNullable.of(flights);
@@ -314,6 +366,8 @@ public class AdGroupWorkflowAdvancedInput {
             Utils.enhancedDeepEquals(this.isUseSecondaryConversionsEnabled, other.isUseSecondaryConversionsEnabled) &&
             Utils.enhancedDeepEquals(this.nielsenTrackingAttributes, other.nielsenTrackingAttributes) &&
             Utils.enhancedDeepEquals(this.newFrequencyConfigs, other.newFrequencyConfigs) &&
+            Utils.enhancedDeepEquals(this.inventoryTargeting, other.inventoryTargeting) &&
+            Utils.enhancedDeepEquals(this.isNonDecisioned, other.isNonDecisioned) &&
             Utils.enhancedDeepEquals(this.flights, other.flights) &&
             Utils.enhancedDeepEquals(this.callerSource, other.callerSource);
     }
@@ -323,8 +377,8 @@ public class AdGroupWorkflowAdvancedInput {
         return Utils.enhancedHash(
             koaOptimizationSettings, comscoreSettings, contractTargeting,
             dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
-            nielsenTrackingAttributes, newFrequencyConfigs, flights,
-            callerSource);
+            nielsenTrackingAttributes, newFrequencyConfigs, inventoryTargeting,
+            isNonDecisioned, flights, callerSource);
     }
     
     @Override
@@ -338,6 +392,8 @@ public class AdGroupWorkflowAdvancedInput {
                 "isUseSecondaryConversionsEnabled", isUseSecondaryConversionsEnabled,
                 "nielsenTrackingAttributes", nielsenTrackingAttributes,
                 "newFrequencyConfigs", newFrequencyConfigs,
+                "inventoryTargeting", inventoryTargeting,
+                "isNonDecisioned", isNonDecisioned,
                 "flights", flights,
                 "callerSource", callerSource);
     }
@@ -360,6 +416,10 @@ public class AdGroupWorkflowAdvancedInput {
         private Optional<? extends AdGroupWorkflowNielsenTrackingAttributesInput> nielsenTrackingAttributes = Optional.empty();
 
         private JsonNullable<? extends List<AdGroupWorkflowNewFrequencyConfigInput>> newFrequencyConfigs = JsonNullable.undefined();
+
+        private Optional<? extends AdGroupWorkflowInventoryTargetingInput> inventoryTargeting = Optional.empty();
+
+        private JsonNullable<Boolean> isNonDecisioned = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AdGroupWorkflowFlightInput>> flights = JsonNullable.undefined();
 
@@ -474,6 +534,32 @@ public class AdGroupWorkflowAdvancedInput {
         }
 
 
+        public Builder inventoryTargeting(AdGroupWorkflowInventoryTargetingInput inventoryTargeting) {
+            Utils.checkNotNull(inventoryTargeting, "inventoryTargeting");
+            this.inventoryTargeting = Optional.ofNullable(inventoryTargeting);
+            return this;
+        }
+
+        public Builder inventoryTargeting(Optional<? extends AdGroupWorkflowInventoryTargetingInput> inventoryTargeting) {
+            Utils.checkNotNull(inventoryTargeting, "inventoryTargeting");
+            this.inventoryTargeting = inventoryTargeting;
+            return this;
+        }
+
+
+        public Builder isNonDecisioned(boolean isNonDecisioned) {
+            Utils.checkNotNull(isNonDecisioned, "isNonDecisioned");
+            this.isNonDecisioned = JsonNullable.of(isNonDecisioned);
+            return this;
+        }
+
+        public Builder isNonDecisioned(JsonNullable<Boolean> isNonDecisioned) {
+            Utils.checkNotNull(isNonDecisioned, "isNonDecisioned");
+            this.isNonDecisioned = isNonDecisioned;
+            return this;
+        }
+
+
         public Builder flights(List<AdGroupWorkflowFlightInput> flights) {
             Utils.checkNotNull(flights, "flights");
             this.flights = JsonNullable.of(flights);
@@ -504,8 +590,8 @@ public class AdGroupWorkflowAdvancedInput {
             return new AdGroupWorkflowAdvancedInput(
                 koaOptimizationSettings, comscoreSettings, contractTargeting,
                 dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
-                nielsenTrackingAttributes, newFrequencyConfigs, flights,
-                callerSource);
+                nielsenTrackingAttributes, newFrequencyConfigs, inventoryTargeting,
+                isNonDecisioned, flights, callerSource);
         }
 
     }

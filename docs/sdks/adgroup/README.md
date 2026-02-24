@@ -1,5 +1,4 @@
 # AdGroup
-(*adGroup()*)
 
 ## Overview
 
@@ -133,6 +132,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)
@@ -299,6 +315,21 @@ public class Application {
                             .frequencyGoal(448470)
                             .resetIntervalInMinutes(577492)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            624775L,
+                            110078L,
+                            170675L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(false)
+                        .build())
+                    .isNonDecisioned(JsonNullable.of(null))
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(528311L)
@@ -582,6 +613,23 @@ public class Application {
                                     .frequencyGoal(637221)
                                     .resetIntervalInMinutes(375296)
                                     .build()))
+                            .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                                .dealGroupIdsToInclude(List.of(
+                                    "<value 1>",
+                                    "<value 2>",
+                                    "<value 3>"))
+                                .dealGroupIdsToExclude(List.of(
+                                    "<value 1>",
+                                    "<value 2>"))
+                                .dealIdsToExclude(List.of(
+                                    849888L,
+                                    396688L,
+                                    733994L))
+                                .dealIdsToInclude(List.of(
+                                    690107L))
+                                .includeDefaultOnDeals(false)
+                                .build())
+                            .isNonDecisioned(false)
                             .flights(JsonNullable.of(null))
                             .callerSource("<value>")
                             .build())

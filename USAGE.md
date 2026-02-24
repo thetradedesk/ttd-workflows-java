@@ -114,6 +114,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)

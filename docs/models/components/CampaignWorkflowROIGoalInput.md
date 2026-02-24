@@ -21,3 +21,4 @@
 | `crossixAudienceQualityIndex`               | *JsonNullable\<Boolean>*                    | :heavy_minus_sign:                          | N/A                                         |
 | `iqviaAudienceQualityIndexAndCostPerTarget` | *JsonNullable\<Boolean>*                    | :heavy_minus_sign:                          | N/A                                         |
 | `crossixCostPerTarget`                      | *JsonNullable\<Boolean>*                    | :heavy_minus_sign:                          | N/A                                         |
+| `newBuyerTargetValue`                       | *JsonNullable\<Integer>*                    | :heavy_minus_sign:                          | N/A                                         |
