@@ -39,6 +39,11 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("productListReportingType")
+    private Optional<? extends ProductListReportingTypeInput> productListReportingType;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("weight")
     private JsonNullable<Double> weight;
 
@@ -53,18 +58,21 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             @JsonProperty("includeInCustomCPA") boolean includeInCustomCPA,
             @JsonProperty("reportingColumnId") int reportingColumnId,
             @JsonProperty("ROASConfig") Optional<? extends CustomROASConfig> roasConfig,
+            @JsonProperty("productListReportingType") Optional<? extends ProductListReportingTypeInput> productListReportingType,
             @JsonProperty("weight") JsonNullable<Double> weight,
             @JsonProperty("crossDeviceAttributionModelId") JsonNullable<String> crossDeviceAttributionModelId) {
         Utils.checkNotNull(trackingTagId, "trackingTagId");
         Utils.checkNotNull(includeInCustomCPA, "includeInCustomCPA");
         Utils.checkNotNull(reportingColumnId, "reportingColumnId");
         Utils.checkNotNull(roasConfig, "roasConfig");
+        Utils.checkNotNull(productListReportingType, "productListReportingType");
         Utils.checkNotNull(weight, "weight");
         Utils.checkNotNull(crossDeviceAttributionModelId, "crossDeviceAttributionModelId");
         this.trackingTagId = trackingTagId;
         this.includeInCustomCPA = includeInCustomCPA;
         this.reportingColumnId = reportingColumnId;
         this.roasConfig = roasConfig;
+        this.productListReportingType = productListReportingType;
         this.weight = weight;
         this.crossDeviceAttributionModelId = crossDeviceAttributionModelId;
     }
@@ -74,7 +82,8 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             boolean includeInCustomCPA,
             int reportingColumnId) {
         this(trackingTagId, includeInCustomCPA, reportingColumnId,
-            Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined());
+            Optional.empty(), Optional.empty(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -96,6 +105,12 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
     @JsonIgnore
     public Optional<CustomROASConfig> roasConfig() {
         return (Optional<CustomROASConfig>) roasConfig;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ProductListReportingTypeInput> productListReportingType() {
+        return (Optional<ProductListReportingTypeInput>) productListReportingType;
     }
 
     @JsonIgnore
@@ -144,6 +159,19 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         return this;
     }
 
+    public CampaignWorkflowCampaignConversionReportingColumnInput withProductListReportingType(ProductListReportingTypeInput productListReportingType) {
+        Utils.checkNotNull(productListReportingType, "productListReportingType");
+        this.productListReportingType = Optional.ofNullable(productListReportingType);
+        return this;
+    }
+
+
+    public CampaignWorkflowCampaignConversionReportingColumnInput withProductListReportingType(Optional<? extends ProductListReportingTypeInput> productListReportingType) {
+        Utils.checkNotNull(productListReportingType, "productListReportingType");
+        this.productListReportingType = productListReportingType;
+        return this;
+    }
+
     public CampaignWorkflowCampaignConversionReportingColumnInput withWeight(double weight) {
         Utils.checkNotNull(weight, "weight");
         this.weight = JsonNullable.of(weight);
@@ -182,6 +210,7 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
             Utils.enhancedDeepEquals(this.includeInCustomCPA, other.includeInCustomCPA) &&
             Utils.enhancedDeepEquals(this.reportingColumnId, other.reportingColumnId) &&
             Utils.enhancedDeepEquals(this.roasConfig, other.roasConfig) &&
+            Utils.enhancedDeepEquals(this.productListReportingType, other.productListReportingType) &&
             Utils.enhancedDeepEquals(this.weight, other.weight) &&
             Utils.enhancedDeepEquals(this.crossDeviceAttributionModelId, other.crossDeviceAttributionModelId);
     }
@@ -190,7 +219,8 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
     public int hashCode() {
         return Utils.enhancedHash(
             trackingTagId, includeInCustomCPA, reportingColumnId,
-            roasConfig, weight, crossDeviceAttributionModelId);
+            roasConfig, productListReportingType, weight,
+            crossDeviceAttributionModelId);
     }
     
     @Override
@@ -200,6 +230,7 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
                 "includeInCustomCPA", includeInCustomCPA,
                 "reportingColumnId", reportingColumnId,
                 "roasConfig", roasConfig,
+                "productListReportingType", productListReportingType,
                 "weight", weight,
                 "crossDeviceAttributionModelId", crossDeviceAttributionModelId);
     }
@@ -214,6 +245,8 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         private Integer reportingColumnId;
 
         private Optional<? extends CustomROASConfig> roasConfig = Optional.empty();
+
+        private Optional<? extends ProductListReportingTypeInput> productListReportingType = Optional.empty();
 
         private JsonNullable<Double> weight = JsonNullable.undefined();
 
@@ -258,6 +291,19 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
         }
 
 
+        public Builder productListReportingType(ProductListReportingTypeInput productListReportingType) {
+            Utils.checkNotNull(productListReportingType, "productListReportingType");
+            this.productListReportingType = Optional.ofNullable(productListReportingType);
+            return this;
+        }
+
+        public Builder productListReportingType(Optional<? extends ProductListReportingTypeInput> productListReportingType) {
+            Utils.checkNotNull(productListReportingType, "productListReportingType");
+            this.productListReportingType = productListReportingType;
+            return this;
+        }
+
+
         public Builder weight(double weight) {
             Utils.checkNotNull(weight, "weight");
             this.weight = JsonNullable.of(weight);
@@ -287,7 +333,8 @@ public class CampaignWorkflowCampaignConversionReportingColumnInput {
 
             return new CampaignWorkflowCampaignConversionReportingColumnInput(
                 trackingTagId, includeInCustomCPA, reportingColumnId,
-                roasConfig, weight, crossDeviceAttributionModelId);
+                roasConfig, productListReportingType, weight,
+                crossDeviceAttributionModelId);
         }
 
     }

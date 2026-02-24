@@ -16,7 +16,7 @@ import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
-public class CampaignWorkflowBudgetInput {
+public class CampaignCreateWorkflowBudgetInput {
 
     @JsonProperty("pacingMode")
     private CampaignPacingMode pacingMode;
@@ -41,7 +41,7 @@ public class CampaignWorkflowBudgetInput {
     private JsonNullable<Long> dailyTargetInImpressions;
 
     @JsonCreator
-    public CampaignWorkflowBudgetInput(
+    public CampaignCreateWorkflowBudgetInput(
             @JsonProperty("pacingMode") CampaignPacingMode pacingMode,
             @JsonProperty("budgetInAdvertiserCurrency") double budgetInAdvertiserCurrency,
             @JsonProperty("budgetInImpressions") JsonNullable<Long> budgetInImpressions,
@@ -59,7 +59,7 @@ public class CampaignWorkflowBudgetInput {
         this.dailyTargetInImpressions = dailyTargetInImpressions;
     }
     
-    public CampaignWorkflowBudgetInput(
+    public CampaignCreateWorkflowBudgetInput(
             CampaignPacingMode pacingMode,
             double budgetInAdvertiserCurrency) {
         this(pacingMode, budgetInAdvertiserCurrency, JsonNullable.undefined(),
@@ -96,49 +96,49 @@ public class CampaignWorkflowBudgetInput {
     }
 
 
-    public CampaignWorkflowBudgetInput withPacingMode(CampaignPacingMode pacingMode) {
+    public CampaignCreateWorkflowBudgetInput withPacingMode(CampaignPacingMode pacingMode) {
         Utils.checkNotNull(pacingMode, "pacingMode");
         this.pacingMode = pacingMode;
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withBudgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
+    public CampaignCreateWorkflowBudgetInput withBudgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
         Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
         this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withBudgetInImpressions(long budgetInImpressions) {
+    public CampaignCreateWorkflowBudgetInput withBudgetInImpressions(long budgetInImpressions) {
         Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
         this.budgetInImpressions = JsonNullable.of(budgetInImpressions);
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withBudgetInImpressions(JsonNullable<Long> budgetInImpressions) {
+    public CampaignCreateWorkflowBudgetInput withBudgetInImpressions(JsonNullable<Long> budgetInImpressions) {
         Utils.checkNotNull(budgetInImpressions, "budgetInImpressions");
         this.budgetInImpressions = budgetInImpressions;
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withDailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
+    public CampaignCreateWorkflowBudgetInput withDailyTargetInAdvertiserCurrency(double dailyTargetInAdvertiserCurrency) {
         Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
         this.dailyTargetInAdvertiserCurrency = JsonNullable.of(dailyTargetInAdvertiserCurrency);
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withDailyTargetInAdvertiserCurrency(JsonNullable<Double> dailyTargetInAdvertiserCurrency) {
+    public CampaignCreateWorkflowBudgetInput withDailyTargetInAdvertiserCurrency(JsonNullable<Double> dailyTargetInAdvertiserCurrency) {
         Utils.checkNotNull(dailyTargetInAdvertiserCurrency, "dailyTargetInAdvertiserCurrency");
         this.dailyTargetInAdvertiserCurrency = dailyTargetInAdvertiserCurrency;
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withDailyTargetInImpressions(long dailyTargetInImpressions) {
+    public CampaignCreateWorkflowBudgetInput withDailyTargetInImpressions(long dailyTargetInImpressions) {
         Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
         this.dailyTargetInImpressions = JsonNullable.of(dailyTargetInImpressions);
         return this;
     }
 
-    public CampaignWorkflowBudgetInput withDailyTargetInImpressions(JsonNullable<Long> dailyTargetInImpressions) {
+    public CampaignCreateWorkflowBudgetInput withDailyTargetInImpressions(JsonNullable<Long> dailyTargetInImpressions) {
         Utils.checkNotNull(dailyTargetInImpressions, "dailyTargetInImpressions");
         this.dailyTargetInImpressions = dailyTargetInImpressions;
         return this;
@@ -152,7 +152,7 @@ public class CampaignWorkflowBudgetInput {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CampaignWorkflowBudgetInput other = (CampaignWorkflowBudgetInput) o;
+        CampaignCreateWorkflowBudgetInput other = (CampaignCreateWorkflowBudgetInput) o;
         return 
             Utils.enhancedDeepEquals(this.pacingMode, other.pacingMode) &&
             Utils.enhancedDeepEquals(this.budgetInAdvertiserCurrency, other.budgetInAdvertiserCurrency) &&
@@ -170,7 +170,7 @@ public class CampaignWorkflowBudgetInput {
     
     @Override
     public String toString() {
-        return Utils.toString(CampaignWorkflowBudgetInput.class,
+        return Utils.toString(CampaignCreateWorkflowBudgetInput.class,
                 "pacingMode", pacingMode,
                 "budgetInAdvertiserCurrency", budgetInAdvertiserCurrency,
                 "budgetInImpressions", budgetInImpressions,
@@ -248,9 +248,9 @@ public class CampaignWorkflowBudgetInput {
             return this;
         }
 
-        public CampaignWorkflowBudgetInput build() {
+        public CampaignCreateWorkflowBudgetInput build() {
 
-            return new CampaignWorkflowBudgetInput(
+            return new CampaignCreateWorkflowBudgetInput(
                 pacingMode, budgetInAdvertiserCurrency, budgetInImpressions,
                 dailyTargetInAdvertiserCurrency, dailyTargetInImpressions);
         }

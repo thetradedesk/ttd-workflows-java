@@ -56,7 +56,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.12.0'
+implementation 'com.thetradedesk:workflows:0.13.0'
 ```
 
 Maven:
@@ -64,7 +64,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.12.0</version>
+    <version>0.13.0</version>
 </dependency>
 ```
 
@@ -646,6 +646,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)
@@ -678,7 +695,7 @@ public class Application {
 <details open>
 <summary>Available methods</summary>
 
-### [adGroup()](docs/sdks/adgroup/README.md)
+### [AdGroup](docs/sdks/adgroup/README.md)
 
 * [createAdGroup](docs/sdks/adgroup/README.md#createadgroup) - Create a new ad group
 * [updateAdGroup](docs/sdks/adgroup/README.md#updateadgroup) - Update an ad group
@@ -686,7 +703,7 @@ public class Application {
 * [createAdGroupsJob](docs/sdks/adgroup/README.md#createadgroupsjob) - Submit a job to create multiple new ad groups
 * [updateAdGroupsJob](docs/sdks/adgroup/README.md#updateadgroupsjob) - Submit a job to update multiple ad groups
 
-### [campaign()](docs/sdks/campaign/README.md)
+### [Campaign](docs/sdks/campaign/README.md)
 
 * [create](docs/sdks/campaign/README.md#create) - Create a new campaign
 * [updateCampaign](docs/sdks/campaign/README.md#updatecampaign) - Update a campaign
@@ -695,22 +712,22 @@ public class Application {
 * [archiveCampaigns](docs/sdks/campaign/README.md#archivecampaigns) - Archive multiple campaigns
 * [getVersion](docs/sdks/campaign/README.md#getversion) - Get a campaign's version
 
-### [dmp()](docs/sdks/dmp/README.md)
+### [Dmp](docs/sdks/dmp/README.md)
 
 * [getFirstPartyDataJob](docs/sdks/dmp/README.md#getfirstpartydatajob) - Submit a job for first-party data retrieval for an advertiser
 * [getThirdPartyDataJob](docs/sdks/dmp/README.md#getthirdpartydatajob) - Submit a job for third-party data retrieval for a partner
 
-### [graphQLRequest()](docs/sdks/graphqlrequest/README.md)
+### [GraphQLRequest](docs/sdks/graphqlrequest/README.md)
 
 * [submitGraphQlRequest](docs/sdks/graphqlrequest/README.md#submitgraphqlrequest) - Submit a valid GraphQL query or mutation
 * [submitGraphQlBulkQueryJob](docs/sdks/graphqlrequest/README.md#submitgraphqlbulkqueryjob) - Submit a valid bulk GraphQL query job
 
-### [jobStatus()](docs/sdks/jobstatus/README.md)
+### [JobStatus](docs/sdks/jobstatus/README.md)
 
 * [getGraphQlBulkJobStatus](docs/sdks/jobstatus/README.md#getgraphqlbulkjobstatus) - Get the status of a previously submitted GraphQL bulk job
 * [getJobStatus](docs/sdks/jobstatus/README.md#getjobstatus) - Get the status of a previously submitted job
 
-### [restRequest()](docs/sdks/restrequest/README.md)
+### [RESTRequest](docs/sdks/restrequest/README.md)
 
 * [submitRestRequest](docs/sdks/restrequest/README.md#submitrestrequest) - Submit a valid REST request
 
@@ -841,6 +858,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)
@@ -1005,6 +1039,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)
@@ -1168,6 +1219,23 @@ public class Application {
                                 .frequencyGoal(534735)
                                 .resetIntervalInMinutes(788122)
                                 .build()))
+                        .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                            .dealGroupIdsToInclude(List.of(
+                                "<value 1>",
+                                "<value 2>",
+                                "<value 3>"))
+                            .dealGroupIdsToExclude(List.of(
+                                "<value 1>",
+                                "<value 2>",
+                                "<value 3>"))
+                            .dealIdsToExclude(List.of(
+                                117039L,
+                                278677L,
+                                217940L))
+                            .dealIdsToInclude(JsonNullable.of(null))
+                            .includeDefaultOnDeals(true)
+                            .build())
+                        .isNonDecisioned(true)
                         .flights(List.of(
                             AdGroupWorkflowFlightInput.builder()
                                 .campaignFlightId(874887L)
@@ -1376,6 +1444,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)
@@ -1520,6 +1605,23 @@ public class Application {
                             .frequencyGoal(534735)
                             .resetIntervalInMinutes(788122)
                             .build()))
+                    .inventoryTargeting(AdGroupWorkflowInventoryTargetingInput.builder()
+                        .dealGroupIdsToInclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealGroupIdsToExclude(List.of(
+                            "<value 1>",
+                            "<value 2>",
+                            "<value 3>"))
+                        .dealIdsToExclude(List.of(
+                            117039L,
+                            278677L,
+                            217940L))
+                        .dealIdsToInclude(JsonNullable.of(null))
+                        .includeDefaultOnDeals(true)
+                        .build())
+                    .isNonDecisioned(true)
                     .flights(List.of(
                         AdGroupWorkflowFlightInput.builder()
                             .campaignFlightId(874887L)
@@ -1686,9 +1788,11 @@ public class Application {
 ## Debugging
 
 ### Debug
+
 You can setup your SDK to emit debug logs for SDK requests and responses.
 
 For request and response logging (especially json bodies), call `enableHTTPDebugLogging(boolean)` on the SDK builder like so:
+
 ```java
 SDK.builder()
     .enableHTTPDebugLogging(true)
@@ -1706,9 +1810,10 @@ Response body:
   "token": "global"
 }
 ```
-__WARNING__: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+__WARNING__: This logging should only be used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
 
 __NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging()`. The `SpeakeasyHTTPClient` honors this setting. If you are using a custom HTTP client, it is up to the custom client to honor this setting.
+
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End Debugging [debug] -->

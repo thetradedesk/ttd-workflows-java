@@ -11,17 +11,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class CampaignUpdateWorkflowAdvancedInput {
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("flights")
-    private JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights;
-
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("purchaseOrderNumber")
@@ -29,22 +22,13 @@ public class CampaignUpdateWorkflowAdvancedInput {
 
     @JsonCreator
     public CampaignUpdateWorkflowAdvancedInput(
-            @JsonProperty("flights") JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights,
             @JsonProperty("purchaseOrderNumber") JsonNullable<String> purchaseOrderNumber) {
-        Utils.checkNotNull(flights, "flights");
         Utils.checkNotNull(purchaseOrderNumber, "purchaseOrderNumber");
-        this.flights = flights;
         this.purchaseOrderNumber = purchaseOrderNumber;
     }
     
     public CampaignUpdateWorkflowAdvancedInput() {
-        this(JsonNullable.undefined(), JsonNullable.undefined());
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public JsonNullable<List<CampaignWorkflowFlightInput>> flights() {
-        return (JsonNullable<List<CampaignWorkflowFlightInput>>) flights;
+        this(JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -56,18 +40,6 @@ public class CampaignUpdateWorkflowAdvancedInput {
         return new Builder();
     }
 
-
-    public CampaignUpdateWorkflowAdvancedInput withFlights(List<CampaignWorkflowFlightInput> flights) {
-        Utils.checkNotNull(flights, "flights");
-        this.flights = JsonNullable.of(flights);
-        return this;
-    }
-
-    public CampaignUpdateWorkflowAdvancedInput withFlights(JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights) {
-        Utils.checkNotNull(flights, "flights");
-        this.flights = flights;
-        return this;
-    }
 
     public CampaignUpdateWorkflowAdvancedInput withPurchaseOrderNumber(String purchaseOrderNumber) {
         Utils.checkNotNull(purchaseOrderNumber, "purchaseOrderNumber");
@@ -91,45 +63,28 @@ public class CampaignUpdateWorkflowAdvancedInput {
         }
         CampaignUpdateWorkflowAdvancedInput other = (CampaignUpdateWorkflowAdvancedInput) o;
         return 
-            Utils.enhancedDeepEquals(this.flights, other.flights) &&
             Utils.enhancedDeepEquals(this.purchaseOrderNumber, other.purchaseOrderNumber);
     }
     
     @Override
     public int hashCode() {
         return Utils.enhancedHash(
-            flights, purchaseOrderNumber);
+            purchaseOrderNumber);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CampaignUpdateWorkflowAdvancedInput.class,
-                "flights", flights,
                 "purchaseOrderNumber", purchaseOrderNumber);
     }
 
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights = JsonNullable.undefined();
-
         private JsonNullable<String> purchaseOrderNumber = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
-        }
-
-
-        public Builder flights(List<CampaignWorkflowFlightInput> flights) {
-            Utils.checkNotNull(flights, "flights");
-            this.flights = JsonNullable.of(flights);
-            return this;
-        }
-
-        public Builder flights(JsonNullable<? extends List<CampaignWorkflowFlightInput>> flights) {
-            Utils.checkNotNull(flights, "flights");
-            this.flights = flights;
-            return this;
         }
 
 
@@ -148,7 +103,7 @@ public class CampaignUpdateWorkflowAdvancedInput {
         public CampaignUpdateWorkflowAdvancedInput build() {
 
             return new CampaignUpdateWorkflowAdvancedInput(
-                flights, purchaseOrderNumber);
+                purchaseOrderNumber);
         }
 
     }

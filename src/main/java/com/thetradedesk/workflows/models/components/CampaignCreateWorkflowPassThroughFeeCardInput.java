@@ -13,14 +13,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class CampaignCreateWorkflowPassThroughFeeCardInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("startDateUtc")
-    private Optional<OffsetDateTime> startDateUtc;
+    private JsonNullable<OffsetDateTime> startDateUtc;
 
 
     @JsonProperty("passThroughFees")
@@ -28,7 +28,7 @@ public class CampaignCreateWorkflowPassThroughFeeCardInput {
 
     @JsonCreator
     public CampaignCreateWorkflowPassThroughFeeCardInput(
-            @JsonProperty("startDateUtc") Optional<OffsetDateTime> startDateUtc,
+            @JsonProperty("startDateUtc") JsonNullable<OffsetDateTime> startDateUtc,
             @JsonProperty("passThroughFees") List<CampaignCreatePassThroughFeesInput> passThroughFees) {
         Utils.checkNotNull(startDateUtc, "startDateUtc");
         Utils.checkNotNull(passThroughFees, "passThroughFees");
@@ -38,11 +38,11 @@ public class CampaignCreateWorkflowPassThroughFeeCardInput {
     
     public CampaignCreateWorkflowPassThroughFeeCardInput(
             List<CampaignCreatePassThroughFeesInput> passThroughFees) {
-        this(Optional.empty(), passThroughFees);
+        this(JsonNullable.undefined(), passThroughFees);
     }
 
     @JsonIgnore
-    public Optional<OffsetDateTime> startDateUtc() {
+    public JsonNullable<OffsetDateTime> startDateUtc() {
         return startDateUtc;
     }
 
@@ -58,12 +58,11 @@ public class CampaignCreateWorkflowPassThroughFeeCardInput {
 
     public CampaignCreateWorkflowPassThroughFeeCardInput withStartDateUtc(OffsetDateTime startDateUtc) {
         Utils.checkNotNull(startDateUtc, "startDateUtc");
-        this.startDateUtc = Optional.ofNullable(startDateUtc);
+        this.startDateUtc = JsonNullable.of(startDateUtc);
         return this;
     }
 
-
-    public CampaignCreateWorkflowPassThroughFeeCardInput withStartDateUtc(Optional<OffsetDateTime> startDateUtc) {
+    public CampaignCreateWorkflowPassThroughFeeCardInput withStartDateUtc(JsonNullable<OffsetDateTime> startDateUtc) {
         Utils.checkNotNull(startDateUtc, "startDateUtc");
         this.startDateUtc = startDateUtc;
         return this;
@@ -105,7 +104,7 @@ public class CampaignCreateWorkflowPassThroughFeeCardInput {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private Optional<OffsetDateTime> startDateUtc = Optional.empty();
+        private JsonNullable<OffsetDateTime> startDateUtc = JsonNullable.undefined();
 
         private List<CampaignCreatePassThroughFeesInput> passThroughFees;
 
@@ -116,11 +115,11 @@ public class CampaignCreateWorkflowPassThroughFeeCardInput {
 
         public Builder startDateUtc(OffsetDateTime startDateUtc) {
             Utils.checkNotNull(startDateUtc, "startDateUtc");
-            this.startDateUtc = Optional.ofNullable(startDateUtc);
+            this.startDateUtc = JsonNullable.of(startDateUtc);
             return this;
         }
 
-        public Builder startDateUtc(Optional<OffsetDateTime> startDateUtc) {
+        public Builder startDateUtc(JsonNullable<OffsetDateTime> startDateUtc) {
             Utils.checkNotNull(startDateUtc, "startDateUtc");
             this.startDateUtc = startDateUtc;
             return this;
