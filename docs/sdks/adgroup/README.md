@@ -168,7 +168,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -349,7 +349,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -404,7 +404,7 @@ public class Application {
                 .call();
 
         if (res.strings().isPresent()) {
-            // handle response
+            System.out.println(res.strings().get());
         }
     }
 }
@@ -472,7 +472,7 @@ public class Application {
                 .call();
 
         if (res.standardJobSubmitResponse().isPresent()) {
-            // handle response
+            System.out.println(res.standardJobSubmitResponse().get());
         }
     }
 }
@@ -646,7 +646,7 @@ public class Application {
                 .call();
 
         if (res.standardJobSubmitResponse().isPresent()) {
-            // handle response
+            System.out.println(res.standardJobSubmitResponse().get());
         }
     }
 }

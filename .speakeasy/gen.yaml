@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.13.0
+  version: 0.13.1
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
@@ -45,11 +45,13 @@ java:
   enableSlf4jLogging: false
   enableStreamingUploads: false
   envVarPrefix: WORKFLOWS
+  explicitDocImports: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
   forwardCompatibleUnionsByDefault: "false"
   generateOptionalUnionAccessors: false
   generateSpringBootStarter: true
+  generateUnionDocs: false
   githubURL: github.com/thetradedesk/ttd-workflows-java
   groupID: com.thetradedesk
   imports:
@@ -73,8 +75,10 @@ java:
   nullFriendlyParameters: false
   operationScopedParams: true
   outputModelSuffix: output
+  prefixModeMethodNames: false
   projectName: ttd-workflows
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
+  showSetterGetterTypesInDocs: false
   templateVersion: v2
   unionStrategy: populated-fields

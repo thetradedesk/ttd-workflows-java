@@ -1,5 +1,13 @@
 # CustomROASType
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.CustomROASType;
+
+CustomROASType value = CustomROASType.DISABLED;
+```
+
 
 ## Values
 

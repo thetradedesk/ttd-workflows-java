@@ -36,7 +36,7 @@ public class Application {
                 .call();
 
         if (res.graphQLBulkJobRetrievalResponse().isPresent()) {
-            // handle response
+            System.out.println(res.graphQLBulkJobRetrievalResponse().get());
         }
     }
 }
@@ -90,7 +90,7 @@ public class Application {
                 .call();
 
         if (res.standardJobStatusResponse().isPresent()) {
-            // handle response
+            System.out.println(res.standardJobStatusResponse().get());
         }
     }
 }

@@ -1,5 +1,13 @@
 # WorkflowStatus
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.WorkflowStatus;
+
+WorkflowStatus value = WorkflowStatus.IN_PROGRESS;
+```
+
 
 ## Values
 

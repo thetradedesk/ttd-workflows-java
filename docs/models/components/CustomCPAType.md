@@ -1,5 +1,13 @@
 # CustomCPAType
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.CustomCPAType;
+
+CustomCPAType value = CustomCPAType.DISABLED;
+```
+
 
 ## Values
 

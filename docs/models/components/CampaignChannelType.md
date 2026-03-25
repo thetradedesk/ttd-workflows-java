@@ -1,5 +1,13 @@
 # CampaignChannelType
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.CampaignChannelType;
+
+CampaignChannelType value = CampaignChannelType.NONE;
+```
+
 
 ## Values
 

@@ -1,5 +1,13 @@
 # AdGroupChannel
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.AdGroupChannel;
+
+AdGroupChannel value = AdGroupChannel.OTHER;
+```
+
 
 ## Values
 

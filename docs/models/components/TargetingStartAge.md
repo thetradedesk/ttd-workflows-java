@@ -1,5 +1,13 @@
 # TargetingStartAge
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.TargetingStartAge;
+
+TargetingStartAge value = TargetingStartAge.TWO;
+```
+
 
 ## Values
 

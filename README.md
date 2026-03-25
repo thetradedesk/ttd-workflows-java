@@ -39,6 +39,7 @@ For further explanation on the entities encountered in this documentation (e.g.,
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
+  * [Jackson Configuration](#jackson-configuration)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -56,7 +57,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.13.0'
+implementation 'com.thetradedesk:workflows:0.13.1'
 ```
 
 Maven:
@@ -64,7 +65,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.13.0</version>
+    <version>0.13.1</version>
 </dependency>
 ```
 
@@ -682,7 +683,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -904,7 +905,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -1075,7 +1076,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -1255,7 +1256,7 @@ public class Application {
                     .call();
 
             if (res.adGroupPayload().isPresent()) {
-                // handle response
+                System.out.println(res.adGroupPayload().get());
             }
         } catch (WorkflowsError ex) { // all SDK exceptions inherit from WorkflowsError
 
@@ -1480,7 +1481,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -1641,7 +1642,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }
@@ -1817,6 +1818,36 @@ __NOTE__: This is a convenience method that calls `HTTPClient.enableDebugLogging
 
 Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End Debugging [debug] -->
+
+<!-- Start Jackson Configuration [jackson] -->
+## Jackson Configuration
+
+The SDK ships with a pre-configured Jackson [`ObjectMapper`][jackson-databind] accessible via
+`JSON.getMapper()`. It is set up with type modules, strict deserializers, and the feature flags
+needed for full SDK compatibility (including ISO-8601 `OffsetDateTime` serialization):
+
+```java
+import com.thetradedesk.workflows.utils.JSON;
+
+String json = JSON.getMapper().writeValueAsString(response);
+```
+
+To compose with your own `ObjectMapper`, register the provided `WorkflowsJacksonModule`, which
+bundles all the same modules and feature flags as a single plug-and-play module:
+
+```java
+import com.thetradedesk.workflows.utils.WorkflowsJacksonModule;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+ObjectMapper myMapper = new ObjectMapper()
+    .registerModule(new WorkflowsJacksonModule());
+
+String json = myMapper.writeValueAsString(response);
+```
+
+[jackson-databind]: https://github.com/FasterXML/jackson-databind
+[jackson-jsr310]: https://github.com/FasterXML/jackson-modules-java8/tree/master/datetime
+<!-- End Jackson Configuration [jackson] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
