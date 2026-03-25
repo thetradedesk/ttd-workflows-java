@@ -1,5 +1,13 @@
 # RestApiMethodType
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.RestApiMethodType;
+
+RestApiMethodType value = RestApiMethodType.POST;
+```
+
 
 ## Values
 

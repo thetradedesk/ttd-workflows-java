@@ -1,5 +1,13 @@
 # BulkJobStatus
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.BulkJobStatus;
+
+BulkJobStatus value = BulkJobStatus.QUEUED;
+```
+
 
 ## Values
 

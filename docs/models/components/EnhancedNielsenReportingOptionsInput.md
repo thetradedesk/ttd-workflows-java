@@ -1,5 +1,13 @@
 # EnhancedNielsenReportingOptionsInput
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.EnhancedNielsenReportingOptionsInput;
+
+EnhancedNielsenReportingOptionsInput value = EnhancedNielsenReportingOptionsInput.NONE;
+```
+
 
 ## Values
 

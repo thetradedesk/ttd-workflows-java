@@ -1,5 +1,13 @@
 # CampaignPacingMode
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.CampaignPacingMode;
+
+CampaignPacingMode value = CampaignPacingMode.PACE_AHEAD;
+```
+
 
 ## Values
 

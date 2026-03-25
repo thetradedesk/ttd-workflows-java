@@ -1,5 +1,13 @@
 # PassThroughFeeType
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.PassThroughFeeType;
+
+PassThroughFeeType value = PassThroughFeeType.NONE;
+```
+
 
 ## Values
 

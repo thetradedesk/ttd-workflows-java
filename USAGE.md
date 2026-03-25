@@ -150,7 +150,7 @@ public class Application {
                 .call();
 
         if (res.adGroupPayload().isPresent()) {
-            // handle response
+            System.out.println(res.adGroupPayload().get());
         }
     }
 }

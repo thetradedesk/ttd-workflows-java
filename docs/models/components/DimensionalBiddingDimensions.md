@@ -1,5 +1,13 @@
 # DimensionalBiddingDimensions
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.DimensionalBiddingDimensions;
+
+DimensionalBiddingDimensions value = DimensionalBiddingDimensions.UNKNOWN_DIMENSION;
+```
+
 
 ## Values
 

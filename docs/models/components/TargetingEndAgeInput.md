@@ -1,5 +1,13 @@
 # TargetingEndAgeInput
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.TargetingEndAgeInput;
+
+TargetingEndAgeInput value = TargetingEndAgeInput.SEVENTEEN;
+```
+
 
 ## Values
 

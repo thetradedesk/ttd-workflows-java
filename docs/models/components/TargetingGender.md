@@ -1,5 +1,13 @@
 # TargetingGender
 
+## Example Usage
+
+```java
+import com.thetradedesk.workflows.models.components.TargetingGender;
+
+TargetingGender value = TargetingGender.MALE;
+```
+
 
 ## Values
 

@@ -209,3 +209,13 @@ Based on:
 - [java v0.13.0] .
 ### Releases
 - [Maven Central v0.13.0] https://central.sonatype.com/artifact/com.thetradedesk/workflows/0.13.0 - .
+
+## 2026-03-25 15:01:27
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.759.3 (2.869.25) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.13.1] .
+### Releases
+- [Maven Central v0.13.1] https://central.sonatype.com/artifact/com.thetradedesk/workflows/0.13.1 - .

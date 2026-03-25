@@ -314,7 +314,7 @@ public class Application {
                 .call();
 
         if (res.campaignPayload().isPresent()) {
-            // handle response
+            System.out.println(res.campaignPayload().get());
         }
     }
 }
@@ -468,7 +468,7 @@ public class Application {
                 .call();
 
         if (res.campaignPayload().isPresent()) {
-            // handle response
+            System.out.println(res.campaignPayload().get());
         }
     }
 }
@@ -809,7 +809,7 @@ public class Application {
                 .call();
 
         if (res.standardJobSubmitResponse().isPresent()) {
-            // handle response
+            System.out.println(res.standardJobSubmitResponse().get());
         }
     }
 }
@@ -974,7 +974,7 @@ public class Application {
                 .call();
 
         if (res.campaignPayload().isPresent()) {
-            // handle response
+            System.out.println(res.campaignPayload().get());
         }
     }
 }
@@ -1030,7 +1030,7 @@ public class Application {
                 .call();
 
         if (res.strings().isPresent()) {
-            // handle response
+            System.out.println(res.strings().get());
         }
     }
 }
@@ -1082,7 +1082,7 @@ public class Application {
                 .call();
 
         if (res.campaignVersionWorkflow().isPresent()) {
-            // handle response
+            System.out.println(res.campaignVersionWorkflow().get());
         }
     }
 }
