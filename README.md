@@ -57,7 +57,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.13.1'
+implementation 'com.thetradedesk:workflows:0.13.2'
 ```
 
 Maven:
@@ -65,7 +65,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.13.1</version>
+    <version>0.13.2</version>
 </dependency>
 ```
 
@@ -601,7 +601,7 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
-                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                    .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .includeDefaultsFromCampaign(false)
                     .build())
@@ -813,7 +813,7 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
-                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                    .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .includeDefaultsFromCampaign(false)
                     .build())
@@ -994,7 +994,7 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
-                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                    .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .includeDefaultsFromCampaign(false)
                     .build())
@@ -1174,7 +1174,7 @@ public class Application {
                                 .isEnabled(false)
                                 .isDefaultForDimension(true)
                                 .build()))
-                        .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                        .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                         .programmaticGuaranteedPrivateContractId("<id>")
                         .includeDefaultsFromCampaign(false)
                         .build())
@@ -1399,7 +1399,7 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
-                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                    .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .includeDefaultsFromCampaign(false)
                     .build())
@@ -1560,7 +1560,7 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
-                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                    .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .includeDefaultsFromCampaign(false)
                     .build())

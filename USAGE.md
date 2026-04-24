@@ -68,7 +68,7 @@ public class Application {
                             .isEnabled(false)
                             .isDefaultForDimension(true)
                             .build()))
-                    .marketType(MarketType.PRIVATE_MARKET_ONLY)
+                    .marketType(MarketTypeInput.PRIVATE_MARKET_ONLY)
                     .programmaticGuaranteedPrivateContractId("<id>")
                     .includeDefaultsFromCampaign(false)
                     .build())
