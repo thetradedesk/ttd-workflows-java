@@ -83,7 +83,7 @@ public class AdGroupUpdateWorkflowPrimaryInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("marketType")
-    private Optional<? extends MarketType> marketType;
+    private Optional<? extends MarketTypeInput> marketType;
 
     @JsonCreator
     public AdGroupUpdateWorkflowPrimaryInput(
@@ -99,7 +99,7 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("channel") Optional<? extends AdGroupChannel> channel,
             @JsonProperty("funnelLocation") Optional<? extends AdGroupFunnelLocation> funnelLocation,
-            @JsonProperty("marketType") Optional<? extends MarketType> marketType) {
+            @JsonProperty("marketType") Optional<? extends MarketTypeInput> marketType) {
         Utils.checkNotNull(isEnabled, "isEnabled");
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(budget, "budget");
@@ -205,8 +205,8 @@ public class AdGroupUpdateWorkflowPrimaryInput {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<MarketType> marketType() {
-        return (Optional<MarketType>) marketType;
+    public Optional<MarketTypeInput> marketType() {
+        return (Optional<MarketTypeInput>) marketType;
     }
 
     public static Builder builder() {
@@ -363,14 +363,14 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         return this;
     }
 
-    public AdGroupUpdateWorkflowPrimaryInput withMarketType(MarketType marketType) {
+    public AdGroupUpdateWorkflowPrimaryInput withMarketType(MarketTypeInput marketType) {
         Utils.checkNotNull(marketType, "marketType");
         this.marketType = Optional.ofNullable(marketType);
         return this;
     }
 
 
-    public AdGroupUpdateWorkflowPrimaryInput withMarketType(Optional<? extends MarketType> marketType) {
+    public AdGroupUpdateWorkflowPrimaryInput withMarketType(Optional<? extends MarketTypeInput> marketType) {
         Utils.checkNotNull(marketType, "marketType");
         this.marketType = marketType;
         return this;
@@ -456,7 +456,7 @@ public class AdGroupUpdateWorkflowPrimaryInput {
 
         private Optional<? extends AdGroupFunnelLocation> funnelLocation = Optional.empty();
 
-        private Optional<? extends MarketType> marketType = Optional.empty();
+        private Optional<? extends MarketTypeInput> marketType = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -619,13 +619,13 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         }
 
 
-        public Builder marketType(MarketType marketType) {
+        public Builder marketType(MarketTypeInput marketType) {
             Utils.checkNotNull(marketType, "marketType");
             this.marketType = Optional.ofNullable(marketType);
             return this;
         }
 
-        public Builder marketType(Optional<? extends MarketType> marketType) {
+        public Builder marketType(Optional<? extends MarketTypeInput> marketType) {
             Utils.checkNotNull(marketType, "marketType");
             this.marketType = marketType;
             return this;

@@ -1,27 +1,27 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: 8b4678c4f520770140fe6dbcba0d6af0
+  docChecksum: b28a390782065609d71232541d693b50
   docVersion: v1
-  speakeasyVersion: 1.759.3
-  generationVersion: 2.869.25
-  releaseVersion: 0.13.1
-  configChecksum: 235036fde0b22da3b36b1a9a1d00020b
+  speakeasyVersion: 1.761.9
+  generationVersion: 2.881.4
+  releaseVersion: 0.13.2
+  configChecksum: 6036c0ba9fe2df97c606eca433e011f2
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   installationURL: https://github.com/thetradedesk/ttd-workflows-java
   published: true
 persistentEdits:
-  generation_id: 3d109988-61fb-4629-b3b0-14803105843d
-  pristine_commit_hash: 726713aa8b15d48256b0153e450a26d0bd355b84
-  pristine_tree_hash: f90466688be0ef3d7c6657f21a16cb3e21576785
+  generation_id: 9a23a599-4356-44d8-a49f-4645f16ee073
+  pristine_commit_hash: 0db3ab364669c9b9fdfb94565e5b4b092edbf17c
+  pristine_tree_hash: ab5636e95550b087e167f61865a970eb4943de68
 features:
   java:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.3
-    core: 3.55.22
+    core: 3.55.23
     flattening: 2.81.1
-    globalSecurity: 2.83.2
+    globalSecurity: 2.83.4
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.83.1
@@ -37,8 +37,8 @@ trackedFiles:
     pristine_git_object: 8f8da085659bbf87d293b49b4593e43137a4acb0
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:862ac0d305b886069710ffa22a39ca41f05f21d5
-    pristine_git_object: 2f8a3c32682ea091f558dda29bc6bc6136cbed48
+    last_write_checksum: sha1:d5c76ff24298112b5d8ccd417ebf5b30ccf047cc
+    pristine_git_object: d25163ffde137d07ee808c226132767ddafd4408
   build.gradle:
     id: f07866736216
     last_write_checksum: sha1:1c13f6cb09ac6da99013bbc60cb5cdbefbcd5717
@@ -85,8 +85,8 @@ trackedFiles:
     pristine_git_object: 805d6357f9a5439cce25b113f0b7d8400fd8ca59
   docs/models/components/AdGroupCreateWorkflowPrimaryInput.md:
     id: 787b91c2c4e7
-    last_write_checksum: sha1:3d20ea3331c7c65c590099e8ae8c98ccde687cce
-    pristine_git_object: ffc10cdc976b827dde2ffadc7fdc0c65108d5ceb
+    last_write_checksum: sha1:f008ae7d77ce949960b318ab2c736d443d2c084e
+    pristine_git_object: f3d0f284d87b427ab5674a3a47438f2be940f2cb
   docs/models/components/AdGroupFlight.md:
     id: ec310b876a2f
     last_write_checksum: sha1:1d525c62b1acb9f404c80662c525f64462a678a4
@@ -121,8 +121,8 @@ trackedFiles:
     pristine_git_object: 74001f5f27080d28305cbc55402e61d3dec439e4
   docs/models/components/AdGroupUpdateWorkflowPrimaryInput.md:
     id: f755e5b910e4
-    last_write_checksum: sha1:66f750d5fb0ab082c74d9649f43cb44bc40858fa
-    pristine_git_object: 5403b2dab05f250d1fe51c058793236525831e58
+    last_write_checksum: sha1:605d3e869fce701f35d4e2ebfaa8b8ce0dee441e
+    pristine_git_object: fef295dd1cf71131056720d9238ef4e6cc59b908
   docs/models/components/AdGroupWorkflow.md:
     id: dec0c5639c0f
     last_write_checksum: sha1:f713a3a2a0b14c8bd2bee90e6f786b76a8e81a76
@@ -375,6 +375,10 @@ trackedFiles:
     id: 426035b00197
     last_write_checksum: sha1:6c51ce8b6185061b34f85a4300c2e5bea563a4ad
     pristine_git_object: df05b8b7321d7d5880c47bc1601eb6483ba63baa
+  docs/models/components/MarketTypeInput.md:
+    id: 8cec3394e035
+    last_write_checksum: sha1:2ded982ff60609045ea65490882d5fcfad37e638
+    pristine_git_object: 4b230e9c7086537692120966eb5f409e4af20f7e
   docs/models/components/PassThroughFeeType.md:
     id: 1659c9c896c8
     last_write_checksum: sha1:05ef8342fa76cca25eabb4834535f51345d68335
@@ -545,12 +549,12 @@ trackedFiles:
     pristine_git_object: 6b83d06c1e01eee499d8df9a75ccdc6e15fc8d3f
   docs/sdks/adgroup/README.md:
     id: 8e0c2412ebea
-    last_write_checksum: sha1:3c5dc858dbd40415b9782fe0d4f50b8c18412acb
-    pristine_git_object: 544818c47f6ff358e31eaaadb12c858a314ee938
+    last_write_checksum: sha1:4f80dbb4bd3f29be81d8c773a690e7e318215276
+    pristine_git_object: 74299be68f5820a7ebb13532311d9289c96c31f9
   docs/sdks/campaign/README.md:
     id: 7c44530e0eca
-    last_write_checksum: sha1:50ca78129d90eaa09ca24090de2735a56da504bd
-    pristine_git_object: 0037c8ec47156af75b8758b8a2e199d5b402bb5f
+    last_write_checksum: sha1:d409b0499adb4daedd6cc9bc1f97886f9ea89c33
+    pristine_git_object: 149cd3db947eb934f60988da31e5bd0c25566327
   docs/sdks/dmp/README.md:
     id: 0b076a846392
     last_write_checksum: sha1:e96d335e4ab89ad377548f2a2d5210df5567dec8
@@ -573,8 +577,8 @@ trackedFiles:
     pristine_git_object: 560783da858833f8f97fe76f90be7fc7638b3ffb
   gradle.properties:
     id: 2afbb999f001
-    last_write_checksum: sha1:f549961db9fcbc0dd09c764b022117828a53dd9b
-    pristine_git_object: cc898c58cadc3717ef1c2b76fb292cd60b9a9316
+    last_write_checksum: sha1:8dc7ab3b49c43c1a4e1c6015c636760fcbbf840f
+    pristine_git_object: 508a15d891b175501453caaaa659795572255870
   gradle/wrapper/gradle-wrapper.jar:
     id: ec27dae6e852
     last_write_checksum: sha1:f725fb1467084142d74fd7cd8eab691ab3442611
@@ -681,8 +685,8 @@ trackedFiles:
     pristine_git_object: e18b1357107cc828db09181715988ea5d51cf731
   src/main/java/com/thetradedesk/workflows/SDKConfiguration.java:
     id: a59a881fc3b5
-    last_write_checksum: sha1:8359226f1df8c9872912f50fe9fa82f13fad5ae4
-    pristine_git_object: c6766386f4363aae188f8cb002b1da363362a95d
+    last_write_checksum: sha1:f9da2f83b47edbd092809e3d9ea789d4f7451cd1
+    pristine_git_object: 3761e2922821e6a892832dc3d0fbd43edf8af261
   src/main/java/com/thetradedesk/workflows/SecuritySource.java:
     id: 696561dc3c53
     last_write_checksum: sha1:81f51518d023f26daaaaf94cfd6a019bf96ab48b
@@ -733,8 +737,8 @@ trackedFiles:
     pristine_git_object: 3bc572e99e35d6fb71c61b108350562bfe04ceb6
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupCreateWorkflowPrimaryInput.java:
     id: 787f4cbbe4cb
-    last_write_checksum: sha1:fb2d1a38d1c7eac44186284d48af932d9432e202
-    pristine_git_object: 45ca79eb198b9fe09d371e1ec4a7a397b24d0890
+    last_write_checksum: sha1:68cd6fb56b03a10380a253475001759d23722148
+    pristine_git_object: c177f33c07d5967df3acb92872ff25dc2d4951a3
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupFlight.java:
     id: f7e3a2c4f17e
     last_write_checksum: sha1:b8aa112ba1d2a91786c7218c72732d395759ba18
@@ -769,8 +773,8 @@ trackedFiles:
     pristine_git_object: ad14eadc2453ac14c8c84718f04b06a1c5b263c3
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupUpdateWorkflowPrimaryInput.java:
     id: 776b51efb457
-    last_write_checksum: sha1:bf8b59415d4b7bab20a46a157cc6d4c9f634aae7
-    pristine_git_object: 22cd898045851a8aec96735a382a417fb66d397a
+    last_write_checksum: sha1:5f6d924297f6819c9276f5e5e8884efd8f8f6d01
+    pristine_git_object: 7fb7102e93adfafb8ee5bf995dcdca38aa330e63
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflow.java:
     id: 056dc5468df9
     last_write_checksum: sha1:1613fc05811ab7cb2a62a275371fb409b8c5d5fe
@@ -1023,6 +1027,10 @@ trackedFiles:
     id: 574b87a67d5c
     last_write_checksum: sha1:f34ac6b29497af885ccdd5217564981f86a5d01b
     pristine_git_object: a68cbb37d9ba9ff6d55813627b6f13543dedb91a
+  src/main/java/com/thetradedesk/workflows/models/components/MarketTypeInput.java:
+    id: 690716ff68f3
+    last_write_checksum: sha1:fbc160ac02bb3890c4c8c197a26720f440e17b25
+    pristine_git_object: 88788cfb5377b9dc43cf09e537d7490a6848381b
   src/main/java/com/thetradedesk/workflows/models/components/PassThroughFeeType.java:
     id: 8ee5955387d1
     last_write_checksum: sha1:92c3303dedb985ba04509fe7f28a0a8e1a4df7dc
@@ -1425,80 +1433,80 @@ trackedFiles:
     pristine_git_object: 23258fb4cd248d792d3cdeb4741c4f49cd415936
   src/main/java/com/thetradedesk/workflows/operations/ArchiveAdGroups.java:
     id: 4bf1a3ca3f9b
-    last_write_checksum: sha1:9916f79d4f2167741bf0e6796fdb618ed24cfd78
-    pristine_git_object: 5615c4dde910a75eb94309d5f0221f7ef796fb07
+    last_write_checksum: sha1:9f7ca2b8b45785ce9e3749a542c87e8244443de0
+    pristine_git_object: 48040cd0100d49e69f9c426239e68b87a3a56309
   src/main/java/com/thetradedesk/workflows/operations/ArchiveCampaigns.java:
     id: bf2be1cca783
-    last_write_checksum: sha1:f4b135bd1123d1458b373f804c808035ed868bbc
-    pristine_git_object: 22c8daf21dc84e8b09865e9b33ed215de465dbe9
+    last_write_checksum: sha1:c0b1bea30d22f87d498f46f08212b8ed866b38c4
+    pristine_git_object: c9777873700353f95a584cba4b417c0311bdf83d
   src/main/java/com/thetradedesk/workflows/operations/CreateAdGroup.java:
     id: 224779fd98e8
-    last_write_checksum: sha1:c144eb1826062565198efb244b7b4a5db9828ed1
-    pristine_git_object: 5a8fa0c27c4f65c873ded7b9f32087eb5788f021
+    last_write_checksum: sha1:7008668e0a21d48750ac1080af48cf63211eb204
+    pristine_git_object: 0fbc7bd4694460d823d94579bf7f201b20b07d09
   src/main/java/com/thetradedesk/workflows/operations/CreateAdGroupsJob.java:
     id: a87be3630fdd
-    last_write_checksum: sha1:5b6f63da829865d22977cf090e2218b20a549f0d
-    pristine_git_object: d4e02fa41784ff4f627663e007f1b69508b889b4
+    last_write_checksum: sha1:922ffd6f98c084164e6cf5ae99ca003f9d099834
+    pristine_git_object: 5abc37f7cf940d0b6f277bc2427a32ffeae5a80e
   src/main/java/com/thetradedesk/workflows/operations/CreateCampaign.java:
     id: 87d1fc7da4a9
-    last_write_checksum: sha1:1f4e5f6778617c2de6fb24aef8598171d1e3568d
-    pristine_git_object: df62f810e3264b16eafb8eeba591ead7741ab5a2
+    last_write_checksum: sha1:957e0da3a185a4f09074e6ece63ec90bd2b8ad9f
+    pristine_git_object: 9988accc313e62644bde96833eac86ad66d5a067
   src/main/java/com/thetradedesk/workflows/operations/CreateCampaignsJob.java:
     id: d6d3f6fd6a2e
-    last_write_checksum: sha1:ae064f87cce9c0e685d99c840fb3d61f687e6bc7
-    pristine_git_object: 530358ac2145f9c0820c492ada765fbe9d35b214
+    last_write_checksum: sha1:3e5a19f2c79936c1e50abb3a0feb49f26877ade4
+    pristine_git_object: cc6bc1d107aa76fb5ee45e20921d8f3903ebe8f1
   src/main/java/com/thetradedesk/workflows/operations/GetCampaignVersion.java:
     id: c8bce89a8385
-    last_write_checksum: sha1:3f65fed29ad6ef1eeef5a60115fc98bb9e2ee691
-    pristine_git_object: 52fdb9b4060bdc282a0e92fb858ee6e113717640
+    last_write_checksum: sha1:f17e9287a926eecc50938019f94f34b2ea67d9b8
+    pristine_git_object: d236f0afd6b4051d7457a62432a97043b914ca45
   src/main/java/com/thetradedesk/workflows/operations/GetFirstPartyDataJob.java:
     id: 5b884beba42f
-    last_write_checksum: sha1:15f3c53a5e9518d1ab54794aa2df856abf566074
-    pristine_git_object: 840a142ceb357aa2622df092c580a6617c9565e3
+    last_write_checksum: sha1:fd186a480a95f2bba7659f540049f2ce2f38981f
+    pristine_git_object: 6fa467b9da4afe5f1317536f90b0db455207678f
   src/main/java/com/thetradedesk/workflows/operations/GetGraphQlBulkJobStatus.java:
     id: c4c23eaf8fed
-    last_write_checksum: sha1:987215c7620933fe3413c8a8fda5952cbc7024c2
-    pristine_git_object: 131745d1cd40df34e5ff366d172c9ce86fc13646
+    last_write_checksum: sha1:7fbac072a4e01970117146a6e5bc9d83e8f9a1f8
+    pristine_git_object: 31fb7fc957571f933ee5fe6dfa8a806f98465199
   src/main/java/com/thetradedesk/workflows/operations/GetJobStatus.java:
     id: 8600ecbc5834
-    last_write_checksum: sha1:f4bdedf6cd4507f028610691eac0dbfb25596086
-    pristine_git_object: de7cd493317b257c7a5cd55792c1cd54dccbe537
+    last_write_checksum: sha1:c963c2fd85fb2b19253d73828113e9e62ef58d1d
+    pristine_git_object: 771b55ac93373a1030a1c91452df8cba3601f5b5
   src/main/java/com/thetradedesk/workflows/operations/GetThirdPartyDataJob.java:
     id: c07156e7eba8
-    last_write_checksum: sha1:93a88909a8cbfc78d7648f1c5dbdc7457d88940f
-    pristine_git_object: 99cae01dce08b813fa35d87dc8620aa221df48a6
+    last_write_checksum: sha1:50f7fe621a25bbf8e89ddde6ca56e4d1d747c30c
+    pristine_git_object: a1732887c9f615e1bf1db70e12ea59eb4741a565
   src/main/java/com/thetradedesk/workflows/operations/Operations.java:
     id: "340296925815"
     last_write_checksum: sha1:4044af599cf63f1f5bd1b95d796de536ac4a6a93
     pristine_git_object: 60b2352661242c6a4eaa4da428f53557010cc4ff
   src/main/java/com/thetradedesk/workflows/operations/SubmitGraphQlBulkQueryJob.java:
     id: 84e5192ad804
-    last_write_checksum: sha1:5376f4d6b80f95e99aa284832257aaa8705c1cd7
-    pristine_git_object: d9a80a7e591c28215417b85363abf035e8d9d1fc
+    last_write_checksum: sha1:901a7fba7c35c193b314fed6b0a218272e1bb0b9
+    pristine_git_object: fe4ecd9cdfd6fe539873b4f54bf3aa46c126f153
   src/main/java/com/thetradedesk/workflows/operations/SubmitGraphQlRequest.java:
     id: 0e3217737ce2
-    last_write_checksum: sha1:919ae84c61855478db4aaaa9bb9d8791f902a7e7
-    pristine_git_object: 0bbd9d64ce1e59275417de956aebc066ff8296b2
+    last_write_checksum: sha1:d5faf4309b5869b0c5782e91938e3b3e6c3742f0
+    pristine_git_object: a4b36d9e3c496118216e21e3ac835079fc3bfd51
   src/main/java/com/thetradedesk/workflows/operations/SubmitRestRequest.java:
     id: d9500581b029
-    last_write_checksum: sha1:a63155eebe5e1edac92eb8eb0804257cd9015acd
-    pristine_git_object: 8552028172f00311331649e3f7d7435b3f05631f
+    last_write_checksum: sha1:7e84ade30c154dc980a125880d1f438f512fb416
+    pristine_git_object: f9fa24528c6087bd31be62164147fc737b32130e
   src/main/java/com/thetradedesk/workflows/operations/UpdateAdGroup.java:
     id: e0d5e7bd0345
-    last_write_checksum: sha1:0ddf1960cbfe4f829fb7c771337d8ddd6724825a
-    pristine_git_object: b38962ad958b371ecbd5207ca86256f8b06a2ad5
+    last_write_checksum: sha1:da57754e859dd1b2d34372ff8628aa495633e58f
+    pristine_git_object: dc276cdbd70d6529e40d1a0e096fe41939f2eafa
   src/main/java/com/thetradedesk/workflows/operations/UpdateAdGroupsJob.java:
     id: 9d7750a3e31d
-    last_write_checksum: sha1:d5578ed387a5491db7aef78e0d5c419d1f28d884
-    pristine_git_object: 5e85416b5274894b20b2057f6b1cb41142234385
+    last_write_checksum: sha1:eb5dae8052b73854bc8f825637f1b2647f38df8f
+    pristine_git_object: 892256fcc27bc4f3ca6307b147d835ecd31a9fd1
   src/main/java/com/thetradedesk/workflows/operations/UpdateCampaign.java:
     id: 333890efa5c0
-    last_write_checksum: sha1:1ec9970eed93bccae31a37ed8a4456d1d253cf5a
-    pristine_git_object: f03fcc84d7f8ec36462cd0a38821cd742caa849e
+    last_write_checksum: sha1:c1771ac5cb2cbb7a415e7665bc3e60d14f606e76
+    pristine_git_object: f971074e19406724b4adefa1b89f94db103c722f
   src/main/java/com/thetradedesk/workflows/operations/UpdateCampaignsJob.java:
     id: 9220ff9bb111
-    last_write_checksum: sha1:4e32445bab26367b06c7c5ce1854bd576068b9db
-    pristine_git_object: 4a7ae2662b3218f79d3484db631a4735cc98c8e5
+    last_write_checksum: sha1:61ed8a4e326417c0c6c6fcd8eb3dcc69c8e22e4b
+    pristine_git_object: 3fa172299e21c41b24f1c0e2681bf6d5a6545aab
   src/main/java/com/thetradedesk/workflows/utils/AsyncHook.java:
     id: 183da9430396
     last_write_checksum: sha1:83d03215cefa0c3e7be43564d3b4c41d1e44e77b
@@ -1705,12 +1713,12 @@ trackedFiles:
     pristine_git_object: bc83ff5a6ff6a63cb6a47773b674c57f2a227b35
   src/main/java/com/thetradedesk/workflows/utils/Security.java:
     id: 576a1a309a29
-    last_write_checksum: sha1:2f0551265f3083b5da9d9ac11402dc78fcdd6e8f
-    pristine_git_object: b4cc78a33cb0750fe0a525f9a12332f4907fabba
+    last_write_checksum: sha1:5d5dd15feccc61df1767457ee075547b93a58eaf
+    pristine_git_object: 17fbc35a43d02143af7ed4f58ca0bf4c2b2e6c95
   src/main/java/com/thetradedesk/workflows/utils/SecurityMetadata.java:
     id: c831dddd6967
-    last_write_checksum: sha1:15e59b94b38a514ec5d9871c126a1db2df563213
-    pristine_git_object: 85040a0fdfbddae502bf892506b4a04e65b84d68
+    last_write_checksum: sha1:f2e7ace6834b82ec9899537641658d616b069771
+    pristine_git_object: ef43ab493caed32fceb8bddaae32231893f0d4ed
   src/main/java/com/thetradedesk/workflows/utils/SerializedBody.java:
     id: 8bbc279b1eb4
     last_write_checksum: sha1:32cf23b04bba97743aba0aedd904ca70969c1a56
@@ -1753,8 +1761,8 @@ trackedFiles:
     pristine_git_object: e627e39fa9c9e5a86e8c80053f5a393b3aabe024
   src/main/java/com/thetradedesk/workflows/utils/Utils.java:
     id: 135866956bb7
-    last_write_checksum: sha1:a7cfe6539816a1f3baed0b7a928d38bf82029f87
-    pristine_git_object: 1fbed3e66604e4770506add50ba11a63b5630ad9
+    last_write_checksum: sha1:4c9699e303a7a71304f70890fcc211fae5c5cff3
+    pristine_git_object: 71dcb9b9019b6cf3991c3113aaa368c8282d54ab
   src/main/java/com/thetradedesk/workflows/utils/WorkflowsJacksonModule.java:
     id: c3cac3c1fed0
     last_write_checksum: sha1:04f36982eb12805d9811384652f5316d6eadfee0
