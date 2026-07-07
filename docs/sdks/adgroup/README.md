@@ -78,6 +78,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .theProductScopeForNewBuyerGoalOptimization(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
@@ -258,6 +259,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(1135.94)
                         .cpcvInAdvertiserCurrency(6372.45)
                         .miaozhenOTPInPercent(8405.28)
+                        .theProductScopeForNewBuyerGoalOptimization(93512)
                         .build())
                     .creativeIds(List.of(
                         "<value 1>",
@@ -562,6 +564,7 @@ public class Application {
                                 .vcpmInAdvertiserCurrency(8251.2)
                                 .cpcvInAdvertiserCurrency(4502.77)
                                 .miaozhenOTPInPercent(2362.43)
+                                .theProductScopeForNewBuyerGoalOptimization(901233)
                                 .build())
                             .creativeIds(List.of(
                                 "<value 1>"))

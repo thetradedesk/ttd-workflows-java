@@ -235,6 +235,7 @@ public class Application {
                                 .vcpmInAdvertiserCurrency(7123.95)
                                 .cpcvInAdvertiserCurrency(6233.72)
                                 .miaozhenOTPInPercent(8437.22)
+                                .theProductScopeForNewBuyerGoalOptimization(86586)
                                 .build())
                             .creativeIds(List.of(
                                 "<value 1>"))
@@ -723,6 +724,7 @@ public class Application {
                                         .vcpmInAdvertiserCurrency(8383.69)
                                         .cpcvInAdvertiserCurrency(4755.8)
                                         .miaozhenOTPInPercent(4575.86)
+                                        .theProductScopeForNewBuyerGoalOptimization(657704)
                                         .build())
                                     .creativeIds(List.of(
                                         "<value 1>",

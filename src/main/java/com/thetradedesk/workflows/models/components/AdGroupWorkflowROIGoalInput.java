@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.Override;
 import java.lang.String;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -77,6 +78,11 @@ public class AdGroupWorkflowROIGoalInput {
     @JsonProperty("miaozhenOTPInPercent")
     private JsonNullable<Double> miaozhenOTPInPercent;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("The product scope for New Buyer goal optimization")
+    private JsonNullable<Integer> theProductScopeForNewBuyerGoalOptimization;
+
     @JsonCreator
     public AdGroupWorkflowROIGoalInput(
             @JsonProperty("maximizeReach") JsonNullable<Boolean> maximizeReach,
@@ -90,7 +96,8 @@ public class AdGroupWorkflowROIGoalInput {
             @JsonProperty("viewabilityInPercent") JsonNullable<Double> viewabilityInPercent,
             @JsonProperty("vcpmInAdvertiserCurrency") JsonNullable<Double> vcpmInAdvertiserCurrency,
             @JsonProperty("cpcvInAdvertiserCurrency") JsonNullable<Double> cpcvInAdvertiserCurrency,
-            @JsonProperty("miaozhenOTPInPercent") JsonNullable<Double> miaozhenOTPInPercent) {
+            @JsonProperty("miaozhenOTPInPercent") JsonNullable<Double> miaozhenOTPInPercent,
+            @JsonProperty("The product scope for New Buyer goal optimization") JsonNullable<Integer> theProductScopeForNewBuyerGoalOptimization) {
         Utils.checkNotNull(maximizeReach, "maximizeReach");
         Utils.checkNotNull(maximizeLtvIncrementalReach, "maximizeLtvIncrementalReach");
         Utils.checkNotNull(cpcInAdvertiserCurrency, "cpcInAdvertiserCurrency");
@@ -103,6 +110,7 @@ public class AdGroupWorkflowROIGoalInput {
         Utils.checkNotNull(vcpmInAdvertiserCurrency, "vcpmInAdvertiserCurrency");
         Utils.checkNotNull(cpcvInAdvertiserCurrency, "cpcvInAdvertiserCurrency");
         Utils.checkNotNull(miaozhenOTPInPercent, "miaozhenOTPInPercent");
+        Utils.checkNotNull(theProductScopeForNewBuyerGoalOptimization, "theProductScopeForNewBuyerGoalOptimization");
         this.maximizeReach = maximizeReach;
         this.maximizeLtvIncrementalReach = maximizeLtvIncrementalReach;
         this.cpcInAdvertiserCurrency = cpcInAdvertiserCurrency;
@@ -115,13 +123,15 @@ public class AdGroupWorkflowROIGoalInput {
         this.vcpmInAdvertiserCurrency = vcpmInAdvertiserCurrency;
         this.cpcvInAdvertiserCurrency = cpcvInAdvertiserCurrency;
         this.miaozhenOTPInPercent = miaozhenOTPInPercent;
+        this.theProductScopeForNewBuyerGoalOptimization = theProductScopeForNewBuyerGoalOptimization;
     }
     
     public AdGroupWorkflowROIGoalInput() {
         this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -182,6 +192,11 @@ public class AdGroupWorkflowROIGoalInput {
     @JsonIgnore
     public JsonNullable<Double> miaozhenOTPInPercent() {
         return miaozhenOTPInPercent;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Integer> theProductScopeForNewBuyerGoalOptimization() {
+        return theProductScopeForNewBuyerGoalOptimization;
     }
 
     public static Builder builder() {
@@ -333,6 +348,18 @@ public class AdGroupWorkflowROIGoalInput {
         return this;
     }
 
+    public AdGroupWorkflowROIGoalInput withTheProductScopeForNewBuyerGoalOptimization(int theProductScopeForNewBuyerGoalOptimization) {
+        Utils.checkNotNull(theProductScopeForNewBuyerGoalOptimization, "theProductScopeForNewBuyerGoalOptimization");
+        this.theProductScopeForNewBuyerGoalOptimization = JsonNullable.of(theProductScopeForNewBuyerGoalOptimization);
+        return this;
+    }
+
+    public AdGroupWorkflowROIGoalInput withTheProductScopeForNewBuyerGoalOptimization(JsonNullable<Integer> theProductScopeForNewBuyerGoalOptimization) {
+        Utils.checkNotNull(theProductScopeForNewBuyerGoalOptimization, "theProductScopeForNewBuyerGoalOptimization");
+        this.theProductScopeForNewBuyerGoalOptimization = theProductScopeForNewBuyerGoalOptimization;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -354,7 +381,8 @@ public class AdGroupWorkflowROIGoalInput {
             Utils.enhancedDeepEquals(this.viewabilityInPercent, other.viewabilityInPercent) &&
             Utils.enhancedDeepEquals(this.vcpmInAdvertiserCurrency, other.vcpmInAdvertiserCurrency) &&
             Utils.enhancedDeepEquals(this.cpcvInAdvertiserCurrency, other.cpcvInAdvertiserCurrency) &&
-            Utils.enhancedDeepEquals(this.miaozhenOTPInPercent, other.miaozhenOTPInPercent);
+            Utils.enhancedDeepEquals(this.miaozhenOTPInPercent, other.miaozhenOTPInPercent) &&
+            Utils.enhancedDeepEquals(this.theProductScopeForNewBuyerGoalOptimization, other.theProductScopeForNewBuyerGoalOptimization);
     }
     
     @Override
@@ -363,7 +391,8 @@ public class AdGroupWorkflowROIGoalInput {
             maximizeReach, maximizeLtvIncrementalReach, cpcInAdvertiserCurrency,
             ctrInPercent, nielsenOTPInPercent, cpaInAdvertiserCurrency,
             returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
-            vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent);
+            vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent,
+            theProductScopeForNewBuyerGoalOptimization);
     }
     
     @Override
@@ -380,7 +409,8 @@ public class AdGroupWorkflowROIGoalInput {
                 "viewabilityInPercent", viewabilityInPercent,
                 "vcpmInAdvertiserCurrency", vcpmInAdvertiserCurrency,
                 "cpcvInAdvertiserCurrency", cpcvInAdvertiserCurrency,
-                "miaozhenOTPInPercent", miaozhenOTPInPercent);
+                "miaozhenOTPInPercent", miaozhenOTPInPercent,
+                "theProductScopeForNewBuyerGoalOptimization", theProductScopeForNewBuyerGoalOptimization);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -409,6 +439,8 @@ public class AdGroupWorkflowROIGoalInput {
         private JsonNullable<Double> cpcvInAdvertiserCurrency = JsonNullable.undefined();
 
         private JsonNullable<Double> miaozhenOTPInPercent = JsonNullable.undefined();
+
+        private JsonNullable<Integer> theProductScopeForNewBuyerGoalOptimization = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -570,13 +602,27 @@ public class AdGroupWorkflowROIGoalInput {
             return this;
         }
 
+
+        public Builder theProductScopeForNewBuyerGoalOptimization(int theProductScopeForNewBuyerGoalOptimization) {
+            Utils.checkNotNull(theProductScopeForNewBuyerGoalOptimization, "theProductScopeForNewBuyerGoalOptimization");
+            this.theProductScopeForNewBuyerGoalOptimization = JsonNullable.of(theProductScopeForNewBuyerGoalOptimization);
+            return this;
+        }
+
+        public Builder theProductScopeForNewBuyerGoalOptimization(JsonNullable<Integer> theProductScopeForNewBuyerGoalOptimization) {
+            Utils.checkNotNull(theProductScopeForNewBuyerGoalOptimization, "theProductScopeForNewBuyerGoalOptimization");
+            this.theProductScopeForNewBuyerGoalOptimization = theProductScopeForNewBuyerGoalOptimization;
+            return this;
+        }
+
         public AdGroupWorkflowROIGoalInput build() {
 
             return new AdGroupWorkflowROIGoalInput(
                 maximizeReach, maximizeLtvIncrementalReach, cpcInAdvertiserCurrency,
                 ctrInPercent, nielsenOTPInPercent, cpaInAdvertiserCurrency,
                 returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
-                vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent);
+                vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent,
+                theProductScopeForNewBuyerGoalOptimization);
         }
 
     }
