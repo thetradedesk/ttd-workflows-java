@@ -60,6 +60,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
