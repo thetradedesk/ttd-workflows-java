@@ -57,7 +57,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.thetradedesk:workflows:0.13.2'
+implementation 'com.thetradedesk:workflows:0.14.0'
 ```
 
 Maven:
@@ -65,7 +65,7 @@ Maven:
 <dependency>
     <groupId>com.thetradedesk</groupId>
     <artifactId>workflows</artifactId>
-    <version>0.13.2</version>
+    <version>0.14.0</version>
 </dependency>
 ```
 
@@ -593,6 +593,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
@@ -805,6 +806,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
@@ -986,6 +988,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
@@ -1166,6 +1169,7 @@ public class Application {
                             .vcpmInAdvertiserCurrency(4649.53)
                             .cpcvInAdvertiserCurrency(313.95)
                             .miaozhenOTPInPercent(4704.1)
+                            .newBuyerTargetValue(785382)
                             .build())
                         .creativeIds(JsonNullable.of(null))
                         .associatedBidLists(List.of(
@@ -1391,6 +1395,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
@@ -1552,6 +1557,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(785382)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
