@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 java:
-  version: 0.13.2
+  version: 0.14.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: workflows
@@ -48,12 +48,14 @@ java:
   explicitDocImports: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
-  forwardCompatibleUnionsByDefault: "false"
+  forwardCompatibleUnionsByDefault: true
   generateOptionalUnionAccessors: false
   generateSpringBootStarter: true
   generateUnionDocs: false
+  getterStyle: presence-aware
   githubURL: github.com/thetradedesk/ttd-workflows-java
   groupID: com.thetradedesk
+  httpClient: jdk
   imports:
     option: openapi
     paths:
