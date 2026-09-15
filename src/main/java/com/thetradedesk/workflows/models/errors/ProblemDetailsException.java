@@ -55,12 +55,17 @@ public class ProblemDetailsException extends WorkflowsError {
     * the resulting ProblemDetailsException instance will have a null data() value and a non-null deserializationException().
     */
     public static ProblemDetailsException from(HttpResponse<InputStream> response) {
+        byte[] bytes;
         try {
-            byte[] bytes = Utils.extractByteArrayFromBody(response);
+            bytes = Utils.extractByteArrayFromBody(response);
+        } catch (Exception e) {
+            return new ProblemDetailsException(response.statusCode(), null, response, null, e);
+        }
+        try {
             Data data = Utils.mapper().readValue(bytes, Data.class);
             return new ProblemDetailsException(response.statusCode(), bytes, response, data, null);
         } catch (Exception e) {
-            return new ProblemDetailsException(response.statusCode(), null, response, null, e);
+            return new ProblemDetailsException(response.statusCode(), bytes, response, null, e);
         }
     }
 
