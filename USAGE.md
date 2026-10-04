@@ -36,7 +36,9 @@ public class Application {
                     .baseBidCPMInAdvertiserCurrency(3785.04)
                     .maxBidCPMInAdvertiserCurrency(7447.3)
                     .audienceTargeting(AdGroupWorkflowAudienceTargetingInput.builder()
-                        .audienceId("<id>")
+                        .audienceId(StringWorkflowsOptional.builder()
+                            .value("<value>")
+                            .build())
                         .audienceAcceleratorExclusionsEnabled(true)
                         .audienceBoosterEnabled(true)
                         .audienceExcluderEnabled(true)
@@ -60,6 +62,7 @@ public class Application {
                         .vcpmInAdvertiserCurrency(4649.53)
                         .cpcvInAdvertiserCurrency(313.95)
                         .miaozhenOTPInPercent(4704.1)
+                        .newBuyerTargetValue(287261)
                         .build())
                     .creativeIds(JsonNullable.of(null))
                     .associatedBidLists(List.of(
