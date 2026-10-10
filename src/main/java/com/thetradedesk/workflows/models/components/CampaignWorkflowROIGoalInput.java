@@ -100,7 +100,7 @@ public class CampaignWorkflowROIGoalInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("NewBuyerTargetValue")
+    @JsonProperty("newBuyerTargetValue")
     private JsonNullable<Integer> newBuyerTargetValue;
 
     @JsonCreator
@@ -121,7 +121,7 @@ public class CampaignWorkflowROIGoalInput {
             @JsonProperty("crossixAudienceQualityIndex") JsonNullable<Boolean> crossixAudienceQualityIndex,
             @JsonProperty("iqviaAudienceQualityIndexAndCostPerTarget") JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget,
             @JsonProperty("crossixCostPerTarget") JsonNullable<Boolean> crossixCostPerTarget,
-            @JsonProperty("NewBuyerTargetValue") JsonNullable<Integer> newBuyerTargetValue) {
+            @JsonProperty("newBuyerTargetValue") JsonNullable<Integer> newBuyerTargetValue) {
         Utils.checkNotNull(maximizeReach, "maximizeReach");
         Utils.checkNotNull(maximizeLtvIncrementalReach, "maximizeLtvIncrementalReach");
         Utils.checkNotNull(cpcInAdvertiserCurrency, "cpcInAdvertiserCurrency");
