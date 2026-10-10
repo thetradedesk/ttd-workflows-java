@@ -1,33 +1,34 @@
 lockVersion: 2.0.0
 id: 3c41c678-4c1f-4986-aa2b-76f74444c11d
 management:
-  docChecksum: b28a390782065609d71232541d693b50
+  docChecksum: ec523efc79c4b08a88f34374a74394eb
   docVersion: v1
-  speakeasyVersion: 1.761.9
-  generationVersion: 2.881.4
-  releaseVersion: 0.13.2
-  configChecksum: 6036c0ba9fe2df97c606eca433e011f2
+  speakeasyVersion: 1.801.0
+  generationVersion: 2.946.0
+  releaseVersion: 0.14.0
+  configChecksum: 868ddc8379a8e2748c814176c10a8200
   repoURL: https://github.com/thetradedesk/ttd-workflows-java.git
   installationURL: https://github.com/thetradedesk/ttd-workflows-java
   published: true
 persistentEdits:
-  generation_id: 9a23a599-4356-44d8-a49f-4645f16ee073
-  pristine_commit_hash: 0db3ab364669c9b9fdfb94565e5b4b092edbf17c
-  pristine_tree_hash: ab5636e95550b087e167f61865a970eb4943de68
+  generation_id: 1c1ff99d-65a8-4962-b8b1-518ef19f3dd7
+  pristine_commit_hash: 4876229ebe8c75a6908be00c8c1df5508425de2a
+  pristine_tree_hash: 38b170c069a1307423486fd8b1bb83e18ff53a64
 features:
   java:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.0.1
+    additionalProperties: 0.0.2
     constsAndDefaults: 0.1.3
-    core: 3.55.23
+    core: 3.57.2
     flattening: 2.81.1
     globalSecurity: 2.83.4
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.83.1
+    inputOutputModels: 2.83.0
     nameOverrides: 2.81.5
-    nullables: 0.1.0
-    retries: 0.1.2
+    nullables: 0.1.1
+    retries: 0.1.4
     sdkHooks: 1.2.0
     serverIDs: 2.81.1
 trackedFiles:
@@ -37,12 +38,12 @@ trackedFiles:
     pristine_git_object: 8f8da085659bbf87d293b49b4593e43137a4acb0
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:d5c76ff24298112b5d8ccd417ebf5b30ccf047cc
-    pristine_git_object: d25163ffde137d07ee808c226132767ddafd4408
+    last_write_checksum: sha1:4443d91f993266d98d0db6135ad255b51ec871ec
+    pristine_git_object: 1b5270d38e6a264e397f8fc4d4f879dafe30092d
   build.gradle:
     id: f07866736216
-    last_write_checksum: sha1:1c13f6cb09ac6da99013bbc60cb5cdbefbcd5717
-    pristine_git_object: ec583249f02daa0229d89337cff80ab5b17bfcf1
+    last_write_checksum: sha1:20215fa5c93468369c951168b068aa4254ceef4a
+    pristine_git_object: e7dcc75c0bc46954b4c7dda51a286fdc5b0fa1c8
   docs/models/components/AdGroupAssociateBidList.md:
     id: 4f249ffb1be2
     last_write_checksum: sha1:ccfadc26f2a548f298dd9f4e34dd0da6c6104cc8
@@ -53,8 +54,8 @@ trackedFiles:
     pristine_git_object: 6b1f6867eebac4b18e09ff774822d3889ba4cbbb
   docs/models/components/AdGroupBudget.md:
     id: 10b0c73ec9ec
-    last_write_checksum: sha1:2e71e11406bec8f2b9f6f90256c7f728aa126510
-    pristine_git_object: 639a9cc52a7aaa80b207ee6d991906dc2b3a0100
+    last_write_checksum: sha1:c8b5a3815bae3ad9774695cfe918a9e28caec198
+    pristine_git_object: b9b85e2648bbdb9d359cf9b0ab191eaa1b85a72e
   docs/models/components/AdGroupBulkCreateWorkflowInputWithValidation.md:
     id: 07eacd994fe2
     last_write_checksum: sha1:6469a99eb21f2a8c336443caf9f9f644b685ed36
@@ -83,14 +84,18 @@ trackedFiles:
     id: b5a66934c8be
     last_write_checksum: sha1:33664c93544f0f655fc18101717710a6ff9ff98b
     pristine_git_object: 805d6357f9a5439cce25b113f0b7d8400fd8ca59
+  docs/models/components/AdGroupCreateWorkflowOwnedBidListInput.md:
+    id: 8fe7fb35476a
+    last_write_checksum: sha1:d86c5268c082fdf2f1531afe443f931813eb64d6
+    pristine_git_object: b5a167b278844a886f185b8d3da8b578cf9ef2f0
   docs/models/components/AdGroupCreateWorkflowPrimaryInput.md:
     id: 787b91c2c4e7
-    last_write_checksum: sha1:f008ae7d77ce949960b318ab2c736d443d2c084e
-    pristine_git_object: f3d0f284d87b427ab5674a3a47438f2be940f2cb
+    last_write_checksum: sha1:9d09158af5900027496a9a3b7f974ae814a36172
+    pristine_git_object: 440dbfe63d08d9b74203b0bf3dfcbfe59f763191
   docs/models/components/AdGroupFlight.md:
     id: ec310b876a2f
-    last_write_checksum: sha1:1d525c62b1acb9f404c80662c525f64462a678a4
-    pristine_git_object: aaaafaa93658707bc0dbb35d47ade1f5b7bed9cd
+    last_write_checksum: sha1:24a5ae91d5dfedd200cd5a7300f3dd9a137aac31
+    pristine_git_object: 585014dc7fd837d6719cec8165ac190dfc8f4aeb
   docs/models/components/AdGroupFunnelLocation.md:
     id: 6872c63d5d40
     last_write_checksum: sha1:9b1f6a12596a807a751bfd6c03a37229365217fe
@@ -103,14 +108,18 @@ trackedFiles:
     id: e13a27ea609b
     last_write_checksum: sha1:112098480ad28e92c6023d9158a16bf08780106c
     pristine_git_object: 7f88060cd4dba5e51095197721f4ee49c38bf62d
+  docs/models/components/AdGroupOwnedBidList.md:
+    id: 5d2c31e754a2
+    last_write_checksum: sha1:3a13097cf9ab96c010632af2547cb107573ec269
+    pristine_git_object: 67ba2c941eb25ed0e4b283eae4b21089e8555b6a
   docs/models/components/AdGroupPayload.md:
     id: 97c59be73e72
     last_write_checksum: sha1:95212f1573f530965a04d61d2d97317db1f82000
     pristine_git_object: 75f6d6845515ca2f6a7f68ef9d14399d313421d3
   docs/models/components/AdGroupROIGoal.md:
     id: de96cd5ddb9e
-    last_write_checksum: sha1:1fc4d321fddef5f8e7233bbf06460fc2d0fc60b0
-    pristine_git_object: 640ed56bc6654d5b94943ad39b5a4f46a7ab3c03
+    last_write_checksum: sha1:993189cffa9565fe399287d23e6d1d734df76871
+    pristine_git_object: 67596591072223954aa1a14bd3ed236f964da26d
   docs/models/components/AdGroupUpdateWorkflowInput.md:
     id: 27d9230e34bc
     last_write_checksum: sha1:d64e791d3572a2633d655bbb331de89cac79fe52
@@ -125,8 +134,8 @@ trackedFiles:
     pristine_git_object: fef295dd1cf71131056720d9238ef4e6cc59b908
   docs/models/components/AdGroupWorkflow.md:
     id: dec0c5639c0f
-    last_write_checksum: sha1:f713a3a2a0b14c8bd2bee90e6f786b76a8e81a76
-    pristine_git_object: 5d78316218c0a26257bd1d809a6361e59e2e66ab
+    last_write_checksum: sha1:69008d0f289dd9d53c56d012bf1afb6fa1f31e56
+    pristine_git_object: 77330baa2debe9599659a4a6c0114c2a430961bd
   docs/models/components/AdGroupWorkflowAdvancedInput.md:
     id: 309c9ced7c11
     last_write_checksum: sha1:263fef22b3fdec84b741403aa15c5b23fca36d8a
@@ -137,8 +146,8 @@ trackedFiles:
     pristine_git_object: 787e77dd29c52e4213e12663e8059380f0bd99a1
   docs/models/components/AdGroupWorkflowAudienceTargetingInput.md:
     id: 8cae0de05a1c
-    last_write_checksum: sha1:1006fa038a50d03ad5c90a38fcd0498814dfcfb3
-    pristine_git_object: dca014aa65fad635ce5b0c6c2753f3f6bc2707f6
+    last_write_checksum: sha1:4e92dd5728115d34cfaceb8c74d145d070434e76
+    pristine_git_object: 4aaa5b2479537e54d3d48ad74deaf6169b7721fd
   docs/models/components/AdGroupWorkflowBudgetInput.md:
     id: 74c8e31406cf
     last_write_checksum: sha1:9aa2aaf1a6b1e8cc42316ab5d0893a3fa169457b
@@ -173,12 +182,56 @@ trackedFiles:
     pristine_git_object: 34d19edadb0cba64d59a541c3ca5fe89fb495c87
   docs/models/components/AdGroupWorkflowROIGoalInput.md:
     id: ce32ebf4f5f6
-    last_write_checksum: sha1:2c00ddc45badb65f56a4643c50bc9ac5b0832b46
-    pristine_git_object: 8a4f0eeb1d336740dfc35682411b3d523e6fdbbc
+    last_write_checksum: sha1:4dc94694e2739d17aa2edcad2145b45a94e26b42
+    pristine_git_object: b3082c17c1ce8910357ae3c629bd6c3a15cc59a0
+  docs/models/components/AdsTxtSellerType.md:
+    id: 719ffa79578e
+    last_write_checksum: sha1:f554342c4f0ac42415290a86744a0d2541051e24
+    pristine_git_object: 7d23ca2fad2a100fc1b7bca259ae104d7a1250a9
   docs/models/components/AllocationType.md:
     id: b1a88f326bba
     last_write_checksum: sha1:1e90d895dd29e68f60ec09105939f41842a99877
     pristine_git_object: 3c977dfa0eba626c2a186f0b368bcacdf83be9d3
+  docs/models/components/AtmosphericCondition.md:
+    id: 7bb3f7c9cedc
+    last_write_checksum: sha1:22338ea60a128a927209f1f842e8c494bb1a4317
+    pristine_git_object: 2cd4a0d7fb7e8ee5e753750ffa0e946b2520d7f6
+  docs/models/components/AudienceReachPercentageTier.md:
+    id: a7910cd0681d
+    last_write_checksum: sha1:b2f70b02f302e787f5a800b691b7ca2216bba0ab
+    pristine_git_object: d90cf653c68cfd988a9980e23b98076b04bdc41a
+  docs/models/components/BidLineCreateInput.md:
+    id: 2e5fff8d6654
+    last_write_checksum: sha1:b9aa8b06a53caf7e6aab862bb6acd962861b6493
+    pristine_git_object: ffaec7e202fc1a0db9bcf986f5d8db18e8893270
+  docs/models/components/BidListAdjustmentType.md:
+    id: aca5f6423b5e
+    last_write_checksum: sha1:59c0b5529417575e80e372d5a73f3bc2d4a7426e
+    pristine_git_object: 62d76a761230d2cc75e59375d6b0c80ae272d32d
+  docs/models/components/BidListAssociateBehavior.md:
+    id: 71aa877c227f
+    last_write_checksum: sha1:737563f3be5d17e8a4db82accd8e402acd188636
+    pristine_git_object: e7691d9b8e11f03af1d72e16f7966f241778b9ef
+  docs/models/components/BidListDimension.md:
+    id: 02f70184e7ba
+    last_write_checksum: sha1:0a42274d18825d40640fbfeb9b7b6f8fb49ca9cc
+    pristine_git_object: 724e5b3c5c3dc801c819383f132f88991d27bbb8
+  docs/models/components/BidListDimensionOptionsInput.md:
+    id: da84005eda20
+    last_write_checksum: sha1:470323650197316c704315531e42c4edc5090e87
+    pristine_git_object: df7f2c5876f50c7b96b2090f8b353095b0923392
+  docs/models/components/BidListSource.md:
+    id: ebd7eac4c5c1
+    last_write_checksum: sha1:599cefa2de2fb9b3500c1a1aae2b6081f2619283
+    pristine_git_object: 9a269aadc6ed962161550729caef0d98c5324848
+  docs/models/components/Browser.md:
+    id: 7f33cc599424
+    last_write_checksum: sha1:2d0563a555032f79f2f31d2da1cd7145a7a285d3
+    pristine_git_object: 3889687a1506c2f0905caa8204b520ed2cf97e4a
+  docs/models/components/BrowserInput.md:
+    id: 25efb8ee260e
+    last_write_checksum: sha1:a65b9f22a4ac8e5922f05b76fd5b6237ebdee0f8
+    pristine_git_object: 66162fa61918848356d1b1efde3ba61f7c2da957
   docs/models/components/BulkJobStatus.md:
     id: e669c57fe05b
     last_write_checksum: sha1:ddec6da2b212f120b5f435941a96690ca9a1d66e
@@ -295,6 +348,14 @@ trackedFiles:
     id: 4cb63a18228f
     last_write_checksum: sha1:70ec3d7be3e72d327a75dfc1558a2d77aeaa6f27
     pristine_git_object: 6376c9a10912a732c2bda9d4ccae7338c26d4864
+  docs/models/components/ContentDuration.md:
+    id: 244b57e49356
+    last_write_checksum: sha1:ea8e23f69ec05175c308b6fcdb13b894e073611f
+    pristine_git_object: 7750df3b302f034135f89d1270ececd7e8ff1fe3
+  docs/models/components/ContentTransparency.md:
+    id: 533aa0518dca
+    last_write_checksum: sha1:952653cde5a9c1bb380f778c88d14919c5874665
+    pristine_git_object: 0a8e2f35a8343d6610026e80b70feca22da5755a
   docs/models/components/CustomCPAType.md:
     id: 6d699579524d
     last_write_checksum: sha1:a3dd33198d600e82976e060f44a746bc110a539c
@@ -307,10 +368,30 @@ trackedFiles:
     id: 36bca906067f
     last_write_checksum: sha1:a134fd18899e8fd81d24679ac393b11db3465da3
     pristine_git_object: e47da5968bd226d5357bebbe119baf874429eee0
+  docs/models/components/DecimalRange.md:
+    id: 454a3365bfad
+    last_write_checksum: sha1:e4a4dc542773dbb702710adc8842492af46e964f
+    pristine_git_object: 97c9794b1d4b6b619e335d7c0b328c2c3f5c6afd
+  docs/models/components/DeviceType.md:
+    id: 6b2f62f9e1de
+    last_write_checksum: sha1:02dd5b74555fad4bc06a5a8bbfb1969c5f1cf3be
+    pristine_git_object: 962cacd4dd1df55382484d22e263326b0a43e7a5
   docs/models/components/DimensionalBiddingDimensions.md:
     id: 79549079b0f9
-    last_write_checksum: sha1:3ad7ceb2ea7f65d719d7def92da4718bfac8fa00
-    pristine_git_object: 246c0f6443c9bef2b44e75de4298b1e65acedbb0
+    last_write_checksum: sha1:0ae36251ece35488eb32c6cb64be8ae214c50634
+    pristine_git_object: aa74c33ccb1cd721357a867f956d4d71384db062
+  docs/models/components/DoubleVerifyBotAvoidance.md:
+    id: 0cc4a0c3fb44
+    last_write_checksum: sha1:e874e53013a4338213bf9d4da3ecede943262be4
+    pristine_git_object: f5f5177057304ddb8aae2d9087ff699d890a1ceb
+  docs/models/components/DoubleVerifyDisplayViewability.md:
+    id: 0826537e1a3b
+    last_write_checksum: sha1:1e2792873805a16f48d880168952173fff4b57b3
+    pristine_git_object: 6a14688aa337f012b4d02a809236e9fcf476f2ee
+  docs/models/components/DoubleVerifyVideoViewability.md:
+    id: b4d7c1f2ae6a
+    last_write_checksum: sha1:bfbe2806039efbc0123cc33776e00b39904cde1d
+    pristine_git_object: 1537f9d28d9a37d8e587bb2a7ac8c129043ef4d8
   docs/models/components/EnhancedNielsenReportingOptions.md:
     id: 2b961a459785
     last_write_checksum: sha1:95418be357a42250b1199e42063fb7a198b4b47e
@@ -319,14 +400,34 @@ trackedFiles:
     id: 54efad991936
     last_write_checksum: sha1:77c9d6fc15219f2c176d0790c8170d3bbaf2705c
     pristine_git_object: 9671a49918f457a61b868ba4d71e4c55c8c77820
+  docs/models/components/FactualProximityTargetInput.md:
+    id: 7ae2f9a4a673
+    last_write_checksum: sha1:0bbef6afbb38123239126d402a1805ac79d75a3d
+    pristine_git_object: 6f901385938397809cfd5d903bb36cadf491bf4c
   docs/models/components/FirstPartyDataInput.md:
     id: 060450ea7403
     last_write_checksum: sha1:6f190a81ee202e42bcf1df68444b2a01b859962e
     pristine_git_object: 04eef79f39c0abb0f7b08db7ceb8f80951f27c9f
+  docs/models/components/FrequencyAdjustmentInput.md:
+    id: b5303bb91a78
+    last_write_checksum: sha1:6b39b8b269c8223a8d3febf273992df98bef1c6b
+    pristine_git_object: 74973610e8a05b5cc9d761841557b843188427f3
   docs/models/components/FrequencyConfig.md:
     id: 027308776f82
     last_write_checksum: sha1:c4aec1fb9a1f86733f665fff59405a61a6454449
     pristine_git_object: d566742e38745869dafeef64233cb75693553b28
+  docs/models/components/FullReferrerUrl.md:
+    id: 944a8f5483e6
+    last_write_checksum: sha1:74717e7bd56a1bfe1566517eea212b8ec888395c
+    pristine_git_object: 037168d29400d629d0984ce20df01912264c4542
+  docs/models/components/GeoBidListOptionsInput.md:
+    id: f62b4d2a22b7
+    last_write_checksum: sha1:05d85dceabf279522a8f88fc136f6ddda729339c
+    pristine_git_object: 45189116b8c1b27f39e2f85c3dbcdfd610cad05d
+  docs/models/components/GeofenceThirdPartyDataAndBrandInput.md:
+    id: acf7d005c73e
+    last_write_checksum: sha1:281add56ab83e82c75e711ea51623aea10f26644
+    pristine_git_object: d8f4f2d5270a5bf075bcf685dd57e6a12fa9608e
   docs/models/components/GraphQLBulkJobError.md:
     id: a7926a55d54a
     last_write_checksum: sha1:4672f7b6a1f118028364aa895719364497408abb
@@ -359,6 +460,10 @@ trackedFiles:
     id: 9d04c32961bd
     last_write_checksum: sha1:d34e1e3d11639e847182b885eaa65a5a505eb120
     pristine_git_object: c64a896f3f1615d212da2a08bd833abcfd4d795c
+  docs/models/components/IdiosyncraticSegment.md:
+    id: fb216f1eeda0
+    last_write_checksum: sha1:5d980459727244f5689e97551c79a2cc06ef931d
+    pristine_git_object: 11bf713fd6e322dc5f6c61e102390e08426cb921
   docs/models/components/IncrementalReachBrandInput.md:
     id: 0b3f0a756b1b
     last_write_checksum: sha1:01d7e5a0a7905ea505de41d6b66cfcafa444fd4e
@@ -367,22 +472,74 @@ trackedFiles:
     id: d52090909008
     last_write_checksum: sha1:f3516521abbd493877fffc7ddfaac7e4ef4ed159
     pristine_git_object: 74de77798b3f4b9d1bf47b3d9e114a5252c1c60a
+  docs/models/components/Int32Range.md:
+    id: 59a4b6bca94c
+    last_write_checksum: sha1:1ffbc45f3313ec454d7e7fa8da36670ff755a94c
+    pristine_git_object: cbb0a79e3baba5951252179b0996ac1fdf601564
+  docs/models/components/IntegralVideoViewabilityInput.md:
+    id: d7222b2927f0
+    last_write_checksum: sha1:329b53850b197313b2ac2a2819d0a5db51c999dc
+    pristine_git_object: 9689e9b7051a6993554996d4039ec44203a469b4
+  docs/models/components/IntegralViewabilityInput.md:
+    id: f13862f03057
+    last_write_checksum: sha1:de41ad285aac68b35fc377d5a5132011a0078762
+    pristine_git_object: 0cb05db1fd080397edc79a6f9df24cc381d2f729
+  docs/models/components/InternetConnectionType.md:
+    id: 8c1585fc280e
+    last_write_checksum: sha1:b55c42150737c24849f97c10ce7c0912c2d09db4
+    pristine_git_object: 956c1e01f483dc6b98b830b59be7a5da819d4e98
+  docs/models/components/InternetConnectionTypeInput.md:
+    id: 279a9e65b244
+    last_write_checksum: sha1:7c4bfa0672abc657fc040f3c7ef97e3005ac42c7
+    pristine_git_object: bf1cf54e422448fab55fc5e918e4eb5f9ce1f73e
   docs/models/components/KeyValuePairOfStringAndStringInput.md:
     id: 7ea85b7937f3
     last_write_checksum: sha1:c768ace0f60efe2eef9f930cdd5fd2c825316e70
     pristine_git_object: 2108fc444a57779c2308d6ac572625d4aae4a94b
+  docs/models/components/LikelyRefreshRate.md:
+    id: 7bcc3d22ad84
+    last_write_checksum: sha1:49666b7822e4b234a6fd0730fa5ac0899a660c19
+    pristine_git_object: 1c6079dfb28aa30b5dffafa1fa5013a052f6b7e7
+  docs/models/components/Livestream.md:
+    id: a12181319817
+    last_write_checksum: sha1:5828d3ab19faa41da04bb07619643270eb297d9f
+    pristine_git_object: 5ec60d6d4977b006745cf9ae4a55d1fcaa6dd14a
+  docs/models/components/LocationContextTypeInput.md:
+    id: f9b3e7c90528
+    last_write_checksum: sha1:1bdc504ed453933881f0623e4694a10e5d0e2b87
+    pristine_git_object: af25676a2347f73079999a20e75cf2ac0dd9de70
   docs/models/components/MarketType.md:
     id: 426035b00197
     last_write_checksum: sha1:6c51ce8b6185061b34f85a4300c2e5bea563a4ad
     pristine_git_object: df05b8b7321d7d5880c47bc1601eb6483ba63baa
+  docs/models/components/MarketTypeBidList.md:
+    id: f2f7c576e80b
+    last_write_checksum: sha1:3752abf86784f15c299823f720fe1a7203089b18
+    pristine_git_object: 8a755c398e94862521a669101a02065ddbeafdd5
   docs/models/components/MarketTypeInput.md:
     id: 8cec3394e035
     last_write_checksum: sha1:2ded982ff60609045ea65490882d5fcfad37e638
     pristine_git_object: 4b230e9c7086537692120966eb5f409e4af20f7e
+  docs/models/components/MultipleMatchResolutionType.md:
+    id: 7ff1439048eb
+    last_write_checksum: sha1:6d89aa9d11da5b8d27cb005d3644cf0352863fea
+    pristine_git_object: e2b6d84220b23a3fd3a62e150ddc2ca73692ec3b
+  docs/models/components/NativeContextType.md:
+    id: cde328d68a72
+    last_write_checksum: sha1:87c07492c2894c3c7dc6ccdf1e4383f7f3f1c18e
+    pristine_git_object: 05fe76eb303dc95b3d13b46cd8f7ae0ca20f8771
+  docs/models/components/NativePlacementType.md:
+    id: 3dcdc58d554f
+    last_write_checksum: sha1:3bbb03c86647882f2170e3747c61db3d4926257e
+    pristine_git_object: 26edd3074f5cf2b0f648eb2cefeee5362bb12dff
   docs/models/components/PassThroughFeeType.md:
     id: 1659c9c896c8
-    last_write_checksum: sha1:05ef8342fa76cca25eabb4834535f51345d68335
-    pristine_git_object: 0c7f6c36254e4f7ea86b023b2f7b7b6882e9cd9c
+    last_write_checksum: sha1:abd7b8b898cdf05a6101aa7461a82fa51f09ffe1
+    pristine_git_object: 34a80e8b44dd22e6d6428cc955044c1b4068492e
+  docs/models/components/Peer39ViewabilityInput.md:
+    id: b5faccaa9a23
+    last_write_checksum: sha1:d7f77361d72e1cbe18b425a70d78b1b2af7f2d10
+    pristine_git_object: 5c663588d8d9c54a0b5a702a8a101c7bc35f52a6
   docs/models/components/ProblemDetails.md:
     id: b6fc9712ab14
     last_write_checksum: sha1:a03ec7410fcce855a2841b00431d8ba71df3f742
@@ -391,6 +548,18 @@ trackedFiles:
     id: f004a3405035
     last_write_checksum: sha1:3ac1df9f69d02880aa1a128cb344912f50f23014
     pristine_git_object: 2ccee10a61e401ac721e1a253c14223c7a33a84a
+  docs/models/components/ProductionQuality.md:
+    id: 4da0164ec33a
+    last_write_checksum: sha1:0fc2f1d89f8877bc3152facac58b00c9eaaa7e97
+    pristine_git_object: 99dc269549b26eed11d37a1ae6ff48aad885a2e9
+  docs/models/components/ProductionQualityInput.md:
+    id: d457253f57fb
+    last_write_checksum: sha1:64591aeac1c4a23d4a5bb205101649bbdcc67b72
+    pristine_git_object: ac5929d880f1b04488af1a14aa60ab58a9b0e248
+  docs/models/components/RTBAsiaViewability.md:
+    id: 4e62adec19fa
+    last_write_checksum: sha1:f7a5c9d43b9c15534919d0e0069fd9b3a833781a
+    pristine_git_object: 1df9a9d8961ea55db4eb50956045f3a39deb556c
   docs/models/components/RealyticsEntertainmentType.md:
     id: 1974d3181d35
     last_write_checksum: sha1:c52837404cbd50388b7b5c5e86279a2dbacef7d8
@@ -399,10 +568,18 @@ trackedFiles:
     id: 8e02ce28fb55
     last_write_checksum: sha1:7106ce62dc1d25f3faded4653bdc7501a079c116
     pristine_git_object: 66ba54fbdfcc60e2003bc71dbf37b2eb9270ea95
+  docs/models/components/RenderingContext.md:
+    id: 0e94b468eb3b
+    last_write_checksum: sha1:0207aba83914984f637f4d92b56b2e0aac5ed75b
+    pristine_git_object: f3238753eae3390c33a8e84c29d084a50f1fd097
   docs/models/components/RestApiMethodType.md:
     id: 8e3ca26fe474
     last_write_checksum: sha1:b5ed90f87794a15d0730db022ed307b9f186e8cf
     pristine_git_object: 64fe10659c192184d02cd5602e5000a32da93e3c
+  docs/models/components/Rewarded.md:
+    id: 107db3e5d714
+    last_write_checksum: sha1:d5fcfb6d16815f750620eeb4744bf512302e60e3
+    pristine_git_object: c77c0f4a51f78fc73f4272b5758141326c97ba05
   docs/models/components/Security.md:
     id: 3878f0f84029
     last_write_checksum: sha1:360b8a84e7761cbeaa3ca81eea6c12fac2a55dbd
@@ -415,6 +592,10 @@ trackedFiles:
     id: ca557f16db6e
     last_write_checksum: sha1:669d4251e7b7ad645e680138d80c345df7c3116c
     pristine_git_object: de24a3b11f74f36a8b46b55004f890a269173d48
+  docs/models/components/StringWorkflowsOptional.md:
+    id: 3fe5c5a0008e
+    last_write_checksum: sha1:aaa4826d0d6e8239c8985ac67ec2d1d517c40250
+    pristine_git_object: c8e54b806b62827bda9c4f36cb1bc62c9a65e10a
   docs/models/components/TargetingEndAge.md:
     id: a4a7f1056fda
     last_write_checksum: sha1:b536776027c3430793a6f218ae5a6aa03e719092
@@ -439,10 +620,42 @@ trackedFiles:
     id: 05632f9bece7
     last_write_checksum: sha1:b53bb78f71e1aa73223f67c1ecca680d3164574d
     pristine_git_object: d2e3ef4385df12b9d5bdcd7f57a5fd5caa0100d1
+  docs/models/components/TencentPageQualityInput.md:
+    id: 10b056891ca6
+    last_write_checksum: sha1:45b19b0f0b99214df833c15250106b7d2aab81a2
+    pristine_git_object: fc4665b81414c5eb7e89d8987bbb2f049b57bbbd
   docs/models/components/ThirdPartyDataInput.md:
     id: 972f22cabb11
     last_write_checksum: sha1:b44728dafb5c9388d8e34f375a892e526a607eb5
     pristine_git_object: ba815e2542d4e8884f8330a154e580bbaa00c5cd
+  docs/models/components/VideoMutedState.md:
+    id: 69c4cd21dd4c
+    last_write_checksum: sha1:da9fb09d0a90c87a7405a0e85ffd8ef964458a22
+    pristine_git_object: 71586a64ad2687fbf5b6327daacf87b3d8035b02
+  docs/models/components/VideoPlaybackType.md:
+    id: f570d2df9a65
+    last_write_checksum: sha1:b89c1a9d2718750d66d26c7ff490e9e12f3ee072
+    pristine_git_object: ebf8ca9e60eb9fc3383b7a01339f0da7a68b2021
+  docs/models/components/VideoPlayerSize.md:
+    id: 30f73b85abb4
+    last_write_checksum: sha1:1da64ceb272ca880902533fc9ba23469a4bc776d
+    pristine_git_object: 0a7466a5720d076e35c9be42b6e2ed72c181dbe0
+  docs/models/components/VideoQuality.md:
+    id: daa44a471591
+    last_write_checksum: sha1:b69d538bd8340c40164d324b8458fadaedeb39d6
+    pristine_git_object: 98d62bc3ddd6095f0cff9d1e9e6b203954cb70a1
+  docs/models/components/VideoSkippability.md:
+    id: 950781f2d815
+    last_write_checksum: sha1:a3a1aaa5a8ed7c8ff849eb1352e0b5c7b88e954b
+    pristine_git_object: 0d6212ca624ed090f5cc06dfd08ad7963f98f829
+  docs/models/components/VolumeControlPriority.md:
+    id: 3e3a2a7210fb
+    last_write_checksum: sha1:bac2188bf3c8aef53c8696b7204b708c28a09879
+    pristine_git_object: 63615d649228de5c3d8a813fc7fa46c04cea117a
+  docs/models/components/WeatherCondition.md:
+    id: 73b973df0be0
+    last_write_checksum: sha1:be231aec3ae1fa58d8d7412588369e266545ba12
+    pristine_git_object: 3cdf1d1f78711d2f8b870cdccb9d01024972bbd6
   docs/models/components/WorkflowCallbackInput.md:
     id: c7b3643732a3
     last_write_checksum: sha1:a39e2825b54a594eeeda04ef96720abf12d0da10
@@ -549,12 +762,12 @@ trackedFiles:
     pristine_git_object: 6b83d06c1e01eee499d8df9a75ccdc6e15fc8d3f
   docs/sdks/adgroup/README.md:
     id: 8e0c2412ebea
-    last_write_checksum: sha1:4f80dbb4bd3f29be81d8c773a690e7e318215276
-    pristine_git_object: 74299be68f5820a7ebb13532311d9289c96c31f9
+    last_write_checksum: sha1:d118e906c82f08929a7c7c290d70ae9bfeb9dce6
+    pristine_git_object: b52b5091e058413e6dd8dc97fa4e196255214499
   docs/sdks/campaign/README.md:
     id: 7c44530e0eca
-    last_write_checksum: sha1:d409b0499adb4daedd6cc9bc1f97886f9ea89c33
-    pristine_git_object: 149cd3db947eb934f60988da31e5bd0c25566327
+    last_write_checksum: sha1:20b3fe5f315542f0407862706fa2b557a0ddc254
+    pristine_git_object: 749a8fcfc078697ca2f9e17f7eadb48e9f6cabfc
   docs/sdks/dmp/README.md:
     id: 0b076a846392
     last_write_checksum: sha1:e96d335e4ab89ad377548f2a2d5210df5567dec8
@@ -577,8 +790,8 @@ trackedFiles:
     pristine_git_object: 560783da858833f8f97fe76f90be7fc7638b3ffb
   gradle.properties:
     id: 2afbb999f001
-    last_write_checksum: sha1:8dc7ab3b49c43c1a4e1c6015c636760fcbbf840f
-    pristine_git_object: 508a15d891b175501453caaaa659795572255870
+    last_write_checksum: sha1:9671ad4e2359074b732d7488966455ea8df01953
+    pristine_git_object: 509e1078ce30a902f56a80e242b11f029a2b8985
   gradle/wrapper/gradle-wrapper.jar:
     id: ec27dae6e852
     last_write_checksum: sha1:f725fb1467084142d74fd7cd8eab691ab3442611
@@ -601,36 +814,8 @@ trackedFiles:
     pristine_git_object: 612ada74d9ea1cfc6b58adef8b69e4f487e3169b
   settings.gradle:
     id: 05efc8b16577
-    last_write_checksum: sha1:0c7532d780ab86e9a39696462b3749c98499f94b
-    pristine_git_object: c7811fbeceaa09017ec02bfa2af177c94e0930f7
-  spring/workflows-spring-boot-autoconfigure/build.gradle:
-    id: b5eaf53fd2e1
-    last_write_checksum: sha1:601ed29157d17cc241a591a478362ec98fafb19d
-    pristine_git_object: 46d0745d27098953ed6441184b26153f332694d1
-  spring/workflows-spring-boot-autoconfigure/src/main/java/com/thetradedesk/workflows/ConditionalOnPropertyPrefix.java:
-    id: d2901c852261
-    last_write_checksum: sha1:2626f3bde2376fc7fdb7f30f5d61f26ee7ad3e45
-    pristine_git_object: af1050ba683cd67548b4b333eb39bfc5138d7f03
-  spring/workflows-spring-boot-autoconfigure/src/main/java/com/thetradedesk/workflows/OnPropertyPrefixCondition.java:
-    id: 993fcf03a0ce
-    last_write_checksum: sha1:0242ab12bf9de8f3a0289e58f27ae53fbad6fbf4
-    pristine_git_object: d138656099a7dd677ba5052a3bba1969ae9da600
-  spring/workflows-spring-boot-autoconfigure/src/main/java/com/thetradedesk/workflows/WorkflowsAutoConfig.java:
-    id: "794759041478"
-    last_write_checksum: sha1:2d7438da0042a2ef53f8638ed608134802a51267
-    pristine_git_object: a11d62b4493436aec9ce2c4cef03d1fbfc2cad27
-  spring/workflows-spring-boot-autoconfigure/src/main/java/com/thetradedesk/workflows/WorkflowsAutoConfigProperties.java:
-    id: e5b6b40932d4
-    last_write_checksum: sha1:bffebd0704b7d583d6c00c7aa87e91036d4a173f
-    pristine_git_object: dd55b3fe0e8e29a6ac05647b95b43801e197d8d5
-  ? spring/workflows-spring-boot-autoconfigure/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
-  : id: 61eeec9c94f4
-    last_write_checksum: sha1:d43f84af55c286dd280f9f967d4f1b02491e9d71
-    pristine_git_object: 1a444142b0598dfa347dcf8de5087db79bb8dc83
-  spring/workflows-spring-boot-starter/build.gradle:
-    id: fdeb190e1106
-    last_write_checksum: sha1:d91af03d16580e6dbcfc26662ff82477f9d31431
-    pristine_git_object: 33a8915fc43e6b0e8c791ba00b7a5ba2e498baef
+    last_write_checksum: sha1:4005d0bf698788c8b382ede0816350177b9afe14
+    pristine_git_object: 2d9c410601b9c45da9788cb1e124f71dc477f970
   src/main/java/com/thetradedesk/workflows/AdGroup.java:
     id: 6d480caf178d
     last_write_checksum: sha1:8d72c889f71459da776c54399227897b625ea459
@@ -685,16 +870,16 @@ trackedFiles:
     pristine_git_object: e18b1357107cc828db09181715988ea5d51cf731
   src/main/java/com/thetradedesk/workflows/SDKConfiguration.java:
     id: a59a881fc3b5
-    last_write_checksum: sha1:f9da2f83b47edbd092809e3d9ea789d4f7451cd1
-    pristine_git_object: 3761e2922821e6a892832dc3d0fbd43edf8af261
+    last_write_checksum: sha1:c28074a7cb1b875ee259b65f0079ce15b2ce1876
+    pristine_git_object: d79cba317032e83b9425bf35f0a4d019eab62fcb
   src/main/java/com/thetradedesk/workflows/SecuritySource.java:
     id: 696561dc3c53
     last_write_checksum: sha1:81f51518d023f26daaaaf94cfd6a019bf96ab48b
     pristine_git_object: 95841de006dbfd2e112d0d4ee77583e09838583f
   src/main/java/com/thetradedesk/workflows/Workflows.java:
     id: 809add4007e0
-    last_write_checksum: sha1:ce7e7cce09c5ee6ed7864dfd89759d09d11f9752
-    pristine_git_object: 73a4f10c9e94ab5fb102cb7be8e06546402efb7e
+    last_write_checksum: sha1:d07d9e29881de93865e7ba1685c354018a9db11c
+    pristine_git_object: d314839d37ffd1fcfb96a09a23c503364db3261b
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupAssociateBidList.java:
     id: 58844e6a64af
     last_write_checksum: sha1:64370d2c7b18cf97ff2d207acff41d498f493a1b
@@ -705,8 +890,8 @@ trackedFiles:
     pristine_git_object: ac43846b15efbaf69eeff5e00a0ad0e28ed671d3
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupBudget.java:
     id: df9c20e5d98b
-    last_write_checksum: sha1:6f194be392eeaa8d31b820eb6bf2e69a9f66cced
-    pristine_git_object: 4e0572900af1263155b604ab27b2382296e10a76
+    last_write_checksum: sha1:fdec3977863422b07d746c84e8464bda77f2ec1a
+    pristine_git_object: 8da762b4ec6278758ce9fca52710d1dd1bc40399
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupBulkCreateWorkflowInputWithValidation.java:
     id: 7329517afe6a
     last_write_checksum: sha1:616ac2288338c48533ffba12c545741fcbec1ba6
@@ -735,14 +920,18 @@ trackedFiles:
     id: 753dbc1626a4
     last_write_checksum: sha1:a990aecada33cc9548e6b6a1e4d11134cb9f904e
     pristine_git_object: 3bc572e99e35d6fb71c61b108350562bfe04ceb6
+  src/main/java/com/thetradedesk/workflows/models/components/AdGroupCreateWorkflowOwnedBidListInput.java:
+    id: f1f5aac6a109
+    last_write_checksum: sha1:5f04423296838e90c15a31e40ca9248659e254a6
+    pristine_git_object: 86665ad8722d4212074fd32256b0139493aab7ef
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupCreateWorkflowPrimaryInput.java:
     id: 787f4cbbe4cb
-    last_write_checksum: sha1:68cd6fb56b03a10380a253475001759d23722148
-    pristine_git_object: c177f33c07d5967df3acb92872ff25dc2d4951a3
+    last_write_checksum: sha1:6675d30d972ef7508bf9288d21e0fea108bb85f3
+    pristine_git_object: 7cfb569b78e97cf6baa5c9a07c74cba33f2fa78e
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupFlight.java:
     id: f7e3a2c4f17e
-    last_write_checksum: sha1:b8aa112ba1d2a91786c7218c72732d395759ba18
-    pristine_git_object: 70e0c28f852d3fa3926296820e4e0a3264ee1b73
+    last_write_checksum: sha1:3df955dfb2a8b3b7de716c2281984ac178a5cd00
+    pristine_git_object: 38241507f5e7ea9f297a32022cf735ddaa7d4266
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupFunnelLocation.java:
     id: 95c0f886ca3b
     last_write_checksum: sha1:f52a31513de5d931abeaef35c9a076bba493955a
@@ -755,14 +944,18 @@ trackedFiles:
     id: 3cd9d42b2344
     last_write_checksum: sha1:ab2024f62d2eb75875f4f13195b532ba79927314
     pristine_git_object: 1d2f7eda3d252b361e9d26240b5662e84387a8c4
+  src/main/java/com/thetradedesk/workflows/models/components/AdGroupOwnedBidList.java:
+    id: 5f2e349ae27a
+    last_write_checksum: sha1:0c05374ada09a4158d65511551d2a7d0c041b712
+    pristine_git_object: 457175aaaee8fd08851a89b7c9e9c577d806b2c4
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupPayload.java:
     id: f504f56a5a0c
     last_write_checksum: sha1:e21112ce05af12c888907f8bf121438f237bca3c
     pristine_git_object: dca63ed513a7a3338f110602f6f8fd1d1f1cfd35
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupROIGoal.java:
     id: 032800fc0c87
-    last_write_checksum: sha1:499ba3e69d447de585a613e8d9b08fa046364873
-    pristine_git_object: 1aea74c410f21a6181a7d16131f70018080a7d6f
+    last_write_checksum: sha1:f6c04c03919b86497926c74577eb6109c1fabc94
+    pristine_git_object: e81247f1317a04458078add1226912b76017cf4e
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupUpdateWorkflowInput.java:
     id: 3826c13b490e
     last_write_checksum: sha1:6b1f477d1c7408324c1b91cd4dbd2be86f7ed133
@@ -777,8 +970,8 @@ trackedFiles:
     pristine_git_object: 7fb7102e93adfafb8ee5bf995dcdca38aa330e63
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflow.java:
     id: 056dc5468df9
-    last_write_checksum: sha1:1613fc05811ab7cb2a62a275371fb409b8c5d5fe
-    pristine_git_object: aef608e9f89cb8bbdce105f74cc6eb9f8a46d327
+    last_write_checksum: sha1:9f9b81c4dbff37cb87074d17ab7d6f9a7e5778db
+    pristine_git_object: 38cd934b76a6042456ccfe75b9e4fda0b834eaf5
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowAdvancedInput.java:
     id: 78dbf8d5042c
     last_write_checksum: sha1:8b3e3feb8408bf36676414912a152438633e943d
@@ -789,8 +982,8 @@ trackedFiles:
     pristine_git_object: 471ab885b7aa8b6757589614cb4e386b414c6575
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowAudienceTargetingInput.java:
     id: 40532c7d6289
-    last_write_checksum: sha1:2b596dfc81be31dc8a8965ec368b121ebdb06d87
-    pristine_git_object: 86a5b1b188b010d869e7fce4165e9c45fcc610eb
+    last_write_checksum: sha1:1b3c6c33004cf2d7cbe707e7d0cb9fc9379feb8f
+    pristine_git_object: d4341ba1eed8de2e6265fee6d6d4bd338139cbfb
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowBudgetInput.java:
     id: ee87d7780259
     last_write_checksum: sha1:a64cd9ff4a884746594a585bd304a33387e6e2ad
@@ -825,12 +1018,56 @@ trackedFiles:
     pristine_git_object: e37dbdfb6d60dfba3045a5b9ba78122bbd4f5c6b
   src/main/java/com/thetradedesk/workflows/models/components/AdGroupWorkflowROIGoalInput.java:
     id: ed49458b3236
-    last_write_checksum: sha1:d36a650bb104ba3cadbb85fbc45f5edbb1485ff8
-    pristine_git_object: d68f8f1f4f6d6a05f444d38f7802d55b90b190f0
+    last_write_checksum: sha1:66e4a44e7b11e9a196a0c77f102945321b46a2ef
+    pristine_git_object: d5cc0da0b804eb889c0125bf4365bda65a986bbd
+  src/main/java/com/thetradedesk/workflows/models/components/AdsTxtSellerType.java:
+    id: dfec542ce82a
+    last_write_checksum: sha1:8057875047aa3cb98d72e1e2f0ea8f39f47780b5
+    pristine_git_object: c8a7fdefd08ce70afb07ab1b5f16627130a7947c
   src/main/java/com/thetradedesk/workflows/models/components/AllocationType.java:
     id: 50d1b90cb347
     last_write_checksum: sha1:bf0a6fa26f247c75c20148b51ef0ad59d89f9c88
     pristine_git_object: 5962e0f1b796ae5b3bfc2634f15e574d33537860
+  src/main/java/com/thetradedesk/workflows/models/components/AtmosphericCondition.java:
+    id: 8d34ec050088
+    last_write_checksum: sha1:6374f9b4e47f852ea933945851236b288dd25391
+    pristine_git_object: d95c524e4829f70e4228611f040d0d842dae35ad
+  src/main/java/com/thetradedesk/workflows/models/components/AudienceReachPercentageTier.java:
+    id: 85ee1c899835
+    last_write_checksum: sha1:51c0c7f067ea9e52a54fddb0cf0057cb35c884a3
+    pristine_git_object: 7e926fbd712f18aca6d5dc5f3c4dd114a0dec208
+  src/main/java/com/thetradedesk/workflows/models/components/BidLineCreateInput.java:
+    id: ba2d3483ac72
+    last_write_checksum: sha1:10aad93e528c8bd6ec417fba50a1f60f8d7d01dc
+    pristine_git_object: 7fa1258b0b02915299fb285fa8bb3f1ea9a0af20
+  src/main/java/com/thetradedesk/workflows/models/components/BidListAdjustmentType.java:
+    id: cde6d751bcca
+    last_write_checksum: sha1:45e3012b793cbd96ef6bd936514b5e1bade1ea1a
+    pristine_git_object: 76044956aa1257302e6c37fee552b267d33c94a9
+  src/main/java/com/thetradedesk/workflows/models/components/BidListAssociateBehavior.java:
+    id: 8d86f2a7e5c8
+    last_write_checksum: sha1:acd3af813c0e188a2f131d4b85f56144b5fdbab4
+    pristine_git_object: 91f4000ff5d3c7e596ae1c3de38234d8858500ce
+  src/main/java/com/thetradedesk/workflows/models/components/BidListDimension.java:
+    id: 98b34d595db7
+    last_write_checksum: sha1:d8d9ba4aac31fc38ed6dc6af5d77e3f01c6104a4
+    pristine_git_object: 648a82d8e5dead52ece61eeed3d8f943ad58f99a
+  src/main/java/com/thetradedesk/workflows/models/components/BidListDimensionOptionsInput.java:
+    id: 53d222875d9d
+    last_write_checksum: sha1:888daae1706e08e29c13036778db3138d329fcbd
+    pristine_git_object: 40ab6f8c66872ae401f54220010e0f27dbad8e2b
+  src/main/java/com/thetradedesk/workflows/models/components/BidListSource.java:
+    id: ce3c2a22e3a7
+    last_write_checksum: sha1:25da2a402f2516d41e43eb644a874fc8b29470de
+    pristine_git_object: b721b82769649509304d44805a7abc3ec9b46d45
+  src/main/java/com/thetradedesk/workflows/models/components/Browser.java:
+    id: 5b94c94054b5
+    last_write_checksum: sha1:c1b79f20995c5da70fdfe16e4dae293f863c8dc2
+    pristine_git_object: 7defe0d02c9da98709a64017fc50bdb5da3a4d5e
+  src/main/java/com/thetradedesk/workflows/models/components/BrowserInput.java:
+    id: 9fb4b8392875
+    last_write_checksum: sha1:e26b7334fc34cc01e62b4599bb7b085f98317507
+    pristine_git_object: 14aba3eaad9eb14b3120621726b8027ec5095f40
   src/main/java/com/thetradedesk/workflows/models/components/BulkJobStatus.java:
     id: 2ec621ac7ad9
     last_write_checksum: sha1:ad410f4a772e76075f8607cf4a48a2e8cbc99a21
@@ -945,8 +1182,16 @@ trackedFiles:
     pristine_git_object: 39cd86e64ff81aaf89f12f932cbb26befcfb544d
   src/main/java/com/thetradedesk/workflows/models/components/CampaignWorkflowROIGoalInput.java:
     id: a799f93a0f97
-    last_write_checksum: sha1:f1d851f1626197a98605309006cb5614fdafe05b
-    pristine_git_object: f768be0f970b62caaf2e393d23e47b39c0335f3e
+    last_write_checksum: sha1:e922f4fb029635c065160fb39a9a9f7407c6da38
+    pristine_git_object: 8b880b8dc1f931e62127c0181e826c562fcea312
+  src/main/java/com/thetradedesk/workflows/models/components/ContentDuration.java:
+    id: 3aa2204bc7eb
+    last_write_checksum: sha1:7187fa323e6f3d20752492c5a2e0ba46905a1f99
+    pristine_git_object: d38d140991f226ed300c32b8b3d180e1d78d4d02
+  src/main/java/com/thetradedesk/workflows/models/components/ContentTransparency.java:
+    id: efec2a97a9a1
+    last_write_checksum: sha1:5ce915cfa03482ee7fb0eb0e00419de21a2ecbf5
+    pristine_git_object: a630662da04ac866fe17a8b77cb88a82661d6bfa
   src/main/java/com/thetradedesk/workflows/models/components/CustomCPAType.java:
     id: 053d65d90fe6
     last_write_checksum: sha1:43bae61f2ec549f23b3f0a3ca62aa1801d45aaa6
@@ -959,10 +1204,30 @@ trackedFiles:
     id: 9b5418d7e215
     last_write_checksum: sha1:82bb14c75a87347e08fd5a8878f42c7a8a6c59d3
     pristine_git_object: 6e5ace8e0d745a0e457885d1c1598e851d64bdd4
+  src/main/java/com/thetradedesk/workflows/models/components/DecimalRange.java:
+    id: ab947b79b289
+    last_write_checksum: sha1:686680ad32b3e0593d2db1563ba282d3764e5608
+    pristine_git_object: b16c91766a65c6ad84bc8c929f9d0bd7fef72e3f
+  src/main/java/com/thetradedesk/workflows/models/components/DeviceType.java:
+    id: 6bd8460a78c5
+    last_write_checksum: sha1:c24223d6db8ef1bb7b2c67df49eeaa42e93737e0
+    pristine_git_object: 6b285a79adef8126f13eb936a6ed9f8bdac66a97
   src/main/java/com/thetradedesk/workflows/models/components/DimensionalBiddingDimensions.java:
     id: e8de72528def
-    last_write_checksum: sha1:3da58f3fe9eb8fcbca6868646717fe3c9943a3f1
-    pristine_git_object: 9861eea9001bda90b56dd198e53546a00a68db40
+    last_write_checksum: sha1:dab88d8e014c7ecc23bb9464299e1bb5bbae362d
+    pristine_git_object: 15d773f09b1c55503e3454bff822a66e1b04b44b
+  src/main/java/com/thetradedesk/workflows/models/components/DoubleVerifyBotAvoidance.java:
+    id: 2507ee0cdeb8
+    last_write_checksum: sha1:45f8e07d758e7f6f6a2f353f4e03da456fd5f818
+    pristine_git_object: c88de0120743cc09d9707d5ca2d4173cc0683d6c
+  src/main/java/com/thetradedesk/workflows/models/components/DoubleVerifyDisplayViewability.java:
+    id: 4c0d30e0fd9b
+    last_write_checksum: sha1:dbf5fb93c65acaaee13aefef3793a8d4c3f384b4
+    pristine_git_object: bbb62860ebb3dc78dbd7a365406748eeb434f9df
+  src/main/java/com/thetradedesk/workflows/models/components/DoubleVerifyVideoViewability.java:
+    id: 5600a274acc9
+    last_write_checksum: sha1:d9daaf7a54b5edd1755d2a15de637de094520d97
+    pristine_git_object: 0c277162a0152c4007dfca765eb827029920be9f
   src/main/java/com/thetradedesk/workflows/models/components/EnhancedNielsenReportingOptions.java:
     id: cc2abec07743
     last_write_checksum: sha1:381934731f424e9b2920bc4b7d816f1ac506d1bc
@@ -971,14 +1236,34 @@ trackedFiles:
     id: 57f6d1a12da1
     last_write_checksum: sha1:8be005e0e2b15de64bc9708431d59c07b0e2b52e
     pristine_git_object: 8c0ab0964b157d5e2371727fd7af592d9117cc49
+  src/main/java/com/thetradedesk/workflows/models/components/FactualProximityTargetInput.java:
+    id: 7b721a7d8629
+    last_write_checksum: sha1:5f3b438b0aac95cc110d0043ecc109e584f08e3b
+    pristine_git_object: 80020738c3cb08cde40088145f994742a7efe502
   src/main/java/com/thetradedesk/workflows/models/components/FirstPartyDataInput.java:
     id: 95901fa8aa0a
     last_write_checksum: sha1:d4038eaafaca1833f671b01fc5e6245fc9246b79
     pristine_git_object: 9115ccba917cccf42ac7b6bdd2a693dc8d7038f4
+  src/main/java/com/thetradedesk/workflows/models/components/FrequencyAdjustmentInput.java:
+    id: e9ad1ba05705
+    last_write_checksum: sha1:9668942dbdb35d42d57ff1ed99fd523df02db865
+    pristine_git_object: 179a8bc351a02b2e63d46fb2f9661e49e0aa496b
   src/main/java/com/thetradedesk/workflows/models/components/FrequencyConfig.java:
     id: 8959612251ff
     last_write_checksum: sha1:35d3d73b64e1a0b75e83404a6da20aa27391195f
     pristine_git_object: 7b72c216b3556dad08dbcdcb38da4f0fc21a195b
+  src/main/java/com/thetradedesk/workflows/models/components/FullReferrerUrl.java:
+    id: 08a15bd244e4
+    last_write_checksum: sha1:28efd6fa321b7296b508063592a4f74544c2761f
+    pristine_git_object: bcde42400317a9b1438b595963184ac13bc75deb
+  src/main/java/com/thetradedesk/workflows/models/components/GeoBidListOptionsInput.java:
+    id: fe378ed1982e
+    last_write_checksum: sha1:d5aa297a866311d36070296ac59227e7e75cbc7b
+    pristine_git_object: d894d61e34d77395ff27753d955cafdf7158928c
+  src/main/java/com/thetradedesk/workflows/models/components/GeofenceThirdPartyDataAndBrandInput.java:
+    id: 78d29f2d319e
+    last_write_checksum: sha1:0967570f807af51503660984a6f8ffe02197cdb5
+    pristine_git_object: de3aff663db00c1d32ee1407cdca1faf2dc21e49
   src/main/java/com/thetradedesk/workflows/models/components/GraphQLBulkJobError.java:
     id: f9144a148653
     last_write_checksum: sha1:d83b93b7d41492c1dc3646b5cb67d46e32277505
@@ -1011,6 +1296,10 @@ trackedFiles:
     id: a4604eb959e0
     last_write_checksum: sha1:2dca7b76ab3a2b7644fe69bb859639225b613132
     pristine_git_object: 937b145fa57e99422741afe7dd7cb6ded34ed863
+  src/main/java/com/thetradedesk/workflows/models/components/IdiosyncraticSegment.java:
+    id: b6add457ea9c
+    last_write_checksum: sha1:d1b19c48875b4bb130faa7dbb7ca2e22b7054dd7
+    pristine_git_object: 35e6b2b3ad927c1927aa79db48ec61dd3a1f1acc
   src/main/java/com/thetradedesk/workflows/models/components/IncrementalReachBrandInput.java:
     id: 91c45761b42e
     last_write_checksum: sha1:f72eb981a5facdae41788795dee7637b54cb2cf1
@@ -1019,22 +1308,74 @@ trackedFiles:
     id: e5dbf7392eff
     last_write_checksum: sha1:26afc1b1b756c1b4c3918236cf46889312db2273
     pristine_git_object: df1c381ef18ec65464337a74e083736ad113841b
+  src/main/java/com/thetradedesk/workflows/models/components/Int32Range.java:
+    id: "091511943898"
+    last_write_checksum: sha1:7fc886456377ea0a403531e1242ab974386d6b23
+    pristine_git_object: 9596c71cee6cc5ac3367e5e7d0bbe10d004ceb9a
+  src/main/java/com/thetradedesk/workflows/models/components/IntegralVideoViewabilityInput.java:
+    id: 75b4ab9b24cc
+    last_write_checksum: sha1:02ea3096feca20ba988e6ceb78cb368f3706a838
+    pristine_git_object: 3cf15557b0b6404a06a66bb19ac1331b4ba33781
+  src/main/java/com/thetradedesk/workflows/models/components/IntegralViewabilityInput.java:
+    id: 202dd41f813e
+    last_write_checksum: sha1:c9b7f2c0878117626384238a9d3fe5850017da76
+    pristine_git_object: a1b7c00cf802f39cf4ee5cce1c17d68095097729
+  src/main/java/com/thetradedesk/workflows/models/components/InternetConnectionType.java:
+    id: 59dd181c9e95
+    last_write_checksum: sha1:4435b918d27bacffb9f5d783131ed3767b955432
+    pristine_git_object: 2ca1320a8ad3d9a828e2e4a60fd15697bdffda45
+  src/main/java/com/thetradedesk/workflows/models/components/InternetConnectionTypeInput.java:
+    id: 515d2731f384
+    last_write_checksum: sha1:4fbb7cf01c4fc28a091e2de57277b6478cbb156c
+    pristine_git_object: 594b63a2363f6d20f718da67015cedd7917745b8
   src/main/java/com/thetradedesk/workflows/models/components/KeyValuePairOfStringAndStringInput.java:
     id: 51d1be6d04b0
     last_write_checksum: sha1:3ff297608acb5bf8e7b8d14578bbbea06e9b58f6
     pristine_git_object: ed6e8f2fb94718564a74f575e68621d0a75fbd2e
+  src/main/java/com/thetradedesk/workflows/models/components/LikelyRefreshRate.java:
+    id: 798a71ab4885
+    last_write_checksum: sha1:11fcb6393143a755ccff74176297221ef85b6c8a
+    pristine_git_object: 617cc8ca30dcfd0f6e2487fb475e1879c817802e
+  src/main/java/com/thetradedesk/workflows/models/components/Livestream.java:
+    id: cc8d8a70eae7
+    last_write_checksum: sha1:b140d2120222f6b80554791e4edd866d5a4d5350
+    pristine_git_object: 841d5785789463d34a17a39d1fee8a5469da39e8
+  src/main/java/com/thetradedesk/workflows/models/components/LocationContextTypeInput.java:
+    id: 6bde40b89c4f
+    last_write_checksum: sha1:6367eea6db5fcadd1b5c91fb1114a0e8a5698e89
+    pristine_git_object: 20866c2ec2690d6eae18f345e65118e290276d53
   src/main/java/com/thetradedesk/workflows/models/components/MarketType.java:
     id: 574b87a67d5c
     last_write_checksum: sha1:f34ac6b29497af885ccdd5217564981f86a5d01b
     pristine_git_object: a68cbb37d9ba9ff6d55813627b6f13543dedb91a
+  src/main/java/com/thetradedesk/workflows/models/components/MarketTypeBidList.java:
+    id: 585a8f56df65
+    last_write_checksum: sha1:fcfa270b14cbd3c4107efc0f8594906c6c317e28
+    pristine_git_object: 0f7f5af69c580876a66ec264b3770b19951cdde3
   src/main/java/com/thetradedesk/workflows/models/components/MarketTypeInput.java:
     id: 690716ff68f3
     last_write_checksum: sha1:fbc160ac02bb3890c4c8c197a26720f440e17b25
     pristine_git_object: 88788cfb5377b9dc43cf09e537d7490a6848381b
+  src/main/java/com/thetradedesk/workflows/models/components/MultipleMatchResolutionType.java:
+    id: 5045ec158a05
+    last_write_checksum: sha1:dbd9da045983065b80b2fdb4c8939fe03658753e
+    pristine_git_object: ea35c4d5a1c6b374ac3d8595a9fadc29602615c8
+  src/main/java/com/thetradedesk/workflows/models/components/NativeContextType.java:
+    id: 9fb53f6c3b03
+    last_write_checksum: sha1:bc9213b7368e44f7dd26af67a1216129159c16de
+    pristine_git_object: c34c92dfdd03814865659a8a6fbdf31d431b7d27
+  src/main/java/com/thetradedesk/workflows/models/components/NativePlacementType.java:
+    id: 92b394a8e943
+    last_write_checksum: sha1:a964e4ad7e1a547e40de03cf70e65debbecb9d7f
+    pristine_git_object: d09ac28b2d6142d38bd3d53b30be619dab637df4
   src/main/java/com/thetradedesk/workflows/models/components/PassThroughFeeType.java:
     id: 8ee5955387d1
-    last_write_checksum: sha1:92c3303dedb985ba04509fe7f28a0a8e1a4df7dc
-    pristine_git_object: 0b41f2aea85d25b42540818a28bde30a25c333ca
+    last_write_checksum: sha1:55a53cc1d2882f4c04696e913f6027772adbf941
+    pristine_git_object: 0f1e7db06c97b834380c949baaeb7e70094c8023
+  src/main/java/com/thetradedesk/workflows/models/components/Peer39ViewabilityInput.java:
+    id: d2e9098d6629
+    last_write_checksum: sha1:a23ab1017f43950afd182534da3cc6cf001106b3
+    pristine_git_object: 8e0d19d251cfea32f4828e73081ab0aa0b298272
   src/main/java/com/thetradedesk/workflows/models/components/ProblemDetails.java:
     id: f85052ad4756
     last_write_checksum: sha1:a6638dd28c3ab2ad0d7d2a0731738dea40ee4378
@@ -1043,6 +1384,18 @@ trackedFiles:
     id: 9d0cadfce57b
     last_write_checksum: sha1:ab0a357aed727fcdf30852f66d00cd1a1eca3ef3
     pristine_git_object: 9ef5bddbda99af06fb9efdb206a3bdd936940c3b
+  src/main/java/com/thetradedesk/workflows/models/components/ProductionQuality.java:
+    id: 398a0ba8f8da
+    last_write_checksum: sha1:fd6dac3a95d74de2ede60d83247167444de82e65
+    pristine_git_object: 1f5ba23abf9683318a7766c7f8755909439ce7da
+  src/main/java/com/thetradedesk/workflows/models/components/ProductionQualityInput.java:
+    id: 96091e31122c
+    last_write_checksum: sha1:f9f42ae5f76216cc0963f890ab8dc45a167b3b03
+    pristine_git_object: 29ca6081ff898452dbf9dc68c3b9950e4991479e
+  src/main/java/com/thetradedesk/workflows/models/components/RTBAsiaViewability.java:
+    id: c882cc191637
+    last_write_checksum: sha1:9aab76988f84f0477f7108a6dcd9b9a3b6e7e7e5
+    pristine_git_object: 2e09313f8b26caefd8c48a7481311a514ed02960
   src/main/java/com/thetradedesk/workflows/models/components/RealyticsEntertainmentType.java:
     id: 2f3a6c36eedf
     last_write_checksum: sha1:a541abd5f3b2854851ce92e1699012eedf0078b3
@@ -1051,10 +1404,18 @@ trackedFiles:
     id: 710a017ad69a
     last_write_checksum: sha1:dc5457345f5875311a3f84c9a062a44690b6debf
     pristine_git_object: 26a981017ce5aeb302134388d7989de515571ad8
+  src/main/java/com/thetradedesk/workflows/models/components/RenderingContext.java:
+    id: 03f8edfd2374
+    last_write_checksum: sha1:06c0e383292a1738246b59e60b08761cdec29776
+    pristine_git_object: 7c3a4f58d78688e99223a6dda9f22a84990f18ce
   src/main/java/com/thetradedesk/workflows/models/components/RestApiMethodType.java:
     id: 5f4807259d1d
     last_write_checksum: sha1:3baae287dd021609a1c49523130aae44fdca2ac9
     pristine_git_object: baef2a8ef68a044cb7c2e1070398e838e05ba968
+  src/main/java/com/thetradedesk/workflows/models/components/Rewarded.java:
+    id: 3009b3ac501e
+    last_write_checksum: sha1:a747776a0d628dc19e11212a468eb6237ae8b5b7
+    pristine_git_object: 26514f20b2cf62d40af1488596511c8bff032e68
   src/main/java/com/thetradedesk/workflows/models/components/Security.java:
     id: 472c4e85e75b
     last_write_checksum: sha1:0db6465ca5ac287f9218631e215d0e06bc9a9975
@@ -1067,6 +1428,10 @@ trackedFiles:
     id: 9e375641aaf0
     last_write_checksum: sha1:34593532ba2867543ad3b4e5f9debcdcb28f0805
     pristine_git_object: 3a7ef5b4b2f588e2142dff1c60df23723a399478
+  src/main/java/com/thetradedesk/workflows/models/components/StringWorkflowsOptional.java:
+    id: 03db2e9632d7
+    last_write_checksum: sha1:92be67e6c319b81689dd159257d6e55678ec7c70
+    pristine_git_object: 5ae129fa54c1b9e9f0ec24b8bae83ee78c170f55
   src/main/java/com/thetradedesk/workflows/models/components/TargetingEndAge.java:
     id: de17193057ae
     last_write_checksum: sha1:b02622787e13a19a7eaf4a65f6f2062a6bb3ac89
@@ -1091,10 +1456,42 @@ trackedFiles:
     id: 26a76fd9d9ce
     last_write_checksum: sha1:69bda4aaf835a57af53d5e404d33347ef985f1b3
     pristine_git_object: bbf0bbc37020294507de1c207e283aafb3a13193
+  src/main/java/com/thetradedesk/workflows/models/components/TencentPageQualityInput.java:
+    id: 2e0bc46e993d
+    last_write_checksum: sha1:7ef5f5878c6ea498247f80725e77503ba7ce9cc1
+    pristine_git_object: a0aaadafee9f9b8c7d24ab34fdd61831f1d5b696
   src/main/java/com/thetradedesk/workflows/models/components/ThirdPartyDataInput.java:
     id: 16cc0eae25cf
     last_write_checksum: sha1:c77abd7bf5ea62637f9d1886e35f22150a9d1e52
     pristine_git_object: e57f0bf8d67ade52fe77e448ee74292a3fbfd61d
+  src/main/java/com/thetradedesk/workflows/models/components/VideoMutedState.java:
+    id: cd714b261900
+    last_write_checksum: sha1:7cba33be660e03db57433698ae94f3d3ad49f21f
+    pristine_git_object: 2bf308919134bdcfdf2d542c9d294dd9ce0feff9
+  src/main/java/com/thetradedesk/workflows/models/components/VideoPlaybackType.java:
+    id: 31a5d5e8cc10
+    last_write_checksum: sha1:61836d2b0c731436aecd84502519402749eb7697
+    pristine_git_object: 04061b384d6eadc6dac152991f8bab503dc6ca15
+  src/main/java/com/thetradedesk/workflows/models/components/VideoPlayerSize.java:
+    id: 7055d9ccfbd3
+    last_write_checksum: sha1:30b7fa500734b803f36824affc03648d72c45556
+    pristine_git_object: df870983a5c10e9fefeb6edf9d5759a70ca72045
+  src/main/java/com/thetradedesk/workflows/models/components/VideoQuality.java:
+    id: 755013ada6f7
+    last_write_checksum: sha1:1b5a438596f410b4bb81f962095ee9c7f63f6acc
+    pristine_git_object: 39d7e0f92fa4d64952a110d26cb84e273a1ea8d3
+  src/main/java/com/thetradedesk/workflows/models/components/VideoSkippability.java:
+    id: 87c631d0ce48
+    last_write_checksum: sha1:48d5dd743a114dc3c3e26352244421ee17f237c2
+    pristine_git_object: 2b690852b3a0f11d18837ea3930b0acc52f4564b
+  src/main/java/com/thetradedesk/workflows/models/components/VolumeControlPriority.java:
+    id: 5b59207daec3
+    last_write_checksum: sha1:6a2d1767cca53312f8c28c0d3a08f620781a256f
+    pristine_git_object: ff7726fa6f101e96fcb70cc6114fc0be9fd12291
+  src/main/java/com/thetradedesk/workflows/models/components/WeatherCondition.java:
+    id: 2923b3447530
+    last_write_checksum: sha1:e86f247e1a0943e3701e4bcaca33e08d7aaa6dbe
+    pristine_git_object: ccd76c5dea70aee2aef19a0bb16d2157b00077e3
   src/main/java/com/thetradedesk/workflows/models/components/WorkflowCallbackInput.java:
     id: 3c4b33ea6c3f
     last_write_checksum: sha1:56bcb8418603685e54c00f89e053fda569030555
@@ -1117,84 +1514,12 @@ trackedFiles:
     pristine_git_object: 0979df8891d8071f04c76b4abb3746588e97e496
   src/main/java/com/thetradedesk/workflows/models/errors/ProblemDetailsException.java:
     id: 5e53e44907f8
-    last_write_checksum: sha1:0a1734c624ab0a760fcb0298f39c11ea2c52f6e7
-    pristine_git_object: 2526bbcd1fa01d3b7cbfd120b75fab579769dd4d
+    last_write_checksum: sha1:aecad106f2e01f360021ac73abd45353d85dcd00
+    pristine_git_object: fdcc970165769f0aff743296522c128f5073db40
   src/main/java/com/thetradedesk/workflows/models/errors/WorkflowsError.java:
     id: 671521bacb93
     last_write_checksum: sha1:a4101ec43a971ac1a406812cb79aa2809f4da9db
     pristine_git_object: 70878d2a3a957a9d407b586953d3c22f129c8f7c
-  src/main/java/com/thetradedesk/workflows/models/operations//async/ArchiveAdGroupsRequestBuilder.java:
-    id: 66a5694ee30e
-    last_write_checksum: sha1:d00f2fac8050cef62a168fa92b303e384a75bd28
-    pristine_git_object: 883675876bc0897bd6cb3552dbb5752985b9cb78
-  src/main/java/com/thetradedesk/workflows/models/operations//async/ArchiveCampaignsRequestBuilder.java:
-    id: 9074f8de8c86
-    last_write_checksum: sha1:856912e041b620026fb7b8709bb9c3aec98b1874
-    pristine_git_object: 9cd856bc419c7aa0cdebb4cb6935569cc8e37496
-  src/main/java/com/thetradedesk/workflows/models/operations//async/CreateAdGroupRequestBuilder.java:
-    id: 226f3569d668
-    last_write_checksum: sha1:8ff024fb87df151449e91313e4b8a9d2869dbc06
-    pristine_git_object: e2fb8c43083d94548d530a5709011586a578e411
-  src/main/java/com/thetradedesk/workflows/models/operations//async/CreateAdGroupsJobRequestBuilder.java:
-    id: 66f879e0a243
-    last_write_checksum: sha1:5c5a25b9dadec935dcb02337905cbd7e81cbb09a
-    pristine_git_object: 3c68fc88ab3cafc670766f28142bb9583b53059c
-  src/main/java/com/thetradedesk/workflows/models/operations//async/CreateCampaignRequestBuilder.java:
-    id: 12982098d39f
-    last_write_checksum: sha1:bf1c4bedfad6cbbbf0ab4747f409f858c2a1e2a7
-    pristine_git_object: 6cba1b818918a42400846768f42f4abb1a5c5d67
-  src/main/java/com/thetradedesk/workflows/models/operations//async/CreateCampaignsJobRequestBuilder.java:
-    id: 64e9a5bb14d4
-    last_write_checksum: sha1:89eeb6ead9a7c37496239a9b31141e987b23091e
-    pristine_git_object: a6d2a36bfe4cc434ee9fde02daba8256ce85e6fd
-  src/main/java/com/thetradedesk/workflows/models/operations//async/GetCampaignVersionRequestBuilder.java:
-    id: 4aea56d8aafa
-    last_write_checksum: sha1:184afb30ee7f802d4b828094e64b56af84e17b9b
-    pristine_git_object: c730f71ad58e065a624d1c28fd6f67a332a110be
-  src/main/java/com/thetradedesk/workflows/models/operations//async/GetFirstPartyDataJobRequestBuilder.java:
-    id: 27a932230521
-    last_write_checksum: sha1:72c6b76a887dcbd6e2d2456348cc595db4aaa8e0
-    pristine_git_object: 4e792408892a86f7c76d85975a5195618a767455
-  src/main/java/com/thetradedesk/workflows/models/operations//async/GetGraphQlBulkJobStatusRequestBuilder.java:
-    id: d11a697c2469
-    last_write_checksum: sha1:54fdbe8f7549f92e42191382a61907bc6c67849e
-    pristine_git_object: 53dba16a8f3b5772dff3f97ddb991a1644df9a63
-  src/main/java/com/thetradedesk/workflows/models/operations//async/GetJobStatusRequestBuilder.java:
-    id: 9062828100aa
-    last_write_checksum: sha1:b8c5cf15e805c1e6019c0ff5ac45f97cf171c22e
-    pristine_git_object: 925df26956fe65f2e1396a2e0c42a0e470a257e2
-  src/main/java/com/thetradedesk/workflows/models/operations//async/GetThirdPartyDataJobRequestBuilder.java:
-    id: fba679804810
-    last_write_checksum: sha1:86ce194dff8e88e234c52f825acb632959f5ae25
-    pristine_git_object: 679dacce0e176fc3c3b0963980563900800cf3a2
-  src/main/java/com/thetradedesk/workflows/models/operations//async/SubmitGraphQlBulkQueryJobRequestBuilder.java:
-    id: 401ec4661f27
-    last_write_checksum: sha1:1c243f8a15e287ab83b64761de0501f1add3a403
-    pristine_git_object: e5a39f7c95555065bdb3b4914928cc820540453a
-  src/main/java/com/thetradedesk/workflows/models/operations//async/SubmitGraphQlRequestRequestBuilder.java:
-    id: a11651f5eb37
-    last_write_checksum: sha1:f5c4b827942031029acfd22bae6c55785fd6131b
-    pristine_git_object: c1d0abb04868389890977b0051ec16e899a7bfd5
-  src/main/java/com/thetradedesk/workflows/models/operations//async/SubmitRestRequestRequestBuilder.java:
-    id: 62eb2aeea828
-    last_write_checksum: sha1:d8ce70ee3b5480dcde9eea6b3a19f77915b9610d
-    pristine_git_object: 7f847b397f728685ceee9fdb1cda18d01172cf73
-  src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateAdGroupRequestBuilder.java:
-    id: 47cf0c7b9d67
-    last_write_checksum: sha1:5aba7311a8b2dd5b54795d0110df65fb915fee2a
-    pristine_git_object: f4998d9b9be08ca9ae1b48ad177f738d759d455a
-  src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateAdGroupsJobRequestBuilder.java:
-    id: b14009e3fa0a
-    last_write_checksum: sha1:a841094ee45a665afe44e6ba81b7b9172a1327ac
-    pristine_git_object: 96b2db10301e748167362c40b0e5b0245de4bbb0
-  src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateCampaignRequestBuilder.java:
-    id: 9be5bc994d69
-    last_write_checksum: sha1:36331d7b263256c07d42ce21d2fdfe1d7dddc94f
-    pristine_git_object: 1c03f3d6166fd56eac446de9210ea1325d43ab5a
-  src/main/java/com/thetradedesk/workflows/models/operations//async/UpdateCampaignsJobRequestBuilder.java:
-    id: 1c69d9634823
-    last_write_checksum: sha1:9d1a405d4d49fdf2a06d78a8e2e45848d879f392
-    pristine_git_object: 8598630f28c1f9705aecbdaa833d9fb03f5cb9f1
   src/main/java/com/thetradedesk/workflows/models/operations/ArchiveAdGroupsRequest.java:
     id: 5041e415d638
     last_write_checksum: sha1:5de3e92b3b2e7977e945cfdbb0c70b28fefede01
@@ -1359,74 +1684,146 @@ trackedFiles:
     id: 7a1e8c9d4caa
     last_write_checksum: sha1:e175a880859db6c70f5a172ee2696a29f009c793
     pristine_git_object: 93b62c34b040b361a19969cfc911c5cbd3e7bea9
+  src/main/java/com/thetradedesk/workflows/models/operations/async/ArchiveAdGroupsRequestBuilder.java:
+    id: f1d5cd044c31
+    last_write_checksum: sha1:d00f2fac8050cef62a168fa92b303e384a75bd28
+    pristine_git_object: 883675876bc0897bd6cb3552dbb5752985b9cb78
   src/main/java/com/thetradedesk/workflows/models/operations/async/ArchiveAdGroupsResponse.java:
     id: 9472de0992d3
     last_write_checksum: sha1:fac4fca13d7884b2219b44b46fa81c9ae0ded6c1
     pristine_git_object: 7ce921a072c8eb66113d7f63f7454eb04b719296
+  src/main/java/com/thetradedesk/workflows/models/operations/async/ArchiveCampaignsRequestBuilder.java:
+    id: bffd19f31104
+    last_write_checksum: sha1:856912e041b620026fb7b8709bb9c3aec98b1874
+    pristine_git_object: 9cd856bc419c7aa0cdebb4cb6935569cc8e37496
   src/main/java/com/thetradedesk/workflows/models/operations/async/ArchiveCampaignsResponse.java:
     id: 3e74b9bf4ce4
     last_write_checksum: sha1:0e4bf60d761f523011d63abfe73b3e6015f0b2f7
     pristine_git_object: 5bcdcc997770c07fc5d75196a1c8a9d893fe3b80
+  src/main/java/com/thetradedesk/workflows/models/operations/async/CreateAdGroupRequestBuilder.java:
+    id: d1d3f64e6b62
+    last_write_checksum: sha1:8ff024fb87df151449e91313e4b8a9d2869dbc06
+    pristine_git_object: e2fb8c43083d94548d530a5709011586a578e411
   src/main/java/com/thetradedesk/workflows/models/operations/async/CreateAdGroupResponse.java:
     id: 6bd38e5a0b3f
     last_write_checksum: sha1:f39aed92ff66b5b1fd8c1613dcde198e37869cef
     pristine_git_object: e2ac26b64b5445c3ab4c810eee3e9b7e78c176c0
+  src/main/java/com/thetradedesk/workflows/models/operations/async/CreateAdGroupsJobRequestBuilder.java:
+    id: 3f50bd089c62
+    last_write_checksum: sha1:5c5a25b9dadec935dcb02337905cbd7e81cbb09a
+    pristine_git_object: 3c68fc88ab3cafc670766f28142bb9583b53059c
   src/main/java/com/thetradedesk/workflows/models/operations/async/CreateAdGroupsJobResponse.java:
     id: 67d076f7d007
     last_write_checksum: sha1:5d4fc52ad632a0cefdf66a5292f13d88b4966f5b
     pristine_git_object: 2b595232cc6f3545fc05f8fdb3f08e37b9fac974
+  src/main/java/com/thetradedesk/workflows/models/operations/async/CreateCampaignRequestBuilder.java:
+    id: 156ba116f9dd
+    last_write_checksum: sha1:bf1c4bedfad6cbbbf0ab4747f409f858c2a1e2a7
+    pristine_git_object: 6cba1b818918a42400846768f42f4abb1a5c5d67
   src/main/java/com/thetradedesk/workflows/models/operations/async/CreateCampaignResponse.java:
     id: 98a19dde2911
     last_write_checksum: sha1:836a967f844b2ac07e5582fbab798aa9c43d1af1
     pristine_git_object: 327b971e0280b34e62af3db7003b2f482d9d6e98
+  src/main/java/com/thetradedesk/workflows/models/operations/async/CreateCampaignsJobRequestBuilder.java:
+    id: 7e592fd6ff35
+    last_write_checksum: sha1:89eeb6ead9a7c37496239a9b31141e987b23091e
+    pristine_git_object: a6d2a36bfe4cc434ee9fde02daba8256ce85e6fd
   src/main/java/com/thetradedesk/workflows/models/operations/async/CreateCampaignsJobResponse.java:
     id: 7047c61b843c
     last_write_checksum: sha1:e46bca7dacfbf6b4b39b6b3297a15afad373aa63
     pristine_git_object: 1556f75506f966507a34010b6b24443e2ff721ac
+  src/main/java/com/thetradedesk/workflows/models/operations/async/GetCampaignVersionRequestBuilder.java:
+    id: 171cd0ea0abc
+    last_write_checksum: sha1:184afb30ee7f802d4b828094e64b56af84e17b9b
+    pristine_git_object: c730f71ad58e065a624d1c28fd6f67a332a110be
   src/main/java/com/thetradedesk/workflows/models/operations/async/GetCampaignVersionResponse.java:
     id: a0d4b83d4200
     last_write_checksum: sha1:2eb70d556d06fed9a1f36cfbb92fa2cc89b5d93a
     pristine_git_object: 93a87f113a92aac883cefe6703c981137676e410
+  src/main/java/com/thetradedesk/workflows/models/operations/async/GetFirstPartyDataJobRequestBuilder.java:
+    id: 8b9c45ffb31b
+    last_write_checksum: sha1:72c6b76a887dcbd6e2d2456348cc595db4aaa8e0
+    pristine_git_object: 4e792408892a86f7c76d85975a5195618a767455
   src/main/java/com/thetradedesk/workflows/models/operations/async/GetFirstPartyDataJobResponse.java:
     id: d9bb857d2ab9
     last_write_checksum: sha1:9cca18522dbebfa974949ff489f3727e2e76917c
     pristine_git_object: 86e1f92b194929af9307a5be98cbad32d47811bb
+  src/main/java/com/thetradedesk/workflows/models/operations/async/GetGraphQlBulkJobStatusRequestBuilder.java:
+    id: 2a181267ae48
+    last_write_checksum: sha1:54fdbe8f7549f92e42191382a61907bc6c67849e
+    pristine_git_object: 53dba16a8f3b5772dff3f97ddb991a1644df9a63
   src/main/java/com/thetradedesk/workflows/models/operations/async/GetGraphQlBulkJobStatusResponse.java:
     id: 4f46b9970aa5
     last_write_checksum: sha1:326730cbafa29497d6a867c76e013851680fbf3b
     pristine_git_object: fd87abe455a95607fe4383eedda4c4d1e8fda56e
+  src/main/java/com/thetradedesk/workflows/models/operations/async/GetJobStatusRequestBuilder.java:
+    id: b98cc934b59d
+    last_write_checksum: sha1:b8c5cf15e805c1e6019c0ff5ac45f97cf171c22e
+    pristine_git_object: 925df26956fe65f2e1396a2e0c42a0e470a257e2
   src/main/java/com/thetradedesk/workflows/models/operations/async/GetJobStatusResponse.java:
     id: e29412f3cbe6
     last_write_checksum: sha1:d0cafbb5b3fefd9609a200e2c830f0ed8ee3dd4f
     pristine_git_object: 8b9f0f56f806f2da6dfb224e3e91c222eeda3b9c
+  src/main/java/com/thetradedesk/workflows/models/operations/async/GetThirdPartyDataJobRequestBuilder.java:
+    id: 5b0346a10a40
+    last_write_checksum: sha1:86ce194dff8e88e234c52f825acb632959f5ae25
+    pristine_git_object: 679dacce0e176fc3c3b0963980563900800cf3a2
   src/main/java/com/thetradedesk/workflows/models/operations/async/GetThirdPartyDataJobResponse.java:
     id: 802ada737529
     last_write_checksum: sha1:77b3f15b220983396c0d591817c65970cd87c8d6
     pristine_git_object: d34064c0dbd26bd55a839e60034440800cb66cea
+  src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitGraphQlBulkQueryJobRequestBuilder.java:
+    id: f0d6d4d66635
+    last_write_checksum: sha1:1c243f8a15e287ab83b64761de0501f1add3a403
+    pristine_git_object: e5a39f7c95555065bdb3b4914928cc820540453a
   src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitGraphQlBulkQueryJobResponse.java:
     id: a3fd0cf950d7
     last_write_checksum: sha1:91d2210a7c6159136ece64d45ad7f6f249fcdc2a
     pristine_git_object: 098dc8902836bf034169fcecaa05ff150fdd3d0a
+  src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitGraphQlRequestRequestBuilder.java:
+    id: 3bb8be488f10
+    last_write_checksum: sha1:f5c4b827942031029acfd22bae6c55785fd6131b
+    pristine_git_object: c1d0abb04868389890977b0051ec16e899a7bfd5
   src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitGraphQlRequestResponse.java:
     id: b7a573585ad8
     last_write_checksum: sha1:72a4ac02441074c02a7e7f393dadd922447f0123
     pristine_git_object: 1a4cccfaa1cf256d7cf54c6192cea8e96b2b3e0f
+  src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitRestRequestRequestBuilder.java:
+    id: afff399e6144
+    last_write_checksum: sha1:d8ce70ee3b5480dcde9eea6b3a19f77915b9610d
+    pristine_git_object: 7f847b397f728685ceee9fdb1cda18d01172cf73
   src/main/java/com/thetradedesk/workflows/models/operations/async/SubmitRestRequestResponse.java:
     id: d9744ffdc214
     last_write_checksum: sha1:a15917c3b2eeb48bed466f5f54f8208dfec45757
     pristine_git_object: 777d3b8167ff4f2526b0b629b66ac6255aa0a86b
+  src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateAdGroupRequestBuilder.java:
+    id: 925df055938f
+    last_write_checksum: sha1:5aba7311a8b2dd5b54795d0110df65fb915fee2a
+    pristine_git_object: f4998d9b9be08ca9ae1b48ad177f738d759d455a
   src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateAdGroupResponse.java:
     id: 30db2821a2c0
     last_write_checksum: sha1:37d4ac760cf81b8478f544d91431acae6c39b464
     pristine_git_object: 5a3e51821adeda3ac83341163f9b39cd155424c0
+  src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateAdGroupsJobRequestBuilder.java:
+    id: a516a87a799b
+    last_write_checksum: sha1:a841094ee45a665afe44e6ba81b7b9172a1327ac
+    pristine_git_object: 96b2db10301e748167362c40b0e5b0245de4bbb0
   src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateAdGroupsJobResponse.java:
     id: d99d89c3d1be
     last_write_checksum: sha1:e62b44942967d9555ca67bb9d73fb52d9202c7ef
     pristine_git_object: 3c4ceedd40cc622ab57c4c9985df4e260b20dcee
+  src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateCampaignRequestBuilder.java:
+    id: 48363c96bb98
+    last_write_checksum: sha1:36331d7b263256c07d42ce21d2fdfe1d7dddc94f
+    pristine_git_object: 1c03f3d6166fd56eac446de9210ea1325d43ab5a
   src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateCampaignResponse.java:
     id: e4cdade0ccc3
     last_write_checksum: sha1:3a6b43577421809c23006b84b9340d80e0c3ca72
     pristine_git_object: 909f9e4c9070f3f805934a4b0dd942ee05152ac9
+  src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateCampaignsJobRequestBuilder.java:
+    id: 61b5552adfe5
+    last_write_checksum: sha1:9d1a405d4d49fdf2a06d78a8e2e45848d879f392
+    pristine_git_object: 8598630f28c1f9705aecbdaa833d9fb03f5cb9f1
   src/main/java/com/thetradedesk/workflows/models/operations/async/UpdateCampaignsJobResponse.java:
     id: d400ccf6b458
     last_write_checksum: sha1:ec4cba0dab950b88cf6d8eab18b7709ab5b0c37a
@@ -1521,8 +1918,8 @@ trackedFiles:
     pristine_git_object: 8599dc5ee71f6834b1562bdcc9035a52e36338e7
   src/main/java/com/thetradedesk/workflows/utils/AsyncRetries.java:
     id: 0c88f6db615b
-    last_write_checksum: sha1:04376e60772146f8d14c9e8aacdb46215a8937c8
-    pristine_git_object: 97ab10a668b056d495762902f914cd1cb231632a
+    last_write_checksum: sha1:c2c4580f5bc6be3e0498d6ed5c19e34d529b89b7
+    pristine_git_object: 8341b13995b96e8a908cd8aba0c6ef3bdb48040b
   src/main/java/com/thetradedesk/workflows/utils/AsyncRetryableException.java:
     id: 3be9861cfabf
     last_write_checksum: sha1:a4a6228ca9750efa320479cf4e88d022447d625e
@@ -1633,8 +2030,8 @@ trackedFiles:
     pristine_git_object: add7140bec4699d924c05db6807c449088273a6f
   src/main/java/com/thetradedesk/workflows/utils/Multipart.java:
     id: 4b18ee5f5a6a
-    last_write_checksum: sha1:2c81f9d35f41b3ba4da99cbbc82abe14610d9339
-    pristine_git_object: defbc9bde1aa150dec7efaa2a442d8317d28e1c2
+    last_write_checksum: sha1:acadcb4a9a7a1acc26e0a7aa0aa0357ed75d59e6
+    pristine_git_object: c432495573486627ccd31a88303c3eb718cef644
   src/main/java/com/thetradedesk/workflows/utils/MultipartFormMetadata.java:
     id: 7b177e5c8286
     last_write_checksum: sha1:72416131358c21734a9594d2f970fd91bfc7457f
@@ -1649,8 +2046,8 @@ trackedFiles:
     pristine_git_object: 9efbe0a02b9eaa7f2d35c6c55c6dcd403169331e
   src/main/java/com/thetradedesk/workflows/utils/OneOfDeserializer.java:
     id: 0ab6f0710e7a
-    last_write_checksum: sha1:9d99ed292f151081aad9074f2da956fd95430e09
-    pristine_git_object: 246534a80f1a8c15bdee5b3a70df34b4585534ba
+    last_write_checksum: sha1:4cce3f0407bfda548e2b78ea35ea5ffec95594e7
+    pristine_git_object: 42451b63c81c96c6754a3dc9429f58c006ce4f10
   src/main/java/com/thetradedesk/workflows/utils/Options.java:
     id: fba495a6672e
     last_write_checksum: sha1:3e1ccdcacd2d08e226b32c449b18911c9aba84b1
@@ -1701,8 +2098,8 @@ trackedFiles:
     pristine_git_object: d7a22aea81da9c6519af5b9b9e995f6a999fbb1f
   src/main/java/com/thetradedesk/workflows/utils/Retries.java:
     id: fb3b9f870f25
-    last_write_checksum: sha1:c65c162303b1d24780e41bf0e6c3b077e5235d8d
-    pristine_git_object: 4244ef2cecbaf033874264df416a87a3d6599b9c
+    last_write_checksum: sha1:5add3420b5126a7331dce475f00332dbef06e6da
+    pristine_git_object: 6ce6aa7f50128fc53013ae9f88826058e187761f
   src/main/java/com/thetradedesk/workflows/utils/RetryConfig.java:
     id: dcaa0e1cfa1a
     last_write_checksum: sha1:15353483bf98643d6b37611d838762d2ada040b6
@@ -1729,8 +2126,8 @@ trackedFiles:
     pristine_git_object: 63c5e0636d844801d033a495e1c7d07d8cf482c6
   src/main/java/com/thetradedesk/workflows/utils/SpeakeasyHTTPClient.java:
     id: 5908e7677e96
-    last_write_checksum: sha1:f8cae900d9ee6cbe5ec9fa7fdbc23cf141ac9624
-    pristine_git_object: 50515b844885264ae0010312cd5863ab395285f5
+    last_write_checksum: sha1:515c8fc203d876804776b52105d7a9e341bb2b6c
+    pristine_git_object: ccaec359a102140c12ed3e1893b002340ab45012
   src/main/java/com/thetradedesk/workflows/utils/SpeakeasyLogger.java:
     id: ee89e8b3036c
     last_write_checksum: sha1:b522409dfc5e94f2444e2d057962cbb31e8c6d1b
@@ -1741,8 +2138,8 @@ trackedFiles:
     pristine_git_object: 8f0c4bf5a4b92e02fdb1660101da53883202b5ed
   src/main/java/com/thetradedesk/workflows/utils/StreamingParser.java:
     id: 803219ddc8a4
-    last_write_checksum: sha1:b13b0006a894ce634a07ce4224bc4e726abb2342
-    pristine_git_object: 4b2d4afd84ddb742fe133ea7f552b4bcc9fd4b11
+    last_write_checksum: sha1:4e663fc71466d3af58b80cd6ef5063d023f1c9be
+    pristine_git_object: 47c81f026811acf5a588a115c3e4f4c006507de0
   src/main/java/com/thetradedesk/workflows/utils/TypedObject.java:
     id: 93aa2ace8641
     last_write_checksum: sha1:e7e85f46bee198c1abec224e0c94bfb0772c7674
@@ -2018,19 +2415,19 @@ examples:
   createAdGroup:
     speakeasy-default-create-ad-group:
       requestBody:
-        application/json: {"primaryInput": {"isEnabled": false, "description": "twine from gosh poor safely editor astride vice lost and", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 3786.02, "budgetInImpressions": 783190, "dailyTargetInAdvertiserCurrency": 9747.02, "dailyTargetInImpressions": 985999}, "baseBidCPMInAdvertiserCurrency": 3785.04, "maxBidCPMInAdvertiserCurrency": 7447.3, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [107263], "recencyExclusionWindowInMinutes": 90062, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 2280.31, "ctrInPercent": null, "nielsenOTPInPercent": 5175.21, "cpaInAdvertiserCurrency": 2544.37, "returnOnAdSpendPercent": 8201.47, "vcrInPercent": 4846.08, "viewabilityInPercent": null, "vcpmInAdvertiserCurrency": 4649.53, "cpcvInAdvertiserCurrency": 313.95, "miaozhenOTPInPercent": 4704.1}, "creativeIds": null, "associatedBidLists": [{"bidListId": "<id>", "isEnabled": false, "isDefaultForDimension": true}], "name": "<value>", "channel": "Display", "funnelLocation": "Consideration", "marketType": "PrivateMarketOnly", "programmaticGuaranteedPrivateContractId": "<id>", "includeDefaultsFromCampaign": false}, "campaignId": "<id>", "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": null, "demographicMemberIds": [959580, 236376], "mobileDemographicMemberIds": [664689, 827980, 21321]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [[], []], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Male", "startAge": "TwentyFive", "endAge": "Seventeen", "countries": ["<value 1>", "<value 2>", "<value 3>"]}, "newFrequencyConfigs": [{"counterName": null, "frequencyCap": 375286, "frequencyGoal": 534735, "resetIntervalInMinutes": 788122}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>", "<value 2>", "<value 3>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>", "<value 3>"], "dealIdsToExclude": [117039, 278677, 217940], "dealIdsToInclude": null, "includeDefaultOnDeals": true}, "isNonDecisioned": true, "flights": [{"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4070.96, "budgetInImpressions": 901477, "dailyTargetInAdvertiserCurrency": 5847.35, "dailyTargetInImpressions": 257517, "campaignFlightId": 874887}], "callerSource": "<value>"}, "validateInputOnly": true}
+        application/json: {"primaryInput": {"isEnabled": false, "description": "twine from gosh poor safely editor astride vice lost and", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 3786.02, "budgetInImpressions": 783190, "dailyTargetInAdvertiserCurrency": 9747.02, "dailyTargetInImpressions": 985999}, "baseBidCPMInAdvertiserCurrency": 3785.04, "maxBidCPMInAdvertiserCurrency": 7447.3, "audienceTargeting": {"audienceId": {"value": "<value>"}, "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [107263], "recencyExclusionWindowInMinutes": 90062, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 2280.31, "ctrInPercent": null, "nielsenOTPInPercent": 5175.21, "cpaInAdvertiserCurrency": 2544.37, "returnOnAdSpendPercent": 8201.47, "vcrInPercent": 4846.08, "viewabilityInPercent": null, "vcpmInAdvertiserCurrency": 4649.53, "cpcvInAdvertiserCurrency": 313.95, "miaozhenOTPInPercent": 4704.1, "newBuyerTargetValue": 287261}, "creativeIds": null, "associatedBidLists": [{"bidListId": "<id>", "isEnabled": false, "isDefaultForDimension": true}], "ownedBidLists": [{"name": "<value>", "adjustmentType": "FractionalExclusion", "resolutionType": "SingleMatchOnly", "dimensions": ["HasVideoMutedStateId"], "bidLines": null, "source": "SystemAutoForCommitmentTargeting", "isAvailableForLibraryUse": true, "associateBehavior": "Associate", "dimensionConfig": {"geo": {"locationContextType": "Realtime"}}, "isDefaultForDimension": true}], "name": "<value>", "channel": "Display", "funnelLocation": "Consideration", "marketType": "PrivateMarketOnly", "programmaticGuaranteedPrivateContractId": "<id>", "includeDefaultsFromCampaign": false}, "campaignId": "<id>", "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": null, "demographicMemberIds": [959580, 236376], "mobileDemographicMemberIds": [664689, 827980, 21321]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [[], []], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Male", "startAge": "TwentyFive", "endAge": "Seventeen", "countries": ["<value 1>", "<value 2>", "<value 3>"]}, "newFrequencyConfigs": [{"counterName": null, "frequencyCap": 375286, "frequencyGoal": 534735, "resetIntervalInMinutes": 788122}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>", "<value 2>", "<value 3>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>", "<value 3>"], "dealIdsToExclude": [117039, 278677, 217940], "dealIdsToInclude": null, "includeDefaultOnDeals": true}, "isNonDecisioned": true, "flights": [{"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4070.96, "budgetInImpressions": 901477, "dailyTargetInAdvertiserCurrency": 5847.35, "dailyTargetInImpressions": 257517, "campaignFlightId": 874887}], "callerSource": "<value>"}, "validateInputOnly": true}
       responses:
         "201":
-          application/json: {"adGroup": {"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": true, "description": null, "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Video", "funnelLocation": "Consideration", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 6595.23, "budgetInImpressions": 380358, "dailyTargetInAdvertiserCurrency": 6780.84, "dailyTargetInImpressions": 934353}, "baseBidCPMInAdvertiserCurrency": 1998.1, "maxBidCPMInAdvertiserCurrency": 7702.29, "marketType": "Marketplace", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [], "recencyExclusionWindowInMinutes": 455695, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 7001.93, "ctrInPercent": 8182.44, "nielsenOTPInPercent": 1402.81, "cpaInAdvertiserCurrency": 5101.03, "returnOnAdSpendPercent": 9286.84, "vcrInPercent": null, "viewabilityInPercent": 3948.02, "vcpmInAdvertiserCurrency": 9934.57, "cpcvInAdvertiserCurrency": 7587.03, "miaozhenOTPInPercent": 1875.25}, "creativeIds": ["<value 1>", "<value 2>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "flights": [], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 264730, "demographicMemberIds": [], "mobileDemographicMemberIds": []}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": false}, "dimensionalBiddingAutoOptimizationSettings": [["HasSupplyVendorId"], []], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Both", "startAge": "Thirteen", "endAge": "FortyFour", "countries": []}}}
+          application/json: {"adGroup": {"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": true, "description": null, "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Video", "funnelLocation": "Consideration", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 6595.23, "budgetInImpressions": 380358, "dailyTargetInAdvertiserCurrency": 6780.84, "dailyTargetInImpressions": 934353}, "baseBidCPMInAdvertiserCurrency": 1998.1, "maxBidCPMInAdvertiserCurrency": 7702.29, "marketType": "Marketplace", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [], "recencyExclusionWindowInMinutes": 455695, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 7001.93, "ctrInPercent": 8182.44, "nielsenOTPInPercent": 1402.81, "cpaInAdvertiserCurrency": 5101.03, "returnOnAdSpendPercent": 9286.84, "vcrInPercent": null, "viewabilityInPercent": 3948.02, "vcpmInAdvertiserCurrency": 9934.57, "cpcvInAdvertiserCurrency": 7587.03, "miaozhenOTPInPercent": 1875.25, "newBuyerTargetValue": 391174}, "creativeIds": ["<value 1>", "<value 2>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "ownedBidLists": [{"bidListId": "<id>"}], "flights": [], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 264730, "demographicMemberIds": [], "mobileDemographicMemberIds": []}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": false}, "dimensionalBiddingAutoOptimizationSettings": [["HasSupplyVendorId"], []], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Both", "startAge": "Thirteen", "endAge": "FortyFour", "countries": []}}}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 243149, "detail": "<value>", "instance": "<value>"}
   updateAdGroup:
     speakeasy-default-update-ad-group:
       requestBody:
-        application/json: {"id": "<id>", "primaryInput": {"isEnabled": null, "description": "likely upliftingly league that finally after owlishly when furthermore brush", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 2166.43, "budgetInImpressions": 508947, "dailyTargetInAdvertiserCurrency": 5830.53, "dailyTargetInImpressions": 377823}, "baseBidCPMInAdvertiserCurrency": 1710.9, "maxBidCPMInAdvertiserCurrency": 1926.83, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": [774064, 165155, 542528], "recencyExclusionWindowInMinutes": 740341, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 1146.61, "ctrInPercent": 3063.1, "nielsenOTPInPercent": 411.57, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 7161.01, "vcrInPercent": 5983.85, "viewabilityInPercent": 9094.92, "vcpmInAdvertiserCurrency": 1135.94, "cpcvInAdvertiserCurrency": 6372.45, "miaozhenOTPInPercent": 8405.28}, "creativeIds": ["<value 1>", "<value 2>", "<value 3>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "name": "<value>", "channel": "Native", "funnelLocation": "Conversion", "marketType": "OpenMarket"}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": false, "populationId": 935670, "demographicMemberIds": [873274, 940674, 350994], "mobileDemographicMemberIds": [572403, 872508, 141651]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasContentLivestream"]], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Female", "startAge": "FiftyFive", "endAge": "SixtyFourPlus", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 685969, "frequencyGoal": 448470, "resetIntervalInMinutes": 577492}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>", "<value 3>"], "dealIdsToExclude": [624775, 110078, 170675], "dealIdsToInclude": null, "includeDefaultOnDeals": false}, "isNonDecisioned": null, "flights": [{"allocationType": "Minimum", "budgetInAdvertiserCurrency": 5325.23, "budgetInImpressions": 876101, "dailyTargetInAdvertiserCurrency": 44.58, "dailyTargetInImpressions": 815686, "campaignFlightId": 528311}], "callerSource": null}, "validateInputOnly": false}
+        application/json: {"id": "<id>", "primaryInput": {"isEnabled": null, "description": "likely upliftingly league that finally after owlishly when furthermore brush", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 2166.43, "budgetInImpressions": 508947, "dailyTargetInAdvertiserCurrency": 5830.53, "dailyTargetInImpressions": 377823}, "baseBidCPMInAdvertiserCurrency": 1710.9, "maxBidCPMInAdvertiserCurrency": 1926.83, "audienceTargeting": {"audienceId": {"value": "<value>"}, "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": [774064, 165155, 542528], "recencyExclusionWindowInMinutes": 740341, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 1146.61, "ctrInPercent": 3063.1, "nielsenOTPInPercent": 411.57, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 7161.01, "vcrInPercent": 5983.85, "viewabilityInPercent": 9094.92, "vcpmInAdvertiserCurrency": 1135.94, "cpcvInAdvertiserCurrency": 6372.45, "miaozhenOTPInPercent": 8405.28, "newBuyerTargetValue": null}, "creativeIds": ["<value 1>", "<value 2>", "<value 3>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "name": "<value>", "channel": "Native", "funnelLocation": "Conversion", "marketType": "OpenMarket"}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": false, "populationId": 935670, "demographicMemberIds": [873274, 940674, 350994], "mobileDemographicMemberIds": [572403, 872508, 141651]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasContentLivestream"]], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Female", "startAge": "FiftyFive", "endAge": "SixtyFourPlus", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 685969, "frequencyGoal": 448470, "resetIntervalInMinutes": 577492}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>", "<value 3>"], "dealIdsToExclude": [624775, 110078, 170675], "dealIdsToInclude": null, "includeDefaultOnDeals": false}, "isNonDecisioned": null, "flights": [{"allocationType": "Minimum", "budgetInAdvertiserCurrency": 5325.23, "budgetInImpressions": 876101, "dailyTargetInAdvertiserCurrency": 44.58, "dailyTargetInImpressions": 815686, "campaignFlightId": 528311}], "callerSource": null}, "validateInputOnly": false}
       responses:
         "200":
-          application/json: {"adGroup": {"id": "<id>", "name": "<value>", "campaignId": null, "isEnabled": true, "description": null, "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Other", "funnelLocation": "Consideration", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 1639.57, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 501.01, "dailyTargetInImpressions": null}, "baseBidCPMInAdvertiserCurrency": 5346.53, "maxBidCPMInAdvertiserCurrency": null, "marketType": "PrivateMarketOnly", "audienceTargeting": {"audienceId": null, "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": false, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [741479], "recencyExclusionWindowInMinutes": 773620, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 3032.86, "ctrInPercent": 5100.96, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": 3710.43, "returnOnAdSpendPercent": null, "vcrInPercent": 6055.75, "viewabilityInPercent": 1235.47, "vcpmInAdvertiserCurrency": 7609.52, "cpcvInAdvertiserCurrency": 1915.49, "miaozhenOTPInPercent": 8131.48}, "creativeIds": null, "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "flights": [{"allocationType": "Minimum", "budgetInAdvertiserCurrency": 4082.99, "budgetInImpressions": 497146, "dailyTargetInAdvertiserCurrency": 3391.02, "dailyTargetInImpressions": 637987, "campaignFlightId": 315704, "adGroupId": "<id>"}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 16979, "demographicMemberIds": [616321], "mobileDemographicMemberIds": [164686, 325659, 357053]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": false}, "dimensionalBiddingAutoOptimizationSettings": [["HasLanguageId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Both", "startAge": "Thirty", "endAge": "ThirtyNine", "countries": ["<value 1>"]}}}
+          application/json: {"adGroup": {"id": "<id>", "name": "<value>", "campaignId": null, "isEnabled": true, "description": null, "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Other", "funnelLocation": "Consideration", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 1639.57, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 501.01, "dailyTargetInImpressions": null}, "baseBidCPMInAdvertiserCurrency": 5346.53, "maxBidCPMInAdvertiserCurrency": null, "marketType": "PrivateMarketOnly", "audienceTargeting": {"audienceId": null, "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": false, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [741479], "recencyExclusionWindowInMinutes": 773620, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 3032.86, "ctrInPercent": 5100.96, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": 3710.43, "returnOnAdSpendPercent": null, "vcrInPercent": 6055.75, "viewabilityInPercent": 1235.47, "vcpmInAdvertiserCurrency": 7609.52, "cpcvInAdvertiserCurrency": 1915.49, "miaozhenOTPInPercent": 8131.48, "newBuyerTargetValue": 942834}, "creativeIds": null, "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "ownedBidLists": [{"bidListId": "<id>"}], "flights": [{"allocationType": "Minimum", "budgetInAdvertiserCurrency": 4082.99, "budgetInImpressions": 497146, "dailyTargetInAdvertiserCurrency": 3391.02, "dailyTargetInImpressions": 637987, "campaignFlightId": 315704, "adGroupId": "<id>"}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 16979, "demographicMemberIds": [616321], "mobileDemographicMemberIds": [164686, 325659, 357053]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": false}, "dimensionalBiddingAutoOptimizationSettings": [["HasLanguageId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Both", "startAge": "Thirty", "endAge": "ThirtyNine", "countries": ["<value 1>"]}}}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 861713, "detail": "<value>", "instance": "<value>"}
   archiveAdGroups:
@@ -2057,7 +2454,7 @@ examples:
   updateAdGroupsJob:
     speakeasy-default-update-ad-groups-job:
       requestBody:
-        application/json: {"input": [{"id": "<id>", "primaryInput": {"isEnabled": false, "description": "stealthily miserable imaginary er since athwart er blah marten", "budget": {"allocationType": "Minimum", "budgetInAdvertiserCurrency": 5440.47, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 6251.13, "dailyTargetInImpressions": 931411}, "baseBidCPMInAdvertiserCurrency": 188.02, "maxBidCPMInAdvertiserCurrency": 6077.98, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [27262], "recencyExclusionWindowInMinutes": 676417, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": null, "ctrInPercent": 2972.79, "nielsenOTPInPercent": 4206.38, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 842.94, "vcrInPercent": 6307.13, "viewabilityInPercent": 9286.78, "vcpmInAdvertiserCurrency": 8251.2, "cpcvInAdvertiserCurrency": 4502.77, "miaozhenOTPInPercent": 2362.43}, "creativeIds": ["<value 1>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "name": "<value>", "channel": "TV", "funnelLocation": "None", "marketType": "OpenMarket"}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": true, "populationId": 907569, "demographicMemberIds": null, "mobileDemographicMemberIds": [169306, 568551]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasFrequencyAdjustmentId"]], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "FortyFive", "endAge": "ThirtyFour", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 25438, "frequencyGoal": 637221, "resetIntervalInMinutes": 375296}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>", "<value 2>", "<value 3>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>"], "dealIdsToExclude": [849888, 396688, 733994], "dealIdsToInclude": [690107], "includeDefaultOnDeals": false}, "isNonDecisioned": false, "flights": null, "callerSource": "<value>"}}], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://winged-bathhouse.net", "callbackHeaders": null}}
+        application/json: {"input": [{"id": "<id>", "primaryInput": {"isEnabled": false, "description": "stealthily miserable imaginary er since athwart er blah marten", "budget": {"allocationType": "Minimum", "budgetInAdvertiserCurrency": 5440.47, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 6251.13, "dailyTargetInImpressions": 931411}, "baseBidCPMInAdvertiserCurrency": 188.02, "maxBidCPMInAdvertiserCurrency": 6077.98, "audienceTargeting": {"audienceId": {"value": "<value>"}, "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [27262], "recencyExclusionWindowInMinutes": 676417, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": null, "ctrInPercent": 2972.79, "nielsenOTPInPercent": 4206.38, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 842.94, "vcrInPercent": 6307.13, "viewabilityInPercent": 9286.78, "vcpmInAdvertiserCurrency": 8251.2, "cpcvInAdvertiserCurrency": 4502.77, "miaozhenOTPInPercent": 2362.43, "newBuyerTargetValue": 240391}, "creativeIds": ["<value 1>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": true}], "name": "<value>", "channel": "TV", "funnelLocation": "None", "marketType": "OpenMarket"}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": true, "populationId": 907569, "demographicMemberIds": null, "mobileDemographicMemberIds": [169306, 568551]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasFrequencyAdjustmentId"]], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "FortyFive", "endAge": "ThirtyFour", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 25438, "frequencyGoal": 637221, "resetIntervalInMinutes": 375296}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>", "<value 2>", "<value 3>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>"], "dealIdsToExclude": [849888, 396688, 733994], "dealIdsToInclude": [690107], "includeDefaultOnDeals": false}, "isNonDecisioned": false, "flights": null, "callerSource": "<value>"}}], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://winged-bathhouse.net", "callbackHeaders": null}}
       responses:
         "202":
           application/json: {"id": 942819}
@@ -2066,27 +2463,27 @@ examples:
   createCampaign:
     speakeasy-default-create-campaign:
       requestBody:
-        application/json: {"primaryInput": {"description": "woot furthermore mentor", "campaignGroupId": 86586, "timeZone": "Europe/Ulyanovsk", "customCPAClickWeight": 2561.01, "customCPAViewthroughWeight": 5604.35, "customCPAType": "ClickViewthroughWeighting", "customRoasType": "Disabled", "impressionsOnlyBudgetingCpm": 1502.33, "endDateInUtc": null, "seedId": null, "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": false, "reportingColumnId": 888649, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": 4766.9, "customROASClickWeight": 3310.24, "customROASViewthroughWeight": 2919.37}, "productListReportingType": "Featured", "weight": 5369.43, "crossDeviceAttributionModelId": "<id>"}], "isManagedByTTD": null, "secondaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 4128.35, "ctrInPercent": 4434.91, "nielsenOTPInPercent": 7433.37, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 2367.04, "vcrInPercent": 2333.15, "viewabilityInPercent": 5018.08, "vcpmInAdvertiserCurrency": 6070.6, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 4324.01, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "NewBuyerTargetValue": null}, "tertiaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 7814.79, "ctrInPercent": 7849.85, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 9519.81, "vcrInPercent": 6125.66, "viewabilityInPercent": 4766.9, "vcpmInAdvertiserCurrency": 3310.24, "cpcvInAdvertiserCurrency": 2919.37, "miaozhenOTPInPercent": 5369.43, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": null, "crossixCostPerTarget": false, "NewBuyerTargetValue": 960101}, "advertiserId": "<id>", "name": "<value>", "customLabelNames": ["<value 1>", "<value 2>"], "primaryChannel": "DOOH", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": null, "cpcInAdvertiserCurrency": 6678.34, "ctrInPercent": 5357.4, "nielsenOTPInPercent": 2741.6, "cpaInAdvertiserCurrency": 4220.63, "returnOnAdSpendPercent": 8572.83, "vcrInPercent": 8294.92, "viewabilityInPercent": 8592.21, "vcpmInAdvertiserCurrency": 8388.8, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 3033.14, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": false, "NewBuyerTargetValue": 412835}, "startDateInUtc": null, "budget": {"pacingMode": "PaceAsSoonAsPossible", "budgetInAdvertiserCurrency": 6363.35, "budgetInImpressions": 836518, "dailyTargetInAdvertiserCurrency": 7814.79, "dailyTargetInImpressions": 784985}, "campaignIncrementalReachSetting": {"iSpotReachSetting": {"id": 787894, "name": "<value>", "isActive": false}, "realyticsReachSetting": {"id": 859221, "name": "<value>", "isActive": false, "products": null, "realyticsEntertainmentInput": "TVS"}, "tvSquaredReachSetting": {"id": 303314, "name": null, "isActive": false}, "sambaAuReachSetting": {"id": 505888, "name": "<value>", "isActive": true}}}, "advancedInput": {"purchaseOrderNumber": null, "flights": [{"startDateInclusiveUTC": "2024-07-08T10:52:56.944Z", "endDateExclusiveUTC": "2023-05-12T16:41:56.386Z", "budgetInAdvertiserCurrency": 5904.11, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 6112.24, "dailyTargetInImpressions": 333131}], "includeDefaultsFromAdvertiser": false, "passThroughFeeCard": {"startDateUtc": "2023-03-18T04:39:08.387Z", "passThroughFees": [{"type": "FeeCPM", "description": "fairly gah mortally freight since", "amount": 2122.11}]}, "callerSource": "<value>", "frequencyConfigs": [{"counterName": "<value>", "frequencyCap": 743337, "frequencyGoal": null, "resetIntervalInMinutes": 520097}]}, "adGroups": [{"primaryInput": {"isEnabled": false, "description": "quash lightly rot bashfully slope", "budget": {"allocationType": "Minimum", "budgetInAdvertiserCurrency": 4043.98, "budgetInImpressions": 907414, "dailyTargetInAdvertiserCurrency": 49.95, "dailyTargetInImpressions": 62363}, "baseBidCPMInAdvertiserCurrency": 1136.89, "maxBidCPMInAdvertiserCurrency": 6950.27, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": true, "audienceExcluderEnabled": false, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": [458524, 284141], "recencyExclusionWindowInMinutes": 982426, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": null, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 8782.74, "ctrInPercent": null, "nielsenOTPInPercent": 7930.85, "cpaInAdvertiserCurrency": 4606.89, "returnOnAdSpendPercent": 2522.83, "vcrInPercent": 5828.49, "viewabilityInPercent": 6824.44, "vcpmInAdvertiserCurrency": 7123.95, "cpcvInAdvertiserCurrency": 6233.72, "miaozhenOTPInPercent": 8437.22}, "creativeIds": ["<value 1>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "name": "<value>", "channel": "NativeVideo", "funnelLocation": "None", "marketType": "OpenMarket", "programmaticGuaranteedPrivateContractId": "<id>", "includeDefaultsFromCampaign": true}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": false, "populationId": 523753, "demographicMemberIds": null, "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasFullReferrerUrl"], ["HasPublisherId"]], "isUseClicksAsConversionsEnabled": null, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Female", "startAge": "ThirtyFive", "endAge": "FortyNine", "countries": []}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 391231, "frequencyGoal": 499235, "resetIntervalInMinutes": 587736}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>"], "dealIdsToExclude": [607060], "dealIdsToInclude": null, "includeDefaultOnDeals": true}, "isNonDecisioned": true, "includeDefaultsFromCampaign": false, "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 5340.32, "budgetInImpressions": 492382, "dailyTargetInAdvertiserCurrency": 5622.5, "dailyTargetInImpressions": 398919}]}}], "validateInputOnly": false}
+        application/json: {"primaryInput": {"description": "woot furthermore mentor", "campaignGroupId": 86586, "timeZone": "Europe/Ulyanovsk", "customCPAClickWeight": 2561.01, "customCPAViewthroughWeight": 5604.35, "customCPAType": "ClickViewthroughWeighting", "customRoasType": "Disabled", "impressionsOnlyBudgetingCpm": 1502.33, "endDateInUtc": null, "seedId": null, "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": false, "reportingColumnId": 888649, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": 4766.9, "customROASClickWeight": 3310.24, "customROASViewthroughWeight": 2919.37}, "productListReportingType": "Featured", "weight": 5369.43, "crossDeviceAttributionModelId": "<id>"}], "isManagedByTTD": null, "secondaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 4128.35, "ctrInPercent": 4434.91, "nielsenOTPInPercent": 7433.37, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 2367.04, "vcrInPercent": 2333.15, "viewabilityInPercent": 5018.08, "vcpmInAdvertiserCurrency": 6070.6, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 4324.01, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "newBuyerTargetValue": 86586}, "tertiaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 7814.79, "ctrInPercent": 7849.85, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 9519.81, "vcrInPercent": 6125.66, "viewabilityInPercent": 4766.9, "vcpmInAdvertiserCurrency": 3310.24, "cpcvInAdvertiserCurrency": 2919.37, "miaozhenOTPInPercent": 5369.43, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": null, "crossixCostPerTarget": false, "newBuyerTargetValue": 960101}, "advertiserId": "<id>", "name": "<value>", "customLabelNames": ["<value 1>", "<value 2>"], "primaryChannel": "DOOH", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": null, "cpcInAdvertiserCurrency": 6678.34, "ctrInPercent": 5357.4, "nielsenOTPInPercent": 2741.6, "cpaInAdvertiserCurrency": 4220.63, "returnOnAdSpendPercent": 8572.83, "vcrInPercent": 8294.92, "viewabilityInPercent": 8592.21, "vcpmInAdvertiserCurrency": 8388.8, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 3033.14, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": false, "newBuyerTargetValue": 613761}, "startDateInUtc": null, "budget": {"pacingMode": "PaceAsSoonAsPossible", "budgetInAdvertiserCurrency": 6363.35, "budgetInImpressions": 836518, "dailyTargetInAdvertiserCurrency": 7814.79, "dailyTargetInImpressions": 784985}, "campaignIncrementalReachSetting": {"iSpotReachSetting": {"id": 787894, "name": "<value>", "isActive": false}, "realyticsReachSetting": {"id": 859221, "name": "<value>", "isActive": false, "products": null, "realyticsEntertainmentInput": "TVS"}, "tvSquaredReachSetting": {"id": 303314, "name": null, "isActive": false}, "sambaAuReachSetting": {"id": 505888, "name": "<value>", "isActive": true}}}, "advancedInput": {"purchaseOrderNumber": null, "flights": [{"startDateInclusiveUTC": "2024-07-08T10:52:56.944Z", "endDateExclusiveUTC": "2023-05-12T16:41:56.386Z", "budgetInAdvertiserCurrency": 5904.11, "budgetInImpressions": null, "dailyTargetInAdvertiserCurrency": 6112.24, "dailyTargetInImpressions": 333131}], "includeDefaultsFromAdvertiser": false, "passThroughFeeCard": {"startDateUtc": "2023-03-18T04:39:08.387Z", "passThroughFees": [{"type": "FeeCPM", "description": "fairly gah mortally freight since", "amount": 2122.11}]}, "callerSource": "<value>", "frequencyConfigs": [{"counterName": "<value>", "frequencyCap": 743337, "frequencyGoal": null, "resetIntervalInMinutes": 520097}]}, "adGroups": [{"primaryInput": {"isEnabled": false, "description": "quash lightly rot bashfully slope", "budget": {"allocationType": "Minimum", "budgetInAdvertiserCurrency": 4043.98, "budgetInImpressions": 907414, "dailyTargetInAdvertiserCurrency": 49.95, "dailyTargetInImpressions": 62363}, "baseBidCPMInAdvertiserCurrency": 1136.89, "maxBidCPMInAdvertiserCurrency": 6950.27, "audienceTargeting": {"audienceId": {"value": "<value>"}, "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": true, "audienceExcluderEnabled": false, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": [458524, 284141], "recencyExclusionWindowInMinutes": 982426, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": null, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 8782.74, "ctrInPercent": null, "nielsenOTPInPercent": 7930.85, "cpaInAdvertiserCurrency": 4606.89, "returnOnAdSpendPercent": 2522.83, "vcrInPercent": 5828.49, "viewabilityInPercent": 6824.44, "vcpmInAdvertiserCurrency": 7123.95, "cpcvInAdvertiserCurrency": 6233.72, "miaozhenOTPInPercent": 8437.22, "newBuyerTargetValue": 426048}, "creativeIds": ["<value 1>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "ownedBidLists": [{"name": "<value>", "adjustmentType": "VCPromotion", "resolutionType": "SingleMatchOnly", "dimensions": ["HasVideoPlayerSizeId"], "bidLines": [{"adFormatId": "<id>", "domainFragment": "<value>", "universalCategoryTaxonomyId": "<id>", "browser": "Firefox", "browserId": "InternetExplorer11", "carrierId": null, "deviceModelId": 432401, "deviceType": "OutOfHome", "geoSegmentId": "<id>", "hourOfWeek": 177775, "languageId": "<id>", "osName": "<value>", "privateContractId": "<id>", "recencyWindowInMinutes": {"min": 839536, "max": 223815}, "renderingContext": "MobileOptimizedWeb", "supplyVendorId": "<id>", "temperatureBucketInCelsius": {"min": 1075.29, "max": 681.62}, "adsTxtSellerType": "Unknown", "videoMutedState": "InfrequentlyAutoMuted", "videoPlaybackType": "Standalone", "videoPlayerSize": "InBanner", "videoQuality": "UserGenerated", "videoSkippability": "Skippable", "factualProximityTarget": {"targetingCodeId": 998441, "designId": 741923}, "impressionPlacementValue": "<value>", "videoTruthScoreRange": {"min": 5369.43, "max": 9198.5}, "videoViewabilityScoreRange": {"min": 7365.62, "max": null}, "displayViewabilityScoreRange": {"min": 6678.34, "max": 5357.4}, "peer39LanguageId": "<id>", "doubleVerifyBotAvoidanceCategory": "FraudInvalid", "contextualAppCategoryId": "<id>", "publisherId": "<id>", "integralViewabilityCategoryId": "<id>", "integralViewabilityCategory": "InView70", "integralVideoViewabilityCategoryId": "<id>", "integralVideoViewabilityCategory": "InView70", "doubleVerifyViewabilityCategory": "Top70", "doubleVerifyVideoViewabilityCategory": "Viewability70", "peer39ViewabilityCategoryId": "<id>", "peer39ViewabilityCategory": "Top80", "videoCompletionRateScoreRange": {"min": null, "max": 3033.14}, "internetConnectionInput": "Unknown", "internetConnectionTypeId": "CellularNetwork3G", "internetConnection": "CellularNetwork2G", "rtbAsiaPageQualityCategory": "BlockModerateAndHighRisk", "rtbAsiaVideoPageQualityCategory": "BlockHighRisk", "supplyPathOptimizationListId": 69520, "marketType": "NonPMPFixed", "weatherCondition": "Sand", "frequencyAdjustment": {"counterId": "<id>", "timesShown": {"min": 25796, "max": 197977}}, "sellerDomain": "<value>", "digitalOutOfHomeVenueTypeId": "<id>", "nativePlacementType": "InFeed", "nativeContextType": "ContentUnclassified", "idiosyncraticSegment": "LightTvViewers2", "tencentPageQualityCategory": "BlockModerateAndHighRisk", "domainClassId": 68410, "geofenceThirdPartyDataAndBrand": {"dataId": 466619, "brandId": "<id>"}, "genreId": "<id>", "livestream": "NotLive", "productionQuality": "Prosumer", "productionQualityId": "UserGeneratedContent", "contentRatingId": "<id>", "contentDuration": "Between15And30Minutes", "qualityScoreRange": {"min": 4961.87, "max": 891}, "atmosphericCondition": "High", "marketplaceId": null, "audienceReachPercentageTier": "Unknown", "contentTransparency": "Transparent", "fullReferrerUrl": "DomainOnly", "likelyRefreshRate": "Deprecated", "rewarded": "Unknown", "feedId": 886945, "liveEventId": "<id>", "liveEventTypeId": null, "extendedZipCodeGroupSegmentThirdPartyDataId": 212211, "contentLanguageId": "<id>", "adToContentRatioRange": {"min": null, "max": 6819.33}, "adsInViewRange": {"min": 2366.83, "max": 4043.98}, "bidAdjustment": 6880.68, "volumeControlPriority": "Negative", "maxBid": 49.95}], "source": "SystemManual", "isAvailableForLibraryUse": true, "associateBehavior": "AssociateAndEnable", "dimensionConfig": {"geo": {"locationContextType": "Realtime"}}, "isDefaultForDimension": false}], "name": "<value>", "channel": "NativeVideo", "funnelLocation": "None", "marketType": "OpenMarket", "programmaticGuaranteedPrivateContractId": "<id>", "includeDefaultsFromCampaign": true}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": false, "populationId": 523753, "demographicMemberIds": null, "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasFullReferrerUrl"], ["HasPublisherId"]], "isUseClicksAsConversionsEnabled": null, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Female", "startAge": "ThirtyFive", "endAge": "FortyNine", "countries": []}, "newFrequencyConfigs": [{"counterName": "<value>", "frequencyCap": 391231, "frequencyGoal": 499235, "resetIntervalInMinutes": 587736}], "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>"], "dealIdsToExclude": [607060], "dealIdsToInclude": null, "includeDefaultOnDeals": true}, "isNonDecisioned": true, "includeDefaultsFromCampaign": false, "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 5340.32, "budgetInImpressions": 492382, "dailyTargetInAdvertiserCurrency": 5622.5, "dailyTargetInImpressions": 398919}]}}], "validateInputOnly": false}
       responses:
         "201":
           application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 960101, "description": "commandeer following afore ghost schematise lest understated brr happily lined", "startDate": "2025-05-13T19:59:29.421Z", "endDate": "2025-09-17T08:16:44.433Z", "timeZone": "Africa/Lome", "customCPAClickWeight": 1725.54, "customCPAViewthroughWeight": 418.34, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 3266.9, "primaryChannel": "Display", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 748798, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2024-03-12T14:53:08.741Z", "endDateExclusiveUTC": "2024-07-12T11:11:36.420Z", "budgetInAdvertiserCurrency": 6585.86, "budgetInImpressions": 83962, "dailyTargetInAdvertiserCurrency": 2584.64, "dailyTargetInImpressions": 910113}]}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": false, "description": "hence questioningly punctual austere beard around circumnavigate behind aboard", "programmaticGuaranteedPrivateContractId": null, "channel": "NativeVideo", "funnelLocation": "Consideration", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4437.6, "budgetInImpressions": 663120, "dailyTargetInAdvertiserCurrency": 3765.21, "dailyTargetInImpressions": 111869}, "baseBidCPMInAdvertiserCurrency": 9802.01, "maxBidCPMInAdvertiserCurrency": 1646.69, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": false, "audienceBoosterEnabled": false, "audienceExcluderEnabled": false, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [502213, 470177, 420897], "recencyExclusionWindowInMinutes": 4504, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 6741.01, "ctrInPercent": 982.47, "nielsenOTPInPercent": 7021.23, "cpaInAdvertiserCurrency": 7395.27, "returnOnAdSpendPercent": 744.23, "vcrInPercent": 3686.93, "viewabilityInPercent": 3897.27, "vcpmInAdvertiserCurrency": 4522.49, "cpcvInAdvertiserCurrency": 2016.93, "miaozhenOTPInPercent": 3516.78}, "creativeIds": ["<value 1>"], "associatedBidLists": [{"bidListId": null, "isEnabled": false, "isDefaultForDimension": true}], "flights": null, "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": null, "demographicMemberIds": [339950, 676551], "mobileDemographicMemberIds": []}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": false}, "dimensionalBiddingAutoOptimizationSettings": [["HasTVQualityIndexRange"], [], ["HasDoubleVerifyBotAvoidanceCategoryId"]], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "TwentyOne", "endAge": "SixtyFour", "countries": ["<value 1>", "<value 2>"]}}]}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 395871, "detail": "<value>", "instance": "<value>"}
         "200":
-          application/json: {"campaign": {"id": "<id>", "name": null, "campaignGroupId": 960101, "description": "authorized equate pfft that bathrobe now monumental", "startDate": "2023-05-29T12:37:28.754Z", "endDate": "2023-01-31T12:57:12.401Z", "timeZone": "Asia/Thimphu", "customCPAClickWeight": 5357.4, "customCPAViewthroughWeight": 2741.6, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 6819.46, "primaryChannel": "NativeVideo", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 859221, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2023-03-22T18:44:52.808Z", "endDateExclusiveUTC": "2023-11-29T10:22:14.197Z", "budgetInAdvertiserCurrency": 296.01, "budgetInImpressions": 505888, "dailyTargetInAdvertiserCurrency": 1201.6, "dailyTargetInImpressions": 69520}], "secondaryGoal": "<value>", "tertiaryGoal": null}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": true, "description": "chip schematise hydrant tabletop", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Audio", "funnelLocation": "None", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 2122.11, "budgetInImpressions": 14421, "dailyTargetInAdvertiserCurrency": 6819.33, "dailyTargetInImpressions": 236683}, "baseBidCPMInAdvertiserCurrency": 4043.98, "maxBidCPMInAdvertiserCurrency": 9074.14, "marketType": "OpenMarket", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [695027, 701346, 714268], "recencyExclusionWindowInMinutes": 551180, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 5473.9, "ctrInPercent": 2841.41, "nielsenOTPInPercent": 9824.26, "cpaInAdvertiserCurrency": 9094.99, "returnOnAdSpendPercent": 878.85, "vcrInPercent": null, "viewabilityInPercent": 683.62, "vcpmInAdvertiserCurrency": 8782.74, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 7930.85}, "creativeIds": ["<value 1>"], "associatedBidLists": [], "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 6824.44, "budgetInImpressions": 712395, "dailyTargetInAdvertiserCurrency": 6233.72, "dailyTargetInImpressions": 843722, "campaignFlightId": 570475, "adGroupId": null}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": true, "populationId": 612763, "demographicMemberIds": [46343, 170673, 930570], "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasIntegralVideoViewabilityCategoryId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "Thirty", "endAge": "ThirtyNine", "countries": ["<value 1>", "<value 2>"]}}]}
+          application/json: {"campaign": {"id": "<id>", "name": null, "campaignGroupId": 960101, "description": "authorized equate pfft that bathrobe now monumental", "startDate": "2023-05-29T12:37:28.754Z", "endDate": "2023-01-31T12:57:12.401Z", "timeZone": "Asia/Thimphu", "customCPAClickWeight": 5357.4, "customCPAViewthroughWeight": 2741.6, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 6819.46, "primaryChannel": "NativeVideo", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 859221, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2023-03-22T18:44:52.808Z", "endDateExclusiveUTC": "2023-11-29T10:22:14.197Z", "budgetInAdvertiserCurrency": 296.01, "budgetInImpressions": 505888, "dailyTargetInAdvertiserCurrency": 1201.6, "dailyTargetInImpressions": 69520}], "secondaryGoal": "<value>", "tertiaryGoal": null}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": true, "description": "chip schematise hydrant tabletop", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Audio", "funnelLocation": "None", "budget": {"allocationType": "Fixed", "budgetInAdvertiserCurrency": 2122.11, "budgetInImpressions": 14421, "dailyTargetInAdvertiserCurrency": 6819.33, "dailyTargetInImpressions": 236683}, "baseBidCPMInAdvertiserCurrency": 4043.98, "maxBidCPMInAdvertiserCurrency": 9074.14, "marketType": "OpenMarket", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [695027, 701346, 714268], "recencyExclusionWindowInMinutes": 551180, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 5473.9, "ctrInPercent": 2841.41, "nielsenOTPInPercent": 9824.26, "cpaInAdvertiserCurrency": 9094.99, "returnOnAdSpendPercent": 878.85, "vcrInPercent": null, "viewabilityInPercent": 683.62, "vcpmInAdvertiserCurrency": 8782.74, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 7930.85, "newBuyerTargetValue": 701346}, "creativeIds": ["<value 1>"], "associatedBidLists": [], "ownedBidLists": [{"bidListId": "<id>"}], "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 6824.44, "budgetInImpressions": 712395, "dailyTargetInAdvertiserCurrency": 6233.72, "dailyTargetInImpressions": 843722, "campaignFlightId": 570475, "adGroupId": null}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": true}, "comscoreSettings": {"isEnabled": true, "populationId": 612763, "demographicMemberIds": [46343, 170673, 930570], "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasIntegralVideoViewabilityCategoryId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Female", "startAge": "Thirty", "endAge": "ThirtyNine", "countries": ["<value 1>", "<value 2>"]}}]}
   updateCampaign:
     speakeasy-default-update-campaign:
       requestBody:
-        application/json: {"id": "<id>", "primaryInput": {"description": "yahoo whether frail but into form sway neck notwithstanding", "campaignGroupId": 760468, "timeZone": "Asia/Amman", "customCPAClickWeight": 1380.93, "customCPAViewthroughWeight": 3991.98, "customCPAType": "ClickViewthroughWeighting", "customRoasType": "Disabled", "impressionsOnlyBudgetingCpm": 126.57, "endDateInUtc": "2024-07-09T17:14:23.542Z", "seedId": "<id>", "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": false, "reportingColumnId": 716444, "ROASConfig": {"includeInCustomROAS": true, "customROASWeight": 8307.9, "customROASClickWeight": 129.65, "customROASViewthroughWeight": 2890.82}, "productListReportingType": "Featured", "weight": 5187.48, "crossDeviceAttributionModelId": null}], "isManagedByTTD": false, "secondaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 1165.14, "ctrInPercent": 5157.73, "nielsenOTPInPercent": 3855.93, "cpaInAdvertiserCurrency": 5164.28, "returnOnAdSpendPercent": 8554.35, "vcrInPercent": 9569.97, "viewabilityInPercent": 9650.33, "vcpmInAdvertiserCurrency": 5268.69, "cpcvInAdvertiserCurrency": 7216.52, "miaozhenOTPInPercent": 6966.26, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": true, "NewBuyerTargetValue": 869267}, "tertiaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 5149.5, "ctrInPercent": 5602.97, "nielsenOTPInPercent": 3514.56, "cpaInAdvertiserCurrency": 1.97, "returnOnAdSpendPercent": 3177.79, "vcrInPercent": 5564.63, "viewabilityInPercent": 472.11, "vcpmInAdvertiserCurrency": 4614.14, "cpcvInAdvertiserCurrency": 8553.51, "miaozhenOTPInPercent": 5511.72, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": null, "crossixCostPerTarget": false, "NewBuyerTargetValue": 113952}, "name": "<value>", "primaryChannel": "Display", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 8835.54, "ctrInPercent": 4975.78, "nielsenOTPInPercent": 6033.78, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 5696.08, "vcrInPercent": 8315.31, "viewabilityInPercent": 1059.68, "vcpmInAdvertiserCurrency": 4588.07, "cpcvInAdvertiserCurrency": 2202.71, "miaozhenOTPInPercent": 2682.12, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": true, "NewBuyerTargetValue": 723722}, "startDateInUtc": "2024-02-29T10:31:50.069Z", "budget": {"pacingMode": "PaceAsSoonAsPossible"}}, "advancedInput": {"purchaseOrderNumber": "<value>"}, "validateInputOnly": true}
+        application/json: {"id": "<id>", "primaryInput": {"description": "yahoo whether frail but into form sway neck notwithstanding", "campaignGroupId": 760468, "timeZone": "Asia/Amman", "customCPAClickWeight": 1380.93, "customCPAViewthroughWeight": 3991.98, "customCPAType": "ClickViewthroughWeighting", "customRoasType": "Disabled", "impressionsOnlyBudgetingCpm": 126.57, "endDateInUtc": "2024-07-09T17:14:23.542Z", "seedId": "<id>", "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": false, "reportingColumnId": 716444, "ROASConfig": {"includeInCustomROAS": true, "customROASWeight": 8307.9, "customROASClickWeight": 129.65, "customROASViewthroughWeight": 2890.82}, "productListReportingType": "Featured", "weight": 5187.48, "crossDeviceAttributionModelId": null}], "isManagedByTTD": false, "secondaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 1165.14, "ctrInPercent": 5157.73, "nielsenOTPInPercent": 3855.93, "cpaInAdvertiserCurrency": 5164.28, "returnOnAdSpendPercent": 8554.35, "vcrInPercent": 9569.97, "viewabilityInPercent": 9650.33, "vcpmInAdvertiserCurrency": 5268.69, "cpcvInAdvertiserCurrency": 7216.52, "miaozhenOTPInPercent": 6966.26, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": true, "newBuyerTargetValue": 760468}, "tertiaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 5149.5, "ctrInPercent": 5602.97, "nielsenOTPInPercent": 3514.56, "cpaInAdvertiserCurrency": 1.97, "returnOnAdSpendPercent": 3177.79, "vcrInPercent": 5564.63, "viewabilityInPercent": 472.11, "vcpmInAdvertiserCurrency": 4614.14, "cpcvInAdvertiserCurrency": 8553.51, "miaozhenOTPInPercent": 5511.72, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": null, "crossixCostPerTarget": false, "newBuyerTargetValue": 287698}, "name": "<value>", "primaryChannel": "Display", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 8835.54, "ctrInPercent": 4975.78, "nielsenOTPInPercent": 6033.78, "cpaInAdvertiserCurrency": null, "returnOnAdSpendPercent": 5696.08, "vcrInPercent": 8315.31, "viewabilityInPercent": 1059.68, "vcpmInAdvertiserCurrency": 4588.07, "cpcvInAdvertiserCurrency": 2202.71, "miaozhenOTPInPercent": 2682.12, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": true, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": true, "newBuyerTargetValue": 105210}, "startDateInUtc": "2024-02-29T10:31:50.069Z", "budget": {"pacingMode": "PaceAsSoonAsPossible"}}, "advancedInput": {"purchaseOrderNumber": "<value>"}, "validateInputOnly": true}
       responses:
         "200":
-          application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 287698, "description": "yuppify primary lest nutritious whoa likewise bookcase traduce seriously", "startDate": "2024-06-18T22:41:27.089Z", "endDate": "2023-09-28T10:30:24.825Z", "timeZone": "Africa/Brazzaville", "customCPAClickWeight": 1420.08, "customCPAViewthroughWeight": 3419.03, "customCPAType": "Disabled", "impressionsOnlyBudgetingCpm": null, "primaryChannel": "Display", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 10946, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2024-06-26T03:24:17.236Z", "endDateExclusiveUTC": "2025-07-01T04:11:25.573Z", "budgetInAdvertiserCurrency": 6644.31, "budgetInImpressions": 164310, "dailyTargetInAdvertiserCurrency": 4555.64, "dailyTargetInImpressions": null}], "secondaryGoal": null, "tertiaryGoal": "<value>"}, "adGroups": [{"id": "<id>", "name": null, "campaignId": "<id>", "isEnabled": false, "description": "er palatable clonk against noon blacken though", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Display", "funnelLocation": "None", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4400.5, "budgetInImpressions": 252235, "dailyTargetInAdvertiserCurrency": 3360.49, "dailyTargetInImpressions": 82960}, "baseBidCPMInAdvertiserCurrency": 4115.19, "maxBidCPMInAdvertiserCurrency": 9043, "marketType": "OpenMarket", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": false, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [706430], "recencyExclusionWindowInMinutes": 773547, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": false}, "roiGoal": {"maximizeReach": null, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 8439.61, "ctrInPercent": 3120.58, "nielsenOTPInPercent": 7464.3, "cpaInAdvertiserCurrency": 6205.02, "returnOnAdSpendPercent": 9077.31, "vcrInPercent": 9134.53, "viewabilityInPercent": 7809.01, "vcpmInAdvertiserCurrency": null, "cpcvInAdvertiserCurrency": 9297.05, "miaozhenOTPInPercent": 330.19}, "creativeIds": ["<value 1>", "<value 2>"], "associatedBidLists": [], "flights": null, "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": true, "populationId": 34197, "demographicMemberIds": [], "mobileDemographicMemberIds": [172582, 373780]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [[], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Female", "startAge": "FiftyFive", "endAge": "TwentyFour", "countries": ["<value 1>"]}}]}
+          application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 287698, "description": "yuppify primary lest nutritious whoa likewise bookcase traduce seriously", "startDate": "2024-06-18T22:41:27.089Z", "endDate": "2023-09-28T10:30:24.825Z", "timeZone": "Africa/Brazzaville", "customCPAClickWeight": 1420.08, "customCPAViewthroughWeight": 3419.03, "customCPAType": "Disabled", "impressionsOnlyBudgetingCpm": null, "primaryChannel": "Display", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 10946, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2024-06-26T03:24:17.236Z", "endDateExclusiveUTC": "2025-07-01T04:11:25.573Z", "budgetInAdvertiserCurrency": 6644.31, "budgetInImpressions": 164310, "dailyTargetInAdvertiserCurrency": 4555.64, "dailyTargetInImpressions": null}], "secondaryGoal": null, "tertiaryGoal": "<value>"}, "adGroups": [{"id": "<id>", "name": null, "campaignId": "<id>", "isEnabled": false, "description": "er palatable clonk against noon blacken though", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "Display", "funnelLocation": "None", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4400.5, "budgetInImpressions": 252235, "dailyTargetInAdvertiserCurrency": 3360.49, "dailyTargetInImpressions": 82960}, "baseBidCPMInAdvertiserCurrency": 4115.19, "maxBidCPMInAdvertiserCurrency": 9043, "marketType": "OpenMarket", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": false, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [706430], "recencyExclusionWindowInMinutes": 773547, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": false}, "roiGoal": {"maximizeReach": null, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 8439.61, "ctrInPercent": 3120.58, "nielsenOTPInPercent": 7464.3, "cpaInAdvertiserCurrency": 6205.02, "returnOnAdSpendPercent": 9077.31, "vcrInPercent": 9134.53, "viewabilityInPercent": 7809.01, "vcpmInAdvertiserCurrency": null, "cpcvInAdvertiserCurrency": 9297.05, "miaozhenOTPInPercent": 330.19, "newBuyerTargetValue": 651746}, "creativeIds": ["<value 1>", "<value 2>"], "associatedBidLists": [], "ownedBidLists": [{"bidListId": "<id>"}], "flights": null, "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": true, "populationId": 34197, "demographicMemberIds": [], "mobileDemographicMemberIds": [172582, 373780]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [[], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Site", "gender": "Female", "startAge": "FiftyFive", "endAge": "TwentyFour", "countries": ["<value 1>"]}}]}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 432346, "detail": "<value>", "instance": "<value>"}
   createCampaignsJob:
     speakeasy-default-create-campaigns-job:
       requestBody:
-        application/json: {"input": [{"primaryInput": {"description": null, "campaignGroupId": 657704, "timeZone": "America/North_Dakota/Center", "customCPAClickWeight": 9662.9, "customCPAViewthroughWeight": 3558.78, "customCPAType": "ClickViewthroughWeighting", "customRoasType": "CompositeWeighting", "impressionsOnlyBudgetingCpm": 4427.56, "endDateInUtc": "2023-12-21T01:12:20.772Z", "seedId": "<id>", "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": false, "reportingColumnId": 356532, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": 1483.03, "customROASClickWeight": 5286.76, "customROASViewthroughWeight": 8906.82}, "productListReportingType": "Halo", "weight": null, "crossDeviceAttributionModelId": "<id>"}], "isManagedByTTD": true, "secondaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 3558.78, "ctrInPercent": 2407.01, "nielsenOTPInPercent": 2349.25, "cpaInAdvertiserCurrency": 7778.32, "returnOnAdSpendPercent": 6752.02, "vcrInPercent": 5019.36, "viewabilityInPercent": 5781.75, "vcpmInAdvertiserCurrency": 1696.34, "cpcvInAdvertiserCurrency": 5609.2, "miaozhenOTPInPercent": 5842.09, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": null, "NewBuyerTargetValue": 38368}, "tertiaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 6123.61, "ctrInPercent": 25.32, "nielsenOTPInPercent": 4889.32, "cpaInAdvertiserCurrency": 5258.8, "returnOnAdSpendPercent": 2553.01, "vcrInPercent": 1142.91, "viewabilityInPercent": 1152.77, "vcpmInAdvertiserCurrency": 6711.38, "cpcvInAdvertiserCurrency": 4528.37, "miaozhenOTPInPercent": 9833.69, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "NewBuyerTargetValue": 373225}, "advertiserId": "<id>", "name": "<value>", "customLabelNames": ["<value 1>", "<value 2>", "<value 3>"], "primaryChannel": "NativeVideo", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 25.32, "ctrInPercent": 4889.32, "nielsenOTPInPercent": 5258.8, "cpaInAdvertiserCurrency": 2553.01, "returnOnAdSpendPercent": 1142.91, "vcrInPercent": 1152.77, "viewabilityInPercent": 6711.38, "vcpmInAdvertiserCurrency": 4528.37, "cpcvInAdvertiserCurrency": 9833.69, "miaozhenOTPInPercent": 1951.58, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": null, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "NewBuyerTargetValue": 355878}, "startDateInUtc": "2025-09-26T21:06:42.946Z", "budget": {"pacingMode": "PaceAhead", "budgetInAdvertiserCurrency": 5501.96, "budgetInImpressions": 629784, "dailyTargetInAdvertiserCurrency": 2524.41, "dailyTargetInImpressions": 726807}, "campaignIncrementalReachSetting": {"iSpotReachSetting": {"id": 178346, "name": "<value>", "isActive": true}, "realyticsReachSetting": {"id": 268786, "name": "<value>", "isActive": false, "products": [{"id": 106975, "name": "<value>"}], "realyticsEntertainmentInput": "TVS"}, "tvSquaredReachSetting": {"id": 772731, "name": "<value>", "isActive": false}, "sambaAuReachSetting": {"id": 403863, "name": null, "isActive": true}}}, "advancedInput": {"purchaseOrderNumber": "<value>", "flights": [{"startDateInclusiveUTC": "2024-09-20T06:04:19.345Z", "endDateExclusiveUTC": "2024-01-18T07:43:56.299Z", "budgetInAdvertiserCurrency": 8219.9, "budgetInImpressions": 76925, "dailyTargetInAdvertiserCurrency": 9309.03, "dailyTargetInImpressions": 152838}], "includeDefaultsFromAdvertiser": false, "passThroughFeeCard": {"startDateUtc": "2024-07-24T11:58:59.190Z", "passThroughFees": [{"type": "DataCostPercentage", "description": "sweetly absent fortunately forenenst earnest who solidly wherever step-mother", "amount": 2888.48}]}, "callerSource": "<value>", "frequencyConfigs": [{"counterName": "<value>", "frequencyCap": 234925, "frequencyGoal": 777832, "resetIntervalInMinutes": 629784}]}, "adGroups": [{"primaryInput": {"isEnabled": true, "description": "scenario dish gracefully through tame yahoo pension husband as atop", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 2283.06, "budgetInImpressions": 301691, "dailyTargetInAdvertiserCurrency": 9268.18, "dailyTargetInImpressions": 851470}, "baseBidCPMInAdvertiserCurrency": 694.78, "maxBidCPMInAdvertiserCurrency": 6084.4, "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": false, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [497890, 566253], "recencyExclusionWindowInMinutes": 742665, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 9062.02, "ctrInPercent": 7192.99, "nielsenOTPInPercent": 2823.22, "cpaInAdvertiserCurrency": 3140.25, "returnOnAdSpendPercent": 6857.21, "vcrInPercent": 2704.73, "viewabilityInPercent": 2247.4, "vcpmInAdvertiserCurrency": 8383.69, "cpcvInAdvertiserCurrency": 4755.8, "miaozhenOTPInPercent": 4575.86}, "creativeIds": ["<value 1>", "<value 2>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "name": "<value>", "channel": "Display", "funnelLocation": "Awareness", "marketType": "PrivateMarketOnly", "programmaticGuaranteedPrivateContractId": "<id>", "includeDefaultsFromCampaign": true}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 559587, "demographicMemberIds": [139340, 129935], "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasAudienceReachPercentageTierId"], []], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Female", "startAge": "ThirtyFive", "endAge": "TwentyFour", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": null, "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>", "<value 3>"], "dealIdsToExclude": [169634], "dealIdsToInclude": [356532, 584209], "includeDefaultOnDeals": true}, "isNonDecisioned": false, "includeDefaultsFromCampaign": true, "flights": [{"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4838.47, "budgetInImpressions": 420224, "dailyTargetInAdvertiserCurrency": 1513.78, "dailyTargetInImpressions": 735500}]}}]}], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://impeccable-pick.com/", "callbackHeaders": {"key": "<value>"}}}
+        application/json: {"input": [{"primaryInput": {"description": null, "campaignGroupId": 657704, "timeZone": "America/North_Dakota/Center", "customCPAClickWeight": 9662.9, "customCPAViewthroughWeight": 3558.78, "customCPAType": "ClickViewthroughWeighting", "customRoasType": "CompositeWeighting", "impressionsOnlyBudgetingCpm": 4427.56, "endDateInUtc": "2023-12-21T01:12:20.772Z", "seedId": "<id>", "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": false, "reportingColumnId": 356532, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": 1483.03, "customROASClickWeight": 5286.76, "customROASViewthroughWeight": 8906.82}, "productListReportingType": "Halo", "weight": null, "crossDeviceAttributionModelId": "<id>"}], "isManagedByTTD": true, "secondaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 3558.78, "ctrInPercent": 2407.01, "nielsenOTPInPercent": 2349.25, "cpaInAdvertiserCurrency": 7778.32, "returnOnAdSpendPercent": 6752.02, "vcrInPercent": 5019.36, "viewabilityInPercent": 5781.75, "vcpmInAdvertiserCurrency": 1696.34, "cpcvInAdvertiserCurrency": 5609.2, "miaozhenOTPInPercent": 5842.09, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": null, "newBuyerTargetValue": 657704}, "tertiaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 6123.61, "ctrInPercent": 25.32, "nielsenOTPInPercent": 4889.32, "cpaInAdvertiserCurrency": 5258.8, "returnOnAdSpendPercent": 2553.01, "vcrInPercent": 1142.91, "viewabilityInPercent": 1152.77, "vcpmInAdvertiserCurrency": 6711.38, "cpcvInAdvertiserCurrency": 4528.37, "miaozhenOTPInPercent": 9833.69, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "newBuyerTargetValue": null}, "advertiserId": "<id>", "name": "<value>", "customLabelNames": ["<value 1>", "<value 2>", "<value 3>"], "primaryChannel": "NativeVideo", "primaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 25.32, "ctrInPercent": 4889.32, "nielsenOTPInPercent": 5258.8, "cpaInAdvertiserCurrency": 2553.01, "returnOnAdSpendPercent": 1142.91, "vcrInPercent": 1152.77, "viewabilityInPercent": 6711.38, "vcpmInAdvertiserCurrency": 4528.37, "cpcvInAdvertiserCurrency": 9833.69, "miaozhenOTPInPercent": 1951.58, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": null, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "newBuyerTargetValue": 373225}, "startDateInUtc": "2025-09-26T21:06:42.946Z", "budget": {"pacingMode": "PaceAhead", "budgetInAdvertiserCurrency": 5501.96, "budgetInImpressions": 629784, "dailyTargetInAdvertiserCurrency": 2524.41, "dailyTargetInImpressions": 726807}, "campaignIncrementalReachSetting": {"iSpotReachSetting": {"id": 178346, "name": "<value>", "isActive": true}, "realyticsReachSetting": {"id": 268786, "name": "<value>", "isActive": false, "products": [{"id": 106975, "name": "<value>"}], "realyticsEntertainmentInput": "TVS"}, "tvSquaredReachSetting": {"id": 772731, "name": "<value>", "isActive": false}, "sambaAuReachSetting": {"id": 403863, "name": null, "isActive": true}}}, "advancedInput": {"purchaseOrderNumber": "<value>", "flights": [{"startDateInclusiveUTC": "2024-09-20T06:04:19.345Z", "endDateExclusiveUTC": "2024-01-18T07:43:56.299Z", "budgetInAdvertiserCurrency": 8219.9, "budgetInImpressions": 76925, "dailyTargetInAdvertiserCurrency": 9309.03, "dailyTargetInImpressions": 152838}], "includeDefaultsFromAdvertiser": false, "passThroughFeeCard": {"startDateUtc": "2024-07-24T11:58:59.190Z", "passThroughFees": [{"type": "DataCostPercentage", "description": "sweetly absent fortunately forenenst earnest who solidly wherever step-mother", "amount": 2888.48}]}, "callerSource": "<value>", "frequencyConfigs": [{"counterName": "<value>", "frequencyCap": 234925, "frequencyGoal": 777832, "resetIntervalInMinutes": 629784}]}, "adGroups": [{"primaryInput": {"isEnabled": true, "description": "scenario dish gracefully through tame yahoo pension husband as atop", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 2283.06, "budgetInImpressions": 301691, "dailyTargetInAdvertiserCurrency": 9268.18, "dailyTargetInImpressions": 851470}, "baseBidCPMInAdvertiserCurrency": 694.78, "maxBidCPMInAdvertiserCurrency": 6084.4, "audienceTargeting": {"audienceId": {"value": "<value>"}, "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": false, "audienceExcluderEnabled": true, "audiencePredictorEnabled": false, "crossDeviceVendorListForAudience": [497890, 566253], "recencyExclusionWindowInMinutes": 742665, "targetTrackableUsersEnabled": true, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": true, "cpcInAdvertiserCurrency": 9062.02, "ctrInPercent": 7192.99, "nielsenOTPInPercent": 2823.22, "cpaInAdvertiserCurrency": 3140.25, "returnOnAdSpendPercent": 6857.21, "vcrInPercent": 2704.73, "viewabilityInPercent": 2247.4, "vcpmInAdvertiserCurrency": 8383.69, "cpcvInAdvertiserCurrency": 4755.8, "miaozhenOTPInPercent": 4575.86, "newBuyerTargetValue": 774436}, "creativeIds": ["<value 1>", "<value 2>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "ownedBidLists": [{"name": "<value>", "adjustmentType": "Inclusion", "resolutionType": "ApplyAverageAdjustment", "dimensions": ["HasVideoCompletionRateScoreRange"], "bidLines": [{"adFormatId": "<id>", "domainFragment": "<value>", "universalCategoryTaxonomyId": "<id>", "browser": "Opera", "browserId": "InApp", "carrierId": "<id>", "deviceModelId": 169634, "deviceType": "PC", "geoSegmentId": "<id>", "hourOfWeek": 584209, "languageId": "<id>", "osName": "<value>", "privateContractId": "<id>", "recencyWindowInMinutes": {"min": 399808, "max": 27960}, "renderingContext": "MobileOptimizedWeb", "supplyVendorId": "<id>", "temperatureBucketInCelsius": {"min": 8662.23, "max": 6123.61}, "adsTxtSellerType": "Unauthorized", "videoMutedState": "InfrequentlyAutoMuted", "videoPlaybackType": "InterstitialSliderFloating", "videoPlayerSize": "Small", "videoQuality": "UserGenerated", "videoSkippability": "Skippable", "factualProximityTarget": {"targetingCodeId": 255301, "designId": 114291}, "impressionPlacementValue": "<value>", "videoTruthScoreRange": {"min": 5497.84, "max": 8737.14}, "videoViewabilityScoreRange": {"min": 3063.09, "max": 1685.62}, "displayViewabilityScoreRange": {"min": 2847.66, "max": 8240.9}, "peer39LanguageId": "<id>", "doubleVerifyBotAvoidanceCategory": "FraudInvalid", "contextualAppCategoryId": "<id>", "publisherId": "<id>", "integralViewabilityCategoryId": "<id>", "integralViewabilityCategory": "InView40", "integralVideoViewabilityCategoryId": "<id>", "integralVideoViewabilityCategory": "InView70", "doubleVerifyViewabilityCategory": "Top55", "doubleVerifyVideoViewabilityCategory": "Duration25", "peer39ViewabilityCategoryId": "<id>", "peer39ViewabilityCategory": "Top60", "videoCompletionRateScoreRange": {"min": 2687.86, "max": 9329.62}, "internetConnectionInput": "WiFi", "internetConnectionTypeId": "Unknown", "internetConnection": "WiFi", "rtbAsiaPageQualityCategory": "BlockModerateAndHighRisk", "rtbAsiaVideoPageQualityCategory": "BlockModerateAndHighRisk", "supplyPathOptimizationListId": 783648, "marketType": "PMPNotSpecified", "weatherCondition": "Thunderstorm", "frequencyAdjustment": {"counterId": "<id>", "timesShown": {"min": 520529, "max": 257786}}, "sellerDomain": "<value>", "digitalOutOfHomeVenueTypeId": "<id>", "nativePlacementType": "RecommendationWidget", "nativeContextType": "ProductReview", "idiosyncraticSegment": "LightTvViewers2", "tencentPageQualityCategory": "BlockHighRisk", "domainClassId": 493213, "geofenceThirdPartyDataAndBrand": {"dataId": 791027, "brandId": "<id>"}, "genreId": "<id>", "livestream": "NotLive", "productionQuality": "Unknown", "productionQualityId": "UserGeneratedContent", "contentRatingId": "<id>", "contentDuration": "Unknown", "qualityScoreRange": {"min": 9009.31, "max": 1774.79}, "atmosphericCondition": "VeryHighForecast", "marketplaceId": null, "audienceReachPercentageTier": "Tier1", "contentTransparency": "NonTransparent", "fullReferrerUrl": "FullUrl", "likelyRefreshRate": "Unknown", "rewarded": "IsRewarded", "feedId": 547220, "liveEventId": "<id>", "liveEventTypeId": "<id>", "extendedZipCodeGroupSegmentThirdPartyDataId": 235110, "contentLanguageId": "<id>", "adToContentRatioRange": {"min": 5659.27, "max": 2409.7}, "adsInViewRange": {"min": 8050.14, "max": null}, "bidAdjustment": 4418.39, "volumeControlPriority": "Neutral", "maxBid": 131.72}], "source": "SystemAutoForEndeavorTargeting", "isAvailableForLibraryUse": false, "associateBehavior": "DoNotAssociate", "dimensionConfig": {"geo": {"locationContextType": "Realtime"}}, "isDefaultForDimension": true}], "name": "<value>", "channel": "Display", "funnelLocation": "Awareness", "marketType": "PrivateMarketOnly", "programmaticGuaranteedPrivateContractId": "<id>", "includeDefaultsFromCampaign": true}, "advancedInput": {"koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": true, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 559587, "demographicMemberIds": [139340, 129935], "mobileDemographicMemberIds": null}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasAudienceReachPercentageTierId"], []], "isUseClicksAsConversionsEnabled": false, "isUseSecondaryConversionsEnabled": true, "nielsenTrackingAttributes": {"enhancedReportingOption": "None", "gender": "Female", "startAge": "ThirtyFive", "endAge": "TwentyFour", "countries": ["<value 1>", "<value 2>"]}, "newFrequencyConfigs": null, "inventoryTargeting": {"dealGroupIdsToInclude": ["<value 1>"], "dealGroupIdsToExclude": ["<value 1>", "<value 2>", "<value 3>"], "dealIdsToExclude": [169634], "dealIdsToInclude": [356532, 584209], "includeDefaultOnDeals": true}, "isNonDecisioned": false, "includeDefaultsFromCampaign": true, "flights": [{"allocationType": "Maximum", "budgetInAdvertiserCurrency": 4838.47, "budgetInImpressions": 420224, "dailyTargetInAdvertiserCurrency": 1513.78, "dailyTargetInImpressions": 735500}]}}]}], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://impeccable-pick.com/", "callbackHeaders": {"key": "<value>"}}}
       responses:
         "202":
           application/json: {"id": 400815}
@@ -2095,14 +2492,14 @@ examples:
   updateCampaignsJob:
     speakeasy-default-update-campaigns-job:
       requestBody:
-        application/json: {"input": [{"id": "<id>", "primaryInput": {"description": "hmph energetically yet surprisingly swift knight swear multicolored absent", "campaignGroupId": 645576, "timeZone": "America/Argentina/San_Juan", "customCPAClickWeight": null, "customCPAViewthroughWeight": 8361.84, "customCPAType": "PixelWeighting", "customRoasType": "ClickViewthroughWeighting", "impressionsOnlyBudgetingCpm": 2706.4, "endDateInUtc": "2023-11-11T21:39:56.025Z", "seedId": "<id>", "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": true, "reportingColumnId": 809247, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": null, "customROASClickWeight": null, "customROASViewthroughWeight": 6784.9}, "productListReportingType": "Halo", "weight": 2260.69, "crossDeviceAttributionModelId": "<id>"}], "isManagedByTTD": true, "secondaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": null, "ctrInPercent": null, "nielsenOTPInPercent": 5546.51, "cpaInAdvertiserCurrency": 7735.11, "returnOnAdSpendPercent": 5459.4, "vcrInPercent": 7724.91, "viewabilityInPercent": null, "vcpmInAdvertiserCurrency": 9927, "cpcvInAdvertiserCurrency": 1852.41, "miaozhenOTPInPercent": 2827.93, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": null, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "NewBuyerTargetValue": 178803}, "tertiaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 7329.7, "ctrInPercent": 9103.24, "nielsenOTPInPercent": 2359.55, "cpaInAdvertiserCurrency": 6489.19, "returnOnAdSpendPercent": 8265.87, "vcrInPercent": null, "viewabilityInPercent": 6404.44, "vcpmInAdvertiserCurrency": 1278.49, "cpcvInAdvertiserCurrency": 9238.19, "miaozhenOTPInPercent": 8948.48, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "NewBuyerTargetValue": 784776}, "name": "<value>", "primaryChannel": "None", "primaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 3354.68, "ctrInPercent": 7716.49, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": 381.7, "returnOnAdSpendPercent": 8461.44, "vcrInPercent": 4170.61, "viewabilityInPercent": 5364.85, "vcpmInAdvertiserCurrency": 1107.08, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 4584.96, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": true, "NewBuyerTargetValue": 785673}, "startDateInUtc": "2023-01-13T23:06:05.083Z", "budget": {"pacingMode": "PaceAsSoonAsPossible"}}, "advancedInput": {"purchaseOrderNumber": "<value>"}}], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://soggy-apparatus.org/", "callbackHeaders": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
+        application/json: {"input": [{"id": "<id>", "primaryInput": {"description": "hmph energetically yet surprisingly swift knight swear multicolored absent", "campaignGroupId": 645576, "timeZone": "America/Argentina/San_Juan", "customCPAClickWeight": null, "customCPAViewthroughWeight": 8361.84, "customCPAType": "PixelWeighting", "customRoasType": "ClickViewthroughWeighting", "impressionsOnlyBudgetingCpm": 2706.4, "endDateInUtc": "2023-11-11T21:39:56.025Z", "seedId": "<id>", "campaignConversionReportingColumns": [{"trackingTagId": "<id>", "includeInCustomCPA": true, "reportingColumnId": 809247, "ROASConfig": {"includeInCustomROAS": false, "customROASWeight": null, "customROASClickWeight": null, "customROASViewthroughWeight": 6784.9}, "productListReportingType": "Halo", "weight": 2260.69, "crossDeviceAttributionModelId": "<id>"}], "isManagedByTTD": true, "secondaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": null, "ctrInPercent": null, "nielsenOTPInPercent": 5546.51, "cpaInAdvertiserCurrency": 7735.11, "returnOnAdSpendPercent": 5459.4, "vcrInPercent": 7724.91, "viewabilityInPercent": null, "vcpmInAdvertiserCurrency": 9927, "cpcvInAdvertiserCurrency": 1852.41, "miaozhenOTPInPercent": 2827.93, "iqviaAudienceQualityIndex": false, "crossixAudienceQualityIndex": null, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "newBuyerTargetValue": 645576}, "tertiaryGoal": {"maximizeReach": false, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 7329.7, "ctrInPercent": 9103.24, "nielsenOTPInPercent": 2359.55, "cpaInAdvertiserCurrency": 6489.19, "returnOnAdSpendPercent": 8265.87, "vcrInPercent": null, "viewabilityInPercent": 6404.44, "vcpmInAdvertiserCurrency": 1278.49, "cpcvInAdvertiserCurrency": 9238.19, "miaozhenOTPInPercent": 8948.48, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": false, "crossixCostPerTarget": true, "newBuyerTargetValue": 201033}, "name": "<value>", "primaryChannel": "None", "primaryGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 3354.68, "ctrInPercent": 7716.49, "nielsenOTPInPercent": null, "cpaInAdvertiserCurrency": 381.7, "returnOnAdSpendPercent": 8461.44, "vcrInPercent": 4170.61, "viewabilityInPercent": 5364.85, "vcpmInAdvertiserCurrency": 1107.08, "cpcvInAdvertiserCurrency": null, "miaozhenOTPInPercent": 4584.96, "iqviaAudienceQualityIndex": true, "crossixAudienceQualityIndex": false, "iqviaAudienceQualityIndexAndCostPerTarget": true, "crossixCostPerTarget": true, "newBuyerTargetValue": 850970}, "startDateInUtc": "2023-01-13T23:06:05.083Z", "budget": {"pacingMode": "PaceAsSoonAsPossible"}}, "advancedInput": {"purchaseOrderNumber": "<value>"}}], "validateInputOnly": true, "callbackInput": {"callbackUrl": "https://soggy-apparatus.org/", "callbackHeaders": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
       responses:
         "202":
           application/json: {"id": 833664}
         "400":
           application/json: {"type": "<value>", "title": "<value>", "status": 182997, "detail": "<value>", "instance": "<value>"}
         "200":
-          application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 201033, "description": "saloon yesterday artistic doing esteemed that over apt partially", "startDate": "2023-02-25T02:45:30.882Z", "endDate": "2025-07-05T10:58:57.755Z", "timeZone": "Asia/Barnaul", "customCPAClickWeight": 7722.13, "customCPAViewthroughWeight": 1971.14, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 6514.48, "primaryChannel": "NativeVideo", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 434209, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2025-06-05T22:25:11.463Z", "endDateExclusiveUTC": "2023-01-11T11:01:46.801Z", "budgetInAdvertiserCurrency": 81.58, "budgetInImpressions": 678490, "dailyTargetInAdvertiserCurrency": 2260.69, "dailyTargetInImpressions": 945903}], "secondaryGoal": null, "tertiaryGoal": "<value>"}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": false, "description": "unabashedly analyse gladly convalesce ascertain", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "NativeDisplay", "funnelLocation": "Conversion", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 8509.65, "budgetInImpressions": 559602, "dailyTargetInAdvertiserCurrency": 6000.32, "dailyTargetInImpressions": 480090}, "baseBidCPMInAdvertiserCurrency": 7022.03, "maxBidCPMInAdvertiserCurrency": 3492.85, "marketType": "Marketplace", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": null, "recencyExclusionWindowInMinutes": 641872, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 8789.29, "ctrInPercent": 6097.83, "nielsenOTPInPercent": 97.94, "cpaInAdvertiserCurrency": 4920.96, "returnOnAdSpendPercent": 6036.6, "vcrInPercent": 7367.66, "viewabilityInPercent": 5682.26, "vcpmInAdvertiserCurrency": 2158.66, "cpcvInAdvertiserCurrency": 2909.06, "miaozhenOTPInPercent": null}, "creativeIds": ["<value 1>", "<value 2>", "<value 3>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 9067.5, "budgetInImpressions": 116224, "dailyTargetInAdvertiserCurrency": 5091.83, "dailyTargetInImpressions": 932776, "campaignFlightId": 942771, "adGroupId": "<id>"}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 784781, "demographicMemberIds": [], "mobileDemographicMemberIds": [138240, 326531]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasSellerId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Male", "startAge": "SixtyFive", "endAge": "Twenty", "countries": ["<value 1>", "<value 2>", "<value 3>"]}}]}
+          application/json: {"campaign": {"id": "<id>", "name": "<value>", "campaignGroupId": 201033, "description": "saloon yesterday artistic doing esteemed that over apt partially", "startDate": "2023-02-25T02:45:30.882Z", "endDate": "2025-07-05T10:58:57.755Z", "timeZone": "Asia/Barnaul", "customCPAClickWeight": 7722.13, "customCPAViewthroughWeight": 1971.14, "customCPAType": "PixelWeighting", "impressionsOnlyBudgetingCpm": 6514.48, "primaryChannel": "NativeVideo", "primaryGoal": "<value>", "seedId": "<id>", "conversionReportingColumnsCount": 434209, "flights": [{"id": "<id>", "startDateInclusiveUTC": "2025-06-05T22:25:11.463Z", "endDateExclusiveUTC": "2023-01-11T11:01:46.801Z", "budgetInAdvertiserCurrency": 81.58, "budgetInImpressions": 678490, "dailyTargetInAdvertiserCurrency": 2260.69, "dailyTargetInImpressions": 945903}], "secondaryGoal": null, "tertiaryGoal": "<value>"}, "adGroups": [{"id": "<id>", "name": "<value>", "campaignId": "<id>", "isEnabled": false, "description": "unabashedly analyse gladly convalesce ascertain", "programmaticGuaranteedPrivateContractId": "<id>", "channel": "NativeDisplay", "funnelLocation": "Conversion", "budget": {"allocationType": "Maximum", "budgetInAdvertiserCurrency": 8509.65, "budgetInImpressions": 559602, "dailyTargetInAdvertiserCurrency": 6000.32, "dailyTargetInImpressions": 480090}, "baseBidCPMInAdvertiserCurrency": 7022.03, "maxBidCPMInAdvertiserCurrency": 3492.85, "marketType": "Marketplace", "audienceTargeting": {"audienceId": "<id>", "audienceAcceleratorExclusionsEnabled": true, "audienceBoosterEnabled": true, "audienceExcluderEnabled": true, "audiencePredictorEnabled": true, "crossDeviceVendorListForAudience": null, "recencyExclusionWindowInMinutes": 641872, "targetTrackableUsersEnabled": false, "useMcIdAsPrimary": true}, "roiGoal": {"maximizeReach": true, "maximizeLtvIncrementalReach": false, "cpcInAdvertiserCurrency": 8789.29, "ctrInPercent": 6097.83, "nielsenOTPInPercent": 97.94, "cpaInAdvertiserCurrency": 4920.96, "returnOnAdSpendPercent": 6036.6, "vcrInPercent": 7367.66, "viewabilityInPercent": 5682.26, "vcpmInAdvertiserCurrency": 2158.66, "cpcvInAdvertiserCurrency": 2909.06, "miaozhenOTPInPercent": null, "newBuyerTargetValue": 83180}, "creativeIds": ["<value 1>", "<value 2>", "<value 3>"], "associatedBidLists": [{"bidListId": "<id>", "isEnabled": true, "isDefaultForDimension": false}], "ownedBidLists": null, "flights": [{"allocationType": "Fixed", "budgetInAdvertiserCurrency": 9067.5, "budgetInImpressions": 116224, "dailyTargetInAdvertiserCurrency": 5091.83, "dailyTargetInImpressions": 932776, "campaignFlightId": 942771, "adGroupId": "<id>"}], "koaOptimizationSettings": {"areFutureKoaFeaturesEnabled": false, "predictiveClearingEnabled": false}, "comscoreSettings": {"isEnabled": false, "populationId": 784781, "demographicMemberIds": [], "mobileDemographicMemberIds": [138240, 326531]}, "contractTargeting": {"allowOpenMarketBiddingWhenTargetingContracts": true}, "dimensionalBiddingAutoOptimizationSettings": [["HasSellerId"], []], "isUseClicksAsConversionsEnabled": true, "isUseSecondaryConversionsEnabled": false, "nielsenTrackingAttributes": {"enhancedReportingOption": "Audience", "gender": "Male", "startAge": "SixtyFive", "endAge": "Twenty", "countries": ["<value 1>", "<value 2>", "<value 3>"]}}]}
   archiveCampaigns:
     speakeasy-default-archive-campaigns:
       parameters:
@@ -2213,6 +2610,7 @@ examples:
           application/json: {"type": "<value>", "title": "<value>", "status": 603376, "detail": "<value>", "instance": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Java SDK Changes:\n* `workflows.adGroup.createAdGroup()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.adGroup` **Changed** (Breaking ⚠️)\n* `workflows.adGroup.updateAdGroup()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.adGroup` **Changed** (Breaking ⚠️)\n* `workflows.adGroup.createAdGroupsJob()`: \n  *  `request.input[]` **Changed** (Breaking ⚠️)\n* `workflows.adGroup.updateAdGroupsJob()`: \n  *  `request.input[]` **Changed** (Breaking ⚠️)\n* `workflows.campaign.create()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response.adGroups[]` **Changed** (Breaking ⚠️)\n* `workflows.campaign.updateCampaign()`: \n  *  `request.primaryInput.secondaryGoal` **Changed** (Breaking ⚠️)\n  *  `response.adGroups[]` **Changed** (Breaking ⚠️)\n* `workflows.campaign.createCampaignsJob()`: \n  *  `request.input[]` **Changed** (Breaking ⚠️)\n* `workflows.campaign.updateCampaignsJob()`: \n  *  `request.input[].primaryInput.secondaryGoal` **Changed** (Breaking ⚠️)\n  *  `response.adGroups[]` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - USAGE.md

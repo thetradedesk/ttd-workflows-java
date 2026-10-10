@@ -23,8 +23,9 @@ public class AdGroupFlight {
     private AllocationType allocationType;
 
 
+    @JsonInclude(Include.ALWAYS)
     @JsonProperty("budgetInAdvertiserCurrency")
-    private double budgetInAdvertiserCurrency;
+    private Optional<Double> budgetInAdvertiserCurrency;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -53,7 +54,7 @@ public class AdGroupFlight {
     @JsonCreator
     public AdGroupFlight(
             @JsonProperty("allocationType") AllocationType allocationType,
-            @JsonProperty("budgetInAdvertiserCurrency") double budgetInAdvertiserCurrency,
+            @JsonProperty("budgetInAdvertiserCurrency") Optional<Double> budgetInAdvertiserCurrency,
             @JsonProperty("budgetInImpressions") JsonNullable<Long> budgetInImpressions,
             @JsonProperty("dailyTargetInAdvertiserCurrency") JsonNullable<Double> dailyTargetInAdvertiserCurrency,
             @JsonProperty("dailyTargetInImpressions") JsonNullable<Long> dailyTargetInImpressions,
@@ -77,9 +78,8 @@ public class AdGroupFlight {
     
     public AdGroupFlight(
             AllocationType allocationType,
-            double budgetInAdvertiserCurrency,
             long campaignFlightId) {
-        this(allocationType, budgetInAdvertiserCurrency, JsonNullable.undefined(),
+        this(allocationType, Optional.empty(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), campaignFlightId,
             Optional.empty());
     }
@@ -90,7 +90,7 @@ public class AdGroupFlight {
     }
 
     @JsonIgnore
-    public double budgetInAdvertiserCurrency() {
+    public Optional<Double> budgetInAdvertiserCurrency() {
         return budgetInAdvertiserCurrency;
     }
 
@@ -131,6 +131,13 @@ public class AdGroupFlight {
     }
 
     public AdGroupFlight withBudgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
+        Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
+        this.budgetInAdvertiserCurrency = Optional.ofNullable(budgetInAdvertiserCurrency);
+        return this;
+    }
+
+
+    public AdGroupFlight withBudgetInAdvertiserCurrency(Optional<Double> budgetInAdvertiserCurrency) {
         Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
         this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
         return this;
@@ -235,7 +242,7 @@ public class AdGroupFlight {
 
         private AllocationType allocationType;
 
-        private Double budgetInAdvertiserCurrency;
+        private Optional<Double> budgetInAdvertiserCurrency = Optional.empty();
 
         private JsonNullable<Long> budgetInImpressions = JsonNullable.undefined();
 
@@ -260,6 +267,12 @@ public class AdGroupFlight {
 
 
         public Builder budgetInAdvertiserCurrency(double budgetInAdvertiserCurrency) {
+            Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
+            this.budgetInAdvertiserCurrency = Optional.ofNullable(budgetInAdvertiserCurrency);
+            return this;
+        }
+
+        public Builder budgetInAdvertiserCurrency(Optional<Double> budgetInAdvertiserCurrency) {
             Utils.checkNotNull(budgetInAdvertiserCurrency, "budgetInAdvertiserCurrency");
             this.budgetInAdvertiserCurrency = budgetInAdvertiserCurrency;
             return this;
