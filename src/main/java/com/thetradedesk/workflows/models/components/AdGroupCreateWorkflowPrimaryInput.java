@@ -66,6 +66,11 @@ public class AdGroupCreateWorkflowPrimaryInput {
     private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists;
 
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ownedBidLists")
+    private JsonNullable<? extends List<AdGroupCreateWorkflowOwnedBidListInput>> ownedBidLists;
+
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("name")
     private Optional<String> name;
@@ -104,6 +109,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             @JsonProperty("roiGoal") Optional<? extends AdGroupWorkflowROIGoalInput> roiGoal,
             @JsonProperty("creativeIds") JsonNullable<? extends List<String>> creativeIds,
             @JsonProperty("associatedBidLists") JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists,
+            @JsonProperty("ownedBidLists") JsonNullable<? extends List<AdGroupCreateWorkflowOwnedBidListInput>> ownedBidLists,
             @JsonProperty("name") Optional<String> name,
             @JsonProperty("channel") AdGroupChannel channel,
             @JsonProperty("funnelLocation") AdGroupFunnelLocation funnelLocation,
@@ -119,6 +125,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
         Utils.checkNotNull(roiGoal, "roiGoal");
         Utils.checkNotNull(creativeIds, "creativeIds");
         Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+        Utils.checkNotNull(ownedBidLists, "ownedBidLists");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(channel, "channel");
         Utils.checkNotNull(funnelLocation, "funnelLocation");
@@ -134,6 +141,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
         this.roiGoal = roiGoal;
         this.creativeIds = creativeIds;
         this.associatedBidLists = associatedBidLists;
+        this.ownedBidLists = ownedBidLists;
         this.name = name;
         this.channel = channel;
         this.funnelLocation = funnelLocation;
@@ -148,8 +156,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
         this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
-            Optional.empty(), channel, funnelLocation,
-            Optional.empty(), JsonNullable.undefined(), Optional.empty());
+            JsonNullable.undefined(), Optional.empty(), channel,
+            funnelLocation, Optional.empty(), JsonNullable.undefined(),
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -200,6 +209,12 @@ public class AdGroupCreateWorkflowPrimaryInput {
     @JsonIgnore
     public JsonNullable<List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists() {
         return (JsonNullable<List<AdGroupWorkflowAssociateBidListInput>>) associatedBidLists;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<AdGroupCreateWorkflowOwnedBidListInput>> ownedBidLists() {
+        return (JsonNullable<List<AdGroupCreateWorkflowOwnedBidListInput>>) ownedBidLists;
     }
 
     @JsonIgnore
@@ -349,6 +364,18 @@ public class AdGroupCreateWorkflowPrimaryInput {
         return this;
     }
 
+    public AdGroupCreateWorkflowPrimaryInput withOwnedBidLists(List<AdGroupCreateWorkflowOwnedBidListInput> ownedBidLists) {
+        Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+        this.ownedBidLists = JsonNullable.of(ownedBidLists);
+        return this;
+    }
+
+    public AdGroupCreateWorkflowPrimaryInput withOwnedBidLists(JsonNullable<? extends List<AdGroupCreateWorkflowOwnedBidListInput>> ownedBidLists) {
+        Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+        this.ownedBidLists = ownedBidLists;
+        return this;
+    }
+
     public AdGroupCreateWorkflowPrimaryInput withName(String name) {
         Utils.checkNotNull(name, "name");
         this.name = Optional.ofNullable(name);
@@ -431,6 +458,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.roiGoal, other.roiGoal) &&
             Utils.enhancedDeepEquals(this.creativeIds, other.creativeIds) &&
             Utils.enhancedDeepEquals(this.associatedBidLists, other.associatedBidLists) &&
+            Utils.enhancedDeepEquals(this.ownedBidLists, other.ownedBidLists) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.channel, other.channel) &&
             Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation) &&
@@ -445,8 +473,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
             isEnabled, description, budget,
             baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
             roiGoal, creativeIds, associatedBidLists,
-            name, channel, funnelLocation,
-            marketType, programmaticGuaranteedPrivateContractId, includeDefaultsFromCampaign);
+            ownedBidLists, name, channel,
+            funnelLocation, marketType, programmaticGuaranteedPrivateContractId,
+            includeDefaultsFromCampaign);
     }
     
     @Override
@@ -461,6 +490,7 @@ public class AdGroupCreateWorkflowPrimaryInput {
                 "roiGoal", roiGoal,
                 "creativeIds", creativeIds,
                 "associatedBidLists", associatedBidLists,
+                "ownedBidLists", ownedBidLists,
                 "name", name,
                 "channel", channel,
                 "funnelLocation", funnelLocation,
@@ -489,6 +519,8 @@ public class AdGroupCreateWorkflowPrimaryInput {
         private JsonNullable<? extends List<String>> creativeIds = JsonNullable.undefined();
 
         private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<AdGroupCreateWorkflowOwnedBidListInput>> ownedBidLists = JsonNullable.undefined();
 
         private Optional<String> name = Optional.empty();
 
@@ -624,6 +656,19 @@ public class AdGroupCreateWorkflowPrimaryInput {
         }
 
 
+        public Builder ownedBidLists(List<AdGroupCreateWorkflowOwnedBidListInput> ownedBidLists) {
+            Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+            this.ownedBidLists = JsonNullable.of(ownedBidLists);
+            return this;
+        }
+
+        public Builder ownedBidLists(JsonNullable<? extends List<AdGroupCreateWorkflowOwnedBidListInput>> ownedBidLists) {
+            Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+            this.ownedBidLists = ownedBidLists;
+            return this;
+        }
+
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -695,8 +740,9 @@ public class AdGroupCreateWorkflowPrimaryInput {
                 isEnabled, description, budget,
                 baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
                 roiGoal, creativeIds, associatedBidLists,
-                name, channel, funnelLocation,
-                marketType, programmaticGuaranteedPrivateContractId, includeDefaultsFromCampaign);
+                ownedBidLists, name, channel,
+                funnelLocation, marketType, programmaticGuaranteedPrivateContractId,
+                includeDefaultsFromCampaign);
         }
 
     }
