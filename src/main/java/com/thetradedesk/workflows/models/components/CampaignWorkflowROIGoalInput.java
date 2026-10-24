@@ -100,7 +100,12 @@ public class CampaignWorkflowROIGoalInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("NewBuyerTargetValue")
+    @JsonProperty("pharmaOptimization")
+    private JsonNullable<Boolean> pharmaOptimization;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("newBuyerTargetValue")
     private JsonNullable<Integer> newBuyerTargetValue;
 
     @JsonCreator
@@ -121,7 +126,8 @@ public class CampaignWorkflowROIGoalInput {
             @JsonProperty("crossixAudienceQualityIndex") JsonNullable<Boolean> crossixAudienceQualityIndex,
             @JsonProperty("iqviaAudienceQualityIndexAndCostPerTarget") JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget,
             @JsonProperty("crossixCostPerTarget") JsonNullable<Boolean> crossixCostPerTarget,
-            @JsonProperty("NewBuyerTargetValue") JsonNullable<Integer> newBuyerTargetValue) {
+            @JsonProperty("pharmaOptimization") JsonNullable<Boolean> pharmaOptimization,
+            @JsonProperty("newBuyerTargetValue") JsonNullable<Integer> newBuyerTargetValue) {
         Utils.checkNotNull(maximizeReach, "maximizeReach");
         Utils.checkNotNull(maximizeLtvIncrementalReach, "maximizeLtvIncrementalReach");
         Utils.checkNotNull(cpcInAdvertiserCurrency, "cpcInAdvertiserCurrency");
@@ -138,6 +144,7 @@ public class CampaignWorkflowROIGoalInput {
         Utils.checkNotNull(crossixAudienceQualityIndex, "crossixAudienceQualityIndex");
         Utils.checkNotNull(iqviaAudienceQualityIndexAndCostPerTarget, "iqviaAudienceQualityIndexAndCostPerTarget");
         Utils.checkNotNull(crossixCostPerTarget, "crossixCostPerTarget");
+        Utils.checkNotNull(pharmaOptimization, "pharmaOptimization");
         Utils.checkNotNull(newBuyerTargetValue, "newBuyerTargetValue");
         this.maximizeReach = maximizeReach;
         this.maximizeLtvIncrementalReach = maximizeLtvIncrementalReach;
@@ -155,6 +162,7 @@ public class CampaignWorkflowROIGoalInput {
         this.crossixAudienceQualityIndex = crossixAudienceQualityIndex;
         this.iqviaAudienceQualityIndexAndCostPerTarget = iqviaAudienceQualityIndexAndCostPerTarget;
         this.crossixCostPerTarget = crossixCostPerTarget;
+        this.pharmaOptimization = pharmaOptimization;
         this.newBuyerTargetValue = newBuyerTargetValue;
     }
     
@@ -164,7 +172,7 @@ public class CampaignWorkflowROIGoalInput {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), JsonNullable.undefined());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -245,6 +253,11 @@ public class CampaignWorkflowROIGoalInput {
     @JsonIgnore
     public JsonNullable<Boolean> crossixCostPerTarget() {
         return crossixCostPerTarget;
+    }
+
+    @JsonIgnore
+    public JsonNullable<Boolean> pharmaOptimization() {
+        return pharmaOptimization;
     }
 
     @JsonIgnore
@@ -449,6 +462,18 @@ public class CampaignWorkflowROIGoalInput {
         return this;
     }
 
+    public CampaignWorkflowROIGoalInput withPharmaOptimization(boolean pharmaOptimization) {
+        Utils.checkNotNull(pharmaOptimization, "pharmaOptimization");
+        this.pharmaOptimization = JsonNullable.of(pharmaOptimization);
+        return this;
+    }
+
+    public CampaignWorkflowROIGoalInput withPharmaOptimization(JsonNullable<Boolean> pharmaOptimization) {
+        Utils.checkNotNull(pharmaOptimization, "pharmaOptimization");
+        this.pharmaOptimization = pharmaOptimization;
+        return this;
+    }
+
     public CampaignWorkflowROIGoalInput withNewBuyerTargetValue(int newBuyerTargetValue) {
         Utils.checkNotNull(newBuyerTargetValue, "newBuyerTargetValue");
         this.newBuyerTargetValue = JsonNullable.of(newBuyerTargetValue);
@@ -487,6 +512,7 @@ public class CampaignWorkflowROIGoalInput {
             Utils.enhancedDeepEquals(this.crossixAudienceQualityIndex, other.crossixAudienceQualityIndex) &&
             Utils.enhancedDeepEquals(this.iqviaAudienceQualityIndexAndCostPerTarget, other.iqviaAudienceQualityIndexAndCostPerTarget) &&
             Utils.enhancedDeepEquals(this.crossixCostPerTarget, other.crossixCostPerTarget) &&
+            Utils.enhancedDeepEquals(this.pharmaOptimization, other.pharmaOptimization) &&
             Utils.enhancedDeepEquals(this.newBuyerTargetValue, other.newBuyerTargetValue);
     }
     
@@ -498,7 +524,7 @@ public class CampaignWorkflowROIGoalInput {
             returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
             vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent,
             iqviaAudienceQualityIndex, crossixAudienceQualityIndex, iqviaAudienceQualityIndexAndCostPerTarget,
-            crossixCostPerTarget, newBuyerTargetValue);
+            crossixCostPerTarget, pharmaOptimization, newBuyerTargetValue);
     }
     
     @Override
@@ -520,6 +546,7 @@ public class CampaignWorkflowROIGoalInput {
                 "crossixAudienceQualityIndex", crossixAudienceQualityIndex,
                 "iqviaAudienceQualityIndexAndCostPerTarget", iqviaAudienceQualityIndexAndCostPerTarget,
                 "crossixCostPerTarget", crossixCostPerTarget,
+                "pharmaOptimization", pharmaOptimization,
                 "newBuyerTargetValue", newBuyerTargetValue);
     }
 
@@ -557,6 +584,8 @@ public class CampaignWorkflowROIGoalInput {
         private JsonNullable<Boolean> iqviaAudienceQualityIndexAndCostPerTarget = JsonNullable.undefined();
 
         private JsonNullable<Boolean> crossixCostPerTarget = JsonNullable.undefined();
+
+        private JsonNullable<Boolean> pharmaOptimization = JsonNullable.undefined();
 
         private JsonNullable<Integer> newBuyerTargetValue = JsonNullable.undefined();
 
@@ -773,6 +802,19 @@ public class CampaignWorkflowROIGoalInput {
         }
 
 
+        public Builder pharmaOptimization(boolean pharmaOptimization) {
+            Utils.checkNotNull(pharmaOptimization, "pharmaOptimization");
+            this.pharmaOptimization = JsonNullable.of(pharmaOptimization);
+            return this;
+        }
+
+        public Builder pharmaOptimization(JsonNullable<Boolean> pharmaOptimization) {
+            Utils.checkNotNull(pharmaOptimization, "pharmaOptimization");
+            this.pharmaOptimization = pharmaOptimization;
+            return this;
+        }
+
+
         public Builder newBuyerTargetValue(int newBuyerTargetValue) {
             Utils.checkNotNull(newBuyerTargetValue, "newBuyerTargetValue");
             this.newBuyerTargetValue = JsonNullable.of(newBuyerTargetValue);
@@ -793,7 +835,7 @@ public class CampaignWorkflowROIGoalInput {
                 returnOnAdSpendPercent, vcrInPercent, viewabilityInPercent,
                 vcpmInAdvertiserCurrency, cpcvInAdvertiserCurrency, miaozhenOTPInPercent,
                 iqviaAudienceQualityIndex, crossixAudienceQualityIndex, iqviaAudienceQualityIndexAndCostPerTarget,
-                crossixCostPerTarget, newBuyerTargetValue);
+                crossixCostPerTarget, pharmaOptimization, newBuyerTargetValue);
         }
 
     }
