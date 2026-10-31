@@ -1,0 +1,9 @@
+# CampaignWorkflowPharmaOptimizationGoalMetricWeightInput
+
+
+## Fields
+
+| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `metricType`                                                                                              | [PharmaOptimizationGoalMetricTypeInput](../../models/components/PharmaOptimizationGoalMetricTypeInput.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+| `weight`                                                                                                  | *double*                                                                                                  | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
