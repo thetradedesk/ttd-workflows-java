@@ -47,7 +47,7 @@ afterEvaluate {
                     description = config.description
                     url = 'https://github.com/thetradedesk/ttd-workflows-java'
                     scm {
-                        url = 'github.com/thetradedesk/ttd-workflows-java'
+                        url = 'https://github.com/thetradedesk/ttd-workflows-java'
                         connection = 'scm:git:ssh://git@github.com/thetradedesk/ttd-workflows-java.git'
                     }
                     licenses {

@@ -17,3 +17,4 @@
 | `vcpmInAdvertiserCurrency`    | *JsonNullable\<Double>*       | :heavy_minus_sign:            | N/A                           |
 | `cpcvInAdvertiserCurrency`    | *JsonNullable\<Double>*       | :heavy_minus_sign:            | N/A                           |
 | `miaozhenOTPInPercent`        | *JsonNullable\<Double>*       | :heavy_minus_sign:            | N/A                           |
+| `newBuyerTargetValue`         | *JsonNullable\<Integer>*      | :heavy_minus_sign:            | N/A                           |

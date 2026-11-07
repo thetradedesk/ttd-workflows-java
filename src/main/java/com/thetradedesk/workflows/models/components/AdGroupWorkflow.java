@@ -96,6 +96,11 @@ public class AdGroupWorkflow {
     private Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists;
 
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ownedBidLists")
+    private JsonNullable<? extends List<AdGroupOwnedBidList>> ownedBidLists;
+
+
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("flights")
     private Optional<? extends List<AdGroupFlight>> flights;
@@ -149,6 +154,7 @@ public class AdGroupWorkflow {
             @JsonProperty("roiGoal") AdGroupROIGoal roiGoal,
             @JsonProperty("creativeIds") Optional<? extends List<String>> creativeIds,
             @JsonProperty("associatedBidLists") Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists,
+            @JsonProperty("ownedBidLists") JsonNullable<? extends List<AdGroupOwnedBidList>> ownedBidLists,
             @JsonProperty("flights") Optional<? extends List<AdGroupFlight>> flights,
             @JsonProperty("koaOptimizationSettings") Optional<? extends AdGroupKoaOptimizationSettings> koaOptimizationSettings,
             @JsonProperty("comscoreSettings") AdGroupComscoreSettings comscoreSettings,
@@ -173,6 +179,7 @@ public class AdGroupWorkflow {
         Utils.checkNotNull(roiGoal, "roiGoal");
         Utils.checkNotNull(creativeIds, "creativeIds");
         Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+        Utils.checkNotNull(ownedBidLists, "ownedBidLists");
         Utils.checkNotNull(flights, "flights");
         Utils.checkNotNull(koaOptimizationSettings, "koaOptimizationSettings");
         Utils.checkNotNull(comscoreSettings, "comscoreSettings");
@@ -197,6 +204,7 @@ public class AdGroupWorkflow {
         this.roiGoal = roiGoal;
         this.creativeIds = creativeIds;
         this.associatedBidLists = associatedBidLists;
+        this.ownedBidLists = ownedBidLists;
         this.flights = flights;
         this.koaOptimizationSettings = koaOptimizationSettings;
         this.comscoreSettings = comscoreSettings;
@@ -222,9 +230,10 @@ public class AdGroupWorkflow {
             channel, funnelLocation, budget,
             JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             Optional.empty(), roiGoal, Optional.empty(),
-            Optional.empty(), Optional.empty(), Optional.empty(),
-            comscoreSettings, contractTargeting, Optional.empty(),
-            isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled, Optional.empty());
+            Optional.empty(), JsonNullable.undefined(), Optional.empty(),
+            Optional.empty(), comscoreSettings, contractTargeting,
+            Optional.empty(), isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -309,6 +318,12 @@ public class AdGroupWorkflow {
     @JsonIgnore
     public Optional<List<AdGroupAssociateBidList>> associatedBidLists() {
         return (Optional<List<AdGroupAssociateBidList>>) associatedBidLists;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<AdGroupOwnedBidList>> ownedBidLists() {
+        return (JsonNullable<List<AdGroupOwnedBidList>>) ownedBidLists;
     }
 
     @SuppressWarnings("unchecked")
@@ -529,6 +544,18 @@ public class AdGroupWorkflow {
         return this;
     }
 
+    public AdGroupWorkflow withOwnedBidLists(List<AdGroupOwnedBidList> ownedBidLists) {
+        Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+        this.ownedBidLists = JsonNullable.of(ownedBidLists);
+        return this;
+    }
+
+    public AdGroupWorkflow withOwnedBidLists(JsonNullable<? extends List<AdGroupOwnedBidList>> ownedBidLists) {
+        Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+        this.ownedBidLists = ownedBidLists;
+        return this;
+    }
+
     public AdGroupWorkflow withFlights(List<AdGroupFlight> flights) {
         Utils.checkNotNull(flights, "flights");
         this.flights = Optional.ofNullable(flights);
@@ -631,6 +658,7 @@ public class AdGroupWorkflow {
             Utils.enhancedDeepEquals(this.roiGoal, other.roiGoal) &&
             Utils.enhancedDeepEquals(this.creativeIds, other.creativeIds) &&
             Utils.enhancedDeepEquals(this.associatedBidLists, other.associatedBidLists) &&
+            Utils.enhancedDeepEquals(this.ownedBidLists, other.ownedBidLists) &&
             Utils.enhancedDeepEquals(this.flights, other.flights) &&
             Utils.enhancedDeepEquals(this.koaOptimizationSettings, other.koaOptimizationSettings) &&
             Utils.enhancedDeepEquals(this.comscoreSettings, other.comscoreSettings) &&
@@ -649,9 +677,10 @@ public class AdGroupWorkflow {
             channel, funnelLocation, budget,
             baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, marketType,
             audienceTargeting, roiGoal, creativeIds,
-            associatedBidLists, flights, koaOptimizationSettings,
-            comscoreSettings, contractTargeting, dimensionalBiddingAutoOptimizationSettings,
-            isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled, nielsenTrackingAttributes);
+            associatedBidLists, ownedBidLists, flights,
+            koaOptimizationSettings, comscoreSettings, contractTargeting,
+            dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
+            nielsenTrackingAttributes);
     }
     
     @Override
@@ -673,6 +702,7 @@ public class AdGroupWorkflow {
                 "roiGoal", roiGoal,
                 "creativeIds", creativeIds,
                 "associatedBidLists", associatedBidLists,
+                "ownedBidLists", ownedBidLists,
                 "flights", flights,
                 "koaOptimizationSettings", koaOptimizationSettings,
                 "comscoreSettings", comscoreSettings,
@@ -717,6 +747,8 @@ public class AdGroupWorkflow {
         private Optional<? extends List<String>> creativeIds = Optional.empty();
 
         private Optional<? extends List<AdGroupAssociateBidList>> associatedBidLists = Optional.empty();
+
+        private JsonNullable<? extends List<AdGroupOwnedBidList>> ownedBidLists = JsonNullable.undefined();
 
         private Optional<? extends List<AdGroupFlight>> flights = Optional.empty();
 
@@ -917,6 +949,19 @@ public class AdGroupWorkflow {
         }
 
 
+        public Builder ownedBidLists(List<AdGroupOwnedBidList> ownedBidLists) {
+            Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+            this.ownedBidLists = JsonNullable.of(ownedBidLists);
+            return this;
+        }
+
+        public Builder ownedBidLists(JsonNullable<? extends List<AdGroupOwnedBidList>> ownedBidLists) {
+            Utils.checkNotNull(ownedBidLists, "ownedBidLists");
+            this.ownedBidLists = ownedBidLists;
+            return this;
+        }
+
+
         public Builder flights(List<AdGroupFlight> flights) {
             Utils.checkNotNull(flights, "flights");
             this.flights = Optional.ofNullable(flights);
@@ -1004,9 +1049,10 @@ public class AdGroupWorkflow {
                 channel, funnelLocation, budget,
                 baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, marketType,
                 audienceTargeting, roiGoal, creativeIds,
-                associatedBidLists, flights, koaOptimizationSettings,
-                comscoreSettings, contractTargeting, dimensionalBiddingAutoOptimizationSettings,
-                isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled, nielsenTrackingAttributes);
+                associatedBidLists, ownedBidLists, flights,
+                koaOptimizationSettings, comscoreSettings, contractTargeting,
+                dimensionalBiddingAutoOptimizationSettings, isUseClicksAsConversionsEnabled, isUseSecondaryConversionsEnabled,
+                nielsenTrackingAttributes);
         }
 
     }
