@@ -117,6 +117,11 @@ public class CampaignUpdateWorkflowPrimaryInput {
     @JsonProperty("budget")
     private Optional<? extends CampaignUpdateWorkflowBudgetInput> budget;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("pharmaOptimizationGoalSettingUpdates")
+    private JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettingUpdates;
+
     @JsonCreator
     public CampaignUpdateWorkflowPrimaryInput(
             @JsonProperty("description") JsonNullable<String> description,
@@ -137,7 +142,8 @@ public class CampaignUpdateWorkflowPrimaryInput {
             @JsonProperty("primaryChannel") Optional<? extends CampaignChannelType> primaryChannel,
             @JsonProperty("primaryGoal") Optional<? extends CampaignWorkflowROIGoalInput> primaryGoal,
             @JsonProperty("startDateInUtc") JsonNullable<OffsetDateTime> startDateInUtc,
-            @JsonProperty("budget") Optional<? extends CampaignUpdateWorkflowBudgetInput> budget) {
+            @JsonProperty("budget") Optional<? extends CampaignUpdateWorkflowBudgetInput> budget,
+            @JsonProperty("pharmaOptimizationGoalSettingUpdates") JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettingUpdates) {
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(campaignGroupId, "campaignGroupId");
         Utils.checkNotNull(timeZone, "timeZone");
@@ -157,6 +163,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
         Utils.checkNotNull(primaryGoal, "primaryGoal");
         Utils.checkNotNull(startDateInUtc, "startDateInUtc");
         Utils.checkNotNull(budget, "budget");
+        Utils.checkNotNull(pharmaOptimizationGoalSettingUpdates, "pharmaOptimizationGoalSettingUpdates");
         this.description = description;
         this.campaignGroupId = campaignGroupId;
         this.timeZone = timeZone;
@@ -176,6 +183,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
         this.primaryGoal = primaryGoal;
         this.startDateInUtc = startDateInUtc;
         this.budget = budget;
+        this.pharmaOptimizationGoalSettingUpdates = pharmaOptimizationGoalSettingUpdates;
     }
     
     public CampaignUpdateWorkflowPrimaryInput() {
@@ -185,7 +193,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             Optional.empty(), Optional.empty(), JsonNullable.undefined(),
             Optional.empty(), Optional.empty(), JsonNullable.undefined(),
-            Optional.empty());
+            Optional.empty(), JsonNullable.undefined());
     }
 
     @JsonIgnore
@@ -289,6 +297,12 @@ public class CampaignUpdateWorkflowPrimaryInput {
     @JsonIgnore
     public Optional<CampaignUpdateWorkflowBudgetInput> budget() {
         return (Optional<CampaignUpdateWorkflowBudgetInput>) budget;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettingUpdates() {
+        return (JsonNullable<List<CampaignWorkflowPharmaOptimizationGoalSettingInput>>) pharmaOptimizationGoalSettingUpdates;
     }
 
     public static Builder builder() {
@@ -531,6 +545,18 @@ public class CampaignUpdateWorkflowPrimaryInput {
         return this;
     }
 
+    public CampaignUpdateWorkflowPrimaryInput withPharmaOptimizationGoalSettingUpdates(List<CampaignWorkflowPharmaOptimizationGoalSettingInput> pharmaOptimizationGoalSettingUpdates) {
+        Utils.checkNotNull(pharmaOptimizationGoalSettingUpdates, "pharmaOptimizationGoalSettingUpdates");
+        this.pharmaOptimizationGoalSettingUpdates = JsonNullable.of(pharmaOptimizationGoalSettingUpdates);
+        return this;
+    }
+
+    public CampaignUpdateWorkflowPrimaryInput withPharmaOptimizationGoalSettingUpdates(JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettingUpdates) {
+        Utils.checkNotNull(pharmaOptimizationGoalSettingUpdates, "pharmaOptimizationGoalSettingUpdates");
+        this.pharmaOptimizationGoalSettingUpdates = pharmaOptimizationGoalSettingUpdates;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -559,7 +585,8 @@ public class CampaignUpdateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.primaryChannel, other.primaryChannel) &&
             Utils.enhancedDeepEquals(this.primaryGoal, other.primaryGoal) &&
             Utils.enhancedDeepEquals(this.startDateInUtc, other.startDateInUtc) &&
-            Utils.enhancedDeepEquals(this.budget, other.budget);
+            Utils.enhancedDeepEquals(this.budget, other.budget) &&
+            Utils.enhancedDeepEquals(this.pharmaOptimizationGoalSettingUpdates, other.pharmaOptimizationGoalSettingUpdates);
     }
     
     @Override
@@ -571,7 +598,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
             seedId, campaignConversionReportingColumns, isManagedByTTD,
             secondaryGoal, tertiaryGoal, name,
             primaryChannel, primaryGoal, startDateInUtc,
-            budget);
+            budget, pharmaOptimizationGoalSettingUpdates);
     }
     
     @Override
@@ -595,7 +622,8 @@ public class CampaignUpdateWorkflowPrimaryInput {
                 "primaryChannel", primaryChannel,
                 "primaryGoal", primaryGoal,
                 "startDateInUtc", startDateInUtc,
-                "budget", budget);
+                "budget", budget,
+                "pharmaOptimizationGoalSettingUpdates", pharmaOptimizationGoalSettingUpdates);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -638,6 +666,8 @@ public class CampaignUpdateWorkflowPrimaryInput {
         private JsonNullable<OffsetDateTime> startDateInUtc = JsonNullable.undefined();
 
         private Optional<? extends CampaignUpdateWorkflowBudgetInput> budget = Optional.empty();
+
+        private JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettingUpdates = JsonNullable.undefined();
 
         private Builder() {
           // force use of static builder() method
@@ -890,6 +920,19 @@ public class CampaignUpdateWorkflowPrimaryInput {
             return this;
         }
 
+
+        public Builder pharmaOptimizationGoalSettingUpdates(List<CampaignWorkflowPharmaOptimizationGoalSettingInput> pharmaOptimizationGoalSettingUpdates) {
+            Utils.checkNotNull(pharmaOptimizationGoalSettingUpdates, "pharmaOptimizationGoalSettingUpdates");
+            this.pharmaOptimizationGoalSettingUpdates = JsonNullable.of(pharmaOptimizationGoalSettingUpdates);
+            return this;
+        }
+
+        public Builder pharmaOptimizationGoalSettingUpdates(JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettingUpdates) {
+            Utils.checkNotNull(pharmaOptimizationGoalSettingUpdates, "pharmaOptimizationGoalSettingUpdates");
+            this.pharmaOptimizationGoalSettingUpdates = pharmaOptimizationGoalSettingUpdates;
+            return this;
+        }
+
         public CampaignUpdateWorkflowPrimaryInput build() {
 
             return new CampaignUpdateWorkflowPrimaryInput(
@@ -899,7 +942,7 @@ public class CampaignUpdateWorkflowPrimaryInput {
                 seedId, campaignConversionReportingColumns, isManagedByTTD,
                 secondaryGoal, tertiaryGoal, name,
                 primaryChannel, primaryGoal, startDateInUtc,
-                budget);
+                budget, pharmaOptimizationGoalSettingUpdates);
         }
 
     }

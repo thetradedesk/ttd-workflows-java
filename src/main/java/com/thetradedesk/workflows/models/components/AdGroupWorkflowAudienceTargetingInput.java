@@ -15,6 +15,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
+import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -22,7 +23,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("audienceId")
-    private JsonNullable<String> audienceId;
+    private Optional<? extends StringWorkflowsOptional> audienceId;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -66,7 +67,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
 
     @JsonCreator
     public AdGroupWorkflowAudienceTargetingInput(
-            @JsonProperty("audienceId") JsonNullable<String> audienceId,
+            @JsonProperty("audienceId") Optional<? extends StringWorkflowsOptional> audienceId,
             @JsonProperty("audienceAcceleratorExclusionsEnabled") JsonNullable<Boolean> audienceAcceleratorExclusionsEnabled,
             @JsonProperty("audienceBoosterEnabled") JsonNullable<Boolean> audienceBoosterEnabled,
             @JsonProperty("audienceExcluderEnabled") JsonNullable<Boolean> audienceExcluderEnabled,
@@ -96,14 +97,15 @@ public class AdGroupWorkflowAudienceTargetingInput {
     }
     
     public AdGroupWorkflowAudienceTargetingInput() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+        this(Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
             JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined());
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<String> audienceId() {
-        return audienceId;
+    public Optional<StringWorkflowsOptional> audienceId() {
+        return (Optional<StringWorkflowsOptional>) audienceId;
     }
 
     @JsonIgnore
@@ -152,13 +154,14 @@ public class AdGroupWorkflowAudienceTargetingInput {
     }
 
 
-    public AdGroupWorkflowAudienceTargetingInput withAudienceId(String audienceId) {
+    public AdGroupWorkflowAudienceTargetingInput withAudienceId(StringWorkflowsOptional audienceId) {
         Utils.checkNotNull(audienceId, "audienceId");
-        this.audienceId = JsonNullable.of(audienceId);
+        this.audienceId = Optional.ofNullable(audienceId);
         return this;
     }
 
-    public AdGroupWorkflowAudienceTargetingInput withAudienceId(JsonNullable<String> audienceId) {
+
+    public AdGroupWorkflowAudienceTargetingInput withAudienceId(Optional<? extends StringWorkflowsOptional> audienceId) {
         Utils.checkNotNull(audienceId, "audienceId");
         this.audienceId = audienceId;
         return this;
@@ -306,7 +309,7 @@ public class AdGroupWorkflowAudienceTargetingInput {
     @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
 
-        private JsonNullable<String> audienceId = JsonNullable.undefined();
+        private Optional<? extends StringWorkflowsOptional> audienceId = Optional.empty();
 
         private JsonNullable<Boolean> audienceAcceleratorExclusionsEnabled = JsonNullable.undefined();
 
@@ -329,13 +332,13 @@ public class AdGroupWorkflowAudienceTargetingInput {
         }
 
 
-        public Builder audienceId(String audienceId) {
+        public Builder audienceId(StringWorkflowsOptional audienceId) {
             Utils.checkNotNull(audienceId, "audienceId");
-            this.audienceId = JsonNullable.of(audienceId);
+            this.audienceId = Optional.ofNullable(audienceId);
             return this;
         }
 
-        public Builder audienceId(JsonNullable<String> audienceId) {
+        public Builder audienceId(Optional<? extends StringWorkflowsOptional> audienceId) {
             Utils.checkNotNull(audienceId, "audienceId");
             this.audienceId = audienceId;
             return this;
