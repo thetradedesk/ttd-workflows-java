@@ -57,13 +57,33 @@ public class AdGroupUpdateWorkflowPrimaryInput {
 
 
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("associatedBidLists")
+    private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("bidListsToAddOrUpdate")
+    private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> bidListsToAddOrUpdate;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("bidListIdsToRemove")
+    private JsonNullable<? extends List<String>> bidListIdsToRemove;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("creativeIds")
     private JsonNullable<? extends List<String>> creativeIds;
 
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("associatedBidLists")
-    private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists;
+    @JsonProperty("creativeIdsToAdd")
+    private JsonNullable<? extends List<String>> creativeIdsToAdd;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("creativeIdsToRemove")
+    private JsonNullable<? extends List<String>> creativeIdsToRemove;
 
 
     @JsonInclude(Include.NON_ABSENT)
@@ -94,8 +114,12 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             @JsonProperty("maxBidCPMInAdvertiserCurrency") JsonNullable<Double> maxBidCPMInAdvertiserCurrency,
             @JsonProperty("audienceTargeting") Optional<? extends AdGroupWorkflowAudienceTargetingInput> audienceTargeting,
             @JsonProperty("roiGoal") Optional<? extends AdGroupWorkflowROIGoalInput> roiGoal,
-            @JsonProperty("creativeIds") JsonNullable<? extends List<String>> creativeIds,
             @JsonProperty("associatedBidLists") JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists,
+            @JsonProperty("bidListsToAddOrUpdate") JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> bidListsToAddOrUpdate,
+            @JsonProperty("bidListIdsToRemove") JsonNullable<? extends List<String>> bidListIdsToRemove,
+            @JsonProperty("creativeIds") JsonNullable<? extends List<String>> creativeIds,
+            @JsonProperty("creativeIdsToAdd") JsonNullable<? extends List<String>> creativeIdsToAdd,
+            @JsonProperty("creativeIdsToRemove") JsonNullable<? extends List<String>> creativeIdsToRemove,
             @JsonProperty("name") JsonNullable<String> name,
             @JsonProperty("channel") Optional<? extends AdGroupChannel> channel,
             @JsonProperty("funnelLocation") Optional<? extends AdGroupFunnelLocation> funnelLocation,
@@ -107,8 +131,12 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         Utils.checkNotNull(maxBidCPMInAdvertiserCurrency, "maxBidCPMInAdvertiserCurrency");
         Utils.checkNotNull(audienceTargeting, "audienceTargeting");
         Utils.checkNotNull(roiGoal, "roiGoal");
-        Utils.checkNotNull(creativeIds, "creativeIds");
         Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+        Utils.checkNotNull(bidListsToAddOrUpdate, "bidListsToAddOrUpdate");
+        Utils.checkNotNull(bidListIdsToRemove, "bidListIdsToRemove");
+        Utils.checkNotNull(creativeIds, "creativeIds");
+        Utils.checkNotNull(creativeIdsToAdd, "creativeIdsToAdd");
+        Utils.checkNotNull(creativeIdsToRemove, "creativeIdsToRemove");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(channel, "channel");
         Utils.checkNotNull(funnelLocation, "funnelLocation");
@@ -120,8 +148,12 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         this.maxBidCPMInAdvertiserCurrency = maxBidCPMInAdvertiserCurrency;
         this.audienceTargeting = audienceTargeting;
         this.roiGoal = roiGoal;
-        this.creativeIds = creativeIds;
         this.associatedBidLists = associatedBidLists;
+        this.bidListsToAddOrUpdate = bidListsToAddOrUpdate;
+        this.bidListIdsToRemove = bidListIdsToRemove;
+        this.creativeIds = creativeIds;
+        this.creativeIdsToAdd = creativeIdsToAdd;
+        this.creativeIdsToRemove = creativeIdsToRemove;
         this.name = name;
         this.channel = channel;
         this.funnelLocation = funnelLocation;
@@ -132,8 +164,9 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
             Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(),
-            JsonNullable.undefined(), Optional.empty(), Optional.empty(),
-            Optional.empty());
+            JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(),
+            JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     @JsonIgnore
@@ -176,14 +209,38 @@ public class AdGroupUpdateWorkflowPrimaryInput {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
+    public JsonNullable<List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists() {
+        return (JsonNullable<List<AdGroupWorkflowAssociateBidListInput>>) associatedBidLists;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<AdGroupWorkflowAssociateBidListInput>> bidListsToAddOrUpdate() {
+        return (JsonNullable<List<AdGroupWorkflowAssociateBidListInput>>) bidListsToAddOrUpdate;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> bidListIdsToRemove() {
+        return (JsonNullable<List<String>>) bidListIdsToRemove;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
     public JsonNullable<List<String>> creativeIds() {
         return (JsonNullable<List<String>>) creativeIds;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public JsonNullable<List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists() {
-        return (JsonNullable<List<AdGroupWorkflowAssociateBidListInput>>) associatedBidLists;
+    public JsonNullable<List<String>> creativeIdsToAdd() {
+        return (JsonNullable<List<String>>) creativeIdsToAdd;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<String>> creativeIdsToRemove() {
+        return (JsonNullable<List<String>>) creativeIdsToRemove;
     }
 
     @JsonIgnore
@@ -301,6 +358,42 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         return this;
     }
 
+    public AdGroupUpdateWorkflowPrimaryInput withAssociatedBidLists(List<AdGroupWorkflowAssociateBidListInput> associatedBidLists) {
+        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+        this.associatedBidLists = JsonNullable.of(associatedBidLists);
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withAssociatedBidLists(JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists) {
+        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+        this.associatedBidLists = associatedBidLists;
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withBidListsToAddOrUpdate(List<AdGroupWorkflowAssociateBidListInput> bidListsToAddOrUpdate) {
+        Utils.checkNotNull(bidListsToAddOrUpdate, "bidListsToAddOrUpdate");
+        this.bidListsToAddOrUpdate = JsonNullable.of(bidListsToAddOrUpdate);
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withBidListsToAddOrUpdate(JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> bidListsToAddOrUpdate) {
+        Utils.checkNotNull(bidListsToAddOrUpdate, "bidListsToAddOrUpdate");
+        this.bidListsToAddOrUpdate = bidListsToAddOrUpdate;
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withBidListIdsToRemove(List<String> bidListIdsToRemove) {
+        Utils.checkNotNull(bidListIdsToRemove, "bidListIdsToRemove");
+        this.bidListIdsToRemove = JsonNullable.of(bidListIdsToRemove);
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withBidListIdsToRemove(JsonNullable<? extends List<String>> bidListIdsToRemove) {
+        Utils.checkNotNull(bidListIdsToRemove, "bidListIdsToRemove");
+        this.bidListIdsToRemove = bidListIdsToRemove;
+        return this;
+    }
+
     public AdGroupUpdateWorkflowPrimaryInput withCreativeIds(List<String> creativeIds) {
         Utils.checkNotNull(creativeIds, "creativeIds");
         this.creativeIds = JsonNullable.of(creativeIds);
@@ -313,15 +406,27 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         return this;
     }
 
-    public AdGroupUpdateWorkflowPrimaryInput withAssociatedBidLists(List<AdGroupWorkflowAssociateBidListInput> associatedBidLists) {
-        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-        this.associatedBidLists = JsonNullable.of(associatedBidLists);
+    public AdGroupUpdateWorkflowPrimaryInput withCreativeIdsToAdd(List<String> creativeIdsToAdd) {
+        Utils.checkNotNull(creativeIdsToAdd, "creativeIdsToAdd");
+        this.creativeIdsToAdd = JsonNullable.of(creativeIdsToAdd);
         return this;
     }
 
-    public AdGroupUpdateWorkflowPrimaryInput withAssociatedBidLists(JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists) {
-        Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-        this.associatedBidLists = associatedBidLists;
+    public AdGroupUpdateWorkflowPrimaryInput withCreativeIdsToAdd(JsonNullable<? extends List<String>> creativeIdsToAdd) {
+        Utils.checkNotNull(creativeIdsToAdd, "creativeIdsToAdd");
+        this.creativeIdsToAdd = creativeIdsToAdd;
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withCreativeIdsToRemove(List<String> creativeIdsToRemove) {
+        Utils.checkNotNull(creativeIdsToRemove, "creativeIdsToRemove");
+        this.creativeIdsToRemove = JsonNullable.of(creativeIdsToRemove);
+        return this;
+    }
+
+    public AdGroupUpdateWorkflowPrimaryInput withCreativeIdsToRemove(JsonNullable<? extends List<String>> creativeIdsToRemove) {
+        Utils.checkNotNull(creativeIdsToRemove, "creativeIdsToRemove");
+        this.creativeIdsToRemove = creativeIdsToRemove;
         return this;
     }
 
@@ -393,8 +498,12 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.maxBidCPMInAdvertiserCurrency, other.maxBidCPMInAdvertiserCurrency) &&
             Utils.enhancedDeepEquals(this.audienceTargeting, other.audienceTargeting) &&
             Utils.enhancedDeepEquals(this.roiGoal, other.roiGoal) &&
-            Utils.enhancedDeepEquals(this.creativeIds, other.creativeIds) &&
             Utils.enhancedDeepEquals(this.associatedBidLists, other.associatedBidLists) &&
+            Utils.enhancedDeepEquals(this.bidListsToAddOrUpdate, other.bidListsToAddOrUpdate) &&
+            Utils.enhancedDeepEquals(this.bidListIdsToRemove, other.bidListIdsToRemove) &&
+            Utils.enhancedDeepEquals(this.creativeIds, other.creativeIds) &&
+            Utils.enhancedDeepEquals(this.creativeIdsToAdd, other.creativeIdsToAdd) &&
+            Utils.enhancedDeepEquals(this.creativeIdsToRemove, other.creativeIdsToRemove) &&
             Utils.enhancedDeepEquals(this.name, other.name) &&
             Utils.enhancedDeepEquals(this.channel, other.channel) &&
             Utils.enhancedDeepEquals(this.funnelLocation, other.funnelLocation) &&
@@ -406,9 +515,10 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         return Utils.enhancedHash(
             isEnabled, description, budget,
             baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
-            roiGoal, creativeIds, associatedBidLists,
-            name, channel, funnelLocation,
-            marketType);
+            roiGoal, associatedBidLists, bidListsToAddOrUpdate,
+            bidListIdsToRemove, creativeIds, creativeIdsToAdd,
+            creativeIdsToRemove, name, channel,
+            funnelLocation, marketType);
     }
     
     @Override
@@ -421,8 +531,12 @@ public class AdGroupUpdateWorkflowPrimaryInput {
                 "maxBidCPMInAdvertiserCurrency", maxBidCPMInAdvertiserCurrency,
                 "audienceTargeting", audienceTargeting,
                 "roiGoal", roiGoal,
-                "creativeIds", creativeIds,
                 "associatedBidLists", associatedBidLists,
+                "bidListsToAddOrUpdate", bidListsToAddOrUpdate,
+                "bidListIdsToRemove", bidListIdsToRemove,
+                "creativeIds", creativeIds,
+                "creativeIdsToAdd", creativeIdsToAdd,
+                "creativeIdsToRemove", creativeIdsToRemove,
                 "name", name,
                 "channel", channel,
                 "funnelLocation", funnelLocation,
@@ -446,9 +560,17 @@ public class AdGroupUpdateWorkflowPrimaryInput {
 
         private Optional<? extends AdGroupWorkflowROIGoalInput> roiGoal = Optional.empty();
 
+        private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> bidListsToAddOrUpdate = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> bidListIdsToRemove = JsonNullable.undefined();
+
         private JsonNullable<? extends List<String>> creativeIds = JsonNullable.undefined();
 
-        private JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists = JsonNullable.undefined();
+        private JsonNullable<? extends List<String>> creativeIdsToAdd = JsonNullable.undefined();
+
+        private JsonNullable<? extends List<String>> creativeIdsToRemove = JsonNullable.undefined();
 
         private JsonNullable<String> name = JsonNullable.undefined();
 
@@ -554,6 +676,45 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         }
 
 
+        public Builder associatedBidLists(List<AdGroupWorkflowAssociateBidListInput> associatedBidLists) {
+            Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+            this.associatedBidLists = JsonNullable.of(associatedBidLists);
+            return this;
+        }
+
+        public Builder associatedBidLists(JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists) {
+            Utils.checkNotNull(associatedBidLists, "associatedBidLists");
+            this.associatedBidLists = associatedBidLists;
+            return this;
+        }
+
+
+        public Builder bidListsToAddOrUpdate(List<AdGroupWorkflowAssociateBidListInput> bidListsToAddOrUpdate) {
+            Utils.checkNotNull(bidListsToAddOrUpdate, "bidListsToAddOrUpdate");
+            this.bidListsToAddOrUpdate = JsonNullable.of(bidListsToAddOrUpdate);
+            return this;
+        }
+
+        public Builder bidListsToAddOrUpdate(JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> bidListsToAddOrUpdate) {
+            Utils.checkNotNull(bidListsToAddOrUpdate, "bidListsToAddOrUpdate");
+            this.bidListsToAddOrUpdate = bidListsToAddOrUpdate;
+            return this;
+        }
+
+
+        public Builder bidListIdsToRemove(List<String> bidListIdsToRemove) {
+            Utils.checkNotNull(bidListIdsToRemove, "bidListIdsToRemove");
+            this.bidListIdsToRemove = JsonNullable.of(bidListIdsToRemove);
+            return this;
+        }
+
+        public Builder bidListIdsToRemove(JsonNullable<? extends List<String>> bidListIdsToRemove) {
+            Utils.checkNotNull(bidListIdsToRemove, "bidListIdsToRemove");
+            this.bidListIdsToRemove = bidListIdsToRemove;
+            return this;
+        }
+
+
         public Builder creativeIds(List<String> creativeIds) {
             Utils.checkNotNull(creativeIds, "creativeIds");
             this.creativeIds = JsonNullable.of(creativeIds);
@@ -567,15 +728,28 @@ public class AdGroupUpdateWorkflowPrimaryInput {
         }
 
 
-        public Builder associatedBidLists(List<AdGroupWorkflowAssociateBidListInput> associatedBidLists) {
-            Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-            this.associatedBidLists = JsonNullable.of(associatedBidLists);
+        public Builder creativeIdsToAdd(List<String> creativeIdsToAdd) {
+            Utils.checkNotNull(creativeIdsToAdd, "creativeIdsToAdd");
+            this.creativeIdsToAdd = JsonNullable.of(creativeIdsToAdd);
             return this;
         }
 
-        public Builder associatedBidLists(JsonNullable<? extends List<AdGroupWorkflowAssociateBidListInput>> associatedBidLists) {
-            Utils.checkNotNull(associatedBidLists, "associatedBidLists");
-            this.associatedBidLists = associatedBidLists;
+        public Builder creativeIdsToAdd(JsonNullable<? extends List<String>> creativeIdsToAdd) {
+            Utils.checkNotNull(creativeIdsToAdd, "creativeIdsToAdd");
+            this.creativeIdsToAdd = creativeIdsToAdd;
+            return this;
+        }
+
+
+        public Builder creativeIdsToRemove(List<String> creativeIdsToRemove) {
+            Utils.checkNotNull(creativeIdsToRemove, "creativeIdsToRemove");
+            this.creativeIdsToRemove = JsonNullable.of(creativeIdsToRemove);
+            return this;
+        }
+
+        public Builder creativeIdsToRemove(JsonNullable<? extends List<String>> creativeIdsToRemove) {
+            Utils.checkNotNull(creativeIdsToRemove, "creativeIdsToRemove");
+            this.creativeIdsToRemove = creativeIdsToRemove;
             return this;
         }
 
@@ -636,9 +810,10 @@ public class AdGroupUpdateWorkflowPrimaryInput {
             return new AdGroupUpdateWorkflowPrimaryInput(
                 isEnabled, description, budget,
                 baseBidCPMInAdvertiserCurrency, maxBidCPMInAdvertiserCurrency, audienceTargeting,
-                roiGoal, creativeIds, associatedBidLists,
-                name, channel, funnelLocation,
-                marketType);
+                roiGoal, associatedBidLists, bidListsToAddOrUpdate,
+                bidListIdsToRemove, creativeIds, creativeIdsToAdd,
+                creativeIdsToRemove, name, channel,
+                funnelLocation, marketType);
         }
 
     }

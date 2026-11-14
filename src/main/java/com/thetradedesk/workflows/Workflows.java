@@ -268,7 +268,7 @@ public class Workflows {
         return new Builder();
     }
 
-    public Workflows(SDKConfiguration sdkConfiguration) {
+    private Workflows(SDKConfiguration sdkConfiguration) {
         sdkConfiguration.initialize();
         this.adGroup = new AdGroup(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);
