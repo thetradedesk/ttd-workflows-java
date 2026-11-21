@@ -73,6 +73,20 @@ public class AsyncDmp {
      * Status".
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<GetFirstPartyDataJobResponse>} - The async response
+     */
+    public CompletableFuture<GetFirstPartyDataJobResponse> getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request) {
+        return getFirstPartyDataJob(request, Optional.empty());
+    }
+
+    /**
+     * Submit a job for first-party data retrieval for an advertiser
+     * 
+     * <p>When a first-party data query is submitted, a job ID is returned.
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<GetFirstPartyDataJobResponse>} - The async response
      */
@@ -110,6 +124,20 @@ public class AsyncDmp {
      */
     public CompletableFuture<GetThirdPartyDataJobResponse> getThirdPartyDataJobDirect() {
         return getThirdPartyDataJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a job for third-party data retrieval for a partner
+     * 
+     * <p>When a third-party data query is submitted, a job ID is returned.
+     * This job ID can be used to poll for the job's status, and when complete, the results download link,
+     * using the associated operation under "Job Status".
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<GetThirdPartyDataJobResponse>} - The async response
+     */
+    public CompletableFuture<GetThirdPartyDataJobResponse> getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request) {
+        return getThirdPartyDataJob(request, Optional.empty());
     }
 
     /**

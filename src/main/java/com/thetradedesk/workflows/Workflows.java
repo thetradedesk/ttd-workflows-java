@@ -10,8 +10,10 @@ import com.thetradedesk.workflows.utils.Hook.SdkInitData;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.SpeakeasyHTTPClient;
 import com.thetradedesk.workflows.utils.Utils;
+import java.lang.IllegalArgumentException;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -214,6 +216,23 @@ public class Workflows {
         }
 
         /**
+         * Sets the default timeout for each request attempt. A per-call {@code timeout}
+         * takes precedence; this takes precedence over {@code x-speakeasy-timeout}.
+         * It bounds the whole call, including reading the response body.
+         *
+         * @param timeout The timeout to apply to every request; must be positive.
+         * @return The builder instance.
+         */
+        public Builder timeout(Duration timeout) {
+            Utils.checkNotNull(timeout, "timeout");
+            if (timeout.isZero() || timeout.isNegative()) {
+                throw new IllegalArgumentException("timeout must be positive");
+            }
+            this.sdkConfiguration.setTimeout(Optional.of(timeout));
+            return this;
+        }
+
+        /**
          * Enables debug logging for HTTP requests and responses, including JSON body content.
          * <p>
          * Convenience method that calls {@link HTTPClient#enableDebugLogging(boolean)}.
@@ -268,7 +287,7 @@ public class Workflows {
         return new Builder();
     }
 
-    public Workflows(SDKConfiguration sdkConfiguration) {
+    private Workflows(SDKConfiguration sdkConfiguration) {
         sdkConfiguration.initialize();
         this.adGroup = new AdGroup(sdkConfiguration);
         this.campaign = new Campaign(sdkConfiguration);

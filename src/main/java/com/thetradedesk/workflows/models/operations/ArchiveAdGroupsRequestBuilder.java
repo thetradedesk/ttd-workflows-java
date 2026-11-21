@@ -15,6 +15,7 @@ import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.String;
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class ArchiveAdGroupsRequestBuilder {
                             new TypeReference<Optional<Boolean>>() {});
     private Optional<? extends List<String>> requestBody = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
+    private Optional<Duration> timeout = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
@@ -68,6 +70,18 @@ public class ArchiveAdGroupsRequestBuilder {
         this.retryConfig = retryConfig;
         return this;
     }
+                
+    public ArchiveAdGroupsRequestBuilder timeout(Duration timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = Optional.of(timeout);
+        return this;
+    }
+
+    public ArchiveAdGroupsRequestBuilder timeout(Optional<Duration> timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = timeout;
+        return this;
+    }
 
 
     private ArchiveAdGroupsRequest buildRequest() {
@@ -84,6 +98,7 @@ public class ArchiveAdGroupsRequestBuilder {
     public ArchiveAdGroupsResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
+            .timeout(timeout)
             .build());
 
         RequestOperation<ArchiveAdGroupsRequest, ArchiveAdGroupsResponse> operation

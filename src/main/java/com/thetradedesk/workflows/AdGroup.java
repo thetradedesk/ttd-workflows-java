@@ -75,6 +75,17 @@ public class AdGroup {
      * Create a new ad group
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public CreateAdGroupResponse createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request) {
+        return createAdGroup(request, Optional.empty());
+    }
+
+    /**
+     * Create a new ad group
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -114,6 +125,19 @@ public class AdGroup {
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public UpdateAdGroupResponse updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request) {
+        return updateAdGroup(request, Optional.empty());
+    }
+
+    /**
+     * Update an ad group
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -145,6 +169,20 @@ public class AdGroup {
      */
     public ArchiveAdGroupsResponse archiveAdGroupsDirect() {
         return archiveAdGroups(Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Archive multiple ad groups
+     * 
+     * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
+     * 
+     * @param forceArchive 
+     * @param requestBody 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public ArchiveAdGroupsResponse archiveAdGroups(Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody) {
+        return archiveAdGroups(forceArchive, requestBody, Optional.empty());
     }
 
     /**
@@ -195,6 +233,17 @@ public class AdGroup {
      * Submit a job to create multiple new ad groups
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public CreateAdGroupsJobResponse createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request) {
+        return createAdGroupsJob(request, Optional.empty());
+    }
+
+    /**
+     * Submit a job to create multiple new ad groups
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -226,6 +275,19 @@ public class AdGroup {
      */
     public UpdateAdGroupsJobResponse updateAdGroupsJobDirect() {
         return updateAdGroupsJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a job to update multiple ad groups
+     * 
+     * <p>Only the fields provided in the request payload for each specific ad group will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public UpdateAdGroupsJobResponse updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request) {
+        return updateAdGroupsJob(request, Optional.empty());
     }
 
     /**
