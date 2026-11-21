@@ -16,6 +16,7 @@ import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.Boolean;
 import java.lang.String;
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -28,6 +29,7 @@ public class ArchiveCampaignsRequestBuilder {
                             new TypeReference<Optional<Boolean>>() {});
     private Optional<? extends List<String>> requestBody = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
+    private Optional<Duration> timeout = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
@@ -70,6 +72,18 @@ public class ArchiveCampaignsRequestBuilder {
         this.retryConfig = retryConfig;
         return this;
     }
+                
+    public ArchiveCampaignsRequestBuilder timeout(Duration timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = Optional.of(timeout);
+        return this;
+    }
+
+    public ArchiveCampaignsRequestBuilder timeout(Optional<Duration> timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = timeout;
+        return this;
+    }
 
 
     private ArchiveCampaignsRequest buildRequest() {
@@ -86,6 +100,7 @@ public class ArchiveCampaignsRequestBuilder {
     public CompletableFuture<ArchiveCampaignsResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
+            .timeout(timeout)
             .build());
 
         AsyncRequestOperation<ArchiveCampaignsRequest, ArchiveCampaignsResponse> operation

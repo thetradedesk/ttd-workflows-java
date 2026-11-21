@@ -76,6 +76,16 @@ public class AsyncAdGroup {
      * Create a new ad group
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<CreateAdGroupResponse>} - The async response
+     */
+    public CompletableFuture<CreateAdGroupResponse> createAdGroup(Optional<? extends AdGroupCreateWorkflowInputWithValidation> request) {
+        return createAdGroup(request, Optional.empty());
+    }
+
+    /**
+     * Create a new ad group
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<CreateAdGroupResponse>} - The async response
      */
@@ -117,6 +127,18 @@ public class AsyncAdGroup {
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<UpdateAdGroupResponse>} - The async response
+     */
+    public CompletableFuture<UpdateAdGroupResponse> updateAdGroup(Optional<? extends AdGroupUpdateWorkflowInputWithValidation> request) {
+        return updateAdGroup(request, Optional.empty());
+    }
+
+    /**
+     * Update an ad group
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<UpdateAdGroupResponse>} - The async response
      */
@@ -150,6 +172,19 @@ public class AsyncAdGroup {
      */
     public CompletableFuture<ArchiveAdGroupsResponse> archiveAdGroupsDirect() {
         return archiveAdGroups(Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Archive multiple ad groups
+     * 
+     * <p>**NOTE**: Once archived, ad groups cannot be un-archived.
+     * 
+     * @param forceArchive 
+     * @param requestBody 
+     * @return {@code CompletableFuture<ArchiveAdGroupsResponse>} - The async response
+     */
+    public CompletableFuture<ArchiveAdGroupsResponse> archiveAdGroups(Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody) {
+        return archiveAdGroups(forceArchive, requestBody, Optional.empty());
     }
 
     /**
@@ -202,6 +237,16 @@ public class AsyncAdGroup {
      * Submit a job to create multiple new ad groups
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<CreateAdGroupsJobResponse>} - The async response
+     */
+    public CompletableFuture<CreateAdGroupsJobResponse> createAdGroupsJob(Optional<? extends AdGroupBulkCreateWorkflowInputWithValidation> request) {
+        return createAdGroupsJob(request, Optional.empty());
+    }
+
+    /**
+     * Submit a job to create multiple new ad groups
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<CreateAdGroupsJobResponse>} - The async response
      */
@@ -235,6 +280,18 @@ public class AsyncAdGroup {
      */
     public CompletableFuture<UpdateAdGroupsJobResponse> updateAdGroupsJobDirect() {
         return updateAdGroupsJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a job to update multiple ad groups
+     * 
+     * <p>Only the fields provided in the request payload for each specific ad group will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<UpdateAdGroupsJobResponse>} - The async response
+     */
+    public CompletableFuture<UpdateAdGroupsJobResponse> updateAdGroupsJob(Optional<? extends AdGroupBulkUpdateWorkflowInputWithValidation> request) {
+        return updateAdGroupsJob(request, Optional.empty());
     }
 
     /**

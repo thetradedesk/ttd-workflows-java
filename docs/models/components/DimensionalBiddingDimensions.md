@@ -17,7 +17,6 @@ DimensionalBiddingDimensions value = DimensionalBiddingDimensions.UNKNOWN_DIMENS
 | `HAS_AD_FORMAT_ID`                                | HasAdFormatId                                     |
 | `HAS_DOMAIN_FRAGMENT_ID`                          | HasDomainFragmentId                               |
 | `HAS_UNIVERSAL_CATEGORY_TAXONOMY_ID`              | HasUniversalCategoryTaxonomyId                    |
-| `HAS_PLACEMENT_POSITION_RELATIVE_TO_FOLD_ID`      | HasPlacementPositionRelativeToFoldId              |
 | `HAS_ADVERTISER_TARGETING_DATA_ID`                | HasAdvertiserTargetingDataId                      |
 | `HAS_BROWSER_ID`                                  | HasBrowserId                                      |
 | `HAS_CARRIER_ID`                                  | HasCarrierId                                      |
@@ -67,8 +66,6 @@ DimensionalBiddingDimensions value = DimensionalBiddingDimensions.UNKNOWN_DIMENS
 | `HAS_PEER39_VIEWABILITY_CATEGORY_ID`              | HasPeer39ViewabilityCategoryId                    |
 | `HAS_VIDEO_COMPLETION_RATE_SCORE_RANGE`           | HasVideoCompletionRateScoreRange                  |
 | `HAS_INTERNET_CONNECTION_TYPE_ID`                 | HasInternetConnectionTypeId                       |
-| `HAS_AD_BUG_PAGE_QUALITY_CATEGORY_ID`             | HasAdBugPageQualityCategoryId                     |
-| `HAS_AD_BUG_VIDEO_PAGE_QUALITY_CATEGORY_ID`       | HasAdBugVideoPageQualityCategoryId                |
 | `HAS_RTB_ASIA_PAGE_QUALITY_CATEGORY_ID`           | HasRTBAsiaPageQualityCategoryId                   |
 | `HAS_RTB_ASIA_VIDEO_PAGE_QUALITY_CATEGORY_ID`     | HasRTBAsiaVideoPageQualityCategoryId              |
 | `HAS_TTD_CONTEXTUAL_CATEGORY_ID`                  | HasTTDContextualCategoryId                        |
@@ -86,8 +83,6 @@ DimensionalBiddingDimensions value = DimensionalBiddingDimensions.UNKNOWN_DIMENS
 | `HAS_DOMAIN_CLASS_ID`                             | HasDomainClassId                                  |
 | `HAS_GEOFENCE_THIRD_PARTY_DATA_AND_BRAND`         | HasGeofenceThirdPartyDataAndBrand                 |
 | `HAS_PRE_BID_CONTEXTUAL_CATEGORY_ID`              | HasPreBidContextualCategoryId                     |
-| `HAS_MIAOZHEN_PAGE_QUALITY_CATEGORY_ID`           | HasMiaozhenPageQualityCategoryId                  |
-| `HAS_MIAOZHEN_VIDEO_PAGE_QUALITY_CATEGORY_ID`     | HasMiaozhenVideoPageQualityCategoryId             |
 | `HAS_TENCENT_PAGE_QUALITY_CATEGORY_ID`            | HasTencentPageQualityCategoryId                   |
 | `HAS_CONTENT_GENRE`                               | HasContentGenre                                   |
 | `HAS_CONTENT_LIVESTREAM`                          | HasContentLivestream                              |

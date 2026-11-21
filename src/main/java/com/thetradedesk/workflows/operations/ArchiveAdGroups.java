@@ -37,6 +37,7 @@ import java.lang.String;
 import java.lang.Throwable;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -51,6 +52,7 @@ public class ArchiveAdGroups {
         final SDKConfiguration sdkConfiguration;
         final String baseUrl;
         final SecuritySource securitySource;
+        final Optional<Duration> timeout;
         final List<String> retryStatusCodes;
         final RetryConfig retryConfig;
         final HTTPClient client;
@@ -64,7 +66,8 @@ public class ArchiveAdGroups {
             this.baseUrl = this.sdkConfiguration.serverUrl();
             this.securitySource = this.sdkConfiguration.securitySource();
             options
-                    .ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG)));
+                    .ifPresent(o -> o.validate(List.of(Options.Option.RETRY_CONFIG, Options.Option.TIMEOUT)));
+            this.timeout = options.flatMap(Options::timeout).or(sdkConfiguration::timeout);
             this.retryStatusCodes = List.of("5XX");
             this.retryConfig = options
                     .flatMap(Options::retryConfig)
@@ -114,7 +117,8 @@ public class ArchiveAdGroups {
             String url = Utils.generateURL(
                     this.baseUrl,
                     "/adgroup/archive");
-            HTTPRequest req = new HTTPRequest(url, "POST");
+            HTTPRequest req = new HTTPRequest(url, "POST")
+                    .timeout(this.timeout);
             Object convertedRequest = Utils.convertToShape(
                     request,
                     JsonShape.DEFAULT,
@@ -235,7 +239,6 @@ public class ArchiveAdGroups {
     public static class Async extends Base
             implements AsyncRequestOperation<ArchiveAdGroupsRequest, com.thetradedesk.workflows.models.operations.async.ArchiveAdGroupsResponse> {
         private final ScheduledExecutorService retryScheduler;
-
         public Async(
                 SDKConfiguration sdkConfiguration, Optional<Options> options,
                 ScheduledExecutorService retryScheduler, Headers _headers) {

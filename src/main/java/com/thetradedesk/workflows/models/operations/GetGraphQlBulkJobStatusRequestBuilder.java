@@ -12,12 +12,14 @@ import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.String;
+import java.time.Duration;
 import java.util.Optional;
 
 public class GetGraphQlBulkJobStatusRequestBuilder {
 
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
+    private Optional<Duration> timeout = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
@@ -42,6 +44,18 @@ public class GetGraphQlBulkJobStatusRequestBuilder {
         this.retryConfig = retryConfig;
         return this;
     }
+                
+    public GetGraphQlBulkJobStatusRequestBuilder timeout(Duration timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = Optional.of(timeout);
+        return this;
+    }
+
+    public GetGraphQlBulkJobStatusRequestBuilder timeout(Optional<Duration> timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = timeout;
+        return this;
+    }
 
 
     private GetGraphQlBulkJobStatusRequest buildRequest() {
@@ -54,6 +68,7 @@ public class GetGraphQlBulkJobStatusRequestBuilder {
     public GetGraphQlBulkJobStatusResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
+            .timeout(timeout)
             .build());
 
         RequestOperation<GetGraphQlBulkJobStatusRequest, GetGraphQlBulkJobStatusResponse> operation
