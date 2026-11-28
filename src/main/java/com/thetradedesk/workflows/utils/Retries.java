@@ -6,6 +6,8 @@ package com.thetradedesk.workflows.utils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.http.HttpResponse;
+import java.net.http.HttpConnectTimeoutException;
+import java.net.http.HttpTimeoutException;
 import java.net.ConnectException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -80,6 +82,12 @@ public class Retries {
             if(e instanceof ConnectException && retryConnectError) {
                 throw e;
             }
+            if(e instanceof HttpConnectTimeoutException && retryConnectError) {
+                throw e;
+            }
+            if(e instanceof HttpTimeoutException && !(e instanceof HttpConnectTimeoutException) && retryReadTimeoutError) {
+                throw e;
+            }
             String message = e.getMessage();
             if(message != null) {
                 if(message.contains("Connect timed out") && retryConnectError) {
@@ -99,6 +107,15 @@ public class Retries {
     }
 
     private static long retryAfterMs(HttpResponse<InputStream> response) {
+        String retryAfterMs = response.headers().firstValue("retry-after-ms").orElse(null);
+        if (retryAfterMs != null && !retryAfterMs.isEmpty()) {
+            try {
+                long milliseconds = Long.parseLong(retryAfterMs);
+                return milliseconds < 0 ? 0 : milliseconds;
+            } catch (NumberFormatException ignored) {
+            }
+        }
+
         String retryAfter = response.headers().firstValue("retry-after").orElse(null);
         if (retryAfter == null || retryAfter.isEmpty()) {
             return 0;

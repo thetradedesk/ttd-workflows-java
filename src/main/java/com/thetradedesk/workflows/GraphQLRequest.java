@@ -72,6 +72,21 @@ public class GraphQLRequest {
      * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public SubmitGraphQlRequestResponse submitGraphQlRequest(Optional<? extends GraphQLRequestInput> request) {
+        return submitGraphQlRequest(request, Optional.empty());
+    }
+
+    /**
+     * Submit a valid GraphQL query or mutation
+     * 
+     * <p>This generic operation can be used to execute any valid GraphQL request. The results are returned
+     * directly when the request is complete. To explore the available GraphQL operations, see the
+     * [GraphQL Schema Explorer](https://partner.thetradedesk.com/v3/portal/api/graphql-schema).
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -113,6 +128,24 @@ public class GraphQLRequest {
      */
     public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJobDirect() {
         return submitGraphQlBulkQueryJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a valid bulk GraphQL query job
+     * 
+     * <p>This generic operation can be used to execute any valid bulk GraphQL query. To determine the job's
+     * status, completion percentage, and URL for download (once the job results are ready), query the
+     * [GraphQL Bulk Job
+     * Status](https://ttd-workflows.apidocumentation.com/reference#tag/job-status/get/graphqlbulkqueryjob/{id})
+     * endpoint. For information on bulk GraphQL query syntax, see
+     * [GraphQL API Bulk Operations](https://partner.thetradedesk.com/v3/portal/api/doc/GqlBulkOperations).
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public SubmitGraphQlBulkQueryJobResponse submitGraphQlBulkQueryJob(Optional<? extends GraphQlQueryJobInput> request) {
+        return submitGraphQlBulkQueryJob(request, Optional.empty());
     }
 
     /**

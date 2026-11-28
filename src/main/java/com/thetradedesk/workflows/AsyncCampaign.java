@@ -80,6 +80,16 @@ public class AsyncCampaign {
      * Create a new campaign
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<CreateCampaignResponse>} - The async response
+     */
+    public CompletableFuture<CreateCampaignResponse> create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request) {
+        return create(request, Optional.empty());
+    }
+
+    /**
+     * Create a new campaign
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<CreateCampaignResponse>} - The async response
      */
@@ -121,6 +131,18 @@ public class AsyncCampaign {
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<UpdateCampaignResponse>} - The async response
+     */
+    public CompletableFuture<UpdateCampaignResponse> updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request) {
+        return updateCampaign(request, Optional.empty());
+    }
+
+    /**
+     * Update a campaign
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<UpdateCampaignResponse>} - The async response
      */
@@ -150,6 +172,16 @@ public class AsyncCampaign {
      */
     public CompletableFuture<CreateCampaignsJobResponse> createCampaignsJobDirect() {
         return createCampaignsJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a job to create multiple new campaigns
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<CreateCampaignsJobResponse>} - The async response
+     */
+    public CompletableFuture<CreateCampaignsJobResponse> createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request) {
+        return createCampaignsJob(request, Optional.empty());
     }
 
     /**
@@ -197,6 +229,18 @@ public class AsyncCampaign {
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return {@code CompletableFuture<UpdateCampaignsJobResponse>} - The async response
+     */
+    public CompletableFuture<UpdateCampaignsJobResponse> updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request) {
+        return updateCampaignsJob(request, Optional.empty());
+    }
+
+    /**
+     * Submit a job to update multiple campaigns
+     * 
+     * <p>Only the fields provided in the request payload for each specific campaign will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return {@code CompletableFuture<UpdateCampaignsJobResponse>} - The async response
      */
@@ -230,6 +274,19 @@ public class AsyncCampaign {
      */
     public CompletableFuture<ArchiveCampaignsResponse> archiveCampaignsDirect() {
         return archiveCampaigns(Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Archive multiple campaigns
+     * 
+     * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
+     * 
+     * @param forceArchive 
+     * @param requestBody 
+     * @return {@code CompletableFuture<ArchiveCampaignsResponse>} - The async response
+     */
+    public CompletableFuture<ArchiveCampaignsResponse> archiveCampaigns(Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody) {
+        return archiveCampaigns(forceArchive, requestBody, Optional.empty());
     }
 
     /**

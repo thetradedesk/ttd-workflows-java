@@ -12,12 +12,14 @@ import com.thetradedesk.workflows.utils.Headers;
 import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
+import java.time.Duration;
 import java.util.Optional;
 
 public class SubmitRestRequestRequestBuilder {
 
     private Optional<? extends CallRestApiWorkflowInput> request = Optional.empty();
     private Optional<RetryConfig> retryConfig = Optional.empty();
+    private Optional<Duration> timeout = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
@@ -48,10 +50,23 @@ public class SubmitRestRequestRequestBuilder {
         this.retryConfig = retryConfig;
         return this;
     }
+                
+    public SubmitRestRequestRequestBuilder timeout(Duration timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = Optional.of(timeout);
+        return this;
+    }
+
+    public SubmitRestRequestRequestBuilder timeout(Optional<Duration> timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = timeout;
+        return this;
+    }
 
     public SubmitRestRequestResponse call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
+            .timeout(timeout)
             .build());
 
         RequestOperation<Optional<? extends CallRestApiWorkflowInput>, SubmitRestRequestResponse> operation

@@ -72,6 +72,21 @@ public class Dmp {
      * Status".
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public GetFirstPartyDataJobResponse getFirstPartyDataJob(Optional<? extends FirstPartyDataInput> request) {
+        return getFirstPartyDataJob(request, Optional.empty());
+    }
+
+    /**
+     * Submit a job for first-party data retrieval for an advertiser
+     * 
+     * <p>When a first-party data query is submitted, a job ID is returned.
+     * This job ID can be used to poll for the job's status using the associated operation under "Job
+     * Status".
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -107,6 +122,21 @@ public class Dmp {
      */
     public GetThirdPartyDataJobResponse getThirdPartyDataJobDirect() {
         return getThirdPartyDataJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a job for third-party data retrieval for a partner
+     * 
+     * <p>When a third-party data query is submitted, a job ID is returned.
+     * This job ID can be used to poll for the job's status, and when complete, the results download link,
+     * using the associated operation under "Job Status".
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public GetThirdPartyDataJobResponse getThirdPartyDataJob(Optional<? extends ThirdPartyDataInput> request) {
+        return getThirdPartyDataJob(request, Optional.empty());
     }
 
     /**
