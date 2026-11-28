@@ -68,6 +68,21 @@ public class RESTRequest {
      * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public SubmitRestRequestResponse submitRestRequest(Optional<? extends CallRestApiWorkflowInput> request) {
+        return submitRestRequest(request, Optional.empty());
+    }
+
+    /**
+     * Submit a valid REST request
+     * 
+     * <p>This generic operation can be used to execute any valid REST request. The results are returned
+     * directly when the request is complete. To explore the available REST operations, see the
+     * [REST API Reference](https://partner.thetradedesk.com/v3/portal/api/doc/ApiReferencePlatform).
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails

@@ -128,6 +128,16 @@ public class CampaignCreateWorkflowPrimaryInput {
     @JsonProperty("campaignIncrementalReachSetting")
     private Optional<? extends CampaignCreateWorkflowIncrementalReachCampaignSetting> campaignIncrementalReachSetting;
 
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("pharmaOptimizationGoalSettings")
+    private JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettings;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("campaignRetailBrandSettings")
+    private Optional<? extends KokaiCampaignRetailBrandSettingsInput> campaignRetailBrandSettings;
+
     @JsonCreator
     public CampaignCreateWorkflowPrimaryInput(
             @JsonProperty("description") JsonNullable<String> description,
@@ -151,7 +161,9 @@ public class CampaignCreateWorkflowPrimaryInput {
             @JsonProperty("primaryGoal") CampaignWorkflowROIGoalInput primaryGoal,
             @JsonProperty("startDateInUtc") JsonNullable<OffsetDateTime> startDateInUtc,
             @JsonProperty("budget") Optional<? extends CampaignCreateWorkflowBudgetInput> budget,
-            @JsonProperty("campaignIncrementalReachSetting") Optional<? extends CampaignCreateWorkflowIncrementalReachCampaignSetting> campaignIncrementalReachSetting) {
+            @JsonProperty("campaignIncrementalReachSetting") Optional<? extends CampaignCreateWorkflowIncrementalReachCampaignSetting> campaignIncrementalReachSetting,
+            @JsonProperty("pharmaOptimizationGoalSettings") JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettings,
+            @JsonProperty("campaignRetailBrandSettings") Optional<? extends KokaiCampaignRetailBrandSettingsInput> campaignRetailBrandSettings) {
         Utils.checkNotNull(description, "description");
         Utils.checkNotNull(campaignGroupId, "campaignGroupId");
         Utils.checkNotNull(timeZone, "timeZone");
@@ -174,6 +186,8 @@ public class CampaignCreateWorkflowPrimaryInput {
         Utils.checkNotNull(startDateInUtc, "startDateInUtc");
         Utils.checkNotNull(budget, "budget");
         Utils.checkNotNull(campaignIncrementalReachSetting, "campaignIncrementalReachSetting");
+        Utils.checkNotNull(pharmaOptimizationGoalSettings, "pharmaOptimizationGoalSettings");
+        Utils.checkNotNull(campaignRetailBrandSettings, "campaignRetailBrandSettings");
         this.description = description;
         this.campaignGroupId = campaignGroupId;
         this.timeZone = timeZone;
@@ -196,6 +210,8 @@ public class CampaignCreateWorkflowPrimaryInput {
         this.startDateInUtc = startDateInUtc;
         this.budget = budget;
         this.campaignIncrementalReachSetting = campaignIncrementalReachSetting;
+        this.pharmaOptimizationGoalSettings = pharmaOptimizationGoalSettings;
+        this.campaignRetailBrandSettings = campaignRetailBrandSettings;
     }
     
     public CampaignCreateWorkflowPrimaryInput(
@@ -210,7 +226,7 @@ public class CampaignCreateWorkflowPrimaryInput {
             Optional.empty(), Optional.empty(), advertiserId,
             name, JsonNullable.undefined(), primaryChannel,
             primaryGoal, JsonNullable.undefined(), Optional.empty(),
-            Optional.empty());
+            Optional.empty(), JsonNullable.undefined(), Optional.empty());
     }
 
     @JsonIgnore
@@ -329,6 +345,18 @@ public class CampaignCreateWorkflowPrimaryInput {
     @JsonIgnore
     public Optional<CampaignCreateWorkflowIncrementalReachCampaignSetting> campaignIncrementalReachSetting() {
         return (Optional<CampaignCreateWorkflowIncrementalReachCampaignSetting>) campaignIncrementalReachSetting;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettings() {
+        return (JsonNullable<List<CampaignWorkflowPharmaOptimizationGoalSettingInput>>) pharmaOptimizationGoalSettings;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<KokaiCampaignRetailBrandSettingsInput> campaignRetailBrandSettings() {
+        return (Optional<KokaiCampaignRetailBrandSettingsInput>) campaignRetailBrandSettings;
     }
 
     public static Builder builder() {
@@ -582,6 +610,31 @@ public class CampaignCreateWorkflowPrimaryInput {
         return this;
     }
 
+    public CampaignCreateWorkflowPrimaryInput withPharmaOptimizationGoalSettings(List<CampaignWorkflowPharmaOptimizationGoalSettingInput> pharmaOptimizationGoalSettings) {
+        Utils.checkNotNull(pharmaOptimizationGoalSettings, "pharmaOptimizationGoalSettings");
+        this.pharmaOptimizationGoalSettings = JsonNullable.of(pharmaOptimizationGoalSettings);
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withPharmaOptimizationGoalSettings(JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettings) {
+        Utils.checkNotNull(pharmaOptimizationGoalSettings, "pharmaOptimizationGoalSettings");
+        this.pharmaOptimizationGoalSettings = pharmaOptimizationGoalSettings;
+        return this;
+    }
+
+    public CampaignCreateWorkflowPrimaryInput withCampaignRetailBrandSettings(KokaiCampaignRetailBrandSettingsInput campaignRetailBrandSettings) {
+        Utils.checkNotNull(campaignRetailBrandSettings, "campaignRetailBrandSettings");
+        this.campaignRetailBrandSettings = Optional.ofNullable(campaignRetailBrandSettings);
+        return this;
+    }
+
+
+    public CampaignCreateWorkflowPrimaryInput withCampaignRetailBrandSettings(Optional<? extends KokaiCampaignRetailBrandSettingsInput> campaignRetailBrandSettings) {
+        Utils.checkNotNull(campaignRetailBrandSettings, "campaignRetailBrandSettings");
+        this.campaignRetailBrandSettings = campaignRetailBrandSettings;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -613,7 +666,9 @@ public class CampaignCreateWorkflowPrimaryInput {
             Utils.enhancedDeepEquals(this.primaryGoal, other.primaryGoal) &&
             Utils.enhancedDeepEquals(this.startDateInUtc, other.startDateInUtc) &&
             Utils.enhancedDeepEquals(this.budget, other.budget) &&
-            Utils.enhancedDeepEquals(this.campaignIncrementalReachSetting, other.campaignIncrementalReachSetting);
+            Utils.enhancedDeepEquals(this.campaignIncrementalReachSetting, other.campaignIncrementalReachSetting) &&
+            Utils.enhancedDeepEquals(this.pharmaOptimizationGoalSettings, other.pharmaOptimizationGoalSettings) &&
+            Utils.enhancedDeepEquals(this.campaignRetailBrandSettings, other.campaignRetailBrandSettings);
     }
     
     @Override
@@ -626,7 +681,7 @@ public class CampaignCreateWorkflowPrimaryInput {
             secondaryGoal, tertiaryGoal, advertiserId,
             name, customLabelNames, primaryChannel,
             primaryGoal, startDateInUtc, budget,
-            campaignIncrementalReachSetting);
+            campaignIncrementalReachSetting, pharmaOptimizationGoalSettings, campaignRetailBrandSettings);
     }
     
     @Override
@@ -653,7 +708,9 @@ public class CampaignCreateWorkflowPrimaryInput {
                 "primaryGoal", primaryGoal,
                 "startDateInUtc", startDateInUtc,
                 "budget", budget,
-                "campaignIncrementalReachSetting", campaignIncrementalReachSetting);
+                "campaignIncrementalReachSetting", campaignIncrementalReachSetting,
+                "pharmaOptimizationGoalSettings", pharmaOptimizationGoalSettings,
+                "campaignRetailBrandSettings", campaignRetailBrandSettings);
     }
 
     @SuppressWarnings("UnusedReturnValue")
@@ -702,6 +759,10 @@ public class CampaignCreateWorkflowPrimaryInput {
         private Optional<? extends CampaignCreateWorkflowBudgetInput> budget = Optional.empty();
 
         private Optional<? extends CampaignCreateWorkflowIncrementalReachCampaignSetting> campaignIncrementalReachSetting = Optional.empty();
+
+        private JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettings = JsonNullable.undefined();
+
+        private Optional<? extends KokaiCampaignRetailBrandSettingsInput> campaignRetailBrandSettings = Optional.empty();
 
         private Builder() {
           // force use of static builder() method
@@ -969,6 +1030,32 @@ public class CampaignCreateWorkflowPrimaryInput {
             return this;
         }
 
+
+        public Builder pharmaOptimizationGoalSettings(List<CampaignWorkflowPharmaOptimizationGoalSettingInput> pharmaOptimizationGoalSettings) {
+            Utils.checkNotNull(pharmaOptimizationGoalSettings, "pharmaOptimizationGoalSettings");
+            this.pharmaOptimizationGoalSettings = JsonNullable.of(pharmaOptimizationGoalSettings);
+            return this;
+        }
+
+        public Builder pharmaOptimizationGoalSettings(JsonNullable<? extends List<CampaignWorkflowPharmaOptimizationGoalSettingInput>> pharmaOptimizationGoalSettings) {
+            Utils.checkNotNull(pharmaOptimizationGoalSettings, "pharmaOptimizationGoalSettings");
+            this.pharmaOptimizationGoalSettings = pharmaOptimizationGoalSettings;
+            return this;
+        }
+
+
+        public Builder campaignRetailBrandSettings(KokaiCampaignRetailBrandSettingsInput campaignRetailBrandSettings) {
+            Utils.checkNotNull(campaignRetailBrandSettings, "campaignRetailBrandSettings");
+            this.campaignRetailBrandSettings = Optional.ofNullable(campaignRetailBrandSettings);
+            return this;
+        }
+
+        public Builder campaignRetailBrandSettings(Optional<? extends KokaiCampaignRetailBrandSettingsInput> campaignRetailBrandSettings) {
+            Utils.checkNotNull(campaignRetailBrandSettings, "campaignRetailBrandSettings");
+            this.campaignRetailBrandSettings = campaignRetailBrandSettings;
+            return this;
+        }
+
         public CampaignCreateWorkflowPrimaryInput build() {
 
             return new CampaignCreateWorkflowPrimaryInput(
@@ -979,7 +1066,7 @@ public class CampaignCreateWorkflowPrimaryInput {
                 secondaryGoal, tertiaryGoal, advertiserId,
                 name, customLabelNames, primaryChannel,
                 primaryGoal, startDateInUtc, budget,
-                campaignIncrementalReachSetting);
+                campaignIncrementalReachSetting, pharmaOptimizationGoalSettings, campaignRetailBrandSettings);
         }
 
     }

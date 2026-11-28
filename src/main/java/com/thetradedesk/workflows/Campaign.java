@@ -79,6 +79,17 @@ public class Campaign {
      * Create a new campaign
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public CreateCampaignResponse create(Optional<? extends CampaignCreateWorkflowInputWithValidation> request) {
+        return create(request, Optional.empty());
+    }
+
+    /**
+     * Create a new campaign
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -118,6 +129,19 @@ public class Campaign {
      * <p>Only the fields provided in the request payload will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public UpdateCampaignResponse updateCampaign(Optional<? extends CampaignUpdateWorkflowInputWithValidation> request) {
+        return updateCampaign(request, Optional.empty());
+    }
+
+    /**
+     * Update a campaign
+     * 
+     * <p>Only the fields provided in the request payload will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -145,6 +169,17 @@ public class Campaign {
      */
     public CreateCampaignsJobResponse createCampaignsJobDirect() {
         return createCampaignsJob(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Submit a job to create multiple new campaigns
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public CreateCampaignsJobResponse createCampaignsJob(Optional<? extends CampaignBulkCreateWorkflowInputWithValidation> request) {
+        return createCampaignsJob(request, Optional.empty());
     }
 
     /**
@@ -190,6 +225,19 @@ public class Campaign {
      * <p>Only the fields provided in the request payload for each specific campaign will be updated.
      * 
      * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public UpdateCampaignsJobResponse updateCampaignsJob(Optional<? extends CampaignBulkUpdateWorkflowInputWithValidation> request) {
+        return updateCampaignsJob(request, Optional.empty());
+    }
+
+    /**
+     * Submit a job to update multiple campaigns
+     * 
+     * <p>Only the fields provided in the request payload for each specific campaign will be updated.
+     * 
+     * @param request The request object containing all the parameters for the API call.
      * @param options additional options
      * @return The response from the API call
      * @throws RuntimeException subclass if the API call fails
@@ -221,6 +269,20 @@ public class Campaign {
      */
     public ArchiveCampaignsResponse archiveCampaignsDirect() {
         return archiveCampaigns(Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Archive multiple campaigns
+     * 
+     * <p>**NOTE**: Once archived, campaigns cannot be un-archived.
+     * 
+     * @param forceArchive 
+     * @param requestBody 
+     * @return The response from the API call
+     * @throws RuntimeException subclass if the API call fails
+     */
+    public ArchiveCampaignsResponse archiveCampaigns(Optional<Boolean> forceArchive, Optional<? extends List<String>> requestBody) {
+        return archiveCampaigns(forceArchive, requestBody, Optional.empty());
     }
 
     /**

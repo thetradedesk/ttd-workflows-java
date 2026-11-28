@@ -13,6 +13,7 @@ import com.thetradedesk.workflows.utils.Options;
 import com.thetradedesk.workflows.utils.RetryConfig;
 import com.thetradedesk.workflows.utils.Utils;
 import java.lang.String;
+import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -20,6 +21,7 @@ public class GetCampaignVersionRequestBuilder {
 
     private String id;
     private Optional<RetryConfig> retryConfig = Optional.empty();
+    private Optional<Duration> timeout = Optional.empty();
     private final SDKConfiguration sdkConfiguration;
     private final Headers _headers = new Headers(); 
 
@@ -44,6 +46,18 @@ public class GetCampaignVersionRequestBuilder {
         this.retryConfig = retryConfig;
         return this;
     }
+                
+    public GetCampaignVersionRequestBuilder timeout(Duration timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = Optional.of(timeout);
+        return this;
+    }
+
+    public GetCampaignVersionRequestBuilder timeout(Optional<Duration> timeout) {
+        Utils.checkNotNull(timeout, "timeout");
+        this.timeout = timeout;
+        return this;
+    }
 
 
     private GetCampaignVersionRequest buildRequest() {
@@ -56,6 +70,7 @@ public class GetCampaignVersionRequestBuilder {
     public CompletableFuture<GetCampaignVersionResponse> call() {
         Optional<Options> options = Optional.of(Options.builder()
             .retryConfig(retryConfig)
+            .timeout(timeout)
             .build());
 
         AsyncRequestOperation<GetCampaignVersionRequest, GetCampaignVersionResponse> operation
